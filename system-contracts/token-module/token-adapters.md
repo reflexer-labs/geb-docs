@@ -34,9 +34,9 @@ All adapter contracts serve a similar purpose. They manage the flow of collatera
 
 `CoinJoin` is a gateway \(like an ATM\) between the `CDPEngine` \(the "bank ledger"\) and the ERC20 representation of the system coin \(cash\). Governance has the power to deploy multiple `CoinJoin`s and `disable` previous `join` contracts. When a `CoinJoin` is disabled, users can only burn ERC20 system coins for `CDPEngine.coinBalance` \(`join` coins into the system\) and can no longer exit their `CDPEngine.coinBalance` in the ERC20 \(thus, the "gateway" only allows for one way transfers\).
 
-If governance wants, they can deploy another ERC20 `Coin` contract \(possibly with blacklisting capabilities\) and also a separate `CoinJoin` for this new token. The previous `CoinJoin` for the old `Coin` contract can be disabled so that old ERC20 tokens can only be `join`ed in the system. The process to upgrade between the old, permissionless `Coin` and the new, permissioned one can be complicated \(although **not** impossible\) because some coin holders may not want to do the switch. Moreover, governance will need to deploy new auction contracts as well as a new GlobalSettlement in order to allow 
+If governance wants, they can deploy another ERC20 `Coin` contract \(possibly with blacklisting capabilities\) and also a separate `CoinJoin` for this new token. The previous `CoinJoin` for the old `Coin` contract can be disabled so that old ERC20 tokens can only be `join`ed in the system. The process to upgrade between the old, permissionless `Coin` and the new, permissioned one can be complicated \(although **not** impossible\) because some coin holders may not want to do the switch.
 
-An easy way to avoid this scenario is for governance to remove control over the initial `CoinJoin` and allow system coin holders to use this gateway to `join` and `exit` coins at will.
+An easy way to avoid this scenario is for governance to remove control over the initial `CoinJoin` and allow system coin holders to use the gateway to `join` and `exit` coins at will.
 {% endhint %}
 
 
