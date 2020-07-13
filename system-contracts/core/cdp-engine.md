@@ -10,9 +10,9 @@ The `CDPEngine` stores CDPs and tracks all debt and collateral balances. This co
 
 ## 2. Contract Variables & Functions <a id="2-contract-details"></a>
 
-* `tokenCollateral`: collateral token balances.
-* `coinBalance`: how many coins \(bonds\) an account has. This number is **not** reflected in the [external token contract](https://reflexer-labs.gitbook.io/geb/system-contracts/token-module/system-coin).
-* `debtBalance`: unbacked coins \(system debt, not belonging to any `cdp`\).
+* `tokenCollateral[user: address]`: collateral token balances.
+* `coinBalance[user: address]`: how many coins \(bonds\) an account has. This number is **not** reflected in the [external token contract](https://reflexer-labs.gitbook.io/geb/system-contracts/token-module/system-coin).
+* `debtBalance[user: address]`: unbacked coins \(system debt, not belonging to any `cdp`\).
 * `collateralTypes`: a mapping of `CollateralType`s.
 * `CollateralType`:
   * `debtAmount`: total normalized system coin debt.
@@ -29,7 +29,7 @@ The `CDPEngine` stores CDPs and tracks all debt and collateral balances. This co
 * `modifyCollateralBalance`: modify a user's collateral balance.
 * `transferCollateral`: transfer collateral between users.
 * `transferInternalCoins`: transfer system coins between users. This action does not transfer coins between users in the ERC20 contract but only in the CDPEngine.
-* `confiscateCDPCollateralAndDebt`: called by the `LiquidationEngine` when auctioning collateral to cover bad debt.
+* `confiscateCDPCollateralAndDebt(collateralType: bytes32`,`cdp: address`, `collateralCounterparty: address`, `debtCounterparty: address`, `deltaCollateral: int256`, `deltaDebt: int256)`: called by the `LiquidationEngine` when auctioning collateral to cover bad debt.
 * `settleDebt`: destroy equal quantities of system coins and system debt \(`globalUnbackedDebt`\).
 * `updateAccumulatedRate`: modify a collateral's accumulated interest rates, creating / destroying corresponding debt.
 * `createUnbackedDebt`: mint unbacked system coins \(accounted for with `globalUnbackedDebt`\).
