@@ -16,7 +16,7 @@ The **Core Module** stores all the CDP data, allows external actors to trigger l
 
 ## 2. Component Descriptions
 
-* The `CDPEngine`stores all CDPs' states and system coin balances, as well as the amount of collateral debt each address has. This contract is self-contained and has no external dependencies.
+* The `CDPEngine`stores all CDPs' states and system coin balances, as well as the amount of collateral and debt each address has. This contract is self-contained and has no external dependencies.
 * The `LiquidationEngine` is meant to check if a CDP is unsafe \(the value of the issued debt is too high compared to the collateral value\) and start a collateral auction that sells a portion of the CDP's collateral in order to cover a share of its debt.
 * The `AccountingEngine` stores the overall system surplus and debt data. It is meant to settle deficit via debt auctions and sell off surplus via surplus auctions.
 
