@@ -30,8 +30,8 @@ The `CDPEngine` stores CDPs and tracks all debt and collateral balances. This co
 * `modifyParameters(collateralType: bytes32`, `parameter: bytes32`, `data: uint256)` - modify collateral type `uint256` parameters.
 * `modifyCollateralBalance(parameter: bytes32`, `usr: address`, `wad: int256)` - modify a user's collateral balance.
 * `disableContract()` - disable the CDPEngine.
-* `transferCollateral`: transfer collateral between users.
-* `transferInternalCoins`: transfer system coins between users. This action does not transfer coins between users in the ERC20 contract but only in the CDPEngine.
+* `transferCollateral(collateralType: bytes32`, `src: address`, `dst: address`, `wad: uint256)` - transfer collateral between users.
+* `transferInternalCoins()`: transfer system coins between users. This action does not transfer coins between users in the ERC20 contract but only in the CDPEngine.
 * `confiscateCDPCollateralAndDebt(collateralType: bytes32`,`cdp: address`, `collateralCounterparty: address`, `debtCounterparty: address`, `deltaCollateral: int256`, `deltaDebt: int256)`: called by the `LiquidationEngine` when auctioning collateral to cover bad debt.
 * `settleDebt`: destroy equal quantities of system coins and system debt \(`globalUnbackedDebt`\).
 * `updateAccumulatedRate`: modify a collateral's accumulated interest rates, creating / destroying corresponding debt.
