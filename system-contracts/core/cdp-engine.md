@@ -20,6 +20,7 @@ The `CDPEngine` stores CDPs and tracks all debt and collateral balances. This co
 * `globalDebt` - total amount of debt currently issued.
 * `globalDebtCeiling` - the limit on total amount of debt that can be issued.
 * `globalUnbackedDebt` - amount of 'bad' debt in the system.
+* `authorizedAccounts[usr: address]` - stores addresses that are able to `modifyParameters`,  disable the contract, `modifyCollateralBalance`s, `createUnbackedDebt` and `confiscateCDPCollateralAndDebt`.
 * `contractEnabled` - global settlement flag.
 
 **Data Structures**
