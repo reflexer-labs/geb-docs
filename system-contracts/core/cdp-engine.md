@@ -23,38 +23,31 @@ The `CDPEngine` stores CDPs and tracks all debt and collateral balances. This co
   * `liquidationPrice` - collateral price with safety margin. Used only in `LiquidationEngine` when a CDP is liquidated.
 * `cdps[collateralType: bytes32`, `cdpHandler: address]` - a mapping of `CDP` types.
 * `CDP`:
-  * `lockedCollateral`: CDP collateral balance.
-  * `generatedDebt`: normalized outstanding system coin debt.
+  * `lockedCollateral` - CDP collateral balance.
+  * `generatedDebt` - normalized outstanding system coin debt.
 * `initializeCollateralType(collateralType: bytes32)` - create a new collateral type.
 * `modifyParameters(parameter: bytes32`, `data: uint256)` - modify general `uint256` parameters.
 * `modifyParameters(collateralType: bytes32`, `parameter: bytes32`, `data: uint256)` - modify collateral type `uint256` parameters.
 * `modifyCollateralBalance(parameter: bytes32`, `usr: address`, `wad: int256)` - modify a user's collateral balance.
 * `disableContract()` - disable the CDPEngine.
 * `transferCollateral(collateralType: bytes32`, `src: address`, `dst: address`, `wad: uint256)` - transfer collateral between users.
-* `transferInternalCoins()`: transfer system coins between users. This action does not transfer coins between users in the ERC20 contract but only in the CDPEngine.
-* `confiscateCDPCollateralAndDebt(collateralType: bytes32`,`cdp: address`, `collateralCounterparty: address`, `debtCounterparty: address`, `deltaCollateral: int256`, `deltaDebt: int256)`: called by the `LiquidationEngine` when auctioning collateral to cover bad debt.
-* `settleDebt`: destroy equal quantities of system coins and system debt \(`globalUnbackedDebt`\).
-* `updateAccumulatedRate`: modify a collateral's accumulated interest rates, creating / destroying corresponding debt.
-* `createUnbackedDebt`: mint unbacked system coins \(accounted for with `globalUnbackedDebt`\).
-* `globalDebtCeiling`: the limit on total amount of debt that can be issued.
-* `modifyCDPCollateralization`: modify a CDP's CRatio.
-  * `lock`: transfer collateral into a CDP.
-  * `free`: transfer collateral out of a CDP.
-  * `generateDebt`: increase CDP debt, creating system coins \(bonds\).
-  * `repayAllDebt`: decrease CDP debt, destroying system coins \(bonds\).
-  * `deltaCollateral`: change in a CDP's collateral.
-  * `deltaDebt`: change in a CDP's debt.
-* `transferCDPCollateralAndDebt`: splitting/merging CDPs by transferring collateral and/or debt between them.
-  * `deltaCollateral`: amount of collateral to exchange.
-  * `deltaDebt`: amount of system coin debt to exchange.
-* `canModifyCDP`: check whether an address is allowed to modify another address's collateral or system coin balance.
-  * `approveCDPModification`: enable `canModifyCDP`for a pair of addresses.
-  * `denyCDPModification`: disable `canModifyCDP`for a pair of addresses.
-* `globalDebt` is the sum of all `coinBalance`s \(the total quantity of system coins issued\).
+* `transferInternalCoins(src: address`, `dst: address`, `rad: uint256)` - transfer system coins between users. This action does not transfer coins between users in the ERC20 contract but only in the CDPEngine.
+* `confiscateCDPCollateralAndDebt(collateralType: bytes32`,`cdp: address`, `collateralCounterparty: address`, `debtCounterparty: address`, `deltaCollateral: int256`, `deltaDebt: int256)` - called by the `LiquidationEngine` when auctioning collateral to cover bad debt.
+* `settleDebt(rad: uint256)` - destroy equal quantities of system coins and system debt \(`globalUnbackedDebt`\).
+* `updateAccumulatedRate(collateralType: bytes32`, `surplusDst: address`, `rateMultiplier: int256)` - modify a collateral's accumulated interest rates, creating / destroying corresponding debt.
+* `createUnbackedDebt(debtDestination: address`, `coinDestination: address`, `rad: uint256)` - mint unbacked system coins \(accounted for with `globalUnbackedDebt`\).
+* `globalDebtCeiling` - the limit on total amount of debt that can be issued.
+* `modifyCDPCollateralization()` - modify a CDP's CRatio.
+* `transferCDPCollateralAndDebt(collateralType: bytes32`, `src: address`, `dst: address`, `deltaCollateral: int256`, `deltaDebt: int256)` - splitting/merging CDPs by transferring collateral and/or debt between them.
+* `canModifyCDP` - modifier that checks whether an address is allowed to modify another address's collateral or system coin balance.
+* `approveCDPModification(account: address)` - enable `canModifyCDP`for a pair of addresses.
+* `denyCDPModification(account: address)` - disable `canModifyCDP`for a pair of addresses.
+
+**Notes**: 
+
+* `globalDebt` equals `globalUnbackedDebt` plus the sum of `CollateralType.debtAmount * CollateralType.accumulatedRates` across all `collateralTypes`.
 * `globalUnbackedDebt` is the sum of all `debtBalance`s \(the total quantity of system debt\).
 * `CollateralType.debtAmount` the sum of all `generatedDebt` in the `cdp`s for that `CollateralType`.
-
-**Note**: `globalDebt` equals `globalUnbackedDebt` plus the sum of `CollateralType.debtAmount * CollateralType.accumulatedRates` across all `collateralTypes`.
 
 ## 3. Walkthrough <a id="3-mechanisms-and-concepts"></a>
 
