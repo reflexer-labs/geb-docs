@@ -50,9 +50,9 @@ The `AccountingEngine` receives both system surplus and system debt. It covers d
 * `auctionDebt` - trigger a deficit auction \(`DebtAuctionHouse.startAuction`\).
 * `settleDebtAuction` - authed function meant to be called by `debtAuctionHouse` in order to signal that a specific auction settled.
 * `transferPostSettlementSurplus` - transfer any post settlement, leftover surplus to the`postSettlementSurplusDrain.` Throws if `disableCooldown` haven't yet passed since `disableTimestamp`
-* `disableContract` - set `contractEnabled` to zero, settle as much remaining debt as possible \(if any\) and either send remaining surplus right away to the `postSettlementSurplusDrain` or wait until 
+* `disableContract()` - set `contractEnabled` to zero, settle as much remaining debt as possible \(if any\) and either send remaining surplus right away to the `postSettlementSurplusDrain` or wait until 
 
-  `disableCooldown` seconds have passed.
+  `disableCooldown` seconds have passed before you send it \(using `transferPostSettlementSurplus`\).
 
 ## 3. Walkthrough
 
