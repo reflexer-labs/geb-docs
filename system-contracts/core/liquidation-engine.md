@@ -31,7 +31,7 @@ The `LiquidationEngine` enables external actors to liquidate CDPs and send their
 
 **Modifiers**
 
-* `isAuthorized` ****- checks whether an address is part of `authorizedAddresses`.
+* `isAuthorized` ****- checks whether an address is part of `authorizedAddresses` \(and thus can call authed functions\).
 
 **Functions**
 
