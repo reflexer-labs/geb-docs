@@ -39,6 +39,7 @@ The `CDPEngine` stores CDPs and tracks all debt and collateral balances. This co
 **Modifiers**
 
 * `canModifyCDP` - modifier that checks whether an address is allowed to modify another address's collateral or system coin balance.
+* `isAuthorized` ****- checks whether an address is part of `authorizedAddresses`.
 
 **Functions**
 

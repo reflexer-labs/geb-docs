@@ -15,7 +15,7 @@ The `LiquidationEngine` enables external actors to liquidate CDPs and send their
 * `contractEnabled` - must be `1` for the `LiquidationEngine` to `liquidateCDP` s. ****Used ****to indicate whether the contract is enabled.
 * `authorizedAccounts[usr: address]` - addresses allowed to call `modifyParameters()` and `disableContract()`
 * `cdpEngine` - address that conforms to a `CDPEngineLike` interface. It cannot be changed after the contract is instantiated.
-* `accountingEngine` - address that conforms to a `AccountingEngineLike` interface.
+* `accountingEngine` - address that conforms to an `AccountingEngineLike` interface.
 * `chosenCDPSaviour[collateralType: bytes32, cdp: address]` - stores the `CDPSaviour` chosen by a `cdp` user in order to save their position from liquidation.
 * `cdpSaviours[saviour: address]` - stores contract addresses that can be used as `CDPSaviour`s.
   * A `CDPSaviour` can be "attached" to a `cdp` by its owner. When an external actor calls `liquidateCDP`, the `CDPSaviour` will try to add more collateral in the targeted `cdp` and thus \(potentially\) save it from liquidation.
@@ -24,13 +24,23 @@ The `LiquidationEngine` enables external actors to liquidate CDPs and send their
 
 **Data Structures**
 
-* `CollateralType` is the struct with the address of the collateral auction contract \(`CollateralAuctionHouse`\), the penalty for that collateral to be liquidated \(`liquidationPenalty`\) and the maximum size of collateral that can be auctioned at once \(`collateralToSell`\).
+* `CollateralType`:
+  * `collateralAuctionHouse` - the address of the contract that auctions a specific collateral type.
+  * `liquidationPenalty` - penalty applied to a CDP when it is liquidated \(extra amount of debt that must be covered by an auction\).
+  * `collateralToSell` - maximum amount of collateral to sell in one auction.
 
 **Modifiers**
+
+* `isAuthorized` ****- checks whether an address is part of `authorizedAddresses`.
 
 **Functions**
 
 * `disableContract()` - disable the liquidation engine.
+* `connectCDPSaviour(saviour: address)` -
+* `disconnectCDPSaviour(saviour: address)` -
+* addAuthorization -
+* removeAuthorization -
+* modifyParameters\(\) -
 * `liquidateCDP(collateralType: bytes32`, `cdp: address)` - will revert if `lockedCollateral` or `generatedDebt` are larger than or equal to 2^255.
 * `protectCDP(bytes32, address, address)` will revert if the proposed `CDPSaviour` address was not whitelisted by governance.
 
