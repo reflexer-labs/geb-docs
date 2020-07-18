@@ -36,11 +36,13 @@ The `LiquidationEngine` enables external actors to liquidate CDPs and send their
 **Functions**
 
 * `disableContract()` - disable the liquidation engine.
-* `connectCDPSaviour(saviour: address)` -
-* `disconnectCDPSaviour(saviour: address)` -
-* addAuthorization -
-* removeAuthorization -
-* modifyParameters\(\) -
+* `connectCDPSaviour(saviour: address)` - governance controlled address that whitelists a `CDPSaviour`.
+* `disconnectCDPSaviour(saviour: address)` - governance controlled address that blacklists a `CDPSaviour`.
+* `addAuthorization(usr: address)` - add an address to `authorizedAddresses`.
+* `removeAuthorization(usr: address)` - remove an address from `authorizedAddresses`.
+* `modifyParameters(parameter: bytes32`, `data: address)` - modify an `address` variable.
+* `modifyParameters(collateralType: bytes32`, `parameter: bytes32`, `data: uint256)` - modify a collateral specific `uint256` parameter.
+* `modifyParameters(collateralType: bytes32`, `parameter: bytes32`, `data: address)` - modify a collateral specific `address` parameter.
 * `liquidateCDP(collateralType: bytes32`, `cdp: address)` - will revert if `lockedCollateral` or `generatedDebt` are larger than or equal to 2^255.
 * `protectCDP(bytes32, address, address)` will revert if the proposed `CDPSaviour` address was not whitelisted by governance.
 
