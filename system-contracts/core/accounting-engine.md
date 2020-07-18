@@ -40,16 +40,18 @@ The `AccountingEngine` receives both system surplus and system debt. It covers d
 
 **Functions**
 
+* `modifyParameters(bytes32 parameter`, `uint256 data)` - update a `uint256` parameter.
+* `modifyParameters(bytes32 parameter`, `address data)` - update an `address` parameter.
 * `addAuthorization(usr: address)` - add an address to `authorizedAddresses`.
 * `removeAuthorization(usr: address)` - remove an address from `authorizedAddresses`.
-* `pushDebtToQueue` - adds a bad debt block to the auctions queue.
-* `popDebtFromQueue` - release a debt block from the debt queue.
-* `settleDebt` - calls `settleDebt` on the `cdpEngine` in order to cancel out surplus and debt. 
-* `cancelAuctionedDebtWithSurplus` - cancels out surplus coming from `DebtAuctionHouse` auctions and auctioned \(bad\) debt.
-* `auctionSurplus` - trigger a surplus auction \(`SurplusAuctionHouse.startAuction`\).
-* `auctionDebt` - trigger a deficit auction \(`DebtAuctionHouse.startAuction`\).
-* `settleDebtAuction` - authed function meant to be called by `debtAuctionHouse` in order to signal that a specific auction settled.
-* `transferPostSettlementSurplus` - transfer any post settlement, leftover surplus to the`postSettlementSurplusDrain.` Throws if `disableCooldown` haven't yet passed since `disableTimestamp`
+* `pushDebtToQueue(debtBlock: uint256)` - adds a bad debt block to the auctions queue.
+* `popDebtFromQueue(timestamp: uint256)` - release a debt block from the debt queue.
+* `settleDebt(rad: uint256)` - calls `settleDebt` on the `cdpEngine` in order to cancel out surplus and debt.
+* `cancelAuctionedDebtWithSurplus(rad: uint256)` - cancels out surplus coming from `DebtAuctionHouse` auctions and auctioned \(bad\) debt.
+* `auctionSurplus()` - trigger a surplus auction \(`SurplusAuctionHouse.startAuction`\).
+* `auctionDebt()` - trigger a deficit auction \(`DebtAuctionHouse.startAuction`\).
+* `settleDebtAuction(id: uint256)` - authed function meant to be called by `debtAuctionHouse` in order to signal that a specific auction settled.
+* `transferPostSettlementSurplus()` - transfer any post settlement, leftover surplus to the`postSettlementSurplusDrain.` Throws if `disableCooldown` haven't yet passed since `disableTimestamp`
 * `disableContract()` - set `contractEnabled` to zero, settle as much remaining debt as possible \(if any\) and either send remaining surplus right away to the `postSettlementSurplusDrain` or wait until 
 
   `disableCooldown` seconds have passed before you send it \(using `transferPostSettlementSurplus`\).
