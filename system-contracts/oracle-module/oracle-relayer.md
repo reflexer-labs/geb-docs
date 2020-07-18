@@ -10,7 +10,7 @@ The `OracleRelayer` functions as an interface contract between `OSM`s and the `C
 
 ## 2. Contract Variables & Functions <a id="2-contract-details"></a>
 
-* `authorizedAccounts [usr: address]` - `addAuthorization`/`removeAuthorization`/`isAuthorized` - auth mechanisms
+* `authorizedAccounts[usr: address]` - `addAuthorization`/`removeAuthorization`/`isAuthorized` - auth mechanisms
 * `CollateralType` - struct with data about each collateral type
   * `orcl` - the address of a price feed, usually an `OSM`
   * `safetyCRatio` - the collateralization ratio used to compute the `safetyPrice` of a collateral type
@@ -26,8 +26,8 @@ The `OracleRelayer` functions as an interface contract between `OSM`s and the `C
 * `redemptionPrice` - getter function that updates and retrieves the virtual `_redemptionPrice`
 * `updateCollateralPrice(bytes32: collateralType)` - update the safety and liquidation prices of a collateral price and store them in the `CDPEngine`
 * `disableContract` - disables the relayer
-* `safetyCRatio(bytes32: collateralType)` - getter for a collateral's safety CRatio
-* `liquidationCRatio(bytes32: collateralType)` - getter for a collateral's liquidation CRatio
+* `safetyCRatio(collateralType: bytes32)` - getter for a collateral's safety CRatio
+* `liquidationCRatio(collateralType: bytes32)` - getter for a collateral's liquidation CRatio
 * `orcl(bytes32: collateralType)` - getter for a collateral type's oracle
 
 **Events**
