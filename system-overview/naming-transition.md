@@ -72,6 +72,7 @@ The following tables show the before and after variable names from all core MCD 
 | hump | surplusBuffer |
 | NaN | disableCooldown \(NEW\) |
 | NaN | disableTimestamp \(NEW\) |
+| NaN | protocolTokenAuthority \(NEW\) |
 | live | contractEnabled |
 | file | modifyParameters |
 | fess | pushDebtToQueue |
