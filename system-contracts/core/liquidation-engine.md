@@ -10,8 +10,7 @@ The `LiquidationEngine` enables external actors to liquidate CDPs and send their
 
 ## 2. Contract Variables & Functions <a id="2-contract-details"></a>
 
-* `liquidateCDP(bytes32, address)` - will revert if `lockedCollateral` or `generatedDebt` are larger than or equal to 2^255.
-* `liquidateCDP`will not leave a CDP with debt and no collateral.
+* `liquidateCDP(collateralType: bytes32`, `cdp: address)` - will revert if `lockedCollateral` or `generatedDebt` are larger than or equal to 2^255.
 * `protectCDP(bytes32, address, address)` will revert if the proposed `CDPSaviour` address was not whitelisted by governance.
 * `authorizedAccounts` - addresses allowed to call `modifyParameters()` and `disableContract()`
 * `collateralTypes` stores `CollateralType` structs
@@ -43,6 +42,10 @@ The `LiquidationEngine` enables external actors to liquidate CDPs and send their
   * `collateralType`: Collateral
   * `cdp`: CDP address
   * `collateralAdded`: amount of collateral added in the CDP
+
+**Notes**
+
+* `liquidateCDP`will not leave a CDP with debt and no collateral.
 
 ## 3. Walkthrough
 
