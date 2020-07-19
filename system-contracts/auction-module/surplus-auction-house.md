@@ -14,27 +14,44 @@ There are two surplus auction flavours: a pre-settlement version meant to sell s
 
 ## 2. Contract Variables & Functions <a id="2-contract-details"></a>
 
-* `authorizedAccounts [usr: address]` - `addAuthorization`/`removeAuthorization`/`isAuthorized` auth mechanisms
+**Variables**
+
+* `contractEnabled` - settlement flag \(available only in the pre-settlement surplus auction house\)
+* `authorizedAccounts[usr: address]` - addresses allowed to call `modifyParameters()` and `disableContract()`.
+* `bids[id: uint]` - storage of all `Bid`s by `id`
+* `cdpEngine` - storage of the CDPEngine's address
+* `protocolToken` - address of the protocol token
+* `auctionsStarted` - total auction count
+* `bidDuration` - bid lifetime / max bid duration \(default: 3 hours\)
+* `bidIncrease` - minimum bid increase \(default: 5%\)
+* `totalAuctionLength` - maximum auction duration \(default: 2 days\)
+
+**Data Structures**
+
 * `Bid` - state of a specific auction
-  * `bidAmount` - quantity being offered for the `amountToSell` \(protocol tokens\)
+  * `bidAmount` - quantity being offered for the `amountToSell`
   * `amountToSell`- amount of surplus sold
   * `highBidder`
   * `bidExpiry`
   * `auctionDeadline` - when the auction will finish
-* `bids (id: uint)` - storage of all `Bid`s by `id`
-* `cdpEngine` - storage of the CDPEngine's address
-* `bidDuration` - bid lifetime / max bid duration \(default: 3 hours\) \[uint48\]
-* `bidIncrease` - minimum bid increase \(default: 5%\)
-* `totalAuctionLength` - maximum auction duration \(default: 2 days\)
-* `startAuction` - start an auction / put up a new system coin `amountToSell` for auction
-* `increaseBidSize` - make a bid, thus increasing the bid size / submit a protocol token bid \(increasing `bidAmount`\)
-* `settleAuction` - claim a winning bid / settling a completed auction
-* `protocolToken`
-* `auctionsStarted` - total auction count
-* `contractEnabled` - settlement flag \(available only in the pre-settlement surplus auction house\)
-* `modifyParameters` - used by governance to set auction parameters
+
+**Modifiers**
+
+* `isAuthorized` ****- checks whether an address is part of `authorizedAddresses` \(and thus can call authed functions\).
+
+**Functions**
+
+* `modifyParameters(bytes32 parameter`, `uint256 data)` - update a `uint256` parameter.
+* `startAuction(amountToSell: uint256`, `initialBid: uint256)` - start a new surplus auction.
+* `restartAuction(id: uint256)` - restart an auction if there have been 0 bids and the `auctionDeadline` has passed.
+* `increaseBidSize(id: uint256`, `amountToBuy: uint256`, `bid: uint256)` - 
+* `disableContract()` - disable the contract.
+* `settleAuction(id: uint256)` - claim a winning bid / settles a completed auction.
 * `terminateAuctionPrematurely` - is used in case Governance wishes to upgrade \(only\) the `PreSettlementSurplusAuctionHouse` or in case `GlobalSettlement` is triggered. It settles `increaseBidSize` phase auctions, sending back the protocol tokens submitted by the `highBidder`. 
-* `restartAuction` **-** resets the `auctionDeadline` value if an auction received no bids and the original `auctionDeadline`has passed.
+
+**Events**
+
+ 
 
 ## 3. Walkthrough <a id="3-key-mechanisms-and-concepts"></a>
 
