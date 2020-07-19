@@ -47,12 +47,12 @@ Collateral auctions are used to sell collateral from CDPs that have become under
 * `modifyParameters(bytes32 parameter`, `address data)` - update an `address` parameter.
 * `addAuthorization(usr: address)` - add an address to `authorizedAddresses`.
 * `removeAuthorization(usr: address)` - remove an address from `authorizedAddresses`.
-* `startAuction` - function used by `LiquidationEngine` to start an auction / put collateral up for auction
-* `restartAuction` - restart an auction if there have been 0 bids and the `auctionDeadline` has passed
-* `increaseBidSize` - first phase of an auction. Increasing system coin `bid`s for a set `amountToSell` of collateral
-* `decreaseSoldAmount` - second phase of an auction. Set system coin `bid` for a decreasing`amountToSell`of collateral.
-* `settleAuction` - claim a winning bid / settles a completed auction
-* `terminateAuctionPrematurely` - used during `GlobalSettlement` to terminate `increaseBidSize` phase auctions and transfer the collateral to the settlement contract while repaying system coins \(the winning bid\) to the highest bidder
+* `startAuction(forgoneCollateralReceiver: address`, `auctionIncomeRecipient: address`, `amountToRaise: uint256`, `amountToSell: uint256`, `initialBid: uint256 )` - function used by `LiquidationEngine` to start an auction / put collateral up for auction
+* `restartAuction(id: uint256)` - restart an auction if there have been 0 bids and the `auctionDeadline` has passed
+* `increaseBidSize(id: uint256`, `amountToBuy: uint256`, `bid: uint256)` - first phase of an auction. Increasing system coin `bid`s for a set `amountToSell` of collateral
+* `decreaseSoldAmount(id: uint256`, `amountToBuy: uint256`, `bid: uint256)` - second phase of an auction. Set system coin `bid` for a decreasing`amountToSell`of collateral.
+* `settleAuction(id: uint256)` - claim a winning bid / settles a completed auction
+* `terminateAuctionPrematurely(id: uint256)` - used during `GlobalSettlement` to terminate `increaseBidSize` phase auctions and transfer the collateral to the settlement contract while repaying system coins \(the winning bid\) to the highest bidder
 
 **Events**
 
