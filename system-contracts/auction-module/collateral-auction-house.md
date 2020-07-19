@@ -10,7 +10,21 @@ Collateral auctions are used to sell collateral from CDPs that have become under
 
 ## 2. Contract Variables & Functions <a id="2-contract-details"></a>
 
-* `authorizedAccounts[usr: address]`, `addAuthorization`/`removeAuthorization`/`isAuthorized` - auth mechanisms
+**Variables**
+
+* `contractEnabled` - settlement flag \(`1` or `0`\).
+* `authorizedAccounts[usr: address]` - addresses allowed to call `modifyParameters()` and `disableContract()`.
+* `cdpEngine` - storage of the `CDPEngine`'s address
+* `bids[id: uint]` - storage of all bids
+* `collateralType` - id of the `CollateralType` for which the `CollateralAuctionHouse` is responsible
+* `bidIncrease` - minimum bid increase \(default: 5%\)
+* `bidDuration` - bid duration \(default: 3 hours\)
+* `totalAuctionLength` - auction length \(default: 2 days\)
+* `auctionsStarted` - total auction count, used to track auction `id`s
+* `bidToMarketPriceRatio` - the minimum size of the first bid compared to the latest recorded collateral price ****\(for `collateralType`\) in the system
+
+**Data Structures**
+
 * `Bid` - state of a specific auction
   * `bidAmount` - paid system coins
   * `amountToSell` - quantity up for auction / collateral for sale
@@ -20,21 +34,25 @@ Collateral auctions are used to sell collateral from CDPs that have become under
   * `forgoneCollateralReceiver` - address of the CDP being auctioned. Receives collateral during the `decreaseSoldAmount` phase
   * `auctionIncomeRecipient` - recipient of auction income / receives system coin income \(this is the `AccountingEngine` contract\)
   * `amountToRaise` - total system coins wanted from the auction
-* `bids[id: uint]` - storage of all bids
-* `cdpEngine` - storage of the `CDPEngine`'s address
-* `collateralType` - id of the `CollateralType` for which the `CollateralAuctionHouse` is responsible
-* `bidIncrease` - minimum bid increase \(default: 5%\)
-* `bidDuration` - bid duration \(default: 3 hours\)
-* `totalAuctionLength` - auction length \(default: 2 days\)
-* `auctionsStarted` - total auction count, used to track auction `id`s
-* `bidToMarketPriceRatio` - the minimum size of the first bid compared to the latest recorded collateral price in the system
+
+**Modifiers**
+
+* `isAuthorized` ****- checks whether an address is part of `authorizedAddresses` \(and thus can call authed functions\).
+
+**Functions**
+
+* `modifyParameters(bytes32 parameter`, `uint256 data)` - update a `uint256` parameter.
+* `modifyParameters(bytes32 parameter`, `address data)` - update an `address` parameter.
+* `addAuthorization(usr: address)` - add an address to `authorizedAddresses`.
+* `removeAuthorization(usr: address)` - remove an address from `authorizedAddresses`.
 * `startAuction` - function used by `LiquidationEngine` to start an auction / Put collateral up for auction
 * `restartAuction` - restart an auction if there have been 0 bids and the `auctionDeadline` has passed
 * `increaseBidSize` - first phase of an auction. Increasing system coin `bid`s for a set `amountToSell` of collateral
-* `decreaseSoldAmount` - second phase of an auction. Set system coin `bid` for a decreasing`amountToSell`of Gems
-* `modifyParameters` - function used by governance to set auction parameters
+* `decreaseSoldAmount` - second phase of an auction. Set system coin `bid` for a decreasing`amountToSell`of collateral.
 * `settleAuction` - claim a winning bid / settles a completed auction
-* `terminateAuctionPrematurely` - used during `GlobalSettlement` to move `increaseBidSize` phase auctions to the `GlobalSettlement` by retrieving the collateral and repaying system coins to the highest bidder
+* `terminateAuctionPrematurely` - used during `GlobalSettlement` to terminate `increaseBidSize` phase auctions and transfer the collateral to the settlement contract while repaying system coins \(the bid\) to the highest bidder
+
+**Events**
 
 ## 3. Walkthrough <a id="3-key-mechanisms-and-concepts"></a>
 
