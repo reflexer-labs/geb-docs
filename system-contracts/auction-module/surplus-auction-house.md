@@ -51,7 +51,10 @@ There are two surplus auction flavours: a pre-settlement version meant to sell s
 
 **Events**
 
- 
+* `StartAuction`: emitted when `startAuction(uint256`, `uint256)` is successfully executed. Contains:
+  * `id` - auction id.
+  * `amountToSell` - amount of system coins sold  in the auction.
+  * `initialBid` - starting bid for the auction.
 
 ## 3. Walkthrough <a id="3-key-mechanisms-and-concepts"></a>
 
