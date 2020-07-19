@@ -11,26 +11,35 @@ description: The post settlement surplus drain pipe
 {% hint style="warning" %}
 **Important Consideration**
 
-The auctioneer is not an ideal solution for the situation where system coin holders are incentivized to trigger settlement. CDP creators might take a haircut \(because of bad debt that could not be covered with collateral auctions post-settlement\) when they have to redeem collateral, while the system will contract the protocol token's supply \(and thus favor protocol token holders over other actors\).
+The auctioneer is not an ideal solution for the situation where system coin holders are incentivized to trigger settlement. CDP creators might take a haircut \(because of bad debt that could not be covered with post-settlement collateral auctions\) when they have to redeem collateral, while the system will contract the protocol token's supply \(and thus favor protocol token holders over other actors\).
 
 We are actively searching for an alternative that does not offer anyone an edge at the expense of other system participants. 
 {% endhint %}
 
 ## 2. Contract Variables & Functions <a id="2-contract-details"></a>
 
-* `authorizedAccounts [usr: address]` - `addAuthorization`/`removeAuthorization`/`isAuthorized` - auth mechanisms
-* `accountingEngine` - address of the `AccountingEngine`
-* `surplusAuctionHouse` - address of the `PostSettlementSurplusAuctionHouse`
-* `cdpEngine` - address of the `CDPEngine`
-* `contractEnabled` - settlement flag
-* `lastSurplusAuctionTime` - last timestamp when the auctioneer started a surplus auction
-* `modifyParameters` - change a parameter in the auctioneer
-* `disableContract` - disable the auctioneer
-* `auctionSurplus` - start a new surplus auction
+**Variables**
 
-### **Parameters Set By Governance** <a id="parameters-set-by-governance"></a>
+* `contractEnabled` - settlement flag \(can be `1` or `0`\)
+* `authorizedAccounts[usr: address]` - addresses allowed to call `modifyParameters()` and `disableContract()`.
+* `accountingEngine` - address pf the `AccountingEngine`.
+* `surplusAuctionHouse` - address of the `PostSettlementSurplusAuctionHouse`.
+* `cdpEngine` - address of the CDPEngine.
+* `lastSurplusAuctionTime` - timestamp of the latest successful `auctionSurplus()` call.
 
- Governance can only change the `accountingEngine` address using `modifyParameters`. The auctioneer can read all the other necessary parameters \(`surplusAuctionDelay`, `surplusAuctionAmountToSell`, `surplusAuctionHouse`\) from the `AccountingEngine` and use them when triggering surplus auctions.
+**Modifiers**
+
+* `isAuthorized` ****- checks whether an address is part of `authorizedAddresses` \(and thus can call authed functions\).
+
+**Functions**
+
+* `modifyParameters(parameter: bytes32`, `addr: address)` - change an address ****parameter.
+* `disableContract()` - disable the auctioneer.
+* `auctionSurplus()` - start a new post-settlement surplus auction.
+
+**Notes**
+
+* Governance can only change the `accountingEngine` address using `modifyParameters`. The auctioneer can read all the other necessary parameters \(`surplusAuctionDelay`, `surplusAuctionAmountToSell`, `surplusAuctionHouse`\) from the `AccountingEngine` and use them when triggering post-settlement surplus auctions.
 
 ## 3. Walkthrough <a id="3-key-mechanisms-and-concepts"></a>
 
