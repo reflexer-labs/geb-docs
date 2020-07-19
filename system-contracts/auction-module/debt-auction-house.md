@@ -1,7 +1,7 @@
 ---
 description: >-
-  Debt auctioneer that covers deficit by offering protocol tokens in exchange
-  for system coins
+  Debt auctioneer that covers deficit by minting protocol tokens in exchange for
+  system coins
 ---
 
 # Debt Auction House
@@ -12,15 +12,28 @@ Debt Auctions are used to recapitalize the system by auctioning off protocol tok
 
 ## 2. Contract Variables & Functions <a id="2-contract-details"></a>
 
-* `authorizedAccounts [usr: address]`, `addAuthorization`/`removeAuthorization`/`isAuthorized` - auth mechanisms
-* `amountToSell`: quantity up for auction / protocol tokens for sale
-* `highBidder`
-* `auctionIncomeRecipient`: recipient of auction income / receives system coin income
-* `bidDuration`: bid lifetime
-* `bidDecrease`: minimum bid decrease
-* `amountSoldIncrease`: Increase for size of `amountToSell` during `restartAuction` \(default to 50%\)
-* `totalAuctionLength`: maximum auction duration
-* `auctionDeadline`: when the auction will finish / max auction duration
+**Variables**
+
+* `contractEnabled` - settlement flag \(`1` or `0`\).
+* `authorizedAccounts[usr: address]` - addresses allowed to call `modifyParameters()` and `disableContract()`.
+* `cdpEngine` - storage of the `CDPEngine`'s address.
+* `protocolToken` - token minted in exchange for system coins.
+* `accountingEngine` - address of the `AccountingEngine` \(receiver of system coins\).
+* `bids[id: uint]` - storage of all bids.
+* `bidDuration` - bid lifetime.
+* `bidDecrease` - minimum bid decrease.
+* `amountSoldIncrease` - increase for size of `amountToSell` during `restartAuction` \(default to 50%\).
+* `totalAuctionLength` - maximum auction duration.
+* `auctionsStarted` - number of auctions that have started up until now.
+
+**Data Structures**
+
+**Modifiers**
+
+**Functions**
+
+**Events**
+
 * `startAuction`: start an auction / Put up a new protocol tokens for auction
 * `decreaseSoldAmount`: make a bid, decreasing the amount sold
 * `settleAuction`: claim a winning bid
