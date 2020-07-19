@@ -41,7 +41,16 @@ Debt Auctions are used to recapitalize the system by auctioning off protocol tok
 
 **Functions**
 
-\*\*\*\*
+* `modifyParameters(bytes32 parameter`, `uint256 data)` - update a `uint256` parameter.
+* `modifyParameters(bytes32 parameter`, `address data)` - update an `address` parameter.
+* `startAuction(incomeReceiver: address`, `amountToSell: uint256`, `initialBid: uint256)` - start a new debt auction.
+* `restartAuction(id: uint256)` - restart an auction if there have been 0 bids and the `auctionDeadline` has passed.
+* `decreaseSoldAmount(id: uint256`, `amountToBuy: uint256`, `bid: uint256)` - submit a fixed system coin bid with an increasingly lower amount of protocol tokens you are willing to accept in exchange.
+* `disableContract()` - disable the contract.
+* `settleAuction(id: uint256)` - claim a winning bid / settles a completed auction
+* `terminateAuctionPrematurely(id: uint256)` - used during `GlobalSettlement` to terminate 
+
+  `decreaseSoldAmount`phase auctions and repay system coins \(using `cdpEngine.createUnbackedDebt` with the `accountingEngine` as the `debtDestination`\) to the highest bidder.
 
 **Events**
 

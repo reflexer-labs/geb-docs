@@ -52,7 +52,7 @@ Collateral auctions are used to sell collateral from CDPs that have become under
 * `increaseBidSize(id: uint256`, `amountToBuy: uint256`, `bid: uint256)` - first phase of an auction. Increasing system coin `bid`s for a set `amountToSell` of collateral
 * `decreaseSoldAmount(id: uint256`, `amountToBuy: uint256`, `bid: uint256)` - second phase of an auction. Set system coin `bid` for a decreasing`amountToSell`of collateral.
 * `settleAuction(id: uint256)` - claim a winning bid / settles a completed auction
-* `terminateAuctionPrematurely(id: uint256)` - used during `GlobalSettlement` to terminate `increaseBidSize` phase auctions and transfer the collateral to the settlement contract while repaying system coins \(the winning bid\) to the highest bidder
+* `terminateAuctionPrematurely(id: uint256)` - used during `GlobalSettlement` to terminate `increaseBidSize` phase auctions and transfer the collateral to the settlement contract while repaying system coins \(the winning bid\) to the highest bidder.
 
 **Events**
 
