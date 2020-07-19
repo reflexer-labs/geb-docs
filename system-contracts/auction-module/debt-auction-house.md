@@ -28,23 +28,28 @@ Debt Auctions are used to recapitalize the system by auctioning off protocol tok
 
 **Data Structures**
 
+* `Bid` - state of a specific auction. Contains:
+  * `bidAmount` - paid system coins
+  * `amountToSell` - quantity of protocol tokens up for auction
+  * `highBidder`
+  * `bidExpiry` - when a bid expires \(and the auction ends\)
+  * `auctionDeadline` - max auction duration
+
 **Modifiers**
+
+* `isAuthorized` ****- checks whether an address is part of `authorizedAddresses` \(and thus can call authed functions\).
 
 **Functions**
 
+\*\*\*\*
+
 **Events**
 
-* `startAuction`: start an auction / Put up a new protocol tokens for auction
-* `decreaseSoldAmount`: make a bid, decreasing the amount sold
-* `settleAuction`: claim a winning bid
-* `cdpEngine` - the `CDPEngine`'s address
-* `protocolToken`
-* `auctionsStarted` - total auction count, used to track auction `id`s
-* `contractEnabled` - settlement flag
-* `Bid` - state of a specific Auction
-* `bidAmount` - latest amount of system coins being big
-* `bidExpiry`
-* `restartAuction` - restarts an auction
+* `StartAuction`: emitted when `startAuction(address`, `uint256`, `uint256)` is successfully executed. Contains:
+  * `id` - auction id.
+  * `amountToSell` - amount of protocol tokens sold  in \(to be minted after\) the auction.
+  * `initialBid` - starting bid for the auction.
+  * `incomeReceiver` ****- address that receives the system coins from an auction \(usually the `AccountingEngine`\).
 
 ## 3. Walkthrough <a id="3-key-mechanisms-and-concepts"></a>
 
