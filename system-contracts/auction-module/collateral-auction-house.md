@@ -14,14 +14,16 @@ Collateral auctions are used to sell collateral from CDPs that have become under
 
 * `contractEnabled` - settlement flag \(`1` or `0`\).
 * `authorizedAccounts[usr: address]` - addresses allowed to call `modifyParameters()` and `disableContract()`.
-* `cdpEngine` - storage of the `CDPEngine`'s address
-* `bids[id: uint]` - storage of all bids
-* `collateralType` - id of the `CollateralType` for which the `CollateralAuctionHouse` is responsible
-* `bidIncrease` - minimum bid increase \(default: 5%\)
-* `bidDuration` - bid duration \(default: 3 hours\)
-* `totalAuctionLength` - auction length \(default: 2 days\)
-* `auctionsStarted` - total auction count, used to track auction `id`s
-* `bidToMarketPriceRatio` - the minimum size of the first bid compared to the latest recorded collateral price ****\(for `collateralType`\) in the system
+* `cdpEngine` - storage of the `CDPEngine`'s address.
+* `bids[id: uint]` - storage of all bids.
+* `collateralType` - id of the collateral type for which the `CollateralAuctionHouse` is responsible.
+* `bidIncrease` - minimum bid increase \(default: 5%\).
+* `bidDuration` - bid duration \(default: 3 hours\).
+* `totalAuctionLength` - auction length \(default: 2 days\).
+* `auctionsStarted` - total auction count, used to track auction `id`s.
+* `bidToMarketPriceRatio` - the minimum size of the first bid compared to the latest recorded collateral price ****\(for `collateralType`\) in the system.
+* `oracleRelayer` - address of the `OracleRelayer`.
+* `orcl` - collateral type `OSM` address.
 
 **Data Structures**
 
@@ -45,14 +47,22 @@ Collateral auctions are used to sell collateral from CDPs that have become under
 * `modifyParameters(bytes32 parameter`, `address data)` - update an `address` parameter.
 * `addAuthorization(usr: address)` - add an address to `authorizedAddresses`.
 * `removeAuthorization(usr: address)` - remove an address from `authorizedAddresses`.
-* `startAuction` - function used by `LiquidationEngine` to start an auction / Put collateral up for auction
+* `startAuction` - function used by `LiquidationEngine` to start an auction / put collateral up for auction
 * `restartAuction` - restart an auction if there have been 0 bids and the `auctionDeadline` has passed
 * `increaseBidSize` - first phase of an auction. Increasing system coin `bid`s for a set `amountToSell` of collateral
 * `decreaseSoldAmount` - second phase of an auction. Set system coin `bid` for a decreasing`amountToSell`of collateral.
 * `settleAuction` - claim a winning bid / settles a completed auction
-* `terminateAuctionPrematurely` - used during `GlobalSettlement` to terminate `increaseBidSize` phase auctions and transfer the collateral to the settlement contract while repaying system coins \(the bid\) to the highest bidder
+* `terminateAuctionPrematurely` - used during `GlobalSettlement` to terminate `increaseBidSize` phase auctions and transfer the collateral to the settlement contract while repaying system coins \(the winning bid\) to the highest bidder
 
 **Events**
+
+* `StartAuction`: emitted when `startAuction(address`, `address`, `uint256`, `uint256`, `uint256)` is successfully executed. Contains:
+  * `id` - auction id
+  * `amountToSell` - amount of collateral sold in the auction
+  * `initialBid` - starting bid for the auction \(usually zero\).
+  * `amountToRaise` - amount of system coins that should be raised by the auction.
+  * `forgoneCollateralReceiver` - receiver of leftover collateral \(usually the CDP whose collateral was confiscated by the `LiquidationEngine`\).
+  * `auctionIncomeRecipient` - receiver of system coins \(usually the `AccountingEngine`\).
 
 ## 3. Walkthrough <a id="3-key-mechanisms-and-concepts"></a>
 
