@@ -44,10 +44,10 @@ There are two surplus auction flavours: a pre-settlement version meant to sell s
 * `modifyParameters(bytes32 parameter`, `uint256 data)` - update a `uint256` parameter.
 * `startAuction(amountToSell: uint256`, `initialBid: uint256)` - start a new surplus auction.
 * `restartAuction(id: uint256)` - restart an auction if there have been 0 bids and the `auctionDeadline` has passed.
-* `increaseBidSize(id: uint256`, `amountToBuy: uint256`, `bid: uint256)` - 
+* `increaseBidSize(id: uint256`, `amountToBuy: uint256`, `bid: uint256)` - submit a bid with an increasing amount of protocol tokens for a fixed amount of system coins.
 * `disableContract()` - disable the contract.
 * `settleAuction(id: uint256)` - claim a winning bid / settles a completed auction.
-* `terminateAuctionPrematurely` - is used in case Governance wishes to upgrade \(only\) the `PreSettlementSurplusAuctionHouse` or in case `GlobalSettlement` is triggered. It settles `increaseBidSize` phase auctions, sending back the protocol tokens submitted by the `highBidder`. 
+* `terminateAuctionPrematurely(id: uint256)` - is used in case Governance wishes to upgrade \(only\) the `PreSettlementSurplusAuctionHouse` or in case `GlobalSettlement` is triggered. It settles `increaseBidSize` phase auctions, sending back the protocol tokens submitted by the `highBidder`. 
 
 **Events**
 
