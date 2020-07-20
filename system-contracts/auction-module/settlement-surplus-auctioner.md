@@ -39,9 +39,11 @@ We are actively searching for an alternative that does not offer anyone an edge 
 
 **Notes**
 
-* Governance can only change the `accountingEngine` address using `modifyParameters`. The auctioneer can read all the other necessary parameters \(`surplusAuctionDelay`, `surplusAuctionAmountToSell`, `surplusAuctionHouse`\) from the `AccountingEngine` and use them when triggering post-settlement surplus auctions.
+* Governance can only change the `accountingEngine` and the `surplusAuctionHouse` address using `modifyParameters`. The auctioneer can read all the other necessary parameters \(`surplusAuctionDelay`, `surplusAuctionAmountToSell`\) from the `accountingEngine`
+
+  and use them when triggering post-settlement surplus auctions.
 
 ## 3. Walkthrough <a id="3-key-mechanisms-and-concepts"></a>
 
-In case the auctioneer has surplus inside `CDPEngine` \(`cdpEngine.coinBalance[settlementSurplusAuctioneer]` &gt; 0\) anyone can call `SettlementSurplusAuctioneer.auctionSurplus` and start a new auction inside the `PostSettlementSurplusAuctionHouse`. The auctioneer will use the same parameters for the surplus auction as the `AccountingEngine`. In fact, it will read all surplus auction related variables from the `AccountingEngine` before calling the auction contract.
+In case the auctioneer has surplus inside `CDPEngine` \(`cdpEngine.coinBalance[settlementSurplusAuctioneer]` &gt; 0\) anyone can call `SettlementSurplusAuctioneer.auctionSurplus` and start a new auction inside the `surplusAuctionHouse`. The auctioneer will use the same parameters for the surplus auction as the `AccountingEngine`. In fact, it will read all surplus auction related variables from the `AccountingEngine` before calling `surplusAuctionHouse`.
 
