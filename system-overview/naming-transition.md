@@ -353,7 +353,6 @@ The following tables show the before and after variable names from all core MCD 
 | vow | accountingEngine |
 | spot | oracleRelayer |
 | pot | coinSavingsAccount |
-| NaN | rateSetter \(NEW\) |
 | NaN | stabilityFeeTreasury \(NEW\) |
 | live | contractEnabled |
 | when | shutdownTime |
@@ -383,6 +382,27 @@ The following tables show the before and after variable names from all core MCD 
 | rely | addAuthorization |
 | deny | removeAuthorization |
 | auth | isAuthorized |
+| name | name |
+| symbol | symbol |
+| version | version |
+| decimals | decimals |
+| totalSupply | totalSupply |
+| balanceOf | balanceOf |
+| allowance | allowance |
+| nonces | nonces |
+| Approval | Approval |
+| Transfer | Transfer |
+| DOMAIN\_SEPARATOR | DOMAIN\_SEPARATOR |
+| PERMIT\_TYPEHASH | PERMIT\_TYPEHASH |
+| transfer | transfer |
+| transferFrom | transferFrom |
+| mint | mint |
+| burn | burn |
+| approve | approve |
+| push | push |
+| pull | pull |
+| move | move |
+| permit | permit |
 
 | Lib | Logging |
 | :--- | :--- |
