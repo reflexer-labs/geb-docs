@@ -239,7 +239,7 @@ The following tables show the before and after variable names from all core MCD 
 | Ilk.lump | CollateralType.collateralToSell |
 | ilks | collateralTypes |
 | NaN | chosenCDPSaviour \(NEW\) |
-| NaN | liquidationMutex \(NEW\) |
+| NaN | mutex \(NEW\) |
 | live | contractEnabled |
 | vat | cdpEngine |
 | vow | accountingEngine |
