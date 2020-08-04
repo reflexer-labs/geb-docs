@@ -1,6 +1,6 @@
 # Governance Contracts Naming Transition
 
-The following tables show the before and after variable names for all governance related contracts.
+The following tables show the before and after variable names for MCD governance related contracts.
 
 | DSPause | DSPause |
 | :--- | :--- |
@@ -22,7 +22,27 @@ The following tables show the before and after variable names for all governance
 
 | DSChief | VoteQuorum |
 | :--- | :--- |
-|  |  |
+| slates | ballots |
+| votes | votes |
+| approvals | approvals |
+| deposits | deposits |
+| GOV | PROT |
+| IOU | IOU |
+| hat | votedAuthority |
+| MAX\_YAYS | MAX\_CANDIDATES\_PER\_BALLOT |
+| Etch | GroupCandidates |
+| lock | addVotingWeight |
+| free | removeVotingWeight |
+| etch | groupCandidates |
+| vote | vote |
+| lift | electCandidate |
+| addWeight | addWeight |
+| subWeight | subWeight |
+| requireByteOrderedSet | requireByteOrderedSet |
+| setOwner | setOwner |
+| setAuthority | setAuthority |
+| isUserRoot | isUserRoot |
+| setRootUser | setRootUser |
 
 | DSAuth | DSAuth |
 | :--- | :--- |
