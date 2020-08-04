@@ -43,6 +43,8 @@ The following tables show the before and after variable names from all core MCD 
 | flux | transferCollateral |
 | move | transferInternalCoins |
 | frob | modifyCDPCollateralization |
+| dink | deltaCollateral |
+| dart | deltaDebt |
 | fork | transferCDPCollateralAndDebt |
 | grab | confiscateCDPCollateralAndDebt |
 | heal | settleDebt |
@@ -74,6 +76,7 @@ The following tables show the before and after variable names from all core MCD 
 | NaN | disableTimestamp \(NEW\) |
 | NaN | protocolTokenAuthority \(NEW\) |
 | live | contractEnabled |
+| NaN | unqueuedUnauctionedDebt |
 | file | modifyParameters |
 | fess | pushDebtToQueue |
 | flog | popDebtFromQueue |
@@ -85,12 +88,13 @@ The following tables show the before and after variable names from all core MCD 
 | cage | disableContract |
 | NaN | transferPostSettlementSurplus \(NEW\) |
 
-| Flap/per | SurplusAuctionHouse |
+| Flap/per | Pre/PostSettlementSurplusAuctionHouse |
 | :--- | :--- |
 | wards | authorizedAccounts |
 | rely | addAuthorization |
 | deny | removeAuthorization |
 | auth | isAuthorized |
+| NaN | AUCTION\_HOUSE\_TYPE \(NEW\) |
 | Bid | Bid |
 | Bid.bid | Bid.bidAmount |
 | Bid.lot | Bid.amountToSell |
@@ -112,7 +116,7 @@ The following tables show the before and after variable names from all core MCD 
 | tend | increaseBidSize |
 | deal | settleAuction |
 | cage | disableContract |
-| yank | terminateAuctionPrematurely |
+| yank | terminateAuctionPrematurely \(only in the PreSettlement version\) |
 
 | Flop/per | DebtAuctionHouse |
 | :--- | :--- |
@@ -120,6 +124,7 @@ The following tables show the before and after variable names from all core MCD 
 | rely | addAuthorization |
 | deny | removeAuthorization |
 | auth | isAuthorized |
+| NaN | AUCTION\_HOUSE\_TYPE |
 | Bid | Bid |
 | Bid.bid | Bid.bidAmount |
 | Bid.lot | Bid.amountToSell |
@@ -136,6 +141,7 @@ The following tables show the before and after variable names from all core MCD 
 | ttl | bidDuration |
 | tau | totalAuctionLength |
 | kicks | auctionsStarted |
+| NaN | activeDebtAuctions |
 | live | contractEnabled |
 | file | modifyParameters |
 | kick | startAuction |
@@ -145,17 +151,21 @@ The following tables show the before and after variable names from all core MCD 
 | cage | disableContract |
 | yank | terminateAuctionPrematurely |
 
-| Flip/per | CollateralAuctionHouse |
+| Flip/per | English/FixedDiscountCollateralAuctionHouse |
 | :--- | :--- |
 | wards | authorizedAccounts |
 | rely | addAuthorization |
 | deny | removeAuthorization |
 | auth | isAuthorized |
+| NaN | AUCTION\_HOUSE\_TYPE \(NEW\) |
+| NaN | AUCTION\_TYPE \(NEW\) |
 | Bid | Bid |
-| Bid.bid | Bid.bidAmount |
+| NaN | raisedAmount \(NEW\) \(only in the FixedDiscount version\) |
+| NaN | soldAmount\(NEW\) \(only in the FixedDiscount version\) |
+| Bid.bid | Bid.bidAmount \(only in the English version\) |
 | Bid.lot | Bid.amountToSell |
-| Bid.guy | Bid.highBidder |
-| Bid.tic | Bid.bidExpiry |
+| Bid.guy | Bid.highBidder \(only in the English version\) |
+| Bid.tic | Bid.bidExpiry \(only in the English version\) |
 | Bid.end | Bid.auctionDeadline |
 | Bid.usr | Bid.forgoneCollateralReceiver |
 | Bid.gal | Bid.auctionIncomeRecipient |
@@ -164,22 +174,35 @@ The following tables show the before and after variable names from all core MCD 
 | bids | bids |
 | vat | cdpEngine |
 | ilk | collateralType |
-| beg | bidIncrease |
-| ttl | bidDuration |
+| NaN | minimumBid \(NEW\) \(only in the FixedDiscount version\) |
+| beg | bidIncrease \(only in the English version\) |
+| ttl | bidDuration \(only in the English version\) |
 | tau | totalAuctionLength |
 | kicks | auctionsStarted |
-| cut | bidToMarketPriceRatio |
+| NaN | discount \(NEW\) \(only in the FixedDiscount version\) |
+| NaN | lowerMedianDeviation \(NEW\) \(only in the FixedDiscount version\) |
+| NaN | upperMedianDeviation \(NEW\) \(only in the FixedDiscount version\) |
+| cut | bidToMarketPriceRatio \(only in the English version\) |
 | spot | oracleRelayer |
-| pip | orcl |
+| pip | orcl/osm |
+| NaN | median \(NEW\) \(only in the FixedDiscount version\) |
 | Kick | StartAuction |
 | live | contractEnabled |
 | file | modifyParameters |
+| NaN | getDiscountedRedemptionCollateralPrice \(NEW\) \(only in the FixedDiscount version\) |
+| NaN | getDiscountedRedemptionBoughtCollateral \(NEW\) \(only in the FixedDiscount version\) |
+| NaN | getCollateralBought \(NEW\) \(only in the FixedDiscount version\) |
+| NaN | buyCollateral \(NEW\) \(only in the FixedDiscount version\) |
 | kick | startAuction |
-| tick | restartAuction |
-| tend | increaseBidSize |
-| dent | decreaseSoldAmount |
+| tick | restartAuction \(only in the English version\) |
+| tend | increaseBidSize \(only in the English version\) |
+| dent | decreaseSoldAmount \(only in the English version\) |
 | deal | settleAuction |
 | yank | terminateAuctionPrematurely |
+| NaN | bidAmount \(NEW\) |
+| NaN | remainingAmountToSell \(NEW\) |
+| NaN | forgoneCollateralReceiver \(NEW\) |
+| NaN | amountToRaise \(NEW\) |
 
 | Join | BasicTokenAdapters |
 | :--- | :--- |
