@@ -6,6 +6,7 @@
 ## System Overview
 
 * [Core Contracts Naming Transition](system-overview/naming-transition.md)
+* [Governance Contracts Naming Transition](system-overview/governance-contracts-naming-transition.md)
 
 ## System Contracts
 
