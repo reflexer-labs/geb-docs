@@ -3,10 +3,11 @@
 * [Introduction to GEB](README.md)
 * [Currently Deployed Systems](currently-deployed-systems.md)
 
-## System Overview
+## Contract Variables Translation <a id="contract-translation"></a>
 
-* [Core Contracts Naming Transition](system-overview/naming-transition.md)
-* [Governance Contracts Naming Transition](system-overview/governance-contracts-naming-transition.md)
+* [Core Contracts Naming Transition](contract-translation/naming-transition.md)
+* [Governance Contracts Naming Transition](contract-translation/governance-contracts-naming-transition.md)
+* [CDP Management Contract Naming Transition](contract-translation/cdp-management-contract-naming-transition.md)
 
 ## System Contracts
 
