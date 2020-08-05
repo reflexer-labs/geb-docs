@@ -46,27 +46,77 @@ The following tables show the before and after variable names for MCD governance
 
 | DSAuth | DSAuth |
 | :--- | :--- |
-|  |  |
+| authority | authority |
+| owner | owner |
+| setOwner | setOwner |
+| setAuthority | setAuthority |
+| auth | auth |
+| isAuthorized | isAuthorized |
 
 | DSRoles | DSRoles |
 | :--- | :--- |
-|  |  |
+| \_root\_users | \_root\_users |
+| \_user\_roles | \_user\_roles |
+| \_capability\_roles | \_capability\_roles |
+| \_public\_capabilities | \_public\_capabilities |
+| getUserRoles | getUserRoles |
+| getCapabilityRoles | getCapabilityRoles |
+| isUserRoot | isUserRoot |
+| isCapabilityPublic | isCapabilityPublic |
+| hasUserRole | hasUserRole |
+| canCall | canCall |
+| BITNOT | BITNOT |
+| setRootUser | setRootUser |
+| setUserRole | setUserRole |
+| setPublicCapability | setPublicCapability |
+| setRoleCapability | setRoleCapability |
 
 | MkrAuthority | ProtocolTokenAuthority |
 | :--- | :--- |
-|  |  |
+| root | root |
+| NaN | owner \(NEW\) |
+| sudo | isRootCalling |
+| NaN | isRootOrOwnerCalling \(NEW\) |
+| LogSetRoot | LogSetRoot |
+| NaN | LogSetOwner \(NEW\) |
+| setRoot | setRoot |
+| NaN | setOwner \(NEW\) |
+| wards | authorizedAccounts |
+| LogRely | LogAddAuthorizedAccount |
+| rely | addAuthorization |
+| LogDeny | LogRemoveAuthorizedAccount |
+| deny | removeAuthorization |
+| burn | burn |
+| burnFrom | burnFrom |
+| mint | mint |
+| canCall | canCall |
 
 | VoteProxy | VoteProxy |
 | :--- | :--- |
-|  |  |
-|  |  |
+| cold | cold |
+| hot | hot |
+| gov | gov |
+| iou | iou |
+| chief | voteQuorum |
+| auth | isAuthorized |
+| lock | addVotingWeight |
+| free | removeVotingWeight |
+| freeAll | removeAllVotingWeight |
+| vote | vote |
 
 | DSGuard | DSGuard |
 | :--- | :--- |
-|  |  |
-|  |  |
+| LogPermit | LogPermit |
+| LogForbid | LogForbid |
+| ANY | ANY |
+| canCall | canCall |
+| permit | permit |
+| forbid | forbid |
 
 | DSStop | DSStop |
 | :--- | :--- |
-|  |  |
+| stopped | stopped |
+| stoppable | stoppable |
+| stop | stop |
+| start | start |
 
