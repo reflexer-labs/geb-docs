@@ -25,14 +25,40 @@ Fixed discount collateral auctions are similar to their English counterpart in t
 * `totalAuctionLength` - auction length \(default: 7 days\).
 * `auctionsStarted` - total auction count, used to track auction `id`s.
 * `discount` - discount compared to the collateral market price; used when calculating the amount of collateral to send to a bidder.
-* `lowerMedianDeviation` -
-* `upperMedianDeviation` -
+* `lowerMedianDeviation` - max `median` collateral price deviation \(compared to the `osm` price\) used when the median price is lower than the `osm` price and the contract needs to pick which price to use.
+* `upperMedianDeviation` - max `median` collateral price deviation \(compared to the `osm` price\) used when the median price is higher than the `osm` price and the contract needs to pick which price to use.
 * `oracleRelayer` - address of the `OracleRelayer`.
 * `osm` - collateral type `OSM` address.
 * `median` - collateral type medianizer address.
-* RAD -
-* WAD -
-* RAY -
+* `RAD` - number with 45 decimals \(e.g a `cdpEngine.coinBalance`\)
+* `WAD` - number with 18 decimals \(e.g a bid submitted when someone wants to buy collateral from an auction\)
+* `RAY` - number with 27 decimals
 
+**Data Structures**
+
+* `Bid` - state of a specific auction
+  * `raisedAmount` - amount of system coins raised up until this point
+  * `soldAmount` - amount of collateral sold up until this point
+  * `amountToSell` - quantity up for auction / collateral for sale
+  * `amountToRaise` - total system coins wanted from the auction
+  * `auctionDeadline` - max auction duration
+  * `forgoneCollateralReceiver` - address of the CDP being auctioned. Receives collateral during the `decreaseSoldAmount` phase
+  * `auctionIncomeRecipient` - recipient of auction income / receives system coin income \(this is the `AccountingEngine` contract\)
+
+**Modifiers**
+
+* `isAuthorized` ****- checks whether an address is part of `authorizedAddresses` \(and thus can call authed functions\).
+
+**Functions**
+
+* `modifyParameters(bytes32 parameter`, `uint256 data)` - update a `uint256` parameter.
+* `modifyParameters(bytes32 parameter`, `address data)` - update an `address` parameter.
+* `addAuthorization(usr: address)` - add an address to `authorizedAddresses`.
+* `removeAuthorization(usr: address)` - remove an address from `authorizedAddresses`.
+* `getDiscountedRedemptionCollateralPrice(osmPriceFeedValue: bytes32`,`medianPriceFeedValue: bytes32`, `customDiscount: uint256) public returns (uint256)` - get the collateral price according to the latest system coin `redemptionPrice` and after applying the `discount` to it.
+* `getDiscountedRedemptionBoughtCollateral(id: uint256`, `osmPriceFeedValue: bytes32`, `medianPriceFeedValue: bytes32`, `adjustedBid: uint256) public returns (uint256)` - get the amount of collateral that can be bought with a specific amount of system coins after calculating the discounted price \(and taking into consideration the system coin redemption, **not** market price\)
+* `startAuction(forgoneCollateralReceiver: address`, `auctionIncomeRecipient: address`, `amountToRaise: uint256`, `amountToSell: uint256`, `initialBid: uint256 )` - function used by `LiquidationEngine` to start an auction / put collateral up for auction
+* `getCollateralBought(id: uint256`, `wad: uint256) external returns (uint256)` - get the amount of collateral that can be bought from a specific auction by bidding wad amount of system coins \(where `wad` will be scaled by `RAY` to transfer the correct amount of `RAD` system coins from `cdpEngine.coinBalance`\)
+* 
 ## 3. Walkthrough <a id="3-key-mechanisms-and-concepts"></a>
 
