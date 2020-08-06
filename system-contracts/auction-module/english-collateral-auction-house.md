@@ -6,13 +6,15 @@ description: English collateral auctioneer that tries to recapitalize the system
 
 ## 1. Summary <a id="1-introduction-summary"></a>
 
-Collateral auctions are used to sell collateral from CDPs that have become undercollateralized in order to preserve the overall system health. The `LiquidationEngine` sends collateral to the `CollateralAuctionHouse` where it is auctioned in two phases: `increaseBidSize` and `decreaseSoldAmount`.
+English collateral auctions are used to sell collateral from CDPs that have become undercollateralized in order to preserve the overall system health. The `LiquidationEngine` sends collateral to the `EnglishCollateralAuctionHouse` where it is auctioned in two phases: `increaseBidSize` and `decreaseSoldAmount`.
 
 ## 2. Contract Variables & Functions <a id="2-contract-details"></a>
 
 **Variables**
 
 * `contractEnabled` - settlement flag \(`1` or `0`\).
+* `AUCTION_HOUSE_TYPE` - flag set to `bytes32("COLLATERAL")`
+* `AUCTION_TYPE` - flag set to `bytes32("ENGLISH")`.
 * `authorizedAccounts[usr: address]` - addresses allowed to call `modifyParameters()` and `disableContract()`.
 * `cdpEngine` - storage of the `CDPEngine`'s address.
 * `bids[id: uint]` - storage of all bids.
