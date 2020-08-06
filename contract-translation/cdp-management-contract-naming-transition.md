@@ -40,7 +40,68 @@ The following tables show the before and after variable names for CDP management
 | getCdpsAsc | getCdpsAsc |
 | getCdpsDesc | getCdpsDesc |
 
-|  |  |
+| DssProxyActions | GebProxyActions |
 | :--- | :--- |
-|  |  |
+| daiJoin\_join |  |
+| apt |  |
+| urn |  |
+| \_getDrawDart |  |
+| vat |  |
+| jug |  |
+| urn |  |
+| ilk |  |
+| dart |  |
+| \_getWipeDart |  |
+| \_getWipeAllWad |  |
+| transfer |  |
+| ethJoin\_join |  |
+| gem |  |
+| gemJoin\_join |  |
+| join |  |
+| hope |  |
+| nope |  |
+| open |  |
+| give |  |
+| giveToProxy |  |
+| cdpAllow |  |
+| urnAllow |  |
+| flux |  |
+| move |  |
+| frob |  |
+| quit |  |
+| enter |  |
+| shift |  |
+| makeGemBag |  |
+| lockETH |  |
+| safeLockETH |  |
+| lockGem |  |
+| safeLockGem |  |
+| freeETH |  |
+| freeGem |  |
+| exitETH |  |
+| exitGem |  |
+| draw |  |
+| wipe |  |
+| safeWipe |  |
+| wipeAll |  |
+| safeWipeAll |  |
+| lockETHAndDraw |  |
+| openLockETHAndDraw |  |
+| lockGemAndDraw |  |
+| openLockGemAndDraw |  |
+| openLockGNTAndDraw |  |
+| wipeAndFreeETH |  |
+| wipeAllAndFreeETH |  |
+| wipeAndFreeGem |  |
+| wipeAllAndFreeGem |  |
+
+| DssProxyActionsEnd | GebProxyActionsGlobalSettlement |
+| :--- | :--- |
+| \_free |  |
+| end |  |
+| freeETH |  |
+| freeGem |  |
+| pack |  |
+| cashETH |  |
+| cashGem |  |
 
