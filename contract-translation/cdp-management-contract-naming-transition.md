@@ -72,28 +72,33 @@ The following tables show the before and after variable names for CDP management
 | shift | moveCDP |
 | makeGemBag | makeCollateralBag |
 | NaN | protectCDP \(NEW\) |
-| lockETH |  |
-| safeLockETH |  |
-| lockGem |  |
-| safeLockGem |  |
-| freeETH |  |
-| freeGem |  |
-| exitETH |  |
-| exitGem |  |
-| draw |  |
-| wipe |  |
-| safeWipe |  |
-| wipeAll |  |
-| safeWipeAll |  |
-| lockETHAndDraw |  |
-| openLockETHAndDraw |  |
-| lockGemAndDraw |  |
-| openLockGemAndDraw |  |
-| openLockGNTAndDraw |  |
-| wipeAndFreeETH |  |
-| wipeAllAndFreeETH |  |
-| wipeAndFreeGem |  |
-| wipeAllAndFreeGem |  |
+| lockETH | lockETH |
+| safeLockETH | safeLockETH |
+| lockGem | lockTokenCollateral |
+| safeLockGem | safeLockTokenCollateral |
+| freeETH | freeETH |
+| freeGem | freeTokenCollateral |
+| exitETH | exitETH |
+| exitGem | exitTokenCollateral |
+| draw | generateDebt |
+| NaN | generateDebtAndProtectCDP \(NEW\) |
+| wipe | repayDebt |
+| safeWipe | safeRepayDebt |
+| wipeAll | repayAllDebt |
+| safeWipeAll | safeRepayAllDebt |
+| lockETHAndDraw | lockETHAndGenerateDebt |
+| openLockETHAndDraw | openLockETHAndGenerateDebt |
+| NaN | openLockETHGenerateDebtAndProtectCDP \(NEW\) |
+| lockGemAndDraw | lockTokenCollateralAndGenerateDebt |
+| NaN | lockTokenCollateralGenerateDebtAndProtectCDP \(NEW\) |
+| openLockGemAndDraw | openLockTokenCollateralAndGenerateDebt |
+| NaN | openLockTokenCollateralGenerateDebtAndProtectCDP \(NEW\) |
+| openLockGNTAndDraw | openLockGNTAndGenerateDebt |
+| NaN | openLockGNTGenerateDebtAndProtectCDP \(NEW\) |
+| wipeAndFreeETH | repayDebtAndFreeETH |
+| wipeAllAndFreeETH | repayAllDebtAndFreeETH |
+| wipeAndFreeGem | repayDebtAndFreeTokenCollateral |
+| wipeAllAndFreeGem | repayAllDebtAndFreeTokenCollateral |
 
 | DssProxyActionsEnd | GebProxyActionsGlobalSettlement |
 | :--- | :--- |
