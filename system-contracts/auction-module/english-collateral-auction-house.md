@@ -1,8 +1,8 @@
 ---
-description: Collateral auctioneer that tries to recapitalize the system
+description: English collateral auctioneer that tries to recapitalize the system
 ---
 
-# Collateral Auction House
+# English Collateral Auction House
 
 ## 1. Summary <a id="1-introduction-summary"></a>
 
