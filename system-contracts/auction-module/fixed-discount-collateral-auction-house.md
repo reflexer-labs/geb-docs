@@ -67,5 +67,17 @@ Fixed discount collateral auctions are similar to their English counterpart in t
 * `forgoneCollateralReceiver(uint id) public view returns (address)` - return the`forgoneCollateralReceiver` for a specific auction
 * `amountToRaise(uint id) public view returns (uint256)` - return the amount of system coins to raise for a specific auction
 
+**Events**
+
+* `StartAuction`: emitted when `startAuction(address`, `address`, `uint256`, `uint256`, `uint256)` is successfully executed. Contains:
+  * `id` - auction id
+  * `amountToSell` - amount of collateral sold in the auction
+  * `initialBid` - starting bid for the auction \(usually zero\).
+  * `amountToRaise` - amount of system coins that should be raised by the auction.
+  * `forgoneCollateralReceiver` - receiver of leftover collateral \(usually the CDP whose collateral was confiscated by the `LiquidationEngine`\).
+  * `auctionIncomeRecipient` - receiver of system coins \(usually the `AccountingEngine`\).
+
 ## 3. Walkthrough <a id="3-key-mechanisms-and-concepts"></a>
+
+
 
