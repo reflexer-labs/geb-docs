@@ -56,9 +56,11 @@ Fixed discount collateral auctions are similar to their English counterpart in t
 * `addAuthorization(usr: address)` - add an address to `authorizedAddresses`.
 * `removeAuthorization(usr: address)` - remove an address from `authorizedAddresses`.
 * `getDiscountedRedemptionCollateralPrice(osmPriceFeedValue: bytes32`,`medianPriceFeedValue: bytes32`, `customDiscount: uint256) public returns (uint256)` - get the collateral price according to the latest system coin `redemptionPrice` and after applying the `discount` to it.
-* `getDiscountedRedemptionBoughtCollateral(id: uint256`, `osmPriceFeedValue: bytes32`, `medianPriceFeedValue: bytes32`, `adjustedBid: uint256) public returns (uint256)` - get the amount of collateral that can be bought with a specific amount of system coins after calculating the discounted price \(and taking into consideration the system coin redemption, **not** market price\)
+* `getDiscountedRedemptionBoughtCollateral(id: uint256`, `osmPriceFeedValue: bytes32`, `medianPriceFeedValue: bytes32`, `adjustedBid: uint256) returns (uint256)` - get the amount of collateral that can be bought with a specific amount of system coins after calculating the discounted price \(and taking into consideration the system coin redemption, **not** market price\)
 * `startAuction(forgoneCollateralReceiver: address`, `auctionIncomeRecipient: address`, `amountToRaise: uint256`, `amountToSell: uint256`, `initialBid: uint256 )` - function used by `LiquidationEngine` to start an auction / put collateral up for auction
-* `getCollateralBought(id: uint256`, `wad: uint256) external returns (uint256)` - get the amount of collateral that can be bought from a specific auction by bidding wad amount of system coins \(where `wad` will be scaled by `RAY` to transfer the correct amount of `RAD` system coins from `cdpEngine.coinBalance`\)
+* `getCollateralBought(id: uint256`, `wad: uint256) returns (uint256)` - get the amount of collateral that can be bought from a specific auction by bidding wad amount of system coins \(where `wad` will be scaled by `RAY` to transfer the correct amount of `RAD` system coins from `cdpEngine.coinBalance`\)
+* `buyCollateral(id: uint256`, `wad: uint256)` - 
+* settleAuction\(id: uint\) -
 * 
 ## 3. Walkthrough <a id="3-key-mechanisms-and-concepts"></a>
 
