@@ -17,6 +17,7 @@
   * [Accounting Engine](system-contracts/core/accounting-engine.md)
 * [Auction Module](system-contracts/auction-module/README.md)
   * [English Collateral Auction House](system-contracts/auction-module/english-collateral-auction-house.md)
+  * [Fixed Discount Collateral Auction House](system-contracts/auction-module/fixed-discount-collateral-auction-house.md)
   * [Debt Auction House](system-contracts/auction-module/debt-auction-house.md)
   * [Surplus Auction House](system-contracts/auction-module/surplus-auction-house.md)
   * [Settlement Surplus Auctioneer](system-contracts/auction-module/settlement-surplus-auctioner.md)
