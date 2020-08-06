@@ -51,8 +51,8 @@ English collateral auctions are used to sell collateral from CDPs that have beco
 * `removeAuthorization(usr: address)` - remove an address from `authorizedAddresses`.
 * `startAuction(forgoneCollateralReceiver: address`, `auctionIncomeRecipient: address`, `amountToRaise: uint256`, `amountToSell: uint256`, `initialBid: uint256 )` - function used by `LiquidationEngine` to start an auction / put collateral up for auction
 * `restartAuction(id: uint256)` - restart an auction if there have been 0 bids and the `auctionDeadline` has passed
-* `increaseBidSize(id: uint256`, `amountToBuy: uint256`, `bid: uint256)` - first phase of an auction. Increasing system coin `bid`s for a set `amountToSell` of collateral
-* `decreaseSoldAmount(id: uint256`, `amountToBuy: uint256`, `bid: uint256)` - second phase of an auction. Set system coin `bid` for a decreasing`amountToSell`of collateral.
+* `increaseBidSize(id: uint256`, `amountToBuy: uint256`, `rad: uint256)` - first phase of an auction. Increasing system coin `bid`s for a set `amountToSell` of collateral
+* `decreaseSoldAmount(id: uint256`, `amountToBuy: uint256`, `rad: uint256)` - second phase of an auction. Set system coin `bid` for a decreasing`amountToSell`of collateral.
 * `settleAuction(id: uint256)` - claim a winning bid / settles a completed auction
 * `terminateAuctionPrematurely(id: uint256)` - used during `GlobalSettlement` to terminate `increaseBidSize` phase auctions and transfer the collateral to the settlement contract while repaying system coins \(the winning bid\) to the highest bidder.
 * `bidAmount(id: uint256) public view returns (uint256)` - return the latest `bidAmount` from a specific auction
