@@ -21,11 +21,18 @@ Fixed discount collateral auctions are similar to their English counterpart in t
 * `cdpEngine` - storage of the `CDPEngine`'s address.
 * `bids[id: uint]` - storage of all bids.
 * `collateralType` - id of the collateral type for which the `CollateralAuctionHouse` is responsible.
+* `minimumBid` - minimum amount of system coins that must be submitted by each bidder.
 * `totalAuctionLength` - auction length \(default: 7 days\).
 * `auctionsStarted` - total auction count, used to track auction `id`s.
+* `discount` - discount compared to the collateral market price; used when calculating the amount of collateral to send to a bidder.
+* `lowerMedianDeviation` -
+* `upperMedianDeviation` -
 * `oracleRelayer` - address of the `OracleRelayer`.
 * `osm` - collateral type `OSM` address.
 * `median` - collateral type medianizer address.
+* RAD -
+* WAD -
+* RAY -
 
 ## 3. Walkthrough <a id="3-key-mechanisms-and-concepts"></a>
 
