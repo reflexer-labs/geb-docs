@@ -42,36 +42,36 @@ The following tables show the before and after variable names for CDP management
 
 | DssProxyActions | GebProxyActions |
 | :--- | :--- |
-| daiJoin\_join |  |
-| apt |  |
-| urn |  |
-| \_getDrawDart |  |
-| vat |  |
-| jug |  |
-| urn |  |
-| ilk |  |
-| dart |  |
-| \_getWipeDart |  |
-| \_getWipeAllWad |  |
-| transfer |  |
-| ethJoin\_join |  |
-| gem |  |
-| gemJoin\_join |  |
-| join |  |
-| hope |  |
-| nope |  |
-| open |  |
-| give |  |
-| giveToProxy |  |
-| cdpAllow |  |
-| urnAllow |  |
-| flux |  |
-| move |  |
-| frob |  |
-| quit |  |
-| enter |  |
-| shift |  |
-| makeGemBag |  |
+| daiJoin\_join | coinJoin\_join |
+| apt | apt |
+| urn | cdpHandler |
+| \_getDrawDart | \_getGeneratedDeltaDebt |
+| vat | cdpEngine |
+| jug | taxCollector |
+| urn | cdpHandler |
+| ilk | collateralType |
+| dart | deltaDebt |
+| \_getWipeDart | \_getRepaidDeltaDebt |
+| \_getWipeAllWad | \_getRepaidAlDebt |
+| transfer | transfer |
+| ethJoin\_join | ethJoin\_join |
+| gem | collateral |
+| gemJoin\_join | tokenCollateralJoin\_join |
+| hope | approveCDPModification |
+| nope | denyCDPModification |
+| open | openCDP |
+| give | transferCDPOwnership |
+| giveToProxy | transferCDPOwnershipToProxy |
+| cdpAllow | allowCDP |
+| urnAllow | allowHandler |
+| flux | transferCollateral |
+| move | transferInternalCoins |
+| frob | modifyCDPCollateralization |
+| quit | quitSystem |
+| enter | enterSystem |
+| shift | moveCDP |
+| makeGemBag | makeCollateralBag |
+| NaN | protectCDP \(NEW\) |
 | lockETH |  |
 | safeLockETH |  |
 | lockGem |  |
@@ -97,11 +97,11 @@ The following tables show the before and after variable names for CDP management
 
 | DssProxyActionsEnd | GebProxyActionsGlobalSettlement |
 | :--- | :--- |
-| \_free |  |
-| end |  |
-| freeETH |  |
-| freeGem |  |
-| pack |  |
-| cashETH |  |
-| cashGem |  |
+| \_free | \_freeCollateral |
+| end | globalSettlement |
+| freeETH | freeETH |
+| freeGem | freeTokenCollateral |
+| pack | prepareCoinsForRedeeming |
+| cashETH | redeemETH |
+| cashGem | redeemTokenCollateral |
 
