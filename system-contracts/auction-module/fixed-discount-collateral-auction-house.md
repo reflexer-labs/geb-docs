@@ -59,8 +59,13 @@ Fixed discount collateral auctions are similar to their English counterpart in t
 * `getDiscountedRedemptionBoughtCollateral(id: uint256`, `osmPriceFeedValue: bytes32`, `medianPriceFeedValue: bytes32`, `adjustedBid: uint256) returns (uint256)` - get the amount of collateral that can be bought with a specific amount of system coins after calculating the discounted price \(and taking into consideration the system coin redemption, **not** market price\)
 * `startAuction(forgoneCollateralReceiver: address`, `auctionIncomeRecipient: address`, `amountToRaise: uint256`, `amountToSell: uint256`, `initialBid: uint256 )` - function used by `LiquidationEngine` to start an auction / put collateral up for auction
 * `getCollateralBought(id: uint256`, `wad: uint256) returns (uint256)` - get the amount of collateral that can be bought from a specific auction by bidding wad amount of system coins \(where `wad` will be scaled by `RAY` to transfer the correct amount of `RAD` system coins from `cdpEngine.coinBalance`\)
-* `buyCollateral(id: uint256`, `wad: uint256)` - 
-* settleAuction\(id: uint\) -
-* 
+* `buyCollateral(id: uint256`, `wad: uint256)` - buy collateral from an auction and offer `wad` amount of system coins in return \(where `wad` is scaled by `RAY` in order to transfer `RAD` amount of coins from the bidder's `cdpEngine.coinBalance`\)
+* `settleAuction(id: uint256)` - settle an auction that has passed its `auctionDeadline` and return any remaining collateral to the `forgoneCollateralReceiver`
+* `terminateAuctionPrematurely(id: uint256)` - usually used during `GlobalSettlement` to terminate an auction early and send unsold collateral to the `msg.sender`
+* `bidAmount(id: uint256) public view returns (uint256)` - always returns zero
+* `remainingAmountToSell(id: uint256) public view returns (uint256)` - return the remaining collateral amount to sell from a specific auction
+* `forgoneCollateralReceiver(uint id) public view returns (address)` - return the`forgoneCollateralReceiver` for a specific auction
+* `amountToRaise(uint id) public view returns (uint256)` - return the amount of system coins to raise for a specific auction
+
 ## 3. Walkthrough <a id="3-key-mechanisms-and-concepts"></a>
 
