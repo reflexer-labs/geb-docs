@@ -25,7 +25,7 @@ English collateral auctions are used to sell collateral from CDPs that have beco
 * `auctionsStarted` - total auction count, used to track auction `id`s.
 * `bidToMarketPriceRatio` - the minimum size of the first bid compared to the latest recorded collateral price ****\(for `collateralType`\) in the system.
 * `oracleRelayer` - address of the `OracleRelayer`.
-* `orcl` - collateral type `OSM` address.
+* `osm` - collateral type `OSM` address.
 
 **Data Structures**
 
