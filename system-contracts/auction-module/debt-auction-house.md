@@ -15,6 +15,7 @@ Debt Auctions are used to recapitalize the system by auctioning off protocol tok
 **Variables**
 
 * `contractEnabled` - settlement flag \(`1` or `0`\).
+* `AUCTION_HOUSE_TYPE` - flag set to `bytes32("DEBT")`
 * `authorizedAccounts[usr: address]` - addresses allowed to call `modifyParameters()` and `disableContract()`.
 * `cdpEngine` - storage of the `CDPEngine`'s address.
 * `protocolToken` - token minted in exchange for system coins.

@@ -17,6 +17,7 @@ There are two surplus auction flavours: a pre-settlement version meant to sell s
 **Variables**
 
 * `contractEnabled` - settlement flag \(available only in the pre-settlement surplus auction house\)
+* `AUCTION_HOUSE_TYPE` - flag set to `bytes32("SURPLUS")`
 * `authorizedAccounts[usr: address]` - addresses allowed to call `modifyParameters()` and `disableContract()`.
 * `bids[id: uint]` - storage of all `Bid`s by `id`
 * `cdpEngine` - storage of the CDPEngine's address
