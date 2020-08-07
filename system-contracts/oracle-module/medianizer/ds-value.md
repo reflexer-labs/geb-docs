@@ -10,13 +10,21 @@ This is a simple contract where authorized addresses can set a price and anyone 
 
 ## 2. Contract Variables & Functions <a id="2-contract-details"></a>
 
-* `auth` - modifier that checks whether an address can set the `result`. Inherited from [ds-thing](https://github.com/dapphub/ds-thing).
+**Variables**
+
 * `isValid` - boolean that signals whether the currently stored value is valid \(greater than zero\) or not
 * `medianPrice` - the current price feed
-* `getResultWithValidity` - returns `result` and `isValid`
-* `read` - getter that only returns the `result`
-* `updateResult(bytes32: newResult)` - set a new `result`
-* `restartValue` - set `isValid` to `false`
+
+**Modifiers**
+
+* `auth` - modifier that checks whether an address can set the `result`. Inherited from [ds-thing](https://github.com/dapphub/ds-thing).
+
+**Functions**
+
+* `getResultWithValidity() external view returns (bytes32, bool)` - returns `result` and `isValid`
+* `read() external view returns (uint256)` - getter that only returns the `result`
+* `updateResult(newResult: bytes32)` - set a new `result`
+* `restartValue()` - set `isValid` to `false`
 
 ## 3. Walkthrough <a id="3-key-mechanisms-and-concepts"></a>
 
