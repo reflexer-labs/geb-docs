@@ -6,7 +6,7 @@ description: The "source of truth" for collateral and system coin prices
 
 **Relevant smart contracts:**
 
-* [DSValue](https://github.com/reflexer-labs/ds-value)
+* [DSValue](https://github.com/reflexer-labs/ds-value/blob/master/src/value.sol)
 * [OSM](https://github.com/reflexer-labs/geb-fsm/blob/master/src/OSM.sol)
 * [GovernanceLedPriceFeedMedianizer](https://github.com/reflexer-labs/geb-governance-led-median/blob/master/src/GovernanceLedPriceFeedMedianizer.sol)
 * [ChainlinkPriceFeedMedianizer](https://github.com/reflexer-labs/geb-chainlink-median/blob/master/src/ChainlinkPriceFeedMedianizer.sol)
