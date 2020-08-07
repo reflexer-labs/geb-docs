@@ -8,7 +8,7 @@ description: >-
 
 ## 1. Summary <a id="1-introduction-summary"></a>
 
-Fixed discount collateral auctions are similar to their `English` counterpart in that they are used to preserve the overall system health by liquidating undercollateralized CDPs and selling off collateral in exchange for system coins. This auction type automatically calculates an amount of collateral to send back to a bidder taking into account to the amount of system coins the bidder submits as well as to the current system coin `redemptionPrice` and collateral market price.
+Fixed discount collateral auctions are similar to their `English` counterpart in that they are used to preserve the overall system health by liquidating undercollateralized CDPs and selling off collateral in exchange for system coins. This auction type automatically calculates an amount of collateral to send back to a bidder taking into account the amount of system coins the bidder submits as well as the current system coin `redemptionPrice` and collateral market price.
 
 ## 2. Contract Variables & Functions <a id="2-contract-details"></a>
 
