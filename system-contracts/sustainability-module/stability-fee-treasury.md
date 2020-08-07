@@ -8,14 +8,6 @@ description: The protocol's invoice processor
 
 The `StabilityFeeTreasury` is meant to allow other contracts or EOAs to pull funds \(stability fees\) in order to finance their operations. The treasury is set up as a `secondaryReceiver` in the `TaxCollector`. Anyone can periodically call the contract in order to recompute an optimal amount of fees that should be kept in the treasury and send any additional surplus to the `AccountingEngine`.
 
-{% hint style="warning" %}
-**Important Notice**
-
-The current treasury implementation can be completely drained in one transaction if an allowed address has the permission to withdraw `MAX_UINT` \(or a similarly high amount of\) stability fees.
-
-We're thinking about adding a per block withdrawal limit in order to avoid this scenario.
-{% endhint %}
-
 ## 2. Contract Variables & Functions <a id="2-contract-details"></a>
 
 * `allowance[receiver: address]` - withdrawal allowance
