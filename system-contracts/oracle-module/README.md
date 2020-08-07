@@ -38,7 +38,7 @@ The **Oracle Module** is in charge with ingesting and pushing price feed updates
 
 In the long run, governance can completely remove control over most oracle related contracts, provided that three conditions are met:
 
-1. Governance does not plan to add any more collateral types in the future..
+1. Governance does not plan to add any more collateral types in the future.
 2. The team that deployed the system thoroughly tested its [feedback mechanism](https://reflexer-labs.gitbook.io/geb/system-contracts/feedback-mechanism-module), both in simulated and in live environments.
-3. The system integrated a self-sustaining and hard to manipulate [oracle medianizer](https://docs.reflexer.finance/system-contracts/oracle-module/medianizer/oracle-network-medianizer) that provides price feeds for both the core coin \(e.g reflex bond\) and for all collateral types.
+3. The system integrated a self-sustaining and hard to manipulate [oracle medianizer](https://docs.reflexer.finance/system-contracts/oracle-module/medianizer/oracle-network-medianizer) that provides price feeds for both the core system coin and for all collateral types.
 
