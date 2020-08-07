@@ -8,7 +8,7 @@ description: >-
 
 ## 1. Summary <a id="1-introduction"></a>
 
-The `GovernanceLedMedian` is one option to provide trusted reference prices for collateral types and for the system coin. It works by maintaining a whitelist of price feed contracts which are authorized to post price updates. Every time a new list of prices is received, the median of these is computed and used to update the stored value.
+The `GovernanceLedMedian` is an option to provide trusted reference prices for collateral types and for the system coin. It works by maintaining a whitelist of price feed contracts which are authorized to post price updates. Every time a new list of prices is received, the median of these is computed and used to update the stored value.
 
 ## 2. Contract Variables & Functions <a id="2-contract-details"></a>
 
