@@ -12,18 +12,35 @@ The `GovernanceLedMedian` is an option to provide trusted reference prices for c
 
 ## 2. Contract Variables & Functions <a id="2-contract-details"></a>
 
-* `authorizedAccounts [usr: address]` - `addAuthorization`/`removeAuthorization`/`isAuthorized` - auth mechanisms
-* `read` - gets a non-zero price or fails.
-* `getResultWithValidity` - gets the price and its validity.
-* `updateResult` - updates price using whitelisted providers.
-* `addOracles`- adds an address to the writers whitelist.
-* `removeOracles` - removes an address from the writers whitelist.
-* `setQuorum` - sets the `quorum`.
-* `oracleAddresses(usr: address)` - `medianPrice` writers whitelist / signers of the prices \(whitelisted via governance / the authorized parties\).
-* `medianPrice` - the price \(private\) must be read with `read()` or `getResultWithValidity()`
-* `lastUpdateTime` - the Block timestamp of last price `medianPrice` update.
-* `symbol` - the price oracles type \(ex: ETHUSD\) / tells us what the type of asset is.
-* `quorum` - the minimum writers quorum for `getResultWithValidity`/ min number of valid messages you need to have to update the price.
+**Variables**
+
+* `contractEnabled` - settlement flag \(`1` or `0`\).
+* `authorizedAccounts[usr: address]` - addresses allowed to call authed functions.
+* `medianPrice` - the \(privately\) stored median price which can be read using `read()` or `getResultWithValidity()`
+* `lastUpdateTime` - the block timestamp of the last `medianPrice` update.
+* `symbol` - the price oracles type \(ex: ETHUSD\) / tells us what the type of asset the medianizer gives a price feed for.
+* `quorum` - the minimum quorum which dictates how many addresses need to come together to `updateResult`
+* `whitelistedOracles[oracle: uint256]` - mapping of oracles that are allowed to sign and submit prices to `updateResult`
+* `oracleAddresses[oracle: address]` - addresses of oracles allowed to update the medianizer
+
+**Modifiers**
+
+* `isAuthorized` ****- checks whether an address is part of `authorizedAddresses` \(and thus can call authed functions\).
+
+**Functions**
+
+* `read() external view returns (uint256)` - gets a non-zero price or fails.
+* `getResultWithValidity() external view returns (uint256, bool)` - gets the price and its validity.
+* `updateResult(prices_: uint256[]`, `updateTimestamps_: uint256[]`, `v: uint8[]`, `r: bytes32[]`, `s: bytes32[])` - updates price using whitelisted providers.
+* `addOracles(orcls: address[])`- adds an address to the writers whitelist.
+* `removeOracles(orcls: address[])` - removes an address from the writers whitelist.
+* `setQuorum(quorum_: uint256)` - sets the `quorum`.
+
+**Events**
+
+* `LogMedianPrice` - emitted when `updateResult` is called. Contains:
+  * `medianPrice` - the new `medianPrice`
+  * `lastUpdateTime` - the current block timestamp
 
 ## 3. Walkthrough
 
