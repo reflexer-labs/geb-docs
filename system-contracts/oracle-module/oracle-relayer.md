@@ -19,21 +19,32 @@ The `OracleRelayer` functions as an interface contract between `OSM`s and the `C
 * `redemptionRate` - the current redemption rate that reprices the system coin internally and changes user incentives
 * `_redemptionPrice` - virtual variable that does not reflect the latest `redemptionPrice`
 * `redemptionPriceUpdateTime` - last time when the redemption price was updated
+* `RAY` - number with 27 decimals
 
-
+**Data Structures**
 
 * `CollateralType` - struct with data about each collateral type
   * `orcl` - the address of a price feed, usually an `OSM`
   * `safetyCRatio` - the collateralization ratio used to compute the `safetyPrice` of a collateral type
   * `liquidationCRatio` - the collateralization ratio used to compute the `liquidationPrice` of a collateral type
-* `modifyParameters` - function used to change the relayer's parameters
-* `updateRedemptionPrice` - internal function used to update the redemption price using the \(per-second\) `redemptionRate`
-* `redemptionPrice` - getter function that updates and retrieves the virtual `_redemptionPrice`
-* `updateCollateralPrice(bytes32: collateralType)` - update the safety and liquidation prices of a collateral price and store them in the `CDPEngine`
-* `disableContract` - disables the relayer
-* `safetyCRatio(collateralType: bytes32)` - getter for a collateral's safety CRatio
-* `liquidationCRatio(collateralType: bytes32)` - getter for a collateral's liquidation CRatio
-* `orcl(bytes32: collateralType)` - getter for a collateral type's oracle
+
+**Modifiers**
+
+* `isAuthorized` ****- checks whether an address is part of `authorizedAddresses` \(and thus can call authed functions\).
+
+**Functions**
+
+* `modifyParameters(parameter: bytes32`, `data: uint256)` - update a `uint256` parameter.
+* `modifyParameters(collateralType: bytes32`, `parameter: bytes32`, `data: address)` - update an `address` parameter.
+* `addAuthorization(usr: address)` - add an address to `authorizedAddresses`.
+* `removeAuthorization(usr: address)` - remove an address from `authorizedAddresses`.
+* `updateRedemptionPrice()` - internal function used to update the redemption price using the  `redemptionRate`
+* `redemptionPrice() external view returns (uint256)` - getter function that updates and retrieves the virtual `_redemptionPrice`
+* `updateCollateralPrice(collateralType: bytes32)` - update the safety and liquidation prices of a collateral price and store them in the `CDPEngine`
+* `disableContract()` - disables the relayer
+* `safetyCRatio(collateralType: bytes32) external view returns (uint256)` - getter for a collateral's safety CRatio
+* `liquidationCRatio(collateralType: bytes32) external view returns (uint256)` - getter for a collateral's liquidation CRatio
+* `orcl(collateralType: bytes32) external view returns (address)` - getter for a collateral type's oracle
 
 **Events**
 
