@@ -84,10 +84,13 @@ The fixed discount auction is a straightforward way \(compared to `English` auct
 {% hint style="info" %}
 **Bids as WAD Amounts**
 
-As opposed to `English` auctions where bidders sudmit bids with `RAD` amounts of system coins \(using `increaseBidSize` and `decreaseSoldAmount`\), `buyCollateral` requires a `WAD` amount of coins that are then multiplied by `RAY` in order to correctly scale the amount to `RAD`.
-
-We chose this tactic in order to avoid precision loss coming from division.
+As opposed to `English` auctions where bidders submit bids with `RAD` amounts of system coins \(using `increaseBidSize` and `decreaseSoldAmount`\), `buyCollateral` requires a `WAD` amount of coins that are then multiplied by `RAY` in order to correctly scale the amount to `RAD`.
 {% endhint %}
 
+There are several components that come together when the contract calculates the amount of collateral to send to a bidder:
 
+* The amount of system coins \(`wad`\) used when calling `buyCollateral`
+* The current system coin `redemptionPrice`. The contract is not using the system coin's market price to determine the SYS\_COIN/COL price, thus eliminating the need for an oracle. On the other hand, bidders will need to take into account the deviation between the system coin's redemption and market prices
+* The difference between the collateral's `OSM` price \(the delayed price\) and the latest market price stored in the medianizer \(which the `OSM` is connected to\). The auction house uses the `OSM` price by default so that, in case of an oracle attack, governance can react and temporarily disable the `OSM` \(in case they have power over that system component\) or any token holder can trigger settlement through the `ESM`. 
+  * During the `OSM`'s delay, the market price \(and thus the medianizer value\) might change significantly and thus bidders might have to wait until a new median price feed is pushed into the `OSM` until they can profit from auctions. In order to minimize the number of cases where bidders have to wait for an `OSM` update and at the same time protect collateral auctions from an oracle attack, we added `lowerMedianDeviation` and `upperMedianDeviation` which allow the auction house to pick the medianizer price \(when calculating the amount of collateral bought by a bidder\) in case it deviated within certain bounds compared to the `OSM` price.
 
