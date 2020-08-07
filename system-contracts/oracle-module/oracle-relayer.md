@@ -6,21 +6,26 @@ description: The glue between price feeds and the CDP Engine
 
 ## 1. Summary <a id="1-introduction"></a>
 
-The `OracleRelayer` functions as an interface contract between `OSM`s and the `CDPEngine` and only stores the current `collateralType` list as well as the current `redemptionPrice` and `redemptionRate`. The relayer will depend on governance to set each collateral's safety and liquidation ratios and might also depend on an external [feedback mechanism](https://reflexer-labs.gitbook.io/geb/system-contracts/feedback-mechanism-module) to update the `redemptionRate` that affects the `redemptionPrice`.
+The `OracleRelayer` functions as an interface contract between `OSM`s and the `CDPEngine` and only stores the current `collateralType` list as well as the current `redemptionPrice` and `redemptionRate`. The relayer will depend on governance to set each collateral's safety and liquidation ratios and might also depend on an external [feedback mechanism](https://reflexer-labs.gitbook.io/geb/system-contracts/feedback-mechanism-module) to update the `redemptionRate` which affects the `redemptionPrice`.
 
 ## 2. Contract Variables & Functions <a id="2-contract-details"></a>
 
-* `authorizedAccounts[usr: address]` - `addAuthorization`/`removeAuthorization`/`isAuthorized` - auth mechanisms
-* `CollateralType` - struct with data about each collateral type
-  * `orcl` - the address of a price feed, usually an `OSM`
-  * `safetyCRatio` - the collateralization ratio used to compute the `safetyPrice` of a collateral type
-  * `liquidationCRatio` - the collateralization ratio used to compute the `liquidationPrice` of a collateral type
-* `collateralTypes[bytes32: collateralType]` - mapping of each collateral type
+**Variables**
+
+* `contractEnabled` - settlement flag \(`1` or `0`\).
+* `authorizedAccounts[usr: address]` - addresses allowed to call `modifyParameters()` and `disableContract()`.
+* `collateralTypes[collateralType: bytes32]` - mapping of each collateral type
 * `cdpEngine` - address of the `CDPEngine` contract
 * `redemptionRate` - the current redemption rate that reprices the system coin internally and changes user incentives
 * `_redemptionPrice` - virtual variable that does not reflect the latest `redemptionPrice`
 * `redemptionPriceUpdateTime` - last time when the redemption price was updated
-* `contractEnabled` - settlement flag
+
+
+
+* `CollateralType` - struct with data about each collateral type
+  * `orcl` - the address of a price feed, usually an `OSM`
+  * `safetyCRatio` - the collateralization ratio used to compute the `safetyPrice` of a collateral type
+  * `liquidationCRatio` - the collateralization ratio used to compute the `liquidationPrice` of a collateral type
 * `modifyParameters` - function used to change the relayer's parameters
 * `updateRedemptionPrice` - internal function used to update the redemption price using the \(per-second\) `redemptionRate`
 * `redemptionPrice` - getter function that updates and retrieves the virtual `_redemptionPrice`

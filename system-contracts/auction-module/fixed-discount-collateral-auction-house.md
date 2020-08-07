@@ -84,7 +84,7 @@ The fixed discount auction is a straightforward way \(compared to `English` auct
 {% hint style="info" %}
 **Bids as WAD Amounts**
 
-As opposed to `English` auctions where bidders submit bids with `RAD` amounts of system coins \(using `increaseBidSize` and `decreaseSoldAmount`\), `buyCollateral` requires a `WAD` amount of coins that are then multiplied by `RAY` in order to correctly scale the amount to `RAD`.
+As opposed to `English` auctions where bidders submit bids with `RAD` amounts of system coins \(using `increaseBidSize` and `decreaseSoldAmount`\), `buyCollateral` requires a `WAD` amount of coins that are then multiplied by `RAY` in order to correctly scale the amount to `RAD` and transfer coins from the bidder's `cdpEngine.coinBalance.`
 {% endhint %}
 
 There are several components that come together when the contract calculates the amount of collateral to send to a bidder:
