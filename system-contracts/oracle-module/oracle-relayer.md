@@ -58,13 +58,13 @@ The `OracleRelayer` functions as an interface contract between `OSM`s and the `C
 
 ### UpdateCollateralPrice <a id="poke"></a>
 
-`updateCollateralPrice` is a non-authenticated function. The function takes in a `bytes32` representing a `collateralType` whose prices need to be updated. `updateCollateralPrice` has three stages:
+`updateCollateralPrice` is a non-authenticated function. The function takes in a `bytes32` representing a `collateralType` whose \(safety and liquidation\) prices need to be updated. `updateCollateralPrice` has three stages:
 
-1. `getResultWithValidity` - interacts with the `collateralType`'s `OSM` and takes back a `value` and whether it  `isValid` \(a boolean which is false if there was an error in the `OSM`\). The second external call only happens if `isValid == true`.
+1. `getResultWithValidity` - interacts with the `collateralType`'s `orcl` and returns a `value` and whether it  `isValid` \(a boolean which is false if the price is invalid\). The second external call only happens if `isValid == true`.
 2. When calculating the `safetyPrice` and the `liquidationPrice`, the `_redemptionPrice` is crucial as it defines the relationship between the system coin and one unit of collateral. The `value` from the `OSM` is  divided by the \(updated\) `redemptionPrice` \(to get a ratio of collateral `value` to system coins\) and then the result is divided again by the `collateralType.safetyCRatio` \(when calculating the `safetyPrice`\) and by the `collateralType.liquidationCRatio` \(when calculating the `liquidationPrice`\).
 3. `cdpEngine.modifyParameters` is then called to update the collateral's prices inside the system.
 
 ### RedemptionPrice
 
-Every time someone wants to read the `redemptionPrice` its value will first be updated using the stored `redemptionRate` and then the output will be returned. We chose this design in order to ensure a smooth `redemptionPrice` pro-ration \(using the virtual variable + a state modifying getter\).
+Every time someone wants to read the `_redemptionPrice` its value will first be updated using the stored `redemptionRate` and then the output will be returned. We chose this design in order to ensure a smooth  `redemptionPrice` pro-ration \(using the virtual variable + a state modifying getter\).
 
