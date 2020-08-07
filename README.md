@@ -15,6 +15,7 @@ GEB is a modified fork of [MCD](https://github.com/makerdao/dss) that has severa
 * Variable names you [can actually understand](https://docs.reflexer.finance/system-overview/naming-transition)
 * An autonomous [feedback mechanism](https://docs.reflexer.finance/system-contracts/feedback-mechanism-module) that changes the incentives of system participants
 * The possibility to add insurance for CDPs
+* Fixed discount auctions \(instead of English auctions\) used to sell off collateral
 * Automatic adjustment of `AccountingEngine` \(former `Vow`\) parameters
 * The possibility to send stability fees at once to multiple addresses
 * Two prices for each `CollateralType`: one used for generating debt, the other one used exclusively when liquidating CDPs
