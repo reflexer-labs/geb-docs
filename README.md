@@ -4,7 +4,7 @@ description: The what and how of the GEB framework
 
 # Introduction to GEB
 
-GEB \(Generalized Ethereum Bonds\) is a framework for deploying systems that can issue [reflex bonds](https://medium.com/@stefan__ionescu/stability-without-pegs-8c6a1cbc7fbd). Reflex bonds are assets that dampen the volatility of their underlying collateral. They are useful as more "stable" collateral for other DeFi protocols \(compared to ETH or BTC\) or as tools that give their holders more time to react to the underlying's price moves.  
+GEB is a framework for deploying systems that can issue [reflex bonds](https://medium.com/@stefan__ionescu/stability-without-pegs-8c6a1cbc7fbd). Reflex bonds are assets that dampen the volatility of their underlying collateral. They are useful as more "stable" collateral for other DeFi protocols \(compared to ETH or BTC\) or as tools that give their holders more time to react to the underlying's price moves.  
   
 As an example, if a reflex bond was backed by ETH and one day ETH would significantly drop in price, the bond would delay this shock and spread it over a longer period of time. The length of the "spread" depends on how the [feedback mechanism](https://reflexer-labs.gitbook.io/geb/system-contracts/feedback-mechanism-module) is set up and on how reflex bond users react to the mechanism's incentives \(or even to the mere expectation that the mechanism will change user incentives in a certain way\).  
   
