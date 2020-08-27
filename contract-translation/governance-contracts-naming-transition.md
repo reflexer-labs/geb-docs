@@ -53,7 +53,7 @@ The following tables show the before and after variable names for MCD governance
 | auth | auth |
 | isAuthorized | isAuthorized |
 
-| DSRoles | DSRoles |
+| DSRoles | DSRoles/DSRecursiveRoles |
 | :--- | :--- |
 | \_root\_users | \_root\_users |
 | \_user\_roles | \_user\_roles |
