@@ -48,28 +48,28 @@ The `LiquidationEngine` enables external actors to liquidate CDPs and send their
 
 #### **Events** <a id="events"></a>
 
-* `Liquidate`: emitted when a `liquidateCDP(bytes32, address)` is successfully executed. Contains:
+* `Liquidate`- emitted when a `liquidateCDP(bytes32, address)` is successfully executed. Contains:
 
   * `collateralType`: Collateral
-  * `cdp`: CDP address
-  * `collateralAmount`: see `collateralToSell` in `liquidateCDP`
-  * `debtAmount`: see `cdpDebt` in `liquidateCDP`
-  * `amountToRaise`: see `amountToRaise` in `liquidateCDP`
+  * `safe`: SAFE address
+  * `collateralAmount`: see `collateralToSell` in `liquidateSAFE`
+  * `debtAmount`: see `cdpDebt` in `liquidateSAFE`
+  * `amountToRaise`: see `amountToRaise` in `liquidateSAFE`
   * `collateralAuctioneer`: address of the `CollateralAuctionHouse` contract
   * `auctionId`: ID of the auction in the `CollateralAuctionHouse` 
 
-* `SaveCDP`: emitted when the liquidated CDP has a `CDPSaviour` attached to it and an external actor calls `liquidateCDP(bytes32, address)`.
+* `SaveSAFE`- emitted when the liquidated SAFE has a `SAFESaviour` attached to it and an external actor calls `liquidateSAFE(bytes32, address)`.
 
   Contains:
 
-  * `collateralType`: Collateral
-  * `cdp`: CDP address
-  * `collateralAdded`: amount of collateral added in the CDP
+  * `collateralType`: The collateral type of the saved SAFE
+  * `safe`: SAFE address
+  * `collateralAdded`: amount of collateral added in the SAFE
 
 **Notes**
 
-* `liquidateCDP`will not leave a CDP with debt and no collateral.
-* `protectCDP` will revert if the chosen `CDPSaviour` address was not whitelisted by governance.
+* `liquidateSAFE`will not leave a SAFE with debt and no collateral.
+* `protectSAFE` will revert if the chosen `SAFESaviour` address was not whitelisted by governance.
 
 ## 3. Walkthrough
 

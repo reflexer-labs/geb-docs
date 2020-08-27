@@ -12,7 +12,7 @@
 ## System Contracts
 
 * [Core Module](system-contracts/core/README.md)
-  * [CDP Engine](system-contracts/core/cdp-engine.md)
+  * [SAFE Engine](system-contracts/core/safe-engine.md)
   * [Liquidation Engine](system-contracts/core/liquidation-engine.md)
   * [Accounting Engine](system-contracts/core/accounting-engine.md)
 * [Auction Module](system-contracts/auction-module/README.md)
