@@ -1,6 +1,6 @@
 # SAFE Management Contract Naming Transition
 
-The following tables show the before and after variable names for CDP management related contracts.
+The following tables show the before and after variable names for SAFE management related contracts.
 
 | DssCdpManager | GebSAFEManager |
 | :--- | :--- |
@@ -35,7 +35,7 @@ The following tables show the before and after variable names for CDP management
 | shift | moveSAFE |
 | NaN | protectSAFE \(NEW\) |
 
-| GetCdps | GetCdps |
+| GetCdps | GetSafes |
 | :--- | :--- |
 | getCdpsAsc | getSafesAsc |
 | getCdpsDesc | getSafesDesc |

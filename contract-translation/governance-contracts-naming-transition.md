@@ -1,6 +1,6 @@
 # Governance Contracts Naming Transition
 
-The following tables show the before and after variable names for MCD governance related contracts.
+The following tables show the before and after variable names for MCD governance contracts.
 
 | DSPause | DSPause |
 | :--- | :--- |
