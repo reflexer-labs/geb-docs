@@ -1,54 +1,54 @@
-# CDP Management Contract Naming Transition
+# SAFE Management Contract Naming Transition
 
 The following tables show the before and after variable names for CDP management related contracts.
 
-| DssCdpManager | GebCDPManager |
+| DssCdpManager | GebSAFEManager |
 | :--- | :--- |
-| vat | cdpEngine |
-| cdpi | cdpi |
-| urns | cdps |
-| list | cdpList |
-| owns | ownsCDP |
+| vat | safeEngine |
+| cdpi | safei |
+| urns | safes |
+| list | safeList |
+| owns | ownsSAFE |
 | ilks | collateralTypes |
-| first | firstCDPID |
-| last | lastCDPID |
-| count | cdpCount |
-| cdpCan | cdpCan |
+| first | firstSAFEID |
+| last | lastSAFEID |
+| count | safeCount |
+| cdpCan | safeCan |
 | urnCan | handlerCan |
 | List.prev | List.prev |
 | List.next | List.next |
-| NewCdp | NewCdp |
-| cdpAllowed | cdpAllowed |
+| NewCdp | NewSafe |
+| cdpAllowed | safeAllowed |
 | urnAllowed | handlerAllowed |
-| cdpAllow | allowCDP |
+| cdpAllow | allowSAFE |
 | urnAllow | allowHandler |
-| open | openCDP |
-| give | transferCDPOwnership |
+| open | openSAFE |
+| give | transferSAFEOwnership |
 | ilk | collateralType |
-| frob | modifyCDPCollateralization |
+| frob | modifySAFECollateralization |
 | dink | deltaCollateral |
 | dart | deltaDebt |
 | flux | transferCollateral |
 | move | transferInternalCoins |
 | quit | quitSystem |
 | enter | enterSystem |
-| shift | moveCDP |
-| NaN | protectCDP |
+| shift | moveSAFE |
+| NaN | protectSAFE \(NEW\) |
 
 | GetCdps | GetCdps |
 | :--- | :--- |
-| getCdpsAsc | getCdpsAsc |
-| getCdpsDesc | getCdpsDesc |
+| getCdpsAsc | getSafesAsc |
+| getCdpsDesc | getSafesDesc |
 
 | DssProxyActions | GebProxyActions |
 | :--- | :--- |
 | daiJoin\_join | coinJoin\_join |
 | apt | apt |
-| urn | cdpHandler |
+| urn | safeHandler |
 | \_getDrawDart | \_getGeneratedDeltaDebt |
-| vat | cdpEngine |
+| vat | safeEngine |
 | jug | taxCollector |
-| urn | cdpHandler |
+| urn | safeHandler |
 | ilk | collateralType |
 | dart | deltaDebt |
 | \_getWipeDart | \_getRepaidDeltaDebt |
@@ -57,21 +57,21 @@ The following tables show the before and after variable names for CDP management
 | ethJoin\_join | ethJoin\_join |
 | gem | collateral |
 | gemJoin\_join | tokenCollateralJoin\_join |
-| hope | approveCDPModification |
-| nope | denyCDPModification |
-| open | openCDP |
-| give | transferCDPOwnership |
-| giveToProxy | transferCDPOwnershipToProxy |
-| cdpAllow | allowCDP |
+| hope | approveSAFEModification |
+| nope | denySAFEModification |
+| open | openSAFE |
+| give | transferSAFEOwnership |
+| giveToProxy | transferSAFEOwnershipToProxy |
+| cdpAllow | allowSAFE |
 | urnAllow | allowHandler |
 | flux | transferCollateral |
 | move | transferInternalCoins |
-| frob | modifyCDPCollateralization |
+| frob | modifySAFECollateralization |
 | quit | quitSystem |
 | enter | enterSystem |
-| shift | moveCDP |
+| shift | moveSAFE |
 | makeGemBag | makeCollateralBag |
-| NaN | protectCDP \(NEW\) |
+| NaN | protectSAFE \(NEW\) |
 | lockETH | lockETH |
 | safeLockETH | safeLockETH |
 | lockGem | lockTokenCollateral |
@@ -81,20 +81,20 @@ The following tables show the before and after variable names for CDP management
 | exitETH | exitETH |
 | exitGem | exitTokenCollateral |
 | draw | generateDebt |
-| NaN | generateDebtAndProtectCDP \(NEW\) |
+| NaN | generateDebtAndProtectSAFE \(NEW\) |
 | wipe | repayDebt |
 | safeWipe | safeRepayDebt |
 | wipeAll | repayAllDebt |
 | safeWipeAll | safeRepayAllDebt |
 | lockETHAndDraw | lockETHAndGenerateDebt |
 | openLockETHAndDraw | openLockETHAndGenerateDebt |
-| NaN | openLockETHGenerateDebtAndProtectCDP \(NEW\) |
+| NaN | openLockETHGenerateDebtAndProtectSAFE \(NEW\) |
 | lockGemAndDraw | lockTokenCollateralAndGenerateDebt |
-| NaN | lockTokenCollateralGenerateDebtAndProtectCDP \(NEW\) |
+| NaN | lockTokenCollateralGenerateDebtAndProtectSAFE \(NEW\) |
 | openLockGemAndDraw | openLockTokenCollateralAndGenerateDebt |
-| NaN | openLockTokenCollateralGenerateDebtAndProtectCDP \(NEW\) |
+| NaN | openLockTokenCollateralGenerateDebtAndProtectSAFE \(NEW\) |
 | openLockGNTAndDraw | openLockGNTAndGenerateDebt |
-| NaN | openLockGNTGenerateDebtAndProtectCDP \(NEW\) |
+| NaN | openLockGNTGenerateDebtAndProtectSAFE \(NEW\) |
 | wipeAndFreeETH | repayDebtAndFreeETH |
 | wipeAllAndFreeETH | repayAllDebtAndFreeETH |
 | wipeAndFreeGem | repayDebtAndFreeTokenCollateral |

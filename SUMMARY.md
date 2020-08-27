@@ -7,7 +7,7 @@
 
 * [Core Contracts Naming Transition](contract-translation/naming-transition.md)
 * [Governance Contracts Naming Transition](contract-translation/governance-contracts-naming-transition.md)
-* [CDP Management Contract Naming Transition](contract-translation/cdp-management-contract-naming-transition.md)
+* [SAFE Management Contract Naming Transition](contract-translation/safe-management-contract-naming-transition.md)
 
 ## System Contracts
 
@@ -60,7 +60,7 @@
 
 ## Helper Contracts
 
-* [CDP Manager](helper-contracts/cdp-manager.md)
+* [SAFE Manager](helper-contracts/cdp-manager.md)
 * [Proxy Actions](helper-contracts/proxy-actions.md)
 * [Proxy Global Settlement](helper-contracts/proxy-global-settlement.md)
 

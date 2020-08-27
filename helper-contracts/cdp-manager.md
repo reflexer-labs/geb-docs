@@ -1,18 +1,18 @@
 ---
-description: A central hub for all CDPs
+description: A central hub for all SAFEs
 ---
 
-# CDP Manager
+# SAFE Manager
 
-**Smart contract code:** [**GebCdpManager**](https://github.com/reflexer-labs/geb-cdp-manager/blob/master/src/GebCdpManager.sol)\*\*\*\*
+**Smart contract code:** [**GebSafeManager**](https://github.com/reflexer-labs/geb-safe-manager/blob/master/src/GebSafeManager.sol)\*\*\*\*
 
 ## 1. Summary <a id="1-introduction-summary"></a>
 
-The CDP Manager is an abstraction around the `CDPEngine` that allows anyone to easily manage their GEB positions.
+The SAFE Manager is an abstraction around the `SAFEEngine` that allows anyone to easily manage their GEB positions.
 
 ## 2. Contract Variables & Functions <a id="2-contract-details"></a>
 
-* `cdpEngine` - the address of the `CDPEngine`
+* `safeEngine` - the address of the `SAFEEngine`
 * `liquidationEngine` - the address of the `LiquidationEngine`
 * `cdpi` - auto incrementing nonce
 * `cdps[cdpId: uint256]` - mapping between CDP ids and CDP handlers
