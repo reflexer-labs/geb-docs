@@ -6,16 +6,16 @@ description: Going from cute to actual English words
 
 The following tables show the before and after variable names from all core MCD contracts.
 
-| Vat | CDPEngine |
+| Vat | SAFEEngine |
 | :--- | :--- |
 | wards | authorizedAccounts |
 | rely | addAuthorization |
 | deny | removeAuthorization |
 | auth | isAuthorized |
 | can | cdpRights |
-| hope | approveCDPModification |
-| nope | denyCDPModification |
-| wish | canModifyCDP |
+| hope | approveSAFEModification |
+| nope | denySAFEModification |
+| wish | canModifySAFE |
 | Ilk | CollateralType |
 | Ilk.Art | CollateralType.debtAmount |
 | Ilk.rate | CollateralType.accumulatedRates |
@@ -23,11 +23,11 @@ The following tables show the before and after variable names from all core MCD 
 | Ilk.line | CollateralType.debtCeiling |
 | Ilk.dust | CollateralType.debtFloor |
 | NaN | CollateralType.liquidationPrice \(NEW\) |
-| Urn | CDP |
-| Urn.ink | CDP.lockedCollateral |
-| Urn.art | CDP.generatedDebt |
+| Urn | SAFE |
+| Urn.ink | SAFE.lockedCollateral |
+| Urn.art | SAFE.generatedDebt |
 | ilks | collateralTypes |
-| urns | cdps |
+| urns | safes |
 | gem | tokenCollateral |
 | dai | coinBalance |
 | sin | debtBalance |
@@ -35,18 +35,17 @@ The following tables show the before and after variable names from all core MCD 
 | vice | globalUnbackedDebt |
 | Line | globalDebtCeiling |
 | live | contractEnabled |
-| note | emitLog |
 | init | initializeCollateralType |
 | file | modifyParameters |
 | cage | disableContract |
 | slip | modifyCollateralBalance |
 | flux | transferCollateral |
 | move | transferInternalCoins |
-| frob | modifyCDPCollateralization |
+| frob | modifySAFECollateralization |
 | dink | deltaCollateral |
 | dart | deltaDebt |
-| fork | transferCDPCollateralAndDebt |
-| grab | confiscateCDPCollateralAndDebt |
+| fork | transferSAFECollateralAndDebt |
+| grab | confiscateSAFECollateralAndDebt |
 | heal | settleDebt |
 | suck | createUnbackedDebt |
 | fold | updateAccumulatedRate |
@@ -57,7 +56,7 @@ The following tables show the before and after variable names from all core MCD 
 | rely | addAuthorization |
 | deny | removeAuthorization |
 | auth | isAuthorized |
-| vat | cdpEngine |
+| vat | safeEngine |
 | flapper | surplusAuctionHouse |
 | flopper | debtAuctionHouse |
 | NaN | postSettlementSurplusDrain \(NEW\) |
@@ -103,7 +102,7 @@ The following tables show the before and after variable names from all core MCD 
 | Bid.end | Bid.auctionDeadline |
 | Kick | StartAuction |
 | bids | bids |
-| vat | cdpEngine |
+| vat | safeEngine |
 | gem | protocolToken |
 | beg | bidIncrease |
 | ttl | bidDuration |
@@ -133,7 +132,7 @@ The following tables show the before and after variable names from all core MCD 
 | Bid.end | Bid.auctionDeadline |
 | Kick | StartAuction |
 | bids | bids |
-| vat | cdpEngine |
+| vat | safeEngine |
 | vow | accountingEngine |
 | gem | protocolToken |
 | beg | bidDecrease |
@@ -172,7 +171,7 @@ The following tables show the before and after variable names from all core MCD 
 | Bid.tab | Bid.amountToRaise |
 | Kick | StartAuction |
 | bids | bids |
-| vat | cdpEngine |
+| vat | safeEngine |
 | ilk | collateralType |
 | NaN | minimumBid \(NEW\) \(only in the FixedDiscount version\) |
 | beg | bidIncrease \(only in the English version\) |
@@ -212,7 +211,7 @@ The following tables show the before and after variable names from all core MCD 
 | auth | isAuthorized |
 | GemLike | CollateralLike |
 | GemJoin | CollateralJoin |
-| vat | cdpEngine |
+| vat | safeEngine |
 | ilk | collateralType |
 | gem | collateral |
 | dec | decimals |
@@ -230,36 +229,38 @@ The following tables show the before and after variable names from all core MCD 
 | rely | addAuthorization |
 | deny | removeAuthorization |
 | auth | isAuthorized |
-| NaN | cdpSaviours \(NEW\) |
-| NaN | connectCDPSaviour \(NEW\) |
-| NaN | disconnectCDPSaviour \(NEW\) |
+| NaN | safeSaviours \(NEW\) |
+| NaN | connectSAFESaviour \(NEW\) |
+| NaN | disconnectSAFESaviour \(NEW\) |
 | Ilk | CollateralType |
 | Ilk.flip | CollateralType.collateralAuctionHouse |
 | Ilk.chop | CollateralType.liquidationPenalty |
-| Ilk.lump | CollateralType.collateralToSell |
+| Ilk.dunk | CollateralType.liquidationQuantity |
+| box | onAuctionSystemCoinLimit |
+| litter | currentOnAuctionSystemCoins |
 | ilks | collateralTypes |
-| NaN | chosenCDPSaviour \(NEW\) |
+| NaN | chosenSAFESaviour \(NEW\) |
 | NaN | mutex \(NEW\) |
 | live | contractEnabled |
-| vat | cdpEngine |
+| vat | safeEngine |
 | vow | accountingEngine |
 | file | modifyParameters |
 | flip | collateralAuctionHouse |
 | cage | disableContract |
-| NaN | protectCDP \(NEW\) |
-| bite | liquidateCDP |
-| urn | cdp |
+| NaN | protectSAFE \(NEW\) |
+| bite | liquidateSAFE |
+| urn | safe |
 | rate | accumulatedRates |
-| ink | cdpCollateral |
-| art | cdpDebt |
+| ink | safeCollateral |
+| art | safeDebt |
 | lot | collateralToSell |
-| grab | confiscateCDPCollateralAndDebt |
+| grab | confiscateSAFECollateralAndDebt |
 | fess | pushDebtToQueue |
 | gal | initialBidder |
 | tab | amountToRaise |
 | bid | initialBid |
 | Bite | Liquidate |
-| NaN | SaveCDP \(NEW\) |
+| NaN | SaveSAFE \(NEW\) |
 
 | Spot/ter | OracleRelayer |
 | :--- | :--- |
@@ -272,7 +273,7 @@ The following tables show the before and after variable names from all core MCD 
 | Ilk.mat | CollateralType.safetyCRatio |
 | NaN | CollateralType.liquidationCRatio \(NEW\) |
 | ilks | collateralTypes |
-| vat | cdpEngine |
+| vat | safeEngine |
 | par | redemptionPrice |
 | NaN | redemptionPriceUpdateTime \(NEW\) |
 | live | contractEnabled |
@@ -300,7 +301,7 @@ The following tables show the before and after variable names from all core MCD 
 | NaN | secondaryReceiverAccounts \(NEW\) |
 | NaN | secondaryReceiverRevenueSources \(NEW\) |
 | NaN | secondaryTaxReceivers \(NEW\) |
-| vat | cdpEngine |
+| vat | safeEngine |
 | vow | primaryTaxReceiver |
 | base | globalStabilityFee |
 | NaN | secondaryReceiverNonce \(NEW\) |
@@ -334,7 +335,7 @@ The following tables show the before and after variable names from all core MCD 
 | Pie | totalSavings |
 | dsr | savingsRate |
 | chi | accumulatedRates |
-| vat | cdpEngine |
+| vat | safeEngine |
 | file | modifyParameters |
 | cage | disableContract |
 | drip | updateAccumulatedRate |
@@ -348,7 +349,7 @@ The following tables show the before and after variable names from all core MCD 
 | rely | addAuthorization |
 | deny | removeAuthorization |
 | auth | isAuthorized |
-| vat | cdpEngine |
+| vat | safeEngine |
 | cat | liquidationEngine |
 | vow | accountingEngine |
 | spot | oracleRelayer |
@@ -367,8 +368,8 @@ The following tables show the before and after variable names from all core MCD 
 | file | modifyParameters |
 | cage | shutdownSystem / freezeCollateralType |
 | skip | fastTrackAuction |
-| skim | processCDP |
-| urn | cdp |
+| skim | processSAFE |
+| urn | safe |
 | owe | amountOwed |
 | free | freeCollateral |
 | thaw | setOutstandingCoinSupply |
@@ -403,8 +404,4 @@ The following tables show the before and after variable names from all core MCD 
 | pull | pull |
 | move | move |
 | permit | permit |
-
-| Lib | Logging |
-| :--- | :--- |
-| note | emitLog |
 
