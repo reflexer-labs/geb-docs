@@ -49,6 +49,23 @@ The following tables show the before and after variable names from all core MCD 
 | heal | settleDebt |
 | suck | createUnbackedDebt |
 | fold | updateAccumulatedRate |
+| NaN | AddAuthorization \(NEW\) |
+| NaN | RemoveAuthorization \(NEW\) |
+| NaN | ApproveSAFEModification \(NEW\) |
+| NaN | DenySAFEModification \(NEW\) |
+| NaN | InitializeCollateralType \(NEW\) |
+| NaN | ModifyParameters \(NEW\) |
+| NaN | ModifyParameters \(NEW\) |
+| NaN | DisableContract \(NEW\) |
+| NaN | ModifyCollateralBalance \(NEW\) |
+| NaN | TransferCollateral \(NEW\) |
+| NaN | TransferInternalCoins \(NEW\) |
+| NaN | ModifySAFECollateralization \(NEW\) |
+| NaN | TransferSAFECollateralAndDebt \(NEW\) |
+| NaN | ConfiscateSAFECollateralAndDebt \(NEW\) |
+| NaN | SettleDebt \(NEW\) |
+| NaN | CreateUnbackedDebt \(NEW\) |
+| NaN | UpdateAccumulatedRate \(NEW\) |
 
 | Vow | AccountingEngine |
 | :--- | :--- |
@@ -86,6 +103,18 @@ The following tables show the before and after variable names from all core MCD 
 | flap | auctionSurplus |
 | cage | disableContract |
 | NaN | transferPostSettlementSurplus \(NEW\) |
+| NaN | AddAuthorization \(NEW\) |
+| NaN | RemoveAuthorization \(NEW\) |
+| NaN | ModifyParameters \(NEW\) |
+| NaN | ModifyParameters \(NEW\) |
+| NaN | PushDebtToQueue \(NEW\) |
+| NaN | PopDebtFromQueue \(NEW\) |
+| NaN | SettleDebt \(NEW\) |
+| NaN | CancelAuctionedDebtWithSurplus \(NEW\) |
+| NaN | AuctionDebt \(NEW\) |
+| NaN | AuctionSurplus \(NEW\) |
+| NaN | DisableContract \(NEW\) |
+| NaN | TransferPostSettlementSurplus \(NEW\) |
 
 | Flap/per | Pre/PostSettlementSurplusAuctionHouse |
 | :--- | :--- |
@@ -116,6 +145,15 @@ The following tables show the before and after variable names from all core MCD 
 | deal | settleAuction |
 | cage | disableContract |
 | yank | terminateAuctionPrematurely \(only in the PreSettlement version\) |
+| NaN | AddAuthorization \(NEW\) |
+| NaN | RemoveAuthorization \(NEW\) |
+| NaN | ModifyParameters \(NEW\) |
+| NaN | RestartAuction \(NEW\) |
+| NaN | IncreaseBidSize \(NEW\) |
+| NaN | StartAuction \(NEW\) |
+| NaN | SettleAuction \(NEW\) |
+| NaN | DisableContract \(NEW\) |
+| NaN | TerminateAuctionPrematurely \(NEW\) |
 
 | Flop/per | DebtAuctionHouse |
 | :--- | :--- |
@@ -149,6 +187,15 @@ The following tables show the before and after variable names from all core MCD 
 | deal | settleAuction |
 | cage | disableContract |
 | yank | terminateAuctionPrematurely |
+| NaN | AddAuthorization \(NEW\) |
+| NaN | RemoveAuthorization \(NEW\) |
+| NaN | StartAuction \(NEW\) |
+| NaN | ModifyParameters \(NEW\) |
+| NaN | RestartAuction \(NEW\) |
+| NaN | DecreaseSoldAmount \(NEW\) |
+| NaN | SettleAuction \(NEW\) |
+| NaN | TerminateAuctionPrematurely \(NEW\) |
+| NaN | DisableContract \(NEW\) |
 
 | Flip/per | English/FixedDiscountCollateralAuctionHouse |
 | :--- | :--- |
@@ -179,8 +226,11 @@ The following tables show the before and after variable names from all core MCD 
 | tau | totalAuctionLength |
 | kicks | auctionsStarted |
 | NaN | discount \(NEW\) \(only in the FixedDiscount version\) |
-| NaN | lowerMedianDeviation \(NEW\) \(only in the FixedDiscount version\) |
-| NaN | upperMedianDeviation \(NEW\) \(only in the FixedDiscount version\) |
+| NaN | lowerCollateralMedianDeviation \(NEW\) \(only in the FixedDiscount version\) |
+| NaN | upperCollateralMedianDeviation \(NEW\) \(only in the FixedDiscount version\) |
+| NaN | lowerSystemCoinMedianDeviation \(NEW\) \(only in the FixedDiscount version\) |
+| NaN | upperSystemCoinMedianDeviation \(NEW\) \(only in the FixedDiscount version\) |
+| NaN | minSystemCoinMedianDeviation \(NEW\) \(only in the FixedDiscount version\) |
 | cut | bidToMarketPriceRatio \(only in the English version\) |
 | spot | oracleRelayer |
 | pip | orcl/osm |
@@ -202,6 +252,13 @@ The following tables show the before and after variable names from all core MCD 
 | NaN | remainingAmountToSell \(NEW\) |
 | NaN | forgoneCollateralReceiver \(NEW\) |
 | NaN | amountToRaise \(NEW\) |
+| NaN | AddAuthorization \(NEW\) |
+| NaN | RemoveAuthorization \(NEW\) |
+| NaN | StartAuction \(NEW\) |
+| NaN | ModifyParameters \(NEW\) |
+| NaN | BuyCollateral \(NEW\) |
+| NaN | SettleAuction \(NEW\) |
+| NaN | TerminateAuctionPrematurely \(NEW\) |
 
 | Join | BasicTokenAdapters |
 | :--- | :--- |
@@ -222,6 +279,11 @@ The following tables show the before and after variable names from all core MCD 
 | ETHJoin | ETHJoin |
 | DaiJoin | CoinJoin |
 | dai | systemCoin |
+| NaN | AddAuthorization \(NEW\) |
+| NaN | RemoveAuthorization \(NEW\) |
+| NaN | DisableContract \(NEW\) |
+| NaN | Join \(NEW\) |
+| NaN | Exit \(NEW\) |
 
 | Cat | LiquidationEngine |
 | :--- | :--- |
@@ -249,18 +311,29 @@ The following tables show the before and after variable names from all core MCD 
 | cage | disableContract |
 | NaN | protectSAFE \(NEW\) |
 | bite | liquidateSAFE |
+| claw | removeCoinsFromAuction |
 | urn | safe |
 | rate | accumulatedRates |
 | ink | safeCollateral |
 | art | safeDebt |
-| lot | collateralToSell |
+| dust | debtFloor |
 | grab | confiscateSAFECollateralAndDebt |
 | fess | pushDebtToQueue |
+| mink | collateralData |
 | gal | initialBidder |
 | tab | amountToRaise |
 | bid | initialBid |
 | Bite | Liquidate |
+| NaN | AddAuthorization \(NEW\) |
+| NaN | RemoveAuthorization \(NEW\) |
+| NaN | ConnectSAFESaviour \(NEW\) |
+| NaN | DisconnectSAFESaviour \(NEW\) |
+| NaN | UpdateCurrentOnAuctionSystemCoins \(NEW\) |
+| NaN | ModifyParameters \(NEW\) |
+| NaN | DisableContract \(NEW\) |
 | NaN | SaveSAFE \(NEW\) |
+| NaN | FailedSAFESave \(NEW\) |
+| NaN | ProtectSAFE \(NEW\) |
 
 | Spot/ter | OracleRelayer |
 | :--- | :--- |
@@ -282,6 +355,12 @@ The following tables show the before and after variable names from all core MCD 
 | NaN | updateRedemptionPrice \(NEW\) |
 | poke | updateCollateralPrice |
 | cage | disableContract |
+| NaN | AddAuthorization \(NEW\) |
+| NaN | RemoveAuthorization \(NEW\) |
+| NaN | DisableContract \(NEW\) |
+| NaN | ModifyParameters \(NEW\) |
+| NaN | UpdateRedemptionPrice \(NEW\) |
+| NaN | UpdateCollateralPrice \(NEW\) |
 
 | Jug | TaxCollector |
 | :--- | :--- |
@@ -324,6 +403,14 @@ The following tables show the before and after variable names from all core MCD 
 | NaN | distributeTax \(NEW\) |
 | NaN | CollectTax \(NEW\) |
 | NaN | DistributeTax \(NEW\) |
+| NaN | AddAuthorization \(NEW\) |
+| NaN | RemoveAuthorization \(NEW\) |
+| NaN | InitializeCollateralType \(NEW\) |
+| NaN | ModifyParameters \(NEW\) |
+| NaN | AddSecondaryReceiver \(NEW\) |
+| NaN | ModifySecondaryReceiver \(NEW\) |
+| NaN | CollectTax \(NEW\) |
+| NaN | DistributeTax \(NEW\) |
 
 | Pot | CoinSavingsAccount |
 | :--- | :--- |
@@ -342,6 +429,13 @@ The following tables show the before and after variable names from all core MCD 
 | NaN | nextAccumulatedRate \(NEW\) |
 | join | deposit |
 | exit | withdraw |
+| NaN | AddAuthorization \(NEW\) |
+| NaN | RemoveAuthorization \(NEW\) |
+| NaN | RemoveAuthorization \(NEW\) |
+| NaN | DisableContract \(NEW\) |
+| NaN | Deposit \(NEW\) |
+| NaN | Withdraw \(NEW\) |
+| NaN | UpdateAccumulatedRate \(NEW\) |
 
 | End | GlobalSettlement |
 | :--- | :--- |
@@ -376,6 +470,18 @@ The following tables show the before and after variable names from all core MCD 
 | flow | calculateCashPrice |
 | pack | prepareCoinsForRedeeming |
 | cash | redeemCollateral |
+| NaN | AddAuthorization \(NEW\) |
+| NaN | RemoveAuthorization \(NEW\) |
+| NaN | ModifyParameters \(NEW\) |
+| NaN | ShutdownSystem \(NEW\) |
+| NaN | FreezeCollateralType \(NEW\) |
+| NaN | FastTrackAuction \(NEW\) |
+| NaN | ProcessSAFE \(NEW\) |
+| NaN | FreeCollateral \(NEW\) |
+| NaN | SetOutstandingCoinSupply \(NEW\) |
+| NaN | CalculateCashPrice \(NEW\) |
+| NaN | PrepareCoinsForRedeeming \(NEW\) |
+| NaN | RedeemCollateral \(NEW\) |
 
 | Dai | Coin |
 | :--- | :--- |
