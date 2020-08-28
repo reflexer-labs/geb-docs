@@ -76,10 +76,10 @@ The `LiquidationEngine` enables external actors to liquidate SAFEs and send thei
 
 ## 3. Walkthrough
 
-`liquidateCDP` can be called at anytime but will only succeed if the CDP is underwater. A CDP is underwater when the result of its collateral \(`lockedCollateral`\) multiplied by the collateral's liquidation price \(`liquidationPrice`\) is smaller than its present value debt \(`generatedDebt` times the collateral's `accumulatedRates`\). 
+`liquidateCDP` can be called at anytime but will only succeed if the target SAFE is underwater. A SAFE is underwater when the result of its collateral \(`lockedCollateral`\) multiplied by the collateral's liquidation price \(`liquidationPrice`\) is smaller than its present value debt \(`generatedDebt` times the collateral's `accumulatedRates`\). 
 
 `liquidationPrice` is the oracle-reported price scaled by the collateral's liquidation ratio. There is a clear distinction between liquidation and safety ratios \(even though the two can be equal in value\):
 
-* Safety ratios are the minimum collateralization ratios used when generating debt against a CDP's collateral. They can be more conservative \(higher\) than liquidation ratios
-* Liquidation ratios are the minimum collateralization ratios under which CDPs are liquidated
+* Safety ratios are the minimum collateralization ratios used when generating debt against a SAFE's collateral. They can be more conservative \(higher\) than liquidation ratios
+* Liquidation ratios are the minimum collateralization ratios under which SAFEs are liquidated
 
