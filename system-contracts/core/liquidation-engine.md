@@ -17,7 +17,7 @@ The `LiquidationEngine` enables external actors to liquidate SAFEs and send thei
 * `safeEngine` - address that conforms to a `SAFEEngineLike` interface. It cannot be changed after the contract is instantiated.
 * `accountingEngine` - address that conforms to an `AccountingEngineLike` interface.
 * `chosenSAFESaviour[collateralType: bytes32, safe: address]` - stores the `SAFESaviour` chosen by a `safe` user in order to save their position from liquidation.
-* `cdpSaviours[saviour: address]` - stores contract addresses that can be used as `SAFESaviour`s.
+* `safeSaviours[saviour: address]` - stores contract addresses that can be used as `SAFESaviour`s.
   * A `SAFESaviour` can be "attached" to a `safe` by its owner. When an external actor calls `liquidateSAFE`, the `SAFESaviour` will try to add more collateral in the targeted `safe` and thus \(potentially\) save it from liquidation.
 * `mutex[collatralType: bytes32, safe: address]` - helps with preventing re-entrancy when `liquidateSAFE` calls a `SAFESaviour` in order to add more collateral to a position.
 * `collateralTypes` **-** stores `CollateralType` structs
@@ -38,8 +38,8 @@ The `LiquidationEngine` enables external actors to liquidate SAFEs and send thei
 **Functions**
 
 * `disableContract()` - disable the liquidation engine.
-* `connectSAFESaviour(saviour: address)` - governance controlled address that whitelists a `CDPSaviour`.
-* `disconnectSAFESaviour(saviour: address)` - governance controlled address that blacklists a `CDPSaviour`.
+* `connectSAFESaviour(saviour: address)` - governance controlled address that whitelists a `SAFESaviour`.
+* `disconnectSAFESaviour(saviour: address)` - governance controlled address that blacklists a `SAFESaviour`.
 * `addAuthorization(usr: address)` - add an address to `authorizedAddresses`.
 * `removeAuthorization(usr: address)` - remove an address from `authorizedAddresses`.
 * `modifyParameters(parameter: bytes32`, `data: address)` - modify an `address` variable.
@@ -51,32 +51,50 @@ The `LiquidationEngine` enables external actors to liquidate SAFEs and send thei
 
 #### **Events** <a id="events"></a>
 
-* `Liquidate`- emitted when a `liquidateCDP(bytes32, address)` is successfully executed. Contains:
-
-  * `collateralType`: Collateral
-  * `safe`: SAFE address
-  * `collateralAmount`: see `collateralToSell` in `liquidateSAFE`
-  * `debtAmount`: see `cdpDebt` in `liquidateSAFE`
-  * `amountToRaise`: see `amountToRaise` in `liquidateSAFE`
-  * `collateralAuctioneer`: address of the `CollateralAuctionHouse` contract
-  * `auctionId`: ID of the auction in the `CollateralAuctionHouse` 
-
+* `AddAuthorization` - emitted when a new address becomes authorized. Contains:
+  * `account` - the new authorized account
+* `RemoveAuthorization` - emitted when an address is de-authorized. Contains:
+  * account - the address that was de-authorized
+* `ConnectSAFESaviour` - emitted when a new SAFE savior becomes available to protect SAFEs from liquidation. Contains:
+  * `saviour` - the savior's address
+* `DisconnectSAFESaviour` - emitted when a SAFE savior is not available anymore to protect SAFEs. Contains:
+  * `saviour` - the savior's address
+* `UpdateCurrentOnAuctionSystemCoins` - emitted when `currentOnAuctionSystemCoins` is updated. Contains:
+  * `currentOnAuctionSystemCoins` - the current amount of system coins being requested across all active collateral auctions
+* `ModifyParameters` - emitted when a parameter is updated by an authorized account
+* `DisableContract` - emitted after the contract is disabled
+* `Liquidate`- emitted when a `liquidateSAFE(bytes32, address)` is successfully executed. Contains:
+  * `collateralType`- collateral
+  * `safe`- SAFE address
+  * `collateralAmount`- see `collateralToSell` in `liquidateSAFE`
+  * `debtAmount`- see `safeDebt` in `liquidateSAFE`
+  * `amountToRaise`- see `amountToRaise` in `liquidateSAFE`
+  * `collateralAuctioneer`- address of the `CollateralAuctionHouse` contract
+  * `auctionId`- ID of the auction in the `CollateralAuctionHouse` 
 * `SaveSAFE`- emitted when the liquidated SAFE has a `SAFESaviour` attached to it and an external actor calls `liquidateSAFE(bytes32, address)`.
 
   Contains:
 
-  * `collateralType`: The collateral type of the saved SAFE
-  * `safe`: SAFE address
-  * `collateralAdded`: amount of collateral added in the SAFE
+  * `collateralType`- The collateral type of the saved SAFE
+  * `safe`- SAFE address
+  * `collateralAdded`- amount of collateral added in the SAFE
+
+* `FailedSAFESave` - emitted when a savior fails to rescue a SAFE. Contains:
+  * `failReason` - the reason for failure
+* `ProtectSAFE` - emitted when a SAFE user chooses a SAFE savior for their position. Contains:
+  * `collateralType` - the collateral type locked in the protected SAFE
+  * `safe` - the SAFE's address
+  * `saviour` - the savior's address
 
 **Notes**
 
 * `liquidateSAFE`will not leave a SAFE with debt and no collateral.
+* `liquidateSAFE` will not start a new auction if `amountToRaise + currentOnAuctionSystemCoins` exceeds `onAuctionSystemCoinLimit`
 * `protectSAFE` will revert if the chosen `SAFESaviour` address was not whitelisted by governance.
 
 ## 3. Walkthrough
 
-`liquidateCDP` can be called at anytime but will only succeed if the target SAFE is underwater. A SAFE is underwater when the result of its collateral \(`lockedCollateral`\) multiplied by the collateral's liquidation price \(`liquidationPrice`\) is smaller than its present value debt \(`generatedDebt` times the collateral's `accumulatedRates`\). 
+`liquidateSAFE` can be called at anytime but will only succeed if the target SAFE is underwater. A SAFE is underwater when the result of its collateral \(`lockedCollateral`\) multiplied by the collateral's liquidation price \(`liquidationPrice`\) is smaller than its present value debt \(`generatedDebt` times the collateral's `accumulatedRates`\). 
 
 `liquidationPrice` is the oracle-reported price scaled by the collateral's liquidation ratio. There is a clear distinction between liquidation and safety ratios \(even though the two can be equal in value\):
 
