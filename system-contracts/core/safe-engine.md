@@ -116,6 +116,26 @@ The `SAFEEngine` stores SAFEs and tracks all debt and collateral balances. This 
   * `deltaCollateral` - the amount of collateral to confiscate
   * `deltaDebt` - the amount of debt to confiscate
   * `globalUnbackedDebt` - the total amount of global bad debt
+* `SettleDebt` - emitted when the contract settles bad debt with an equal amount of coins \(surplus\). Contains:
+  * `rad` - the amount of bad debt to settle
+  * `debtBalance` -  the resulting debt balance of `msg.sender`
+  * `coinBalance` - the resulting coin balance of `msg.sender`
+  * `globalUnbackedDebt` - the resulting amount of global bad debt
+  * `globalDebt` - the resulting amount of total global debt
+* `CreateUnbackedDebt` - emitted after creating debt out of thin air. Contains:
+  * `debtDestination` - the address that will receive debt
+  * `coinDestination` - the address that will receive the corresponding amount of coins
+  * `rad` - the amount of debt to issue
+  * `debtDstBalance` - the resulting amount of debt that the debt destination has
+  * `coinDstBalance` - the resulting amount of coins that the coin destination has
+  * `globalUnbackedDebt` - the resulting amount of global bad debt
+  * `globalDebt` - the resulting amount of total global debt
+* `UpdateAccumulatedRate` - emitted after updating the total accrued interest rate for a specific collateral type. Contains:
+  * `collateralType` - the identifier of the collateral type that had its rate accumulated
+  * `surplusDst` - the destination of the surplus accrued as a result of the rate being accumulated
+  * `rateMultiplier` - amount to be accumulated
+  * `dstCoinBalance` - coin balance of the address that received surplus
+  * `globalDebt` - total amount of global debt
 
 **Notes**
 
