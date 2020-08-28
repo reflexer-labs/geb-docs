@@ -6,28 +6,30 @@ description: The protocol's liquidation mechanism
 
 ## 1. Summary <a id="1-introduction-summary"></a>
 
-The `LiquidationEngine` enables external actors to liquidate CDPs and send their collateral to the [`CollateralAuctionHouse`](https://reflexer-labs.gitbook.io/geb/system-contracts/untitled/untitled-2) as well as send a portion of their debt to the `AccountingEngine`.
+The `LiquidationEngine` enables external actors to liquidate SAFEs and send their collateral to the [`CollateralAuctionHouse`](https://reflexer-labs.gitbook.io/geb/system-contracts/untitled/untitled-2) as well as send a portion of their debt to the `AccountingEngine`.
 
 ## 2. Contract Variables & Functions <a id="2-contract-details"></a>
 
 **Variables**
 
-* `contractEnabled` - must be `1` for the `LiquidationEngine` to `liquidateCDP` s. ****Used ****to indicate whether the contract is enabled.
+* `contractEnabled` - must be `1` for the `LiquidationEngine` to `liquidateSAFE` s. ****Used ****to indicate whether the contract is enabled.
 * `authorizedAccounts[usr: address]` - addresses allowed to call `modifyParameters()` and `disableContract()`
-* `cdpEngine` - address that conforms to a `CDPEngineLike` interface. It cannot be changed after the contract is instantiated.
+* `safeEngine` - address that conforms to a `SAFEEngineLike` interface. It cannot be changed after the contract is instantiated.
 * `accountingEngine` - address that conforms to an `AccountingEngineLike` interface.
-* `chosenCDPSaviour[collateralType: bytes32, cdp: address]` - stores the `CDPSaviour` chosen by a `cdp` user in order to save their position from liquidation.
-* `cdpSaviours[saviour: address]` - stores contract addresses that can be used as `CDPSaviour`s.
-  * A `CDPSaviour` can be "attached" to a `cdp` by its owner. When an external actor calls `liquidateCDP`, the `CDPSaviour` will try to add more collateral in the targeted `cdp` and thus \(potentially\) save it from liquidation.
-* `mutex[collatralType: bytes32, cdp: address]` - helps with preventing re-entrancy when `liquidateCDP` calls a `CDPSaviour` in order to add more collateral to a position.
+* `chosenSAFESaviour[collateralType: bytes32, safe: address]` - stores the `SAFESaviour` chosen by a `safe` user in order to save their position from liquidation.
+* `cdpSaviours[saviour: address]` - stores contract addresses that can be used as `SAFESaviour`s.
+  * A `SAFESaviour` can be "attached" to a `safe` by its owner. When an external actor calls `liquidateSAFE`, the `SAFESaviour` will try to add more collateral in the targeted `safe` and thus \(potentially\) save it from liquidation.
+* `mutex[collatralType: bytes32, safe: address]` - helps with preventing re-entrancy when `liquidateSAFE` calls a `SAFESaviour` in order to add more collateral to a position.
 * `collateralTypes` **-** stores `CollateralType` structs
+* `onAuctionSystemCoinLimit` - total amount of system coins that can be requested across all collateral auctions at any time
+* `currentOnAuctionSystemCoins` - amount of system coins requested across all current collateral auctions
 
 **Data Structures**
 
 * `CollateralType`:
   * `collateralAuctionHouse` - the address of the contract that auctions a specific collateral type.
-  * `liquidationPenalty` - penalty applied to a CDP when it is liquidated \(extra amount of debt that must be covered by an auction\).
-  * `collateralToSell` - maximum amount of collateral to sell in one auction.
+  * `liquidationPenalty` - penalty applied to a SAFE when it is liquidated \(extra amount of debt that must be covered by an auction\).
+  * `liquidationQuantity` - maximum amount of system coins to be requested in one collateral auction.
 
 **Modifiers**
 
@@ -36,15 +38,16 @@ The `LiquidationEngine` enables external actors to liquidate CDPs and send their
 **Functions**
 
 * `disableContract()` - disable the liquidation engine.
-* `connectCDPSaviour(saviour: address)` - governance controlled address that whitelists a `CDPSaviour`.
-* `disconnectCDPSaviour(saviour: address)` - governance controlled address that blacklists a `CDPSaviour`.
+* `connectSAFESaviour(saviour: address)` - governance controlled address that whitelists a `CDPSaviour`.
+* `disconnectSAFESaviour(saviour: address)` - governance controlled address that blacklists a `CDPSaviour`.
 * `addAuthorization(usr: address)` - add an address to `authorizedAddresses`.
 * `removeAuthorization(usr: address)` - remove an address from `authorizedAddresses`.
 * `modifyParameters(parameter: bytes32`, `data: address)` - modify an `address` variable.
 * `modifyParameters(collateralType: bytes32`, `parameter: bytes32`, `data: uint256)` - modify a collateral specific `uint256` parameter.
 * `modifyParameters(collateralType: bytes32`, `parameter: bytes32`, `data: address)` - modify a collateral specific `address` parameter.
-* `liquidateCDP(collateralType: bytes32`, `cdp: address)` - will revert if `lockedCollateral` or `generatedDebt` are larger than or equal to 2^255.
-* `protectCDP(bytes32, address, address)` will revert if the proposed `CDPSaviour` address was not whitelisted by governance.
+* `liquidateSAFE(collateralType: bytes32`, `safe: address)` - will revert if `lockedCollateral` or `generatedDebt` are larger than or equal to 2^255.
+* `protectSAFE(collateralType: bytes32, address, address)` will revert if the proposed `SAFESaviour` address was not whitelisted by governance
+* `removeCoinsFromAuction(rad: uint256)` - signal that an amount of system coins has been covered by a collateral auction and it can now be subtracted from `currentOnAuctionSystemCoins`
 
 #### **Events** <a id="events"></a>
 
