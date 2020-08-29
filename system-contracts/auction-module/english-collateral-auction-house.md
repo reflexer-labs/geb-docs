@@ -6,7 +6,7 @@ description: English collateral auctioneer that tries to recapitalize the system
 
 ## 1. Summary <a id="1-introduction-summary"></a>
 
-English collateral auctions are used to sell collateral from CDPs that have become undercollateralized in order to preserve the overall system health. The `LiquidationEngine` sends collateral to the `EnglishCollateralAuctionHouse` where it is auctioned in two phases: `increaseBidSize` and `decreaseSoldAmount`.
+English collateral auctions are used to sell collateral from SAFEs that have become undercollateralized in order to preserve the overall system health. The `LiquidationEngine` sends collateral to the `EnglishCollateralAuctionHouse` where it is auctioned in two phases: `increaseBidSize` and `decreaseSoldAmount`.
 
 ## 2. Contract Variables & Functions <a id="2-contract-details"></a>
 
@@ -16,7 +16,7 @@ English collateral auctions are used to sell collateral from CDPs that have beco
 * `AUCTION_HOUSE_TYPE` - flag set to `bytes32("COLLATERAL")`
 * `AUCTION_TYPE` - flag set to `bytes32("ENGLISH")`.
 * `authorizedAccounts[usr: address]` - addresses allowed to call `modifyParameters()` and `disableContract()`.
-* `cdpEngine` - storage of the `CDPEngine`'s address.
+* `safeEngine` - storage of the `SAFEEngine`'s address.
 * `bids[id: uint]` - storage of all bids.
 * `collateralType` - id of the collateral type for which the `CollateralAuctionHouse` is responsible.
 * `bidIncrease` - minimum bid increase \(default: 5%\).
@@ -35,7 +35,7 @@ English collateral auctions are used to sell collateral from CDPs that have beco
   * `highBidder`
   * `bidExpiry` - when a bid expires \(and the auction ends\)
   * `auctionDeadline` - max auction duration
-  * `forgoneCollateralReceiver` - address of the CDP being auctioned. Receives collateral during the `decreaseSoldAmount` phase
+  * `forgoneCollateralReceiver` - address of the SAFE being auctioned. Receives collateral during the `decreaseSoldAmount` phase
   * `auctionIncomeRecipient` - recipient of auction income / receives system coin income \(this is the `AccountingEngine` contract\)
   * `amountToRaise` - total system coins wanted from the auction
 
@@ -67,14 +67,14 @@ English collateral auctions are used to sell collateral from CDPs that have beco
   * `amountToSell` - amount of collateral sold in the auction
   * `initialBid` - starting bid for the auction \(usually zero\).
   * `amountToRaise` - amount of system coins that should be raised by the auction.
-  * `forgoneCollateralReceiver` - receiver of leftover collateral \(usually the CDP whose collateral was confiscated by the `LiquidationEngine`\).
+  * `forgoneCollateralReceiver` - receiver of leftover collateral \(usually the SAFE whose collateral was confiscated by the `LiquidationEngine`\).
   * `auctionIncomeRecipient` - receiver of system coins \(usually the `AccountingEngine`\).
 
 ## 3. Walkthrough <a id="3-key-mechanisms-and-concepts"></a>
 
 Starting in the `increaseBidSize`-phase, bidders compete for an `amountToSell` of collateral with increasing bid amounts of system coins. The very first `bidAmount` will need to be higher than or equal to `latest collateral price in collateral FSM * bidToMarketPriceRatio / RAY.` This ensures that no bidder can submit an extremely small `bidAmount` and thus pay a small price for the entire `amountToSell` collateral. 
 
-Once `amountToRaise` amount of system coins has been raised, the auction moves to the `decreaseSoldAmount`-phase. This phase is meant to incentivize bidders to returns as much collateral as possible back to the CDP while still paying `amountToRaise` system coins.
+Once `amountToRaise` amount of system coins has been raised, the auction moves to the `decreaseSoldAmount`-phase. This phase is meant to incentivize bidders to returns as much collateral as possible back to the SAFE while still paying `amountToRaise` system coins.
 
-Once the auction's last bid has expired or the auction itself has reached the `auctionDeadline` anyone can call `settleAuction` to payout the highest bidder \(`Bid.highBidder`\). This moves collateral from the `CollateralAuctionHouse`'s balance in the `CDPEngine` to the winning bidder's balance.
+Once the auction's last bid has expired or the auction itself has reached the `auctionDeadline` anyone can call `settleAuction` to payout the highest bidder \(`Bid.highBidder`\). This moves collateral from the `CollateralAuctionHouse`'s balance in the `SAFEEngine` to the winning bidder's balance.
 
