@@ -100,7 +100,7 @@ There are several components that come together when the contract calculates the
 
 Similar to `English` auctions, when the auction is settled \(or terminated prematurely\), the contract will call the `LiquidationEngine` in order to `removeCoinsFromAuction` \(subtract `bids[auctionId].amountToRaise` from `LiquidationEngine.currentOnAuctionSystemCoins`\).
 
-## 4. `gebCollateralBought` Formula <a id="3-key-mechanisms-and-concepts"></a>
+## 4. `getCollateralBought` Formula <a id="3-key-mechanisms-and-concepts"></a>
 
 ## 5. Examples <a id="3-key-mechanisms-and-concepts"></a>
 
