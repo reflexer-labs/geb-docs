@@ -25,7 +25,8 @@ English collateral auctions are used to sell collateral from SAFEs that have bec
 * `auctionsStarted` - total auction count, used to track auction `id`s.
 * `bidToMarketPriceRatio` - the minimum size of the first bid compared to the latest recorded collateral price ****\(for `collateralType`\) in the system.
 * `oracleRelayer` - address of the `OracleRelayer`.
-* `osm` - collateral type `OSM` address.
+* `osm` - collateral type `OSM` address
+* `liquidationEngine` - the address of the `LiquidationEngine`
 
 **Data Structures**
 
@@ -104,4 +105,6 @@ Starting in the `increaseBidSize`-phase, bidders compete for an `amountToSell` o
 Once `amountToRaise` amount of system coins has been raised, the auction moves to the `decreaseSoldAmount`-phase. This phase is meant to incentivize bidders to returns as much collateral as possible back to the SAFE while still paying `amountToRaise` system coins.
 
 Once the auction's last bid has expired or the auction itself has reached the `auctionDeadline` anyone can call `settleAuction` to payout the highest bidder \(`Bid.highBidder`\). This moves collateral from the `CollateralAuctionHouse`'s balance in the `SAFEEngine` to the winning bidder's balance.
+
+When the auction is settled \(or terminated prematurely\), the contract will call the `LiquidationEngine` in order to `removeCoinsFromAuction` \(subtract `bids[auctionId].amountToRaise` from `LiquidationEngine.currentOnAuctionSystemCoins`\).
 
