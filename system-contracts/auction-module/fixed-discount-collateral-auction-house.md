@@ -102,5 +102,7 @@ Similar to `English` auctions, when the auction is settled \(or terminated prema
 
 ## 4. `getCollateralBought` Formula <a id="3-key-mechanisms-and-concepts"></a>
 
+
+
 ## 5. Examples <a id="3-key-mechanisms-and-concepts"></a>
 
