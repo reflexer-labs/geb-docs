@@ -155,7 +155,7 @@ discountedSystemCoinCollateralPrice
 
 boughtCollateralAmount 
     = submittedBid * WAD / discountedSystemCoinCollateralPrice
-    = 0.584795322 * WAD
+    = 0.292397661 * WAD
 ```
 
 ```text
