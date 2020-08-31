@@ -100,9 +100,115 @@ There are several components that come together when the contract calculates the
 
 Similar to `English` auctions, when the auction is settled \(or terminated prematurely\), the contract will call the `LiquidationEngine` in order to `removeCoinsFromAuction` \(subtract `bids[auctionId].amountToRaise` from `LiquidationEngine.currentOnAuctionSystemCoins`\).
 
-## 4. `getCollateralBought` Formula <a id="3-key-mechanisms-and-concepts"></a>
+## 4. Gotchas <a id="3-key-mechanisms-and-concepts"></a>
 
-
+* In case someone bids an amount that is higher than the remaining amount of system coins which still need to be raised, the contract will only charge for the remaining amount [plus one extra system coin](https://github.com/reflexer-labs/geb/blob/cbe4c6f50e8fc25fcd380206b31c580e23a979d9/src/CollateralAuctionHouse.sol#L774) \(meant to prevent dusty auctions\)
+* You must always submit a bid that is higher than or equal to `minimumBid`, even if the remaining amount of system coins to raise is smaller than that. The contract will take care of charging only for the amount needed to cover the total `amountToRaise` \(plus an extra coin for rounding up\)
+* The auctions use the system coin `redemptionPrice` by default and not the market price
 
 ## 5. Examples <a id="3-key-mechanisms-and-concepts"></a>
+
+```text
+// Scenario 1
+
+minimumBid                     = 5 * WAD  // 5 coins
+discount                       = 0.95E18  // 5%
+lowerCollateralMedianDeviation = 0.90E18  // 10%
+upperCollateralMedianDeviation = 0.95E18  // 5%
+lowerSystemCoinMedianDeviation = WAD      // 0%
+upperSystemCoinMedianDeviation = WAD      // 0%
+minSystemCoinMedianDeviation   = 0.999E18 // 0.1%
+
+collateralOsmPriceFeedValue    = 100 * WAD
+collateralMedianPriceFeedValue = 89 * WAD
+
+systemCoinRedemptionPrice      = 5 * RAY
+systemCoinMarketPrice          = 5.01 * RAY
+
+amountToSell                   = WAD
+amountToRaise                  = 10 * RAD
+
+submittedBid                   = 5 * WAD
+
+/* 
+    Because the collateral price fetched from the median is smaller than
+    the collateral's OSM price and it is also deviated more than what
+    lowerCollateralMedianDeviation permits (11%), the final collateral price 
+    used by the contract will be 
+    0.9 (lower collateral deviation) * 100 (collateral OSM price) = 90 USD
+*/
+finalCollateralPrice           = 90 * WAD
+
+/*
+    Even if the system coin market price is deviated from the redemption price,
+    both the lower and the upper systemCoinMedianDeviation are 0% so the contract
+    will use the redemption price
+*/
+finalSystemCoinPrice           = 5 * RAY
+
+/*
+    Determining the amount of collateral bought given the 5 system coin bid
+*/
+discountedSystemCoinCollateralPrice 
+    = (finalCollateralPrice * RAY / finalSystemCoinPrice) * discount / WAD 
+    = 17.1 * WAD
+
+boughtCollateralAmount 
+    = submittedBid * WAD / discountedSystemCoinCollateralPrice
+    = 0.584795322 * WAD
+```
+
+```text
+// Scenario 2
+
+minimumBid                     = 5 * WAD  // 5 coins
+discount                       = 0.95E18  // 5%
+lowerCollateralMedianDeviation = 0.90E18  // 10%
+upperCollateralMedianDeviation = 0.95E18  // 5%
+lowerSystemCoinMedianDeviation = 0.95E18  // 5%
+upperSystemCoinMedianDeviation = 0.98E18  // 2%
+minSystemCoinMedianDeviation   = 0.999E18 // 0.1%
+
+collateralOsmPriceFeedValue    = 100 * WAD
+collateralMedianPriceFeedValue = 89 * WAD
+
+systemCoinRedemptionPrice      = 5 * RAY
+systemCoinMarketPrice          = 5.1 * RAY
+
+amountToSell                   = WAD
+amountToRaise                  = 10 * RAD
+
+submittedBid                   = 15 * WAD
+
+/*
+    Given that the submittedBid is higher than the total remaining amount to raise,
+    the contract will adjust the bid (by also rounding up)
+*/
+adjustedBid = amountToRaise / RAY + 1 * WAD = 11 * WAD
+
+/*
+    Similar to Scenario 1, the final collateral price used by the contract 
+    will be 90 USD
+*/
+finalCollateralPrice           = 90 * WAD
+
+/*
+    The system coin market price is 2% deviated compared to the redemption price
+    and upperSystemCoinMedianDeviation is also 2% so the contract will pick
+    5 (redemption price) * 1.02 (allowed deviation) = 5.1 USD as the system
+    coin price
+*/
+finalSystemCoinPrice           = 5.1 * RAY
+
+/*
+    Determining the amount of collateral bought given the 11 adjusted system coin bid
+*/
+discountedSystemCoinCollateralPrice 
+    = (finalCollateralPrice * RAY / finalSystemCoinPrice) * discount / WAD 
+    = 16.764705882 * WAD
+
+boughtCollateralAmount 
+    = adjustedBid * WAD / discountedSystemCoinCollateralPrice
+    = 0.656140351 * WAD
+```
 
