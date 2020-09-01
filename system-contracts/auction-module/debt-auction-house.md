@@ -17,7 +17,7 @@ Debt Auctions are used to recapitalize the system by auctioning off protocol tok
 * `contractEnabled` - settlement flag \(`1` or `0`\).
 * `AUCTION_HOUSE_TYPE` - flag set to `bytes32("DEBT")`
 * `authorizedAccounts[usr: address]` - addresses allowed to call `modifyParameters()` and `disableContract()`.
-* `cdpEngine` - storage of the `CDPEngine`'s address.
+* `safeEngine` - storage of the `SAFEEngine`'s address.
 * `protocolToken` - token minted in exchange for system coins.
 * `accountingEngine` - address of the `AccountingEngine` \(receiver of system coins\).
 * `bids[id: uint]` - storage of all bids.
@@ -51,15 +51,43 @@ Debt Auctions are used to recapitalize the system by auctioning off protocol tok
 * `settleAuction(id: uint256)` - claim a winning bid / settles a completed auction
 * `terminateAuctionPrematurely(id: uint256)` - used during `GlobalSettlement` to terminate 
 
-  `decreaseSoldAmount`phase auctions and repay system coins \(using `cdpEngine.createUnbackedDebt` with the `accountingEngine` as the `debtDestination`\) to the highest bidder.
+  `decreaseSoldAmount`phase auctions and repay system coins \(using `safeEngine.createUnbackedDebt` with the `accountingEngine` as the `debtDestination`\) to the highest bidder.
 
 **Events**
 
-* `StartAuction`: emitted when `startAuction(address`, `uint256`, `uint256)` is successfully executed. Contains:
-  * `id` - auction id.
+* `AddAuthorization` - emitted when a new address becomes authorized. Contains:
+  * `account` - the new authorized account
+* `RemoveAuthorization` - emitted when an address is de-authorized. Contains:
+  * `account` - the address that was de-authorized
+* `StartAuction`- emitted when `startAuction(address`, `uint256`, `uint256)` is successfully executed. Contains:
+  * `id` - auction id
+  * `auctionsStarted` - total amount of auctions that have started up until now
   * `amountToSell` - amount of protocol tokens sold  in \(to be minted after\) the auction.
   * `initialBid` - starting bid for the auction.
-  * `incomeReceiver` ****- address that receives the system coins from an auction \(usually the `AccountingEngine`\).
+  * `incomeReceiver` ****- address that receives the system coins from an auction \(usually the `AccountingEngine`\)
+  * `auctionDeadline` - deadline for the auction with ID `id`
+  * `activeDebtAuctions` - the current number of active debt auctions
+* `ModifyParameters` - emitted after a parameter is modified
+* `RestartAuction` - emitted after an auction is restarted. Contains:
+  * `id` - the ID of the auction being restarted
+  * `auctionDeadline` - the new auction deadline
+* `DecreaseSoldAmount` - emitted when someone bids a smaller amount of protocol tokens for the same amount of system coins given in return. Contains:
+  * `id` - the ID of the auction that's being bid on
+  * `highBidder` - the new high bidder
+  * `amountToBuy` - the protocol token bid
+  * `bid` - the amount of system coins offered
+  * `bidExpiry` - the timestamp when the auction will end even if it's earlier than the `auctionDeadline`
+* `SettleAuction` - emitted after an auction is settled. Contains:
+  * `id` - the ID of the settled auction
+  * `activeDebtAuctions` - the new number of active debt auctions
+* `TerminateAuctionPrematurely` - emitted after an auction is settled before its official deadline. Contains:
+  * `id` - the ID of the auction that was terminated
+  * `sender` - the address that terminated the auction
+  * `highBidder` - the auction's high bidder
+  * `bidAmount` - the auction's bid amount
+  * `activeDebtAuctions` - the new number of active debt auctions
+* `DisableContract` - emitted after the contract is disabled. Contains:
+  * `sender` - the address that disabled the contract
 
 ## 3. Walkthrough <a id="3-key-mechanisms-and-concepts"></a>
 
