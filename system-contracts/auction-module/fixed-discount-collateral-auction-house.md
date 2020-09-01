@@ -73,13 +73,31 @@ Fixed discount collateral auctions are similar to their `English` counterpart in
 
 **Events**
 
-* `StartAuction`: emitted when `startAuction(address`, `address`, `uint256`, `uint256`, `uint256)` is successfully executed. Contains:
+* `AddAuthorization` - emitted when a new address becomes authorized. Contains:
+  * `account` - the new authorized account
+* `RemoveAuthorization` - emitted when an address is de-authorized. Contains:
+  * `account` - the address that was de-authorized
+* `StartAuction`- emitted when `startAuction(address`, `address`, `uint256`, `uint256`, `uint256)` is successfully executed. Contains:
   * `id` - auction id
+  * `auctionsStarted` - amount of auctions started up until now
   * `amountToSell` - amount of collateral sold in the auction
   * `initialBid` - starting bid for the auction \(usually zero\).
   * `amountToRaise` - amount of system coins that should be raised by the auction.
   * `forgoneCollateralReceiver` - receiver of leftover collateral \(usually the SAFE whose collateral was confiscated by the `LiquidationEngine`\).
   * `auctionIncomeRecipient` - receiver of system coins \(usually the `AccountingEngine`\).
+  * `auctionDeadline` - the auction's deadline
+* `ModifyParameters` - emitted when a parameter is modified
+* `BuyCollateral` - emitted when someone buys collateral from an auction. Contains:
+  * `id` - the ID of the auction from which collateral was bought
+  * `wad` - the bid size
+  * `boughtCollateral` - the amount of collateral that was bought
+* `SettleAuction` - emitted when someone settles an auction. Contains:
+  * `id` - the ID of the auction settled
+  * leftoverCollateral - the amount of collateral that hasn't been sold by the now settled auction
+* `TerminateAuctionPrematurely` - emitted when an auction is terminated before its deadline. Contains:
+  * `id` - the ID of the auction that was terminated
+  * `sender` - the address that terminated the auction
+  * `collateralAmount` - the amount of collateral still unauctioned
 
 ## 3. Walkthrough <a id="3-key-mechanisms-and-concepts"></a>
 

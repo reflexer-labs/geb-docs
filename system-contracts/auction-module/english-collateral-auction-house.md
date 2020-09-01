@@ -69,11 +69,13 @@ English collateral auctions are used to sell collateral from SAFEs that have bec
   * `account` - the address that was de-authorized
 * `StartAuction`- emitted when `startAuction(address`, `address`, `uint256`, `uint256`, `uint256)` is successfully executed. Contains:
   * `id` - auction id
+  * `auctionsStarted` - total amount of auctions started up until now
   * `amountToSell` - amount of collateral sold in the auction
   * `initialBid` - starting bid for the auction \(usually zero\).
   * `amountToRaise` - amount of system coins that should be raised by the auction.
   * `forgoneCollateralReceiver` - receiver of leftover collateral \(usually the SAFE whose collateral was confiscated by the `LiquidationEngine`\).
   * `auctionIncomeRecipient` - receiver of system coins \(usually the `AccountingEngine`\)
+  * `auctionDeadline` - the auction's deadline
 * `ModifyParameters` - emitted when a parameter is updated
 * `RestartAuction` - emitted when an auction restarts due to a lack of bids. Contains:
   * `id` - the ID of the auction to restart
