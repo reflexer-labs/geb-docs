@@ -2,7 +2,7 @@
 description: On-chain medianizer for multiple oracle networks
 ---
 
-# Oracle Network Medianizer
+# Oracle Network Median
 
 Coming soon!
 
