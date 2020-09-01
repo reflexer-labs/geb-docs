@@ -8,7 +8,7 @@ description: >-
 
 ## 1. Summary <a id="1-introduction-summary"></a>
 
-The surplus auction is used to sell off a fixed amount of the surplus in exchange for protocol tokens. The surplus comes from the **stability fees** charged to CDPs \(and stored in the `AccountingEngine`\). Bidders submit increasing amounts of protocol tokens and the winner receives all auctioned surplus in exchange for their coins which are burned.
+The surplus auction is used to sell off a fixed amount of the surplus in exchange for protocol tokens. The surplus comes from the **stability fees** charged to SAFEs \(and stored in the `AccountingEngine`\). Bidders submit increasing amounts of protocol tokens and the winner receives all auctioned surplus in exchange for their coins which are burned.
 
 There are two surplus auction flavours: a pre-settlement version meant to sell surplus before the system settles and a post-settlement one meant to sell any remaining surplus after global settlement is triggered.
 
@@ -20,7 +20,7 @@ There are two surplus auction flavours: a pre-settlement version meant to sell s
 * `AUCTION_HOUSE_TYPE` - flag set to `bytes32("SURPLUS")`
 * `authorizedAccounts[usr: address]` - addresses allowed to call `modifyParameters()` and `disableContract()`.
 * `bids[id: uint]` - storage of all `Bid`s by `id`
-* `cdpEngine` - storage of the CDPEngine's address
+* `safeEngine` - storage of the SAFEEngine's address
 * `protocolToken` - address of the protocol token
 * `auctionsStarted` - total auction count
 * `bidDuration` - bid lifetime / max bid duration \(default: 3 hours\)
@@ -52,10 +52,34 @@ There are two surplus auction flavours: a pre-settlement version meant to sell s
 
 **Events**
 
-* `StartAuction`: emitted when `startAuction(uint256`, `uint256)` is successfully executed. Contains:
-  * `id` - auction id.
+* `AddAuthorization` - emitted when a new address becomes authorized. Contains:
+  * `account` - the new authorized account
+* `RemoveAuthorization` - emitted when an address is de-authorized. Contains:
+  * `account` - the address that was de-authorized
+* `ModifyParameters` - emitted after a parameter is modified
+* `RestartAuction` - emitted after an auction is restarted. Contains:
+  * `id` - the ID of the auction being restarted
+  * `auctionDeadline` - the new auction deadline
+* `IncreaseBidSize` - emitted when someone bids a higher amount of protocol tokens for the same amount of system coins. Contains:
+  * `id` - the ID of the auction that's being bid on
+  * `highBidder` - the new high bidder
+  * `amountToBuy` - the amount of system coins to buy
+  * `bid` - the amount of protocol tokens bid
+  * `bidExpiry` - the new deadline when the auction will end which can be before the original `auctionDeadline`
+* `StartAuction`- emitted when `startAuction(uint256`, `uint256)` is successfully executed. Contains:
+  * `id` - auction id
+  * `auctionsStarted` - total amount of auctions that have started up until now
   * `amountToSell` - amount of system coins sold  in the auction.
-  * `initialBid` - starting bid for the auction.
+  * `initialBid` - starting bid for the auction
+  * `auctionDeadline` - the auction's deadline
+* `SettleAuction` - emitted after an auction is settled. Contains:
+  * `id` - the ID of the auction that was settled
+* `DisableContract` - emitted after the contract is disabled
+* `TerminateAuctionPrematurely` - emitted after an auction is terminated before its deadline. Contains:
+  * `id` - the ID of the auction that was terminated
+  * `sender` - the address that terminated the auction
+  * `highBidder` - the auction's high bidder
+  * `bidAmount` - the latest bid amount
 
 ## 3. Walkthrough <a id="3-key-mechanisms-and-concepts"></a>
 
