@@ -1,115 +1,103 @@
-# Class: Safe
+# Safe
 
 Represent a GEB safe. Has the safe state and provide helper function to calculate liquidation price, CRatio, etc...
 
 ## Constructors
 
++ **new Safe**\(`contracts`: ContractApis, `handler`: string, `debt`: BigNumber, `collateral`: BigNumber, `collateralType`: string, `isManaged`: boolean\): [_Safe_](safe.md)
 
-\+ **new Safe**(`contracts`: ContractApis, `handler`: string, `debt`: BigNumber, `collateral`: BigNumber, `collateralType`: string, `isManaged`: boolean): *[Safe](safe.md)*
-
-*Defined in [packages/geb/src/schema/safe.ts:8](https://github.com/reflexer-labs/geb.js/blob/0d629f0/packages/geb/src/schema/safe.ts#L8)*
+_Defined in_ [_packages/geb/src/schema/safe.ts:8_](https://github.com/reflexer-labs/geb.js/blob/0d629f0/packages/geb/src/schema/safe.ts#L8)
 
 **Parameters:**
 
-Name | Type |
------- | ------ |
-`contracts` | ContractApis |
-`handler` | string |
-`debt` | BigNumber |
-`collateral` | BigNumber |
-`collateralType` | string |
-`isManaged` | boolean |
+| Name | Type |
+| :--- | :--- |
+| `contracts` | ContractApis |
+| `handler` | string |
+| `debt` | BigNumber |
+| `collateral` | BigNumber |
+| `collateralType` | string |
+| `isManaged` | boolean |
 
-**Returns:** *[Safe](safe.md)*
+**Returns:** [_Safe_](safe.md)
 
 ## Properties
 
-###  collateral
+### collateral
 
-• **collateral**: *BigNumber*
+• **collateral**: _BigNumber_
 
-*Defined in [packages/geb/src/schema/safe.ts:23](https://github.com/reflexer-labs/geb.js/blob/0d629f0/packages/geb/src/schema/safe.ts#L23)*
+_Defined in_ [_packages/geb/src/schema/safe.ts:23_](https://github.com/reflexer-labs/geb.js/blob/0d629f0/packages/geb/src/schema/safe.ts#L23)
 
 Amount of collateral of the safe as a WAD
 
-___
+### collateralType
 
-###  collateralType
+• **collateralType**: _string_
 
-• **collateralType**: *string*
+_Defined in_ [_packages/geb/src/schema/safe.ts:27_](https://github.com/reflexer-labs/geb.js/blob/0d629f0/packages/geb/src/schema/safe.ts#L27)
 
-*Defined in [packages/geb/src/schema/safe.ts:27](https://github.com/reflexer-labs/geb.js/blob/0d629f0/packages/geb/src/schema/safe.ts#L27)*
+Collateral type of the safe \(ETH-A only\)
 
-Collateral type of the safe (ETH-A only)
+### debt
 
-___
+• **debt**: _BigNumber_
 
-###  debt
-
-• **debt**: *BigNumber*
-
-*Defined in [packages/geb/src/schema/safe.ts:19](https://github.com/reflexer-labs/geb.js/blob/0d629f0/packages/geb/src/schema/safe.ts#L19)*
+_Defined in_ [_packages/geb/src/schema/safe.ts:19_](https://github.com/reflexer-labs/geb.js/blob/0d629f0/packages/geb/src/schema/safe.ts#L19)
 
 Amount of debt of the safe as a WAD
 
-___
+### handler
 
-###  handler
+• **handler**: _string_
 
-• **handler**: *string*
-
-*Defined in [packages/geb/src/schema/safe.ts:15](https://github.com/reflexer-labs/geb.js/blob/0d629f0/packages/geb/src/schema/safe.ts#L15)*
+_Defined in_ [_packages/geb/src/schema/safe.ts:15_](https://github.com/reflexer-labs/geb.js/blob/0d629f0/packages/geb/src/schema/safe.ts#L15)
 
 Safe handler in safe engine
 
-___
+### isManaged
 
-###  isManaged
+• **isManaged**: _boolean_
 
-• **isManaged**: *boolean*
-
-*Defined in [packages/geb/src/schema/safe.ts:31](https://github.com/reflexer-labs/geb.js/blob/0d629f0/packages/geb/src/schema/safe.ts#L31)*
+_Defined in_ [_packages/geb/src/schema/safe.ts:31_](https://github.com/reflexer-labs/geb.js/blob/0d629f0/packages/geb/src/schema/safe.ts#L31)
 
 If the safe was open through the safe manager
 
 ## Methods
 
-###  getCRatio
+### getCRatio
 
-▸ **getCRatio**(): *Promise‹FixedNumber | null›*
+▸ **getCRatio**\(\): _Promise‹FixedNumber \| null›_
 
-*Defined in [packages/geb/src/schema/safe.ts:38](https://github.com/reflexer-labs/geb.js/blob/0d629f0/packages/geb/src/schema/safe.ts#L38)*
+_Defined in_ [_packages/geb/src/schema/safe.ts:38_](https://github.com/reflexer-labs/geb.js/blob/0d629f0/packages/geb/src/schema/safe.ts#L38)
 
 Ratio used to calculate the amount of debt that can be drawn. Returns null is ratio is +Infinity. !! Use unsafe division leading to precision loss.
 
-**Returns:** *Promise‹FixedNumber | null›*
+**Returns:** _Promise‹FixedNumber \| null›_
 
-Promise<FixedNumber> CRatio
+Promise CRatio
 
-___
+### getLRatio
 
-###  getLRatio
+▸ **getLRatio**\(\): _Promise‹FixedNumber \| null›_
 
-▸ **getLRatio**(): *Promise‹FixedNumber | null›*
-
-*Defined in [packages/geb/src/schema/safe.ts:61](https://github.com/reflexer-labs/geb.js/blob/0d629f0/packages/geb/src/schema/safe.ts#L61)*
+_Defined in_ [_packages/geb/src/schema/safe.ts:61_](https://github.com/reflexer-labs/geb.js/blob/0d629f0/packages/geb/src/schema/safe.ts#L61)
 
 Ratio used for liquidation. If LRatio = 1 you can get liquidated, the greater LRatio the safer your safe is. !! Use unsafe division leading to precision loss.
 
-**Returns:** *Promise‹FixedNumber | null›*
+**Returns:** _Promise‹FixedNumber \| null›_
 
-Promise<FixedNumber> LRatio
+Promise LRatio
 
-___
+### liquidationPrice
 
-###  liquidationPrice
+▸ **liquidationPrice**\(\): _Promise‹FixedNumber \| null›_
 
-▸ **liquidationPrice**(): *Promise‹FixedNumber | null›*
-
-*Defined in [packages/geb/src/schema/safe.ts:84](https://github.com/reflexer-labs/geb.js/blob/0d629f0/packages/geb/src/schema/safe.ts#L84)*
+_Defined in_ [_packages/geb/src/schema/safe.ts:84_](https://github.com/reflexer-labs/geb.js/blob/0d629f0/packages/geb/src/schema/safe.ts#L84)
 
 Price at which the safe would get liquidated.
 
-**Returns:** *Promise‹FixedNumber | null›*
+**Returns:** _Promise‹FixedNumber \| null›_
 
-<FixedNumber> Liquidation price
+ Liquidation price
+

@@ -1,4 +1,4 @@
-# GEB.js
+# Getting started
 
 Library to interact with the GEB smart contracts. Manage your safes, mint RAI, inspect the system state, and much more.
 
@@ -6,7 +6,7 @@ The library is written in Typescript with full typing support. It allows access 
 
 ## Install
 
-```
+```text
 npm install geb.js
 ```
 
@@ -14,7 +14,7 @@ npm install geb.js
 
 At the moment, Geb.js requires to use [Ether.js](https://www.npmjs.com/package/ethers) V5. In the future we will support Web3.
 
-```
+```text
 npm install ethers
 ```
 
@@ -60,3 +60,4 @@ console.log(`Transaction ${pending.hash} waiting to be mined...`)
 await pending.wait() // Wait for it to be mined
 console.log('Transaction mined, safe opened!')
 ```
+

@@ -71,8 +71,4 @@
 * [Geb](geb-js/geb.md)
 * [Safe](geb-js/safe.md)
 * [Proxy actions](geb-js/gebproxyactions.md)
-* [Untitled](geb-js/untitled.md)
-* [Untitled](geb-js/untitled-1.md)
-* [Untitled](geb-js/untitled-2.md)
-* [Untitled](geb-js/untitled-3.md)
 
