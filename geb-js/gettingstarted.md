@@ -62,7 +62,7 @@ console.log('Transaction mined, safe opened!')
 Deploy a GEB proxy to use proxy action:
 ```typescript
 const tx = geb.deployProxy()
-wallet.sendTransaction(tx)
+await wallet.sendTransaction(tx)
 ```
 
 Use the low level API to make direct contract calls:
