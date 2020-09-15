@@ -6,7 +6,7 @@ description: Chainlink integrated medianizer
 
 ## 1. Summary <a id="1-introduction"></a>
 
-The Chainlink medianizer has a similar interface to the [Governance Led Median](https://reflexer-labs.gitbook.io/geb/system-contracts/untitled-1/medianizer/governance-led) although, instead of relying on governance whitelisted oracles, it simply keeps a reference to a [Chainlink price reference contract](https://feeds.chain.link/) \(price aggregator\).
+The `ChainlinkPriceFeedMedianizer` has a similar interface to the [Governance Led Median](https://reflexer-labs.gitbook.io/geb/system-contracts/untitled-1/medianizer/governance-led) although, instead of relying on governance whitelisted oracles, it simply keeps a reference to a [Chainlink price reference contract](https://feeds.chain.link/) \(price aggregator\).
 
 ## 2. Contract Variables & Functions <a id="2-contract-details"></a>
 
