@@ -24,9 +24,8 @@ import { GebAdmin } from "@reflexer-finance/geb-admin"
 
 \+ **new GebAdmin**(`network`: GebDeployment, `provider`: GebProviderInterface | Provider): *[GebAdmin](gebadmin.md)*
 
-*
 
-*Defined in [packages/geb-admin/src/geb-admin.ts:57](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb-admin/src/geb-admin.ts#L57)*
+*Defined in [packages/geb-admin/src/geb-admin.ts:57](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb-admin/src/geb-admin.ts#L57)*
 
 **Parameters:**
 
@@ -74,7 +73,7 @@ ___
 
 • **contractsAdmin**: *AdminApis*
 
-*Defined in [packages/geb-admin/src/geb-admin.ts:57](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb-admin/src/geb-admin.ts#L57)*
+*Defined in [packages/geb-admin/src/geb-admin.ts:57](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb-admin/src/geb-admin.ts#L57)*
 
 Object containing all GEB admin contracts instances for low level interactions.
 Currently has the following contracts:

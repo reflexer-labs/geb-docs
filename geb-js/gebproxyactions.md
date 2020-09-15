@@ -7,9 +7,8 @@ Convenience class to call function from Proxy Action contract through a proxy re
 
 \+ **new GebProxyActions**(`proxyAddress`: string, `network`: GebDeployment, `chainProvider`: GebProviderInterface): *[GebProxyActions](gebproxyactions.md)*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:33](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L33)*
+*Defined in [packages/geb/src/proxy-action.ts:33](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L33)*
 
 **Parameters:**
 
@@ -47,7 +46,7 @@ ___
 
 • **proxy**: *DsProxy*
 
-*Defined in [packages/geb/src/proxy-action.ts:27](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L27)*
+*Defined in [packages/geb/src/proxy-action.ts:27](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L27)*
 
 Underlying proxy object. Can be use to make custom calls to the proxy using `proxy.execute()` function.
 For the details of each function
@@ -58,7 +57,7 @@ ___
 
 • **proxyActionAddress**: *string*
 
-*Defined in [packages/geb/src/proxy-action.ts:32](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L32)*
+*Defined in [packages/geb/src/proxy-action.ts:32](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L32)*
 
 Address of the proxy action contract.
 
@@ -68,7 +67,7 @@ ___
 
 • **proxyAddress**: *string*
 
-*Defined in [packages/geb/src/proxy-action.ts:39](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L39)*
+*Defined in [packages/geb/src/proxy-action.ts:39](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L39)*
 
 Address of the underlying proxy
 
@@ -78,9 +77,8 @@ Address of the underlying proxy
 
 ▸ **allowHandler**(`usr`: string, `ok`: BigNumberish): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:65](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L65)*
+*Defined in [packages/geb/src/proxy-action.ts:65](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L65)*
 
 **Parameters:**
 
@@ -97,9 +95,8 @@ ___
 
 ▸ **allowSAFE**(`safe`: BigNumberish, `usr`: string, `ok`: BigNumberish): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:71](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L71)*
+*Defined in [packages/geb/src/proxy-action.ts:71](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L71)*
 
 **Parameters:**
 
@@ -117,9 +114,8 @@ ___
 
 ▸ **approveSAFEModification**(`obj`: string, `usr`: string): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:81](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L81)*
+*Defined in [packages/geb/src/proxy-action.ts:81](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L81)*
 
 **Parameters:**
 
@@ -136,9 +132,8 @@ ___
 
 ▸ **coinJoin_join**(`apt`: string, `safeHandler`: string, `wad`: BigNumberish): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:87](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L87)*
+*Defined in [packages/geb/src/proxy-action.ts:87](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L87)*
 
 **Parameters:**
 
@@ -156,9 +151,8 @@ ___
 
 ▸ **denySAFEModification**(`obj`: string, `usr`: string): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:97](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L97)*
+*Defined in [packages/geb/src/proxy-action.ts:97](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L97)*
 
 **Parameters:**
 
@@ -175,9 +169,8 @@ ___
 
 ▸ **enterSystem**(`src`: string, `safe`: BigNumberish): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:103](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L103)*
+*Defined in [packages/geb/src/proxy-action.ts:103](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L103)*
 
 **Parameters:**
 
@@ -194,9 +187,8 @@ ___
 
 ▸ **ethJoin_join**(`ethValue`: BigNumberish, `apt`: string, `safe`: string): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:109](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L109)*
+*Defined in [packages/geb/src/proxy-action.ts:109](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L109)*
 
 **Parameters:**
 
@@ -214,9 +206,8 @@ ___
 
 ▸ **exitETH**(`safe`: BigNumberish, `wad`: BigNumberish): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:119](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L119)*
+*Defined in [packages/geb/src/proxy-action.ts:119](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L119)*
 
 **Parameters:**
 
@@ -233,9 +224,8 @@ ___
 
 ▸ **exitTokenCollateral**(`collateralJoin`: string, `safe`: BigNumberish, `amt`: BigNumberish): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:125](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L125)*
+*Defined in [packages/geb/src/proxy-action.ts:125](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L125)*
 
 **Parameters:**
 
@@ -253,9 +243,8 @@ ___
 
 ▸ **freeETH**(`safe`: BigNumberish, `wad`: BigNumberish): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:135](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L135)*
+*Defined in [packages/geb/src/proxy-action.ts:135](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L135)*
 
 **Parameters:**
 
@@ -272,9 +261,8 @@ ___
 
 ▸ **freeTokenCollateral**(`collateralJoin`: string, `safe`: BigNumberish, `amt`: BigNumberish): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:141](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L141)*
+*Defined in [packages/geb/src/proxy-action.ts:141](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L141)*
 
 **Parameters:**
 
@@ -292,9 +280,8 @@ ___
 
 ▸ **generateDebt**(`safe`: BigNumberish, `wad`: BigNumberish): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:151](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L151)*
+*Defined in [packages/geb/src/proxy-action.ts:151](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L151)*
 
 **Parameters:**
 
@@ -311,9 +298,8 @@ ___
 
 ▸ **generateDebtAndProtectSAFE**(`safe`: BigNumberish, `wad`: BigNumberish, `saviour`: string): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:157](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L157)*
+*Defined in [packages/geb/src/proxy-action.ts:157](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L157)*
 
 **Parameters:**
 
@@ -331,9 +317,8 @@ ___
 
 ▸ **lockETH**(`ethValue`: BigNumberish, `safe`: BigNumberish): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:167](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L167)*
+*Defined in [packages/geb/src/proxy-action.ts:167](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L167)*
 
 **Parameters:**
 
@@ -350,9 +335,8 @@ ___
 
 ▸ **lockETHAndGenerateDebt**(`ethValue`: BigNumberish, `safe`: BigNumberish, `deltaWad`: BigNumberish): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:173](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L173)*
+*Defined in [packages/geb/src/proxy-action.ts:173](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L173)*
 
 **Parameters:**
 
@@ -444,9 +428,8 @@ ___
 
 ▸ **makeCollateralBag**(`collateralJoin`: string): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:219](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L219)*
+*Defined in [packages/geb/src/proxy-action.ts:219](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L219)*
 
 **Parameters:**
 
@@ -462,9 +445,8 @@ ___
 
 ▸ **modifySAFECollateralization**(`safe`: BigNumberish, `deltaCollateral`: BigNumberish, `deltaDebt`: BigNumberish): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:225](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L225)*
+*Defined in [packages/geb/src/proxy-action.ts:225](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L225)*
 
 **Parameters:**
 
@@ -482,9 +464,8 @@ ___
 
 ▸ **moveSAFE**(`safeSrc`: BigNumberish, `safeDst`: BigNumberish): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:235](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L235)*
+*Defined in [packages/geb/src/proxy-action.ts:235](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L235)*
 
 **Parameters:**
 
@@ -501,9 +482,8 @@ ___
 
 ▸ **openLockETHAndGenerateDebt**(`ethValue`: BigNumberish, `collateralType`: BytesLike, `deltaWad`: BigNumberish): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:241](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L241)*
+*Defined in [packages/geb/src/proxy-action.ts:241](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L241)*
 
 **Parameters:**
 
@@ -521,9 +501,8 @@ ___
 
 ▸ **openLockETHGenerateDebtAndProtectSAFE**(`ethValue`: BigNumberish, `collateralType`: BytesLike, `deltaWad`: BigNumberish, `saviour`: string): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:251](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L251)*
+*Defined in [packages/geb/src/proxy-action.ts:251](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L251)*
 
 **Parameters:**
 
@@ -542,9 +521,8 @@ ___
 
 ▸ **openLockGNTAndGenerateDebt**(`gntJoin`: string, `collateralType`: BytesLike, `collateralAmount`: BigNumberish, `deltaWad`: BigNumberish): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:262](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L262)*
+*Defined in [packages/geb/src/proxy-action.ts:262](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L262)*
 
 **Parameters:**
 
@@ -563,9 +541,8 @@ ___
 
 ▸ **openLockGNTGenerateDebtAndProtectSAFE**(`gntJoin`: string, `collateralType`: BytesLike, `collateralAmount`: BigNumberish, `deltaWad`: BigNumberish, `saviour`: string): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:273](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L273)*
+*Defined in [packages/geb/src/proxy-action.ts:273](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L273)*
 
 **Parameters:**
 
@@ -637,9 +614,8 @@ ___
 
 ▸ **openSAFE**(`collateralType`: BytesLike, `usr`: string): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:310](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L310)*
+*Defined in [packages/geb/src/proxy-action.ts:310](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L310)*
 
 **Parameters:**
 
@@ -656,9 +632,8 @@ ___
 
 ▸ **protectSAFE**(`safe`: BigNumberish, `saviour`: string): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:316](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L316)*
+*Defined in [packages/geb/src/proxy-action.ts:316](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L316)*
 
 **Parameters:**
 
@@ -675,9 +650,8 @@ ___
 
 ▸ **quitSystem**(`safe`: BigNumberish, `dst`: string): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:322](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L322)*
+*Defined in [packages/geb/src/proxy-action.ts:322](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L322)*
 
 **Parameters:**
 
@@ -694,9 +668,8 @@ ___
 
 ▸ **repayAllDebt**(`safe`: BigNumberish): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:328](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L328)*
+*Defined in [packages/geb/src/proxy-action.ts:328](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L328)*
 
 **Parameters:**
 
@@ -712,9 +685,8 @@ ___
 
 ▸ **repayAllDebtAndFreeETH**(`safe`: BigNumberish, `collateralWad`: BigNumberish): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:334](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L334)*
+*Defined in [packages/geb/src/proxy-action.ts:334](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L334)*
 
 **Parameters:**
 
@@ -731,9 +703,8 @@ ___
 
 ▸ **repayAllDebtAndFreeTokenCollateral**(`collateralJoin`: string, `safe`: BigNumberish, `collateralAmount`: BigNumberish): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:343](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L343)*
+*Defined in [packages/geb/src/proxy-action.ts:343](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L343)*
 
 **Parameters:**
 
@@ -751,9 +722,8 @@ ___
 
 ▸ **repayDebt**(`safe`: BigNumberish, `wad`: BigNumberish): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:353](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L353)*
+*Defined in [packages/geb/src/proxy-action.ts:353](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L353)*
 
 **Parameters:**
 
@@ -770,9 +740,8 @@ ___
 
 ▸ **repayDebtAndFreeETH**(`safe`: BigNumberish, `collateralWad`: BigNumberish, `deltaWad`: BigNumberish): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:359](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L359)*
+*Defined in [packages/geb/src/proxy-action.ts:359](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L359)*
 
 **Parameters:**
 
@@ -790,9 +759,8 @@ ___
 
 ▸ **repayDebtAndFreeTokenCollateral**(`collateralJoin`: string, `safe`: BigNumberish, `collateralAmount`: BigNumberish, `deltaWad`: BigNumberish): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:369](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L369)*
+*Defined in [packages/geb/src/proxy-action.ts:369](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L369)*
 
 **Parameters:**
 
@@ -811,9 +779,8 @@ ___
 
 ▸ **safeLockETH**(`ethValue`: BigNumberish, `safe`: BigNumberish, `owner`: string): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:380](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L380)*
+*Defined in [packages/geb/src/proxy-action.ts:380](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L380)*
 
 **Parameters:**
 
@@ -854,9 +821,8 @@ ___
 
 ▸ **safeRepayAllDebt**(`safe`: BigNumberish, `owner`: string): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:402](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L402)*
+*Defined in [packages/geb/src/proxy-action.ts:402](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L402)*
 
 **Parameters:**
 
@@ -873,9 +839,8 @@ ___
 
 ▸ **safeRepayDebt**(`safe`: BigNumberish, `wad`: BigNumberish, `owner`: string): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:408](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L408)*
+*Defined in [packages/geb/src/proxy-action.ts:408](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L408)*
 
 **Parameters:**
 
@@ -893,9 +858,8 @@ ___
 
 ▸ **tokenCollateralJoin_join**(`apt`: string, `safe`: string, `amt`: BigNumberish, `transferFrom`: boolean): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:418](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L418)*
+*Defined in [packages/geb/src/proxy-action.ts:418](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L418)*
 
 **Parameters:**
 
@@ -914,9 +878,8 @@ ___
 
 ▸ **transfer**(`collateral`: string, `dst`: string, `amt`: BigNumberish): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:429](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L429)*
+*Defined in [packages/geb/src/proxy-action.ts:429](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L429)*
 
 **Parameters:**
 
@@ -934,9 +897,8 @@ ___
 
 ▸ **transferCollateral**(`safe`: BigNumberish, `dst`: string, `wad`: BigNumberish): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:439](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L439)*
+*Defined in [packages/geb/src/proxy-action.ts:439](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L439)*
 
 **Parameters:**
 
@@ -954,9 +916,8 @@ ___
 
 ▸ **transferInternalCoins**(`safe`: BigNumberish, `dst`: string, `rad`: BigNumberish): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:449](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L449)*
+*Defined in [packages/geb/src/proxy-action.ts:449](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L449)*
 
 **Parameters:**
 
@@ -974,9 +935,8 @@ ___
 
 ▸ **transferSAFEOwnership**(`safe`: BigNumberish, `usr`: string): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:459](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L459)*
+*Defined in [packages/geb/src/proxy-action.ts:459](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L459)*
 
 **Parameters:**
 
@@ -993,9 +953,8 @@ ___
 
 ▸ **transferSAFEOwnershipToProxy**(`safe`: BigNumberish, `dst`: string): *TransactionRequest*
 
-*
 
-*Defined in [packages/geb/src/proxy-action.ts:465](https://github.com/reflexer-labs/geb.js/blob/fa013a3/packages/geb/src/proxy-action.ts#L465)*
+*Defined in [packages/geb/src/proxy-action.ts:465](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L465)*
 
 **Parameters:**
 
