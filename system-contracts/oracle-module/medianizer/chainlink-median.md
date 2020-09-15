@@ -35,5 +35,5 @@ The Chainlink medianizer has a similar interface to the [Governance Led Median](
 
 ## 3. Walkthrough
 
-Governance can update the `chainlinkAggregator` from which the contract fetches the price feed and stores it as the `medianPrice`. When reading the latest price feed, the contract also stores the timestamp when the price was posted on-chain.
+Governance can update the `chainlinkAggregator` from which the contract fetches the price feed and stores it as the `medianPrice`. When reading the latest price feed, the contract also stores the timestamp when the price coming from Chainlink was posted on-chain. The system incentivizes anyone to call `updateResult` and update the median price regularly.
 
