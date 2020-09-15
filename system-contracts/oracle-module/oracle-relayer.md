@@ -75,7 +75,11 @@ The `OracleRelayer` functions as an interface contract between `FSM`s and the `S
 2. When calculating the `safetyPrice` and the `liquidationPrice`, the `_redemptionPrice` is crucial as it defines the relationship between the system coin and one unit of collateral. The `value` from the `OSM` is  divided by the \(updated\) `redemptionPrice` \(to get a ratio of collateral `value` to system coins\) and then the result is divided again by the `collateralType.safetyCRatio` \(when calculating the `safetyPrice`\) and by the `collateralType.liquidationCRatio` \(when calculating the `liquidationPrice`\).
 3. `cdpEngine.modifyParameters` is then called to update the collateral's prices inside the system.
 
-### RedemptionPrice
+### Redemption Price
 
 Every time someone wants to read the `_redemptionPrice` its value will first be updated using the stored `redemptionRate` and then the output will be returned. We chose this design in order to ensure a smooth  `redemptionPrice` pro-ration \(using the virtual variable + a state modifying getter\).
+
+### Updating the Redemption Rate
+
+Every time the `redemptionRate` is updated, the contract makes sure to bound the value that is can be set to.
 
