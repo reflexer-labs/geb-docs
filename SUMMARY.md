@@ -39,8 +39,6 @@
   * [Protocol Token Authority](system-contracts/token-module/protocol-token-authority.md)
 * [Money Market Module](system-contracts/money-market-module/README.md)
   * [Tax Collector](system-contracts/money-market-module/tax-collector.md)
-* [Feedback Mechanism Module](system-contracts/feedback-mechanism-module/README.md)
-  * [Redemption Feedback Mechanism](system-contracts/feedback-mechanism-module/redemption-feedback-mechanism.md)
 * [Sustainability Module](system-contracts/sustainability-module/README.md)
   * [Stability Fee Treasury](system-contracts/sustainability-module/stability-fee-treasury.md)
 * [Governance Module](system-contracts/governance-module/README.md)
