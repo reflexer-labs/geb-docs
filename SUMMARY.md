@@ -72,4 +72,3 @@
 * [Proxy Actions Global Settlement](geb-js/gebproxyactionsglobalsettlement.md)
 * [Geb Admin](geb-js/gebadmin.md)
 
-

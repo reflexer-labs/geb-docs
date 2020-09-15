@@ -1,12 +1,12 @@
 ---
-description: The glue between price feeds and the CDP Engine
+description: The glue between price feeds and the SAFE Engine
 ---
 
 # Oracle Relayer
 
 ## 1. Summary <a id="1-introduction"></a>
 
-The `OracleRelayer` functions as an interface contract between `OSM`s and the `CDPEngine` and only stores the current `collateralType` list as well as the current `redemptionPrice` and `redemptionRate`. The relayer will depend on governance to set each collateral's safety and liquidation ratios and might also depend on an external [feedback mechanism](https://reflexer-labs.gitbook.io/geb/system-contracts/feedback-mechanism-module) to update the `redemptionRate` which affects the `redemptionPrice`.
+The `OracleRelayer` functions as an interface contract between `FSM`s and the `SAFEEngine` and only stores the current `collateralType` list as well as the current `redemptionPrice` and `redemptionRate`. The relayer will depend on governance to set each collateral's safety and liquidation ratios and might also depend on an external feedback mechanism to update the `redemptionRate` which affects the `redemptionPrice`.
 
 ## 2. Contract Variables & Functions <a id="2-contract-details"></a>
 
@@ -19,6 +19,8 @@ The `OracleRelayer` functions as an interface contract between `OSM`s and the `C
 * `redemptionRate` - the current redemption rate that reprices the system coin internally and changes user incentives
 * `_redemptionPrice` - virtual variable that does not reflect the latest `redemptionPrice`
 * `redemptionPriceUpdateTime` - last time when the redemption price was updated
+* `redemptionRateUpperBound` - maximum value that the `redemptionRate` can take
+* `redemptionRateLowerBound` - minimum value that the `redemptionRate` can take
 * `RAY` - number with 27 decimals
 
 **Data Structures**
@@ -35,6 +37,7 @@ The `OracleRelayer` functions as an interface contract between `OSM`s and the `C
 **Functions**
 
 * `modifyParameters(parameter: bytes32`, `data: uint256)` - update a `uint256` parameter.
+* `modifyParameters(parameter: bytes32`, `data: uint256)` - update a collateral related parameter.
 * `modifyParameters(collateralType: bytes32`, `parameter: bytes32`, `data: address)` - update an `address` parameter.
 * `addAuthorization(usr: address)` - add an address to `authorizedAddresses`.
 * `removeAuthorization(usr: address)` - remove an address from `authorizedAddresses`.
@@ -48,9 +51,17 @@ The `OracleRelayer` functions as an interface contract between `OSM`s and the `C
 
 **Events**
 
-* `UpdateCollateralPrice`: emitted when `updateCollateralPrice(bytes32)` is successfully executed.  Contains:
-  * `collateralType` - the collateral who's safety and liquidation prices have just been updated
-  * `priceFeedValue` - the latest collateral price feed
+* `AddAuthorization` - emitted when a new address becomes authorized. Contains:
+  * `account` - the new authorized account
+* `RemoveAuthorization` - emitted when an address is de-authorized. Contains:
+  * `account` - the address that was de-authorized
+* `DisableContract` - emitted when the contract is disabled.
+* `ModifyParameters` - emitted when a parameter is updated.
+* `UpdateRedemptionPrice` - emitted when the redemption price is updated. Contains:
+  * `redemptionPrice` - the latest redemption price
+* `UpdateCollateralPrice` - emitted when the safety and liquidation prices of a specific collateral price are updated. Contains:
+  * `collateralType` - the collateral type whose prices are updated
+  * `priceFeedValue` - the new price feed coming from the collateral's oracle
   * `safetyPrice` - the price computed by dividing the feed value by the `redemptionPrice` and then dividing the result again by the collateral's `safetyCRatio`
   * `liquidationPrice` - the price computed by dividing the feed value by the `redemptionPrice` and then dividing the result again by the collateral's `liquidationCRatio`
 
