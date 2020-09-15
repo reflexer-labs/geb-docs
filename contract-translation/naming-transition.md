@@ -349,6 +349,8 @@ The following tables show the before and after variable names from all core MCD 
 | vat | safeEngine |
 | par | redemptionPrice |
 | NaN | redemptionPriceUpdateTime \(NEW\) |
+| NaN | redemptionRateUpperBound \(NEW\) |
+| NaN | redemptionRateLowerBound \(NEW\) |
 | live | contractEnabled |
 | Poke | UpdateCollateralPrice |
 | file | modifyParameters |
