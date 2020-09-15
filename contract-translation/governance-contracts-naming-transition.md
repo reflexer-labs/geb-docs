@@ -2,23 +2,36 @@
 
 The following tables show the before and after variable names for MCD governance contracts.
 
-| DSPause | DSPause |
+| DSPause | DSPause/DSProtestPause |
 | :--- | :--- |
 | wait | isDelayed |
 | setOwner | setOwner |
 | setAuthority | setAuthority |
 | setDelay | setDelay |
 | plans | scheduledTransactions |
+| NaN | transactionDelays \(NEW\) \(DSProtestPause\) |
 | proxy | proxy |
 | delay | delay |
+| NaN | MAX\_DELAY \(NEW\) |
+| NaN | DS\_PAUSE\_TYPE \(NEW\) |
 | hash | getTransactionDataHash |
 | soul | getExtCodeHash |
+| NaN | setDelayMultiplier \(NEW\) \(DSProtestPause\) |
+| NaN | protestWindowAvailable \(NEW\) \(DSProtestPause\) |
+| NaN | timeUntilProposalProtestDeadline \(NEW\) \(DSProtestPause\) |
+| NaN | maxScheduledTransactions \(NEW\) |
+| NaN | protester \(NEW\) \(DSProtestPause\) |
+| NaN | protestEnd \(NEW\) \(DSProtestPause\) |
+| NaN | MAX\_DELAY\_MULTIPLIER \(NEW\) \(DSProtestPause\) |
 | plot | scheduleTransaction |
+| NaN | attachTransactionDescription \(NEW\) |
+| NaN | protestAgainstTransaction \(NEW\) \(DSProtestPause\) |
 | drop | abandonTransaction |
 | exec | executeTransaction |
 | eta | earliestExecutionTime |
 | fax | parameters |
 | tag | codeHash |
+| NaN | getTransactionDelays \(NEW\) \(DSProtestPause\) |
 
 | DSChief | VoteQuorum |
 | :--- | :--- |
@@ -53,7 +66,7 @@ The following tables show the before and after variable names for MCD governance
 | auth | auth |
 | isAuthorized | isAuthorized |
 
-| DSRoles | DSRoles/DSRecursiveRoles |
+| DSRoles | DSRoles/DSDelegateRoles |
 | :--- | :--- |
 | \_root\_users | \_root\_users |
 | \_user\_roles | \_user\_roles |
