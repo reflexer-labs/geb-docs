@@ -16,7 +16,7 @@ The `SAFEEngine` stores SAFEs and tracks all debt and collateral balances. This 
 * `collateralTypes[collateralType: bytes32]` - a mapping of `CollateralType`s.
 * `safes[collateralType: bytes32`, `safeHandler: address]` - a mapping of `SAFE` types.
 * `tokenCollateral[user: address]` - collateral token balances.
-* `coinBalance[user: address]` - how many coins \(bonds\) an account has. This number is **not** reflected in the [external token contract](https://reflexer-labs.gitbook.io/geb/system-contracts/token-module/system-coin).
+* `coinBalance[user: address]` - how many coins an account has. This number is **not** reflected in the [external ERC20 token contract](https://reflexer-labs.gitbook.io/geb/system-contracts/token-module/system-coin).
 * `globalDebt` - total amount of debt currently issued.
 * `globalDebtCeiling` - the limit on total amount of debt that can be issued.
 * `globalUnbackedDebt` - amount of bad debt in the system.
