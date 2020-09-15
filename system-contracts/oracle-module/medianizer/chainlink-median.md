@@ -26,12 +26,34 @@ The Chainlink medianizer has a similar interface to the [Governance Led Median](
 * `linkAggregatorTimestamp` - the timestamp of the Chainlink aggregator's latest price update
 * `treasury` - the address of the `StabilityFeeTreasury` contract
 
+**Modifiers**
+
+* `isAuthorized` ****- checks whether an address is part of `authorizedAddresses` \(and thus can call authed functions\).
+
 **Functions**
 
 * `modifyParameters` - allows governance to change the aggregator address in case Chainlink upgrades their infrastructure
 * `read` - gets a non-zero price or fails
 * `getResultWithValidity` - gets the price and its validity
 * `updateResult` - updates the price stored in our contract by calling the aggregator
+
+**Events**
+
+* `AddAuthorization` - emitted when a new address becomes authorized. Contains:
+  * `account` - the new authorized account
+* `RemoveAuthorization` - emitted when an address is de-authorized. Contains:
+  * `account` - the address that was de-authorized
+* `ModifyParameters` ****- emitted when a parameter is updated
+* `UpdateResult` - emitted when `updateResult` is called. Contains:
+  * `medianPrice` - the latest median price
+  * `lastUpdateTime` - timestamp of the call
+* `RewardCaller` - emitted after an address is awarded system coins. Contains:
+  * `feeReceiver` - the address that received the reward
+  * `amount` - the amount of system coins awarded
+* `FailRewardCaller` - emitted if the contract failed to reward an address with system coins. Contains:
+  * `revertReason` - the reason the reward assignment failed
+  * `finalFeeReceiver` - the address that should have been rewarded
+  * `reward` - the amount of system coins that had to be sent
 
 ## 3. Walkthrough
 
