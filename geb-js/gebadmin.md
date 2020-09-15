@@ -26,7 +26,7 @@ import { GebAdmin } from "@reflexer-finance/geb-admin"
 
 *Overrides void*
 
-*Defined in [packages/geb-admin/src/geb-admin.ts:57](https://github.com/reflexer-labs/geb.js/blob/acffc2e/packages/geb-admin/src/geb-admin.ts#L57)*
+*Defined in [packages/geb-admin/src/geb-admin.ts:57](https://github.com/reflexer-labs/geb.js/blob/81e18a1/packages/geb-admin/src/geb-admin.ts#L57)*
 
 **Parameters:**
 
@@ -45,9 +45,9 @@ Name | Type | Description |
 
 *Inherited from [GebAdmin](gebadmin.md).[contracts](gebadmin.md#contracts)*
 
-Defined in packages/geb/lib/geb.d.ts:33
+Defined in packages/geb/lib/geb.d.ts:34
 
-Object containing all GEB contracts instances for low level interactions. All contracts object offer a one-to-one typed API to the underlying smart-contract.
+Object containing all GEB core contracts instances for low level interactions. All contracts object offer a one-to-one typed API to the underlying smart-contract.
 Currently has the following contracts:
 - SafeEngine
 - AccountingEngine
@@ -74,7 +74,7 @@ ___
 
 • **contractsAdmin**: *AdminApis*
 
-*Defined in [packages/geb-admin/src/geb-admin.ts:57](https://github.com/reflexer-labs/geb.js/blob/acffc2e/packages/geb-admin/src/geb-admin.ts#L57)*
+*Defined in [packages/geb-admin/src/geb-admin.ts:57](https://github.com/reflexer-labs/geb.js/blob/81e18a1/packages/geb-admin/src/geb-admin.ts#L57)*
 
 Object containing all GEB admin contracts instances for low level interactions.
 Currently has the following contracts:
@@ -110,7 +110,7 @@ Currently has the following contracts:
 
 *Inherited from [GebAdmin](gebadmin.md).[deployProxy](gebadmin.md#deployproxy)*
 
-Defined in packages/geb/lib/geb.d.ts:50
+Defined in packages/geb/lib/geb.d.ts:57
 
 Deploy a new proxy owned by the sender.
 
@@ -140,7 +140,7 @@ ___
 
 *Inherited from [GebAdmin](gebadmin.md).[getErc20Contract](gebadmin.md#geterc20contract)*
 
-Defined in packages/geb/lib/geb.d.ts:74
+Defined in packages/geb/lib/geb.d.ts:81
 
 Returns an object that can be used to interact with a ERC20 token.
 Example:
@@ -174,7 +174,7 @@ ___
 
 *Inherited from [GebAdmin](gebadmin.md).[getProxyAction](gebadmin.md#getproxyaction)*
 
-Defined in packages/geb/lib/geb.d.ts:46
+Defined in packages/geb/lib/geb.d.ts:47
 
 Given an address returns a GebProxyAction object to execute bundled operations.
 Important: This requires the address to have deployed a GEB proxy through the proxy registry contract. It will throw a `DOES_NOT_OWN_HAVE_PROXY` error if the address specified does not have a proxy. Use the [deployProxy](gebadmin.md#deployproxy) function to get a new proxy.
@@ -189,13 +189,34 @@ Name | Type | Description |
 
 ___
 
+###  getProxyActionGlobalSettlement
+
+▸ **getProxyActionGlobalSettlement**(`ownerAddress`: string): *Promise‹GebProxyActionsGlobalSettlement›*
+
+*Inherited from [GebAdmin](gebadmin.md).[getProxyActionGlobalSettlement](gebadmin.md#getproxyactionglobalsettlement)*
+
+Defined in packages/geb/lib/geb.d.ts:53
+
+Given an address returns a GebProxyActionsGlobalSettlement object to execute bundled operations during GlobalSettlement.
+Important: Same as for `getProxyAction` it requires a proxy deploy through the registry.
+
+**Parameters:**
+
+Name | Type | Description |
+------ | ------ | ------ |
+`ownerAddress` | string | Externally owned user account, Ethereum address that owns a GEB proxy.  |
+
+**Returns:** *Promise‹GebProxyActionsGlobalSettlement›*
+
+___
+
 ###  getSafe
 
 ▸ **getSafe**(`idOrHandler`: string | number): *Promise‹Safe›*
 
 *Inherited from [GebAdmin](gebadmin.md).[getSafe](gebadmin.md#getsafe)*
 
-Defined in packages/geb/lib/geb.d.ts:55
+Defined in packages/geb/lib/geb.d.ts:62
 
 Get the safe object
 
@@ -215,7 +236,7 @@ ___
 
 *Inherited from [GebAdmin](gebadmin.md).[multiCall](gebadmin.md#multicall)*
 
-Defined in packages/geb/lib/geb.d.ts:79
+Defined in packages/geb/lib/geb.d.ts:86
 
 **Type parameters:**
 
