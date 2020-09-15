@@ -74,5 +74,7 @@ The `UniswapPriceFeedMedianizer` is integrated with a Uniswap V2 in order to pro
   * `feeReceiver` - the address that received the system coin payment
   * `amount` - how many system coins were awarded
 
+## 3. Walkthrough
+
 
 
