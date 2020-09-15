@@ -69,7 +69,7 @@
 * [Geb](geb-js/geb.md)
 * [Safe](geb-js/safe.md)
 * [Proxy actions](geb-js/gebproxyactions.md)
-* [Proxy actions Global Settelment](geb-js/gebproxyactionsglobalsettlement.md)
+* [Proxy Actions Global Settelment](geb-js/gebproxyactionsglobalsettlement.md)
 * [Geb Admin](geb-js/gebadmin.md)
 
 
