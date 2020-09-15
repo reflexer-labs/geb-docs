@@ -31,6 +31,7 @@
     * [Uniswap V2 Median](system-contracts/oracle-module/medianizer/uniswap-v2-median.md)
   * [FSM](system-contracts/oracle-module/fsm/README.md)
     * [Oracle Security Module](system-contracts/oracle-module/fsm/oracle-security-module.md)
+    * [Dampened Security Module](system-contracts/oracle-module/fsm/dampened-security-module.md)
     * [FSM Governance Interface](system-contracts/oracle-module/fsm/fsm-governance-interface.md)
 * [Token Module](system-contracts/token-module/README.md)
   * [Token Adapters](system-contracts/token-module/token-adapters.md)
