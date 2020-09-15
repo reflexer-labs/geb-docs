@@ -42,7 +42,6 @@
 * [Sustainability Module](system-contracts/sustainability-module/README.md)
   * [Stability Fee Treasury](system-contracts/sustainability-module/stability-fee-treasury.md)
 * [Governance Module](system-contracts/governance-module/README.md)
-  * [Gnosis Multisig](system-contracts/governance-module/gnosis-multisig.md)
   * [Governance Aggregation](system-contracts/governance-module/governance-aggregation.md)
   * [Vote Quorum](system-contracts/governance-module/vote-quorum.md)
   * [DSPause](system-contracts/governance-module/ds-pause.md)
