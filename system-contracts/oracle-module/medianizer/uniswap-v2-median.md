@@ -76,5 +76,7 @@ The `UniswapPriceFeedMedianizer` is integrated with a Uniswap V2 in order to pro
 
 ## 3. Walkthrough
 
+`updateResult` first tries to update the `converterFeed` and the Uniswap pool the median is connected to before it stores new observations and computes the latest median.
 
+`read` will only return a result if the median is non-null and if `updateResult` has been successfully called at least `granularity` times. `getResultWithValidity` will only return a valid result if it passes the same checks as `read`.
 
