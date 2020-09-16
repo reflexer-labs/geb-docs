@@ -75,10 +75,32 @@ description: >-
   * `coveredSystems` - the new number of systems being covered
   * `withdrawAddedRightsDeadline` - the deadline after which governance can no longer quickly uncover a system without calling `startUncoverSystem` and `endUncoverSystem`
 * `StartUncoverSystem` - emitted when governance starts to uncover a system. Contains:
-  * 
-* AbandonUncoverSystem -
-* EndUncoverSystem -
-* UpdateCurrentDebtAuctionHouse -
-* RemovePreviousDebtAuctionHouse -
-* ProposeIndefinitePrintingPermissions -
+  * `accountingEngine` - the address of the accounting engine whose debt auction houses are uncovered
+  * `currentDebtAuctionHouse` - the current debt auction house connected to the accounting engine
+  * `previousDebtAuctionHouse` - the previous debt auction house that was connected to the accounting engine
+  * `coveredSystems` - the latest amount of covered systems
+  * `revokeRightsDeadline` - the deadline after which governance will not be able to remove this system's printing rights
+  * `uncoverCooldownEnd` - the deadline after which governance can call `endUncoverSystem` and finish the uncover process
+  * `withdrawAddedRightsDeadline` - cooldown during which governance could have uncovered the system without having to call `endUncoverSystem`
+* `AbandonUncoverSystem` - emitted when governance abandons the uncover process for a system. Contains:
+  * `accountingEngine` - address of the accounting engine who's no longer being uncovered
+* `EndUncoverSystem` - emitted when the uncovering process is finished. Contains:
+  * `accountingEngine` - the address of the accounting engine whose debt auction houses are denied printing permissions
+  * `currentHouse` - the current debt auction house connected to the accounting engine
+  * `previousHouse` - the previous debt auction house that was connected to the accounting engine
+* `UpdateCurrentDebtAuctionHouse` - emitted when the current debt auction house of an accounting engine is updated. Contains:
+  * `accountingEngine` - the address of the accounting engine whose current debt auction house is updated
+  * `currentHouse` - the address of the new current debt auction house
+  * `previousHouse` - the address of the previous debt auction house
+* `RemovePreviousDebtAuctionHouse` - emitted when the previous debt auction house is removed from a covered system. Contains:
+  * `accountingEngine` - the address of the accounting engine whose previous debt auction house is updated
+  * `currentHouse` - the address of the new current debt auction house
+  * `previousHouse` - the address of the previous debt auction house
+* `ProposeIndefinitePrintingPermissions` - emitted when governance proposes a deadline after which they can no longer remove a system's permission to print tokens. Contains:
+  * `accountingEngine` - the address of the accounting engine that's part of the system which will no longer be denied printing permissions
+  * `freezeDelay` - the delay from the current timestamp after which the system will have indefinite printing permissions
+
+## 3. Walkthrough <a id="2-contract-details"></a>
+
+
 
