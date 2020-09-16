@@ -17,10 +17,28 @@ description: >-
 * `authorizedAccounts[usr: address]` - addresses allowed to cover or uncover systems
 * `allowedSystems[system: address]` - data about a system that is allowed to print protocol tokens
 * `usedAuctionHouses[house: address]` - mapping that shows whether a `DebtAuctionHouse` is allowed to print tokens or not
-* unrevokableRightsCooldown -
-* denyRightsCooldown -
-* addRightsCooldown -
-* coveredSystems -
-* protocolTokenAuthority -
-* AUCTION\_HOUSE\_TYPE -
+* `unrevokableRightsCooldown` - minimum time \(in seconds\) after which as system will have indefinite permission to print protocol tokens
+* `denyRightsCooldown` - cooldown that must pass between calling `startUncoverSystem` and `endUncoverSystem`
+* `addRightsCooldown` - cooldown for quickly removing cover from a freshly added system 
+* `coveredSystems` - the current number of systems covered by the protocol token
+* `protocolTokenAuthority` - the authority contract dictating who can print tokens
+* `AUCTION_HOUSE_TYPE` - debt auction house identifier
+
+**Data Structures**
+
+* `SystemRights` - struct that stores data about each `AccountingEngine` \(system\). Contains:
+  * `covered` - whether this system is covered or not
+  * `revokeRightsDeadline` - deadline after which governance can no longer remove printing permissions from the system
+  * `uncoverCooldownEnd` - cooldown after which governance can call `endUncoverSystem` and uncover this system
+  * `withdrawAddedRightsDeadline` - cooldown during which governance can uncover a system without having to wait until `uncoverCooldownEnd` passed
+  * `previousDebtAuctionHouse` - the previous `DebtAuctionHouse` connected to the `AccountingEngine`
+  * `currentDebtAuctionHouse` - the current `DebtAuctionHouse` connected to the `AccountingEngine`
+
+**Modifiers**
+
+* `isAuthorized` ****- checks whether an address is part of `authorizedAddresses`.
+
+`Functions`
+
+Events
 

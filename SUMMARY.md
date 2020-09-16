@@ -59,8 +59,6 @@
 ## Helper Contracts
 
 * [SAFE Manager](helper-contracts/cdp-manager.md)
-* [Proxy Actions](helper-contracts/proxy-actions.md)
-* [Proxy Global Settlement](helper-contracts/proxy-global-settlement.md)
 
 ## GEB.js <a id="geb-js"></a>
 
