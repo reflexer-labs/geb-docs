@@ -13,6 +13,7 @@ description: >-
 * [BasicTokenAdapters](https://github.com/reflexer-labs/geb/blob/master/src/BasicTokenAdapters.sol)
 * [AdvancedTokenAdapters](https://github.com/reflexer-labs/geb-deploy/blob/master/src/AdvancedTokenAdapters.sol)
 * [ProtocolTokenAuthority](https://github.com/reflexer-labs/geb-protocol-token-authority/blob/master/src/ProtocolTokenAuthority.sol)
+* [GebPrintingPermissions](https://github.com/reflexer-labs/geb-printing-permissions/blob/master/src/GebPrintingPermissions.sol)
 
 ## 1. Overview <a id="1-introduction-summary"></a>
 
