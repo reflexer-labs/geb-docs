@@ -22,7 +22,8 @@ The token module has four distinct parts:
 1. System Coin: token that the core system considers equal in value to its internal debt unit.
 2. Protocol Token: a standard ERC20 token. It contains logic for burning and authorized minting. The token can be used to govern the system and as a recapitalization source.
 3. Protocol Token Authority: authority contract that determines who is eligible to mint and burn protocol tokens.
-4. Token Adapters:
+4. Geb Printing Permissions: permissioning system to allow multiple debt auction contracts to mint protocol tokens.
+5. Token Adapters:
    * Collateral Adapters: contracts that allow anyone to join or exit collateral in and out of GEB
    * Coin Join: adapter for the system coin to exit the system in the form of an ERC20 and enter the system in the form of `SAFEEngine.coinBalance`
 
@@ -33,6 +34,7 @@ The token module has four distinct parts:
   * **As a governance token:** tokens can be used as a representation of voting power
   * **As a recapitalization resource:** protocol tokens can autonomously be minted by the `DebtAuctionHouse` and sold for system coins which are used to recapitalize the system in times of insolvency
 * Protocol Token Authority: determines who can mint and burn protocol tokens. Can be controlled directly by token holders, by the Protocol Token Authority or in some cases all control can be withdrawn from it.
+* Geb Printing Permissions: forces governance to adhere to specific rules in order to allow multiple, independent `DebtAuctionHouse`s to print protocol tokens.
 * Token Adapters: these are custom contracts that can allow anyone to deposit and withdraw collateral or they can have whitelisting in place to 
 
 ## 3. Risks <a id="5-failure-modes-bounds-on-operating-conditions-and-external-risk-factors"></a>
@@ -43,5 +45,5 @@ The token module has four distinct parts:
 
 ## 4. Governance Minimization
 
-Governance can withdraw their voting power over all contracts although, if they wish to allow the Protocol Token to protect multiple GEBs, they may retain influence over the Protocol Token Authority. The authority can be controlled by a [printing permissions contract](https://docs.reflexer.finance/system-contracts/token-module/protocol-token-printing-permissions) which gives or removes a GEB's permission to print a specific protocol token.
+Governance can withdraw their voting power over all contracts, although, if they wish to allow the Protocol Token to protect multiple GEBs, they may retain influence over the Geb Printing Permissions.
 
