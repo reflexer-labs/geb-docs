@@ -42,6 +42,16 @@ description: >-
 
 * `addAuthorization(usr: address)` - add an address to `authorizedAddresses`.
 * `removeAuthorization(usr: address)` - remove an address from `authorizedAddresses`.
+* `modifyParameters(parameter: bytes32, data: uint256)` - 
+* `giveUpAuthorityRoot` -
+* `giveUpAuthorityOwnership` -
+* `coverSystem` -
+* `startUncoverSystem` -
+* `abandonUncoverSystem` -
+* `endUncoverSystem` -
+* `updateCurrentDebtAuctionHouse` -
+* `removePreviousDebtAuctionHouse -`
+* `proposeIndefinitePrintingPermissions` -
 
 **Events**
 
