@@ -23,7 +23,7 @@ The token module has four distinct parts:
 3. Protocol Token Authority: authority contract that determines who is eligible to mint and burn protocol tokens.
 4. Token Adapters:
    * Collateral Adapters: contracts that allow anyone to join or exit collateral in and out of GEB
-   * Coin Join: adapter for the system coin to exit the system in the form of an ERC20 and enter the system in the form of `CDPEngine.coinBalance`
+   * Coin Join: adapter for the system coin to exit the system in the form of an ERC20 and enter the system in the form of `SAFEEngine.coinBalance`
 
 ## 2. Component Descriptions <a id="5-failure-modes-bounds-on-operating-conditions-and-external-risk-factors"></a>
 
@@ -38,9 +38,9 @@ The token module has four distinct parts:
 
 * The system coin is susceptible to the [ERC20 race condition](https://github.com/0xProject/0x-monorepo/issues/850)
 * Emergency shutdown cannot be triggered if governance calls `PROTOCOL_TOKEN.stop` beforehand
-* There is the possibility for a user to have their funds stolen by a malicious adapter which does not actually send tokens to the `CDPEngine`, but instead to some other contract or wallet.
+* There is the possibility for a user to have their funds stolen by a malicious adapter which does not actually send tokens to the `SAFEEngine`, but instead to some other contract or wallet.
 
 ## 4. Governance Minimization
 
-Governance can withdraw their voting power over all contracts although, if they wish to allow the Protocol Token to protect multiple GEBs, they may retain influence over the Protocol Token Authority. The authority can be controlled by a [migration contract](https://reflexer-labs.gitbook.io/geb/system-contracts/migration-module) that gives or removes a GEB's permission to print protocol tokens.
+Governance can withdraw their voting power over all contracts although, if they wish to allow the Protocol Token to protect multiple GEBs, they may retain influence over the Protocol Token Authority. The authority can be controlled by a printing permissions contract that gives or removes a GEB's permission to print protocol tokens.
 

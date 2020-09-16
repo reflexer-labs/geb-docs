@@ -38,6 +38,7 @@
   * [System Coin](system-contracts/token-module/system-coin.md)
   * [Protocol Token](system-contracts/token-module/protocol-token.md)
   * [Protocol Token Authority](system-contracts/token-module/protocol-token-authority.md)
+  * [Protocol Token Printing Permissions](system-contracts/token-module/protocol-token-printing-permissions.md)
 * [Money Market Module](system-contracts/money-market-module/README.md)
   * [Tax Collector](system-contracts/money-market-module/tax-collector.md)
 * [Sustainability Module](system-contracts/sustainability-module/README.md)
@@ -49,8 +50,6 @@
 * [Shutdown Module](system-contracts/shutdown-module/README.md)
   * [Global Settlement](system-contracts/shutdown-module/global-settlement.md)
   * [ESM](system-contracts/shutdown-module/esm.md)
-* [Migration Module](system-contracts/migration-module/README.md)
-  * [Token Power Delegate](system-contracts/migration-module/restricted-migration.md)
 
 ## Proxy Infrastructure
 
