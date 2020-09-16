@@ -38,7 +38,7 @@ description: >-
 
 * `isAuthorized` ****- checks whether an address is part of `authorizedAddresses`.
 
-`Functions`
+**Functions**
 
-Events
+**Events**
 
