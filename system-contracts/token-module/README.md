@@ -42,5 +42,5 @@ The token module has four distinct parts:
 
 ## 4. Governance Minimization
 
-Governance can withdraw their voting power over all contracts although, if they wish to allow the Protocol Token to protect multiple GEBs, they may retain influence over the Protocol Token Authority. The authority can be controlled by a printing permissions contract that gives or removes a GEB's permission to print protocol tokens.
+Governance can withdraw their voting power over all contracts although, if they wish to allow the Protocol Token to protect multiple GEBs, they may retain influence over the Protocol Token Authority. The authority can be controlled by a [printing permissions contract](https://docs.reflexer.finance/system-contracts/token-module/protocol-token-printing-permissions) which gives or removes a GEB's permission to print protocol tokens.
 
