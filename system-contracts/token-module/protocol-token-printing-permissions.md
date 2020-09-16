@@ -42,16 +42,43 @@ description: >-
 
 * `addAuthorization(usr: address)` - add an address to `authorizedAddresses`.
 * `removeAuthorization(usr: address)` - remove an address from `authorizedAddresses`.
-* `modifyParameters(parameter: bytes32, data: uint256)` - 
-* `giveUpAuthorityRoot` -
-* `giveUpAuthorityOwnership` -
-* `coverSystem` -
-* `startUncoverSystem` -
-* `abandonUncoverSystem` -
-* `endUncoverSystem` -
-* `updateCurrentDebtAuctionHouse` -
-* `removePreviousDebtAuctionHouse -`
-* `proposeIndefinitePrintingPermissions` -
+* `modifyParameters(parameter: bytes32, data: uint256)` - modify a `uint256` parameter
+* `giveUpAuthorityRoot()` - give up the perinting permission's position of `root` inside the `ProtocolTokenAuthority`
+* `giveUpAuthorityOwnership` - give up the perinting permission's position of `owner` inside the `ProtocolTokenAuthority`
+* `coverSystem(accountingEngine: address)` - cover a new system / allow the `DebtAuctionHouse` set inside `accountingEngine` to print protocol tokens
+* `startUncoverSystem(accountingEngine: address)` - start to uncover a system / withdraw the permission of the previous and current `DebtAuctionHouse`s that were associated with `accountingEngine`
+* `abandonUncoverSystem(accountingEngine: address)` - abandon the uncovering of a specific system
+* `endUncoverSystem(accountingEngine: address)` - end the uncovering process for a system
+* `updateCurrentDebtAuctionHouse(accountingEngine: address)` - update the `currentDebtAuctionHouse` of a specific system and set the old current auction house as the 
+
+  `previousDebtAuctionHouse`
+
+* `removePreviousDebtAuctionHouse(accountingEngine: address)` - remove the permission to print protocol tokens from an `accountingEngine`'s `previousDebtAuctionHouse`
+* `proposeIndefinitePrintingPermissions(accountingEngine: address`, `freezeDelay: uint256)` - propose a deadline after which the `accountingEngine` / system cannot be denied printing permissions
 
 **Events**
+
+* `AddAuthorization` - emitted when a new address becomes authorized. Contains:
+  * `account` - the new authorized account
+* `RemoveAuthorization` - emitted when an address is de-authorized. Contains:
+  * `account` - the address that was de-authorized
+* `ModifyParameters` - emitted when a `uint256` ****parameter is updated.
+* `GiveUpAuthorityRoot` - emitted when `giveUpAuthorityRoot` is called.
+* `GiveUpAuthorityOwnership` -  emitted when `giveUpAuthorityOwnership` is called.
+* `RevokeDebtAuctionHouses` - emitted when both the current and the previous `DebtAuctionHouse`s are denied printing permissions. Contains:
+  * `accountingEngine` - the accounting engine whose debt auction houses are denied permissions
+  * `currentHouse` - the current debt auction house
+  * `previousHouse` - the previous debt auction house
+* `CoverSystem` - emitted when a new system is covered / allowed to print tokens. Contains:
+  * `accountingEngine` - the accounting engine from the system that is being covered
+  * `debtAuctionHouse` - the debt auction house set inside the `accountingEngine`
+  * `coveredSystems` - the new number of systems being covered
+  * `withdrawAddedRightsDeadline` - the deadline after which governance can no longer quickly uncover a system without calling `startUncoverSystem` and `endUncoverSystem`
+* `StartUncoverSystem` - emitted when governance starts to uncover a system. Contains:
+  * 
+* AbandonUncoverSystem -
+* EndUncoverSystem -
+* UpdateCurrentDebtAuctionHouse -
+* RemovePreviousDebtAuctionHouse -
+* ProposeIndefinitePrintingPermissions -
 
