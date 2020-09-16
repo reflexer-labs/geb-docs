@@ -1,4 +1,4 @@
-# Proxy actions
+# SAFE Proxies
 
 Convenience class to call function from Proxy Action contract through a proxy registered in the proxy registry. These action allow to bundle non-view calls. i.g: Open a safe + Lock some ETH + draw some RAI in one single transaction.
 

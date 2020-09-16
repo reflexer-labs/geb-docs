@@ -1,6 +1,6 @@
-# Safe
+# SAFE Management
 
-Represent a GEB safe. Has the safe state and provide helper function to calculate liquidation price, CRatio, etc...
+Represent a GEB safe. Has the safe state and provide helper function to calculate liquidation price, CRatio, etc.
 
 ## Constructors
 

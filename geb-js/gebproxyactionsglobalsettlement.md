@@ -1,4 +1,4 @@
-# Proxy Actions Global Settlement
+# Global Settlement Proxies
 
 Convenience class to call functions from the Proxy Action Global Settlement contract through a proxy registered in the proxy registry. It is used the same way as the `ProxyAction` class. Useful only during global settlement \(System shutdown\) for users to retrieve their collateral.
 

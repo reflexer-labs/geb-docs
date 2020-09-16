@@ -1,4 +1,4 @@
-# Geb
+# Core GEB Object
 
 Main object of the library instantiating all useful GEB contracts and providing all helper functions needed.
 
@@ -73,7 +73,7 @@ const USDC = geb.getErc20Contract(USDCAddress)
 // Get deadbeef's balance
 const balance = USDC.balanceOf("0xdeadbeef..")
 
-// Send 1 USDC to deadbeef (Yes, USDC is 6 decimals)
+// Send 1 USDC to deadbeef (USDC has 6 decimals)
 const tx = USDC.transfer("0xdeadbeef..", "1000000")
 await wallet.sendTransaction(tx)
 ```
