@@ -40,5 +40,8 @@ description: >-
 
 **Functions**
 
+* `addAuthorization(usr: address)` - add an address to `authorizedAddresses`.
+* `removeAuthorization(usr: address)` - remove an address from `authorizedAddresses`.
+
 **Events**
 
