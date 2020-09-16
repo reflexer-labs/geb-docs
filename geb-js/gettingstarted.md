@@ -1,8 +1,12 @@
-# Getting started
+---
+description: Intro guide to using GEB.js
+---
 
-Library to interact with the GEB smart contracts. Manage your safes, mint RAI, inspect the system state, and much more.
+# Getting Started
 
-The library is written in Typescript with full typing support. It allows access to the low level API to directly interact with the contracts.
+GEB.js is a library used to interact with the GEB smart contracts. Developers can manage their SAFEs, mint RAI, inspect the system state and much more.
+
+The library is written in Typescript and has full typing support. It gives access to a low level API used to directly interact with GEB contracts.
 
 ## Install
 
@@ -12,7 +16,7 @@ npm install geb.js
 
 ## Dependencies
 
-At the moment, Geb.js requires to use [Ether.js](https://www.npmjs.com/package/ethers) V5. In the future we will support Web3.
+At the moment, GEB.js uses [Ether.js](https://www.npmjs.com/package/ethers) V5. In the future it will also support Web3.js.
 
 ```text
 npm install ethers
