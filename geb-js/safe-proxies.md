@@ -4,7 +4,7 @@ Convenience class to call function from Proxy Action contract through a proxy re
 
 ## Constructors
 
-+ **new GebProxyActions**\(`proxyAddress`: string, `network`: GebDeployment, `chainProvider`: GebProviderInterface\): [_GebProxyActions_](gebproxyactions.md)
++ **new GebProxyActions**\(`proxyAddress`: string, `network`: GebDeployment, `chainProvider`: GebProviderInterface\): [_GebProxyActions_](safe-proxies.md)
 
 _Defined in_ [_packages/geb/src/proxy-action.ts:33_](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action.ts#L33)
 
@@ -16,7 +16,7 @@ _Defined in_ [_packages/geb/src/proxy-action.ts:33_](https://github.com/reflexer
 | `network` | GebDeployment |
 | `chainProvider` | GebProviderInterface |
 
-**Returns:** [_GebProxyActions_](gebproxyactions.md)
+**Returns:** [_GebProxyActions_](safe-proxies.md)
 
 ## Properties
 
@@ -24,7 +24,7 @@ _Defined in_ [_packages/geb/src/proxy-action.ts:33_](https://github.com/reflexer
 
 • **address**: _string_
 
-_Inherited from_ [_GebProxyActions_](gebproxyactions.md)_._[_address_](gebproxyactions.md#address)
+_Inherited from_ [_GebProxyActions_](safe-proxies.md)_._[_address_](safe-proxies.md#address)
 
 Defined in packages/geb-contract-base/lib/base-contract-api.d.ts:19
 
@@ -32,7 +32,7 @@ Defined in packages/geb-contract-base/lib/base-contract-api.d.ts:19
 
 • **chainProvider**: _GebProviderInterface_
 
-_Inherited from_ [_GebProxyActions_](gebproxyactions.md)_._[_chainProvider_](gebproxyactions.md#chainprovider)
+_Inherited from_ [_GebProxyActions_](safe-proxies.md)_._[_chainProvider_](safe-proxies.md#chainprovider)
 
 Defined in packages/geb-contract-base/lib/base-contract-api.d.ts:20
 
@@ -298,7 +298,7 @@ _Defined in_ [_packages/geb/src/proxy-action.ts:173_](https://github.com/reflexe
 
 ▸ **lockTokenCollateral**\(`manager`: string, `collateralJoin`: string, `safe`: BigNumberish, `amt`: BigNumberish, `transferFrom`: boolean\): _TransactionRequest_
 
-_Inherited from_ [_GebProxyActions_](gebproxyactions.md)_._[_lockTokenCollateral_](gebproxyactions.md#locktokencollateral)
+_Inherited from_ [_GebProxyActions_](safe-proxies.md)_._[_lockTokenCollateral_](safe-proxies.md#locktokencollateral)
 
 Defined in packages/geb-contract-api/lib/generated/GebProxyActions.d.ts:21
 
@@ -318,7 +318,7 @@ Defined in packages/geb-contract-api/lib/generated/GebProxyActions.d.ts:21
 
 ▸ **lockTokenCollateralAndGenerateDebt**\(`manager`: string, `taxCollector`: string, `collateralJoin`: string, `coinJoin`: string, `safe`: BigNumberish, `collateralAmount`: BigNumberish, `deltaWad`: BigNumberish, `transferFrom`: boolean\): _TransactionRequest_
 
-_Inherited from_ [_GebProxyActions_](gebproxyactions.md)_._[_lockTokenCollateralAndGenerateDebt_](gebproxyactions.md#locktokencollateralandgeneratedebt)
+_Inherited from_ [_GebProxyActions_](safe-proxies.md)_._[_lockTokenCollateralAndGenerateDebt_](safe-proxies.md#locktokencollateralandgeneratedebt)
 
 Defined in packages/geb-contract-api/lib/generated/GebProxyActions.d.ts:22
 
@@ -341,7 +341,7 @@ Defined in packages/geb-contract-api/lib/generated/GebProxyActions.d.ts:22
 
 ▸ **lockTokenCollateralGenerateDebtAndProtectSAFE**\(`manager`: string, `taxCollector`: string, `collateralJoin`: string, `coinJoin`: string, `safe`: BigNumberish, `collateralAmount`: BigNumberish, `deltaWad`: BigNumberish, `transferFrom`: boolean, `liquidationEngine`: string, `saviour`: string\): _TransactionRequest_
 
-_Inherited from_ [_GebProxyActions_](gebproxyactions.md)_._[_lockTokenCollateralGenerateDebtAndProtectSAFE_](gebproxyactions.md#locktokencollateralgeneratedebtandprotectsafe)
+_Inherited from_ [_GebProxyActions_](safe-proxies.md)_._[_lockTokenCollateralGenerateDebtAndProtectSAFE_](safe-proxies.md#locktokencollateralgeneratedebtandprotectsafe)
 
 Defined in packages/geb-contract-api/lib/generated/GebProxyActions.d.ts:23
 
@@ -479,7 +479,7 @@ _Defined in_ [_packages/geb/src/proxy-action.ts:273_](https://github.com/reflexe
 
 ▸ **openLockTokenCollateralAndGenerateDebt**\(`manager`: string, `taxCollector`: string, `collateralJoin`: string, `coinJoin`: string, `collateralType`: BytesLike, `collateralAmount`: BigNumberish, `deltaWad`: BigNumberish, `transferFrom`: boolean\): _TransactionRequest_
 
-_Inherited from_ [_GebProxyActions_](gebproxyactions.md)_._[_openLockTokenCollateralAndGenerateDebt_](gebproxyactions.md#openlocktokencollateralandgeneratedebt)
+_Inherited from_ [_GebProxyActions_](safe-proxies.md)_._[_openLockTokenCollateralAndGenerateDebt_](safe-proxies.md#openlocktokencollateralandgeneratedebt)
 
 Defined in packages/geb-contract-api/lib/generated/GebProxyActions.d.ts:31
 
@@ -502,7 +502,7 @@ Defined in packages/geb-contract-api/lib/generated/GebProxyActions.d.ts:31
 
 ▸ **openLockTokenCollateralGenerateDebtAndProtectSAFE**\(`manager`: string, `taxCollector`: string, `collateralJoin`: string, `coinJoin`: string, `collateralType`: BytesLike, `collateralAmount`: BigNumberish, `deltaWad`: BigNumberish, `transferFrom`: boolean, `liquidationEngine`: string, `saviour`: string\): _TransactionRequest_
 
-_Inherited from_ [_GebProxyActions_](gebproxyactions.md)_._[_openLockTokenCollateralGenerateDebtAndProtectSAFE_](gebproxyactions.md#openlocktokencollateralgeneratedebtandprotectsafe)
+_Inherited from_ [_GebProxyActions_](safe-proxies.md)_._[_openLockTokenCollateralGenerateDebtAndProtectSAFE_](safe-proxies.md#openlocktokencollateralgeneratedebtandprotectsafe)
 
 Defined in packages/geb-contract-api/lib/generated/GebProxyActions.d.ts:32
 
@@ -681,7 +681,7 @@ _Defined in_ [_packages/geb/src/proxy-action.ts:380_](https://github.com/reflexe
 
 ▸ **safeLockTokenCollateral**\(`manager`: string, `collateralJoin`: string, `safe`: BigNumberish, `amt`: BigNumberish, `transferFrom`: boolean, `owner`: string\): _TransactionRequest_
 
-_Inherited from_ [_GebProxyActions_](gebproxyactions.md)_._[_safeLockTokenCollateral_](gebproxyactions.md#safelocktokencollateral)
+_Inherited from_ [_GebProxyActions_](safe-proxies.md)_._[_safeLockTokenCollateral_](safe-proxies.md#safelocktokencollateral)
 
 Defined in packages/geb-contract-api/lib/generated/GebProxyActions.d.ts:43
 

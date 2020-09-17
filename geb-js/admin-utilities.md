@@ -20,7 +20,7 @@ import { GebAdmin } from "@reflexer-finance/geb-admin"
 
 ## Constructors
 
-+ **new GebAdmin**\(`network`: GebDeployment, `provider`: GebProviderInterface \| Provider\): [_GebAdmin_](gebadmin.md)
++ **new GebAdmin**\(`network`: GebDeployment, `provider`: GebProviderInterface \| Provider\): [_GebAdmin_](admin-utilities.md)
 
 _Defined in_ [_packages/geb-admin/src/geb-admin.ts:57_](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb-admin/src/geb-admin.ts#L57)
 
@@ -31,7 +31,7 @@ _Defined in_ [_packages/geb-admin/src/geb-admin.ts:57_](https://github.com/refle
 | `network` | GebDeployment | Either `'kovan'`, `'mainnet'` or an actual list of contract address from the deployment script. |
 | `provider` | GebProviderInterface \| Provider | Either a Ethers.js provider or a Geb provider \(Soon support for Web3 will be added\) |
 
-**Returns:** [_GebAdmin_](gebadmin.md)
+**Returns:** [_GebAdmin_](admin-utilities.md)
 
 ## Properties
 
@@ -39,7 +39,7 @@ _Defined in_ [_packages/geb-admin/src/geb-admin.ts:57_](https://github.com/refle
 
 • **contracts**: _ContractApis_
 
-_Inherited from_ [_GebAdmin_](gebadmin.md)_._[_contracts_](gebadmin.md#contracts)
+_Inherited from_ [_GebAdmin_](admin-utilities.md)_._[_contracts_](admin-utilities.md#contracts)
 
 Defined in packages/geb/lib/geb.d.ts:34
 
@@ -102,7 +102,7 @@ Object containing all GEB admin contracts instances for low level interactions. 
 
 ▸ **deployProxy**\(\): _object_
 
-_Inherited from_ [_GebAdmin_](gebadmin.md)_._[_deployProxy_](gebadmin.md#deployproxy)
+_Inherited from_ [_GebAdmin_](admin-utilities.md)_._[_deployProxy_](admin-utilities.md#deployproxy)
 
 Defined in packages/geb/lib/geb.d.ts:57
 
@@ -123,7 +123,7 @@ Deploy a new proxy owned by the sender.
 
 ▸ **getErc20Contract**\(`tokenAddress`: string\): _Erc20_
 
-_Inherited from_ [_GebAdmin_](gebadmin.md)_._[_getErc20Contract_](gebadmin.md#geterc20contract)
+_Inherited from_ [_GebAdmin_](admin-utilities.md)_._[_getErc20Contract_](admin-utilities.md#geterc20contract)
 
 Defined in packages/geb/lib/geb.d.ts:81
 
@@ -155,11 +155,11 @@ Erc20
 
 ▸ **getProxyAction**\(`ownerAddress`: string\): _Promise‹GebProxyActions›_
 
-_Inherited from_ [_GebAdmin_](gebadmin.md)_._[_getProxyAction_](gebadmin.md#getproxyaction)
+_Inherited from_ [_GebAdmin_](admin-utilities.md)_._[_getProxyAction_](admin-utilities.md#getproxyaction)
 
 Defined in packages/geb/lib/geb.d.ts:47
 
-Given an address returns a GebProxyAction object to execute bundled operations. Important: This requires the address to have deployed a GEB proxy through the proxy registry contract. It will throw a `DOES_NOT_OWN_HAVE_PROXY` error if the address specified does not have a proxy. Use the [deployProxy](gebadmin.md#deployproxy) function to get a new proxy.
+Given an address returns a GebProxyAction object to execute bundled operations. Important: This requires the address to have deployed a GEB proxy through the proxy registry contract. It will throw a `DOES_NOT_OWN_HAVE_PROXY` error if the address specified does not have a proxy. Use the [deployProxy](admin-utilities.md#deployproxy) function to get a new proxy.
 
 **Parameters:**
 
@@ -173,7 +173,7 @@ Given an address returns a GebProxyAction object to execute bundled operations. 
 
 ▸ **getProxyActionGlobalSettlement**\(`ownerAddress`: string\): _Promise‹GebProxyActionsGlobalSettlement›_
 
-_Inherited from_ [_GebAdmin_](gebadmin.md)_._[_getProxyActionGlobalSettlement_](gebadmin.md#getproxyactionglobalsettlement)
+_Inherited from_ [_GebAdmin_](admin-utilities.md)_._[_getProxyActionGlobalSettlement_](admin-utilities.md#getproxyactionglobalsettlement)
 
 Defined in packages/geb/lib/geb.d.ts:53
 
@@ -191,7 +191,7 @@ Given an address returns a GebProxyActionsGlobalSettlement object to execute bun
 
 ▸ **getSafe**\(`idOrHandler`: string \| number\): _Promise‹Safe›_
 
-_Inherited from_ [_GebAdmin_](gebadmin.md)_._[_getSafe_](gebadmin.md#getsafe)
+_Inherited from_ [_GebAdmin_](admin-utilities.md)_._[_getSafe_](admin-utilities.md#getsafe)
 
 Defined in packages/geb/lib/geb.d.ts:62
 
@@ -209,7 +209,7 @@ Get the safe object
 
 ▸ **multiCall**‹**O1**, **O2**, **O3**›\(`calls`: \[MulticallRequest‹O1›, MulticallRequest‹O2›, MulticallRequest‹O3›\]\): _Promise‹\[O1, O2, O3\]›_
 
-_Inherited from_ [_GebAdmin_](gebadmin.md)_._[_multiCall_](gebadmin.md#multicall)
+_Inherited from_ [_GebAdmin_](admin-utilities.md)_._[_multiCall_](admin-utilities.md#multicall)
 
 Defined in packages/geb/lib/geb.d.ts:86
 

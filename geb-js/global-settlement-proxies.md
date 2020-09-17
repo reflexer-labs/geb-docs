@@ -4,7 +4,7 @@ Convenience class to call functions from the Proxy Action Global Settlement cont
 
 ## Constructors
 
-+ **new GebProxyActionsGlobalSettlement**\(`proxyAddress`: string, `network`: GebDeployment, `chainProvider`: GebProviderInterface\): [_GebProxyActionsGlobalSettlement_](gebproxyactionsglobalsettlement.md)
++ **new GebProxyActionsGlobalSettlement**\(`proxyAddress`: string, `network`: GebDeployment, `chainProvider`: GebProviderInterface\): [_GebProxyActionsGlobalSettlement_](global-settlement-proxies.md)
 
 _Defined in_ [_packages/geb/src/proxy-action-global-settlement.ts:32_](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action-global-settlement.ts#L32)
 
@@ -16,7 +16,7 @@ _Defined in_ [_packages/geb/src/proxy-action-global-settlement.ts:32_](https://g
 | `network` | GebDeployment |
 | `chainProvider` | GebProviderInterface |
 
-**Returns:** [_GebProxyActionsGlobalSettlement_](gebproxyactionsglobalsettlement.md)
+**Returns:** [_GebProxyActionsGlobalSettlement_](global-settlement-proxies.md)
 
 ## Properties
 
@@ -24,7 +24,7 @@ _Defined in_ [_packages/geb/src/proxy-action-global-settlement.ts:32_](https://g
 
 • **address**: _string_
 
-_Inherited from_ [_GebProxyActions_](gebproxyactions.md)_._[_address_](gebproxyactions.md#address)
+_Inherited from_ [_GebProxyActions_](safe-proxies.md)_._[_address_](safe-proxies.md#address)
 
 Defined in packages/geb-contract-base/lib/base-contract-api.d.ts:19
 
@@ -32,7 +32,7 @@ Defined in packages/geb-contract-base/lib/base-contract-api.d.ts:19
 
 • **chainProvider**: _GebProviderInterface_
 
-_Inherited from_ [_GebProxyActions_](gebproxyactions.md)_._[_chainProvider_](gebproxyactions.md#chainprovider)
+_Inherited from_ [_GebProxyActions_](safe-proxies.md)_._[_chainProvider_](safe-proxies.md#chainprovider)
 
 Defined in packages/geb-contract-base/lib/base-contract-api.d.ts:20
 
