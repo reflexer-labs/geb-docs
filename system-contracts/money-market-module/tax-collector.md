@@ -55,6 +55,10 @@ The `TaxCollector` stores data about each `CollateralType`'s stability fee. It a
 
 #### **Events** <a id="events"></a>
 
+* `AddAuthorization` - emitted when a new address becomes authorized. Contains:
+  * `account` - the new authorized account
+* `RemoveAuthorization` - emitted when an address is de-authorized. Contains:
+  * `account` - the address that was de-authorized
 * `CollectTax`: emitted when a collateral type is taxed \(the system collects stability fees from SAFEs backed by a specific asset\). Contains:
   * `collateralType` - collateral type being taxed
   * `latestAccumulatedRate` - accumulator of total stability fees that have been applied to`collateralType` SAFEs since the taxed collateral has been accepted into the system

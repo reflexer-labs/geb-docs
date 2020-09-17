@@ -30,6 +30,17 @@ The `StabilityFeeTreasury` is meant to allow other contracts or EOAs to pull fun
 * `latestSurplusTransferTime` - last timestamp when `transferSurplusFunds` was called
 * `contractEnabled` - global settlement flag
 
+**Data Structures**
+
+* `Allowance` - struct that specifies the total and the per-block withdrawal allowance for an address. Contains:
+  * `total` - the total allowance \(in `RAD`\)
+  * `perBlock` - the per-block allowance \(in `RAD`\)
+
+**Modifiers**
+
+* `isAuthorized` ****- checks whether an address is part of `authorizedAddresses` \(and thus can call authed functions\).
+* `accountNotTreasury` - checks that the receiver account for treasury funds is not the treasury itself
+
 **Functions**
 
 * `modifyParameters()` - authorized function for changing treasury parameters
@@ -42,6 +53,37 @@ The `StabilityFeeTreasury` is meant to allow other contracts or EOAs to pull fun
 * `takeFunds(account: address`, `rad: uint256)` - governance controlled function that transfers stability fees from a target address to the treasury
 * `pullFunds(dstAccount: address`, `token: address`, `wad: uint256)` - take funds from the treasury. Reverts if the caller is not allowed to withdraw or if their per-block allowance doesn't allow it
 * `transferSurplusFunds()` - recalculate the amount of stability fees that should remain in the treasury and transfer additional funds to the `accountingEngine`
+
+**Events**
+
+* `AddAuthorization` - emitted when a new address becomes authorized. Contains:
+  * `account` - the new authorized account
+* `RemoveAuthorization` - emitted when an address is de-authorized. Contains:
+  * `account` - the address that was de-authorized
+* `ModifyParameters` - emitted when a parameter is updated.
+* `DisableContract` - emitted when the contract is disabled.
+* `SetTotalAllowance` - emitted when the total allowance for an address is set. Contains:
+  * `account` - the account whose allowance was changed
+  * `rad` - the new total allowance for the `account`
+* `SetPerBlockAllowance` - emitted when the per-block allowance for an address is set. Contains:
+  * `account` - the account whose per-block allowance was changed
+  * `rad` - the new total allowance for the `account`
+* `GiveFunds` - emitted when governance offers funds to an address. Contains:
+  * `account` - the account that received funds
+  * `rad` - the amount of funds that were given
+  * `expensesAccumulator` - the sum of all the expenses incurred since the contract was deployed
+* `TakeFunds` - emitted when governance calls the treasury to take funds from an address. Contains:
+  * `account` - the account the treasury takes system coins from
+  * `rad` - the amount of \(internal\) system coins to take \(expressed as `RAD`\)
+* `PullFunds` - emitted when an approved address pulls funds from the treasury. Contains:
+  * `sender` - the `msg.sender` that called `pullFunds`
+  * `dstAccount` - the address that received funds
+  * `token` - the address of the token being transferred \(in this case it's always the address of the ERC20 system coin\)
+  * `rad` - the total amount of internal system coins transferred
+  * `expensesAccumulator` - the sum of all the expenses incurred since the contract was deployed
+* `TransferSurplusFunds` - emitted when surplus funds above the optimum amount are sent to the accounting engine. Contains:
+  * `accountingEngine` - the address of the `AccountingEngine` where funds were sent
+  * `fundsToTransfer` - the amount of funds sent
 
 ## 3. Walkthrough <a id="2-contract-details"></a>
 
