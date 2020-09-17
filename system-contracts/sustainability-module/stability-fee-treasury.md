@@ -47,7 +47,7 @@ The `StabilityFeeTreasury` is meant to allow other contracts or EOAs to pull fun
 
 The treasury is funded by stability fees coming from the `TaxCollector` or by anyone who is willing to send system coins \(either internally or as ERC20 tokens\) to it. Governance can also use `takeFunds` to transfer internal system coins from a source address to the treasury.  
   
-Governance is in charge with setting up authorized addresses that can `pullFunds` out of the treasury \(if their `allowance` permits\) as well as setting treasury parameters in order to determine the optimum amount of funds that should remain in the contract at any time. We define "optimum" as a multiplier \(`expensesMultiplier`\) of the latest expenses incurred by the treasury since the last `transferSurplusFunds` call. 
+Governance is in charge with setting up authorized addresses that can `pullFunds` out of the treasury \(if their total or per-block `allowance` permits\) as well as setting treasury parameters in order to determine the optimum amount of funds that should remain in the contract at any time. We define "optimum" as a multiplier \(`expensesMultiplier`\) of the latest expenses incurred by the treasury since the last `transferSurplusFunds` call. 
 
 `transferSurplusFunds` is the way the treasury recalculates the amount of funds it should keep in reserves and transfers any surplus to the `AccountingEngine`. Note that there is a `surplusTransferDelay` time delay between recalculating the optimum and transferring surplus out of the contract.
 
