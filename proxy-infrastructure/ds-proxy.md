@@ -12,7 +12,12 @@ A user can execute functions through this proxy by passing in the bytecode for t
 
 ## 2. Contract Variables & Functions <a id="2-contract-details"></a>
 
+**Variables**
+
 * `cache` - address of contract that caches the bytecode of target contracts called by the proxy
+
+**Functions**
+
 * `execute` - execute a function in the context of the proxy
 * `setCache` - set a new `cache`
 
