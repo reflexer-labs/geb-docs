@@ -38,6 +38,36 @@ description: Delegatecall based proxy with an enforced delay
 * `abandonTransaction(usr:address`, `codeHash: bytes32`, `parameters: bytes`, `earliestExecutionTime: uint)`- delete a scheduled transaction
 * `executeTransaction(usr:address`, `codeHash: bytes32`, `parameters: bytes`, `earliestExecutionTime: uint)`- execute a scheduled transaction. Throws if the `scheduledTransaction`'s `delay` has not yet passed
 
+**Events**
+
+* `SetDelay` - emitted when the `delay` is changed. Contains:
+  * `delay` - the new delay
+* `ScheduleTransaction` - emitted when a new transaction is scheduled. Contains:
+  * `sender` - the `msg.sender` that scheduled the transaction
+  * `usr` - the target contract
+  * `codeHash` - the code hash of `usr`
+  * `parameters` - parameters for the transaction
+  * `earliestExecutionTime` - earliest time when the transaction can be executed
+* `AbandonTransaction` - emitted when governance abandons a previously scheduled transaction. Contains:
+  * `sender` - the `msg.sender` that scheduled the transaction
+  * `usr` - the target contract
+  * `codeHash` - the code hash of `usr`
+  * `parameters` - parameters for the transaction
+  * `earliestExecutionTime` - earliest time when the transaction can be executed
+* `ExecuteTransaction` - emitted when a transaction is executed. Contains:
+  * `sender` - the `msg.sender` that scheduled the transaction
+  * `usr` - the target contract
+  * `codeHash` - the code hash of `usr`
+  * `parameters` - parameters for the transaction
+  * `earliestExecutionTime` - earliest time when the transaction can be executed
+* `AttachTransactionDescription` - emitted when governance attaches a description to a scheduled transaction. Contains:
+  * `sender` - the `msg.sender` that scheduled the transaction
+  * `usr` - the target contract
+  * `codeHash` - the code hash of `usr`
+  * `parameters` - parameters for the transaction
+  * `earliestExecutionTime` - earliest time when the transaction can be executed
+  * `description` - the transaction description
+
 ## 3. Walkthrough <a id="2-contract-details"></a>
 
 `DSPause` is designed to be used as a component in a governance system, to give affected parties time to respond to decisions. If those affected by governance decisions have e.g. exit or veto rights, then the pause can serve as an effective check on governance power.

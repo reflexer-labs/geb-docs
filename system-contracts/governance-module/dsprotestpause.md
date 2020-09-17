@@ -54,6 +54,44 @@ description: DSPause cousin where transactions can be protested against and furt
 * `protestAgainstTransaction(usr: address`, `codeHash: bytes32`, `parameters: bytes)` - protest against a transaction and delay it even more than it already is
 * `executeTransaction(usr:address`, `codeHash: bytes32`, `parameters: bytes`, `earliestExecutionTime: uint)`- execute a scheduled transaction. Throws if the `scheduledTransaction`'s `delay` has not yet passed
 
+**Events**
+
+* `SetDelay` - emitted when the `delay` is changed. Contains:
+  * `delay` - the new delay
+* `ChangeDelayMultiplier` - emitted when the `delayMultiplier` is changed. Contains:
+  * `multiplier` - the new `delayMultiplier`
+* `ScheduleTransaction` - emitted when a new transaction is scheduled. Contains:
+  * `sender` - the `msg.sender` that scheduled the transaction
+  * `usr` - the target contract
+  * `codeHash` - the code hash of `usr`
+  * `parameters` - parameters for the transaction
+  * `earliestExecutionTime` - earliest time when the transaction can be executed
+* `AbandonTransaction` - emitted when governance abandons a previously scheduled transaction. Contains:
+  * `sender` - the `msg.sender` that scheduled the transaction
+  * `usr` - the target contract
+  * `codeHash` - the code hash of `usr`
+  * `parameters` - parameters for the transaction
+  * `earliestExecutionTime` - earliest time when the transaction can be executed
+* `ProtestAgainstTransaction` - emitted when a transaction is protested against. Contains:
+  * `sender` - the `msg.sender` that scheduled the transaction
+  * `usr` - the target contract
+  * `codeHash` - the code hash of `usr`
+  * `parameters` - parameters for the transaction
+  * `totalDelay` - the new total delay for the transaction
+* `ExecuteTransaction` - emitted when a transaction is executed. Contains:
+  * `sender` - the `msg.sender` that scheduled the transaction
+  * `usr` - the target contract
+  * `codeHash` - the code hash of `usr`
+  * `parameters` - parameters for the transaction
+  * `earliestExecutionTime` - earliest time when the transaction can be executed
+* `AttachTransactionDescription` - emitted when governance attaches a description to a scheduled transaction. Contains:
+  * `sender` - the `msg.sender` that scheduled the transaction
+  * `usr` - the target contract
+  * `codeHash` - the code hash of `usr`
+  * `parameters` - parameters for the transaction
+  * `earliestExecutionTime` - earliest time when the transaction can be executed
+  * `description` - the transaction description
+
 ## 3. Walkthrough <a id="2-contract-details"></a>
 
 
