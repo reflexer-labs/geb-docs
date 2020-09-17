@@ -2,7 +2,7 @@
 description: Intro guide to using GEB.js
 ---
 
-# Getting Started
+# Getting Started with GEB.js
 
 GEB.js is a library used to interact with the GEB smart contracts. Developers can manage their SAFEs, mint RAI, inspect the system state and much more.
 

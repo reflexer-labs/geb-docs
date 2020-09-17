@@ -61,7 +61,7 @@
 
 ## GEB.js <a id="geb-js"></a>
 
-* [Getting Started](geb-js/gettingstarted.md)
+* [Getting Started with GEB.js](geb-js/gettingstarted.md)
 * [Core GEB Object](geb-js/geb.md)
 * [SAFE Management](geb-js/safe.md)
 * [SAFE Proxies](geb-js/gebproxyactions.md)
