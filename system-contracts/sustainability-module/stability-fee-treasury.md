@@ -12,7 +12,8 @@ The `StabilityFeeTreasury` is meant to allow other contracts or EOAs to pull fun
 
 **Variables**
 
-* `allowance[receiver: address]` - withdrawal allowance
+* `allowance[receiver: address]` - total withdrawal allowance
+* `pulledPerBlock[usr: address`, `blockNr: uint256]` - total amount pulled by a user on a specific block
 * `safeEngine` - address of the `SAFEEngine`
 * `systemCoin` - system coin address \([Coin.sol](https://github.com/reflexer-labs/geb/blob/master/src/Coin.sol)\)
 * `coinJoin` - system coin adapter address
@@ -33,12 +34,14 @@ The `StabilityFeeTreasury` is meant to allow other contracts or EOAs to pull fun
 
 * `modifyParameters()` - authorized function for changing treasury parameters
 * `disableContract()` - disable the treasury and transfer all of its funds to the `accountingEngine`
-* `joinAllCoins` - join any ERC20 system coins that the treasury has into internal coin form \(`SAFEEngine.coinBalance`\)
-* `allow(account: address, amount: uint256)` - authorized function that changes the allowed amount an address can withdraw from the treasury
-* `giveFunds(account: address, rad: uint256)` - governance controlled function that transfers stability fees from the treasury to a destination address
-* `takeFunds(account: address, rad: uint256)` - governance controlled function that transfers stability fees from a target address to the treasury
-* `pullFunds(dstAccount: address, token: address, wad: uint256)` - 
-* `transferSurplusFunds` - recalculate the amount of stability fees that should remain in the treasury and transfer additional funds to the `accountingEngine`
+* `joinAllCoins()` - join any ERC20 system coins that the treasury has into internal coin form \(`SAFEEngine.coinBalance`\)
+* `getAllowance(account: address)` - get the total and the per-block allowance for a user
+* `setTotalAllowance(account: address`, `rad: uint256)` - authorized function that changes the total allowed amount an address can withdraw from the treasury
+* `setPerBlockAllowance(account: address`, `rad: uint256)` - authorized function that changes the amount that an address can withdraw from the treasury every block
+* `giveFunds(account: address`, `rad: uint256)` - governance controlled function that transfers stability fees from the treasury to a destination address
+* `takeFunds(account: address`, `rad: uint256)` - governance controlled function that transfers stability fees from a target address to the treasury
+* `pullFunds(dstAccount: address`, `token: address`, `wad: uint256)` - take funds from the treasury. Reverts if the caller is not allowed to withdraw or if their per-block allowance doesn't allow it
+* `transferSurplusFunds()` - recalculate the amount of stability fees that should remain in the treasury and transfer additional funds to the `accountingEngine`
 
 ## 3. Walkthrough <a id="2-contract-details"></a>
 
