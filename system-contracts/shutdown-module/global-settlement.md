@@ -30,6 +30,10 @@ The `GlobalSettlement` is meant to shut down the system and reimburse SAFE users
 * `coinBag[usr: address]` - system coins ready to be swapped for collateral. Coins cannot be transferred out of a bag
 * `coinsUsedToRedeem[usr: address]` - the amount of already swapped system coins for a specific address
 
+**Modifiers**
+
+* `isAuthorized` ****- checks whether an address is part of `authorizedAddresses` \(and thus can call authed functions\).
+
 **Functions**
 
 * `modifyParameters()` - update parameters such as the `safeEngine`, `shutdownCooldown` etc
