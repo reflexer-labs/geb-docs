@@ -29,10 +29,10 @@ The `StabilityFeeTreasury` is meant to allow other contracts or EOAs to pull fun
 * `latestSurplusTransferTime` - last timestamp when `transferSurplusFunds` was called
 * `contractEnabled` - global settlement flag
 
+**Functions**
 
-
-* `modifyParameters` - authorized function for changing treasury parameters
-* `disableContract` - disable the treasury and transfer all of its funds to the `accountingEngine`
+* `modifyParameters()` - authorized function for changing treasury parameters
+* `disableContract()` - disable the treasury and transfer all of its funds to the `accountingEngine`
 * `joinAllCoins` - join any ERC20 system coins that the treasury has into internal coin form \(`SAFEEngine.coinBalance`\)
 * `allow(account: address, amount: uint256)` - authorized function that changes the allowed amount an address can withdraw from the treasury
 * `giveFunds(account: address, rad: uint256)` - governance controlled function that transfers stability fees from the treasury to a destination address
