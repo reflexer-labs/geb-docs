@@ -30,7 +30,7 @@ Another major risk is related to malicious governance setting extremely high or 
 
 ## 4. Governance Minimization
 
-Depending on whether governance wants to expand the basket of accepted collateral types over time, they may keep control over the `TaxCollector` or choose to add only a few assets and then completely remove their permissions.
+Depending on whether governance wants to expand the array of accepted collateral types over time, they may keep control over the `TaxCollector` or choose to add only a few assets and then completely remove their permissions.
 
-Governance may also keep their power to change stability fees within certain limits. For example, the `globalStabilityFee` may only be changed a certain percentage every week or every `CollateralType.stabilityFee` can have strict bounds over what values it can be set to.
+Governance may also keep their power to change stability fees within certain limits. For example, the `globalStabilityFee` may only be changed by a certain percentage every week or every `CollateralType.stabilityFee` can have strict bounds over what values it can be set to.
 
