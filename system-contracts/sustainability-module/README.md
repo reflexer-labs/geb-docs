@@ -28,7 +28,7 @@ The **Sustainability Module** provides funds to critical system components such 
 
 ## 4. Governance Minimization
 
-Governance can withdraw all of their power over this module with two conditions:
+Governance can withdraw all of their power over this module if two conditions are satisfied:
 
 1. All treasury dependent contracts were set up correctly \(can withdraw enough funds to function properly\).
 2. All external actors \(if any\) have the necessary permissions to pull funds from the treasury.
