@@ -44,8 +44,6 @@
 * [Sustainability Module](system-contracts/sustainability-module/README.md)
   * [Stability Fee Treasury](system-contracts/sustainability-module/stability-fee-treasury.md)
 * [Governance Module](system-contracts/governance-module/README.md)
-  * [Governance Aggregation](system-contracts/governance-module/governance-aggregation.md)
-  * [Vote Quorum](system-contracts/governance-module/vote-quorum.md)
   * [DSPause](system-contracts/governance-module/ds-pause.md)
 * [Shutdown Module](system-contracts/shutdown-module/README.md)
   * [Global Settlement](system-contracts/shutdown-module/global-settlement.md)
