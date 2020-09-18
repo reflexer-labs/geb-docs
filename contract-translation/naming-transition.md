@@ -6,6 +6,12 @@ description: Going from cute to actual English words
 
 The following tables show the before and after variable names from all core MCD contracts.
 
+| MCD Units | Meaning |
+| :--- | :--- |
+| WAD | Number with 18 decimals \(10^18\) |
+| RAY | Number with 27 decimals \(10^27\) |
+| RAD | Number with 45 decimals \(10^45\) |
+
 | Vat | SAFEEngine |
 | :--- | :--- |
 | wards | authorizedAccounts |
