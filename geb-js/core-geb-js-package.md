@@ -1,6 +1,10 @@
+---
+description: The main package used to interact with the core GEB contracts
+---
+
 # Core GEB.js Package
 
-Main object of the library instantiating all useful GEB contracts and providing all helper functions needed.
+Main library object you can use to interact with the core GEB contracts.
 
 ## Constructors
 
@@ -27,7 +31,7 @@ _Defined in_ [_packages/geb/src/geb.ts:48_](https://github.com/reflexer-labs/geb
 
 Object containing all GEB core contracts instances for low level interactions. All contracts object offer a one-to-one typed API to the underlying smart-contract. Currently has the following contracts:
 
-* SafeEngine
+* SAFEEngine
 * AccountingEngine
 * TaxCollector
 * LiquidationEngine
@@ -71,10 +75,10 @@ const USDCAddress = "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
 const USDC = geb.getErc20Contract(USDCAddress)
 
 // Get deadbeef's balance
-const balance = USDC.balanceOf("0xdeadbeef..")
+const balance = USDC.balanceOf("0xraiisright..")
 
-// Send 1 USDC to deadbeef (USDC has 6 decimals)
-const tx = USDC.transfer("0xdeadbeef..", "1000000")
+// Send 1 USDC to 0xraiisright (USDC has 6 decimals)
+const tx = USDC.transfer("0xraiisright..", "1000000")
 await wallet.sendTransaction(tx)
 ```
 
@@ -110,7 +114,7 @@ Given an address returns a GebProxyAction object to execute bundled operations. 
 
 _Defined in_ [_packages/geb/src/geb.ts:95_](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/geb.ts#L95)
 
-Given an address returns a GebProxyActionsGlobalSettlement object to execute bundled operations during GlobalSettlement. Important: Same as for `getProxyAction` it requires a proxy deploy through the registry.
+Given an address returns a GebProxyActionsGlobalSettlement object able to execute bundled operations during GlobalSettlement. **IMPORTANT**: Same as for `getProxyAction` you will need to deploy a proxy beforehand using the [proxy registry](https://github.com/reflexer-labs/geb-proxy-registry/blob/master/src/GebProxyRegistry.sol).
 
 **Parameters:**
 
@@ -142,7 +146,7 @@ Get the safe object
 
 _Defined in_ [_packages/geb/src/geb.ts:194_](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/geb.ts#L194)
 
-Bundles several read only GEB contract call into 1 RPC single request. Useful for front-ends or apps that need to fetch many parameters from the contracts but want to minimize the network request and the load on the underlying Ethereum node. The function takes as input an Array of GEB view contract calls. IMPORTANT: You have to set the `multicall` parameter of the contract function to `true`, it is the always the last parameter of the function. Multicall works for all contracts in the `Geb.contracts` and can be use with any contract that inherit the `BaseContractApi`. Note that it does not support non-view calls \(Calls that require to pay gas and change the state of the blockchain\).
+Bundles several read only GEB contract calls into one RPC request. Useful for front-ends or apps that need to fetch many parameters at once from the contracts but want to minimize the network load on the underlying Ethereum node. The function takes as input an Array of GEB view contract calls. **IMPORTANT**: You have to set the `multicall` parameter of the contract function to `true` \(it is the always the last parameter of the function\). Multicall works for all contracts in `Geb.contracts` and can be used with any contract that inherits the `BaseContractApi`. Note that it does **not** support state modifying calls \(calls that require you to pay gas and change the blockchain state\).
 
 Example:
 
@@ -159,7 +163,7 @@ const [ globalDebt, collateralInfo ] = await geb.multiCall([
 ])
 
 console.log(`Current global debt: ${globalDebt.toString()}`)
-console.log(`Current ETH_A debt: ${collateralInfo.debtAmount}`)
+console.log(`Current ETH-A debt: ${collateralInfo.debtAmount}`)
 ```
 
 **Type parameters:**
@@ -174,7 +178,7 @@ console.log(`Current ETH_A debt: ${collateralInfo.debtAmount}`)
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| `calls` | \[MulticallRequest‹O1›, MulticallRequest‹O2›, MulticallRequest‹O3›\] | Return value from a view GEB contract call. !! The GEB contract object needs to be call with the parameter `multicall` set to `true`, see example above. |
+| `calls` | \[MulticallRequest‹O1›, MulticallRequest‹O2›, MulticallRequest‹O3›\] | Call a read only GEB contract function. The GEB contract object needs to be called with the parameter `multicall` set to `true` as seen in the example above. |
 
 **Returns:** _Promise‹\[O1, O2, O3\]›_
 
