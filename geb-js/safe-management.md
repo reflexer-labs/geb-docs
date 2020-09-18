@@ -1,6 +1,10 @@
+---
+description: Utils to help you manage a GEB SAFEs
+---
+
 # SAFE Management
 
-Represent a GEB safe. Has the safe state and provide helper function to calculate liquidation price, CRatio, etc.
+This object represents a GEB safe. It has the entire SAFE state and provides helper functions to calculate its liquidation price, collateralization ratio etc.
 
 ## Constructors
 
@@ -71,7 +75,7 @@ If the safe was open through the safe manager
 
 _Defined in_ [_packages/geb/src/schema/safe.ts:38_](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/schema/safe.ts#L38)
 
-Ratio used to calculate the amount of debt that can be drawn. Returns null is ratio is +Infinity. !! Use unsafe division leading to precision loss.
+Ratio used to calculate the amount of debt that can be drawn. Returns null is ratio is +Infinity. !! Uses unsafe division that leads to precision loss.
 
 **Returns:** _Promise‹FixedNumber \| null›_
 
@@ -83,7 +87,7 @@ Promise CRatio
 
 _Defined in_ [_packages/geb/src/schema/safe.ts:61_](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/schema/safe.ts#L61)
 
-Ratio used for liquidation. If LRatio = 1 you can get liquidated, the greater LRatio the safer your safe is. !! Use unsafe division leading to precision loss.
+Ratio used for liquidating the SAFE. If LRatio &lt;= 1 you can get liquidated, the greater LRatio the safer your safe is. Uses unsafe division which leads to precision loss.
 
 **Returns:** _Promise‹FixedNumber \| null›_
 
@@ -95,7 +99,7 @@ Promise LRatio
 
 _Defined in_ [_packages/geb/src/schema/safe.ts:84_](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/schema/safe.ts#L84)
 
-Price at which the safe would get liquidated.
+Price at which the SAFE will get liquidated.
 
 **Returns:** _Promise‹FixedNumber \| null›_
 
