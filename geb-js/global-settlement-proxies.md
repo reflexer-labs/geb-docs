@@ -1,6 +1,12 @@
+---
+description: >-
+  Proxy functions meant to facilitate collateral redemption during Global
+  Settlement
+---
+
 # Global Settlement Proxies
 
-Convenience class to call functions from the Proxy Action Global Settlement contract through a proxy registered in the proxy registry. It is used the same way as the `ProxyAction` class. Useful only during global settlement \(System shutdown\) for users to retrieve their collateral.
+Convenience class used to call functions from [GebProxyActionsGlobalSettlement](https://github.com/reflexer-labs/geb-proxy-actions/blob/master/src/GebProxyActions.sol) using a proxy registered in the [GebProxyRegistry](https://github.com/reflexer-labs/geb-proxy-registry/blob/master/src/GebProxyRegistry.sol). Useful only during Global Settlement in order for users to redeem collateral.
 
 ## Constructors
 
@@ -42,7 +48,7 @@ Defined in packages/geb-contract-base/lib/base-contract-api.d.ts:20
 
 _Defined in_ [_packages/geb/src/proxy-action-global-settlement.ts:26_](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action-global-settlement.ts#L26)
 
-Underlying proxy object. Can be use to make custom calls to the proxy using `proxy.execute()` function. For the details of each function
+Underlying proxy object. Can be used to make custom calls to the proxy using `proxy.execute()`.
 
 ### proxyActionAddress
 
@@ -50,7 +56,7 @@ Underlying proxy object. Can be use to make custom calls to the proxy using `pro
 
 _Defined in_ [_packages/geb/src/proxy-action-global-settlement.ts:31_](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action-global-settlement.ts#L31)
 
-Address of the proxy action global settlement contract.
+Address of the proxy actions global settlement contract.
 
 ### proxyAddress
 
@@ -58,7 +64,7 @@ Address of the proxy action global settlement contract.
 
 _Defined in_ [_packages/geb/src/proxy-action-global-settlement.ts:38_](https://github.com/reflexer-labs/geb.js/blob/31f836f/packages/geb/src/proxy-action-global-settlement.ts#L38)
 
-Address of the underlying proxy
+Address of the underlying proxy.
 
 ## Methods
 
