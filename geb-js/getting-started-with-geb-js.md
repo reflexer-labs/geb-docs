@@ -22,13 +22,16 @@ At the moment, GEB.js uses [Ether.js](https://www.npmjs.com/package/ethers) V5. 
 npm install ethers
 ```
 
-## Documentation
-
-Full API documentation is available [here](https://docs.reflexer.finance/geb-js/gettingstarted).
-
 ## Examples
 
-How to inspect your safe and open a new safe with a proxy:
+Deploy a GEB proxy:
+
+```typescript
+const tx = geb.deployProxy()
+await wallet.sendTransaction(tx)
+```
+
+This is how you can inspect a SAFE and also open a new one using your own proxy:
 
 ```typescript
 import { ethers, utils as ethersUtils } from 'ethers'
@@ -43,18 +46,18 @@ const wallet = new ethers.Wallet('0xdeadbeef...', provider)
 // Create the main GEB object
 const geb = new Geb('kovan', provider)
 
-// Get a safe
+// Get a SAFE
 const safe = await geb.getSafe(4)
 console.log(`Safe id 4 has: ${utils.wadToFixed(safe.debt).toString()} RAI of debt.`)
 console.log(`It will get liquidated if ETH price falls below ${(await safe.liquidationPrice())?.toString()} USD.`)
 
-// Open a new safe, lock ETH and draw RAI in a single transaction with a proxy
-// Note: Before doing this you need a proxy
+// Open a new SAFE, lock ETH and draw RAI in a single transaction using a proxy
+// Note: Before doing this you need to create your own proxy
 const proxy = await geb.getProxyAction(wallet.address)
 const tx = await proxy.openLockETHAndGenerateDebt(
     ethersUtils.parseEther('1'), // Lock 1 Ether
-    utils.ETH_A, // Of collateral ETH
-    ethersUtils.parseEther('15') // Draw 15 RAI
+    utils.ETH_A,                 // Of collateral ETH-A
+    ethersUtils.parseEther('15') // And draw 15 RAI
 )
 
 tx.gasPrice = ethers.BigNumber.from('80').mul('1000000000') // Set the gas price to 80 Gwei
@@ -64,14 +67,7 @@ await pending.wait() // Wait for it to be mined
 console.log('Transaction mined, safe opened!')
 ```
 
-Deploy a GEB proxy to use proxy action:
-
-```typescript
-const tx = geb.deployProxy()
-await wallet.sendTransaction(tx)
-```
-
-Use the low level API to make direct contract calls:
+Use the low level API to make direct contract calls and fetch data:
 
 ```typescript
 // Fetch some system parameters from their respective contracts
@@ -79,11 +75,11 @@ const surplusBuffer = await geb.contracts.accountingEngine.surplusBuffer()
 const { stabilityFee } = await geb.contracts.taxCollector.collateralTypes(utils.ETH_A)
 
 // Liquidate a Safe
-const tx = geb.contracts.liquidationEngine.liquidateSAFE(utils.ETH_A,"0xdeadbeef..");
+const tx = geb.contracts.liquidationEngine.liquidateSAFE(utils.ETH_A, "0xdefidream...");
 await wallet.sendTransaction(tx)
 ```
 
-Use multicall to bundle RPC requests into one reducing the network traffic:
+Use multicall to bundle RPC requests into one:
 
 ```typescript
 const [ globalDebt, collateralInfo ] = await geb.multiCall([
