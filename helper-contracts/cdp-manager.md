@@ -24,34 +24,80 @@ The SAFE Manager is an abstraction around the `SAFEEngine` that allows anyone to
 * `firstSAFEID[owner: address]` - the first `safeId` of an owner
 * `lastSAFEID[owner: address]` - the last `safeId` or an owner
 * `safeCount[owner: address]` - the amount of SAFEs and address has
-* `safeCan[owner: address, safeId: uint256, allowedAddr: address]` - whether an address is allowed to interact with a SAFE
-* `handlerCan[safeHandler: address, allowedAddr: address]` - whether an address is allowed to interact with a SAFE's handler
+* `safeCan[owner: address`, `safeId: uint256`, `allowedAddr: address]` - whether an address is allowed to interact with a SAFE
+* `handlerCan[safeHandler: address`, `allowedAddr: address]` - whether an address is allowed to interact with a SAFE's handler
 
 **Data Structures**
 
 * `List` - a struct containing the previous and the next SAFE ids of a specific SAFE. Contains:
-  * 
+  * `prev` - the previous SAFE id
+  * `next` - the next SAFE id
 
 **Functions**
 
-* `allowSAFE[uint256, address, uint256]` - allow an address to interact with a SAFE with a specific id
-* `allowHandler[address, uint256]` - allow an address to interact with a SAFE handler
-* `openSAFE[bytes32, address]` - create a new SAFE id and handler
-* `transferCDPOwnership[uint256, address]` - transfer a SAFE to another address
-* `modifySAFECollateralization[uint256, int256, int256]` - add/remove collateral to and from a CDP or generate/repay debt
-* `transferCollateral` - transfer collateral from a SAFE to another address
-* `transferInternalCoins[uint256, address, uint256]` - transfer `SAFEEngine.coinBalance` system coins between addresses
-* `quitSystem[uint256, address]` - migrate the SAFE to a destination address
-* `enterSystem[address, uint256]` - import a SAFE to the handler owned by an address
-* `moveSAFE[uint256, uint256]` - move a position between SAFE handlers
-* `protectSAFE[uint256, bytes32, address, address]` - choose a `SAFESaviour` for a SAFE
+* `allowSAFE[safe: uint256`, `usr: address`, `ok: uint256]` - allow an address to interact with a SAFE with a specific id
+* `allowHandler[usr: address`, `ok: uint256]` - allow an address to interact with a SAFE handler
+* `openSAFE[collateralType: bytes32`, `usr: address]` - create a new SAFE id and handler
+* `transferSAFEOwnership[safe: uint256`, `dst: address]` - transfer a SAFE to another address
+* `modifySAFECollateralization[safe: uint256`, `deltaCollateral: int256`, `deltaDebt:` `int256]` - add/remove collateral to and from a SAFE or generate/repay debt
+* `transferCollateral[safe: uint256`, `dst: address`, `wad: uint256]` - transfer collateral from a SAFE to another address
+* `transferInternalCoins[safe: uint256`, `dst: address`, `rad: uint256]` - transfer `SAFEEngine.coinBalance` system coins between addresses
+* `quitSystem[safe: uint256`, `dst: address]` - migrate the SAFE to a destination address
+* `enterSystem[safe: address`, `src: uint256]` - import a SAFE to the handler owned by an address
+* `moveSAFE[safeSrc: uint256`, `safeDst: uint256]` - move a position between SAFE handlers
+* `protectSAFE[safe: uint256`, `liquidationEngine: address`, `saviour: address]` - choose a `SAFESaviour` for a SAFE
 
 **Events**
 
-* `NewSafe` - emitted when a new SAFE is created using `openSAFE`. Contains:
-  * `usr` - the `msg.sender` when calling `openSAFE`
+* `AllowSAFE` - emitted when `allowSafe` is called. Contains:
+  * `sender` - the `msg.sender`
+  * `safe` - the SAFE id
+  * `usr` - the address of the user that is allowed/forbidden from managing the SAFE
+  * `ok` - whether the `usr` is allowed or not to manage the SAFE
+* `AllowHandler` - emitted when `allowHandler` is called. Contains:
+  * `sender` - the `msg.sender`
+  * `usr` - the handler
+  * `ok` - whether it is allowed or not
+* `TransferSAFEOwnership` - emitted when `transferSAFEOwnership` is called. Contains:
+  * `sender` - the `msg.sender`
+  * `safe` - the SAFE id
+  * `dst` - the new owner
+* `OpenSAFE` - emitted when a new SAFE is created using `openSAFE`. Contains:
+  * `sender` - the `msg.sender`
   * `own` - the SAFE owner
   * `safe` - SAFE id
+* `ModifySAFECollateralization` - emitted when `modifySAFECollateralization` is called. Contains: 
+  * `sender` - the `msg.sender`
+  * `safe` - the SAFE id
+  * `deltaCollateral` - the amount of collateral to add/remove
+  * `deltaDebt` - the amount of debt to repay/withdraw
+* `TransferCollateral` - emitted when `transferCollateral` is called. Contains:
+  * `sender` - the `msg.sender`
+  * `safe` - the SAFE id
+  * `dst` - the destination SAFE id
+  * `wad` - amount of collateral to transfer
+* `TransferInternalCoins` - emitted when `transferInternalCoins` is called. Contains:
+  * `sender` - the `msg.sender`
+  * `safe` - the SAFE id
+  * `dst` - destination for internal coins
+  * `rad` - amount of internal coins to transfer
+* `QuitSystem` - emitted when `quitSystem` is called. Contains:
+  * `sender` - the `msg.sender`
+  * `safe` - the SAFE id
+  * `dst` - the destination handler for the SAFE
+* `EnterSystem` - emitted when `enterSystem` is called. Contains:
+  * `sender` - the `msg.sender`
+  * `src` - the source handler for the SAFE
+  * `safe` - the SAFE id
+* `MoveSAFE` - emitted when `moveSAFE` is called. Contains:
+  * `safe` - the SAFE id
+  * `safeSrc` - the source ID that has the current handler controlling the SAFE
+  * `safeDst` - the destination SAFE id that has the handler which will control the `safe` from now on
+* `ProtectSAFE` - emitted when `protectSAFE` is called. Contains:
+  * `sender` - the `msg.sender`
+  * `safe` - the SAFE id
+  * `liquidationEngine` - the `LiquidationEngine` where `saviour` is and that can liquidate `safe`
+  * `saviour` - the saviour that will protect the SAFE
 
 ## 3. Risks
 
