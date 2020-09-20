@@ -14,11 +14,11 @@ GEB is a modified fork of [MCD](https://github.com/makerdao/dss) that has severa
 
 * Variable names you [can actually understand](https://docs.reflexer.finance/system-overview/naming-transition)
 * An autonomous feedback mechanism that changes the incentives of system participants
-* The possibility to add insurance for CDPs
+* The possibility to add insurance for SAFEs
 * Fixed discount auctions \(instead of English auctions\) used to sell off collateral
 * Automatic adjustment of `AccountingEngine` \(former `Vow`\) parameters
 * The possibility to send stability fees at once to multiple addresses
-* Two prices for each `CollateralType`: one used for generating debt, the other one used exclusively when liquidating CDPs
+* Two prices for each `CollateralType`: one used for generating debt, the other one used exclusively when liquidating SAFEs
 * A stability fee treasury that can pay for oracle calls, market making or teams who onboard collateral and take care of the system
 * A settlement surplus auctioneer that sells any remaining surplus after settlement is triggered
 * An Oracle Network Medianizer that does not rely on any particular price feed and can be upgraded \(within certain bounds\) by governance
