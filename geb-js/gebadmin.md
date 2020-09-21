@@ -1,10 +1,11 @@
-# Admin Utilities
+# Class: GebAdmin
 
-This class extends the core `GEB` class with additional tools and contracts that are not used as often as other SAFE management tools. Here you will find utils for contracts such as DSPause, ESM etc. These contracts are scattered across several repositories. Please refer to the smart contract documentation to learn more about them.
+This class extends the core `GEB` class with additional tools and contracts that are not used as often as other SAFE management tools.
+Here you will find utils for contracts such as DSPause, ESM etc. These contracts are scattered across several repositories. Please refer to the smart contract documentation to learn more about them.
 
-**IMPORTANT:** To avoid bloating the main [geb.js](https://www.npmjs.com/package/geb.js) package this class is only available in a [separate package](https://www.npmjs.com/package/@reflexer-finance/geb-admin). Please install it like this:
-
-```text
+**IMPORTANT:** To avoid bloating the main [geb.js](https://www.npmjs.com/package/geb.js) package this class is only available in a [separate package](https://www.npmjs.com/package/@reflexer-finance/geb-admin).
+Please install it like this:
+```
 npm install @reflexer-finance/geb-admin
 ```
 
@@ -20,109 +21,122 @@ import { GebAdmin } from "@reflexer-finance/geb-admin"
 
 ## Constructors
 
-+ **new GebAdmin**\(`network`: GebDeployment, `provider`: GebProviderInterface \| Provider\): [_GebAdmin_](gebadmin.md)
 
-_Defined in_ [_packages/geb-admin/src/geb-admin.ts:51_](https://github.com/reflexer-labs/geb.js/blob/bd995fd/packages/geb-admin/src/geb-admin.ts#L51)
+\+ **new GebAdmin**(`network`: GebDeployment, `provider`: GebProviderInterface | Provider): *[GebAdmin](gebadmin.md)*
+
+
+*Defined in [packages/geb-admin/src/geb-admin.ts:51](https://github.com/reflexer-labs/geb.js/blob/bd995fd/packages/geb-admin/src/geb-admin.ts#L51)*
 
 **Parameters:**
 
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| `network` | GebDeployment | Either `'kovan'`, `'mainnet'` or an actual list of contract addresses. |
-| `provider` | GebProviderInterface \| Provider | Either a Ethers.js provider or a GEB provider. Support for Web3.js will soon be added. |
+Name | Type | Description |
+------ | ------ | ------ |
+`network` | GebDeployment | Either `'kovan'`, `'mainnet'` or an actual list of contract addresses. |
+`provider` | GebProviderInterface &#124; Provider | Either a Ethers.js provider or a GEB provider. Support for Web3.js will soon be added.  |
 
-**Returns:** [_GebAdmin_](gebadmin.md)
+**Returns:** *[GebAdmin](gebadmin.md)*
 
 ## Properties
 
-### contracts
+###  contracts
 
-• **contracts**: _ContractApis_
+• **contracts**: *ContractApis*
 
-_Inherited from_ [_GebAdmin_](gebadmin.md)_._[_contracts_](gebadmin.md#contracts)
+*Inherited from [GebAdmin](gebadmin.md).[contracts](gebadmin.md#contracts)*
 
 Defined in packages/geb/lib/geb.d.ts:34
 
-Object containing all GEB core contracts instances for low level interactions. All contracts object offer a one-to-one typed API to the underlying smart-contract. Currently has the following contracts:
+Object containing all GEB core contracts instances for low level interactions. All contracts object offer a one-to-one typed API to the underlying smart-contract.
+Currently has the following contracts:
+- SafeEngine
+- AccountingEngine
+- TaxCollector
+- LiquidationEngine
+- OracleRelayer
+- GlobalSettlement
+- DebtAuctionHouse
+- PreSettlementSurplusAuctionHouse
+- PostSettlementSurplusAuctionHouse
+- SettlementSurplusAuctioneer
+- GebSafeManager
+- GetSafes
+- BasicCollateralJoin
+- CoinJoin
+- Coin (RAI ERC20 contract)
+- GebProxyRegistry
+- FixedDiscountCollateralAuctionHouse (For ETH-A)
+- Weth (ERC20)
 
-* SafeEngine
-* AccountingEngine
-* TaxCollector
-* LiquidationEngine
-* OracleRelayer
-* GlobalSettlement
-* DebtAuctionHouse
-* PreSettlementSurplusAuctionHouse
-* PostSettlementSurplusAuctionHouse
-* SettlementSurplusAuctioneer
-* GebSafeManager
-* GetSafes
-* BasicCollateralJoin
-* CoinJoin
-* Coin \(RAI ERC20 contract\)
-* GebProxyRegistry
-* FixedDiscountCollateralAuctionHouse \(For ETH-A\)
-* Weth \(ERC20\)
+___
 
-### contractsAdmin
+###  contractsAdmin
 
-• **contractsAdmin**: _AdminApis_
+• **contractsAdmin**: *AdminApis*
 
-_Defined in_ [_packages/geb-admin/src/geb-admin.ts:51_](https://github.com/reflexer-labs/geb.js/blob/bd995fd/packages/geb-admin/src/geb-admin.ts#L51)
+*Defined in [packages/geb-admin/src/geb-admin.ts:51](https://github.com/reflexer-labs/geb.js/blob/bd995fd/packages/geb-admin/src/geb-admin.ts#L51)*
 
-Object containing all GEB admin contracts instances for low level interactions. It currently has the following contracts:
-
-* MultiSigWallet
-* DsProxy
-* DsToken
-* ProtocolTokenAuthority
-* GebPollingEmitter
-* GebPrintingPermissions
-* DsDelegateRoles
-* DsPause
-* DsPauseProxy
-* GovActions
-* ESM
-* TokenBurner
-* FsmGovernanceInterface
-* DsProxyFactory
-* GebDeployPauseProxyActions
-* DsProxy
-* TxManager
+Object containing all GEB admin contracts instances for low level interactions.
+It currently has the following contracts:
+- MultiSigWallet
+- DsProxy
+- DsToken
+- ProtocolTokenAuthority
+- GebPollingEmitter
+- GebPrintingPermissions
+- DsDelegateRoles
+- DsPause
+- DsPauseProxy
+- GovActions
+- ESM
+- TokenBurner
+- FsmGovernanceInterface
+- DsProxyFactory
+- GebDeployPauseProxyActions
+- DsProxy
+- TxManager
 
 ## Methods
 
-### deployProxy
+###  deployProxy
 
-▸ **deployProxy**\(\): _object_
+▸ **deployProxy**(): *object*
 
-_Inherited from_ [_GebAdmin_](gebadmin.md)_._[_deployProxy_](gebadmin.md#deployproxy)
+*Inherited from [GebAdmin](gebadmin.md).[deployProxy](gebadmin.md#deployproxy)*
 
 Defined in packages/geb/lib/geb.d.ts:57
 
 Deploy a new proxy owned by the sender.
 
-**Returns:** _object_
+**Returns:** *object*
 
-* **chainId**? : _number_
-* **data**? : _string_
-* **from**? : _string_
-* **gasLimit**? : _BigNumber_
-* **gasPrice**? : _BigNumber_
-* **nonce**? : _number_
-* **to**? : _string_
-* **value**? : _BigNumber_
+* **chainId**? : *number*
 
-### getErc20Contract
+* **data**? : *string*
 
-▸ **getErc20Contract**\(`tokenAddress`: string\): _Erc20_
+* **from**? : *string*
 
-_Inherited from_ [_GebAdmin_](gebadmin.md)_._[_getErc20Contract_](gebadmin.md#geterc20contract)
+* **gasLimit**? : *BigNumber*
+
+* **gasPrice**? : *BigNumber*
+
+* **nonce**? : *number*
+
+* **to**? : *string*
+
+* **value**? : *BigNumber*
+
+___
+
+###  getErc20Contract
+
+▸ **getErc20Contract**(`tokenAddress`: string): *Erc20*
+
+*Inherited from [GebAdmin](gebadmin.md).[getErc20Contract](gebadmin.md#geterc20contract)*
 
 Defined in packages/geb/lib/geb.d.ts:81
 
-Returns an object that can be used to interact with a ERC20 token. Example:
-
+Returns an object that can be used to interact with a ERC20 token.
+Example:
 ```typescript
 const USDCAddress = "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
 const USDC = geb.getErc20Contract(USDCAddress)
@@ -137,55 +151,63 @@ await wallet.sendTransaction(tx)
 
 **Parameters:**
 
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| `tokenAddress` | string | Token contract address |
+Name | Type | Description |
+------ | ------ | ------ |
+`tokenAddress` | string | Token contract address |
 
-**Returns:** _Erc20_
+**Returns:** *Erc20*
 
 Erc20
 
-### getProxyAction
+___
 
-▸ **getProxyAction**\(`ownerAddress`: string\): _Promise‹GebProxyActions›_
+###  getProxyAction
 
-_Inherited from_ [_GebAdmin_](gebadmin.md)_._[_getProxyAction_](gebadmin.md#getproxyaction)
+▸ **getProxyAction**(`ownerAddress`: string): *Promise‹GebProxyActions›*
+
+*Inherited from [GebAdmin](gebadmin.md).[getProxyAction](gebadmin.md#getproxyaction)*
 
 Defined in packages/geb/lib/geb.d.ts:47
 
-Given an address returns a GebProxyAction object to execute bundled operations. Important: This requires the address to have deployed a GEB proxy through the proxy registry contract. It will throw a `DOES_NOT_OWN_HAVE_PROXY` error if the address specified does not have a proxy. Use the [deployProxy](gebadmin.md#deployproxy) function to get a new proxy.
+Given an address returns a GebProxyAction object to execute bundled operations.
+Important: This requires the address to have deployed a GEB proxy through the proxy registry contract. It will throw a `DOES_NOT_OWN_HAVE_PROXY` error if the address specified does not have a proxy. Use the [deployProxy](gebadmin.md#deployproxy) function to get a new proxy.
 
 **Parameters:**
 
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| `ownerAddress` | string | Externally owned user account, Ethereum address that owns a GEB proxy. |
+Name | Type | Description |
+------ | ------ | ------ |
+`ownerAddress` | string | Externally owned user account, Ethereum address that owns a GEB proxy.  |
 
-**Returns:** _Promise‹GebProxyActions›_
+**Returns:** *Promise‹GebProxyActions›*
 
-### getProxyActionGlobalSettlement
+___
 
-▸ **getProxyActionGlobalSettlement**\(`ownerAddress`: string\): _Promise‹GebProxyActionsGlobalSettlement›_
+###  getProxyActionGlobalSettlement
 
-_Inherited from_ [_GebAdmin_](gebadmin.md)_._[_getProxyActionGlobalSettlement_](gebadmin.md#getproxyactionglobalsettlement)
+▸ **getProxyActionGlobalSettlement**(`ownerAddress`: string): *Promise‹GebProxyActionsGlobalSettlement›*
+
+*Inherited from [GebAdmin](gebadmin.md).[getProxyActionGlobalSettlement](gebadmin.md#getproxyactionglobalsettlement)*
 
 Defined in packages/geb/lib/geb.d.ts:53
 
-Given an address returns a GebProxyActionsGlobalSettlement object to execute bundled operations during GlobalSettlement. Important: Same as for `getProxyAction` it requires a proxy deploy through the registry.
+Given an address returns a GebProxyActionsGlobalSettlement object to execute bundled operations during GlobalSettlement.
+Important: Same as for `getProxyAction` it requires a proxy deploy through the registry.
 
 **Parameters:**
 
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| `ownerAddress` | string | Externally owned user account, Ethereum address that owns a GEB proxy. |
+Name | Type | Description |
+------ | ------ | ------ |
+`ownerAddress` | string | Externally owned user account, Ethereum address that owns a GEB proxy.  |
 
-**Returns:** _Promise‹GebProxyActionsGlobalSettlement›_
+**Returns:** *Promise‹GebProxyActionsGlobalSettlement›*
 
-### getSafe
+___
 
-▸ **getSafe**\(`idOrHandler`: string \| number\): _Promise‹Safe›_
+###  getSafe
 
-_Inherited from_ [_GebAdmin_](gebadmin.md)_._[_getSafe_](gebadmin.md#getsafe)
+▸ **getSafe**(`idOrHandler`: string | number): *Promise‹Safe›*
+
+*Inherited from [GebAdmin](gebadmin.md).[getSafe](gebadmin.md#getsafe)*
 
 Defined in packages/geb/lib/geb.d.ts:62
 
@@ -193,17 +215,19 @@ Get the safe object
 
 **Parameters:**
 
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| `idOrHandler` | string \| number | Safe Id or Safe handler |
+Name | Type | Description |
+------ | ------ | ------ |
+`idOrHandler` | string &#124; number | Safe Id or Safe handler  |
 
-**Returns:** _Promise‹Safe›_
+**Returns:** *Promise‹Safe›*
 
-### multiCall
+___
 
-▸ **multiCall**‹**O1**, **O2**, **O3**›\(`calls`: \[MulticallRequest‹O1›, MulticallRequest‹O2›, MulticallRequest‹O3›\]\): _Promise‹\[O1, O2, O3\]›_
+###  multiCall
 
-_Inherited from_ [_GebAdmin_](gebadmin.md)_._[_multiCall_](gebadmin.md#multicall)
+▸ **multiCall**‹**O1**, **O2**, **O3**›(`calls`: [MulticallRequest‹O1›, MulticallRequest‹O2›, MulticallRequest‹O3›]): *Promise‹[O1, O2, O3]›*
+
+*Inherited from [GebAdmin](gebadmin.md).[multiCall](gebadmin.md#multicall)*
 
 Defined in packages/geb/lib/geb.d.ts:86
 
@@ -217,9 +241,8 @@ Defined in packages/geb/lib/geb.d.ts:86
 
 **Parameters:**
 
-| Name | Type |
-| :--- | :--- |
-| `calls` | \[MulticallRequest‹O1›, MulticallRequest‹O2›, MulticallRequest‹O3›\] |
+Name | Type |
+------ | ------ |
+`calls` | [MulticallRequest‹O1›, MulticallRequest‹O2›, MulticallRequest‹O3›] |
 
-**Returns:** _Promise‹\[O1, O2, O3\]›_
-
+**Returns:** *Promise‹[O1, O2, O3]›*
