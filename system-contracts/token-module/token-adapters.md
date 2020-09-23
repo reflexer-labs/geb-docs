@@ -20,7 +20,6 @@ There are three main token adapter types: `CollateralJoin`, `ETHJoin` and `CoinJ
 * `collateralType` - id of the `CollateralType` for which a `CollateralJoin` is created for.
 * `collateral` - the address of the `collateralType` for transferring.
 * `systemCoin` - the address of the `Coin` token.
-* `ONE` - a 10^27 uint used for math in `CoinJoin`.
 * `contractEnabled` - an access flag for the adapter.
 * `decimals` - decimals for the collateral type.
 
