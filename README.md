@@ -12,7 +12,7 @@ This documentation is meant to explain all the components behind GEB. Before div
   
 GEB is a modified fork of [MCD](https://github.com/makerdao/dss) that has several core differences:
 
-* Variable names you [can actually understand](https://docs.reflexer.finance/system-overview/naming-transition)
+* Variable names you [can actually understand](https://docs.reflexer.finance/contract-translation/naming-transition)
 * An autonomous feedback mechanism that changes the incentives of system participants
 * The possibility to add insurance for SAFEs
 * Fixed discount auctions \(instead of English auctions\) used to sell off collateral
