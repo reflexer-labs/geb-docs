@@ -1,4 +1,4 @@
-# Getting Started with GEB.js
+# GEB.js
 
 Library to interact with the GEB smart contracts. Manage your safes, mint RAI, inspect the system state, and much more.
 
@@ -6,7 +6,7 @@ The library is written in Typescript with full typing support. It allows access 
 
 ## Install
 
-```text
+```
 npm install geb.js
 ```
 
@@ -14,7 +14,7 @@ npm install geb.js
 
 At the moment, Geb.js requires to use [Ether.js](https://www.npmjs.com/package/ethers) V5. In the future we will support Web3.
 
-```text
+```
 npm install ethers
 ```
 
@@ -25,7 +25,6 @@ Full API documentation is available [here](https://docs.reflexer.finance/geb-js/
 ## Examples
 
 This is how you can inspect a SAFE and also open a new one using your own proxy:
-
 ```typescript
 import { ethers, utils as ethersUtils } from 'ethers'
 import { Geb, utils } from 'geb.js'
@@ -61,14 +60,12 @@ console.log('Transaction mined, safe opened!')
 ```
 
 Deploy a GEB proxy to use proxy action:
-
 ```typescript
 const tx = geb.deployProxy()
 await wallet.sendTransaction(tx)
 ```
 
 Use the low level API to make direct contract calls:
-
 ```typescript
 // Fetch some system parameters from their respective contracts
 const surplusBuffer = await geb.contracts.accountingEngine.surplusBuffer()
@@ -80,7 +77,6 @@ await wallet.sendTransaction(tx)
 ```
 
 Use multicall to bundle RPC requests into one reducing the network traffic:
-
 ```typescript
 const [ globalDebt, collateralInfo ] = await geb.multiCall([
     geb.contracts.safeEngine.globalDebt(true), // !! Note the last parameter set to true.
@@ -88,3 +84,26 @@ const [ globalDebt, collateralInfo ] = await geb.multiCall([
 ])
 ```
 
+Redeem some Ether collateral against some RAI during global settlement with a proxy. This is only useful after the system has been shutdown to exchange RAI for some collateral at the final price.
+```typescript
+// Like before, the address of the wallet needs to have a proxy deployed
+const globalSettlementProxy = await geb.getProxyActionGlobalSettlement(wallet.address)
+// We need the address of the collateral adapter
+const wethJoinAddress = geb.contracts.joinETH_A.address
+// Prepare the transaction to redeem 10 RAI for Ether
+const tx = globalSettlementProxy.redeemTokenCollateral(wethJoinAddress, ETH_A, WAD.mul(10))
+// Send the transaction with a Ethers Wallet object
+await wallet.sendTransaction(tx)
+```
+
+Empty a safe managed with a proxy during global settlement.This is also only useful during global settlement to empty remain safes.
+```typescript
+// The safe had to be managed by a proxy for this to work
+const globalSettelementProxy = await geb.getProxyActionGlobalSettlement(wallet.address)
+// We need the address of the collateral adapter
+const wethJoinAddress = geb.contracts.joinETH_A.address
+// Empty all collateral from safe Id 3
+const tx = globalSettelementProxy.freeTokenCollateral(wethJoinAddress, 3)
+// Send the transaction with a Ethers Wallet object
+wallet.sendTransaction(tx)
+```
