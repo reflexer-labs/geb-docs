@@ -4,7 +4,7 @@ This object represents a GEB safe. It has the entire SAFE state and provides hel
 
 ## Constructors
 
-+ **new Safe**\(`contracts`: ContractApis, `handler`: string, `debt`: BigNumber, `collateral`: BigNumber, `collateralType`: string, `isManaged`: boolean\): [_Safe_](safe.md)
++ **new Safe**\(`contracts`: ContractApis, `handler`: string, `debt`: BigNumber, `collateral`: BigNumber, `collateralType`: string, `isManaged`: boolean\): [_Safe_](geb-js-safe-management.md)
 
 _Defined in_ [_packages/geb/src/schema/safe.ts:8_](https://github.com/reflexer-labs/geb.js/blob/198bcb4/packages/geb/src/schema/safe.ts#L8)
 
@@ -19,7 +19,7 @@ _Defined in_ [_packages/geb/src/schema/safe.ts:8_](https://github.com/reflexer-l
 | `collateralType` | string |
 | `isManaged` | boolean |
 
-**Returns:** [_Safe_](safe.md)
+**Returns:** [_Safe_](geb-js-safe-management.md)
 
 ## Properties
 

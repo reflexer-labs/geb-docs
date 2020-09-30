@@ -4,7 +4,7 @@ The main package used to interact with the core GEB contracts.
 
 ## Constructors
 
-+ **new Geb**\(`network`: GebDeployment, `provider`: GebProviderInterface \| Provider\): [_Geb_](geb.md)
++ **new Geb**\(`network`: GebDeployment, `provider`: GebProviderInterface \| Provider\): [_Geb_](geb-js-core-package.md)
 
 _Defined in_ [_packages/geb/src/geb.ts:50_](https://github.com/reflexer-labs/geb.js/blob/198bcb4/packages/geb/src/geb.ts#L50)
 
@@ -15,7 +15,7 @@ _Defined in_ [_packages/geb/src/geb.ts:50_](https://github.com/reflexer-labs/geb
 | `network` | GebDeployment | Either `'kovan'`, `'mainnet'` or an actual list of contract addresses. |
 | `provider` | GebProviderInterface \| Provider | Either a Ethers.js provider or a Geb provider \(Soon support for Web3 will be added\) |
 
-**Returns:** [_Geb_](geb.md)
+**Returns:** [_Geb_](geb-js-core-package.md)
 
 ## Properties
 
@@ -90,11 +90,11 @@ Erc20
 
 ### getProxyAction
 
-▸ **getProxyAction**\(`ownerAddress`: string\): _Promise‹_[_GebProxyActions_](gebproxyactions.md)_‹››_
+▸ **getProxyAction**\(`ownerAddress`: string\): _Promise‹_[_GebProxyActions_](geb-js-proxy-actions.md)_‹››_
 
 _Defined in_ [_packages/geb/src/geb.ts:81_](https://github.com/reflexer-labs/geb.js/blob/198bcb4/packages/geb/src/geb.ts#L81)
 
-Given an address returns a GebProxyActions object to execute bundled operations. Important: This requires the address to have deployed a GEB proxy through the proxy registry contract. It will throw a `DOES_NOT_OWN_HAVE_PROXY` error if the address specified does not have a proxy. Use the [deployProxy](geb.md#deployproxy) function to get a new proxy.
+Given an address returns a GebProxyActions object to execute bundled operations. Important: This requires the address to have deployed a GEB proxy through the proxy registry contract. It will throw a `DOES_NOT_OWN_HAVE_PROXY` error if the address specified does not have a proxy. Use the [deployProxy](geb-js-core-package.md#deployproxy) function to get a new proxy.
 
 **Parameters:**
 
@@ -102,7 +102,7 @@ Given an address returns a GebProxyActions object to execute bundled operations.
 | :--- | :--- | :--- |
 | `ownerAddress` | string | Externally owned user account, Ethereum address that owns a GEB proxy. |
 
-**Returns:** _Promise‹_[_GebProxyActions_](gebproxyactions.md)_‹››_
+**Returns:** _Promise‹_[_GebProxyActions_](geb-js-proxy-actions.md)_‹››_
 
 ### getProxyActionGlobalSettlement
 
@@ -122,7 +122,7 @@ Given an address returns a GebProxyActionsGlobalSettlement object to execute bun
 
 ### getSafe
 
-▸ **getSafe**\(`idOrHandler`: string \| number, `collateralType?`: string\): _Promise‹_[_Safe_](safe.md)_‹››_
+▸ **getSafe**\(`idOrHandler`: string \| number, `collateralType?`: string\): _Promise‹_[_Safe_](geb-js-safe-management.md)_‹››_
 
 _Defined in_ [_packages/geb/src/geb.ts:119_](https://github.com/reflexer-labs/geb.js/blob/198bcb4/packages/geb/src/geb.ts#L119)
 
@@ -135,7 +135,7 @@ Get the SAFE object
 | `idOrHandler` | string \| number | Safe Id or SAFE handler |
 | `collateralType?` | string | - |
 
-**Returns:** _Promise‹_[_Safe_](safe.md)_‹››_
+**Returns:** _Promise‹_[_Safe_](geb-js-safe-management.md)_‹››_
 
 ### multiCall
 

@@ -61,10 +61,10 @@
 
 ## GEB.js <a id="geb-js"></a>
 
-* [Getting Started with GEB.js](geb-js/gettingstarted.md)
-* [Core GEB.js Package](geb-js/geb.md)
-* [SAFE Management](geb-js/safe.md)
-* [SAFE Proxies](geb-js/gebproxyactions.md)
+* [Getting Started with GEB.js](geb-js/geb-js-get-started.md)
+* [Core GEB.js Package](geb-js/geb-js-core-package.md)
+* [SAFE Management](geb-js/geb-js-safe-management.md)
+* [SAFE Proxies](geb-js/geb-js-proxy-actions.md)
 * [Global Settlement](geb-js/geb-js-global-settlement.md)
 * [Global Settlement Proxies](geb-js/geb-js-global-settlement-proxies.md)
 * [Admin Utilities](geb-js/geb-js-admin-utilities.md)

@@ -52,7 +52,7 @@ _Defined in_ [_packages/geb/src/proxy-action-global-settlement.ts:59_](https://g
 
 • **address**: _string_
 
-_Inherited from_ [_GebProxyActions_](gebproxyactions.md)_._[_address_](gebproxyactions.md#address)
+_Inherited from_ [_GebProxyActions_](geb-js-proxy-actions.md)_._[_address_](geb-js-proxy-actions.md#address)
 
 Defined in packages/geb-contract-base/lib/base-contract-api.d.ts:19
 
@@ -60,7 +60,7 @@ Defined in packages/geb-contract-base/lib/base-contract-api.d.ts:19
 
 • **chainProvider**: _GebProviderInterface_
 
-_Inherited from_ [_GebProxyActions_](gebproxyactions.md)_._[_chainProvider_](gebproxyactions.md#chainprovider)
+_Inherited from_ [_GebProxyActions_](geb-js-proxy-actions.md)_._[_chainProvider_](geb-js-proxy-actions.md#chainprovider)
 
 Defined in packages/geb-contract-base/lib/base-contract-api.d.ts:20
 
