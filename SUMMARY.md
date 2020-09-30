@@ -65,6 +65,7 @@
 * [Core GEB.js Package](geb-js/geb.md)
 * [SAFE Management](geb-js/safe.md)
 * [SAFE Proxies](geb-js/gebproxyactions.md)
-* [Global Settlement Proxies](geb-js/gebproxyactionsglobalsettlement.md)
-* [Admin Utilities](geb-js/gebadmin.md)
+* [Global Settlement](geb-js/geb-js-global-settlement.md)
+* [Global Settlement Proxies](geb-js/geb-js-global-settlement-proxies.md)
+* [Admin Utilities](geb-js/geb-js-admin-utilities.md)
 
