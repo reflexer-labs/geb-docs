@@ -106,9 +106,9 @@ After the processing period has elapsed, we enable calculation of the final pric
 
 #### 6. `setOutstandingCoinSupply()` <a id="6-thaw"></a>
 
-This is only callable after the processing time period has elapsed. The assumption is that all under-collateralised SAFEs have already been processed.
+This function is only callable after the processing time period has elapsed **and** if the `AccountingEngine` has no more surplus left. `AccountingEngine.transferPostSettlementSurplus` can be called in order to drain any remaining surplus and allow `setOutstandingCoinSupply` to be executed.
 
-It fixes the total outstanding supply of coins \(it may also require extra SAFE processing to cover system surplus aka drain surplus from the `AccountingEngine`\).
+`setOutstandingCoinSupply` fixes the total outstanding supply of coins.
 
 #### 7. `calculateCashPrice(collateralType)` <a id="7-flow-ilk"></a>
 
