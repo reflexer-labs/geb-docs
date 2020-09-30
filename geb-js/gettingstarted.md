@@ -83,27 +83,3 @@ const [ globalDebt, collateralInfo ] = await geb.multiCall([
     geb.contracts.safeEngine.collateralTypes(utils.ETH_A, true),
 ])
 ```
-
-Redeem some Ether collateral against some RAI during global settlement with a proxy. This is only useful after the system has been shutdown to exchange RAI for some collateral at the final price.
-```typescript
-// Like before, the address of the wallet needs to have a proxy deployed
-const globalSettlementProxy = await geb.getProxyActionGlobalSettlement(wallet.address)
-// We need the address of the collateral adapter
-const wethJoinAddress = geb.contracts.joinETH_A.address
-// Prepare the transaction to redeem 10 RAI for Ether
-const tx = globalSettlementProxy.redeemTokenCollateral(wethJoinAddress, ETH_A, WAD.mul(10))
-// Send the transaction with a Ethers Wallet object
-await wallet.sendTransaction(tx)
-```
-
-Empty a safe managed with a proxy during global settlement.This is also only useful during global settlement to empty remain safes.
-```typescript
-// The safe had to be managed by a proxy for this to work
-const globalSettelementProxy = await geb.getProxyActionGlobalSettlement(wallet.address)
-// We need the address of the collateral adapter
-const wethJoinAddress = geb.contracts.joinETH_A.address
-// Empty all collateral from safe Id 3
-const tx = globalSettelementProxy.freeTokenCollateral(wethJoinAddress, 3)
-// Send the transaction with a Ethers Wallet object
-wallet.sendTransaction(tx)
-```

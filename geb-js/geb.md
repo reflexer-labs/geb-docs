@@ -7,7 +7,7 @@ The main package used to interact with the core GEB contracts.
 
 \+ **new Geb**(`network`: GebDeployment, `provider`: GebProviderInterface | Provider): *[Geb](geb.md)*
 
-*Defined in [packages/geb/src/geb.ts:50](https://github.com/reflexer-labs/geb.js/blob/8be1111/packages/geb/src/geb.ts#L50)*
+*Defined in [packages/geb/src/geb.ts:50](https://github.com/reflexer-labs/geb.js/blob/198bcb4/packages/geb/src/geb.ts#L50)*
 
 **Parameters:**
 
@@ -24,7 +24,7 @@ Name | Type | Description |
 
 • **contracts**: *ContractApis*
 
-*Defined in [packages/geb/src/geb.ts:48](https://github.com/reflexer-labs/geb.js/blob/8be1111/packages/geb/src/geb.ts#L48)*
+*Defined in [packages/geb/src/geb.ts:48](https://github.com/reflexer-labs/geb.js/blob/198bcb4/packages/geb/src/geb.ts#L48)*
 
 Object containing all GEB core contracts instances for low level interactions. All contracts object offer a one-to-one typed API to the underlying smart-contract.
 Currently has the following contracts:
@@ -53,7 +53,7 @@ Currently has the following contracts:
 
 ▸ **deployProxy**(): *TransactionRequest*
 
-*Defined in [packages/geb/src/geb.ts:111](https://github.com/reflexer-labs/geb.js/blob/8be1111/packages/geb/src/geb.ts#L111)*
+*Defined in [packages/geb/src/geb.ts:111](https://github.com/reflexer-labs/geb.js/blob/198bcb4/packages/geb/src/geb.ts#L111)*
 
 Deploy a new proxy owned by the sender.
 
@@ -65,7 +65,7 @@ ___
 
 ▸ **getErc20Contract**(`tokenAddress`: string): *Erc20*
 
-*Defined in [packages/geb/src/geb.ts:206](https://github.com/reflexer-labs/geb.js/blob/8be1111/packages/geb/src/geb.ts#L206)*
+*Defined in [packages/geb/src/geb.ts:206](https://github.com/reflexer-labs/geb.js/blob/198bcb4/packages/geb/src/geb.ts#L206)*
 
 Returns an object that can be used to interact with a ERC20 token.
 Example:
@@ -97,7 +97,7 @@ ___
 
 ▸ **getProxyAction**(`ownerAddress`: string): *Promise‹[GebProxyActions](gebproxyactions.md)‹››*
 
-*Defined in [packages/geb/src/geb.ts:81](https://github.com/reflexer-labs/geb.js/blob/8be1111/packages/geb/src/geb.ts#L81)*
+*Defined in [packages/geb/src/geb.ts:81](https://github.com/reflexer-labs/geb.js/blob/198bcb4/packages/geb/src/geb.ts#L81)*
 
 Given an address returns a GebProxyActions object to execute bundled operations.
 Important: This requires the address to have deployed a GEB proxy through the proxy registry contract. It will throw a `DOES_NOT_OWN_HAVE_PROXY` error if the address specified does not have a proxy. Use the [deployProxy](geb.md#deployproxy) function to get a new proxy.
@@ -116,7 +116,7 @@ ___
 
 ▸ **getProxyActionGlobalSettlement**(`ownerAddress`: string): *Promise‹[GebProxyActionsGlobalSettlement](gebproxyactionsglobalsettlement.md)‹››*
 
-*Defined in [packages/geb/src/geb.ts:95](https://github.com/reflexer-labs/geb.js/blob/8be1111/packages/geb/src/geb.ts#L95)*
+*Defined in [packages/geb/src/geb.ts:95](https://github.com/reflexer-labs/geb.js/blob/198bcb4/packages/geb/src/geb.ts#L95)*
 
 Given an address returns a GebProxyActionsGlobalSettlement object to execute bundled operations during GlobalSettlement.
 **IMPORTANT**: Same as for `getProxyAction` you will need to deploy a proxy beforehand using the proxy registry.
@@ -135,7 +135,7 @@ ___
 
 ▸ **getSafe**(`idOrHandler`: string | number, `collateralType?`: string): *Promise‹[Safe](safe.md)‹››*
 
-*Defined in [packages/geb/src/geb.ts:119](https://github.com/reflexer-labs/geb.js/blob/8be1111/packages/geb/src/geb.ts#L119)*
+*Defined in [packages/geb/src/geb.ts:119](https://github.com/reflexer-labs/geb.js/blob/198bcb4/packages/geb/src/geb.ts#L119)*
 
 Get the SAFE object
 
@@ -154,7 +154,7 @@ ___
 
 ▸ **multiCall**‹**O1**, **O2**, **O3**›(`calls`: [MulticallRequest‹O1›, MulticallRequest‹O2›, MulticallRequest‹O3›]): *Promise‹[O1, O2, O3]›*
 
-*Defined in [packages/geb/src/geb.ts:219](https://github.com/reflexer-labs/geb.js/blob/8be1111/packages/geb/src/geb.ts#L219)*
+*Defined in [packages/geb/src/geb.ts:219](https://github.com/reflexer-labs/geb.js/blob/198bcb4/packages/geb/src/geb.ts#L219)*
 
 Bundles several read only GEB contract call into 1 RPC single request. Useful for front-ends or apps that need to fetch many parameters from the contracts but want to minimize the network request and the load on the underlying Ethereum node.
 The function takes as input an Array of GEB view contract calls.
