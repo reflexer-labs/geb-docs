@@ -1,20 +1,12 @@
 ---
-description: The post settlement surplus drain pipe
+description: The backup post settlement surplus drain
 ---
 
 # Settlement Surplus Auctioneer
 
 ## 1. Summary <a id="1-introduction-summary"></a>
 
-**Summary:** The `SettlementSurplusAuctioneer` is meant to trigger surplus auctions after `GlobalSettlement` has been activated and the `AccountingEngine` has been disabled. Any surplus amount that remains in the `AccountingEngine` post-settlement goes to system coin holders, in which case their expected payout \(amount of system collateral that can be redeemed\) is higher than it would have been in case there was no leftover surplus. In simple terms, system coin holders would start to value the coins at a higher price compared to the latest redemption price and would thus have an incentive to maliciously trigger settlement. In order to avoid this scenario, the `AccountingEngine` can send its surplus to the auctioneer which will then drain it using the `PostSettlementSurplusAuctionHouse`.
-
-{% hint style="warning" %}
-**Important Consideration**
-
-The auctioneer is not an ideal solution for the situation where system coin holders are incentivized to trigger settlement. SAFE creators might take a haircut \(because of bad debt that could not be covered with post-settlement collateral/debt auctions\) when they have to redeem collateral, while the system will contract the protocol token's supply \(and thus favor protocol token holders over other actors\).
-
-We are actively searching for an alternative that does not offer anyone an edge at the expense of other system participants. 
-{% endhint %}
+**Summary:** The `SettlementSurplusAuctioneer` is meant to trigger surplus auctions in case the `AccountingEngine` transfered surplus to it using `transferPostSettlementSurplus`.
 
 ## 2. Contract Variables & Functions <a id="2-contract-details"></a>
 
