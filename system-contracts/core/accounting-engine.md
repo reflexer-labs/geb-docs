@@ -31,7 +31,7 @@ The `AccountingEngine` receives both system surplus and system debt. It covers d
 * `initialDebtAuctionMintedTokens`- the starting amount of protocol tokens offered to cover the auctioned debt.
 * `surplusAuctionAmountToSell`- amount of surplus to be sold in a single surplus auction.
 * `surplusBuffer`- threshold that must be exceeded before surplus auctions are possible.
-* `disableCooldown`- time that must elapse after the `AccountingEngine` is disabled and until it can send all its remaining surplus to the `postSettlementSurplusDrain`.
+* `disableCooldown`- time that must elapse after the `AccountingEngine` is disabled and until it can send all its remaining surplus to the `postSettlementSurplusDrain`. **Must** be bigger than `GlobalSettlement.shutdownCooldown`.
 * `disableTimestamp`- timestamp when the `AccountingEngine` was disabled.
 
 **Modifiers**
@@ -51,10 +51,8 @@ The `AccountingEngine` receives both system surplus and system debt. It covers d
 * `auctionSurplus()` - trigger a surplus auction \(`SurplusAuctionHouse.startAuction`\).
 * `auctionDebt()` - trigger a deficit auction \(`DebtAuctionHouse.startAuction`\).
 * `settleDebtAuction(id: uint256)` - authed function meant to be called by `debtAuctionHouse` in order to signal that a specific auction settled.
-* `transferPostSettlementSurplus()` - transfer any post settlement, leftover surplus to the`postSettlementSurplusDrain.` Throws if `disableCooldown` seconds haven't yet passed since `disableTimestamp`
-* `disableContract()` - set `contractEnabled` to zero, settle as much remaining debt as possible \(if any\) and either send remaining surplus right away to the `postSettlementSurplusDrain` or wait until 
-
-  `disableCooldown` seconds have passed before you send it \(using `transferPostSettlementSurplus`\).
+* `transferPostSettlementSurplus()` - transfer any post settlement, leftover surplus to the`postSettlementSurplusDrain`. Meant to be a backup in case `GlobalSettlement.processSAFE` has a bug \(cannot process a specific Safe\), governance doesn't have power over the system and there's still surplus left in the `AccountingEngine` which then blocks `GlobalSettlement.setOutstandingCoinSupply`.
+* `disableContract()` - set `contractEnabled` to zero and settle as much remaining debt as possible \(if any\)
 
 **Events**
 
