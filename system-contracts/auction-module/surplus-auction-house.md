@@ -10,7 +10,7 @@ description: >-
 
 The surplus auction is used to sell off a fixed amount of the surplus in exchange for protocol tokens. The surplus comes from the stability fees charged to SAFEs \(and stored in the `AccountingEngine`\). Bidders submit increasing amounts of protocol tokens and the winner receives all auctioned surplus in exchange for their coins which are burned.
 
-There are two surplus auction flavors: a pre-settlement version meant to sell surplus before the system settles and a post-settlement one meant to sell any remaining surplus after global settlement is triggered.
+There are two surplus auction flavors: a pre-settlement version meant to sell surplus before the system settles and a post-settlement one meant to sell any surplus sent by the SettlementSurplusAuctioneer.
 
 ## 2. Contract Variables & Functions <a id="2-contract-details"></a>
 
