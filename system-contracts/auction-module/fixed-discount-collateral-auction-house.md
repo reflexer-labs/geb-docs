@@ -24,6 +24,7 @@ Fixed discount collateral auctions are similar to their `English` counterpart in
 * `minimumBid` - minimum amount of system coins that must be submitted by each bidder.
 * `totalAuctionLength` - auction length \(default: 7 days\).
 * `auctionsStarted` - total auction count, used to track auction `id`s.
+* `lastReadRedemptionPrice` - the last read redemption price. Can \(and most probably is\) different than the latest `OracleRelayer.redemptionPrice`
 * `discount` - discount compared to the collateral market price; used when calculating the amount of collateral to send to a bidder.
 * `lowerCollateralMedianDeviation` - max `collateralMedian` collateral price deviation \(compared to the `osm` price\) used when the median price is lower than the `collateralOSM` price and the contract needs to pick which one to use
 * `upperCollateralMedianDeviation` - max `collateralMedian` collateral price deviation \(compared to the `osm` price\) used when the median price is higher than the `collateralOSM` price and the contract needs to pick which one to use
@@ -62,6 +63,7 @@ Fixed discount collateral auctions are similar to their `English` counterpart in
 * `removeAuthorization(usr: address)` - remove an address from `authorizedAddresses`.
 * `getDiscountedCollateralPrice(collateralOSMPriceFeedValue: bytes32`, `collateralMedianPriceFeedValue: bytes32`, `systemCoinPriceFeedValue: uint256`, `customDiscount: uint256) public returns (uint256)` - get the \(discounted\) collateral price using either the `OSM` or median price for the collateral and the redemption/market price for the system coin
 * `startAuction(forgoneCollateralReceiver: address`, `auctionIncomeRecipient: address`, `amountToRaise: uint256`, `amountToSell: uint256`, `initialBid: uint256 )` - function used by `LiquidationEngine` to start an auction / put collateral up for auction
+* `getApproximateCollateralBought(id: uint256`, `wad: uint256)` - get the amount of collateral that can be bought from a specific auction by bidding `wad` and assuming that the latest system coin `redemptionPrice` is equal to `lastReadRedemptionPrice`
 * `getCollateralBought(id: uint256`, `wad: uint256) returns (uint256`, `uint256)` - get the amount of collateral that can be bought from a specific auction by bidding `wad` amount of system coins \(where `wad` will be scaled by `RAY` to transfer the correct amount of `RAD` system coins from `safeEngine.coinBalance`\)
 * `buyCollateral(id: uint256`, `wad: uint256)` - buy collateral from an auction and offer `wad` amount of system coins in return \(where `wad` is scaled by `RAY` in order to transfer `RAD` amount of coins from the bidder's `safeEngine.coinBalance`\)
 * `settleAuction(id: uint256)` - settle an auction that has passed its `auctionDeadline` and return any unsold collateral to the `forgoneCollateralReceiver`
