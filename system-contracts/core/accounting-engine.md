@@ -22,7 +22,7 @@ The `AccountingEngine` receives both system surplus and system debt. It covers d
   `popDebtDelay`seconds.
 
 * `activeDebtAuctions[auctionId: uint256]`- amount of debt auctions that aren't yet settled.
-* `postSettlementSurplusDrain`- contract meant to auction/dispose off any remaining surplus after the `AccountingEngine` is disabled.
+* `postSettlementSurplusDrain`- contract meant to auction/dispose off any remaining surplus after the `AccountingEngine` is disabled \(and in case surplus couldn't be settled with bad debt because of a bug\).
 * `protocolTokenAuthority` ****- address of ****authority contract that says which addresses are able to mint an burn protocol tokens.
 * `totalQueuedDebt`- the total amount of debt in the queue.
 * `totalOnAuctionDebt`- the total amount of debt being auctioned in the `DebtAuctionHouse`.
@@ -31,7 +31,7 @@ The `AccountingEngine` receives both system surplus and system debt. It covers d
 * `initialDebtAuctionMintedTokens`- the starting amount of protocol tokens offered to cover the auctioned debt.
 * `surplusAuctionAmountToSell`- amount of surplus to be sold in a single surplus auction.
 * `surplusBuffer`- threshold that must be exceeded before surplus auctions are possible.
-* `disableCooldown`- time that must elapse after the `AccountingEngine` is disabled and until it can send all its remaining surplus to the `postSettlementSurplusDrain`. **Must** be bigger than `GlobalSettlement.shutdownCooldown`.
+* `disableCooldown`- time that must elapse after the `AccountingEngine` is disabled and until it can send all its remaining surplus to the `postSettlementSurplusDrain`. Must be bigger than `GlobalSettlement.shutdownCooldown`.
 * `disableTimestamp`- timestamp when the `AccountingEngine` was disabled.
 
 **Modifiers**
@@ -104,5 +104,9 @@ When the `AccountingEngine` has a surplus balance above the `surplusBuffer` \(`s
 
 ### Disabling the Accounting Engine
 
-When an authorized address calls `AccountingEngine.disableContract` the system will try to settle as much remaining `safeEngine.debtBalance[accountingEngine]` as possible before sending any remaining surplus to the `postSettlementSurplusDrain`\(right away if `disableCooldown` is zero or after `disableCooldown` seconds have passed since `disableTimestamp`\).
+When an authorized address calls `AccountingEngine.disableContract` the system will try to settle as much remaining `safeEngine.debtBalance[accountingEngine]` as possible. 
+
+### Backup Function to Drain Remaining Surplus
+
+In case of a bug in the system's accounting or in `GlobalSettlement.processSAFE` \(during the settlement process\), anyone can call `transferPostSettlementSurplus` to transfer remaining surplus out of the `AccountingEngine` and allow `GlobalSettlement.setOutstandingCoinSupply` to execute successfully. `transferPostSettlementSurplus` can only be called after `disableCooldown` seconds have passed since `AccountingEngine` has been disabled.
 
