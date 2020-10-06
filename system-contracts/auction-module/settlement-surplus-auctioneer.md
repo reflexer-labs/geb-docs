@@ -43,9 +43,9 @@ description: The backup post settlement surplus drain
 
 **Notes**
 
-* Governance can only change the `accountingEngine` and the `surplusAuctionHouse` address using `modifyParameters`. The auctioneer can read all the other necessary parameters \(`surplusAuctionDelay`, `surplusAuctionAmountToSell`\) from the `accountingEngine`
+* Governance can only change the `accountingEngine` and the `surplusAuctionHouse` addresses using `modifyParameters`. The auctioneer can read all the other necessary parameters \(`surplusAuctionDelay`, `surplusAuctionAmountToSell`\) from the `accountingEngine`
 
-  and use them when triggering post-settlement surplus auctions.
+  and can use them when it triggers post-settlement surplus auctions.
 
 ## 3. Walkthrough <a id="3-key-mechanisms-and-concepts"></a>
 
