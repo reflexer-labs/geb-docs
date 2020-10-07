@@ -81,9 +81,10 @@ const tx = geb.contracts.globalSettlement.fastTrackAuction(utils.ETH_A, auctionI
 await wallet.sendTransaction(tx)
 
 // (III) We need to get rid of the system surplus
-// TODO: compute the minimum between the accounting engine's coinBalance and
-// debtBalance
-const amountToSettle = 
+const accountingEngineAddress = geb.contracts.accountingEngine.address
+const coin = await  geb.contracts.safeEngine.coinBalance(accountingEngineAddress)
+const debt = await geb.contracts.safeEngine.debtBalance(accountingEngineAddress)
+const amountToSettle = coin.gte(debt) ? debt : coin
 const tx = geb.contracts.accountingEngine.settleDebt(amountToSettle)
 await wallet.sendTransaction(tx)
 
