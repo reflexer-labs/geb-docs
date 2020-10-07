@@ -126,9 +126,9 @@ Similar to `English` auctions, when the auction is settled \(or terminated prema
 
 ## 4. Gotchas <a id="3-key-mechanisms-and-concepts"></a>
 
-* In case someone bids an amount that is higher than the remaining amount of system coins which still need to be raised, the contract will only charge for the remaining amount [plus one extra system coin](https://github.com/reflexer-labs/geb/blob/cbe4c6f50e8fc25fcd380206b31c580e23a979d9/src/CollateralAuctionHouse.sol#L774) \(meant to prevent dusty auctions\)
+* In case someone bids an amount that is higher than the remaining amount of system coins which still need to be raised by an auction, the contract will only charge for the remaining amount [plus one extra system coin](https://github.com/reflexer-labs/geb/blob/cbe4c6f50e8fc25fcd380206b31c580e23a979d9/src/CollateralAuctionHouse.sol#L774) \(meant to prevent dusty auctions\)
 * You must always submit a bid that is higher than or equal to `minimumBid`, even if the remaining amount of system coins to raise is smaller than that. The contract will take care of charging only for the amount needed to cover the total `amountToRaise` \(plus an extra coin for rounding up\)
-* The auctions use the system coin `redemptionPrice` by default and not the market price
+* The auctions use the system coin `redemptionPrice` by default and not its market price
 
 ## 5. Examples <a id="3-key-mechanisms-and-concepts"></a>
 
@@ -225,7 +225,7 @@ finalCollateralPrice           = 90 * WAD
 finalSystemCoinPrice           = 5.1 * RAY
 
 /*
-    Determining the amount of collateral bought given the 11 adjusted system coin bid
+    Determining the amount of collateral bought given the 11 WAD adjusted system coin bid
 */
 discountedSystemCoinCollateralPrice 
     = (finalCollateralPrice * RAY / finalSystemCoinPrice) * discount / WAD 
