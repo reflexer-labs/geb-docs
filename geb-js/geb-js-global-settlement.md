@@ -80,13 +80,16 @@ const auctionId = 6
 const tx = geb.contracts.globalSettlement.fastTrackAuction(utils.ETH_A, auctionId)
 await wallet.sendTransaction(tx)
 
-// (III) We need to get rid of the system surplus 
-const tx = geb.contracts.accountingEngine.settleDebt()
+// (III) We need to get rid of the system surplus
+// TODO: compute the minimum between the accounting engine's coinBalance and
+// debtBalance
+const amountToSettle = 
+const tx = geb.contracts.accountingEngine.settleDebt(amountToSettle)
 await wallet.sendTransaction(tx)
 
 // Although in case there is a bug in the system's accounting that 
 // created more surplus than debt, there is a backup function called
-// transferPostSettlementSurplus() 
+// transferPostSettlementSurplus() which gets rid of that extra surplus
 const tx = geb.contracts.accountingEngine.transferPostSettlementSurplus()
 await wallet.sendTransaction(tx)
 ```
@@ -102,18 +105,18 @@ const tx = geb.contracts.globalSettlement.calculateCashPrice(utils.ETH_A)
 await wallet.sendTransaction(tx)
 ```
 
-### Redeem collateral against RAI
+### Redeem Collateral against System Coins
 
-At this stage, any RAI holder can exchange RAI against a fixed basket of collateral. It is a 2 step process that consists in first locking RAI and then claim a share of each collateral. For the task, we use a GEB proxy with [Global Settlement Proxies](https://docs.reflexer.finance/geb-js/geb-js-global-settlement-proxies).
+At this stage, any system coin holder can exchange their coins against a fixed basket of collateral. This is a 2 step process that consists in locking and preparing system coins and then claiming a share of any collateral type.
 
 ```typescript
-// Lock the totality of the RAI balance
-const raiBalance = await geb.contracts.coin.balanceOf(wallet.address)
-const tx = gsProxy.prepareCoinsForRedeeming(raiBalance)
+// Prepare the system coins
+const systemCoinBalance = await geb.contracts.coin.balanceOf(wallet.address)
+const tx = gsProxy.prepareCoinsForRedeeming(systemCoinBalance)
 await wallet.sendTransaction(tx)
 
-// This needs to be called once for each collateral type
-const tx = gsProxy.redeemTokenCollateral(wethJoinAddress, utils.ETH_A, raiBalance)
+// Redeem any collateral type you want
+const tx = gsProxy.redeemTokenCollateral(wethJoinAddress, utils.ETH_A, systemCoinBalance)
 await wallet.sendTransaction(tx)
 ```
 
