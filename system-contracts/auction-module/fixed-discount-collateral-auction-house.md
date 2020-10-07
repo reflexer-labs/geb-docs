@@ -26,13 +26,13 @@ Fixed discount collateral auctions are similar to their `English` counterpart in
 * `auctionsStarted` - total auction count, used to track auction `id`s.
 * `lastReadRedemptionPrice` - the last read redemption price. Can \(and most probably is\) be different than the latest `OracleRelayer._redemptionPrice`
 * `discount` - discount compared to the collateral market price; used when calculating the amount of collateral to send to a bidder.
-* `lowerCollateralMedianDeviation` - max `collateralMedian` collateral price deviation \(compared to the `osm` price\) used when the median price is lower than the `collateralOSM` price and the contract needs to pick which one to use
-* `upperCollateralMedianDeviation` - max `collateralMedian` collateral price deviation \(compared to the `osm` price\) used when the median price is higher than the `collateralOSM` price and the contract needs to pick which one to use
+* `lowerCollateralMedianDeviation` - max `collateralMedian` collateral price deviation \(compared to the `FSM` price\) used when the median price is lower than the `collateralFSM` price and the contract needs to pick which one to use
+* `upperCollateralMedianDeviation` - max `collateralMedian` collateral price deviation \(compared to the `FSM` price\) used when the median price is higher than the `collateralFSM` price and the contract needs to pick which one to use
 * `lowerSystemCoinMedianDeviation` - max `systemCoinOracle` price deviation \(compared to the `redemptionPrice`\) used when the system coin's `redemptionPrice` price is higher than it's market price and the contract needs to pick which one to use
 * `upperSystemCoinMedianDeviation` - max `systemCoinOracle` price deviation \(compared to the `redemptionPrice`\) used when the system coin's `redemptionPrice` price is lower than it's market price and the contract needs to pick which one to use
 * `minSystemCoinMedianDeviation` - minimum deviation between the system coin's market and redemption prices that must be passed in order for the contract to use the deviated price instead of the redemption one
 * `oracleRelayer` - address of the `OracleRelayer`
-* `collateralOSM` - collateral type `OSM` address
+* `collateralFSM` - the collateral type's `FSM` address
 * `collateralMedian` - collateral type medianizer address
 * `systemCoinOracle` - market price oracle for the system coin
 * `liquidationEngine` - the address of the `LiquidationEngine`
@@ -65,7 +65,7 @@ Fixed discount collateral auctions are similar to their `English` counterpart in
 * `getSystemCoinPrice() public view returns (priceFeed: uint256)` - get the system coin's  market price from `systemCoinOracle`
 * `getTokenPrices(systemCoinRedemptionPrice: uint256) public view returns (uint256`, `uint256)` - get the collateral and system coin prices that can be currently used to determine the amount of collateral bought by bidders
 * `getFinalBaseCollateralPrice(collateralFsmPriceFeedValue: uint256`, `collateralMedianPriceFeedValue: uint256) public view returns (uint256)` - get the final collateral price \(without the discount applied\) that will be used to determine the amount of collateral bought by a bid
-* `getDiscountedCollateralPrice(collateralOSMPriceFeedValue: bytes32`, `collateralMedianPriceFeedValue: bytes32`, `systemCoinPriceFeedValue: uint256`, `customDiscount: uint256) public view returns (uint256)` - get the \(discounted\) collateral price using either the `OSM` or median price for the collateral and the redemption/market price for the system coin
+* `getDiscountedCollateralPrice(collateralFsmPriceFeedValue: bytes32`, `collateralMedianPriceFeedValue: bytes32`, `systemCoinPriceFeedValue: uint256`, `customDiscount: uint256) public view returns (uint256)` - get the \(discounted\) collateral price using either the `FSM` or median price for the collateral and the redemption/market price for the system coin
 * `startAuction(forgoneCollateralReceiver: address`, `auctionIncomeRecipient: address`, `amountToRaise: uint256`, `amountToSell: uint256`, `initialBid: uint256 )` - function used by `LiquidationEngine` to start an auction / put collateral up for auction
 * `getApproximateCollateralBought(id: uint256`, `wad: uint256)` - get the amount of collateral that can be bought from a specific auction by bidding `wad` and assuming that the latest system coin `redemptionPrice` is equal to `lastReadRedemptionPrice`
 * `getCollateralBought(id: uint256`, `wad: uint256) returns (uint256`, `uint256)` - get the amount of collateral that can be bought from a specific auction by bidding `wad` amount of system coins \(where `wad` will be scaled by `RAY` to transfer the correct amount of `RAD` system coins from `safeEngine.coinBalance`\)
@@ -118,9 +118,9 @@ As opposed to `English` auctions where bidders submit bids with `RAD` amounts of
 There are several components that come together when the contract calculates the amount of collateral to send to a bidder:
 
 * The amount of system coins `wad` used when calling `buyCollateral`. `wad` must be bigger than or equal to `minimumBid.` In case `wad` is bigger than the remaining amount of system coins to raise \(`remainingToRaise`\), the contract will only request what it needs in order to fill `remainingToRaise` \(call it `adjustedBid`\). Note that in order to avoid dusty auctions resulting from computing an`adjustedBid` \(because of precision loss from division\) the contract will automatically request one extra system coin on top of `remainingToRaise`
-* The difference between the collateral's `OSM` price \(the delayed price\) and the latest market price stored in the medianizer \(which the `OSM` is connected to\). The auction house uses the `OSM` price by default so that, in case of an oracle attack, governance can react and temporarily disable the `OSM` \(in case they have power over that system component\) or any token holder can trigger global settlement through the `ESM`. 
-  * During the `OSM`'s delay, the market price \(and thus the medianizer value\) might change significantly and thus bidders might have to wait until a new median price feed is pushed into the `OSM` so that they can profit from auctions. In order to avoid scenarios where bidders have to wait for an `OSM` update and at the same time protect collateral auctions from an oracle attack, we added two variables: `lowerCollateralMedianDeviation`and `upperCollateralMedianDeviation`which allow the auction house to pick the medianizer price \(when calculating the amount of collateral bought by a bidder\) in case it deviated within certain bounds compared to the `OSM` price.
-* The difference between the system coin's `redemptionPrice` and its market price \(provided only if `systemCoinOracle` is not null and it returns a valid price\). The auction house uses the `redemptionPrice` by default, although, during market shocks, there may be a significant difference between the system coin's redemption and market prices which will discourage bidding \(if the market price is above redemption\). This is why governance can set `lowerSystemCoinMedianDeviation` and `upperSystemCoinMedianDeviation` in order to allow the contract to use the system coin market price if it deviated within certain bounds compared to the `redemptionPrice`. Governance can also set `minSystemCoinMedianDeviation` so that the contract only chooses the market price in case it deviated more than a certain threshold.
+* The difference between the collateral's `FSM` price \(the delayed price\) and the latest market price stored in the medianizer \(which the `FSM` is connected to\). The auction house uses the `FSM` price by default so that, in case of an oracle attack, governance can react and temporarily disable the `FSM` \(in case they have power over that system component\) or any token holder can trigger global settlement through the `ESM`. 
+  * During the `FSM`'s delay, the market price \(and thus the medianizer value\) might change significantly and thus bidders might have to wait until a new median price feed is pushed into the `FSM` so that they can profit from auctions. In order to avoid scenarios where bidders have to wait for an `FSM` update and at the same time protect collateral auctions from an oracle attack, we added two variables: `lowerCollateralMedianDeviation`and `upperCollateralMedianDeviation`which allow the auction house to pick the medianizer price \(when calculating the amount of collateral bought by a bidder\) in case it deviated within certain bounds compared to the `FSM` price.
+* The difference between the system coin's `redemptionPrice` and its market price \(provided only if `systemCoinOracle` is not null and it returns a valid price\). The auction house uses the `redemptionPrice` by default, although, during market shocks, there may be a significant difference between the system coin's redemption and market prices which will discourage bidding \(if the market price is above redemption\). This is why governance can set `lowerSystemCoinMedianDeviation` and `upperSystemCoinMedianDeviation` in order to allow the contract to use the system coin market price if it deviated within certain bounds from the `redemptionPrice`. Governance can also set `minSystemCoinMedianDeviation` so that the contract only chooses the market price in case it deviated above a certain threshold.
 
 Similar to `English` auctions, when the auction is settled \(or terminated prematurely\), the contract will call the `LiquidationEngine` in order to `removeCoinsFromAuction` \(subtract `bids[auctionId].amountToRaise` from `LiquidationEngine.currentOnAuctionSystemCoins`\).
 
@@ -143,7 +143,7 @@ lowerSystemCoinMedianDeviation = WAD      // 0%
 upperSystemCoinMedianDeviation = WAD      // 0%
 minSystemCoinMedianDeviation   = 0.999E18 // 0.1%
 
-collateralOsmPriceFeedValue    = 100 * WAD
+collateralFsmPriceFeedValue    = 100 * WAD
 collateralMedianPriceFeedValue = 89 * WAD
 
 systemCoinRedemptionPrice      = 5 * RAY
@@ -156,10 +156,10 @@ submittedBid                   = 5 * WAD
 
 /* 
     Because the collateral price fetched from the median is smaller than
-    the collateral's OSM price and it is also deviated more than what
+    the collateral's FSM price and it is also deviated more than what
     lowerCollateralMedianDeviation permits (11%), the final collateral price 
     used by the contract will be 
-    0.9 (lower collateral deviation) * 100 (collateral OSM price) = 90 USD
+    0.9 (lower collateral deviation) * 100 (collateral FSM price) = 90 USD
 */
 finalCollateralPrice           = 90 * WAD
 
@@ -193,7 +193,7 @@ lowerSystemCoinMedianDeviation = 0.95E18  // 5%
 upperSystemCoinMedianDeviation = 0.98E18  // 2%
 minSystemCoinMedianDeviation   = 0.999E18 // 0.1%
 
-collateralOsmPriceFeedValue    = 100 * WAD
+collateralFsmPriceFeedValue    = 100 * WAD
 collateralMedianPriceFeedValue = 89 * WAD
 
 systemCoinRedemptionPrice      = 5 * RAY
