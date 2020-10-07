@@ -1,4 +1,4 @@
-# Getting Started with GEB.js
+# GEB.js
 
 Library to interact with the GEB smart contracts. Manage your safes, mint RAI, inspect the system state, and much more.
 
@@ -6,7 +6,7 @@ The library is written in Typescript with full typing support. It allows access 
 
 ## Install
 
-```text
+```
 npm install geb.js
 ```
 
@@ -14,7 +14,7 @@ npm install geb.js
 
 At the moment, Geb.js requires to use [Ether.js](https://www.npmjs.com/package/ethers) V5. In the future we will support Web3.
 
-```text
+```
 npm install ethers
 ```
 
@@ -25,7 +25,6 @@ Full API documentation is available [here](https://docs.reflexer.finance/geb-js/
 ## Examples
 
 This is a complete example of how you can inspect a SAFE and also open a new one using your own proxy:
-
 ```typescript
 import { ethers, utils as ethersUtils } from 'ethers'
 import { Geb, utils } from 'geb.js'
@@ -59,17 +58,15 @@ console.log(`Transaction ${pending.hash} waiting to be mined...`)
 await pending.wait() // Wait for it to be mined
 console.log('Transaction mined, safe opened!')
 ```
-
 ## Additional examples
-
 In the examples below we assume the variables are defined like in the complete example above.
 
-1. [Deploy a new proxy](geb-js-get-started.md#deploy-a-new-proxy)
-2. [Partial repay of safe debt](geb-js-get-started.md#partial-repay-of-safe-debt)
-3. [Complete repay of safe debt](geb-js-get-started.md#complete-repay-of-safe-debt)
-4. [Withdraw Ether collateral](geb-js-get-started.md#withdraw-ether-collateral)
-5. [Make direct contract calls](geb-js-get-started.md#make-direct-contract-calls)
-6. [Multicall](geb-js-get-started.md#Multicall)
+1. [Deploy a new proxy](#deploy-a-new-proxy)
+2. [Partial repay of safe debt](#partial-repay-of-safe-debt)
+3. [Complete repay of safe debt](#complete-repay-of-safe-debt)
+4. [Withdraw Ether collateral](#withdraw-ether-collateral)
+5. [Make direct contract calls](#make-direct-contract-calls)
+6. [Multicall](#Multicall)
 
 ### Deploy a new proxy
 
@@ -79,7 +76,6 @@ await wallet.sendTransaction(tx)
 ```
 
 ### Partial repay of safe debt
-
 ```typescript
 const proxy = await geb.getProxyAction("0xdefidream...")
 // Repay 1 RAI of debt to SAFE #4
@@ -88,7 +84,6 @@ const wallet.sendTransaction(tx)
 ```
 
 ### Complete repay of safe debt
-
 ```typescript
 const proxy = await geb.getProxyAction("0xdefidream...")
 // Repay all debt of SAFE #4
@@ -97,16 +92,13 @@ const wallet.sendTransaction(tx)
 ```
 
 ### Withdraw Ether collateral
-
 ```typescript
 const proxy = await geb.getProxyAction("0xdefidream...")
 // Unlock 1 ETH of collateral from SAFE #4 and transfer it to its owner 
 const tx = proxy.freeETH(4, ethersUtils.parseEther('1'))
 const wallet.sendTransaction(tx)
 ```
-
 ### Repay all debt and withdraw all collateral
-
 ```typescript
 const proxy = await geb.getProxyAction("0xdefidream...")
 const safe = await geb.getSafe(4)
@@ -115,9 +107,7 @@ const wallet.sendTransaction(tx)
 ```
 
 ### Make direct contract calls
-
-Geb.js exposes all contract APIs of all core contracts in the `Geb.contracts` object. Solidity functions that are read-only \(`view` or `pure`\) return asynchronously the expected value from the chain. State changing functions will return a transaction object to passed to `ether.js` or `web3`.
-
+Geb.js exposes all contract APIs of all core contracts in the `Geb.contracts` object. Solidity functions that are read-only (`view` or `pure`) return asynchronously the expected value from the chain. State changing functions will return a transaction object to passed to `ether.js` or `web3`.
 ```typescript
 // Fetch some system parameters from their respective contracts
 const surplusBuffer = await geb.contracts.accountingEngine.surplusBuffer()
@@ -129,13 +119,10 @@ await wallet.sendTransaction(tx)
 ```
 
 ### Multicall
-
-Useful to bundle read-only calls in a single RPC call
-
+Useful to bundle read-only calls in a single RPC call 
 ```typescript
 const [ globalDebt, collateralInfo ] = await geb.multiCall([
     geb.contracts.safeEngine.globalDebt(true), // !! Note the last parameter set to true.
     geb.contracts.safeEngine.collateralTypes(utils.ETH_A, true),
 ])
 ```
-
