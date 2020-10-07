@@ -1,12 +1,12 @@
 # Global Settlement
 
-The following are examples of how you can use GEB.js to facilitate the Global Settlement process and redeem your collateral that is locked in Safes or directly exchange system coins with collateral.
+The following are examples of how you can use GEB.js to facilitate the Global Settlement process and redeem your collateral which is locked in your own Safes or directly exchange system coins with collateral.
 
 ## Example Flow for Global Settlement Using GEB.js
 
-This code implements the steps described in the [Global Settlement page](https://docs.reflexer.finance/system-contracts/shutdown-module/global-settlement#the-shutdown-mechanism-9-crucial-steps). 
+These scripts can help you go throught the steps described on the [Global Settlement](https://docs.reflexer.finance/system-contracts/shutdown-module/global-settlement#the-shutdown-mechanism-9-crucial-steps) page. 
 
-We first need to setup geb.js and ethers. We will use these variables in the following steps of the procedure.
+We first need to setup `geb.js` and `ethers.js`:
 
 ```typescript
 import { ethers } from 'ethers'
@@ -17,77 +17,81 @@ const provider = new ethers.providers.JsonRpcProvider(
 )
 const wallet = new ethers.Wallet('0xdefiisawesome...', provider)
 const geb = new Geb('kovan', provider)
-
 ```
 
-Before continuing, we need to make sure that the global settlement was triggered by checking the shutdown timestamp: 
+Before continuing, we need to make sure that Global Settlement was triggered by checking the shutdown timestamp: 
 
 ```typescript
 const shutdownTime = await geb.contracts.globalSettlement.shutdownTime()
 const hasGlobalSettlementStarted = shutdownTime.gt(0)
 ```
 
-### Withdraw excess collateral
+### Withdraw Excess Collateral
 
-After the global settlement started, each collateral need to be frozen individually \([Step 2](https://docs.reflexer.finance/system-contracts/shutdown-module/global-settlement#2-cage-ilk)\). This needs to be done only once for each collateral type. 
+After settlement starts, each collateral needs to be frozen \([Step 2](https://docs.reflexer.finance/system-contracts/shutdown-module/global-settlement#2-cage-ilk)\). This needs to be done only once for every collateral type. 
 
 ```typescript
 const tx = geb.contracts.globalSettlement.freezeCollateralType(utils.ETH_A)
 await wallet.sendTransaction(tx)
 ```
 
-Since SAFEs are supposed to be over-collateralize its owner can already withdraw the excess collateral. This following code assume the SAFE is owned by a proxy and uses the [Global Settlement Proxy](https://docs.reflexer.finance/geb-js/geb-js-global-settlement-proxies).
+Since a SAFE is supposed to be over-collateralized, its owner can already withdraw excess collateral. The following script assumes that the SAFE is owned by a [proxy](https://github.com/reflexer-labs/ds-proxy/blob/master/src/proxy.sol) contract. It also uses the [Global Settlement Proxy](https://docs.reflexer.finance/geb-js/geb-js-global-settlement-proxies) [Actions](https://docs.reflexer.finance/geb-js/geb-js-global-settlement-proxies) to pack and atomically execute multiple transactions at once.
 
 ```typescript
 const gsProxy = await geb.getProxyActionGlobalSettlement(wallet.address)
 const wethJoinAddress = geb.contracts.joinETH_A.address
-// Withdraw excess collateral from safe id 3
+// Withdraw excess collateral from the Safe with ID #3
 const tx = gsProxy.freeTokenCollateral(wethJoinAddress, 3)
 await wallet.sendTransaction(tx)
 ```
 
-This fulfills the [step 3](https://docs.reflexer.finance/system-contracts/shutdown-module/global-settlement#3-skim-ilk-urn) for your own safe and [step 5](https://docs.reflexer.finance/system-contracts/shutdown-module/global-settlement#5-free-ilk).  
+This fulfills [step 3](https://docs.reflexer.finance/system-contracts/shutdown-module/global-settlement#3-skim-ilk-urn) and [step 5](https://docs.reflexer.finance/system-contracts/shutdown-module/global-settlement#5-free-ilk) from the Global Settlement process.
 
-### Settled final RAI exchange rates 
+### Set the Final COL/RAI Exchange Rates 
 
-This part of the process consists in determining a price to exchange the RAIs still in circulation for collateral. The system needs to account for all SAFEs \(I\), terminate all ongoing collateral auctions \(II\) and sell the system surplus \(III\).
+This part of the process consists in determining an exchange rate between the system coins that are still in circulation and each individual collateral type accepted by the system. The system needs to account for all SAFEs \(I\), terminate all ongoing collateral auctions \(II\) and remove all system surplus \(III\) in case .
 
-This needs to be done only once for the whole system. These steps can be taken care of by the [settlement keeper](https://github.com/reflexer-labs/settlement-keeper) bot.
+This needs to be done only once for the whole system. These steps can be taken care of by the [settlement keeper](https://github.com/reflexer-labs/settlement-keeper) bot or by anyone who is willing to pay the gas costs associated with these transactions.
 
 ```typescript
-// For (I) the function `processSAFE` needs to be manually called all SAFEs.
-// Particularly for under-collateralized SAFEs since their owners are not 
-// incentivised to call it themself.
-const safes = [] // Gather some safe handlers 
+// For (I) the function `processSAFE` needs to be called for all SAFEs,
+// particularly for under-collateralized ones since their owners are not 
+// incentivised to call it themselves
+const safes = [] // Gather some Safe handlers 
 safes.push((await geb.getSafe(2)).handler)
 safes.push((await geb.getSafe(3)).handler)
 safes.push((await geb.getSafe(4)).handler)
-// ...
+
 // Prepare the transactions
 const txs = safes.map(handler => 
     geb.contracts.globalSettlement.processSAFE(utils.ETH_A, handler)
 )
+
 // Send all transactions
 txs.map(tx => await wallet.sendTransaction(tx))
 
-
-// For (II) we have 2 scenarios. Either wait for all auctions to finish by 
-// waiting the cooldown:
+// For (II) we have 2 possibilities: wait for all auctions to finish
 const cooldown = await geb.contracts.globalSettlement.shutdownCooldown()
 const now = BigNumber.from(Date.now()).div(1000)
 const isCooldownPassed = now.gt(shutdownTime.add(cooldown))
-// Or prematurely terminate each auction:
+
+// Or prematurely terminate each auction
 const auctionId = 6
 const tx = geb.contracts.globalSettlement.fastTrackAuction(utils.ETH_A, auctionId)
 await wallet.sendTransaction(tx)
 
-// (III) We need to get rid of the system surplus.
-const tx = geb.contracts.accountingEngine.transferPostSettlementSurplus()
+// (III) We need to get rid of the system surplus 
+const tx = geb.contracts.accountingEngine.settleDebt()
 await wallet.sendTransaction(tx)
 
+// Although in case there is a bug in the system's accounting that 
+// created more surplus than debt, there is a backup function called
+// transferPostSettlementSurplus() 
+const tx = geb.contracts.accountingEngine.transferPostSettlementSurplus()
+await wallet.sendTransaction(tx)
 ```
 
-Finally, the cash prices for each collateral can be set with the 2 following steps:
+Finally, the cash price for each collateral can be set with the following steps:
 
 ```typescript
 const tx = geb.contracts.globalSettlement.setOutstandingCoinSupply()
