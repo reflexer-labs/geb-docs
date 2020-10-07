@@ -226,6 +226,7 @@ The following tables show the before and after variable names from all core MCD 
 | bids | bids |
 | vat | safeEngine |
 | ilk | collateralType |
+| NaN | lastReadRedemptionPrice \(only in the FixedDiscount version\) |
 | NaN | minimumBid \(NEW\) \(only in the FixedDiscount version\) |
 | beg | bidIncrease \(only in the English version\) |
 | ttl | bidDuration \(only in the English version\) |
