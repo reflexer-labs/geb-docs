@@ -62,8 +62,8 @@ Fixed discount collateral auctions are similar to their `English` counterpart in
 * `addAuthorization(usr: address)` - add an address to `authorizedAddresses`.
 * `removeAuthorization(usr: address)` - remove an address from `authorizedAddresses`.
 * `getCollateralMedianPrice() public view returns (priceFeed: uint256)` - get the collateral's median price from `collateralMedian`
-* `getSystemCoinPrice() public view returns (priceFeed: uint256)` - get the system coin's  market price from `systemCoinOracle`
-* `getTokenPrices(systemCoinRedemptionPrice: uint256) public view returns (uint256`, `uint256)` - get the collateral and system coin prices that can be currently used to determine the amount of collateral bought by bidders
+* `getSystemCoinMarketPrice() public view returns (priceFeed: uint256)` - get the system coin's  market price from `systemCoinOracle`
+* `getFinalTokenPrices(systemCoinRedemptionPrice: uint256) public view returns (uint256`, `uint256)` - get the collateral and system coin prices that can be currently used to determine the amount of collateral bought by bidders
 * `getFinalBaseCollateralPrice(collateralFsmPriceFeedValue: uint256`, `collateralMedianPriceFeedValue: uint256) public view returns (uint256)` - get the final collateral price \(without the discount applied\) that will be used to determine the amount of collateral bought by a bid
 * `getDiscountedCollateralPrice(collateralFsmPriceFeedValue: bytes32`, `collateralMedianPriceFeedValue: bytes32`, `systemCoinPriceFeedValue: uint256`, `customDiscount: uint256) public view returns (uint256)` - get the \(discounted\) collateral price using either the `FSM` or median price for the collateral and the redemption/market price for the system coin
 * `startAuction(forgoneCollateralReceiver: address`, `auctionIncomeRecipient: address`, `amountToRaise: uint256`, `amountToSell: uint256`, `initialBid: uint256 )` - function used by `LiquidationEngine` to start an auction / put collateral up for auction
@@ -107,7 +107,7 @@ Fixed discount collateral auctions are similar to their `English` counterpart in
 
 ## 3. Walkthrough <a id="3-key-mechanisms-and-concepts"></a>
 
-The fixed discount auction is a straightforward way \(compared to `English` auctions\) to put SAFE collateral up for sale in exchange for system coins used to settle bad debt. Bidders are only required to allow the auction house to transfer their `safeEngine.coinBalance` and can then call`buyCollateral(id: uint256`, `wad: uint256)` in order to exchange their system coins for collateral which is sold at a `discount` compared to its latest recorded market price. Bidders can also review the \(approximate\) amount of collateral they can get from a specific auction by calling `getCollateralBought(id: uint256`, `wad: uint256)`. Note that `getCollateralBought` is not marked as `view` because it reads \(and also updates\) the `redemptionPrice` from the `OracleRelayer`.
+The fixed discount auction is a straightforward way \(compared to `English` auctions\) to put SAFE collateral up for sale in exchange for system coins used to settle bad debt. Bidders are only required to allow the auction house to transfer their `safeEngine.coinBalance` and can then call`buyCollateral(id: uint256`, `wad: uint256)` in order to exchange their system coins for collateral which is sold at a `discount` compared to its latest recorded market price. Bidders can also review the amount of collateral they can get from a specific auction by calling `getCollateralBought(id: uint256`, `wad: uint256)` or `getApproximateCollateralBought(id: uint256`, `wad: uint256)`. Note that `getCollateralBought` is not marked as `view` because it reads \(and also updates\) the `redemptionPrice` from the `OracleRelayer whereas getApproximateCollateralBought` uses the`lastReadRedemptionPrice`.
 
 {% hint style="info" %}
 **Bids as WAD Amounts**
@@ -117,8 +117,8 @@ As opposed to `English` auctions where bidders submit bids with `RAD` amounts of
 
 There are several components that come together when the contract calculates the amount of collateral to send to a bidder:
 
-* The amount of system coins `wad` used when calling `buyCollateral`. `wad` must be bigger than or equal to `minimumBid.` In case `wad` is bigger than the remaining amount of system coins to raise \(`remainingToRaise`\), the contract will only request what it needs in order to fill `remainingToRaise` \(call it `adjustedBid`\). Note that in order to avoid dusty auctions resulting from computing an`adjustedBid` \(because of precision loss from division\) the contract will automatically request one extra system coin on top of `remainingToRaise`
-* The difference between the collateral's `FSM` price \(the delayed price\) and the latest market price stored in the medianizer \(which the `FSM` is connected to\). The auction house uses the `FSM` price by default so that, in case of an oracle attack, governance can react and temporarily disable the `FSM` \(in case they have power over that system component\) or any token holder can trigger global settlement through the `ESM`. 
+* The amount of system coins `wad` used when calling `buyCollateral`. `wad` must be bigger than zero and bigger than or equal to `uint minBid = minimum(minimumBid`, `subtract(bids[id].amountToRaise`, `bids[id].raisedAmount)).` In case `wad` is bigger than `minBid`, the contract will only request what it needs in order to fill `remainingToRaise` \(or otherwises called `adjustedBid`\). Note that in order to avoid dusty auctions resulting from computing an `adjustedBid` \(because of precision loss from division\) the contract will automatically request one extra system coin
+* The difference between the collateral's `FSM` price \(the delayed price\) and the latest market price stored in the medianizer \(which the `FSM` is connected to\). The auction house uses the `FSM` price by default so that, in case of an oracle attack, governance can react and temporarily disable the `FSM` \(in case they have power over that system component\).
   * During the `FSM`'s delay, the market price \(and thus the medianizer value\) might change significantly and thus bidders might have to wait until a new median price feed is pushed into the `FSM` so that they can profit from auctions. In order to avoid scenarios where bidders have to wait for an `FSM` update and at the same time protect collateral auctions from an oracle attack, we added two variables: `lowerCollateralMedianDeviation`and `upperCollateralMedianDeviation`which allow the auction house to pick the medianizer price \(when calculating the amount of collateral bought by a bidder\) in case it deviated within certain bounds compared to the `FSM` price.
 * The difference between the system coin's `redemptionPrice` and its market price \(provided only if `systemCoinOracle` is not null and it returns a valid price\). The auction house uses the `redemptionPrice` by default, although, during market shocks, there may be a significant difference between the system coin's redemption and market prices which will discourage bidding \(if the market price is above redemption\). This is why governance can set `lowerSystemCoinMedianDeviation` and `upperSystemCoinMedianDeviation` in order to allow the contract to use the system coin market price if it deviated within certain bounds from the `redemptionPrice`. Governance can also set `minSystemCoinMedianDeviation` so that the contract only chooses the market price in case it deviated above a certain threshold.
 
@@ -127,8 +127,8 @@ Similar to `English` auctions, when the auction is settled \(or terminated prema
 ## 4. Gotchas <a id="3-key-mechanisms-and-concepts"></a>
 
 * In case someone bids an amount that is higher than the remaining amount of system coins which still need to be raised by an auction, the contract will only charge for the remaining amount [plus one extra system coin](https://github.com/reflexer-labs/geb/blob/cbe4c6f50e8fc25fcd380206b31c580e23a979d9/src/CollateralAuctionHouse.sol#L774) \(meant to prevent dusty auctions\)
-* You must always submit a bid that is higher than or equal to `minimumBid`, even if the remaining amount of system coins to raise is smaller than that. The contract will take care of charging only for the amount needed to cover the total `amountToRaise` \(plus an extra coin for rounding up\)
-* The auctions use the system coin `redemptionPrice` by default and not its market price
+* You must always submit a bid that is higher than or equal to `minimum(minimumBid`, `subtract(bids[id].amountToRaise`, `bids[id].raisedAmount))`. The contract will take care of charging only for the amount needed to cover the total remaining`amountToRaise` \(plus an extra coin for rounding up and avoiding dusty auctions\)
+* The auctions use the system coin `redemptionPrice` by default \(not its market price\)
 
 ## 5. Examples <a id="3-key-mechanisms-and-concepts"></a>
 
@@ -206,7 +206,7 @@ submittedBid                   = 15 * WAD
 
 /*
     Given that the submittedBid is higher than the total remaining amount to raise,
-    the contract will adjust the bid (by also rounding up)
+    the contract will adjust the bid (by rounding up)
 */
 adjustedBid = amountToRaise / RAY + 1 * WAD = 11 * WAD
 
