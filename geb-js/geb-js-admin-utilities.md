@@ -130,7 +130,7 @@ const USDC = geb.getErc20Contract(USDCAddress)
 // Get 0xdefiisawesome's balance
 const balance = USDC.balanceOf("0xdefiisawesome..")
 
-// Send 1 USDC to 0xdefiisawesome (USDC is 6 decimals)
+// Send 1 USDC to 0xdefiisawesome (USDC has 6 decimals)
 const tx = USDC.transfer("0xdefiisawesome..", "1000000")
 await wallet.sendTransaction(tx)
 ```

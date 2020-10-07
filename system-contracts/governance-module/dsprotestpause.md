@@ -94,5 +94,7 @@ description: DSPause cousin where transactions can be protested against and furt
 
 ## 3. Walkthrough <a id="2-contract-details"></a>
 
+`DSProtestPause` is very similar to `DSPause` in that it is designed to be used as a component in a governance system and it gives affected parties time to respond to decisions. It also has a special extra function: it allows a `protester` to further delay the execution of any transaction \(e.g set the delay from 2 to 4 hours for a transaction\). 
 
+This feature is especially useful in case the authorized contracts or EOAs allowed to `scheduleTransaction`s are captured by malicious actors.
 
