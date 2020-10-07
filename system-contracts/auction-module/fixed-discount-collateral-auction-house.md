@@ -126,7 +126,7 @@ Similar to `English` auctions, when the auction is settled \(or terminated prema
 
 ## 4. Gotchas <a id="3-key-mechanisms-and-concepts"></a>
 
-* In case someone bids an amount that is higher than the remaining amount of system coins which still need to be raised by an auction, the contract will only charge for the remaining amount [plus one extra system coin](https://github.com/reflexer-labs/geb/blob/cbe4c6f50e8fc25fcd380206b31c580e23a979d9/src/CollateralAuctionHouse.sol#L774) \(meant to prevent dusty auctions\)
+* In case someone bids an amount that is higher than the remaining amount of system coins which still need to be raised by an auction, the contract will only charge for the remaining amount plus [one extra system coin](https://github.com/reflexer-labs/geb/blob/36b064b816451901c5968c0fb07b79d8ae8c8127/src/CollateralAuctionHouse.sol#L806) \(meant to prevent dusty auctions\)
 * You must always submit a bid that is higher than or equal to `minimum(minimumBid`, `subtract(bids[id].amountToRaise`, `bids[id].raisedAmount))`. The contract will take care of charging only for the amount needed to cover the total remaining`amountToRaise` \(plus an extra coin for rounding up and avoiding dusty auctions\)
 * The auctions use the system coin `redemptionPrice` by default \(not its market price\)
 
