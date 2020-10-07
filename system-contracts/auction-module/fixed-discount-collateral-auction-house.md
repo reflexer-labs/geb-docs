@@ -24,7 +24,7 @@ Fixed discount collateral auctions are similar to their `English` counterpart in
 * `minimumBid` - minimum amount of system coins that must be submitted by each bidder.
 * `totalAuctionLength` - auction length \(default: 7 days\).
 * `auctionsStarted` - total auction count, used to track auction `id`s.
-* `lastReadRedemptionPrice` - the last read redemption price. Can \(and most probably is\) different than the latest `OracleRelayer.redemptionPrice`
+* `lastReadRedemptionPrice` - the last read redemption price. Can \(and most probably is\) be different than the latest `OracleRelayer._redemptionPrice`
 * `discount` - discount compared to the collateral market price; used when calculating the amount of collateral to send to a bidder.
 * `lowerCollateralMedianDeviation` - max `collateralMedian` collateral price deviation \(compared to the `osm` price\) used when the median price is lower than the `collateralOSM` price and the contract needs to pick which one to use
 * `upperCollateralMedianDeviation` - max `collateralMedian` collateral price deviation \(compared to the `osm` price\) used when the median price is higher than the `collateralOSM` price and the contract needs to pick which one to use
