@@ -1,8 +1,8 @@
 # Getting Started with GEB.js
 
-Library to interact with the GEB smart contracts. Manage your safes, mint RAI, inspect the system state, and much more.
+Library to interact with the GEB smart contracts. Manage your SAFEs, mint system coins, inspect a system's state and more.
 
-The library is written in Typescript with full typing support. It allows access to the low level API to directly interact with the contracts.
+The library is written in Typescript and has full typing support. It gives access to a low level API that can help you directly interact with the contracts.
 
 ## Install
 
@@ -12,7 +12,7 @@ npm install geb.js
 
 ## Dependencies
 
-At the moment, Geb.js requires to use [Ether.js](https://www.npmjs.com/package/ethers) V5. In the future we will support Web3.
+At the moment, Geb.js requires the use of [Ether.js](https://www.npmjs.com/package/ethers) V5. In the future we will also support Web3.
 
 ```text
 npm install ethers
@@ -41,11 +41,11 @@ const geb = new Geb('kovan', provider)
 
 // Get a SAFE
 const safe = await geb.getSafe(4)
-console.log(`Safe id 4 has: ${utils.wadToFixed(safe.debt).toString()} RAI of debt.`)
+console.log(`Safe id 4 has: ${utils.wadToFixed(safe.debt).toString()} amount of debt.`)
 console.log(`It will get liquidated if ETH price falls below ${(await safe.liquidationPrice())?.toString()} USD.`)
 
 // Open a new SAFE, lock ETH and draw RAI in a single transaction using a proxy
-// Note: Before doing this you need to create your own proxy
+// Note: before doing this you need to create your own proxy
 const proxy = await geb.getProxyAction(wallet.address)
 const tx = proxy.openLockETHAndGenerateDebt(
     ethersUtils.parseEther('1'), // Lock 1 Ether
@@ -78,7 +78,7 @@ const tx = geb.deployProxy()
 await wallet.sendTransaction(tx)
 ```
 
-### Partial repay of safe debt
+### Partially repay a SAFE's debt
 
 ```typescript
 const proxy = await geb.getProxyAction("0xdefidream...")
@@ -87,7 +87,7 @@ const tx = proxy.repayDebt(4, ethersUtils.parseEther('1'))
 const wallet.sendTransaction(tx)
 ```
 
-### Complete repay of safe debt
+### Completely repay a SAFE's debt
 
 ```typescript
 const proxy = await geb.getProxyAction("0xdefidream...")
@@ -116,7 +116,7 @@ const wallet.sendTransaction(tx)
 
 ### Make direct contract calls
 
-Geb.js exposes all contract APIs of all core contracts in the `Geb.contracts` object. Solidity functions that are read-only \(`view` or `pure`\) return asynchronously the expected value from the chain. State changing functions will return a transaction object to passed to `ether.js` or `web3`.
+GEB.js exposes all contract APIs of all core contracts in the `Geb.contracts` object. Solidity functions that are read-only \(`view` or `pure`\) return asynchronously the expected value from the chain. State changing functions will return a transaction object to passed to `ether.js` or `web3`.
 
 ```typescript
 // Fetch some system parameters from their respective contracts
