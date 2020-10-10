@@ -57,7 +57,7 @@
 
 ## Helper Contracts
 
-* [SAFE Manager](helper-contracts/cdp-manager.md)
+* [SAFE Manager](helper-contracts/safe-manager.md)
 
 ## GEB.js <a id="geb-js"></a>
 
