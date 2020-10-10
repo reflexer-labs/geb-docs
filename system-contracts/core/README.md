@@ -40,7 +40,7 @@ Both the `SAFEEngine` and the `LiquidationEngine` rely \(directly or indirectly\
 
 ## 4. Governance Minimization
 
-* `SAFEEngine` - governance can keep control over raising \(never lowering\) the `globalDebtCeiling` as well as individual collateral `debtCeilings`, especially when the system is backed only by one collateral type and the [automated feedback mechanism](https://docs.reflexer.finance/system-contracts/feedback-mechanism-module) takes care of changing user incentives.
+* `SAFEEngine` - governance can keep control over raising \(never lowering\) the `globalDebtCeiling` as well as individual collateral `debtCeilings`
 * `LiquidationEngine` - the `liquidationPenalty` may be changed within certain bounds. There can be lower and upper limits on the value the penalty can be set to or governance can be restricted so they can only change the penalty X% every Y seconds.
 * `AccountingEngine` - governance can completely remove control over this contract. Parameters such as the `surplusBuffer` can be automatically set by other autonomous smart contracts.
 
