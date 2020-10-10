@@ -1,8 +1,8 @@
 # Admin Utilities
 
-This class extends the core `GEB` class with additional tools and contracts that are not used as often as other SAFE management tools. Here you will find utils for contracts such as DSPause, ESM etc. These contracts are scattered across several repositories. Please refer to the smart contract documentation to learn more about them.
+This class extends the core `Geb` class with additional tools and contracts that are not used as often as other SAFE management tools. Here you will find utils for contracts such as DSPause, the ESM etc. These contracts are scattered across several repositories. Please refer to the [smart contract documentation](https://docs.reflexer.finance/system-contracts/core) to learn more about them.
 
-**IMPORTANT:** To avoid bloating the main [geb.js](https://www.npmjs.com/package/geb.js) package this class is only available in a [separate package](https://www.npmjs.com/package/@reflexer-finance/geb-admin). Please install it like this:
+**IMPORTANT:** To avoid bloating the main [geb.js](https://www.npmjs.com/package/geb.js) package, this class is only available in a [separate package](https://www.npmjs.com/package/@reflexer-finance/geb-admin). Please install it like this:
 
 ```text
 npm install @reflexer-finance/geb-admin
