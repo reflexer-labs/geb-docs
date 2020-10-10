@@ -45,5 +45,5 @@ The `OSM` \(Oracle Security Module\) ensures that new price values propagated fr
 
 ## 3. Walkthrough <a id="3-key-mechanisms-and-concepts"></a>
 
-In order for the `OSM` to work properly, an external actor must regularly call `updateResult()` to update the current price and read the next one. The contract stores the timestamp of the last `updateResult()` and will not allow another update until `block.timestamp` is at least `lastUpdateTime + updateDelay`. Values are read from the `priceSource`. In case of an oracle attack, governance can call `stop()`, `restartValue()`or trigger Global Settlement.
+In order for the `OSM` to work properly, an external actor must regularly call `updateResult()` to update the current price and read the next one. The contract stores the timestamp of the last `updateResult()` and will not allow another update until `block.timestamp` is at least `lastUpdateTime + updateDelay`. Values are read from the `priceSource`. In case of an oracle attack, governance can call `stop()` or`restartValue()`
 
