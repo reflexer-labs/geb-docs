@@ -20,7 +20,6 @@
   * [Fixed Discount Collateral Auction House](system-contracts/auction-module/fixed-discount-collateral-auction-house.md)
   * [Debt Auction House](system-contracts/auction-module/debt-auction-house.md)
   * [Surplus Auction House](system-contracts/auction-module/surplus-auction-house.md)
-  * [Settlement Surplus Auctioneer](system-contracts/auction-module/settlement-surplus-auctioneer.md)
 * [Oracle Module](system-contracts/oracle-module/README.md)
   * [Oracle Relayer](system-contracts/oracle-module/oracle-relayer.md)
   * [Medianizer](system-contracts/oracle-module/medianizer/README.md)

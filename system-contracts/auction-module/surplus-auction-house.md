@@ -10,8 +10,6 @@ description: >-
 
 The surplus auction is used to sell off a fixed amount of the surplus in exchange for protocol tokens. The surplus comes from the stability fees charged to SAFEs \(and stored in the `AccountingEngine`\). Bidders submit increasing amounts of protocol tokens and the winner receives all auctioned surplus in exchange for their coins which are burned.
 
-There are two surplus auction flavors: a pre-settlement version meant to sell surplus before the system settles and a post-settlement one meant to sell any surplus sent by the SettlementSurplusAuctioneer.
-
 ## 2. Contract Variables & Functions <a id="2-contract-details"></a>
 
 **Variables**
@@ -87,7 +85,5 @@ In a surplus auction, bidders compete for a fixed `amountToSell` of system coins
 
 The surplus auction ends when the last bid's duration is passed \(`bidDuration`\) without another bid getting placed or when the auction duration \(`totalAuctionLength`\) has been surpassed. When the auction settles, the protocol tokens received are burnt.
 
-In case governance disables the `PreSettlementSurplusAuctionHouse` by calling `disableContract`, anyone can call `terminateAuctionPrematurely` in order to quickly settle an auction and return the protocol token bid to `highBidder`. 
-
-Governance cannot disable the `PostSettlementSurplusAuctionHouse` because it is the main component in charge with disbursing remaining surplus after the protocol shuts down.
+In case governance disables the surplus auction house by calling `disableContract`, anyone can call `terminateAuctionPrematurely` in order to quickly settle an auction and return the protocol token bid to `highBidder`. 
 

@@ -9,7 +9,6 @@ description: Maintaining system balance by covering shortfall and disbursing sur
 * \*\*\*\*[**CollateralAuctionHouse**](https://github.com/reflexer-labs/geb/blob/master/src/CollateralAuctionHouse.sol)\*\*\*\*
 * \*\*\*\*[**DebtAuctionHouse**](https://github.com/reflexer-labs/geb/blob/master/src/DebtAuctionHouse.sol)\*\*\*\*
 * \*\*\*\*[**SurplusAuctionHouse**](https://github.com/reflexer-labs/geb/blob/master/src/SurplusAuctionHouse.sol)\*\*\*\*
-* \*\*\*\*[**SettlementSurplusAuctioneer**](https://github.com/reflexer-labs/geb/blob/master/src/SettlementSurplusAuctioneer.sol)\*\*\*\*
 
 ## 1. Overview
 
@@ -23,8 +22,7 @@ The **Auction Module** is meant to incentivize external actors to drive the syst
 
     By default, the contract will use the collateral's `OSM` price \(which will lag compared to the actual collateral market price\) and the system coin's `redemptionPrice` in order to calculate the amount of collateral to offer in exchange for each individual bid. On the other hand, governance can set the contract's parameters so that it uses the collateral's medianizer price and/or the system coin's market price if they deviated within certain limits from the `OSM` and the `redemptionPrice`.
 * The `DebtAuctionHouse` is used to get rid of the `AccountingEngine`’s debt by auctioning off protocol tokens for a fixed amount of surplus \(system coins\). After the auction is settled, it sends the received surplus to the `AccountingEngine` in order to cancel out bad debt and it also mints protocol tokens for the winning bidder.
-* The `SurplusAuctionHouse` \(both its pre and post settlement versions\) is used to get rid of the `AccountingEngine`’s surplus by auctioning off a fixed amount of internal system coins in exchange for protocol tokens. After auction settlement, the auction house burns the winning protocol token bid and sends internal system coins to the winning bidder. There are two flavors of surplus auctions: the first one used while the system is not settled and the other one used to auction leftover surplus after the system settles.
-* The `SettlementSurplusAuctioneer` is in charge with disbursing remaining surplus after `GlobalSettlement` is triggered and the `AccountingEngine` covers as much of its remaining debt as possible before being disabled.
+* The `SurplusAuctionHouse` \(both its pre and post settlement versions\) is used to get rid of the `AccountingEngine`’s surplus by auctioning off a fixed amount of internal system coins in exchange for protocol tokens. After auction settlement, the auction house burns the winning protocol token bid and sends internal system coins to the winning bidder.
 
 ## 3. Risks <a id="5-failure-modes-bounds-on-operating-conditions-and-external-risk-factors"></a>
 
