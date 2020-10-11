@@ -88,9 +88,10 @@ const amountToSettle = coin.gte(debt) ? debt : coin
 const tx = geb.contracts.accountingEngine.settleDebt(amountToSettle)
 await wallet.sendTransaction(tx)
 
-// Although in case there is a bug in the system's accounting that 
+// In case there is a bug in the system's accounting that 
 // created more surplus than debt, there is a backup function called
 // transferPostSettlementSurplus() which gets rid of that extra surplus
+// and allows GlobalSettlement.setOutstandingCoinSupply() to execute successfuly
 const tx = geb.contracts.accountingEngine.transferPostSettlementSurplus()
 await wallet.sendTransaction(tx)
 ```
