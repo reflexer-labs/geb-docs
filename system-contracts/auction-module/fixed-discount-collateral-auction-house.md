@@ -117,7 +117,7 @@ As opposed to `English` auctions where bidders submit bids with `RAD` amounts of
 
 There are several components that come together when the contract calculates the amount of collateral to send to a bidder:
 
-* The amount of system coins `wad` used when calling `buyCollateral`. `wad` must be bigger than zero and bigger than or equal to `uint minBid = minimum(minimumBid`, `subtract(bids[id].amountToRaise`, `bids[id].raisedAmount)).` In case `wad` is bigger than `minBid`, the contract will only request what it needs in order to fill `remainingToRaise` \(or otherwises called `adjustedBid`\). Note that in order to avoid dusty auctions resulting from computing an `adjustedBid` \(because of precision loss from division\) the contract will automatically request one extra system coin
+* The amount of system coins `wad` used when calling `buyCollateral`. `wad` must be bigger than zero and bigger than or equal to `uint minBid = minimum(minimumBid`, `subtract(bids[id].amountToRaise`, `bids[id].raisedAmount)).` In case `wad` is bigger than `minBid`, the contract will only request what it needs in order to fill `remainingToRaise` \(or otherwises called `adjustedBid`\). Note that in order to avoid dusty auctions resulting from computing an `adjustedBid` \(because of precision loss from division\) the contract will automatically request `10**-18` extra system coins
 * The difference between the collateral's `FSM` price \(the delayed price\) and the latest market price stored in the medianizer \(which the `FSM` is connected to\). The auction house uses the `FSM` price by default so that, in case of an oracle attack, governance can react and temporarily disable the `FSM` \(in case they have power over that system component\).
   * During the `FSM`'s delay, the market price \(and thus the medianizer value\) might change significantly and thus bidders might have to wait until a new median price feed is pushed into the `FSM` so that they can profit from auctions. In order to avoid scenarios where bidders have to wait for an `FSM` update and at the same time protect collateral auctions from an oracle attack, we added two variables: `lowerCollateralMedianDeviation`and `upperCollateralMedianDeviation`which allow the auction house to pick the medianizer price \(when calculating the amount of collateral bought by a bidder\) in case it deviated within certain bounds compared to the `FSM` price.
 * The difference between the system coin's `redemptionPrice` and its market price \(provided only if `systemCoinOracle` is not null and it returns a valid price\). The auction house uses the `redemptionPrice` by default, although, during market shocks, there may be a significant difference between the system coin's redemption and market prices which will discourage bidding \(if the market price is above redemption\). This is why governance can set `lowerSystemCoinMedianDeviation` and `upperSystemCoinMedianDeviation` in order to allow the contract to use the system coin market price if it deviated within certain bounds from the `redemptionPrice`. Governance can also set `minSystemCoinMedianDeviation` so that the contract only chooses the market price in case it deviated above a certain threshold.
@@ -126,8 +126,8 @@ Similar to `English` auctions, when the auction is settled \(or terminated prema
 
 ## 4. Gotchas <a id="3-key-mechanisms-and-concepts"></a>
 
-* In case someone bids an amount that is higher than the remaining amount of system coins which still need to be raised by an auction, the contract will only charge for the remaining amount plus [one extra system coin](https://github.com/reflexer-labs/geb/blob/36b064b816451901c5968c0fb07b79d8ae8c8127/src/CollateralAuctionHouse.sol#L806) \(meant to prevent dusty auctions\)
-* You must always submit a bid that is higher than or equal to `minimum(minimumBid`, `subtract(bids[id].amountToRaise`, `bids[id].raisedAmount))`. The contract will take care of charging only for the amount needed to cover the total remaining`amountToRaise` \(plus an extra coin for rounding up and avoiding dusty auctions\)
+* In case someone bids an amount that is higher than the remaining amount of system coins which still need to be raised by an auction, the contract will only charge for the remaining amount plus `10**-18` extra system coins \(meant to prevent dusty auctions\)
+* You must always submit a bid that is higher than or equal to `minimum(minimumBid`, `subtract(bids[id].amountToRaise`, `bids[id].raisedAmount))`. The contract will take care of charging only for the amount needed to cover the total remaining`amountToRaise`
 * The auctions use the system coin `redemptionPrice` by default \(not its market price\)
 
 ## 5. Examples <a id="3-key-mechanisms-and-concepts"></a>
@@ -208,7 +208,7 @@ submittedBid                   = 15 * WAD
     Given that the submittedBid is higher than the total remaining amount to raise,
     the contract will adjust the bid (by rounding up)
 */
-adjustedBid = amountToRaise / RAY + 1 * WAD = 11 * WAD
+adjustedBid = amountToRaise / RAY + 1 = 10 * WAD + 1
 
 /*
     Similar to Scenario 1, the final collateral price used by the contract 
@@ -225,7 +225,8 @@ finalCollateralPrice           = 90 * WAD
 finalSystemCoinPrice           = 5.1 * RAY
 
 /*
-    Determining the amount of collateral bought given the 11 WAD adjusted system coin bid
+    Determining the amount of collateral bought given the 10 WAD + 1 
+    adjusted system coin bid
 */
 discountedSystemCoinCollateralPrice 
     = (finalCollateralPrice * RAY / finalSystemCoinPrice) * discount / WAD 
@@ -233,6 +234,6 @@ discountedSystemCoinCollateralPrice
 
 boughtCollateralAmount 
     = adjustedBid * WAD / discountedSystemCoinCollateralPrice
-    = 0.656140351 * WAD
+    = 0.596491228082733148 * WAD
 ```
 
