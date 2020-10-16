@@ -49,7 +49,7 @@ This fulfills [step 3](https://docs.reflexer.finance/system-contracts/shutdown-m
 
 ### Set the Final COL/COIN Exchange Rates 
 
-This part of the process consists in determining an exchange rate between the system coins that are still in circulation and each individual collateral type accepted by the system. The system needs to account for all SAFEs \(I\), terminate all ongoing collateral auctions \(II\) and remove all system surplus \(III\).
+This part of the process consists in determining an exchange rate between the system coins that are still in circulation and each individual collateral type accepted by the system. The system needs to account for all Safes \(I\), terminate all ongoing collateral auctions \(II\) and remove all system surplus \(III\).
 
 This needs to be done only once for the whole system. These steps can be taken care of by the [settlement keeper](https://github.com/reflexer-labs/settlement-keeper) bot or by anyone who is willing to pay the gas costs associated with these transactions.
 
