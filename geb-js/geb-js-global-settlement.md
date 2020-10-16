@@ -109,7 +109,7 @@ await wallet.sendTransaction(tx)
 
 ### Redeem Collateral against System Coins
 
-At this stage, any system coin holder can exchange their coins against a fixed basket of collateral. This is a 2 step process that consists in locking and preparing system coins and then claiming a share of any collateral type.
+At this stage, any system coin holder can exchange their coins against a fixed basket of collateral. This is a 2 step process that consists in locking and preparing system coins and then claiming a share of a specific collateral type.
 
 ```typescript
 // Prepare the system coins
