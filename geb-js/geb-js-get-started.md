@@ -1,6 +1,6 @@
 # Getting Started with GEB.js
 
-Library to interact with the GEB smart contracts. Manage your safes, mint RAI, inspect the system state, and much more.
+Library to interact with the GEB smart contracts. Manage your safes, mint system coins, inspect the system state and much more.
 
 The library is written in Typescript with full typing support. It allows access to the low level API to directly interact with the contracts.
 
