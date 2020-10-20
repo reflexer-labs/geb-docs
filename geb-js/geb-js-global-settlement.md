@@ -13,7 +13,7 @@ import { ethers } from 'ethers'
 import { Geb, utils } from 'geb.js'
 
 const provider = new ethers.providers.JsonRpcProvider(
-    'http://kovan.infura.io/<API KEY>'
+    'http://kovan.infura.io/v3/<API KEY>'
 )
 const wallet = new ethers.Wallet('0xdefiisawesome...', provider)
 const geb = new Geb('kovan', provider)

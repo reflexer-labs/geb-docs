@@ -32,7 +32,7 @@ import { Geb, utils } from 'geb.js'
 
 // Setup Ether.js
 const provider = new ethers.providers.JsonRpcProvider(
-    'http://kovan.infura.io/<API KEY>'
+    'http://kovan.infura.io/v3/<API KEY>'
 )
 const wallet = new ethers.Wallet('0xdefiisawesome...', provider)
 
@@ -44,15 +44,15 @@ const safe = await geb.getSafe(4)
 console.log(`Safe id 4 has: ${utils.wadToFixed(safe.debt).toString()} amount of debt.`)
 console.log(`It will get liquidated if ETH price falls below ${(await safe.liquidationPrice())?.toString()} USD.`)
 
-// Open a new SAFE, lock ETH and draw RAI in a single transaction using a proxy
+// Open a new SAFE, lock ETH and draw sytem coins in a single transaction using a proxy
 // Note: Before doing this you need to create your own proxy
 
 // We first need to check that the system didn't reach the debt ceiling so that we can
 // mint more system coins.
 const globalDebt = await geb.contracts.safeEngine.globalDebt()
 const debtCeiling = await geb.contracts.safeEngine.globalDebtCeiling()
-const raiToDraw = ethersUtils.parseEther('15')
-if(globalDebt.add(raiToDraw).gt(debtCeiling)) {
+const sysCoinsToDraw = ethersUtils.parseEther('15')
+if(globalDebt.add(sysCoinsToDraw).gt(debtCeiling)) {
     throw new Error('Debt ceiling too low, not possible to draw this amount of system coins.')
 }
 
