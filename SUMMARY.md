@@ -67,4 +67,5 @@
 * [Global Settlement](geb-js/geb-js-global-settlement.md)
 * [Global Settlement Proxies](geb-js/geb-js-global-settlement-proxies.md)
 * [Admin Utilities](geb-js/geb-js-admin-utilities.md)
+* [API Endpoints](geb-js/api-endpoints.md)
 
