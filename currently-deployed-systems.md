@@ -1,6 +1,6 @@
 # Currently Deployed Systems
 
-### Mainnet v1.0
+### Mainnet v1.0.1
 
 | Contract Name | Address |
 | :--- | :--- |
