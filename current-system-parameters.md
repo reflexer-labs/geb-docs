@@ -38,5 +38,12 @@
 * `secondaryReceiverAccounts` - \[[0xfF6D7479C0882dAa3212785adAF7786d1Df09cB8](https://etherscan.io/address/0xfF6D7479C0882dAa3212785adAF7786d1Df09cB8)\]
 * `secondaryReceiverAllotedTax` - \[\[50% `ETH-A`\]\]
 
+### LiquidationEngine
 
+* `accountingEngine` - [0x89e8bd799ab06dd7ee2be1325fafef1ab48676bc](https://etherscan.io/address/0x89e8bd799ab06dd7ee2be1325fafef1ab48676bc)
+* `ETH-A liquidationPenalty` - 11%
+* `ETH-A liquidationQuantity` - 50,000
+* `ETH-A collateralAuctionHouse` - [0x191ba53C077D3E9eC2CBE6f52Eb0a33Ea1A226f2](https://etherscan.io/address/0x191ba53C077D3E9eC2CBE6f52Eb0a33Ea1A226f2)
+* `onAuctionSystemCoinLimit` - 850
+* `safeEngine` - [0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c](https://etherscan.io/address/0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c)
 
