@@ -2,6 +2,7 @@
 
 * [Introduction to GEB](README.md)
 * [Currently Deployed Systems](currently-deployed-systems.md)
+* [Current System Parameters](current-system-parameters.md)
 
 ## Contract Variables Translation <a id="contract-translation"></a>
 
