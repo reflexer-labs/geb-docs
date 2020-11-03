@@ -47,3 +47,37 @@
 * `onAuctionSystemCoinLimit` - 850
 * `safeEngine` - [0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c](https://etherscan.io/address/0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c)
 
+### CoinJoin
+
+* `decimals` - 18
+* `safeEngine` - [0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c](https://etherscan.io/address/0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c)
+* `systemCoin` - [0x715c3830fb0c4bab9a8e31c922626e1757716f3a](https://etherscan.io/address/0x715c3830fb0c4bab9a8e31c922626e1757716f3a)
+
+### PreSettlementSurplusAuctionHouse
+
+* `bidDuration` - 3600
+* `bidIncrease` - 3%
+* `protocolToken` - [0x0000000000000000000000000000000000000000](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+* `safeEngine` - [0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c](https://etherscan.io/address/0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c)
+* `totalAuctionLength` - 259200
+
+### DebtAuctionHouse
+
+* `accountingEngine` - [0x89e8bd799ab06dd7ee2be1325fafef1ab48676bc](https://etherscan.io/address/0x89e8bd799ab06dd7ee2be1325fafef1ab48676bc)
+* `amountSoldIncrease` - 20%
+* `bidDecrease` - 3%
+* `bidDuration` - 1800
+* `protocolToken` - [0x0000000000000000000000000000000000000000](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+* `safeEngine` - [0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c](https://etherscan.io/address/0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c)
+* `totalAuctionLength` - 259200
+
+### DSPause
+
+* `EXEC_TIME` - 259200 \(3 days\)
+* `MAX_DELAY` - 2419200
+* `MAX_DELAY_MULTIPLIER` - 3
+* `authority` - [0x92321cf8530fe33e9b36750154922a55306d5143](https://etherscan.io/address/0x92321cf8530fe33e9b36750154922a55306d5143)
+* `delay` - 0
+* `delayMultiplier` - 3
+* `deploymentTime` - 1603567488
+* 
