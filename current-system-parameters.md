@@ -174,7 +174,6 @@
 * `uniswapPair` - [0xebde9f61e34b7ac5aae5a4170e964ea85988008c](https://etherscan.io/address/0xebde9f61e34b7ac5aae5a4170e964ea85988008c)
 * `baseUpdateCallerReward` - 0.5 \(WAD\)
 * `maxUpdateCallerReward` - 1 \(WAD\)
-* `maxUpdateCallerReward` - 1 \(WAD\)
 * `converterFeedScalingFactor` - 1 \(WAD\)
 * `defaultAmountIn` - 1 \(WAD\)
 * `granularity` - 12
@@ -184,4 +183,22 @@
 * `periodSize` - 3600
 * `symbol` - PRAIUSD
 * `windowSize` - 43,200 \(12 hours\)
+
+### PRAI FSM
+
+* `priceSource` - [0xca8a1a8e6d83c2b2e933e05a5099cf814169e7d4](https://etherscan.io/address/0xca8a1a8e6d83c2b2e933e05a5099cf814169e7d4)
+* `newPriceDeviation` - 20%
+
+### ETH Medianizer
+
+* `chainlinkAggregator` - [0x5f4ec3df9cbd43714fe2740f5e3616155c5b8419](https://etherscan.io/address/0x5f4ec3df9cbd43714fe2740f5e3616155c5b8419)
+* `treasury` - [0xff6d7479c0882daa3212785adaf7786d1df09cb8](https://etherscan.io/address/0xff6d7479c0882daa3212785adaf7786d1df09cb8)
+* `baseUpdateCallerReward` - 0.5 \(WAD\)
+* `maxUpdateCallerReward` - 1 \(WAD\)
+* `maxRewardIncreaseDelay` - 10,800 \(6 hours\)
+* `multiplier` - 10
+* `perSecondCallerRewardIncrease` - 1000192559420674483977255848 \(100% per hour\)
+* `periodSize` - 3600
+* `staleThreshold` - 6 \(hours\)
+* `symbol` - ETHUSD
 
