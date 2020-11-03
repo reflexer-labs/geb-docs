@@ -31,7 +31,7 @@
 
 * `globalDebtCeiling` - 10,200 \(RAD\)
 * `safeDebtCeiling` - 765 \(WAD\)
-* `ETH-A debtCeiling` - 10200 \(RAD\)
+* `ETH-A debtCeiling` - 10,200 \(RAD\)
 * `ETH-A debtFloor` - 85 \(RAD\)
 
 ### TaxCollector
@@ -49,7 +49,7 @@
 
 * `accountingEngine` - [0x89e8bd799ab06dd7ee2be1325fafef1ab48676bc](https://etherscan.io/address/0x89e8bd799ab06dd7ee2be1325fafef1ab48676bc)
 * `ETH-A liquidationPenalty` - 11%
-* `ETH-A liquidationQuantity` - 50,000
+* `ETH-A liquidationQuantity` - 50,000 \(RAD\)
 * `ETH-A collateralAuctionHouse` - [0x191ba53C077D3E9eC2CBE6f52Eb0a33Ea1A226f2](https://etherscan.io/address/0x191ba53C077D3E9eC2CBE6f52Eb0a33Ea1A226f2)
 * `onAuctionSystemCoinLimit` - 850
 * `safeEngine` - [0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c](https://etherscan.io/address/0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c)
@@ -66,7 +66,7 @@
 * `bidIncrease` - 3%
 * `protocolToken` - [0x0000000000000000000000000000000000000000](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
 * `safeEngine` - [0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c](https://etherscan.io/address/0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c)
-* `totalAuctionLength` - 259200
+* `totalAuctionLength` - 259200 \(3 days\)
 
 ### DebtAuctionHouse
 
@@ -76,12 +76,12 @@
 * `bidDuration` - 1800
 * `protocolToken` - [0x0000000000000000000000000000000000000000](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
 * `safeEngine` - [0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c](https://etherscan.io/address/0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c)
-* `totalAuctionLength` - 259200
+* `totalAuctionLength` - 259,200 \(3 days\)
 
 ### DSPause
 
-* `EXEC_TIME` - 259200 \(3 days\)
-* `MAX_DELAY` - 2419200
+* `EXEC_TIME` - 259,200 \(3 days\)
+* `MAX_DELAY` - 2,419,200 \(28 days\)
 * `MAX_DELAY_MULTIPLIER` - 3
 * `authority` - [0x92321cf8530fe33e9b36750154922a55306d5143](https://etherscan.io/address/0x92321cf8530fe33e9b36750154922a55306d5143)
 * `delay` - 0
@@ -91,7 +91,7 @@
 * `owner` - [0x0000000000000000000000000000000000000000](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
 * `protestEnd` - 500
 * `protester` - [0x0000000000000000000000000000000000000000](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
-* `protesterLifetime` - 47304000
+* `protesterLifetime` - 4,7304,000 \(547.5 days\)
 * `proxy` - [0xd487eab6902295b650c8940277bd07f684ce91ad](https://etherscan.io/address/0xd487eab6902295b650c8940277bd07f684ce91ad)
 
 ### Coin
@@ -122,7 +122,7 @@
 * `oracleRelayer` - [0x2b56976b6e95304f9b3d9736aaa610e963422ccd](https://etherscan.io/address/0x2b56976b6e95304f9b3d9736aaa610e963422ccd)
 * `safeEngine` - [0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c](https://etherscan.io/address/0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c)
 * `stabilityFeeTreasury` - [0xff6d7479c0882daa3212785adaf7786d1df09cb8](https://etherscan.io/address/0xff6d7479c0882daa3212785adaf7786d1df09cb8)
-* `shutdownCooldown` - 345600 \(4 days\)
+* `shutdownCooldown` - 345,600 \(4 days\)
 
 ### StabilityFeeTreasury
 
@@ -132,8 +132,8 @@
 * `systemCoin` - [0x715c3830fb0c4bab9a8e31c922626e1757716f3a](https://etherscan.io/address/0x715c3830fb0c4bab9a8e31c922626e1757716f3a)
 * `expensesMultiplier` - 2
 * `minimumFundsRequired` - 50 \(RAD\)
-* `surplusTransferDelay` - 1814400 \(21 days\)
-* `treasuryCapacity` - 200,000
+* `surplusTransferDelay` - 1,814,400 \(21 days\)
+* `treasuryCapacity` - 200,000 \(RAD\)
 
 ### RateSetter
 
@@ -162,5 +162,5 @@
 * `upperSystemCoinMedianDeviation` - 0%
 * `minSystemCoinMedianDeviation` - 0.1%
 * `minimumBid` - 5 \(WAD\)
-* `totalAuctionLength` - 281474976710655 \(approx 8925512 years\)
+* `totalAuctionLength` - 281,474,976,710,655 \(approx 8925512 years\)
 
