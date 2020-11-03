@@ -10,6 +10,7 @@
 * Global debt ceiling: 10,200
 * Liquidation penalty: 11%
 * ETH-A auction fixed discount: 5% 
+* ETH-A fixed discount auction minimum bid: 5 \(WAD\)
 
 ### AccountingEngine
 
@@ -112,4 +113,54 @@
 * `redemptionRateLowerBound` - 999997417323343052486607343
 * `redemptionRateUpperBound` - 1000002110205430114080521087
 * `safeEngine` - [0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c](https://etherscan.io/address/0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c)
+
+### GlobalSettlement
+
+* `accountingEngine` - [0x89e8bd799ab06dd7ee2be1325fafef1ab48676bc](https://etherscan.io/address/0x89e8bd799ab06dd7ee2be1325fafef1ab48676bc)
+* `coinSavingsAccount` - [0x0000000000000000000000000000000000000000](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+* `liquidationEngine` - [0x8ea70611850d13856877d9ed8035d07e80eb0b73](https://etherscan.io/address/0x8ea70611850d13856877d9ed8035d07e80eb0b73)
+* `oracleRelayer` - [0x2b56976b6e95304f9b3d9736aaa610e963422ccd](https://etherscan.io/address/0x2b56976b6e95304f9b3d9736aaa610e963422ccd)
+* `safeEngine` - [0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c](https://etherscan.io/address/0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c)
+* `stabilityFeeTreasury` - [0xff6d7479c0882daa3212785adaf7786d1df09cb8](https://etherscan.io/address/0xff6d7479c0882daa3212785adaf7786d1df09cb8)
+* `shutdownCooldown` - 345600 \(4 days\)
+
+### StabilityFeeTreasury
+
+* `accountingEngine` - [0x89e8bd799ab06dd7ee2be1325fafef1ab48676bc](https://etherscan.io/address/0x89e8bd799ab06dd7ee2be1325fafef1ab48676bc)
+* `coinJoin` - [0x138c3d13b633b5a5cb5db5faf27429eeed78b338](https://etherscan.io/address/0x138c3d13b633b5a5cb5db5faf27429eeed78b338)
+* `safeEngine` - [0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c](https://etherscan.io/address/0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c)
+* `systemCoin` - [0x715c3830fb0c4bab9a8e31c922626e1757716f3a](https://etherscan.io/address/0x715c3830fb0c4bab9a8e31c922626e1757716f3a)
+* `expensesMultiplier` - 2
+* `minimumFundsRequired` - 50 \(RAD\)
+* `surplusTransferDelay` - 1814400 \(21 days\)
+* `treasuryCapacity` - 200,000
+
+### RateSetter
+
+* `oracleRelayer` - [0x2b56976b6e95304f9b3d9736aaa610e963422ccd](https://etherscan.io/address/0x2b56976b6e95304f9b3d9736aaa610e963422ccd)
+* `orcl` - [0x206d268c0bbf3fbd8dab35ba91ca89203a3c59aa](https://etherscan.io/address/0x206d268c0bbf3fbd8dab35ba91ca89203a3c59aa)
+* `treasury` - [0xff6d7479c0882daa3212785adaf7786d1df09cb8](https://etherscan.io/address/0xff6d7479c0882daa3212785adaf7786d1df09cb8)
+* `baseUpdateCallerReward` - 0.5 \(WAD\)
+* `maxUpdateCallerReward` - 1 \(WAD\)
+* `perSecondCallerRewardIncrease` - 1000192559420674483977255848 \(100% per hour\)
+* `pidValidator` - [0x64ad684378770fe3ee4b437737edf379f12a902a](https://etherscan.io/address/0x64ad684378770fe3ee4b437737edf379f12a902a)
+* `updateRateDelay` - 3600
+
+### FixedDiscountCollateralAuctionHouse - ETH-A
+
+* `collateralFSM` - [0x5b89ff2decd360aa01cbd453aa2ced4f23b674b6](https://etherscan.io/address/0x5b89ff2decd360aa01cbd453aa2ced4f23b674b6)
+* `collateralMedian` - [0x9f816fce2885f4dc65a7342b57ced29655fca712](https://etherscan.io/address/0x9f816fce2885f4dc65a7342b57ced29655fca712)
+* `liquidationEngine` - [0x8ea70611850d13856877d9ed8035d07e80eb0b73](https://etherscan.io/address/0x8ea70611850d13856877d9ed8035d07e80eb0b73)
+* `oracleRelayer` - [0x2b56976b6e95304f9b3d9736aaa610e963422ccd](https://etherscan.io/address/0x2b56976b6e95304f9b3d9736aaa610e963422ccd)
+* `safeEngine` - [0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c](https://etherscan.io/address/0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c)
+* `systemCoinOracle` - [0x0000000000000000000000000000000000000000](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+* `collateralType` - ETH-A
+* `discount` - 5%
+* `lowerCollateralMedianDeviation` - 15%
+* `lowerSystemCoinMedianDeviation` - 0%
+* `upperCollateralMedianDeviation` - 15%
+* `upperSystemCoinMedianDeviation` - 0%
+* `minSystemCoinMedianDeviation` - 0.1%
+* `minimumBid` - 5 \(WAD\)
+* `totalAuctionLength` - 281474976710655 \(approx 8925512 years\)
 
