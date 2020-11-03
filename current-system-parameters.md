@@ -80,4 +80,30 @@
 * `delay` - 0
 * `delayMultiplier` - 3
 * `deploymentTime` - 1603567488
-* 
+* `maxScheduledTransactions` - 10
+* `owner` - [0x0000000000000000000000000000000000000000](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+* `protestEnd` - 500
+* `protester` - [0x0000000000000000000000000000000000000000](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
+* `protesterLifetime` - 47304000
+* `proxy` - [0xd487eab6902295b650c8940277bd07f684ce91ad](https://etherscan.io/address/0xd487eab6902295b650c8940277bd07f684ce91ad)
+
+### Coin
+
+* `version` - 2
+* `symbol` - PRAI
+* `name` - Proto Rai Reflex Index
+* `decimals` - 18
+* `changeData` - 1
+* `chainId` - 1
+* `PERMIT_TYPEHASH` - 0xea2aa0a1be11a07ed86d755c93467f4f82362b452371d1ba94d1715123511acb
+* `DOMAIN_SEPARATOR` - 0x76072887f0adddb5efcaa9dfb2a7a04e92f0ffb0ece22dfd0d43ee1deaea1f6e
+
+### OracleRelayer
+
+* `ETH-A orcl` - [0x5b89fF2DeCd360Aa01cbd453AA2cEd4F23b674b6](https://etherscan.io/address/0x5b89fF2DeCd360Aa01cbd453AA2cEd4F23b674b6)
+* `ETH-A safetyCRatio` - 150%
+* `ETH-A liquidationCRatio` - 150%
+* `redemptionRateLowerBound` - 999997417323343052486607343
+* `redemptionRateUpperBound` - 1000002110205430114080521087
+* `safeEngine` - [0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c](https://etherscan.io/address/0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c)
+
