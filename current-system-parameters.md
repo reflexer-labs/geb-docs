@@ -162,5 +162,7 @@
 * `upperSystemCoinMedianDeviation` - 0%
 * `minSystemCoinMedianDeviation` - 0.1%
 * `minimumBid` - 5 \(WAD\)
-* `totalAuctionLength` - 281,474,976,710,655 \(approx 8925512 years\)
+* `totalAuctionLength` - 281,474,976,710,655 \(approx 8,925,512 years\)
+
+
 
