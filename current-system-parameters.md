@@ -164,5 +164,24 @@
 * `minimumBid` - 5 \(WAD\)
 * `totalAuctionLength` - 281,474,976,710,655 \(approx 8,925,512 years\)
 
+### PRAI Medianizer
 
+* `treasury` - [0xff6d7479c0882daa3212785adaf7786d1df09cb8](https://etherscan.io/address/0xff6d7479c0882daa3212785adaf7786d1df09cb8)
+* `converterFeed` - [0x9f816fce2885f4dc65a7342b57ced29655fca712](https://etherscan.io/address/0x9f816fce2885f4dc65a7342b57ced29655fca712)
+* `denominationToken` - [0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2](https://etherscan.io/address/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2)
+* `targetToken` - [0x715c3830fb0c4bab9a8e31c922626e1757716f3a](https://etherscan.io/address/0x715c3830fb0c4bab9a8e31c922626e1757716f3a)
+* `uniswapFactory` - [0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f](https://etherscan.io/address/0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f)
+* `uniswapPair` - [0xebde9f61e34b7ac5aae5a4170e964ea85988008c](https://etherscan.io/address/0xebde9f61e34b7ac5aae5a4170e964ea85988008c)
+* `baseUpdateCallerReward` - 0.5 \(WAD\)
+* `maxUpdateCallerReward` - 1 \(WAD\)
+* `maxUpdateCallerReward` - 1 \(WAD\)
+* `converterFeedScalingFactor` - 1 \(WAD\)
+* `defaultAmountIn` - 1 \(WAD\)
+* `granularity` - 12
+* `maxRewardIncreaseDelay` - 10,800 \(6 hours\)
+* `maxWindowSize` - 57,600 \(16 hours\)
+* `perSecondCallerRewardIncrease` - 1000192559420674483977255848 \(100% per hour\)
+* `periodSize` - 3600
+* `symbol` - PRAIUSD
+* `windowSize` - 43,200 \(12 hours\)
 
