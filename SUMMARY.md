@@ -61,14 +61,14 @@
 
 ## GEB.js <a id="geb-js"></a>
 
-* [Getting Started](geb-js/geb-js-get-started.md)
+* [Getting Started](geb-js/getting-started.md)
 * [Global Settlement Guide](geb-js/geb-js-global-settlement-guide.md)
 * [API Reference](geb-js/api-reference/README.md)
-  * [Geb](geb-js/api-reference/geb-js-core-package.md)
+  * [Geb](geb-js/api-reference/geb.md)
   * [Safe](geb-js/api-reference/safe.md)
-  * [Proxy Actions](geb-js/api-reference/geb-js-proxy-actions.md)
-  * [Geb Admin](geb-js/api-reference/geb-admin.md)
-  * [Proxy Actions Global Settlement](geb-js/api-reference/geb-js-global-settlement-proxies.md)
+  * [Proxy Actions](geb-js/api-reference/gebproxyactions.md)
+  * [Geb Admin](geb-js/api-reference/gebadmin.md)
+  * [Proxy Actions Global Settlement](geb-js/api-reference/gebproxyactionsglobalsettlement.md)
 
 ## APIs <a id="api"></a>
 
