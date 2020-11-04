@@ -1,4 +1,4 @@
-# Global Settlement
+# Global Settlement Guide
 
 The following are examples of how you can use GEB.js to facilitate the Global Settlement process and redeem your collateral which is locked in your own Safes or directly exchange system coins with collateral.
 

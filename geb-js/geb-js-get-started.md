@@ -1,4 +1,4 @@
-# Getting Started with GEB.js
+# Getting Started
 
 Library to interact with the GEB smart contracts. Manage your safes, mint RAI, inspect the system state, and much more.
 

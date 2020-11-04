@@ -1,4 +1,4 @@
-# Core GEB.js Package
+# Geb
 
 The main package used to interact with the core GEB contracts.
 

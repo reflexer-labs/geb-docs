@@ -1,4 +1,4 @@
-# Global Settlement Proxies
+# Proxy Actions Global Settlement
 
 Convenience class used to call functions from [GebProxyActionsGlobalSettlement](https://github.com/reflexer-labs/geb-proxy-actions/blob/master/src/GebProxyActions.sol) using a proxy registered in the [GebProxyRegistry](https://github.com/reflexer-labs/geb-proxy-registry/blob/master/src/GebProxyRegistry.sol). Useful only during Global Settlement in order for users to redeem collateral.
 

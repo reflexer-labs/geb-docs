@@ -1,4 +1,4 @@
-# Admin Utilities
+# Geb Admin
 
 This class extends the core `GEB` class with additional tools and contracts that are not used as often as other SAFE management tools. Here you will find utils for contracts such as DSPause, ESM etc. These contracts are scattered across several repositories. Please refer to the smart contract documentation to learn more about them.
 

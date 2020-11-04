@@ -1,4 +1,4 @@
-# SAFE Management
+# Safe
 
 This object represents a GEB safe. It has the entire SAFE state and provides helper functions to calculate its liquidation price, collateralization ratio etc.
 
