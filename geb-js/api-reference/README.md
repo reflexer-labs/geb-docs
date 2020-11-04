@@ -1,6 +1,6 @@
 # API Reference
 
-Detailed documentation of public classes of the geb.js library
+Detailed documentation of public classes of the geb.js library.
 
 ### Overview
 
