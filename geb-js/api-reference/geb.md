@@ -1,46 +1,53 @@
-# Geb
+# Class: Geb
 
-The main package used to interact with the GEB system. Includes [helper functions](geb.md#deployproxy) for safe management and the [contract interface object](geb.md#contracts) to directly call the smart-contracts.
+The main package used to interact with the GEB system. Includes [helper functions](geb.md#deployproxy) for safe
+ management and the [contract interface object](geb.md#contracts) to directly call the smart-contracts.
 
 ## Constructors
 
-+ **new Geb**\(`network`: GebDeployment, `provider`: GebProviderInterface \| Provider\): [_Geb_](geb.md)
 
-_Defined in_ [_packages/geb/src/geb.ts:89_](https://github.com/reflexer-labs/geb.js/blob/8c78ffc/packages/geb/src/geb.ts#L89)
+\+ **new Geb**(`network`: GebDeployment, `provider`: GebProviderInterface | Provider): *[Geb](geb.md)*
+
+*Defined in [packages/geb/src/geb.ts:89](https://github.com/reflexer-labs/geb.js/blob/0337d96/packages/geb/src/geb.ts#L89)*
 
 Constructor of the main Geb.js object.
 
 **Parameters:**
 
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| `network` | GebDeployment | Either `'kovan'`, `'mainnet'` or an actual list of contract addresses. |
-| `provider` | GebProviderInterface \| Provider | Either a Ethers.js provider or a Geb provider \(Soon support for Web3 will be added\) |
+Name | Type | Description |
+------ | ------ | ------ |
+`network` | GebDeployment | Either `'kovan'`, `'mainnet'` or an actual list of contract addresses. |
+`provider` | GebProviderInterface &#124; Provider | Either a Ethers.js provider or a Geb provider (Soon support for Web3 will be added)  |
 
-**Returns:** [_Geb_](geb.md)
+**Returns:** *[Geb](geb.md)*
 
 ## Properties
 
-### contracts
+###  contracts
 
-• **contracts**: _ContractApis_
+• **contracts**: *ContractApis*
 
-_Defined in_ [_packages/geb/src/geb.ts:87_](https://github.com/reflexer-labs/geb.js/blob/8c78ffc/packages/geb/src/geb.ts#L87)
+*Defined in [packages/geb/src/geb.ts:87](https://github.com/reflexer-labs/geb.js/blob/0337d96/packages/geb/src/geb.ts#L87)*
 
-Object containing all GEB core smart-contracts instances for direct level interactions. All of the following contracts object are one-to-one typed API to the underlying smart-contract. Read-only functions that do not change the blockchain state return a promise of the return data. State modifying function will return synchronously a pre-filled transaction request object:
-
-```text
+Object containing all GEB core smart-contracts instances for direct level interactions. All of the
+following contracts object are one-to-one typed API to the underlying smart-contract. Read-only
+functions that do not change the blockchain state return a promise of the return data. State modifying
+function will return synchronously a pre-filled transaction request object:
+```
 {
   to: "0x123abc.."
   data: "0xabab234ab..."
 }
 ```
+This object follow the [TransactionRequest model of ethers.js](https://docs.ethers.io/v5/api/providers/types/#providers-TransactionRequest) (Also similar to the
+[model used by web.js](https://web3js.readthedocs.io/en/v1.3.0/web3-eth.html#id84)). The object can
+be completed with properties such as ` from `, ` gasPrice `, ` gas ` (gas limit, web3.js ony) or
+` gasLimit ` (gas limit, ethers.js only). The object can then be passed to the `sendTransaction` of
+[ehters.js](https://docs.ethers.io/v5/api/signer/#Signer-sendTransaction) or
+[web3.js](https://web3js.readthedocs.io/en/v1.3.0/web3-eth.html#sendtransaction)
 
-This object follow the [TransactionRequest model of ethers.js](https://docs.ethers.io/v5/api/providers/types/#providers-TransactionRequest) \(Also similar to the [model used by web.js](https://web3js.readthedocs.io/en/v1.3.0/web3-eth.html#id84)\). The object can be completed with properties such as `from`, `gasPrice`, `gas` \(gas limit, web3.js ony\) or `gasLimit` \(gas limit, ethers.js only\). The object can then be passed to the `sendTransaction` of [ehters.js](https://docs.ethers.io/v5/api/signer/#Signer-sendTransaction) or [web3.js](https://web3js.readthedocs.io/en/v1.3.0/web3-eth.html#sendtransaction)
-
-Example:
-
-```typescript
+ Example:
+ ```typescript
  // Setup geb.js an ethers
  const provider = new ethers.providers.JsonRpcProvider('http://kovan.infura.io/<API KEY>')
  const wallet = new ethers.Wallet('<Private key>', provider)
@@ -52,51 +59,53 @@ Example:
  // State changing function: Manualy liquidate a SAFE
  const tx = geb.contracts.liquidationEngine.liquidateSAFE(ETH_A, '0x1234abc...')
  await wallet.sendTransaction(tx) // Send the Ethereum transaction
-```
+ ```
 
 Currently the following contracts ae available in this property:
+- SAFEEngine
+- AccountingEngine
+- TaxCollector
+- LiquidationEngine
+- OracleRelayer
+- GlobalSettlement
+- DebtAuctionHouse
+- PreSettlementSurplusAuctionHouse
+- PostSettlementSurplusAuctionHouse
+- SettlementSurplusAuctioneer
+- GebSafeManager
+- GetSafes
+- BasicCollateralJoin
+- CoinJoin
+- Coin (RAI ERC20 contract)
+- GebProxyRegistry
+- FixedDiscountCollateralAuctionHouse (For ETH-A)
+- Weth (ERC20)
 
-* SAFEEngine
-* AccountingEngine
-* TaxCollector
-* LiquidationEngine
-* OracleRelayer
-* GlobalSettlement
-* DebtAuctionHouse
-* PreSettlementSurplusAuctionHouse
-* PostSettlementSurplusAuctionHouse
-* SettlementSurplusAuctioneer
-* GebSafeManager
-* GetSafes
-* BasicCollateralJoin
-* CoinJoin
-* Coin \(RAI ERC20 contract\)
-* GebProxyRegistry
-* FixedDiscountCollateralAuctionHouse \(For ETH-A\)
-* Weth \(ERC20\)
-
-For detailed information about the functions of each contract we recommend referring directly to the smart-contract [code](https://github.com/reflexer-labs/geb) and [documentation](https://docs.reflexer.finance/)
+For detailed information about the functions of each contract we recommend referring directly to the
+smart-contract [code](https://github.com/reflexer-labs/geb) and [documentation](https://docs.reflexer.finance/)
 
 ## Methods
 
-### deployProxy
+###  deployProxy
 
-▸ **deployProxy**\(\): _TransactionRequest_
+▸ **deployProxy**(): *TransactionRequest*
 
-_Defined in_ [_packages/geb/src/geb.ts:151_](https://github.com/reflexer-labs/geb.js/blob/8c78ffc/packages/geb/src/geb.ts#L151)
+*Defined in [packages/geb/src/geb.ts:151](https://github.com/reflexer-labs/geb.js/blob/0337d96/packages/geb/src/geb.ts#L151)*
 
 Deploy a new proxy owned by the sender.
 
-**Returns:** _TransactionRequest_
+**Returns:** *TransactionRequest*
 
-### getErc20Contract
+___
 
-▸ **getErc20Contract**\(`tokenAddress`: string\): _Erc20_
+###  getErc20Contract
 
-_Defined in_ [_packages/geb/src/geb.ts:279_](https://github.com/reflexer-labs/geb.js/blob/8c78ffc/packages/geb/src/geb.ts#L279)
+▸ **getErc20Contract**(`tokenAddress`: string): *Erc20*
 
-Returns an object that can be used to interact with a ERC20 token. Example:
+*Defined in [packages/geb/src/geb.ts:279](https://github.com/reflexer-labs/geb.js/blob/0337d96/packages/geb/src/geb.ts#L279)*
 
+Returns an object that can be used to interact with a ERC20 token.
+Example:
 ```typescript
 const USDCAddress = "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
 const USDC = geb.getErc20Contract(USDCAddress)
@@ -111,19 +120,21 @@ await wallet.sendTransaction(tx)
 
 **Parameters:**
 
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| `tokenAddress` | string | Token contract address |
+Name | Type | Description |
+------ | ------ | ------ |
+`tokenAddress` | string | Token contract address |
 
-**Returns:** _Erc20_
+**Returns:** *Erc20*
 
 Erc20
 
-### getGebContract
+___
 
-▸ **getGebContract**‹**T**›\(`gebContractClass`: GebContractAPIConstructorInterface‹T›, `address`: string\): _T_
+###  getGebContract
 
-_Defined in_ [_packages/geb/src/geb.ts:386_](https://github.com/reflexer-labs/geb.js/blob/8c78ffc/packages/geb/src/geb.ts#L386)
+▸ **getGebContract**‹**T**›(`gebContractClass`: GebContractAPIConstructorInterface‹T›, `address`: string): *T*
+
+*Defined in [packages/geb/src/geb.ts:386](https://github.com/reflexer-labs/geb.js/blob/0337d96/packages/geb/src/geb.ts#L386)*
 
 Returns an instance of a specific geb contract given a Geb contract API class at a specified address
 
@@ -135,94 +146,111 @@ const globalDebt = safeEngine.globalDebt()
 
 **Type parameters:**
 
-▪ **T**: _BaseContractAPI_
+▪ **T**: *BaseContractAPI*
 
 **Parameters:**
 
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| `gebContractClass` | GebContractAPIConstructorInterface‹T› | Class from contracts or adminContracts |
-| `address` | string | Contract address of the instance |
+Name | Type | Description |
+------ | ------ | ------ |
+`gebContractClass` | GebContractAPIConstructorInterface‹T› | Class from contracts or adminContracts |
+`address` | string | Contract address of the instance  |
 
-**Returns:** _T_
+**Returns:** *T*
 
-### getProxyAction
+___
 
-▸ **getProxyAction**\(`ownerAddress`: string\): _Promise‹_[_GebProxyActions_](gebproxyactions.md)_‹››_
+###  getProxyAction
 
-_Defined in_ [_packages/geb/src/geb.ts:121_](https://github.com/reflexer-labs/geb.js/blob/8c78ffc/packages/geb/src/geb.ts#L121)
+▸ **getProxyAction**(`ownerAddress`: string): *Promise‹[GebProxyActions](gebproxyactions.md)‹››*
 
-Given an address returns a GebProxyActions object to execute bundled operations. Important: This requires the address to have deployed a GEB proxy through the proxy registry contract. It will throw a `DOES_NOT_OWN_HAVE_PROXY` error if the address specified does not have a proxy. Use the [deployProxy](geb.md#deployproxy) function to get a new proxy.
+*Defined in [packages/geb/src/geb.ts:121](https://github.com/reflexer-labs/geb.js/blob/0337d96/packages/geb/src/geb.ts#L121)*
 
-**Parameters:**
-
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| `ownerAddress` | string | Externally owned user account, Ethereum address that owns a GEB proxy. |
-
-**Returns:** _Promise‹_[_GebProxyActions_](gebproxyactions.md)_‹››_
-
-### getProxyActionGlobalSettlement
-
-▸ **getProxyActionGlobalSettlement**\(`ownerAddress`: string\): _Promise‹_[_GebProxyActionsGlobalSettlement_](gebproxyactionsglobalsettlement.md)_‹››_
-
-_Defined in_ [_packages/geb/src/geb.ts:135_](https://github.com/reflexer-labs/geb.js/blob/8c78ffc/packages/geb/src/geb.ts#L135)
-
-Given an address returns a GebProxyActionsGlobalSettlement object to execute bundled operations during GlobalSettlement. **IMPORTANT**: Same as for `getProxyAction` you will need to deploy a proxy beforehand using the proxy registry.
+Given an address returns a GebProxyActions object to execute bundled operations.
+Important: This requires the address to have deployed a GEB proxy through the proxy registry contract. It will throw a `DOES_NOT_OWN_HAVE_PROXY` error if the address specified does not have a proxy. Use the [deployProxy](geb.md#deployproxy) function to get a new proxy.
 
 **Parameters:**
 
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| `ownerAddress` | string | Externally owned user account, Ethereum address that owns a GEB proxy. |
+Name | Type | Description |
+------ | ------ | ------ |
+`ownerAddress` | string | Externally owned user account, Ethereum address that owns a GEB proxy.  |
 
-**Returns:** _Promise‹_[_GebProxyActionsGlobalSettlement_](gebproxyactionsglobalsettlement.md)_‹››_
+**Returns:** *Promise‹[GebProxyActions](gebproxyactions.md)‹››*
 
-### getSafe
+___
 
-▸ **getSafe**\(`idOrHandler`: string \| number, `collateralType?`: string\): _Promise‹_[_Safe_](safe.md)_›_
+###  getProxyActionGlobalSettlement
 
-_Defined in_ [_packages/geb/src/geb.ts:159_](https://github.com/reflexer-labs/geb.js/blob/8c78ffc/packages/geb/src/geb.ts#L159)
+▸ **getProxyActionGlobalSettlement**(`ownerAddress`: string): *Promise‹[GebProxyActionsGlobalSettlement](gebproxyactionsglobalsettlement.md)‹››*
+
+*Defined in [packages/geb/src/geb.ts:135](https://github.com/reflexer-labs/geb.js/blob/0337d96/packages/geb/src/geb.ts#L135)*
+
+Given an address returns a GebProxyActionsGlobalSettlement object to execute bundled operations during GlobalSettlement.
+**IMPORTANT**: Same as for `getProxyAction` you will need to deploy a proxy beforehand using the proxy registry.
+
+**Parameters:**
+
+Name | Type | Description |
+------ | ------ | ------ |
+`ownerAddress` | string | Externally owned user account, Ethereum address that owns a GEB proxy.  |
+
+**Returns:** *Promise‹[GebProxyActionsGlobalSettlement](gebproxyactionsglobalsettlement.md)‹››*
+
+___
+
+###  getSafe
+
+▸ **getSafe**(`idOrHandler`: string | number, `collateralType?`: string): *Promise‹[Safe](safe.md)›*
+
+*Defined in [packages/geb/src/geb.ts:159](https://github.com/reflexer-labs/geb.js/blob/0337d96/packages/geb/src/geb.ts#L159)*
 
 Get the SAFE object given a `safeManager` id or a `safeEngine` handler address.
 
 **Parameters:**
 
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| `idOrHandler` | string \| number | Safe Id or SAFE handler |
-| `collateralType?` | string | - |
+Name | Type | Description |
+------ | ------ | ------ |
+`idOrHandler` | string &#124; number | Safe Id or SAFE handler  |
+`collateralType?` | string | - |
 
-**Returns:** _Promise‹_[_Safe_](safe.md)_›_
+**Returns:** *Promise‹[Safe](safe.md)›*
 
-### getSafeFromOwner
+___
 
-▸ **getSafeFromOwner**\(`address`: string\): _Promise‹_[_Safe_](safe.md)_\[\]›_
+###  getSafeFromOwner
 
-_Defined in_ [_packages/geb/src/geb.ts:242_](https://github.com/reflexer-labs/geb.js/blob/8c78ffc/packages/geb/src/geb.ts#L242)
+▸ **getSafeFromOwner**(`address`: string): *Promise‹[Safe](safe.md)[]›*
 
-Fetch the list of safes owned by an address. This function will fetch safes owned directly through the safeManager and safes owned through the safe manager through a proxy. Safes owned directly by the address at the safeEngine level won't appear here.
+*Defined in [packages/geb/src/geb.ts:242](https://github.com/reflexer-labs/geb.js/blob/0337d96/packages/geb/src/geb.ts#L242)*
 
-Note that this function will make a lot of network calls and is therefore very slow. For front-ends we recommend using pre-indexed data such as the geb-subgraph.
+Fetch the list of safes owned by an address. This function will fetch safes owned directly
+through the safeManager and safes owned through the safe manager through a proxy. Safes owned
+directly by the address at the safeEngine level won't appear here.
+
+Note that this function will make a lot of network calls and is therefore very slow. For
+front-ends we recommend using pre-indexed data such as the geb-subgraph.
 
 **Parameters:**
 
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| `address` | string |  |
+Name | Type | Description |
+------ | ------ | ------ |
+`address` | string |   |
 
-**Returns:** _Promise‹_[_Safe_](safe.md)_\[\]›_
+**Returns:** *Promise‹[Safe](safe.md)[]›*
 
-### multiCall
+___
 
-▸ **multiCall**‹**O1**, **O2**, **O3**›\(`calls`: \[MulticallRequest‹O1›, MulticallRequest‹O2›, MulticallRequest‹O3›\]\): _Promise‹\[O1, O2, O3\]›_
+###  multiCall
 
-_Defined in_ [_packages/geb/src/geb.ts:292_](https://github.com/reflexer-labs/geb.js/blob/8c78ffc/packages/geb/src/geb.ts#L292)
+▸ **multiCall**‹**O1**, **O2**, **O3**›(`calls`: [MulticallRequest‹O1›, MulticallRequest‹O2›, MulticallRequest‹O3›]): *Promise‹[O1, O2, O3]›*
 
-Bundles several read only GEB contract call into 1 RPC single request. Useful for front-ends or apps that need to fetch many parameters from the contracts but want to minimize the network request and the load on the underlying Ethereum node. The function takes as input an Array of GEB view contract calls. **IMPORTANT**: You have to set the `multicall` parameter of the contract function to `true`, it is the always the last parameter of the function. Multicall works for all contracts in the `Geb.contracts` and can be use with any contract that inherit the `BaseContractApi`. Note that it does not support non-view calls \(Calls that require to pay gas and change the state of the blockchain\).
+*Defined in [packages/geb/src/geb.ts:292](https://github.com/reflexer-labs/geb.js/blob/0337d96/packages/geb/src/geb.ts#L292)*
+
+Bundles several read only GEB contract call into 1 RPC single request. Useful for front-ends or apps that need to fetch many parameters from the contracts but want to minimize the network request and the load on the underlying Ethereum node.
+The function takes as input an Array of GEB view contract calls.
+**IMPORTANT**: You have to set the `multicall` parameter of the contract function to `true`, it is the always the last parameter of the function.
+Multicall works for all contracts in the `Geb.contracts` and can be use with any contract that inherit the `BaseContractApi`. Note that it does not support non-view calls (Calls that require to pay gas and change the state of the blockchain).
 
 Example:
-
 ```typescript
 import { ethers } from "ethers"
 import { Geb } from "geb.js"
@@ -249,33 +277,34 @@ console.log(`Current ETH_A debt: ${collateralInfo.debtAmount}`)
 
 **Parameters:**
 
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| `calls` | \[MulticallRequest‹O1›, MulticallRequest‹O2›, MulticallRequest‹O3›\] | Call a read only GEB contract function. The GEB contract object needs to be called with the parameter `multicall` set to `true` as seen in the example above. |
+Name | Type | Description |
+------ | ------ | ------ |
+`calls` | [MulticallRequest‹O1›, MulticallRequest‹O2›, MulticallRequest‹O3›] | Call a read only GEB contract function. The GEB contract object needs to be called with the parameter `multicall` set to `true` as seen in the example above. |
 
-**Returns:** _Promise‹\[O1, O2, O3\]›_
+**Returns:** *Promise‹[O1, O2, O3]›*
 
-Promise Array with the result from their respective requests.
+Promise<T[]> Array with the result from their respective requests.
+
+___
 
 ### `Static` getGebContract
 
-▸ **getGebContract**‹**T**›\(`gebContractClass`: GebContractAPIConstructorInterface‹T›, `address`: string, `provider`: GebProviderInterface \| Provider\): _T_
+▸ **getGebContract**‹**T**›(`gebContractClass`: GebContractAPIConstructorInterface‹T›, `address`: string, `provider`: GebProviderInterface | Provider): *T*
 
-_Defined in_ [_packages/geb/src/geb.ts:354_](https://github.com/reflexer-labs/geb.js/blob/8c78ffc/packages/geb/src/geb.ts#L354)
+*Defined in [packages/geb/src/geb.ts:354](https://github.com/reflexer-labs/geb.js/blob/0337d96/packages/geb/src/geb.ts#L354)*
 
 Returns an instance of a specific geb contract given Geb contract API class constructor at a specified address
 
 **Type parameters:**
 
-▪ **T**: _BaseContractAPI_
+▪ **T**: *BaseContractAPI*
 
 **Parameters:**
 
-| Name | Type | Description |
-| :--- | :--- | :--- |
-| `gebContractClass` | GebContractAPIConstructorInterface‹T› | Class from contracts or adminContracts |
-| `address` | string | Contract address of the instance |
-| `provider` | GebProviderInterface \| Provider | Either a Ethers.js provider or a Geb provider |
+Name | Type | Description |
+------ | ------ | ------ |
+`gebContractClass` | GebContractAPIConstructorInterface‹T› | Class from contracts or adminContracts |
+`address` | string | Contract address of the instance |
+`provider` | GebProviderInterface &#124; Provider | Either a Ethers.js provider or a Geb provider  |
 
-**Returns:** _T_
-
+**Returns:** *T*
