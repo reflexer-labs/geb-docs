@@ -1,187 +1,157 @@
-# Class: GebProxyActionsGlobalSettlement
+# Proxy Actions Global Settlement
 
-Convenience class used to call functions from
-[GebProxyActionsGlobalSettlement](https://github.com/reflexer-labs/geb-proxy-actions/blob/master/src/GebProxyActions.sol)
-using a proxy registered in the [GebProxyRegistry](https://github.com/reflexer-labs/geb-proxy-registry/blob/master/src/GebProxyRegistry.sol).
-Useful only during Global Settlement in order for users to redeem collateral. See the
-[Global Settlement Guide](https://docs.reflexer.finance/geb-js/geb-js-global-settlement-guide).
+Convenience class used to call functions from [GebProxyActionsGlobalSettlement](https://github.com/reflexer-labs/geb-proxy-actions/blob/master/src/GebProxyActions.sol) using a proxy registered in the [GebProxyRegistry](https://github.com/reflexer-labs/geb-proxy-registry/blob/master/src/GebProxyRegistry.sol). Useful only during Global Settlement in order for users to redeem collateral. See the [Global Settlement Guide](https://docs.reflexer.finance/geb-js/geb-js-global-settlement-guide).
 
 ## Constructors
 
++ **new GebProxyActionsGlobalSettlement**\(`proxyAddress`: string, `network`: GebDeployment, `chainProvider`: GebProviderInterface\): [_GebProxyActionsGlobalSettlement_](gebproxyactionsglobalsettlement.md)
 
-\+ **new GebProxyActionsGlobalSettlement**(`proxyAddress`: string, `network`: GebDeployment, `chainProvider`: GebProviderInterface): *[GebProxyActionsGlobalSettlement](gebproxyactionsglobalsettlement.md)*
-
-
-*Defined in [packages/geb/src/proxy-action-global-settlement.ts:36](https://github.com/reflexer-labs/geb.js/blob/0337d96/packages/geb/src/proxy-action-global-settlement.ts#L36)*
+_Defined in_ [_packages/geb/src/proxy-action-global-settlement.ts:36_](https://github.com/reflexer-labs/geb.js/blob/0337d96/packages/geb/src/proxy-action-global-settlement.ts#L36)
 
 **Parameters:**
 
-Name | Type |
------- | ------ |
-`proxyAddress` | string |
-`network` | GebDeployment |
-`chainProvider` | GebProviderInterface |
+| Name | Type |
+| :--- | :--- |
+| `proxyAddress` | string |
+| `network` | GebDeployment |
+| `chainProvider` | GebProviderInterface |
 
-**Returns:** *[GebProxyActionsGlobalSettlement](gebproxyactionsglobalsettlement.md)*
+**Returns:** [_GebProxyActionsGlobalSettlement_](gebproxyactionsglobalsettlement.md)
 
 ## Properties
 
-###  address
+### address
 
-• **address**: *string*
+• **address**: _string_
 
-*Inherited from [GebProxyActions](gebproxyactions.md).[address](gebproxyactions.md#address)*
+_Inherited from_ [_GebProxyActions_](gebproxyactions.md)_._[_address_](gebproxyactions.md#address)
 
 Defined in packages/geb-contract-base/lib/base-contract-api.d.ts:22
 
-___
+### chainProvider
 
-###  chainProvider
+• **chainProvider**: _GebProviderInterface_
 
-• **chainProvider**: *GebProviderInterface*
-
-*Inherited from [GebProxyActions](gebproxyactions.md).[chainProvider](gebproxyactions.md#chainprovider)*
+_Inherited from_ [_GebProxyActions_](gebproxyactions.md)_._[_chainProvider_](gebproxyactions.md#chainprovider)
 
 Defined in packages/geb-contract-base/lib/base-contract-api.d.ts:23
 
-___
+### proxy
 
-###  proxy
+• **proxy**: _DsProxy_
 
-• **proxy**: *DsProxy*
+_Defined in_ [_packages/geb/src/proxy-action-global-settlement.ts:30_](https://github.com/reflexer-labs/geb.js/blob/0337d96/packages/geb/src/proxy-action-global-settlement.ts#L30)
 
-*Defined in [packages/geb/src/proxy-action-global-settlement.ts:30](https://github.com/reflexer-labs/geb.js/blob/0337d96/packages/geb/src/proxy-action-global-settlement.ts#L30)*
+Underlying proxy object. Can be used to make custom calls to the proxy using `proxy.execute()` . For the details of each function
 
-Underlying proxy object. Can be used to make custom calls to the proxy using `proxy.execute()` .
-For the details of each function
+### proxyActionAddress
 
-___
+• **proxyActionAddress**: _string_
 
-###  proxyActionAddress
-
-• **proxyActionAddress**: *string*
-
-*Defined in [packages/geb/src/proxy-action-global-settlement.ts:35](https://github.com/reflexer-labs/geb.js/blob/0337d96/packages/geb/src/proxy-action-global-settlement.ts#L35)*
+_Defined in_ [_packages/geb/src/proxy-action-global-settlement.ts:35_](https://github.com/reflexer-labs/geb.js/blob/0337d96/packages/geb/src/proxy-action-global-settlement.ts#L35)
 
 Address of the proxy actions global settlement contract.
 
-___
+### proxyAddress
 
-###  proxyAddress
+• **proxyAddress**: _string_
 
-• **proxyAddress**: *string*
-
-*Defined in [packages/geb/src/proxy-action-global-settlement.ts:42](https://github.com/reflexer-labs/geb.js/blob/0337d96/packages/geb/src/proxy-action-global-settlement.ts#L42)*
+_Defined in_ [_packages/geb/src/proxy-action-global-settlement.ts:42_](https://github.com/reflexer-labs/geb.js/blob/0337d96/packages/geb/src/proxy-action-global-settlement.ts#L42)
 
 Address of the underlying proxy.
 
 ## Methods
 
-###  coinJoin_join
+### coinJoin\_join
 
-▸ **coinJoin_join**(`apt`: string, `safeHandler`: string, `wad`: BigNumberish): *TransactionRequest*
+▸ **coinJoin\_join**\(`apt`: string, `safeHandler`: string, `wad`: BigNumberish\): _TransactionRequest_
 
-
-*Defined in [packages/geb/src/proxy-action-global-settlement.ts:68](https://github.com/reflexer-labs/geb.js/blob/0337d96/packages/geb/src/proxy-action-global-settlement.ts#L68)*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`apt` | string |
-`safeHandler` | string |
-`wad` | BigNumberish |
-
-**Returns:** *TransactionRequest*
-
-___
-
-###  freeETH
-
-▸ **freeETH**(`ethJoin`: string, `globalSettlement`: string, `safe`: BigNumberish): *TransactionRequest*
-
-
-*Defined in [packages/geb/src/proxy-action-global-settlement.ts:79](https://github.com/reflexer-labs/geb.js/blob/0337d96/packages/geb/src/proxy-action-global-settlement.ts#L79)*
+_Defined in_ [_packages/geb/src/proxy-action-global-settlement.ts:68_](https://github.com/reflexer-labs/geb.js/blob/0337d96/packages/geb/src/proxy-action-global-settlement.ts#L68)
 
 **Parameters:**
 
-Name | Type |
------- | ------ |
-`ethJoin` | string |
-`globalSettlement` | string |
-`safe` | BigNumberish |
+| Name | Type |
+| :--- | :--- |
+| `apt` | string |
+| `safeHandler` | string |
+| `wad` | BigNumberish |
 
-**Returns:** *TransactionRequest*
+**Returns:** _TransactionRequest_
 
-___
+### freeETH
 
-###  freeTokenCollateral
+▸ **freeETH**\(`ethJoin`: string, `globalSettlement`: string, `safe`: BigNumberish\): _TransactionRequest_
 
-▸ **freeTokenCollateral**(`collateralJoin`: string, `safe`: BigNumberish): *TransactionRequest*
-
-
-*Defined in [packages/geb/src/proxy-action-global-settlement.ts:95](https://github.com/reflexer-labs/geb.js/blob/0337d96/packages/geb/src/proxy-action-global-settlement.ts#L95)*
+_Defined in_ [_packages/geb/src/proxy-action-global-settlement.ts:79_](https://github.com/reflexer-labs/geb.js/blob/0337d96/packages/geb/src/proxy-action-global-settlement.ts#L79)
 
 **Parameters:**
 
-Name | Type |
------- | ------ |
-`collateralJoin` | string |
-`safe` | BigNumberish |
+| Name | Type |
+| :--- | :--- |
+| `ethJoin` | string |
+| `globalSettlement` | string |
+| `safe` | BigNumberish |
 
-**Returns:** *TransactionRequest*
+**Returns:** _TransactionRequest_
 
-___
+### freeTokenCollateral
 
-###  prepareCoinsForRedeeming
+▸ **freeTokenCollateral**\(`collateralJoin`: string, `safe`: BigNumberish\): _TransactionRequest_
 
-▸ **prepareCoinsForRedeeming**(`wad`: BigNumberish): *TransactionRequest*
-
-
-*Defined in [packages/geb/src/proxy-action-global-settlement.ts:110](https://github.com/reflexer-labs/geb.js/blob/0337d96/packages/geb/src/proxy-action-global-settlement.ts#L110)*
+_Defined in_ [_packages/geb/src/proxy-action-global-settlement.ts:95_](https://github.com/reflexer-labs/geb.js/blob/0337d96/packages/geb/src/proxy-action-global-settlement.ts#L95)
 
 **Parameters:**
 
-Name | Type |
------- | ------ |
-`wad` | BigNumberish |
+| Name | Type |
+| :--- | :--- |
+| `collateralJoin` | string |
+| `safe` | BigNumberish |
 
-**Returns:** *TransactionRequest*
+**Returns:** _TransactionRequest_
 
-___
+### prepareCoinsForRedeeming
 
-###  redeemETH
+▸ **prepareCoinsForRedeeming**\(`wad`: BigNumberish\): _TransactionRequest_
 
-▸ **redeemETH**(`ethJoin`: string, `collateralType`: BytesLike, `wad`: BigNumberish): *TransactionRequest*
-
-
-*Defined in [packages/geb/src/proxy-action-global-settlement.ts:121](https://github.com/reflexer-labs/geb.js/blob/0337d96/packages/geb/src/proxy-action-global-settlement.ts#L121)*
+_Defined in_ [_packages/geb/src/proxy-action-global-settlement.ts:110_](https://github.com/reflexer-labs/geb.js/blob/0337d96/packages/geb/src/proxy-action-global-settlement.ts#L110)
 
 **Parameters:**
 
-Name | Type |
------- | ------ |
-`ethJoin` | string |
-`collateralType` | BytesLike |
-`wad` | BigNumberish |
+| Name | Type |
+| :--- | :--- |
+| `wad` | BigNumberish |
 
-**Returns:** *TransactionRequest*
+**Returns:** _TransactionRequest_
 
-___
+### redeemETH
 
-###  redeemTokenCollateral
+▸ **redeemETH**\(`ethJoin`: string, `collateralType`: BytesLike, `wad`: BigNumberish\): _TransactionRequest_
 
-▸ **redeemTokenCollateral**(`collateralJoin`: string, `collateralType`: BytesLike, `wad`: BigNumberish): *TransactionRequest*
-
-
-*Defined in [packages/geb/src/proxy-action-global-settlement.ts:137](https://github.com/reflexer-labs/geb.js/blob/0337d96/packages/geb/src/proxy-action-global-settlement.ts#L137)*
+_Defined in_ [_packages/geb/src/proxy-action-global-settlement.ts:121_](https://github.com/reflexer-labs/geb.js/blob/0337d96/packages/geb/src/proxy-action-global-settlement.ts#L121)
 
 **Parameters:**
 
-Name | Type |
------- | ------ |
-`collateralJoin` | string |
-`collateralType` | BytesLike |
-`wad` | BigNumberish |
+| Name | Type |
+| :--- | :--- |
+| `ethJoin` | string |
+| `collateralType` | BytesLike |
+| `wad` | BigNumberish |
 
-**Returns:** *TransactionRequest*
+**Returns:** _TransactionRequest_
+
+### redeemTokenCollateral
+
+▸ **redeemTokenCollateral**\(`collateralJoin`: string, `collateralType`: BytesLike, `wad`: BigNumberish\): _TransactionRequest_
+
+_Defined in_ [_packages/geb/src/proxy-action-global-settlement.ts:137_](https://github.com/reflexer-labs/geb.js/blob/0337d96/packages/geb/src/proxy-action-global-settlement.ts#L137)
+
+**Parameters:**
+
+| Name | Type |
+| :--- | :--- |
+| `collateralJoin` | string |
+| `collateralType` | BytesLike |
+| `wad` | BigNumberish |
+
+**Returns:** _TransactionRequest_
+
