@@ -74,7 +74,18 @@
 
 * [API Endpoints](api/api-endpoints.md)
 
----
+## Pyflex
 
-* [Pyflex](pyflex.md)
+* [Getting Started](pyflex/getting-started/README.md)
+  * [Configuration](pyflex/getting-started/configuration.md)
+  * [Basics](pyflex/getting-started/basics.md)
+* [Opening a SAFE](pyflex/opening-a-safe.md)
+* [Closing a SAFE](pyflex/closing-a-safe.md)
+* [Numerics](pyflex/numerics.md)
+
+## Keepers
+
+* [Debt Auction Keeper](keepers/debt-auction-keeper.md)
+* [Surplus Auction Keeper](keepers/surplus-auction-keeper.md)
+* [Collateral Auction Keeper](keepers/collateral-auction-keeper.md)
 
