@@ -78,7 +78,7 @@
 
 * [Getting Started](pyflex/getting-started/README.md)
   * [Configuration](pyflex/getting-started/configuration.md)
-  * [Basics](pyflex/getting-started/basics.md)
+  * [GEB Basics](pyflex/getting-started/basics.md)
 * [Opening a SAFE](pyflex/opening-a-safe.md)
 * [Closing a SAFE](pyflex/closing-a-safe.md)
 * [Numerics](pyflex/numerics.md)
