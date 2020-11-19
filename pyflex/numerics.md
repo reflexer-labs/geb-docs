@@ -1,7 +1,7 @@
 ---
 description: >-
   GEB uses different numbers representing  various levels of precision. Pyflex
-  support these numbers and this describe their basic characteristics and
+  support these numbers and this describes their basic characteristics and
   operations
 ---
 
