@@ -1,3 +1,7 @@
+---
+description: Steps to open a SAFE and withdraw system coin
+---
+
 # Opening a SAFE
 
 ```python
@@ -8,10 +12,14 @@
 >>> from pyflex.numeric import Wad 
 ```
 
+Connect to an ethereum node
+
 ```python
 >>> ETH_RPC_URL = "http://localhost:8545"
 >>> web3 = Web3(HTTPProvider(endpoint_uri=ETH_RPC_URL, request_kwargs={"timeout": 60}))
 ```
+
+Set your account and keystore file. Enter your keystore password.
 
 ```python
 >>> web3.eth.defaultAccount ='0xdD1693BD8E307eCfDbe51D246562fc4109f871f8'
@@ -20,33 +28,54 @@ Password for key.json:
 >>>
 ```
 
+Instantiate `Address` object for user later. Initialize GEB object.
+
 ```python
 >>> our_address = Address(web3.eth.defaultAccount)
 >>> geb = GfDeployment.from_node(web3=web3)
 ```
 
+ETH-A is the only supported collateral.
+
 ```python
 >>> collateral = geb.collaterals['ETH-A']
 ```
+
+Approvals. This allows us to `join/exit` collateral and system coin.
 
 ```python
 >>> collateral.approve(our_address)
 >>> geb.approve_system_coin(our_address)
 ```
 
+Set amount of collateral to deposit and amount of debt to withdraw.
+
 ```python
 >>> collateral_amount = Wad.from_number(2.0)
 >>> debt_amount = Wad.from_number(85)
 ```
+
+`deposit` collateral and `join` it to the system
 
 ```python
 >>> collateral.collateral.deposit(collateral_amount).transact()
 >>> collateral.adapter.join(our_address, collateral_amount).transact()
 ```
 
+open a `SAFE` depositing our collateral and increase our system balance in the `SAFEEngine`
+
 ```python
 >>> geb.safe_engine.modify_safe_collateralization(collateral_type, our_address, delta_collateral=collateral_amount, delta_debt=debt_amount).transact()
 ```
+
+Check `SAFEEngine` coin balance
+
+```python
+>>> geb.safe_engine.coin_balance(our_address)
+Rad(85000000000000000000000000000000000000000000)
+```
+
+`Exit` system coin
 
 ```python
 >>> geb.system_coin_adapter.exit(our_address, debt_amount).transact()
