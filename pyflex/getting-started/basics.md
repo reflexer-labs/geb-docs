@@ -1,12 +1,12 @@
 ---
-description: Some examples of querying the GEB contracts.
+description: Examples of querying the GEB contracts
 ---
 
 # GEB Basics
 
 ## SAFE Engine
 
-Show global debt and debt ceiling
+Show global debt and the global debt ceiling:
 
 ```python
 >>> geb.safe_engine.global_debt()
@@ -15,16 +15,14 @@ Rad(5208615869764014400330809431631271622010234720384)
 Rad(10200000000000000000000000000000000000000000000000)
 ```
 
-Get total debt available. 
-
-**Note**: Any `Wad`, `Ray` or `Rad` can be converted to a string for easier reading
+Get total debt available to generate:
 
 ```python
 >>> str(geb.safe_engine.global_debt_ceiling() - geb.safe_engine.global_debt())
 '4991.375324317972058031697987632361257179694960552'
 ```
 
-Get `SAFE` status
+Get a `SAFE`'s status:
 
 ```python
 >>> collateral_type = geb.collaterals['ETH-A'].collateral_type
@@ -35,9 +33,7 @@ Wad(550000000000000000)
 Wad(85000000000000000000)
 ```
 
-Get updated `CollateralType` info. 
-
-**Note**: `safety_price` and `liquidation_price` are denominated in system coin
+Get updated `CollateralType` info:
 
 ```python
 >>> collateral_type = geb.safe_engine.collateral_type('ETH-A')
@@ -49,7 +45,7 @@ Ray(157366296298604006512381213706)
 
 ## Oracle Relayer
 
-Get `redemption_price` and`redemption_rate`
+Get the `redemption_price` and the`redemption_rate` . Note that fetching the latest redemption price requires you to first update it and then return the value:
 
 ```python
 >>> geb.oracle_relayer.redemption_price()
@@ -60,7 +56,7 @@ Ray(999999954662032624407551326)
 
 ## Tax Collector
 
-Get per-second stability fee applied to `SAFEs`
+Get the per-second stability fee applied to `SAFEs` :
 
 ```python
 >>> geb.tax_collector.stability_fee(geb.safe_engine.collateral_type('ETH-A'))
@@ -69,7 +65,7 @@ Ray(1000000000472114805215157978)
 
 ## Liquidation Engine
 
-Check if a `SAFE`can be liquidated.
+Check if a `SAFE`can be liquidated:
 
 ```python
 >>> collateral_type = geb.collaterals['ETH-A'].collateral_type
@@ -78,13 +74,11 @@ Check if a `SAFE`can be liquidated.
 False
 ```
 
-Liquidate a `SAFE`
+And then liquidate:
 
 ```python
 >>> geb.liquidation_engine.liquidate_safe(collateral_type, safe).transact()
 ```
-
-
 
 These are just a few examples. To see all supported functions,  view the source  code:
 
