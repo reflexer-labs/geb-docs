@@ -1,8 +1,10 @@
 ---
-description: Steps to open a SAFE and withdraw system coin
+description: Steps to open a SAFE and withdraw system coins
 ---
 
 # Opening a SAFE
+
+Import all the necessary dependencies:
 
 ```python
 >>> from web3 import Web3, HTTPProvider
@@ -12,14 +14,14 @@ description: Steps to open a SAFE and withdraw system coin
 >>> from pyflex.numeric import Wad 
 ```
 
-Connect to an ethereum node
+Connect to an Ethereum node:
 
 ```python
 >>> ETH_RPC_URL = "http://localhost:8545"
 >>> web3 = Web3(HTTPProvider(endpoint_uri=ETH_RPC_URL, request_kwargs={"timeout": 60}))
 ```
 
-Set your account and keystore file. Enter your keystore password.
+Set your account and keystore file and then enter your keystore password:
 
 ```python
 >>> web3.eth.defaultAccount ='0xdD1693BD8E307eCfDbe51D246562fc4109f871f8'
@@ -28,20 +30,20 @@ Password for key.json:
 >>>
 ```
 
-Instantiate `Address` object for user later. Initialize GEB object.
+Instantiate an `Address` object to use later. Then, initialize a GEB object:
 
 ```python
 >>> our_address = Address(web3.eth.defaultAccount)
 >>> geb = GfDeployment.from_node(web3=web3)
 ```
 
-ETH-A is the only supported collateral.
+Currently `ETH-A` is the only supported collateral:
 
 ```python
 >>> collateral = geb.collaterals['ETH-A']
 ```
 
-Approvals. This allows us to `join/exit` collateral and system coin.
+Setup your approvals in order to `join/exit` collateral and system coins in and out of the system:
 
 ```python
 >>> collateral.approve(our_address)
