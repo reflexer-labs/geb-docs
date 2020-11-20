@@ -50,34 +50,34 @@ Setup your approvals in order to `join/exit` collateral and system coins in and 
 >>> geb.approve_system_coin(our_address)
 ```
 
-Set amount of collateral to deposit and amount of debt to withdraw.
+Set the amount of collateral to deposit and amount of debt to withdraw:
 
 ```python
 >>> collateral_amount = Wad.from_number(2.0)
 >>> debt_amount = Wad.from_number(85)
 ```
 
-`deposit` collateral and `join` it to the system
+`deposit` collateral and `join` it to the system:
 
 ```python
 >>> collateral.collateral.deposit(collateral_amount).transact()
 >>> collateral.adapter.join(our_address, collateral_amount).transact()
 ```
 
-open a `SAFE` depositing our collateral and increase our system balance in the `SAFEEngine`
+Open a `SAFE` depositing the collateral and increasing your system coin balance in the `SAFEEngine` :
 
 ```python
 >>> geb.safe_engine.modify_safe_collateralization(collateral_type, our_address, delta_collateral=collateral_amount, delta_debt=debt_amount).transact()
 ```
 
-Check `SAFEEngine` coin balance
+Check your coin balance in the `SAFEEngine` :
 
 ```python
 >>> geb.safe_engine.coin_balance(our_address)
 Rad(85000000000000000000000000000000000000000000)
 ```
 
-`Exit` system coin
+`exit` system coin in ERC20 form:
 
 ```python
 >>> geb.system_coin_adapter.exit(our_address, debt_amount).transact()
