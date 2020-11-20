@@ -1,5 +1,7 @@
 # Configuration
 
+Import all the necessary files:
+
 ```python
 >>> from web3 import Web3, HTTPProvider
 >>> from pyflex import Address
@@ -8,7 +10,7 @@
 >>> from pyflex.numeric import Wad 
 ```
 
-Connect to an Ethereum node
+And then connect to an Ethereum node:
 
 ```python
 >>> ETH_RPC_URL = "http://13.59.107.140:8545"
