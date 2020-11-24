@@ -68,7 +68,6 @@
   * [Safe](geb-js/api-reference/safe.md)
   * [Proxy Actions](geb-js/api-reference/gebproxyactions.md)
   * [Geb Admin](geb-js/api-reference/gebadmin.md)
-  * [Proxy Actions Global Settlement](geb-js/api-reference/gebproxyactionsglobalsettlement.md)
 
 ## APIs <a id="api"></a>
 

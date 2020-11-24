@@ -35,13 +35,13 @@ const tx = geb.contracts.globalSettlement.freezeCollateralType(utils.ETH_A)
 await wallet.sendTransaction(tx)
 ```
 
-Since a SAFE is supposed to be over-collateralized, its owner can already withdraw excess collateral. The following script assumes that the SAFE is owned by a [proxy](https://github.com/reflexer-labs/ds-proxy/blob/master/src/proxy.sol) contract. It also uses the [Global Settlement Proxy](https://docs.reflexer.finance/geb-js/geb-js-global-settlement-proxies) [Actions](https://docs.reflexer.finance/geb-js/geb-js-global-settlement-proxies) to pack and atomically execute multiple transactions at once.
+Since a SAFE is supposed to be over-collateralized, its owner can already withdraw excess collateral. The following script assumes that the SAFE is owned by a [proxy](https://github.com/reflexer-labs/ds-proxy/blob/master/src/proxy.sol) contract. It also uses the Global Settlement Proxy Actions to pack and atomically execute multiple transactions at once.
 
 ```typescript
-const gsProxy = await geb.getProxyActionGlobalSettlement(wallet.address)
+const proxy = await geb.getProxyAction(wallet.address)
 const wethJoinAddress = geb.contracts.joinETH_A.address
 // Withdraw excess collateral from the Safe with ID #3
-const tx = gsProxy.freeTokenCollateral(wethJoinAddress, 3)
+const tx = proxy.freeTokenCollateralGlobalSettlement(wethJoinAddress, 3)
 await wallet.sendTransaction(tx)
 ```
 
@@ -114,11 +114,11 @@ At this stage, any system coin holder can exchange their coins against a fixed b
 ```typescript
 // Prepare the system coins
 const systemCoinBalance = await geb.contracts.coin.balanceOf(wallet.address)
-const tx = gsProxy.prepareCoinsForRedeeming(systemCoinBalance)
+const tx = proxy.prepareCoinsForRedeemingGlobalSettlement(systemCoinBalance)
 await wallet.sendTransaction(tx)
 
 // Redeem any collateral type you want
-const tx = gsProxy.redeemTokenCollateral(wethJoinAddress, utils.ETH_A, systemCoinBalance)
+const tx = gsProxy.redeemTokenCollateralGlobalSettlement(wethJoinAddress, utils.ETH_A, systemCoinBalance)
 await wallet.sendTransaction(tx)
 ```
 
