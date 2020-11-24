@@ -118,7 +118,7 @@ const tx = proxy.prepareCoinsForRedeemingGlobalSettlement(systemCoinBalance)
 await wallet.sendTransaction(tx)
 
 // Redeem any collateral type you want
-const tx = gsProxy.redeemTokenCollateralGlobalSettlement(wethJoinAddress, utils.ETH_A, systemCoinBalance)
+const tx = proxy.redeemTokenCollateralGlobalSettlement(wethJoinAddress, utils.ETH_A, systemCoinBalance)
 await wallet.sendTransaction(tx)
 ```
 
