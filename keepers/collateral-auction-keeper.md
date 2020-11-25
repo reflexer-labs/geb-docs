@@ -58,6 +58,8 @@ Sent transaction <pyflex.gf.CoinJoin object at 0x7ff7d69affd0>.join('0x02b70C78b
 Transaction <pyflex.gf.CoinJoin object at 0x7ff7d69affd0>.join('0x02b70C78b400FF8fe89Af7D84d443f875D047a8F', 86380323152450242963) was successful (tx_hash=0x885216086bdd41a5bf3be858d77161fac3433ffd3a208571f2cf52ed51456d83)
 ```
 
+
+
 ```text
 Keeper will perform the following operation(s) in parallel:
 --> Check all safes and start new auctions if any critical safes need to be liquidated
@@ -72,16 +74,57 @@ Checked 39 safes in 8 seconds
 ```
 
 ```text
-2020-11-25 19:57:10,230 INFO     Checked auctions 0 to 4 in 0 seconds
-2020-11-25 19:57:10,805 INFO     Checked 39 safes in 0 seconds
-2020-11-25 19:57:10,952 INFO     Checked auctions 0 to 4 in 0 seconds
-2020-11-25 19:57:14,847 INFO     Checked 39 safes in 0 seconds
-2020-11-25 19:57:15,009 INFO     Checked auctions 0 to 4 in 0 seconds
-2020-11-25 19:57:51,377 INFO     Checked 39 safes in 0 seconds
-2020-11-25 19:57:51,733 INFO     Checked auctions 0 to 4 in 0 seconds
-2020-11-25 19:57:55,379 INFO     Checked 39 safes in 0 seconds
-2020-11-25 19:57:55,483 INFO     Checked auctions 0 to 4 in 0 seconds
-2020-11-25 19:58:21,662 INFO     Checked 39 safes in 0 seconds
+Checked auctions 0 to 4 in 0 seconds
+Checked 39 safes in 0 seconds
+Checked auctions 0 to 4 in 0 seconds
+Checked 39 safes in 0 seconds
+Checked auctions 0 to 4 in 0 seconds
+Checked 39 safes in 0 seconds
+Checked auctions 0 to 4 in 0 seconds
+Checked 39 safes in 0 seconds
+Checked auctions 0 to 4 in 0 seconds
+Checked 39 safes in 0 seconds
+
+```
+
+#### Graph
+
+The[ graph](https://thegraph.com) is a project that seeks to provide efficient and simplified access to Ethereum data.
+
+Instead of using the node to gather all past SAFE history, you can add the following flag to `run_auction`\_`keeper.sh`
+
+`--graph-endpoints https://api.thegraph.com/subgraphs/name/reflexer-labs/prai-mainnet,https://subgraph.reflexer.finance/subgraphs/name/reflexer-labs/rai`
+
+This will speed up fetching the initial history of all SAFEs when the collateral keeper starts up. Notice the SAFE history is fetched in only 3 seconds with `--graph-endpoits`,while it took 8 seconds above. This is negligible now, but as more SAFEs are created, getting SAFE history without `--graph-endpoints`will take longer and longer.
+
+```text
+Watching for new blocks
+Started 2 timer(s)
+Getting safe mods from https://api.thegraph.com/subgraphs/name/reflexer-labs/prai-mainnet
+Fetching safe modes from https://api.thegraph.com/subgraphs/name/reflexer-labs/prai-mainnet
+Checked 39 safes in 3 seconds
+```
+
+#### Exiting collateral-keeper
+
+```text
+Keeper received SIGINT/SIGTERM signal, will terminate gracefully
+The keeper is terminating due do SIGINT/SIGTERM signal received
+Shutting down the keeper
+Waiting for all threads to terminate...
+Waiting for outstanding callback to terminate...
+Waiting for outstanding timers to terminate...
+Executing keeper shutdown logic...
+Exiting 86.380323152450242963 system coin from the SAFE Engine before shutdown
+Sent transaction <pyflex.gf.CoinJoin object at 0x7ff7d69affd0>.exit('0x02b70C78b400FF8fe89Af7D84d443f875D047a8F', 86380323152450242963) with nonce=128, gas=174631, gas_price=33580460345 (tx_hash=0x96984500294ec64212990e3b9131e8442d17b8f1d9e9ba5ef61d5d61d79d18e9)
+Transaction <pyflex.gf.CoinJoin object at 0x7ff7d69affd0>.exit('0x02b70C78b400FF8fe89Af7D84d443f875D047a8F', 86380323152450242963) was successful (tx_hash=0x96984500294ec64212990e3b9131e8442d17b8f1d9e9ba5ef61d5d61d79d18e9)
+Shutdown logic finished
+Keeper terminated
+```
+
+## Liquidations
+
+```text
 
 ```
 
