@@ -28,7 +28,7 @@ docker run -it \
 
 `ETH_RPC_URL`URL of ethereum RPC connection
 
-`KEEPER_ADDRESS`Address of your keeper. Should be checksummed format, not in lowercase.
+`KEEPER_ADDRESS`Address of your keeper. Should be in checksummed format, not in lowercase.
 
 3\). `chmod +x run_auction_keeper.sh`
 
@@ -41,7 +41,7 @@ latest: Pulling from reflexer/auction-keeper
 Digest: sha256:5d75a47028a0867b618b568269d985ac4a68ea8c63a920ac18093db3c3064134
 Status: Image is up to date for reflexer/auction-keeper:latest
 docker.io/reflexer/auction-keeper:latest
-Password for /keystore/key3.json: 
+Password for /keystore/key.json: 
 ```
 
 5\) Enter your keystore file password. 
@@ -68,7 +68,62 @@ By default, the keeper will `join` all of the keeper's system coins to the SAFEE
 The keeper will periodically rebalance to ensure `--safe-engine-system-coin-target`system coin is available in the SAFEEngine for collateral auctions. If the keeper's SAFEEngine balance drops below this target\(due to purchasing discounted collateral\), the keeper will automatically try to `join` additional system coins from the keeper's address if available.
 {% endhint %}
 
-#### Fetching SAFE histories
+#### Gas Prices
+
+By default, the keeper uses the node's gas price when creating transactions.  Every 30 seconds, the keeper will multiple the gas price by `--gas-reactive-multiplier, default 1.125`  up to `--gas-maximum, default:2000`
+
+#### Gas Provider
+
+If you don't want to use the node's gas prices, you can use one of these providers for gas prices.
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Provider</th>
+      <th style="text-align:left">Flags</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left"><a href="https://ethgasstation.info">ethgasstation.info</a>
+      </td>
+      <td style="text-align:left"><code>--ethgasstation-api-key &lt;API_KEY&gt;</code> 
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://www.poa.network">poa.network</a>
+      </td>
+      <td style="text-align:left"><code>--poanetwork-gas-price</code> , optional: <code>--poanetwork-url</code> &lt;URL&gt;</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://etherscan.io">etherscan.io</a>
+      </td>
+      <td style="text-align:left">
+        <p><code>--etherscan-gas-price</code>,</p>
+        <p>Queries are rate-limited without an API Key</p>
+        <p><code>--etherscan-key &lt;API_KEY&gt;</code>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="htps://gasnow.org">gasnow.org</a>
+      </td>
+      <td style="text-align:left"><code>--gasnow-gas-price</code>, optional:<code>--gasnow-app-name &lt;APP_NAME&gt;</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Fixed gas price</td>
+      <td style="text-align:left"><code>--fixed-gas-price &lt;GWEI&gt;</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+You can further adjust a provider's gas price with `--gas-initial-multiplier, default: 1.0`
+
+####  Fetching SAFE histories
+
+After `join`ing system coin to the system, the keeper needs to fetch SAFE histories.
 
 ```text
 Keeper will perform the following operation(s) in parallel:
