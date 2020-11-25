@@ -58,7 +58,17 @@ Sent transaction <pyflex.gf.CoinJoin object at 0x7ff7d69affd0>.join('0x02b70C78b
 Transaction <pyflex.gf.CoinJoin object at 0x7ff7d69affd0>.join('0x02b70C78b400FF8fe89Af7D84d443f875D047a8F', 86380323152450242963) was successful (tx_hash=0x885216086bdd41a5bf3be858d77161fac3433ffd3a208571f2cf52ed51456d83)
 ```
 
+By default, the keeper will `join` all of the keeper's system coins to the SAFEEngine, to make it available for purchasing discounted collateral. If you want to change the amount used for purchases, you can add the following flag to `run_auction_keeper.sh`
 
+`--safe-engine-system-coin-target <Number of system coins>, default: ALL`
+
+#### Rebalancing
+
+{% hint style="warning" %}
+The keeper will periodically rebalance to ensure `--safe-engine-system-coin-target`system coin is available in the SAFEEngine for collateral auctions. If the keeper's SAFEEngine balance drops below this target\(due to purchasing discounted collateral\), the keeper will automatically try to `join` additional system coins from the keeper's address if available.
+{% endhint %}
+
+#### Fetching SAFE histories
 
 ```text
 Keeper will perform the following operation(s) in parallel:
@@ -73,8 +83,10 @@ Started 2 timer(s)
 Checked 39 safes in 8 seconds
 ```
 
+#### Checking auctions and new SAFE events
+
 ```text
-Checked auctions 0 to 4 in 0 seconds
+hecked auctions 0 to 4 in 0 seconds
 Checked 39 safes in 0 seconds
 Checked auctions 0 to 4 in 0 seconds
 Checked 39 safes in 0 seconds
@@ -87,7 +99,7 @@ Checked 39 safes in 0 seconds
 
 ```
 
-#### Graph
+#### Fetching SAFE histories: The Graph
 
 The[ graph](https://thegraph.com) is a project that seeks to provide efficient and simplified access to Ethereum data.
 
@@ -121,6 +133,10 @@ Transaction <pyflex.gf.CoinJoin object at 0x7ff7d69affd0>.exit('0x02b70C78b400FF
 Shutdown logic finished
 Keeper terminated
 ```
+
+Notice, the keep automatically `exits` $$a = b$$ system coin from the system when it shuts down.
+
+If you want to keep system coin in the SAFEEngine on shutdown, you can add the  `--keep-system-coin-in-safe-engine-on-exit` flag to `run_auction`\_`keeper.sh`This will skip the `exit` on shutdown and the `join` on the next startup, saving gas.
 
 ## Liquidations
 
