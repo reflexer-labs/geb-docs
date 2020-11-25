@@ -6,7 +6,7 @@ description: Running a collateral auction-keeper
 
 ## Quickstart
 
-1\) Buy RAI from [Uniswap v2](https://info.uniswap.org/pair/0xEBdE9F61e34B7aC5aAE5A4170E964eA85988008C) or open a SAFE and generate some RAI.
+1\) Buy RAI from [Uniswap v2](https://info.uniswap.org/pair/0xEBdE9F61e34B7aC5aAE5A4170E964eA85988008C) or [open a SAFE](https://app.gitbook.com/@reflexer-labs/s/geb/pyflex/safe-management/opening-a-safe) and generate some RAI.
 
 2\) Create  `run_auction_keeper.sh`
 
