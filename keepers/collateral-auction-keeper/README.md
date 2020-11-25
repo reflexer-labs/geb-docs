@@ -46,7 +46,7 @@ Password for /keystore/key.json:
 
 5\) Enter your keystore file password. 
 
-#### Keeper output
+#### System coin join
 
 ```text
 Keeper connected to RPC connection http://172.31.46.181:8545
@@ -68,7 +68,17 @@ By default, the keeper will `join` all of the keeper's system coins to the SAFEE
 The keeper will periodically rebalance to ensure `--safe-engine-system-coin-target`system coin is available in the SAFEEngine for collateral auctions. If the keeper's SAFEEngine balance drops below this target\(due to purchasing discounted collateral\), the keeper will automatically try to `join` additional system coins from the keeper's address if available.
 {% endhint %}
 
-#### Gas Prices
+#### Gas price
+
+```text
+Keeper will perform the following operation(s) in parallel:
+--> Check all safes and start new auctions if any critical safes need to be liquidated
+--> Check all auctions being monitored and evaluate bidding opportunity every 4.0 seconds
+--> Check all auctions and settle for 0x02b70C78b400FF8fe89Af7D84d443f875D047a8F
+*** When Keeper is settling/bidding, the initial evaluation of auctions will likely take > 45 minutes without setting a lower boundary via '--min-auction' ***
+*** When Keeper is starting auctions, initializing safe history may take > 30 minutes without using Graph via `--graph-endpoints` ***
+Keeper will use Node gas price (currently 33.0 Gwei, changes over time) and will multiply by 1.125 every 30s to a maximum of 2000.0 Gwei for transactions and bids unless model instructs otherwise
+```
 
 By default, the keeper uses the node's gas price when creating transactions.  Every 30 seconds, the keeper will multiple the gas price by `--gas-reactive-multiplier, default 1.125`  up to `--gas-maximum, default:2000`
 
@@ -123,7 +133,7 @@ You can further adjust a provider's gas price with `--gas-initial-multiplier, de
 
 ####  Fetching SAFE histories
 
-After `join`ing system coin to the system, the keeper needs to fetch SAFE histories.
+During startup, the keeper needs to fetch SAFE histories.
 
 ```text
 Keeper will perform the following operation(s) in parallel:
