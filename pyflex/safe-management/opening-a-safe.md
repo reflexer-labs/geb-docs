@@ -43,7 +43,11 @@ Currently `ETH-A` is the only supported collateral:
 >>> collateral = geb.collaterals['ETH-A']
 ```
 
-Setup your approvals in order to `join/exit` collateral and system coins in and out of the system:
+Setup your approvals in order to `join/exit` collateral and system coins in and out of the system.
+
+{% hint style="info" %}
+These `approve` calls only need to be done once per address!
+{% endhint %}
 
 ```python
 >>> collateral.approve(our_address)
