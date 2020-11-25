@@ -78,8 +78,9 @@
 * [Getting Started](pyflex/getting-started/README.md)
   * [Configuration](pyflex/getting-started/configuration.md)
   * [GEB Basics](pyflex/getting-started/basics.md)
-* [Opening a SAFE](pyflex/opening-a-safe.md)
-* [Closing a SAFE](pyflex/closing-a-safe.md)
+* [SAFE Management](pyflex/safe-management/README.md)
+  * [Opening a SAFE](pyflex/safe-management/opening-a-safe.md)
+  * [Closing a SAFE](pyflex/safe-management/closing-a-safe.md)
 * [Numerics](pyflex/numerics.md)
 
 ## Keepers
