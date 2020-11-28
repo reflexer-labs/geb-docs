@@ -28,23 +28,36 @@ To better understand how RAI behaves, we need to analyze its monetary policy whi
 * Redemption rate: this is the rate at which RAI is being devalued or revalued. The process of devaluing/revaluing RAI consists in the redemption rate changing the redemption price.
 * Global Settlement: settlement consists in shutting down the protocol and allowing both SAFE and RAI users to redeem collateral from the system. Settlement uses the redemption \(and not the market\) price to calculate how much collateral can be redeemed by each user.
 
-Let's walk through an example of how RAI is devalued in case of ETH capital inflow \(aka people are bullish on ETH\):
+Let's walk through an example of how RAI is revalued in case of ETH capital inflow \(aka people are bullish on ETH\):
 
 * At time T1: ETH price is $500, RAI's market and redemption prices are both $5
 * At time T2: ETH price surges to $1000. RAI SAFE users suddenly have more borrowing power and generate more RAI against their collateral. SAFE users sell RAI on the secondary market \(Uniswap\), causing RAI's market price to crash to $4.
 * At time T3: ETH remains at $1000 and RAI's market price is still $4. The system wants the market price to get close to the redemption price. In order to eliminate the imbalance between the market/redemption prices, the system starts to revalue RAI. Revaluing consists in setting a positive redemption rate which makes the redemption price grow every second.
 * At time T4: ETH remains at $1000. RAI's redemption price is now $5.1. SAFE users are starting to realize that they can now borrow less RAI per one ETH, they can redeem less ETH during Settlement \(because RAI is now more expensive\) and that it will be more expensive to close their SAFE once the market price follows the redemption price. At the same time, RAI holders are starting to realize that they can redeem more and more ETH during settlement and they can also "earn yield" by holding RAI and assuming that the market price will \(at some point\) surge toward the redemption.
-* At time T5: ETH remains at $1000. RAI's redemption price is now $5.2. RAI's market price surges to $5.2 as a result of:
+* At time T5: ETH remains at $1000. RAI's redemption price is now $5.2. RAI's market price surged to $5.2 as a result of:
   * SAFE users buying RAI in order to close their positions as soon as possible instead of later on when RAI is more expensive
   * RAI holders incrementally buying more RAI in order to "earn" more yield as a result of the eventual market price surge
 
- 
+ When RAI is devalued \(in case of ETH capital outflow\), the opposite thing happens:
+
+* SAFE users realize that they can mint more RAI against their ETH and that they will be able to buy cheap RAI once the market price tanks
+* Token holders realize that they can redeem less ETH during Settlement and, in order to earn money, they need to short RAI
 
 ### Why would I hold RAI when the system devalues the token?
 
-This is exactly what the system wants you to think when it charges a negative interest rate. The system wants RAI holders to sell and bring the market price down to the redemption price.
+This is exactly what the system wants you to ask yourself when it charges a negative interest rate. The system wants RAI holders to sell and bring the market price down to the redemption price.
 
-Isn't RAI growth bounded by ETH growth?
+### Isn't RAI growth bounded by ETH growth?
+
+Short answer: yes. We decided to build a pure ETH system for several reasons:
+
+* A bet on ETH's success:
+* Social scalability:
+* ETH only systems are easy to explain:
+* Proof of concept: a system backed by a single collateral type is easier to manage than a multi-collateral one and allows us to test our hypotheses without layering extra risk and overhead
+* Governance minimization: 
+
+This does **not** mean that we cannot create other systems later on.
 
 What is the difference between the redemption rate and the borrow rate?
 
