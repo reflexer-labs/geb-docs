@@ -6,7 +6,7 @@ description: Frequently asked questions about RAI and GEB
 
 ### What is RAI?
 
-RAI is an ETH backed stable asset with a [managed float regime](https://en.wikipedia.org/wiki/Managed_float_regime). The RAIUSD exchange rate is determined by supply and demand while the protocol that issues RAI tries to 
+RAI is an ETH backed stable asset with a [managed float regime](https://en.wikipedia.org/wiki/Managed_float_regime). The RAIUSD exchange rate is determined by supply and demand while the protocol that issues RAI tries to stabilize its price by constantly changing user incentives.
 
 The supply and demand mechanic plays out between two parties: SAFE users \(those who generate RAI with their ETH\) and RAI holders \(those who hold, speculate on or use RAI in other protocols and apps\).
 
@@ -70,7 +70,7 @@ We often get this question from people who are used to holding assets such as DA
 
 While it is true that the mechanism behind RAI may cause more uncertainty vs pegged coins because of the floating redemption price, it also comes with its own perks:
 
-* RAI is trader friendly. Traders can use the managed float regime to their own advantage. Someone can, for example, analyze the market sentiment as well as look at the current redemption rate in order to decide on whether they should long or short RAI
+* RAI is trader friendly because traders can use the managed float regime to their own advantage. Someone can, for example, analyze the market sentiment as well as look at the current redemption rate in order to decide on whether they should long or short RAI
 * RAI holders can benefit from exposure to a positive redemption rate \(revaluation\). Assuming they are hedged, holders may also benefit from RAI devaluation
 
 ### What are RAI's use-cases?
