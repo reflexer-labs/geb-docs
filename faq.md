@@ -70,7 +70,7 @@ We often get this question from people who are used to holding assets such as DA
 
 While it is true that the mechanism behind RAI may cause more uncertainty vs pegged coins because of the floating redemption price, it also comes with its own perks:
 
-* RAI is trader friendly. Traders can use the managed float regime to their own advantage. Someone can, for example, analyze the market sentiment as well as look at the current redemption rate in order to decide on whether they should long or short RAI
+* RAI is trader friendly. A trader can, for example, analyze the market sentiment as well as look at the current redemption rate in order to decide on whether they should long or short RAI
 * RAI holders \(longs\) can benefit from exposure to a positive redemption rate \(revaluation\)
 * Shorts may also benefit from RAI devaluation
 
