@@ -14,7 +14,7 @@ As opposed to protocols that try to defend a [fixed exchange rate](https://www.i
 
 * Flexibility: the protocol can devalue or revalue RAI in response to changes in RAI's market price. This process transfers value between SAFE users and RAI holders and incentivizes both parties to bring the market price back to a target \(redemption\) chosen by the protocol. The mechanism is similar to countries [devaluing](https://www.investopedia.com/terms/d/devaluation.asp) or [revaluing](https://www.investopedia.com/terms/r/revaluation.asp) their currencies in order to combat a trade imbalance. The "trade imbalance" in RAI's case happens between RAI and SAFE users.
 * Discretion: the protocol itself is free to change the target exchange rate to its own advantage. It can attract or repel capital whenever it wants.
-
+* 
 At the same time, a managed float can cause uncertainty due to the fact that the price varies day by day. This uncertainty can be beneficial to the decentralized finance industry because it incentivizes developers to build all sorts of derivative products on top of RAI such as futures and options.
 
 ### How does RAI work/behave?
