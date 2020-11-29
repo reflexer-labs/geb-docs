@@ -68,11 +68,26 @@ A system like RAI has two types of rates:
 
 We often get this question from people who are used to holding assets such as DAI or USDC which seem more "stable" because they try to target a specific peg.
 
-While it is true that the mechanism behind RAI may cause more uncertainty because of the floating redemption price, it also comes with its own advantages:
+While it is true that the mechanism behind RAI may cause more uncertainty vs pegged coins because of the floating redemption price, it also comes with its own perks:
 
-* Traders can leverage the managed float regime to their own advantage. Someone can, for example, analyze the market sentiment as well as look at the current redemption rate in order to decide on whether they should buy, sell and/or hedge
-* 
-What are RAI's use-cases?
+* Traders can use the managed float regime to their own advantage. Someone can, for example, analyze the market sentiment as well as look at the current redemption rate in order to decide on whether they should buy, sell and/or hedge
+* Holders can benefit from exposure to a positive redemption rate \(revaluation\). Assuming they are hedged, holders may also benefit from RAI devaluation
 
-What are the assumptions behind RAI's mechanism?
+### What are RAI's use-cases?
+
+The following is a non-exhaustive list of use-cases we envision for RAI:
+
+* Portfolio diversification:
+* Source of yield:
+* DeFi collateral:
+
+### What are the assumptions behind RAI's mechanism?
+
+RAI's success depends on three main factors:
+
+1. Narrative: similar to other protocols \(ranging from stable assets such as DAI to L1's such as Bitcoin and Ethereum\), people need to have faith in the protocol in order for it to work and for more people to adopt it
+2. Liquidity: the more liquidity RAI has, the harder it is for malicious parties to manipulate its market price
+3. The presence of arbitrageurs: similar to other stable assets, there need to be traders who arb the difference between the asset's market and redemption \(or target\) prices
+
+It's worth noting that the narrative attracts liquidity and traders which in turn can further strengthen the narrative.
 
