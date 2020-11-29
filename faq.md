@@ -1,8 +1,8 @@
 ---
-description: Frequently asked questions about RAI
+description: Frequently asked questions about RAI and GEB
 ---
 
-# RAI FAQ
+# FAQ
 
 ### What is RAI?
 

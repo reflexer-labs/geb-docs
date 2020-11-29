@@ -3,7 +3,7 @@
 * [Introduction to GEB](README.md)
 * [Currently Deployed Systems](currently-deployed-systems.md)
 * [Current System Parameters](current-system-parameters.md)
-* [RAI FAQ](rai-faq.md)
+* [FAQ](faq.md)
 
 ## Contract Variables Translation <a id="contract-translation"></a>
 
