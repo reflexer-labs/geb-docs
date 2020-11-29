@@ -6,24 +6,24 @@ description: Frequently asked questions about RAI and GEB
 
 ### What is RAI?
 
-RAI is an ETH backed stable asset with a [managed float regime](https://en.wikipedia.org/wiki/Managed_float_regime). The RAIUSD exchange rate is determined by supply and demand. The protocol that issues RAI tries to influence its price by changing user incentives.
+RAI is an ETH backed stable asset with a [managed float regime](https://en.wikipedia.org/wiki/Managed_float_regime). The RAIUSD exchange rate is determined by supply and demand while the protocol that issues RAI tries to 
 
 The supply and demand mechanic plays out between two parties: SAFE users \(those who generate RAI with their ETH\) and RAI holders \(those who hold, speculate on or use RAI in other protocols and apps\).
 
 As opposed to protocols that try to defend a [fixed exchange rate](https://www.investopedia.com/terms/f/fixedexchangerate.asp) for their native stable assets \(MCD & DAI, Synthetix & sUSD etc\), RAI's managed float offers several advantages:
 
-* Flexibility: the protocol can devalue or revalue RAI in response to changes in RAI's market price. This process transfers value between SAFE users and RAI holders and incentivizes both parties to bring the market price back to a target \(redemption\) chosen by the protocol. The mechanism is similar to countries [devaluing](https://www.investopedia.com/terms/d/devaluation.asp) or [revaluing](https://www.investopedia.com/terms/r/revaluation.asp) their currencies in order to combat a trade imbalance. The "trade imbalance" in RAI's case happens between RAI and SAFE users.
+* Flexibility: the protocol can devalue or revalue RAI in response to changes in RAI's market price. This process transfers value between SAFE users and RAI holders and incentivizes both parties to bring the market price back to a target chosen by the protocol. The mechanism is similar to countries [devaluing](https://www.investopedia.com/terms/d/devaluation.asp) or [revaluing](https://www.investopedia.com/terms/r/revaluation.asp) their currencies in order to combat a trade imbalance. The "trade imbalance" in RAI's case happens between RAI and SAFE users.
 * Discretion: the protocol itself is free to change the target exchange rate to its own advantage. It can attract or repel capital whenever it wants.
 
 At the same time, a managed float can cause uncertainty due to the fact that the price varies day by day. This uncertainty can be beneficial to the decentralized finance industry because it incentivizes developers to build all sorts of derivative products on top of RAI such as futures and options.
 
 ### How does RAI work/behave?
 
-The long term price trajectory of RAI is determined by the capital flow in and out of ETH \(where ETH is a proxy of the economic activity and value of the Ethereum economy\).
+The long term price trajectory of RAI is determined by the capital flow in and out of ETH \(where ETH is a proxy of the economic activity and value of the Ethereum economy\). RAI tends to appreciate if ETH has a sustained surge in price and it depreciates in case ETH's price drops.
 
 To better understand how RAI behaves, we need to analyze its monetary policy which is made out of 4 elements:
 
-* Redemption price: this is the price that the protocol wants RAI to have on the secondary market \(e.g on Uniswap\). The redemption price is used by SAFE users to mint RAI against ETH and it is also used during Global Settlement in order to allow both SAFE and RAI users to redeem collateral from the system.
+* Redemption price: this is the price that the protocol wants RAI to have on the secondary market \(e.g on Uniswap\). The redemption price is used by SAFE users to mint RAI against ETH and it is also used during Global Settlement in order to allow both SAFE and RAI users to redeem collateral from the system. The redemption price almost always floats and it does not target any specific peg.
 * Market price: this is the price that RAI is traded at on the secondary market \(on exchanges\).
 * Redemption rate: this is the rate at which RAI is being devalued or revalued. The process of devaluing/revaluing RAI consists in the redemption rate changing the redemption price.
 * Global Settlement: settlement consists in shutting down the protocol and allowing both SAFE and RAI users to redeem collateral from the system. Settlement uses the redemption \(and not the market\) price to calculate how much collateral can be redeemed by each user.
@@ -38,7 +38,7 @@ Let's walk through an example of how RAI is revalued in case of ETH capital infl
   * SAFE users buying RAI in order to close their positions as soon as possible instead of later on when RAI is more expensive
   * RAI holders incrementally buying more RAI in order to "earn" more yield as a result of the eventual market price surge
 
- When RAI is devalued \(in case of ETH capital outflow\), the opposite thing happens:
+When RAI is devalued \(in case of ETH capital outflow\), the opposite thing happens:
 
 * SAFE users realize that they can mint more RAI against their ETH and that they will be able to buy cheap RAI once the market price tanks
 * Token holders realize that they can redeem less ETH during Settlement and, in order to earn money, they need to short RAI
@@ -49,7 +49,7 @@ This is exactly what the system wants you to ask yourself when it charges a nega
 
 ### Isn't RAI growth bounded by ETH growth?
 
-Short answer: yes. We decided to build a pure ETH system for several reasons:
+Short answer: yes. Nevertheless, we decided to build a pure ETH system for several reasons:
 
 * Social scalability: we believe the most successful DeFi protocols will be the ones that act as a trustless operating system. You can build on top of them without the fear that the rules will drastically change and break your applications. For this reason we want to progressively remove most control over RAI.
 * Simplicity: it is easier to explain RAI's behaviour in contrast to ETH as opposed to a basket of assets.
