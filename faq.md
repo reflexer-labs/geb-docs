@@ -10,7 +10,7 @@ RAI is an ETH backed stable asset with a [managed float regime](https://en.wikip
 
 The supply and demand mechanic plays out between two parties: SAFE users \(those who generate RAI with their ETH\) and RAI holders \(those who hold, speculate on or use RAI in other protocols and apps\).
 
-As opposed to protocols that try to defend a [fixed exchange rate](https://www.investopedia.com/terms/f/fixedexchangerate.asp) for their native stable assets \(MCD & DAI, Synthetix & sUSD etc\), RAI's managed float offers several advantages:
+As opposed to protocols that try to defend a [fixed exchange rate](https://www.investopedia.com/terms/f/fixedexchangerate.asp) between their native stable assets and fiat \(MCD & DAI, Synthetix & sUSD etc\), RAI's managed float offers a couple of advantages:
 
 * Flexibility: the protocol can devalue or revalue RAI in response to changes in RAI's market price. This process transfers value between SAFE users and RAI holders and incentivizes both parties to bring the market price back to a target chosen by the protocol. The mechanism is similar to countries [devaluing](https://www.investopedia.com/terms/d/devaluation.asp) or [revaluing](https://www.investopedia.com/terms/r/revaluation.asp) their currencies in order to combat a trade imbalance. The "trade imbalance" in RAI's case happens between RAI and SAFE users.
 * Discretion: the protocol itself is free to change the target exchange rate to its own advantage. It can attract or repel capital whenever it wants.
@@ -21,7 +21,7 @@ At the same time, a managed float can cause uncertainty due to the fact that the
 
 The long term price trajectory of RAI is determined by the capital flow in and out of ETH \(where ETH is a proxy of the economic activity and value of the Ethereum economy\). RAI tends to appreciate if ETH has a sustained surge in price and it depreciates in case ETH's price drops.
 
-To better understand how RAI behaves, we need to analyze its monetary policy which is made out of 4 elements:
+To better understand how RAI behaves, we need to analyze its monetary policy which is made out of four elements:
 
 * Redemption price: this is the price that the protocol wants RAI to have on the secondary market \(e.g on Uniswap\). The redemption price is used by SAFE users to mint RAI against ETH and it is also used during Global Settlement in order to allow both SAFE and RAI users to redeem collateral from the system. The redemption price almost always floats and it does not target any specific peg.
 * Market price: this is the price that RAI is traded at on the secondary market \(on exchanges\).
@@ -51,7 +51,7 @@ This is exactly what the system wants you to ask yourself when it charges a nega
 
 Short answer: yes. Nevertheless, we decided to build a pure ETH system for several reasons:
 
-* Social scalability: we believe the most successful DeFi protocols will be the ones that act as a trustless operating system. You can build on top of them without the fear that the rules will drastically change and break your applications. For this reason we want to progressively remove most control over RAI.
+* Social scalability: we believe the most successful DeFi protocols will be the ones that act as a trust minimized operating system. You can build on top of them without the fear that the rules will drastically change and break your application. For this reason we want to progressively remove control over RAI.
 * Simplicity: it is easier to explain RAI's behaviour in contrast to ETH as opposed to a basket of assets.
 * Proof of concept: a system backed by a single collateral type is easier to manage than a multi-collateral one. It allows us to test our hypotheses without layering extra risk and overhead
 
@@ -70,16 +70,17 @@ We often get this question from people who are used to holding assets such as DA
 
 While it is true that the mechanism behind RAI may cause more uncertainty vs pegged coins because of the floating redemption price, it also comes with its own perks:
 
-* RAI is trader friendly because traders can use the managed float regime to their own advantage. Someone can, for example, analyze the market sentiment as well as look at the current redemption rate in order to decide on whether they should long or short RAI
-* RAI holders can benefit from exposure to a positive redemption rate \(revaluation\). Assuming they are hedged, holders may also benefit from RAI devaluation
+* RAI is trader friendly. Traders can use the managed float regime to their own advantage. Someone can, for example, analyze the market sentiment as well as look at the current redemption rate in order to decide on whether they should long or short RAI
+* RAI holders \(longs\) can benefit from exposure to a positive redemption rate \(revaluation\)
+* Shorts may also benefit from RAI devaluation
 
 ### What are RAI's use-cases?
 
 The following is a non-exhaustive list of use-cases we envision for RAI:
 
-* Portfolio diversification:
-* Source of yield:
-* DeFi collateral:
+* Portfolio diversification: RAI offers dampened exposure to ETH's price moves
+* Source of yield: traders can earn "yield" when RAI's market price follows the redemption price 
+* DeFi collateral: RAI can be used as an ETH supplement or alternative collateral in DeFi protocols due to the fact that it dampens ether's price moves
 
 ### What are the assumptions behind RAI's mechanism?
 
