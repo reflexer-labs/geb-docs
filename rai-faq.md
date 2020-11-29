@@ -6,16 +6,16 @@ description: Frequently asked questions about RAI
 
 ### What is RAI?
 
-RAI is an ETH backed currency with a [floating exchange rate](https://www.investopedia.com/terms/f/floatingexchangerate.asp) compared to the US dollar. The RAIUSD exchange rate is determined by RAI supply and demand.
+RAI is an ETH backed currency with a [managed float regime](https://en.wikipedia.org/wiki/Managed_float_regime). The RAIUSD exchange rate is determined by RAI supply and demand while the protocol that issues RAI can try to influence its price.
 
 The supply and demand mechanic plays out between two parties: SAFE users \(those who generate RAI with their ETH\) and RAI holders \(those who hold, speculate on or use RAI in other protocols and apps\).
 
-As opposed to stable assets and protocols that try to defend a [fixed exchange rate](https://www.investopedia.com/terms/f/fixedexchangerate.asp) \(MCD & DAI, Synthetix & sUSD etc\), RAI's floating exchange rate offers several advantages:
+As opposed to protocols that try to defend a [fixed exchange rate](https://www.investopedia.com/terms/f/fixedexchangerate.asp) for their native stable assets \(MCD & DAI, Synthetix & sUSD etc\), RAI's managed float offers several advantages:
 
-* Flexibility: the protocol can devalue or revalue RAI in response to changes in RAI's market price. This process transfers value between SAFE users and RAI holders and incentivizes both parties to bring the market price back to a target \(redemption\) chosen by the protocol. The mechanism is similar to countries [devaluing](https://www.investopedia.com/terms/d/devaluation.asp) their currencies in order to combat a trade imbalance. The "trade imbalance" in RAI's case happens between RAI and SAFE users.
+* Flexibility: the protocol can devalue or revalue RAI in response to changes in RAI's market price. This process transfers value between SAFE users and RAI holders and incentivizes both parties to bring the market price back to a target \(redemption\) chosen by the protocol. The mechanism is similar to countries [devaluing](https://www.investopedia.com/terms/d/devaluation.asp) or [revaluing](https://www.investopedia.com/terms/r/revaluation.asp) their currencies in order to combat a trade imbalance. The "trade imbalance" in RAI's case happens between RAI and SAFE users.
 * Discretion: the protocol itself is free to change the target exchange rate to its own advantage. It can attract or repel capital whenever it wants.
 
-At the same time, a floating exchange rate causes uncertainty due to the fact that the price varies day by day. This uncertainty can actually be beneficial to the decentralized finance industry because it incentivizes developers to build all sorts of financial products on top of RAI such as futures and options.
+At the same time, a managed float can cause uncertainty due to the fact that the price varies day by day. This uncertainty can be beneficial to the decentralized finance industry because it incentivizes developers to build all sorts of derivative products on top of RAI such as futures and options.
 
 ### How does RAI work/behave?
 
@@ -45,24 +45,33 @@ Let's walk through an example of how RAI is revalued in case of ETH capital infl
 
 ### Why would I hold RAI when the system devalues the token?
 
-This is exactly what the system wants you to ask yourself when it charges a negative interest rate. The system wants RAI holders to sell and bring the market price down to the redemption price.
+This is exactly what the system wants you to ask yourself when it charges a negative interest rate. The system is trying to incentivize RAI holders to sell and bring the market price down and close to the redemption price.
 
 ### Isn't RAI growth bounded by ETH growth?
 
 Short answer: yes. We decided to build a pure ETH system for several reasons:
 
-* A bet on ETH's success:
-* Social scalability:
-* ETH only systems are easy to explain:
-* Proof of concept: a system backed by a single collateral type is easier to manage than a multi-collateral one and allows us to test our hypotheses without layering extra risk and overhead
-* Governance minimization: 
+* Social scalability: we believe the most successful DeFi protocols will be the ones that act as a trustless operating system. You can build on top of them without the fear that the rules will drastically change and break your applications. For this reason we want to progressively remove most control over RAI.
+* Simplicity: it is easier to explain RAI's behaviour in contrast to ETH as opposed to a basket of assets.
+* Proof of concept: a system backed by a single collateral type is easier to manage than a multi-collateral one. It allows us to test our hypotheses without layering extra risk and overhead
 
-This does **not** mean that we cannot create other systems later on.
+Even if RAI is backed by a single collateral type it does **not** mean that we cannot create other systems later on which are backed by multiple/different assets.
 
-What is the difference between the redemption rate and the borrow rate?
+### What is the difference between the redemption rate and the borrow rate?
 
-Why would I want to hold something that is not pegged and yet does not behave like ETH or BTC?  
-  
+A system like RAI has two types of rates:
+
+* The borrow rate which is an interest rate charged on open SAFEs. The borrow rate will usually be fixed or bounded
+* The redemption rate: this is the rate at which RAI \(or RAI-like assets\) are devalued or revalued
+
+### Why would I want to hold something that is not pegged and yet does not behave like ETH or BTC?
+
+We often get this question from people who are used to holding assets such as DAI or USDC which seem more "stable" because they try to target a specific peg.
+
+While it is true that the mechanism behind RAI may cause more uncertainty because of the floating redemption price, it also comes with its own advantages:
+
+* Traders can leverage the managed float regime to their own advantage. Someone can, for example, analyze the market sentiment as well as look at the current redemption rate in order to decide on whether they should buy, sell and/or hedge
+* 
 What are RAI's use-cases?
 
 What are the assumptions behind RAI's mechanism?
