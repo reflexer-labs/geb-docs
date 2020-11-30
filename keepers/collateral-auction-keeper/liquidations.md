@@ -4,8 +4,6 @@
 
 The collateral keeper will liquidate all critical safes it encounters. This starts a fixed discount collateral auction.
 
-
-
 ```text
 Liquidating ETH-A SAFE 0xc90F721DacfF8548777026253B8CB584426DC8C7 with locked_collateral=0.435000000000000000 liquidat
 ion_price=194.362282878411910669975186104 generated_debt=85.069599661138521872 accumulatedRates=1.000357358433360132592605082
