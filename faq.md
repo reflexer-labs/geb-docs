@@ -105,7 +105,7 @@ It's worth noting that the narrative attracts liquidity and arbitrageurs which i
 
 ### What kind of apps can I build with RAI?
 
-TODO: money market, options, pegged coins, yield aggregator  
+TODO: money market, options, pegged coins, yield aggregator, investment keeper  
   
 
 
