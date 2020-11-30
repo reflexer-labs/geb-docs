@@ -79,7 +79,7 @@ While it is true that the mechanism behind RAI may cause more uncertainty vs peg
 We have both short and long term plans meant to attract borrowers and improve the experience of interacting with the protocol:
 
 * Getting paid for opening and managing SAFEs: when RAI is devalued, SAFE users are "paid" because the value of their debt shrinks compared to the value of their collateral
-* Capped borrow rate: in the long run, RAI will have a capped \(and small\) borrow rate which makes the cost of maintaining a SAFE more predictable. Governance can in theory set the borrow rate to 0% although this prevents the system from accruing surplus that's used to incentivize keepers or build an insurance buffer
+* Capped borrow rate: in the long run, RAI will have a capped \(and small\) borrow rate which makes the cost of maintaining a SAFE more predictable. Governance can, in theory, set the borrow rate to 0% although this prevents the system from accruing surplus that's used to incentivize keepers or build an insurance buffer
 * Insurance for SAFEs: in the long run we can allow SAFE users to attach a wide variety of insurance contracts meant to protect their positions against liquidation
 * No exposure to assets with counterparty risk: RAI will only be backed by ETH. Borrowers are not exposed to riskier crypto assets or real world collateral
 * Superior collateral factors: as we improve the efficiency of our collateral auctions and add insurance contracts for SAFEs, we can allow 
