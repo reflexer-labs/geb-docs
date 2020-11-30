@@ -74,6 +74,8 @@ While it is true that the mechanism behind RAI may cause more uncertainty vs peg
 * RAI holders \(longs\) can benefit from exposure to a positive redemption rate \(revaluation\)
 * Shorts may also benefit from RAI devaluation
 
+It is also worth noting that only some fiat currencies are pegged, while others float and they are still considered "stable". Check out [this classification](https://www.imf.org/external/np/mfd/er/2004/eng/0604.htm) exchange rate arrangements published by the IMF
+
 ### Why would I want to mint RAI?
 
 We have both short and long term plans meant to attract borrowers and improve the experience of interacting with the protocol:
@@ -103,7 +105,7 @@ RAI's success depends on three main factors:
 
 It's worth noting that the narrative attracts liquidity and arbitrageurs which in turn can further strengthen the narrative.
 
-### What kind of apps can I build with RAI?
+### What can I build with RAI?
 
 TODO: money market, options, pegged coins, yield aggregator, investment keeper  
   
