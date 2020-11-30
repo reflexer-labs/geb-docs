@@ -1,4 +1,10 @@
-# Liquidations
+# Liquidations/Auctions
+
+#### Liquidation
+
+The collateral keeper will liquidate all critical safes it encounters. This starts a fixed discount collateral auction.
+
+
 
 ```text
 Liquidating ETH-A SAFE 0xc90F721DacfF8548777026253B8CB584426DC8C7 with locked_collateral=0.435000000000000000 liquidat
@@ -10,10 +16,9 @@ Sent transaction LiquidationEngine('0x4443d35BAEa0EeD30d9C7Fb136B8e507DC593646')
 Transaction LiquidationEngine('0x4443d35BAEa0EeD30d9C7Fb136B8e507DC593646').liquidateSAFE('0x4554482d41000000000000000000000000000000000000000000000000000000', '0xc90F721DacfF8548777026253B8CB584426DC8C7') was successful (tx_hash=0x6688d6e94dc884ba294dd67626f1e0c749c76ca14fb7224b948b31a0e5286d6a)
 ```
 
-`--return-collateral-interval`
+#### Auction
 
-  
-`--keep-collateral-in-safe-engine-on-exit`
+After an auction is started, the collateral keeper will be able to buy discounted collateral.  System coin is rebalanced before bidding to ensure maximum collateral is bought at a discount. Then the  `FixedDiscountCollateralAuctionHoue.buyCollateral` contract function is called.
 
 ```text
 Started monitoring auction #8
@@ -22,17 +27,42 @@ Process '../models/collateral_model.sh --id 8 --collateral_auction_house 0xF8AAD
 Checked auctions 0 to 8 in 0 seconds
 Checking if internal system coin balance needs to be rebalanced
 system coin token balance: 0.000000000000000000, SAFE Engine balance: 119.768970008628887937411195000000000000000000000
-Sent transaction FixedDiscountCollateralAuctionHouse('0xF8AAD33Cb9291Da4FF51377a6F1aB165c5E7Ab69').getCollateralBought(8, 119768970008628887937) with nonce=207, gas=163729, gas_price=default (tx_hash=0x567970f3ec40187bca3a2d65e4781ca04158196b3ae93fa46da10c7418ea1b29)
+Sending new bid @284.538396004218362573 for auction 8
+Sent transaction FixedDiscountCollateralAuctionHouse('0xF8AAD33Cb9291Da4FF51377a6F1aB165c5E7Ab69').buyCollateral(8, 4
+318147966969218961926) with nonce=230, gas=303231, gas_price=30000000000 (tx_hash=0x2f63ae43a46ae777f31a0977363a4d1ebd5fb8486d68fd70987b199281c36e3a)
+Transaction FixedDiscountCollateralAuctionHouse('0xF8AAD33Cb9291Da4FF51377a6F1aB165c5E7Ab69').buyCollateral(8, 431814
+7966969218961926) was successful (tx_hash=0x2f63ae43a46ae777f31a0977363a4d1ebd5fb8486d68fd70987b199281c36e3a)
 ```
+
+{% hint style="info" %}
+By default, the keeper submits a bid using all available system coin. This ensures the keeper gets the maximum collateral at a discount. If there are multiple auctions going on, you might see this error until the first `buyCollateral` transaction is finished
+
+`Bid cost 5025.307970008628887936000000000000000000000000000 exceeds reservoir level of 0.000000000000000000411195000000000000000000000; bid will not be submitted`
+{% endhint %}
 
 ## Swapping Collateral for system coin
 
+The collateral keeper can swap collateral\(ETH\) for system coin automatically on Uniswap when the collateral is exited from the system. This allows the keeper to be ready with system coin for the next collateral auction.To turn this option on, use this flag.
+
 `--swap-collateral`
+
+To set the max allowable slippage percent on Uniswap, set this flag.
 
 `--max-swap-slippage <float>, default: 0.01`  
 
 
 #### Exiting Collateral
+
+By default, the keeper will periodically exit won collateral from the system.  
+
+To adjust this interval:
+
+`--return-collateral-interval, default:300 secs`
+
+By default, the keeper will `exit`collateral when it shutdown. 
+
+To leave won collateral in the system on exit:  
+`--keep-collateral-in-safe-engine-on-exit`
 
 ```text
 Exiting 0.344424752741987967 ETH-A from the SAFE Engine

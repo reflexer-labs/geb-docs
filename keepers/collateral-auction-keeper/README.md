@@ -203,9 +203,3 @@ Notice, the keep automatically `exits` $$a = b$$ system coin from the system whe
 
 If you want to keep system coin in the SAFEEngine on shutdown, you can add the  `--keep-system-coin-in-safe-engine-on-exit` flag to `run_auction`\_`keeper.sh`This will skip the `exit` on shutdown and the `join` on the next startup, saving gas.
 
-## Liquidations
-
-```text
-
-```
-
