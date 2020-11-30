@@ -82,7 +82,7 @@ We have both short and long term plans meant to attract borrowers and improve th
 * Capped borrow rate: in the long run, RAI will have a capped \(and small\) borrow rate which makes the cost of maintaining a SAFE more predictable. Governance can, in theory, set the borrow rate to 0% although this prevents the system from accruing surplus that's [used to incentivize keepers](https://docs.reflexer.finance/system-contracts/sustainability-module/stability-fee-treasury) or build an insurance buffer meant to settle bad debt
 * Insurance for SAFEs: in the long run we can allow SAFE users to attach a wide variety of insurance contracts meant to protect their positions against liquidation
 * No exposure to assets with counterparty risk: RAI will only be backed by ETH. Borrowers are not exposed to riskier crypto assets or real world collateral
-* Superior collateral factors: as we improve the efficiency of our collateral auctions and add insurance contracts for SAFEs, we can lower the collateral requirements for borrowing RAI
+* Superior collateral factors: as we improve the efficiency of our [collateral auctions](https://docs.reflexer.finance/system-contracts/auction-module/fixed-discount-collateral-auction-house) and add insurance contracts for SAFEs, we can lower the collateral requirements for borrowing RAI
 
 ### What are RAI's use-cases?
 
