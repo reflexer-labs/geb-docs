@@ -93,7 +93,11 @@ The following is a non-exhaustive list of use-cases we envision for RAI:
 * Portfolio diversification: RAI offers dampened exposure to ETH's price moves
 * Source of yield: traders can earn "yield" when RAI's market price follows the redemption price 
 * DeFi collateral: RAI can be used as an ETH supplement or alternative collateral in DeFi protocols due to the fact that it dampens ether's price moves and gives users more time to react to market shifts
-* DAO reserve asset: DAOs can keep RAI on their balance sheet and get exposure to ETH without being affected by its full market swings 
+* DAO reserve asset: DAOs can keep RAI on their balance sheet and get exposure to ETH without being affected by its full market swings
+
+### Will RAI always return to the same initial value/peg?
+
+RAI is not designed to be pegged to anything. Similar to many fiat currencies \(EUR, GBP etc\)
 
 ### What are the assumptions behind RAI's mechanism?
 
