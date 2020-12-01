@@ -107,11 +107,25 @@ It's worth noting that the narrative attracts liquidity and arbitrageurs which i
 
 ### What can I build with RAI?
 
-These are only a couple of ideas describing what's possible to build with RAI:
+The following are a couple of examples of what's possible to build with RAI.
 
-* Unique money markets: 
-* Automated put/call options:
-* Pegged coins:
-* Investment keepers:
-* Yield aggregator:  
+#### Unique Money Markets
+
+If Alice pays 5% per year to borrow RAI from a money market and the RAI redemption rate is -10% per year, she is effectively earning 5% year. This is because of the expectation that RAI's market price will go down by 10% in one year. On the other hand, Bob might be lending RAI at 4% per year, but if the redemption rate is -10%, his net rate is -6%.  
+  
+There's the other scenario where Bob is lending RAI at 4% per year and the redemption rate is 10% per year. In total, Bob is earning 14% annually on his position \(assuming that RAI will appreciate in value by 10% in the next year\). Meanwhile, Alice, who's borrowing RAI at 5% per year, is paying a total of 15% \(5% as the money market borrow rate plus the expected 10% appreciation in RAI's price over one year\).
+
+#### Put/call options
+
+A developer can build an options protocol on top of RAI which takes into account changes in the redemption rate in order to determine the price of puts/calls. This is because the redemption rate can be thought of as an intrinsic interest rate for RAI.
+
+#### Pegged coins
+
+
+
+#### Community funded arbitrage keeper
+
+
+
+#### Yield aggregator  
 
