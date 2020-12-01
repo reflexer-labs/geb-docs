@@ -74,7 +74,7 @@ While it is true that the mechanism behind RAI may cause more uncertainty vs peg
 * RAI holders \(longs\) can benefit from exposure to a positive redemption rate \(revaluation\)
 * Shorts may also benefit from RAI devaluation
 
-It is also worth noting that only some fiat currencies are pegged, while others float and they are still considered "stable". Check out [this classification](https://www.imf.org/external/np/mfd/er/2004/eng/0604.htm) exchange rate arrangements published by the IMF
+It is also worth noting that only some fiat currencies are pegged, while others float and they are still considered "stable". Check out [this classification](https://www.imf.org/external/np/mfd/er/2004/eng/0604.htm) of exchange rate arrangements published by the IMF.
 
 ### Why would I want to mint RAI?
 
