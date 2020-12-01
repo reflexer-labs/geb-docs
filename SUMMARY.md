@@ -88,6 +88,4 @@
 
 * [Collateral Auction Keeper](keepers/collateral-auction-keeper/README.md)
   * [Liquidations/Auctions](keepers/collateral-auction-keeper/liquidations.md)
-* [Debt Auction Keeper](keepers/debt-auction-keeper.md)
-* [Surplus Auction Keeper](keepers/surplus-auction-keeper.md)
 

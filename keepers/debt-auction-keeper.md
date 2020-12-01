@@ -1,2 +1,0 @@
-# Debt Auction Keeper
-
