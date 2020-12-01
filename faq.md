@@ -125,11 +125,7 @@ A developer can build an options protocol on top of RAI which takes into account
 
 #### Pegged coins
 
-Projects building 
-
-#### Community funded arbitrage keeper
-
-
+Projects building pegged coins can use RAI as a more stable alternative to ETH. In case of a severe ETH market crash, RAI can offer its holders more time to unwind their positions before they get liquidated.
 
 #### Yield aggregator
 
