@@ -97,7 +97,7 @@ The following is a non-exhaustive list of use-cases we envision for RAI:
 
 ### Will RAI always return to the same initial value/peg?
 
-RAI is not designed to be pegged to anything. Similar to many fiat currencies \(EUR, GBP etc\)
+RAI is not designed to be pegged to anything, so it may never return to the same value it started at. Similar to many fiat currencies \(EUR, GBP etc\), RAI will float around, being influenced by market forces \(supply & demand\) and by the incentives that the PID controller offers to SAFE users and RAI holders.
 
 ### What are the assumptions behind RAI's mechanism?
 
