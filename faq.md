@@ -113,7 +113,7 @@ It's worth noting that the narrative attracts liquidity and arbitrageurs which i
 
 The following are a couple of examples of what's possible to build with RAI.
 
-#### Unique Money Markets
+#### Unique money markets
 
 If Alice pays 5% per year to borrow RAI from a money market and the RAI redemption rate is -10% per year, she is effectively earning 5% year. This is because of the expectation that RAI's market price will go down by 10% in one year. On the other hand, Bob might be lending RAI at 4% per year, but if the redemption rate is -10%, his net rate is -6%.  
   
