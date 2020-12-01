@@ -74,7 +74,7 @@ While it is true that the mechanism behind RAI may cause more uncertainty vs peg
 * RAI holders \(longs\) can benefit from exposure to a positive redemption rate \(revaluation\)
 * Shorts may also benefit from RAI devaluation
 
-It is also worth noting that only some fiat currencies are pegged, while others float and they are still considered "stable". Check out [this classification](https://www.imf.org/external/np/mfd/er/2004/eng/0604.htm) of exchange rate arrangements published by the IMF.
+It is also worth considering that only some fiat currencies are pegged, while others float and they are still considered "stable". Check out [this classification](https://www.imf.org/external/np/mfd/er/2004/eng/0604.htm) of exchange rate arrangements which shows the full spectrum of stability.
 
 ### Why would I want to mint RAI?
 
@@ -121,11 +121,13 @@ A developer can build an options protocol on top of RAI which takes into account
 
 #### Pegged coins
 
-
+Projects building 
 
 #### Community funded arbitrage keeper
 
 
 
-#### Yield aggregator  
+#### Yield aggregator
+
+Protocols that deploy capital in order to get the best yield for their users \(e.g [Yearn](https://yearn.finance/)\) can leverage RAI \(and its intrinsic redemption rate\) to boost returns. For example, combining RAI's positive redemption rate with lending on [Compound](https://compound.finance/) or [Aave](https://aave.com/) is one possible way to optimize earnings.
 
