@@ -107,7 +107,11 @@ It's worth noting that the narrative attracts liquidity and arbitrageurs which i
 
 ### What can I build with RAI?
 
-TODO: money market, options, pegged coins, yield aggregator, investment keeper  
-  
+These are only a couple of ideas describing what's possible to build with RAI:
 
+* Unique money markets: 
+* Automated put/call options:
+* Pegged coins:
+* Investment keepers:
+* Yield aggregator:  
 
