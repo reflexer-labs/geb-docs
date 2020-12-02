@@ -121,7 +121,7 @@ There's the other scenario where Bob is lending RAI at 4% per year and the redem
 
 #### Put/call options
 
-A developer can build an options protocol on top of RAI which takes into account changes in the redemption rate in order to determine the price of puts/calls. This is because the redemption rate can be thought of as an intrinsic interest rate for RAI.
+A developer can build an options protocol which takes into account changes in the redemption rate in order to determine the price of puts/calls. This is because the redemption rate can be thought of as an intrinsic interest rate for RAI.
 
 #### Pegged coins
 
