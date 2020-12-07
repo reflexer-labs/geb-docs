@@ -43,6 +43,12 @@ When RAI is devalued \(in case of ETH capital outflow\), the opposite thing happ
 * SAFE users realize that they can mint more RAI against their ETH and that they will be able to buy cheap RAI once the market price tanks
 * Token holders realize that they can redeem less ETH during Settlement and, in order to earn money, they need to short RAI
 
+### Is RAI a stablecoin?
+
+No. Stablecoins are pegged or oscillating around a specific value \(usually to fiat coins such as USD, EUR etc\). RAI, on the other hand, is not pegged to anything. 
+
+The system behind RAI only cares about the market price getting as close as possible to the redemption price.
+
 ### Why would I hold RAI when the system devalues the token?
 
 This is exactly what the system wants you to ask yourself when it charges a negative interest rate. The system is trying to incentivize RAI holders to sell and bring the market price down and close to the redemption price.
