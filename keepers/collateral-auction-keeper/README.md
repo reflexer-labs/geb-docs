@@ -68,11 +68,11 @@ Sent transaction <pyflex.gf.CoinJoin object at 0x7ff7d69affd0>.join('0x02b70C78b
 Transaction <pyflex.gf.CoinJoin object at 0x7ff7d69affd0>.join('0x02b70C78b400FF8fe89Af7D84d443f875D047a8F', 86380323152450242963) was successful (tx_hash=0x885216086bdd41a5bf3be858d77161fac3433ffd3a208571f2cf52ed51456d83)
 ```
 
-By default, the keeper will `join` all of the keeper's system coins to the SAFEEngine, to make it available for purchasing discounted collateral. If you want to change the amount used for purchases, you can add the following flag to `run_auction_keeper.sh`
+By default, the keeper will `join` all of its system coins to the [SAFEEngine](https://docs.reflexer.finance/system-contracts/core/safe-engine) in order to make them available for bidding in collateral auctions. If you want to change the amount used for purchases, you can add the following flag to `run_auction_keeper.sh`
 
 `--safe-engine-system-coin-target <Number of system coins>, default: ALL`
 
-#### Rebalancing
+## Rebalancing
 
 {% hint style="warning" %}
 The keeper will periodically rebalance to ensure `--safe-engine-system-coin-target`system coin is available in the SAFEEngine for collateral auctions. If the keeper's SAFEEngine balance drops below this target\(due to purchasing discounted collateral\), the keeper will automatically try to `join` additional system coins from the keeper's address if available.
