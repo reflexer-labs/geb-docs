@@ -21,7 +21,7 @@ Create a file called  `run_auction_keeper.sh` and paste the following code in it
 
 docker run -it \
 	-v <KEYSTORE DIR>:/keystore \
-	reflexer/auction-keeper \
+	reflexer/auction-keeper:prai-demo \
         --rpc-uri <ETH_RPC_URL> \
         --eth-from <KEEPER ADDRESS> \
         --eth-key "key_file=/keystore/<KEYSTORE FILE>"
