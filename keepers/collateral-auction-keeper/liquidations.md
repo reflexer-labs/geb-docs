@@ -44,11 +44,11 @@ Transaction FixedDiscountCollateralAuctionHouse('0xF8AAD33Cb9291Da4FF51377a6F1aB
 
 ## Swapping Bought Collateral for System Coins
 
-The collateral keeper can swap collateral for system coin automatically on Uniswap when the collateral is exited from the system. This allows the keeper to be ready with system coin for the next collateral auction.To turn this option on, use this flag.
+The collateral keeper can swap collateral for system coins automatically when it's exited from the system using Uniswap V2 This allows the keeper to have plenty of system coins available next time it starts.To turn this option on, use this flag inside `run_auction_keeper.sh`:
 
 `--swap-collateral`
 
-To set the max allowable slippage percent on Uniswap V2, set this flag:
+To set the max allowable slippage percentage on Uniswap V2, set this flag:
 
 `--max-swap-slippage <float>, default: 0.01`
 
