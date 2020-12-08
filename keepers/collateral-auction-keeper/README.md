@@ -1,14 +1,20 @@
 ---
-description: Running a collateral auction-keeper
+description: Setup and the life cycle of a collateral auction keeper
 ---
 
 # Collateral Auction Keeper
 
 ## Quickstart
 
-1\) Buy RAI from [Uniswap v2](https://info.uniswap.org/pair/0xEBdE9F61e34B7aC5aAE5A4170E964eA85988008C) or [open a SAFE](https://app.gitbook.com/@reflexer-labs/s/geb/pyflex/safe-management/opening-a-safe) and generate some RAI.
+Running a collateral auction keeper takes 5 steps. 
 
-2\) Create  `run_auction_keeper.sh`
+### 1\) Get RAI 
+
+Buy RAI from [Uniswap v2](https://info.uniswap.org/pair/0xEBdE9F61e34B7aC5aAE5A4170E964eA85988008C) or [open a SAFE](https://app.gitbook.com/@reflexer-labs/s/geb/pyflex/safe-management/opening-a-safe) and generate it.
+
+### 2\) Create the keeper run file
+
+Create a file called  `run_auction_keeper.sh` and paste the following code in it:
 
 ```text
 #!/bin/bash
@@ -22,17 +28,21 @@ docker run -it \
         
 ```
 
-#### Substitute in the following variables:
+#### Then, substitute the following variables:
 
-`KEYSTORE_DIR` The local directory where your keystore file is.
+`KEYSTORE_DIR` - this must be the local directory where your keystore file is.
 
-`ETH_RPC_URL`URL of ethereum RPC connection
+`ETH_RPC_URL` - this is the URL of ethereum RPC connection
 
-`KEEPER_ADDRESS`Address of your keeper. Should be in checksummed format, not in lowercase.
+`KEEPER_ADDRESS` - this is your keeper's address. It should be in checksummed format, not lowercase
 
-3\). `chmod +x run_auction_keeper.sh`
+### 3\) Make the keeper script runnable
 
-4\) `./run_auction_keeper.sh`
+`chmod +x run_auction_keeper.sh`
+
+### 4\) Run the keeper
+
+`./run_auction_keeper.sh`
 
 ```text
 $ ./run_auction_keeper.sh
@@ -44,9 +54,9 @@ docker.io/reflexer/auction-keeper:latest
 Password for /keystore/key.json: 
 ```
 
-5\) Enter your keystore file password. 
+### 5\) Enter your keystore file password
 
-#### System coin join
+## System coin join
 
 ```text
 Keeper connected to RPC connection http://172.31.46.181:8545
