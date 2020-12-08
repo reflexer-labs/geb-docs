@@ -87,5 +87,5 @@
 ## Keepers
 
 * [Collateral Auction Keeper](keepers/collateral-auction-keeper/README.md)
-  * [Liquidations/Auctions](keepers/collateral-auction-keeper/liquidations.md)
+  * [Liquidations & Auctions](keepers/collateral-auction-keeper/liquidations.md)
 

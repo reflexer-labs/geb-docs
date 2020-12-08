@@ -1,8 +1,8 @@
-# Liquidations/Auctions
+# Liquidations & Auctions
 
-#### Liquidation
+## Liquidations
 
-The collateral keeper will liquidate all critical safes it encounters. This starts a fixed discount collateral auction.
+The collateral keeper will liquidate all critical safes it encounters. This process starts new fixed discount collateral auctions:
 
 ```text
 Liquidating ETH-A SAFE 0xc90F721DacfF8548777026253B8CB584426DC8C7 with locked_collateral=0.435000000000000000 liquidat
@@ -14,9 +14,9 @@ Sent transaction LiquidationEngine('0x4443d35BAEa0EeD30d9C7Fb136B8e507DC593646')
 Transaction LiquidationEngine('0x4443d35BAEa0EeD30d9C7Fb136B8e507DC593646').liquidateSAFE('0x4554482d41000000000000000000000000000000000000000000000000000000', '0xc90F721DacfF8548777026253B8CB584426DC8C7') was successful (tx_hash=0x6688d6e94dc884ba294dd67626f1e0c749c76ca14fb7224b948b31a0e5286d6a)
 ```
 
-#### Auction
+## Auctions
 
-After an auction is started, the collateral keeper will be able to buy discounted collateral.  System coin is rebalanced before bidding to ensure maximum collateral is bought at a discount. Then the  `FixedDiscountCollateralAuctionHoue.buyCollateral` contract function is called.
+After an auction is started, the collateral keeper will be able to bid for and buy collateral at a discounted price.
 
 ```text
 Started monitoring auction #8
@@ -33,33 +33,36 @@ Transaction FixedDiscountCollateralAuctionHouse('0xF8AAD33Cb9291Da4FF51377a6F1aB
 ```
 
 {% hint style="info" %}
-By default, the keeper submits a bid using all available system coin. This ensures the keeper gets the maximum collateral at a discount. If there are multiple auctions going on, you might see this error until the first `buyCollateral` transaction is finished
+**Bidding Gotchas**
+
+1\) By default, the keeper submits a bid using all available system coin. This ensures the keeper gets the maximum amount of discounted collateral. 
+
+2\) If there are multiple ongoing auctions, you might see this error until the first `buyCollateral` transaction is finished:
 
 `Bid cost 5025.307970008628887936000000000000000000000000000 exceeds reservoir level of 0.000000000000000000411195000000000000000000000; bid will not be submitted`
 {% endhint %}
 
-## Swapping Collateral for system coin
+## Swapping Bought Collateral for System Coins
 
-The collateral keeper can swap collateral\(ETH\) for system coin automatically on Uniswap when the collateral is exited from the system. This allows the keeper to be ready with system coin for the next collateral auction.To turn this option on, use this flag.
+The collateral keeper can swap collateral for system coin automatically on Uniswap when the collateral is exited from the system. This allows the keeper to be ready with system coin for the next collateral auction.To turn this option on, use this flag.
 
 `--swap-collateral`
 
-To set the max allowable slippage percent on Uniswap, set this flag.
+To set the max allowable slippage percent on Uniswap V2, set this flag:
 
-`--max-swap-slippage <float>, default: 0.01`  
+`--max-swap-slippage <float>, default: 0.01`
 
+## Exiting Collateral
 
-#### Exiting Collateral
+By default, the keeper will periodically exit collateral \(that was bought from auctions\) from the system.  
 
-By default, the keeper will periodically exit won collateral from the system.  
-
-To adjust this interval:
+To adjust the interval at which the keeper exits collateral, set:
 
 `--return-collateral-interval, default:300 secs`
 
-By default, the keeper will `exit`collateral when it shutdown. 
+By default, the keeper will `exit`collateral when it's shutting down. 
 
-To leave won collateral in the system on exit:  
+To leave won collateral in the system on exit, specify this inside `run_auction_keeper.sh`:  
 `--keep-collateral-in-safe-engine-on-exit`
 
 ```text
