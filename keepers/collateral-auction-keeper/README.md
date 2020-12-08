@@ -82,9 +82,9 @@ By default, the keeper will `join` all of its system coins to the [SAFEEngine](h
 
 ## Rebalancing
 
-The keeper will periodically rebalance between ETH bought from collateral auctions and RAI to ensure `--safe-engine-system-coin-targetsystem` coins are available in the [SAFEEngine](https://docs.reflexer.finance/system-contracts/core/safe-engine). 
+The keeper will periodically rebalance the amount of system coins available for bidding to match`--safe-engine-system-coin-target`to ensure  system coins are available in the [SAFEEngine](https://docs.reflexer.finance/system-contracts/core/safe-engine). 
 
-If the keeper's SAFEEngine balance drops below `--safe-engine-system-coin-targetsystem` \(due to bidding\), the keeper will automatically try to join additional system coins by swapping ETH for RAI.
+If the keeper's SAFEEngine balance drops below `--safe-engine-system-coin-target` \(due to bidding\), the keeper will automatically try to join additional system coins by swapping ETH for RAI.
 
 ## Setting the Gas Price
 
