@@ -182,7 +182,7 @@ Shutdown logic finished
 Keeper terminated
 ```
 
-Notice that the keeper automatically `exits`$$a = b$$ system coin from the system when it shuts down.
+Notice that the keeper automatically `exit`s all system coins from the `SAFEEngine` when it shuts down.
 
 If you want to keep system coins in the `SAFEEngine` on shutdown, you can add the  `--keep-system-coin-in-safe-engine-on-exit` flag to `run_auction_keeper.sh`This will skip the `exit` operation on shutdown and the `join` on the next startup, thus saving gas.
 
