@@ -45,7 +45,7 @@ When RAI is devalued \(in case of ETH capital outflow\), the opposite thing happ
 
 ### Is RAI a stablecoin?
 
-No. Stablecoins are pegged or oscillating around a specific value \(usually to fiat coins such as USD, EUR etc\). 
+No. Stablecoins are pegged or oscillating around a specific value \(usually pegged to fiat coins such as USD, EUR etc\). 
 
 RAI, on the other hand, is not pegged to anything. The system behind RAI only cares about the market price getting as close as possible to the redemption price. The redemption price will almost always float \(thus, it won't be pegged\) in order to compel system participants to bring the market price toward it.
 
