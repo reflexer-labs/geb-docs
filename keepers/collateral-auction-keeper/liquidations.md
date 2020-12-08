@@ -52,6 +52,10 @@ To set the max allowable slippage percentage on Uniswap V2, set this flag:
 
 `--max-swap-slippage <float>, default: 0.01`
 
+{% hint style="info" %}
+Use `--swap-collateral` with `--safe-engine-system-coin-target ALL`\(the default\) to ensure collateral won is automatically converted to system coin to be available for the next auction
+{% endhint %}
+
 ## Exiting Collateral
 
 By default, the keeper will periodically exit collateral \(that was bought from auctions\) from the system.  
