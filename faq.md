@@ -65,7 +65,9 @@ Even if RAI is backed by a single collateral type it does **not** mean that we c
 
 ### How do you plan to grow RAI so it achieves its maximum potential?
 
-RAI is meant to help other projects take advantage of its redemption rate as well as 
+RAI is meant to help other projects take advantage of its redemption rate as well as provide a more stable source of borrowing power compared to ETH.  
+  
+We believe that growing alongside other projects and helping builders leverage RAI will make the protocol successful. In short: RAI's success depends on other projects' well being.
 
 ### What is the difference between the redemption rate and the borrow rate?
 
