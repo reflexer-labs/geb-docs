@@ -4,7 +4,7 @@ description: Setup and the life cycle of a collateral auction keeper.
 
 # Collateral Auction Keeper
 
-## Quickstart
+## Quickstart: Run as a docker container.
 
 Running a collateral auction keeper as a docker container takes 5 steps. 
 
