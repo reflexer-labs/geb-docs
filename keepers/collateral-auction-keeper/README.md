@@ -32,9 +32,17 @@ docker run -it \
 
 `KEYSTORE_DIR` - this must be the local directory where your keystore file is.
 
+`KEYSTORE_FILE` Your Ethereum UTC JSON wallet.  For more information about this keystore format and how to generate them:
+
+{% embed url="https://wizardforcel.gitbooks.io/practical-cryptography-for-developers-book/content/symmetric-key-ciphers/ethereum-wallet-encryption.html" %}
+
+{% embed url="https://github.com/ethereumjs/keythereum" %}
+
 `ETH_RPC_URL` - this is the URL of ethereum RPC connection
 
 `KEEPER_ADDRESS` - this is your keeper's address. It should be in checksummed format, not lowercase
+
+
 
 ### 3\) Make the keeper script runnable
 
