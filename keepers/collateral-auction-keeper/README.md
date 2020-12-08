@@ -56,7 +56,7 @@ Password for /keystore/key.json:
 
 ### 5\) Enter your keystore file password
 
-## System coin join
+## System Coin Join
 
 ```text
 Keeper connected to RPC connection http://172.31.46.181:8545
@@ -74,27 +74,17 @@ By default, the keeper will `join` all of its system coins to the [SAFEEngine](h
 
 ## Rebalancing
 
-{% hint style="warning" %}
-The keeper will periodically rebalance to ensure `--safe-engine-system-coin-target`system coin is available in the SAFEEngine for collateral auctions. If the keeper's SAFEEngine balance drops below this target\(due to purchasing discounted collateral\), the keeper will automatically try to `join` additional system coins from the keeper's address if available.
-{% endhint %}
+The keeper will periodically rebalance between ETH bought from collateral auctions and RAI to ensure `--safe-engine-system-coin-targetsystem` coins are available in the [SAFEEngine](https://docs.reflexer.finance/system-contracts/core/safe-engine). 
 
-#### Gas price
+If the keeper's SAFEEngine balance drops below `--safe-engine-system-coin-targetsystem` \(due to bidding\), the keeper will automatically try to join additional system coins by swapping ETH for RAI.
 
-```text
-Keeper will perform the following operation(s) in parallel:
---> Check all safes and start new auctions if any critical safes need to be liquidated
---> Check all auctions being monitored and evaluate bidding opportunity every 4.0 seconds
---> Check all auctions and settle for 0x02b70C78b400FF8fe89Af7D84d443f875D047a8F
-*** When Keeper is settling/bidding, the initial evaluation of auctions will likely take > 45 minutes without setting a lower boundary via '--min-auction' ***
-*** When Keeper is starting auctions, initializing safe history may take > 30 minutes without using Graph via `--graph-endpoints` ***
-Keeper will use Node gas price (currently 33.0 Gwei, changes over time) and will multiply by 1.125 every 30s to a maximum of 2000.0 Gwei for transactions and bids unless model instructs otherwise
-```
+## Setting the Gas Price
 
-By default, the keeper uses the node's gas price when creating transactions.  Every 30 seconds, the keeper will multiple the gas price by `--gas-reactive-multiplier, default 1.125`  up to `--gas-maximum, default:2000`
+By default, the keeper uses the node's gas price when creating transactions.  Every 30 seconds, the keeper will multiple the gas price by `--gas-reactive-multiplier, default: 1.125`  up to `--gas-maximum, default: 2000`
 
 #### Gas Provider
 
-If you don't want to use the node's gas prices, you can use one of these providers for gas prices.
+If you don't want to use the node's gas prices, you can use one of these providers instead:
 
 <table>
   <thead>
@@ -109,11 +99,6 @@ If you don't want to use the node's gas prices, you can use one of these provide
       </td>
       <td style="text-align:left"><code>--ethgasstation-api-key &lt;API_KEY&gt;</code> 
       </td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><a href="https://www.poa.network">poa.network</a>
-      </td>
-      <td style="text-align:left"><code>--poanetwork-gas-price</code> , optional: <code>--poanetwork-url</code> &lt;URL&gt;</td>
     </tr>
     <tr>
       <td style="text-align:left"><a href="https://etherscan.io">etherscan.io</a>
@@ -131,19 +116,17 @@ If you don't want to use the node's gas prices, you can use one of these provide
       <td style="text-align:left"><code>--gasnow-gas-price</code>, optional:<code>--gasnow-app-name &lt;APP_NAME&gt;</code>
       </td>
     </tr>
-    <tr>
-      <td style="text-align:left">Fixed gas price</td>
-      <td style="text-align:left"><code>--fixed-gas-price &lt;GWEI&gt;</code>
-      </td>
-    </tr>
   </tbody>
 </table>
 
-You can further adjust a provider's gas price with `--gas-initial-multiplier, default: 1.0`
+You can further adjust the gas price with:
 
-####  Fetching SAFE histories
+* `--fixed-gas-price <GWEI>` - sets a fixed gas price to use for every keeper interaction with the chain
+* `--gas-initial-multiplier` \(default: 1.0\) - sets the initial gas multiplier
 
-During startup, the keeper needs to fetch SAFE histories.
+## Fetching SAFEs Histories
+
+During startup, the keeper will fetch all SAFE's histories:
 
 ```text
 Keeper will perform the following operation(s) in parallel:
@@ -158,31 +141,21 @@ Started 2 timer(s)
 Checked 39 safes in 8 seconds
 ```
 
-#### Checking auctions and new SAFE events
+### Using The Graph to Fetch SAFE Data
+
+[The Graph](https://thegraph.com/) is a project that seeks to provide efficient and simplified access to Ethereum data. Our keeper implementation allows anyone to connect to RAI's subgraph and pull data from the mainnet GEB instance using a developer friendly API interface.
+
+Instead of using the node to gather all past SAFE history, you can add the following flag to `run_auction_keeper.sh`:
 
 ```text
-hecked auctions 0 to 4 in 0 seconds
-Checked 39 safes in 0 seconds
-Checked auctions 0 to 4 in 0 seconds
-Checked 39 safes in 0 seconds
-Checked auctions 0 to 4 in 0 seconds
-Checked 39 safes in 0 seconds
-Checked auctions 0 to 4 in 0 seconds
-Checked 39 safes in 0 seconds
-Checked auctions 0 to 4 in 0 seconds
-Checked 39 safes in 0 seconds
-
+--graph-endpoints https://api.thegraph.com/subgraphs/name/reflexer-labs/prai-mainnet,https://subgraph.reflexer.finance/subgraphs/name/reflexer-labs/rai
 ```
 
-#### Fetching SAFE histories: The Graph
+Notice that we're adding two different endpoints so that the keeper has a fallback in case one of them returns faulty results.
 
-The[ graph](https://thegraph.com) is a project that seeks to provide efficient and simplified access to Ethereum data.
+Adding `--graph-endpoints` will speed up the process of fetching the initial history for all SAFEs when the keeper starts up. Notice that the SAFE history is fetched in only 3 seconds with `--graph-endpoints` and it takes longer without it. 
 
-Instead of using the node to gather all past SAFE history, you can add the following flag to `run_auction`\_`keeper.sh`
-
-`--graph-endpoints https://api.thegraph.com/subgraphs/name/reflexer-labs/prai-mainnet,https://subgraph.reflexer.finance/subgraphs/name/reflexer-labs/rai`
-
-This will speed up fetching the initial history of all SAFEs when the collateral keeper starts up. Notice the SAFE history is fetched in only 3 seconds with `--graph-endpoits`,while it took 8 seconds above. This is negligible now, but as more SAFEs are created, getting SAFE history without `--graph-endpoints`will take longer and longer.
+As more and more SAFEs are created, getting their histories without `--graph-endpoints`will take longer.
 
 ```text
 Watching for new blocks
@@ -192,7 +165,7 @@ Fetching safe modes from https://api.thegraph.com/subgraphs/name/reflexer-labs/p
 Checked 39 safes in 3 seconds
 ```
 
-#### Exiting collateral-keeper
+## Stopping the Keeper
 
 ```text
 Keeper received SIGINT/SIGTERM signal, will terminate gracefully
@@ -209,7 +182,7 @@ Shutdown logic finished
 Keeper terminated
 ```
 
-Notice, the keep automatically `exits` $$a = b$$ system coin from the system when it shuts down.
+Notice that the keeper automatically `exits`$$a = b$$ system coin from the system when it shuts down.
 
-If you want to keep system coin in the SAFEEngine on shutdown, you can add the  `--keep-system-coin-in-safe-engine-on-exit` flag to `run_auction`\_`keeper.sh`This will skip the `exit` on shutdown and the `join` on the next startup, saving gas.
+If you want to keep system coins in the `SAFEEngine` on shutdown, you can add the  `--keep-system-coin-in-safe-engine-on-exit` flag to `run_auction_keeper.sh`This will skip the `exit` operation on shutdown and the `join` on the next startup, thus saving gas.
 
