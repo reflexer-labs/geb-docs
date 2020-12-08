@@ -63,6 +63,10 @@ Short answer: yes. Nevertheless, we decided to build a pure ETH system for sever
 
 Even if RAI is backed by a single collateral type it does **not** mean that we cannot create other systems later on which are backed by multiple/different assets.
 
+### How do you plan to grow RAI so it achieves its maximum potential?
+
+RAI is meant to help other projects take advantage of its redemption rate as well as 
+
 ### What is the difference between the redemption rate and the borrow rate?
 
 A system like RAI has two types of rates:
