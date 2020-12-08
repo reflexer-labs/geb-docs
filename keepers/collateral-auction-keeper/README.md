@@ -42,8 +42,6 @@ docker run -it \
 
 `KEEPER_ADDRESS` - this is your keeper's address. It should be in checksummed format, not lowercase
 
-
-
 ### 3\) Make the keeper script runnable
 
 `chmod +x run_auction_keeper.sh`
