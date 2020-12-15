@@ -89,35 +89,35 @@ If none of these options is given or if the gas API produces no result, the keep
 
 ### Other gas options
 
-`--gas-initial-multiplier MULTIPLIER` When using an API source for initial gas price, tunes initial gas price. Ignored when using `--fixed-gas-price` or no strategy is given default `1.0`
+`--gas-initial-multiplier MULTIPLIER` When using an API source for fetching the initial gas price, this tunes the price. It's ignored when you're using `--fixed-gas-price`. In case no strategy is specified it defaults to `1.0`
 
-`--gas-reactive-multiplier MULTIPLIER` Every 30 seconds, a transaction's gas price will be multiplied by this value until it is mined or `--gas-maxiumum` is reached. Not used if `gasPrice` is passed from your bidding model. Note: [Parity](https://wiki.parity.io/Transactions-Queue#dropping-conditions), as of this writing, requires a minimum gas increase of `1.125` to propagate transaction replacement; this should be treated as a minimum value unless you want replacements to happen less frequently than 30 seconds \(2+ blocks\). default `1.125`
+`--gas-reactive-multiplier MULTIPLIER` Every 30 seconds, a transaction's gas price will be multiplied by this value until it is mined or `--gas-maxiumum` is reached. Not used if `gasPrice` is passed from your bidding model. **NOTE**: [Parity](https://wiki.parity.io/Transactions-Queue#dropping-conditions), as of this writing, requires a minimum gas increase of `1.125` to propagate a transaction replacement; this should be treated as a minimum value unless you want replacements to happen less frequently than 30 seconds \(2+ blocks\). This multiplier defaults to  `1.125` if no other value is given.
 
 `--gas-maximum GWEI` Maximum value for gas price
 
 ### Accounting options
 
-By default the keeper `join`s system coins to `SAFEEngine` on startup and `exit`s system coin and collateral upon shutdown. The keeper provides facilities for managing `SAFEEngine` balances, which may be turned off to manage manually.
+By default the keeper `join`s system coins to `SAFEEngine` on startup and `exit`s all system coins and collateral upon shutdown. The keeper provides options for managing `SAFEEngine` balances, which may be turned off in case you'd like to manage balances manually.
 
 `--keep-system-coin-in-safe-engine-on-exit` Do not `exit` system coin on shutdown
 
 `--keep-collateral-in-safe-engine-on-exit` Do not `exit` collateral on shutdown
 
-`--return-collateral-interval SECS` Interval to `exit` won collateral to auction-keeper. Pass `0` to disable completely. default `300`
+`--return-collateral-interval SECS` Delay from the moment the keeper wins a collateral auction and until it `exit`s won collateral out of the `SAFEEngine`. Pass `0` to disable completely. Defaults to `300`
 
-`--safe-engine-system-coin-target ALL|<integer>` Amount of system-coin the keeper will try to keep in the `SAFEEngine` through rebalancing with `join`s and `exit`s. By default, there is no target.
+`--safe-engine-system-coin-target ALL|<integer>` Amount of system coins the keeper will try to keep in `SAFEEngine` by rebalancing with `join`s and `exit`s between its own wallet and its balance inside GEB. By default there is no target.
 
-**Rebalancing:**
+### **Rebalancing**
 
 System coins are rebalanced per `--safe-engine-system-coin-target` when:
 
 * The keeper starts up
-* `SAFEEngine` balance is insufficient to place a bid
+* `SAFEEngine` balance is insufficient in order to place a bid
 * An auction is settled
 
-  Rebalances do not account for system coins moved from the `SAFEEngine` to an auction contract for an active bid.
+Rebalances do not account for system coins moved from the `SAFEEngine` to an auction contract for an active bid.
 
-  To avoid transaction spamming, small "dusty" system coins balances will be ignored \(until the keeper exits, if so configured\).
+To avoid transaction spamming, small "dusty" system coins balances will be ignored \(until the keeper exits, if so configured\).
 
 ### Managing resources
 
