@@ -30,9 +30,9 @@ For every new block, all auctions from `1` to `auctionsStarted` are checked for 
 
 Examples:
 
-* [Collateral](https://github.com/reflexer-labs/geb-docs/tree/ad25b15265b1f74d798690da41b1df00895f0cea/keepers/CollateralDocker.md)
-* [Surplus](https://github.com/reflexer-labs/geb-docs/tree/ad25b15265b1f74d798690da41b1df00895f0cea/keepers/SurplusDocker.md)
-* [Debt](https://github.com/reflexer-labs/geb-docs/tree/ad25b15265b1f74d798690da41b1df00895f0cea/keepers/DebtDocker.md)
+* [Collateral](collateral-auction-keeper/running-in-docker.md)
+* [Surplus](debt-auction-keeper/running-in-docker.md)
+* [Debt](surplus-auction-keeper/running-in-docker.md)
 
 ### Running on a Host
 
@@ -50,9 +50,9 @@ Keeper can now be run with `bin/auction-keeper`
 
 Examples:
 
-* [Collateral](https://github.com/reflexer-labs/geb-docs/tree/ad25b15265b1f74d798690da41b1df00895f0cea/keepers/CollateralHost.md)
-* [Surplus](https://github.com/reflexer-labs/geb-docs/tree/ad25b15265b1f74d798690da41b1df00895f0cea/keepers/SurplusHost.md)
-* [Debt](https://github.com/reflexer-labs/geb-docs/tree/ad25b15265b1f74d798690da41b1df00895f0cea/keepers/DebtHost.md)
+* [Collateral](collateral-auction-keeper/running-on-a-host.md)
+* [Surplus](debt-auction-keeper/running-on-a-host.md)
+* [Debt](surplus-auction-keeper/running-on-a-host.md)
 
 ## Configuration Reference
 
