@@ -86,7 +86,6 @@
 
 ## Keepers
 
-* [Overview](keepers/overview.md)
 * [Collateral Auction Keeper](keepers/collateral-auction-keeper/README.md)
   * [Liquidations & Auctions](keepers/collateral-auction-keeper/liquidations.md)
 
