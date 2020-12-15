@@ -89,5 +89,6 @@
 * [Overview](keepers/overview.md)
 * [Collateral Auction Keeper](keepers/collateral-auction-keeper/README.md)
   * [Running in docker](keepers/collateral-auction-keeper/running-in-docker.md)
+  * [Running on a host](keepers/collateral-auction-keeper/running-on-a-host.md)
   * [Liquidations & Auctions](keepers/collateral-auction-keeper/liquidations.md)
 
