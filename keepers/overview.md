@@ -37,6 +37,8 @@ Examples:
 
 Pre-requisites: Python 3.6+
 
+Install `auction-keeper` dependencies with:
+
 ```text
 git clone https://github.com/makerdao/auction-keeper.git
 cd auction-keeper
@@ -45,9 +47,9 @@ git submodule update --init --recursive
 pip3 install -r requirements.txt
 ```
 
-Keeper can now be run with `bin/auction-keeper`
+The keeper can now be run with `bin/auction-keeper`.
 
-Examples:
+Auction specific examples:
 
 * [Collateral](collateral-auction-keeper/running-on-a-host.md)
 * [Surplus](debt-auction-keeper/running-on-a-host.md)
@@ -55,7 +57,7 @@ Examples:
 
 ## Configuration Reference
 
-Run `bin/auction-keeper -h` without arguments to see an up-to-date list of arguments and usage information.
+Run `bin/auction-keeper -h` to see an up-to-date list of arguments and usage information.
 
 ### General
 
