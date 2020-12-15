@@ -2,7 +2,7 @@
 description: Running a collateral auction-keeper in a docker container.
 ---
 
-# Running in docker
+# Running in Docker
 
 ## 1\) Get RAI
 

@@ -1,24 +1,23 @@
-# Overview
+# Keepers Overview
 
-## auction-keeper
-
-[![Build Status](https://travis-ci.org/reflexer-labs/auction-keeper.svg?branch=master)](https://travis-ci.org/reflexer-labs/auction-keeper) [![codecov](https://codecov.io/gh/reflexer-labs/auction-keeper/branch/master/graph/badge.svg)](https://codecov.io/gh/reflexer-labs/auction-keeper)
-
-### Overview
-
-`auction-keeper` participates in collateral, surplus and debt auctions by directly interacting with auction contracts deployed to the Ethereum blockchain.
+Keepers are meant participate in collateral, surplus and debt auctions by directly interacting with GEB auction contracts deployed to the Ethereum blockchain.
 
 ### Responsibilities
 
-The keeper is responsible with:
+The keepers are responsible with:
 
-1\) Monitoring all active auctions 2\) Starting new auctions 2\) Discovering new auctions 3\) Ensuring a bidding model is running for each active auction 4\) Passing auction status to each bidding model 5\) Processing each bidding model output and submitting bids
+1. Monitoring all active auctions
+2. Starting new auctions 
+3. Discovering new auctions 
+4. Ensuring a bidding model is running for each active auction 
+5. Passing auction status to each bidding model 
+6. Processing each bidding model output and submitting bids
 
 ### Architecture
 
-`auction-keeper` can read an auction's status diretly from the Ethereum blockchain or a [Graph](https://thegraph.com/) node. Its unique feature is the ability to plug in external _bidding models_ which tell the keeper when and how much to bid. Bid prices are received from separate _bidding models_.
+`auction-keeper` can read an auction's status directly from the Ethereum blockchain or from a [Graph](https://thegraph.com/) node. Its unique feature is the ability to plug in external _bidding models_ which tell the keeper when and how much to bid. Bid prices are received from separate _bidding models_.
 
-_Bidding models_ are simple processes that can be implemented in any programming language. They only need to pass JSON objects to and from `auction-keeper`. The simplest example of a bidding model is a shell script which echoes a fixed price. Read more about bidding models [here.](https://github.com/reflexer-labs/geb-docs/tree/ad25b15265b1f74d798690da41b1df00895f0cea/keepers/BiddingModels.md)
+_Bidding models_ are simple processes that can be implemented in any programming language. They only need to pass JSON objects to and from `auction-keeper`. The simplest example of a bidding model is a shell script which echoes a fixed price.
 
 For every new block, all auctions from `1` to `auctionsStarted` are checked for active status. If a new auction is detected, a new bidding model is started.
 
@@ -26,7 +25,7 @@ For every new block, all auctions from `1` to `auctionsStarted` are checked for 
 
 ## Installation
 
-### Running on Docker\(recommended\)
+### Running on Docker \(recommended\)
 
 Examples:
 
