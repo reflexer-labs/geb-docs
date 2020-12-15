@@ -4,10 +4,7 @@ Import all the necessary files:
 
 ```python
 >>> from web3 import Web3, HTTPProvider
->>> from pyflex import Address
 >>> from pyflex.deployment import GfDeployment
->>> from pyflex.keys import register_keys
->>> from pyflex.numeric import Wad 
 ```
 
 And then connect to an Ethereum node:

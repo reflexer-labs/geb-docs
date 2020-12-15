@@ -25,6 +25,7 @@ Get total debt available to generate:
 Get a `SAFE`'s status:
 
 ```python
+>>> from pyflex import Address
 >>> collateral_type = geb.collaterals['ETH-A'].collateral_type
 >>> safe = geb.safe_engine.safe(collateral_type, Address('0xdD1693BD8E307eCfDbe51D246562fc4109f871f8'))
 >>> safe.locked_collateral
@@ -68,6 +69,7 @@ Ray(1000000000472114805215157978)
 Check if a `SAFE`can be liquidated:
 
 ```python
+>>> from pyflex import Address
 >>> collateral_type = geb.collaterals['ETH-A'].collateral_type
 >>> safe = geb.safe_engine.safe(collateral_type, Address('0xdD1693BD8E307eCfDbe51D246562fc4109f871f8'))
 >>> geb.liquidation_engine.can_liquidate(collateral_type, safe)
