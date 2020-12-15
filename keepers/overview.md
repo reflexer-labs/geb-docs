@@ -63,17 +63,17 @@ Run `bin/auction-keeper -h` to see an up-to-date list of arguments and usage inf
 
 `--type collateral|surplus|debt` A keeper can only participate in one type of auction
 
-`--collateral-type NAME` If `--type=collateral` is passed, the collateral\_type must also be provided. A keeper can only bid on a single collateral type. Note: Currently, only the `ETH-A` collateral type is used.
+`--collateral-type NAME` If `--type=collateral` is passed, the `collateral_type` must also be provided. A keeper can only bid on a single collateral type auction at a time. **NOTE**: Currently, only the `ETH-A` collateral type is used.
 
-`--eth-from ADDRESS` Address of the keeper. Warnings: **Do not use the same `eth-from` account on multiple keepers** as it complicates `SAFEEngine` inventory management and will likely cause nonce conflicts. Using an `eth-from` account with an open SAFE is also discouraged.
+`--eth-from ADDRESS` Address of the keeper. **Warning**: **Do not use the same `eth-from` account on multiple keepers** as it complicates `SAFEEngine` inventory management and will likely cause nonce conflicts. Using an `eth-from` account with an open SAFE is also discouraged.
 
 `--rpc-host HOST` URI of ETH JSON-RPC node. Default `"http://localhost:8545"`
 
-`--rpc-timeout SECS` Default `10`
+`--rpc-timeout SECS` Defaults to `10`
 
-This keeper connects to the Ethereum network using [Web3.py](https://github.com/ethereum/web3.py) and interacts with the GEB using [pyflex](https://github.com/reflexer-labs/pyflex). A connection to an Ethereum node \(`--rpc-host`\) is required. [Parity](https://www.parity.io/ethereum/) and [Geth](https://geth.ethereum.org/) nodes are supported over HTTP. Websocket endpoints are not supported by `pyflex`. A _full_ or _archive_ node is required; _light_ nodes are not supported.
+The keeper connects to the Ethereum network using [Web3.py](https://github.com/ethereum/web3.py) and interacts with GEB using [pyflex](https://github.com/reflexer-labs/pyflex). A connection to an Ethereum node \(`--rpc-host`\) is required. [Parity](https://www.parity.io/ethereum/) and [Geth](https://geth.ethereum.org/) nodes are supported over HTTP. Websocket endpoints are not supported in `pyflex`. A _full_ or _archive_ node is required; _light_ nodes are **not** supported.
 
-If you don't wish to run your own Ethereum node, third-party providers are available. This software has been tested with [Infura](https://infura.io), [ChainSafe](https://chainsafe.io/) and [QuikNode](https://v2.quiknode.io/).
+If you don't want to run your own Ethereum node, third-party providers are available. This software has been tested with [Infura](https://infura.io), [ChainSafe](https://chainsafe.io/) and [QuikNode](https://v2.quiknode.io/).
 
 ### Gas price strategies
 
