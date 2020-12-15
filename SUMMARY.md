@@ -86,10 +86,12 @@
 
 ## Keepers
 
+* [Surplus Auction Keeper](keepers/surplus-auction-keeper.md)
 * [Overview](keepers/overview.md)
-* [Bidding Models](keepers/bidding-models.md)
+* [Debt Auction Keeper](keepers/debt-auction-keeper.md)
 * [Collateral Auction Keeper](keepers/collateral-auction-keeper/README.md)
   * [Running in docker](keepers/collateral-auction-keeper/running-in-docker.md)
   * [Running on a host](keepers/collateral-auction-keeper/running-on-a-host.md)
   * [Liquidations & Auctions](keepers/collateral-auction-keeper/liquidations.md)
+* [Bidding Models](keepers/bidding-models.md)
 
