@@ -33,7 +33,7 @@ Examples:
 * [Surplus](debt-auction-keeper/running-in-docker.md)
 * [Debt](surplus-auction-keeper/running-in-docker.md)
 
-### Running on a Host
+### Running on a host
 
 Pre-requisites: Python 3.6+
 
