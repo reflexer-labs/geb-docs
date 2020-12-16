@@ -6,7 +6,9 @@ description: Running a surplus auction-keeper on a host
 
 _**Not currently available on PRAI Demo**_
 
-_\*\*\*\*_
+{% hint style="info" %}
+In order to participate in surplus auctions you need to bid with protocol tokens
+{% endhint %}
 
 ## Prerequisties
 
@@ -47,7 +49,7 @@ done
 
 `chmod +x surplus_model.sh`
 
-## 3\) Create the keeper run file.
+## 3\) Create the keeper run file
 
 Create a file called `run_auction_keeper.sh` and paste the following code in it:
 
@@ -63,18 +65,18 @@ bin/auction-keeper \
 
 ### Then, substitute the following variables:
 
-`ETH_RPC_URL` - The URL of ethereum RPC connection
+`ETH_RPC_URL` - the URL of your ethereum RPC connection
 
-`KEEPER_ADDRESS` - The keeper's address. It should be in checksummed format\(not lowercase\).
+`KEEPER_ADDRESS` - the keeper's address. It should be in checksummed format \(not lowercase\).
 
-`KEYSTORE_FILE` - Your Ethereum UTC JSON keystore filename
+`KEYSTORE_FILE` - your Ethereum UTC JSON keystore filename
 
-For more information about this keystore format and how to generate them:
+For more information about this keystore format and how to generate them, check:
 
 * [Ethereum UTC / JSON Wallet Encryption](https://wizardforcel.gitbooks.io/practical-cryptography-for-developers-book/content/symmetric-key-ciphers/ethereum-wallet-encryption.html)
 * [keythereum](https://github.com/ethereumjs/keythereum)
 
-### Then
+### Finally:
 
 `chmod +x run_auction_keeper.sh`
 
