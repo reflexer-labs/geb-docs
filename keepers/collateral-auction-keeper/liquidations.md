@@ -1,4 +1,8 @@
-# Liquidations & Auctions
+---
+description: Overview of the collateral liquidation and auctioning process
+---
+
+# Liquidations & Collateral Auctions
 
 ## Liquidations
 

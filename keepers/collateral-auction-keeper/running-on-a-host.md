@@ -8,11 +8,11 @@ description: Running a collateral auction keeper directly on a host
 
 Python 3.6+
 
-### Get RAI
+### Get RAI:
 
 Buy RAI from Uniswap v2 or [open a SAFE](https://app.gitbook.com/@reflexer-labs/s/geb/pyflex/safe-management/opening-a-safe) and generate it.
 
-### Clone
+### Clone:
 
 ```text
 git clone https://github.com/reflexer-labs/auction-keeper.git
@@ -21,7 +21,7 @@ git checkout tags/prai-demo
 git submodule update --init --recursive
 ```
 
-### Install
+### Install:
 
 This creates a virtual environment and installs requirements.
 
@@ -71,7 +71,7 @@ For more information about this keystore format and how to generate them:
 * [Ethereum UTC / JSON Wallet Encryption](https://wizardforcel.gitbooks.io/practical-cryptography-for-developers-book/content/symmetric-key-ciphers/ethereum-wallet-encryption.html)
 * [keythereum](https://github.com/ethereumjs/keythereum)
 
-### Finally, make the run file executable:
+### Finally:
 
 `chmod +x run_auction_keeper.sh`
 

@@ -38,7 +38,7 @@ For more information about this keystore format and how to generate them:
 
 `KEEPER_ADDRESS` - the keeper's address. It must be in a checksummed format
 
-### Make the run file executable:
+### Finally:
 
 `chmod +x run_auction_keeper.sh`
 
