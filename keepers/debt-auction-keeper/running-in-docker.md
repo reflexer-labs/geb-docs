@@ -22,7 +22,7 @@ while true; do
 done
 ```
 
-### Make the file executable:
+### Then:
 
 `chmod +x debt_model.sh`
 
@@ -63,7 +63,7 @@ For more information about this keystore format and how to generate them use:
 
 `KEEPER_ADDRESS` - the keeper's address. It should be in checksummed format \(not lowercase\).
 
-### Then
+### Then:
 
 `chmod +x run_auction_keeper.sh`
 
