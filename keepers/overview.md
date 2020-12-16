@@ -2,7 +2,7 @@
 
 Keepers are meant participate in collateral, surplus and debt auctions by directly interacting with GEB auction contracts deployed to the Ethereum blockchain.
 
-### Responsibilities
+### Keeper Responsibilities
 
 The keepers are responsible with:
 
@@ -123,73 +123,64 @@ To avoid transaction spamming, small "dusty" system coins balances will be ignor
 
 #### Retrieving SAFEs
 
-To start collateral auctions, the keeper needs a list of SAFEs and the collateralization ratio of each safe. There are two ways to retrieve the list of SAFEs:
+To start collateral auctions, the keeper needs a list of SAFEs and the collateralization ratio of each safe. There are two ways to retrieve the list of open SAFEs:
 
-`--from-block BLOCK_NUMBER` Scrape the chain for `ModifySAFECollateralization` events, starting at `BLOCK_NUMBER` Set this to the block where the first safe was created. After startup, only new blocks will be queried. NOTE: This can take significant time as the system matures. NOTE: To manage performance for debt auctions, periodically adjust `--from-block` to the block where the first liquidation which has not been `popDebtFromQueue`.
+`--from-block BLOCK_NUMBER` Scrape the chain for `ModifySAFECollateralization` events, starting at `BLOCK_NUMBER` . Set this to the block where the first ever SAFE was created. After startup, only new blocks will be queried. The scrape process can last a significant amount of time as the system matures. **NOTE**: To manage the performance of debt auction bidding, periodically adjust `--from-block` to the block number of the oldest liquidation which has not been `popDebtFromQueue`d yet.
 
-`--subgraph-endpoints NODE1,NODE2` Comma-delimited list of [Graph](https://thegraph.com) endpoints to retrieve `ModifySAFECollateralization` events. If multiple endpoints are specified, they will be tried in order if a communication failure occurs. NOTE: Currently only supported for collateral auctions Example with current Reflexer Graph endpoints: `--graph-endpoints https://api.thegraph.com/subgraphs/name/reflexer-labs/prai-mainnet,https://subgraph.reflexer.finance/subgraphs/name/reflexer-labs/prai`
+`--subgraph-endpoints NODE1,NODE2` Comma delimited list of [Graph](https://thegraph.com) endpoints used to retrieve `ModifySAFECollateralization` events. If multiple endpoints are passed, they will be pinged sequentially in the order they were specified in case one or many of them fail. **NOTE**: This flag is only supported for collateral auctions.
+
+The following are the most recent Graph node endpoints for RAI:`--graph-endpoints https://api.thegraph.com/subgraphs/name/reflexer-labs/prai-mainnet,https://subgraph.reflexer.finance/subgraphs/name/reflexer-labs/prai`
 
 #### Auctions
 
 `--min-auction AUCTION_ID` Ignore auctions older than `AUCTION_ID`
 
-`--max-auctions NUMBER` a Limit the number of bidding models created to handle active auctions.
+`--max-auctions NUMBER` Limit the number of bidding models created to handle active auctions.
 
-`--block-check-interval <integer>, default:1` How often tocheck for new blocks
+`--block-check-interval <integer>, default:1` How often the keeper checks for new blocks
 
-`--bid-check-interval <integer>, default 4` How often to check model process for new bid
+`--bid-check-interval <integer>, default 4` How often the keeper checks model processes for new bids
 
-Note: To use Infura free-tier and stay under the 100k requests/day quota, `--block-check-interval` must be greater than `10` and `--bid-check-interval` must be greater than 180. However, this will make your keeper slower in responding to auctions.
+**NOTE**: if you'd like to use Infura with your keeper and prefer the free-tier \(you do less than 100K requests per day\), `--block-check-interval` must be greater than `10` and `--bid-check-interval` must be greater than 180. However, this will make your keeper slower and it will not quickly bid in auctions.
 
 #### Sharding/Settling
 
-Bid management can be sharded across multiple keepers by **auction id**. If you proceed with sharding, set these options:
+Bid management can be sharded across multiple keepers. If you want to proceed with sharding, set these options:
 
-`--shards NUMBER_OF_KEEPER` Number of keepers you will run. Set on all keepers
+`--shards NUMBER_OF_KEEPER` Number of keepers you plan to run. You must set this for all keepers
 
-`--shard-id SHARD_ID` Set on each keeper, counting from 0.  
-For example, to configure three keepers, set `--shards 3` and assign `--shard-id 0`, `--shard-id 1`, `--shard-id 2` for the three keepers.  
-Note: **Auction starts are not sharded**. For an auction contract, only one keeper should be configured to `startAuction`.
+`--shard-id SHARD_ID` You must specify this for every keeper, counting from 0
 
-If you are sharding across multiple accounts, you may wish to have another account handle all your `settleAuction`s.
+  
+For example, to configure three keepers, set `--shards 3` and assign `--shard-id 0`, `--shard-id 1`, `--shard-id 2` for the first, second and third keeper.
 
-`--settle-for <ACCOUNT1 ACCOUNT2>|NONE|ALL` Space-delimited list of accounts for which keeper will settle auctions or `NONE` to disable. If you'd like to donate your gas to settle auctions for all participants, `ALL` is also supported.  
-Note: **Auction settlements are sharded**, so remove sharding configuration if running a dedicated auction settlement keeper.
+**NOTE**: **Auction starts are not sharded**. Only one keeper should be configured to `liquidateSAFE`s and this way `startAuction`s.
+
+If you are sharding across multiple accounts, you may want to have a separate keeper that handles all your `settleAuction`s \(in the case of English collateral, debt and surplus auctions\)
+
+`--settle-for <ACCOUNT1 ACCOUNT2>|NONE|ALL` Space-delimited list of accounts for which the keeper will settle auctions. Specify `NONE` to disable this option. If you'd like to donate your gas to settle auctions for all participants, `ALL` is also supported.  
+
+
+**NOTE**: **Auction settlements are already sharded**, so you should remove the sharding configuration if you're running a dedicated auction settlement keeper.
 
 #### Transaction management
 
 `--bid-delay FLOAT`
 
-Too many pending transactions can fill up the transaction queue, causing a subsequent transaction to be dropped. By waiting a small `--bid-delay` after each bid, multiple transactions can be submitted asynchronously while still allowing some time for older transactions to complete, freeing up the queue. Many parameters determine the appropriate amount of time to wait. For illustration purposes, assume the queue can hold 12 transactions, and gas prices are reasonable. In this environment, a bid delay of 1.2 seconds might provide ample time for transactions at the front of the queue to complete. [Etherscan.io](https://github.com/reflexer-labs/geb-docs/tree/ad25b15265b1f74d798690da41b1df00895f0cea/keepers/etherscan.io) can be used to view your account's pending transaction queue.
+Many pending transactions can fill up the keeper's transaction queue, causing every subsequent transaction to be dropped. By waiting a small `--bid-delay` after each bid, multiple transactions can be submitted asynchronously while still allowing some time for older transactions to complete, freeing up the queue. 
+
+Many parameters determine the appropriate bid delay. For illustration purposes, assume the queue can hold 12 transactions, and gas prices are reasonable. In this setup, a bid delay of 1.2 seconds might provide ample time for transactions at the front of the queue to complete.
 
 ### Limitations
 
-* If an auction started before the keeper was started, this keeper will not participate in it until the next block
-
-  is mined.
-
-* This keeper does not explicitly handle global settlement, and may submit transactions which fail during shutdown.
-* Some keeper functions incur gas fees regardless of whether a bid is submitted.  This includes, but is not limited to,
-
-  the following actions:
-
-  * submitting approvals
-  * adjusting the balance of surplus to debt
-  * queuing debt for auction
+* If an auction started before the keeper was started, this keeper will not participate in it until the next block is mined
+* This keeper does not explicitly handle Global Settlement, and may submit transactions which fail during shutdown
+* Some keeper functions incur gas fees regardless of whether a bid is submitted.  This includes, but is not limited to, the following actions:
+  * submitting token approvals
+  * adjusting the surplus and debt balances from `AccountingEngine`
   * liquidating a SAFE or starting a surplus or debt auction
-
-* The keeper does not check model prices until an auction exists.  When configured to create new auctions, it will
-
-  `liquidateSAFE`, start a new surplus or debt auction in response to opportunities regardless of whether or not your RAI or
-
-  protocol token balance is sufficient to participate.  This too imposes a gas fee.
-
-* Liquidating SAFEs to start new collateral auctions is an expensive operation.  To do so without a subgraph
-
-  subscription, the keeper initializes a cache of safe state by scraping event logs from the chain.  The keeper will then
-
-  continuously refresh safe state to detect undercollateralized SAFEs.
-
+* The keeper does not check model prices until an auction exists.  When configured to create new auctions, it will `liquidateSAFE`s or start a new surplus or debt auction regardless of whether or not your system coin or protocol token balance is sufficient to bid
+* Liquidating a SAFE to start a new collateral auction is an expensive operation. To do so without a subgraph subscription, the keeper initializes a cache of SAFEs states by scraping event logs from the chain. The keeper will then continuously refresh SAFE states and detect undercollateralized SAFEs.
   * Despite batching log queries into multiple requests, Geth nodes are generally unable to initialize the safe state
 
     cache in a reasonable amount of time.  As such, Geth is not recommended for liquidating SAFEs.
