@@ -16,7 +16,7 @@ Transaction LiquidationEngine('0x4443d35BAEa0EeD30d9C7Fb136B8e507DC593646').liqu
 
 ## Auctions
 
-After an auction is started, the collateral keeper will be able to bid for and buy collateral at a discounted price.
+After an auction is started, the collateral keeper will be able to bid for and buy collateral at a discounted price:
 
 ```text
 Started monitoring auction #8
@@ -35,7 +35,7 @@ Transaction FixedDiscountCollateralAuctionHouse('0xF8AAD33Cb9291Da4FF51377a6F1aB
 {% hint style="info" %}
 **Bidding Gotchas**
 
-1\) By default, the keeper submits a bid using all available system coin. This ensures the keeper gets the maximum amount of discounted collateral. 
+1\) By default, the keeper submits a bid using all of its available system coins. This ensures the keeper gets the maximum amount of discounted collateral in one go.
 
 2\) If there are multiple ongoing auctions, you might see this error until the first `buyCollateral` transaction is finished:
 
@@ -44,7 +44,7 @@ Transaction FixedDiscountCollateralAuctionHouse('0xF8AAD33Cb9291Da4FF51377a6F1aB
 
 ## Swapping Bought Collateral for System Coins
 
-The collateral keeper can swap collateral for system coins automatically when it's exited from the system using Uniswap V2 This allows the keeper to have plenty of system coins available next time it starts.To turn this option on, use this flag inside `run_auction_keeper.sh`:
+The collateral keeper can swap collateral for system coins automatically when it's exited from the system using Uniswap V2. This allows the keeper to have plenty of system coins available next time it starts.To turn this option on, use this flag inside `run_auction_keeper.sh`:
 
 `--swap-collateral`
 
@@ -53,10 +53,10 @@ To set the max allowable slippage percentage on Uniswap V2, set this flag:
 `--max-swap-slippage <float>, default: 0.01`
 
 {% hint style="info" %}
-Use `--swap-collateral` with `--safe-engine-system-coin-target ALL`\(the default\) to ensure collateral won is automatically converted to system coin to be available for the next auction
+Use `--swap-collateral` with `--safe-engine-system-coin-target ALL`\(the default\) to ensure won collateral is automatically converted to system coins
 {% endhint %}
 
-## Exiting Collateral
+## Exiting Collateral from the System
 
 By default, the keeper will periodically exit collateral \(that was bought from auctions\) from the system.  
 
@@ -64,7 +64,7 @@ To adjust the interval at which the keeper exits collateral, set:
 
 `--return-collateral-interval, default:300 secs`
 
-By default, the keeper will `exit`collateral when it's shutting down. 
+By default, the keeper will `exit` all of its collateral when it's shutting down. 
 
 To leave won collateral in the system on exit, specify this inside `run_auction_keeper.sh`:  
 `--keep-collateral-in-safe-engine-on-exit`
