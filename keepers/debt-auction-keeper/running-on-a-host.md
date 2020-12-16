@@ -1,20 +1,20 @@
 ---
-description: Running a debt auction-keeper on a host
+description: Running a debt auction keeper directly on a host
 ---
 
-# Running on a host
+# Running on a Host
 
-_**Not currently available on PRAI Demo**_
+_**Not available on PRAI**_
 
 ## Prerequisties
 
 Python 3.6+
 
-#### Get RAI
+### Get RAI
 
-Buy RAI from [Uniswap v2](https://info.uniswap.org/pair/0xEBdE9F61e34B7aC5aAE5A4170E964eA85988008C) or [open a SAFE](https://app.gitbook.com/@reflexer-labs/s/geb/pyflex/safe-management/opening-a-safe) and generate it.
+Buy RAI from Uniswap v2 or [open a SAFE](https://app.gitbook.com/@reflexer-labs/s/geb/pyflex/safe-management/opening-a-safe) and generate it.
 
-#### Clone
+### Clone
 
 ```text
 git clone https://github.com/reflexer-labs/auction-keeper.git
@@ -23,9 +23,9 @@ git checkout tags/prai-demo
 git submodule update --init --recursive
 ```
 
-#### Install
+### Install
 
-This creates a virtual environment and installs requirements.
+This creates a virtual environment and installs all the keeper dependencies:
 
 `./install.sh`
 
@@ -35,7 +35,7 @@ This creates a virtual environment and installs requirements.
 
 ## 2\) Create a model file
 
-Pix a FLX/RAI price and paste the following code into `debt_model.sh`.
+Pix a system coin/protocol token price and paste the following code into `debt_model.sh`:
 
 ```text
 #!/usr/bin/env bash
@@ -45,11 +45,11 @@ while true; do
 done
 ```
 
-### Then
+### Make the file executable:
 
 `chmod +x debt_model.sh`
 
-## 3\) Create the keeper run file.
+## 3\) Create the keeper run file
 
 Create a file called `run_auction_keeper.sh` and paste the following code in it:
 
@@ -65,18 +65,18 @@ bin/auction-keeper \
 
 ### Then, substitute the following variables:
 
-`ETH_RPC_URL` - The URL of ethereum RPC connection
+`ETH_RPC_URL` - the URL of ethereum RPC connection
 
-`KEEPER_ADDRESS` - The keeper's address. It should be in checksummed format\(not lowercase\).
+`KEEPER_ADDRESS` - the keeper's address. It should be in checksummed format \(not lowercase\).
 
-`KEYSTORE_FILE` - Your Ethereum UTC JSON keystore filename
+`KEYSTORE_FILE` - your Ethereum UTC JSON keystore filename
 
-For more information about this keystore format and how to generate them:
+For more information about this keystore format and how to generate them, check:
 
 * [Ethereum UTC / JSON Wallet Encryption](https://wizardforcel.gitbooks.io/practical-cryptography-for-developers-book/content/symmetric-key-ciphers/ethereum-wallet-encryption.html)
 * [keythereum](https://github.com/ethereumjs/keythereum)
 
-### Then
+### Make the file executable:
 
 `chmod +x run_auction_keeper.sh`
 

@@ -22,13 +22,13 @@ while true; do
 done
 ```
 
-### Then
+### Make the file executable:
 
 `chmod +x debt_model.sh`
 
-For more information about bidding models, see [here](https://github.com/reflexer-labs/geb-docs/tree/ad25b15265b1f74d798690da41b1df00895f0cea/keepers/debt-auction-keeper/BiddingModels.md)
+For more information about bidding models, see [this](https://docs.reflexer.finance/keepers/bidding-models).
 
-## 3\) Create the keeper run file.
+## 3\) Create the keeper run file
 
 Create a file called `run_auction_keeper.sh` and paste the following code in it:
 
@@ -48,20 +48,20 @@ docker run -it \
 
 ### Then, substitute the following variables:
 
-`KEYSTORE_DIR` - The local directory where your keystore file is.
+`KEYSTORE_DIR` - the local directory where your keystore file is
 
-`MODEL_DIR` - The local directory where your `debt_model.sh` file is.
+`MODEL_DIR` - the local directory where your `debt_model.sh` file is
 
-`KEYSTORE_FILE` - Your Ethereum UTC JSON keystore filename
+`KEYSTORE_FILE` - your Ethereum UTC JSON keystore filename
 
-For more information about this keystore format and how to generate them:
+For more information about this keystore format and how to generate them use:
 
 * [Ethereum UTC / JSON Wallet Encryption](https://wizardforcel.gitbooks.io/practical-cryptography-for-developers-book/content/symmetric-key-ciphers/ethereum-wallet-encryption.html)
 * [keythereum](https://github.com/ethereumjs/keythereum)
 
-`ETH_RPC_URL` - The URL of ethereum RPC connection
+`ETH_RPC_URL` - the URL of your ethereum RPC connection
 
-`KEEPER_ADDRESS` - The keeper's address. It should be in checksummed format\(not lowercase\).
+`KEEPER_ADDRESS` - the keeper's address. It should be in checksummed format \(not lowercase\).
 
 ### Then
 

@@ -1,8 +1,8 @@
 ---
-description: Running a collateral auction-keeper on a host
+description: Running a collateral auction keeper directly on a host
 ---
 
-# Running on a host
+# Running on a Host
 
 ## Prerequisties
 
