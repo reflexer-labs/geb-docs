@@ -180,22 +180,17 @@ Many parameters determine the appropriate bid delay. For illustration purposes, 
   * adjusting the surplus and debt balances from `AccountingEngine`
   * liquidating a SAFE or starting a surplus or debt auction
 * The keeper does not check model prices until an auction exists.  When configured to create new auctions, it will `liquidateSAFE`s or start a new surplus or debt auction regardless of whether or not your system coin or protocol token balance is sufficient to bid
-* Liquidating a SAFE to start a new collateral auction is an expensive operation. To do so without a subgraph subscription, the keeper initializes a cache of SAFEs states by scraping event logs from the chain. The keeper will then continuously refresh SAFE states and detect undercollateralized SAFEs.
-  * Despite batching log queries into multiple requests, Geth nodes are generally unable to initialize the safe state
-
-    cache in a reasonable amount of time.  As such, Geth is not recommended for liquidating SAFEs.
-
-  * To manage resources, it is recommended to run separate keepers using separate accounts to liquidate \(`--start-auctions-only`\)
-
-    and bid \(`--bid-only`\).
+* Liquidating a SAFE to start a new collateral auction is a time consuming operation. To do so without a subgraph subscription, the keeper initializes a cache of SAFEs states by scraping event logs from the chain. The keeper will then continuously refresh SAFE states and detect undercollateralized SAFEs.
+  * Despite batching log queries into multiple requests, Geth nodes are generally unable to initialize the SAFE state cache in a reasonable amount of time.  As such, **Geth is not recommended for liquidating SAFEs**
+  * To manage resources, it is recommended to run separate keepers using separate accounts to liquidate \(`--start-auctions-only`\) and bid \(`--bid-only`\) in auctions
 
 For some known Ubuntu and macOS issues see the [pyflex](https://github.com/reflexer-labs/pyflex) README.
 
 ### Testing
 
-This project uses [pytest](https://docs.pytest.org/en/latest/) for unit testing. Testing depends upon a dockerized local testchain included in `lib\pyflex\tests\config`.
+This project uses [pytest](https://docs.pytest.org/en/latest/) for unit testing. Testing depends on a dockerized local testchain included in `lib\pyflex\tests\config`.
 
-In order to be able to run tests:
+In order to be able to run tests you should execute:
 
 ```text
 git clone https://github.com/reflexer-labs/auction-keeper.git
