@@ -22,7 +22,7 @@ while true; do
 done
 ```
 
-### Make the file executable:
+### Then:
 
 `chmod +x surplus_model.sh`
 

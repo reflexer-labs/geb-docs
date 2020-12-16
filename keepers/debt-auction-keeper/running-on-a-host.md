@@ -45,7 +45,7 @@ while true; do
 done
 ```
 
-### Make the file executable:
+### Then:
 
 `chmod +x debt_model.sh`
 
@@ -76,7 +76,7 @@ For more information about this keystore format and how to generate them, check:
 * [Ethereum UTC / JSON Wallet Encryption](https://wizardforcel.gitbooks.io/practical-cryptography-for-developers-book/content/symmetric-key-ciphers/ethereum-wallet-encryption.html)
 * [keythereum](https://github.com/ethereumjs/keythereum)
 
-### Make the file executable:
+### Then:
 
 `chmod +x run_auction_keeper.sh`
 
