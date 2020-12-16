@@ -2,17 +2,17 @@
 description: Running a surplus auction-keeper on a host
 ---
 
-# Running on a host
+# Running on a Host
 
 _**Not currently available on PRAI Demo**_
+
+_\*\*\*\*_
 
 ## Prerequisties
 
 Python 3.6+
 
-#### Get FLX
-
-#### Clone
+### Clone_**:**_
 
 ```text
 git clone https://github.com/reflexer-labs/auction-keeper.git
@@ -21,9 +21,9 @@ git checkout tags/prai-demo
 git submodule update --init --recursive
 ```
 
-#### Install
+### Install:
 
-This creates a virtual environment and installs requirements.
+This creates a virtual environment and installs requirements:
 
 `./install.sh`
 
@@ -33,7 +33,7 @@ This creates a virtual environment and installs requirements.
 
 ## 2\) Create a model file
 
-Pix a FLX/RAI price and paste the following code into `surplus_model.sh`.
+Pick a protocol token/system coin price and paste the following code into `surplus_model.sh`:
 
 ```text
 #!/usr/bin/env bash
@@ -43,7 +43,7 @@ while true; do
 done
 ```
 
-### Then
+### Then:
 
 `chmod +x surplus_model.sh`
 

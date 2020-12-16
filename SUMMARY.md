@@ -96,6 +96,6 @@
   * [Running on a Host](keepers/debt-auction-keeper/running-on-a-host.md)
 * [Surplus Auction Keeper](keepers/surplus-auction-keeper/README.md)
   * [Running in Docker](keepers/surplus-auction-keeper/running-in-docker.md)
-  * [Running on a host](keepers/surplus-auction-keeper/running-on-a-host.md)
+  * [Running on a Host](keepers/surplus-auction-keeper/running-on-a-host.md)
 * [Bidding Models](keepers/bidding-models.md)
 
