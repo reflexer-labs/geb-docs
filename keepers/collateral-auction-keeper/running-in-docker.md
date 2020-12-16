@@ -6,7 +6,7 @@ description: Running a collateral auction-keeper in a docker container.
 
 ## 1\) Get RAI
 
-Buy RAI from [Uniswap v2](https://info.uniswap.org/pair/0xEBdE9F61e34B7aC5aAE5A4170E964eA85988008C) or [open a SAFE](https://app.gitbook.com/@reflexer-labs/s/geb/pyflex/safe-management/opening-a-safe) and generate it.
+Buy RAI from Uniswap v2 or [open a SAFE](https://app.gitbook.com/@reflexer-labs/s/geb/pyflex/safe-management/opening-a-safe) and generate it.
 
 ## 2\) Create the keeper run file
 
@@ -25,20 +25,20 @@ docker run -it \
 
 ### Then, substitute the following variables:
 
-`KEYSTORE_DIR` - The local directory where your keystore file is.
+`KEYSTORE_DIR` - the local directory where your keystore file is
 
-`KEYSTORE_FILE` - Your Ethereum UTC JSON keystore filename
+`KEYSTORE_FILE` - your Ethereum UTC JSON keystore filename
 
 For more information about this keystore format and how to generate them:
 
 * [Ethereum UTC / JSON Wallet Encryption](https://wizardforcel.gitbooks.io/practical-cryptography-for-developers-book/content/symmetric-key-ciphers/ethereum-wallet-encryption.html)
 * [keythereum](https://github.com/ethereumjs/keythereum)
 
-`ETH_RPC_URL` - The URL of ethereum RPC connection
+`ETH_RPC_URL` - the URL of the ethereum RPC connection
 
-`KEEPER_ADDRESS` - The keeper's address. It must be in checksummed format, not all lower or uppercase.
+`KEEPER_ADDRESS` - the keeper's address. It must be in a checksummed format
 
-### Then
+### Make the run file executable:
 
 `chmod +x run_auction_keeper.sh`
 
