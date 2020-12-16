@@ -92,7 +92,7 @@
   * [Running on a host](keepers/collateral-auction-keeper/running-on-a-host.md)
   * [Liquidations & Auctions](keepers/collateral-auction-keeper/liquidations.md)
 * [Debt Auction Keeper](keepers/debt-auction-keeper/README.md)
-  * [Running in docker](keepers/debt-auction-keeper/running-in-docker.md)
+  * [Running in Docker](keepers/debt-auction-keeper/running-in-docker.md)
   * [Running on a host](keepers/debt-auction-keeper/running-on-a-host.md)
 * [Surplus Auction Keeper](keepers/surplus-auction-keeper/README.md)
   * [Running in docker](keepers/surplus-auction-keeper/running-in-docker.md)

@@ -1,18 +1,18 @@
 ---
-description: Running a debt auction-keeper in docker
+description: Running a debt auction keeper in a Docker container
 ---
 
-# Running in docker
+# Running in Docker
 
-_**Not currently available on PRAI Demo**_
+_**Not available for PRAI**_
 
 ## 1\) Get RAI
 
-Buy RAI from [Uniswap v2](https://info.uniswap.org/pair/0xEBdE9F61e34B7aC5aAE5A4170E964eA85988008C) or [open a SAFE](https://app.gitbook.com/@reflexer-labs/s/geb/pyflex/safe-management/opening-a-safe) and generate it.
+Buy RAI from Uniswap v2 or [open a SAFE](https://app.gitbook.com/@reflexer-labs/s/geb/pyflex/safe-management/opening-a-safe) and generate it.
 
 ## 2\) Create a model file
 
-Pick a RAI/FLX price and paste the following code into `debt_model.sh`.
+Pick a system coin/protocol token price you're willing to bid and paste the following code into `debt_model.sh`:
 
 ```text
 #!/usr/bin/env bash
