@@ -98,7 +98,5 @@ done
 
 ## Other bidding models
 
-Thanks to our community for these examples:
-
-* _banteg_'s [python boilerplate model](https://gist.github.com/banteg/93808e6c0f1b9b6b470beaba5a140813)
+* _banteg_'s [Python boilerplate model](https://gist.github.com/banteg/93808e6c0f1b9b6b470beaba5a140813)
 
