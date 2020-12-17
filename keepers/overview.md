@@ -103,9 +103,9 @@ By default the keeper `join`s system coins to `SAFEEngine` on startup and `exit`
 
 `--keep-collateral-in-safe-engine-on-exit` Do not `exit` collateral on shutdown
 
-`--return-collateral-interval SECS` Delay from the moment the keeper wins a collateral auction and until it `exit`s won collateral out of the `SAFEEngine`. Pass `0` to disable completely. Defaults to `300`
+`--return-collateral-interval SECS` How often, in seconds, the keeper `exit`s won collateral from `SAFEEngine`. Pass `0` to disable completely. Defaults to `300`
 
-`--safe-engine-system-coin-target ALL|<integer>` Amount of system coins the keeper will try to keep in `SAFEEngine` by rebalancing with `join`s and `exit`s between its own wallet and its balance inside GEB. By default there is no target.
+`--safe-engine-system-coin-target ALL|<integer>` Amount of system coins the keeper will try to keep in `SAFEEngine` by rebalancing with `join`s and `exit`s between its own wallet and its balance inside GEB. Defaults to `ALL` and the keeper will `join` all of an account's systems coins.
 
 ### **Rebalancing**
 
@@ -125,11 +125,13 @@ To avoid transaction spamming, small "dusty" system coins balances will be ignor
 
 To start collateral auctions, the keeper needs a list of SAFEs and the collateralization ratio of each safe. There are two ways to retrieve the list of open SAFEs:
 
-`--from-block BLOCK_NUMBER` Scrape the chain for `ModifySAFECollateralization` events, starting at `BLOCK_NUMBER` . Set this to the block where the first ever SAFE was created. After startup, only new blocks will be queried. The scrape process can last a significant amount of time as the system matures. **NOTE**: To manage the performance of debt auction bidding, periodically adjust `--from-block` to the block number of the oldest liquidation which has not been `popDebtFromQueue`d yet.
+`--from-block BLOCK_NUMBER` Scrape the chain for `ModifySAFECollateralization` events, starting at `BLOCK_NUMBER` . Set this to the block where the first ever SAFE was created. After startup, only new blocks will be queried. The scrape process can last a significant amount of time as the system matures. **NOTE**: To manage the performance of debt auction bidding, periodically adjust `--from-block` to the block number of the oldest liquidation which has not been `popDebtFromQueue`d yet. Defaults to `geb.starting_block_number`, the block in which the system was deployed.
 
-`--subgraph-endpoints NODE1,NODE2` Comma delimited list of [Graph](https://thegraph.com) endpoints used to retrieve `ModifySAFECollateralization` events. If multiple endpoints are passed, they will be pinged sequentially in the order they were specified in case one or many of them fail. **NOTE**: This flag is only supported for collateral auctions.
+`--graph-endpoints NODE1,NODE2` Comma delimited list of [Graph](https://thegraph.com) endpoints used to retrieve `ModifySAFECollateralization` events. If multiple endpoints are passed, they will be pinged sequentially in the order they were specified in case one or many of them fail. **NOTE**: This flag is only supported for collateral auctions.
 
-The following are the most recent Graph node endpoints for RAI:`--graph-endpoints https://api.thegraph.com/subgraphs/name/reflexer-labs/prai-mainnet,https://subgraph.reflexer.finance/subgraphs/name/reflexer-labs/prai`
+`--graph-block-threshold NUMBER_OF_BLOCKS` When the keeper fetches SAFE data to find critical safes, use the `--graph-endpoints` when the keeper's last processed block is older than `NUMBER_OF_BLOCKS`. The graph will be faster than a node when fetching historical data, but recent graph blocks might be slightly delayed compared to an ethereum node.  This allows the keeper to to fetch historical data from the graph, but use the node for all newer blocks. Defaults to `20`
+
+The following are the most recent Graph node endpoints for RAI:`--graph-endpoints https://subgraph.reflexer.finance/subgraphs/name/reflexer-labs/prai,https://api.thegraph.com/subgraphs/name/reflexer-labs/prai-mainnet`
 
 #### Auctions
 
@@ -142,6 +144,12 @@ The following are the most recent Graph node endpoints for RAI:`--graph-endpoint
 `--bid-check-interval <integer>, default 4` How often the keeper checks model processes for new bids
 
 **NOTE**: if you'd like to use Infura with your keeper and prefer the free-tier \(you do less than 100K requests per day\), `--block-check-interval` must be greater than `10` and `--bid-check-interval` must be greater than 180. However, this will make your keeper slower and it will not quickly bid in auctions.
+
+##### Flash swaps
+
+Flash swaps allow a keeper to participate in collateral auctions without any system coins.  The flash swap borrows the system coin necessary for the collateral auctions, wins the collateral at a discount and transferred the won collateral back to the keeper, all in one transaction. Note: If the overall transaction is not profitable, the swap will fail.  The the keeper only needs enough ether to pay for the gas of the swap.
+
+`--flash-swap` Turn on Uniswap flash swaps for collateral auctions. Not supported for `--type debt` or `--type surplus`
 
 #### Sharding/Settling
 
@@ -158,7 +166,7 @@ For example, to configure three keepers, set `--shards 3` and assign `--shard-id
 
 If you are sharding across multiple accounts, you may want to have a separate keeper that handles all your `settleAuction`s \(in the case of English collateral, debt and surplus auctions\)
 
-`--settle-for <ACCOUNT1 ACCOUNT2>|NONE|ALL` Space-delimited list of accounts for which the keeper will settle auctions. Specify `NONE` to disable this option. If you'd like to donate your gas to settle auctions for all participants, `ALL` is also supported.  
+`--settle-for <ACCOUNT1 ACCOUNT2>|NONE|ALL` Space-delimited list of accounts for which the keeper will settle auctions. Specify `NONE` to disable this option. If you'd like to donate your gas to settle auctions for all participants, `ALL` is also supported.  Defaults to only the keeper address.
 
 
 **NOTE**: **Auction settlements are already sharded**, so you should remove the sharding configuration if you're running a dedicated auction settlement keeper.
