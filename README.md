@@ -4,7 +4,7 @@ description: The what and how of the GEB framework
 
 # Introduction to GEB
 
-GEB is a framework for deploying systems that can issue [reflex index](https://medium.com/reflexer-labs/stability-without-pegs-8c6a1cbc7fbd)[es](https://medium.com/reflexer-labs/stability-without-pegs-8c6a1cbc7fbd). Reflex indexes are assets that dampen the volatility of their underlying collateral. They are useful as more "stable" collateral for other DeFi protocols \(compared to ETH or BTC\) or as tools that give their holders more time to react to the underlying's price moves.  
+GEB is a framework for deploying systems that can issue [reflex index](https://medium.com/reflexer-labs/stability-without-pegs-8c6a1cbc7fbd)[es](https://medium.com/reflexer-labs/stability-without-pegs-8c6a1cbc7fbd). Reflex indexes are assets that dampen the volatility of their underlying collateral. They are useful as more "stable" collateral for other DeFi protocols \(compared to ETH or BTC\) or as stable assets with embedded interest rates that supercharge other DeFi protocols.  
   
 As an example, if a reflex index was backed by ETH and one day ETH would significantly drop in price, the index would delay this shock and spread it over a longer period of time. The length of the "spread" depends on how the feedback mechanism is set up and on how reflex index users react to the mechanism's incentives \(or even to the mere expectation that the mechanism will change user incentives in a certain way\).  
   
@@ -21,7 +21,6 @@ GEB is a modified fork of [MCD](https://github.com/makerdao/dss) that has severa
 * Two prices for each `CollateralType`: one used for generating debt, the other one used exclusively when liquidating SAFEs
 * A stability fee treasury that can pay for oracle calls, market making or teams who onboard collateral and take care of the system
 * An Oracle Network Medianizer that does not rely on any particular price feed and can be upgraded \(within certain bounds\) by governance
-* A governance minimization layer that bounds human intervention over the system
 
 ### GEB Overview Diagram
 
