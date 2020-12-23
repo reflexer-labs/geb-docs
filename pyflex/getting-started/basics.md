@@ -6,7 +6,7 @@ description: Examples of querying the GEB contracts
 
 ## SAFE Engine
 
-Show global debt and the global debt ceiling:
+Log the current global debt and the global debt ceiling:
 
 ```python
 >>> geb.safe_engine.global_debt()
@@ -15,7 +15,7 @@ Rad(5208615869764014400330809431631271622010234720384)
 Rad(10200000000000000000000000000000000000000000000000)
 ```
 
-Get total debt available to generate:
+Get the total debt available to generate:
 
 ```python
 >>> str(geb.safe_engine.global_debt_ceiling() - geb.safe_engine.global_debt())
@@ -76,13 +76,13 @@ Check if a `SAFE`can be liquidated:
 False
 ```
 
-And then liquidate:
+If the `SAFE` is underwater, you can also liquidate it:
 
 ```python
 >>> geb.liquidation_engine.liquidate_safe(collateral_type, safe).transact()
 ```
 
-These are just a few examples. To see all supported functions,  view the source  code:
+These are just a few examples. To see all supported functions,  view the source code:
 
 {% embed url="https://github.com/reflexer-labs/pyflex/blob/master/pyflex/gf.py" %}
 
