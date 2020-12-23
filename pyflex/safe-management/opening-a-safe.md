@@ -54,14 +54,14 @@ These `approve` calls only need to be done once per address!
 >>> geb.approve_system_coin(our_address)
 ```
 
-Set the amount of collateral to deposit and amount of debt to withdraw:
+Set the amount of collateral to deposit and the amount of debt to withdraw:
 
 ```python
 >>> collateral_amount = Wad.from_number(2.0)
 >>> debt_amount = Wad.from_number(85)
 ```
 
-`deposit` collateral and `join` it to the system:
+`deposit` collateral and `join` it into the system:
 
 ```python
 >>> collateral.collateral.deposit(collateral_amount).transact()
