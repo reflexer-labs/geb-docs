@@ -30,7 +30,7 @@ Password for key.json:
 >>>
 ```
 
-Instantiate an `Address` object to use later. Then, initialize a GEB object:
+Instantiate an `Address` object to use later. Then, initialize a `GEB` object:
 
 ```python
 >>> our_address = Address(web3.eth.defaultAccount)
