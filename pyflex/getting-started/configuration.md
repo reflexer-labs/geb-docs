@@ -14,7 +14,7 @@ And then connect to an Ethereum node:
 >>> web3 = Web3(HTTPProvider(endpoint_uri=ETH_RPC_URL, request_kwargs={"timeout": 60}))
 ```
 
-Configure a `geb` object. This object allow you to access most contracts in the `GEB` system.
+Finally, configure a `geb` object. This object allows you to access most contracts in the `GEB` system:
 
 ```python
 >>> geb = GfDeployment.from_node(web3)
