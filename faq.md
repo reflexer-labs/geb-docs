@@ -74,6 +74,16 @@ We believe that growing alongside other projects and helping builders leverage R
 1. When the redemption rate is positive, SAFE users should repay their debt, RAI users should buy more RAI
 2. When the redemption rate is negative, SAFE users should mint more debt, RAI users should sell/short RAI
 
+### Can you summarize the behavior of the RAI redemption rate?
+
+1. When RAI's market price &gt; redemption price, the redemption rate will be negative
+2. When RAI's market price &lt; redemption price, the redemption rate will be positive
+3. When RAI's market price = redemption price, the redemption rate will be zero
+
+### Is RAI a rebase token?
+
+No. The protocol doesn't change the amount of tokens you have. Rather, it changes the target price that the protocol wants RAI to have on exchanges.
+
 ### What happens if the redemption rate is positive and I just add more collateral in my SAFE instead of repaying my debt?
 
 Two things can happen in this case:
