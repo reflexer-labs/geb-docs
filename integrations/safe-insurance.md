@@ -102,7 +102,7 @@ abstract contract SafeSaviourLike {
 
 In order to get an idea of how a saviour contract should be implemented and what checks must be in place, let's analyze the components of a [demo contract](https://github.com/reflexer-labs/geb-safe-saviours/blob/master/src/saviours/GeneralTokenReserveSafeSaviour.sol) that allows `SAFE` users to deposit & withdraw collateral used to save their positions.
 
-### Constructor Highlights:
+### Constructor Requirements:
 
 * Sanitize every parameter \(`address`es must be non null, `uint` values are non null and within expected bounds etc\)
 * You must set the [CollateralJoin](https://github.com/reflexer-labs/geb-deploy/blob/master/src/AdvancedTokenAdapters.sol) contract of the specific collateral type you're targeting, as well as the [LiquidationEngine](https://github.com/reflexer-labs/geb/blob/master/src/LiquidationEngine.sol), [OracleRelayer](https://github.com/reflexer-labs/geb/blob/master/src/OracleRelayer.sol), [SAFEEngine](https://github.com/reflexer-labs/geb/blob/master/src/SAFEEngine.sol), [GebSafeManager](https://github.com/reflexer-labs/geb-safe-manager/blob/master/src/GebSafeManager.sol) and [SAFESaviourRegistry](https://github.com/reflexer-labs/geb-safe-saviours/blob/master/src/SAFESaviourRegistry.sol)
@@ -197,7 +197,7 @@ function setDesiredCollateralizationRatio(uint256 safeID, uint256 cRatio) extern
 }
 ```
 
-### View Function Highlights:
+### View Function Requirements:
 
 [keeperPayoutExceedsMinValue](https://github.com/reflexer-labs/geb-safe-saviours/blob/6b8a89e1f6e7c7d210cb68f684ac1c6a5fb6e0c5/src/saviours/GeneralTokenReserveSafeSaviour.sol#L214):
 
@@ -207,4 +207,66 @@ function setDesiredCollateralizationRatio(uint256 safeID, uint256 cRatio) extern
 
 [getKeeperPayoutValue](https://github.com/reflexer-labs/geb-safe-saviours/blob/6b8a89e1f6e7c7d210cb68f684ac1c6a5fb6e0c5/src/saviours/GeneralTokenReserveSafeSaviour.sol#L227):
 
-* 
+* It must read the collateral's price from the [same oracle](https://github.com/reflexer-labs/geb-safe-saviours/blob/6b8a89e1f6e7c7d210cb68f684ac1c6a5fb6e0c5/src/saviours/GeneralTokenReserveSafeSaviour.sol#L228) used inside `OracleRelayer` in order to maintain consistency between the core system and the saviour
+* It must return `0` if the oracle price is invalid
+* It must return the fiat value of `keeperPayout` collateral tokens used to pay keepers for saving `SAFE`s
+
+[tokenAmountUsedToSave](https://github.com/reflexer-labs/geb-safe-saviours/blob/6b8a89e1f6e7c7d210cb68f684ac1c6a5fb6e0c5/src/saviours/GeneralTokenReserveSafeSaviour.sol#L256):
+
+* It must return the amount of collateral tokens that will be used to save a `SAFE` and bring its CRatio to the desired ratio
+* It must read the collateral's price from the [same oracle](https://github.com/reflexer-labs/geb-safe-saviours/blob/6b8a89e1f6e7c7d210cb68f684ac1c6a5fb6e0c5/src/saviours/GeneralTokenReserveSafeSaviour.sol#L259) used inside `OracleRelayer` in order to maintain consistency between the core system and the saviour
+* It must return early if the targeted `SAFE` has no debt or if the oracle feed is invalid
+
+[canSave](https://github.com/reflexer-labs/geb-safe-saviours/blob/6b8a89e1f6e7c7d210cb68f684ac1c6a5fb6e0c5/src/saviours/GeneralTokenReserveSafeSaviour.sol#L242):
+
+* It must return `true` if a `SAFE` can currently be saved, `false` if not
+* It must check that, when the `SAFE` is saved, the contract has enough tokens to both reward the keeper that called `LiquidationEngine.liquidateSAFE` and also bring the `SAFE`'s CRatio to the desired level
+
+### Saving a SAFE:
+
+The process of saving a `SAFE` has its own requirements:
+
+* You must implement and use `saveSAFE(address keeper`, `bytes32 collateralType`, `address safeHandler) external returns (bool`, `uint256`, `uint256)` in order to save `SAFE`s
+* `saveSAFE` must check that `msg.sender` is the `LiquidationEngine`
+* The `keeper` parameter must not be null
+* There is a special condition you must add where, if the `collateralType` is null, the `keeper` is the `LiquidationEngine` itself and the `safeHandler` is null, you return a tuple like `(true`, `uint(-1)`, `uint(-1))`. This condition will help the `LiquidationEngine` to check that you implemented `saveSAFE`. You can see an example of this condition [here](https://github.com/reflexer-labs/geb-safe-saviours/blob/6b8a89e1f6e7c7d210cb68f684ac1c6a5fb6e0c5/src/saviours/GeneralTokenReserveSafeSaviour.sol#L157)
+* You must make sure that the `collateralType` provided is equal to the `collateralType` found in the `coinJoin` contract you specified in the saviour's constructor
+* You must check that `keeperPayoutExceedsMinValue` returns `true`. If it returns `false`, you must return early
+* You must check that the `SAFE` has collateral in it
+* You must check that the saviour can both reward the keeper for saving the SAFE and also add enough collateral in the SAFE so its CRatio goes to the desired level
+* You must **not** add any collateral in the `SAFE` in case it **cannot** be saved \(its CRatio cannot be increased to the desired level\). You must revert in case the `SAFE` cannot be saved. If you were to add collateral in the `SAFE` and still not save it, GEB would just liquidate that collateral and you would waste resources
+* You must call `saviourRegistry.markSave(collateralType`, `safeHandler)` so that the `SAFESaviourRegistry` knows a specific `SAFE` has just been saved. The registry enforces a delay between two consecutive save actions for a specific `SAFE`. The delay is there to make sure that `SAFE` users don't solely rely on saviours to protect their positions. This way we avoid a scenario where one or a couple of popular saviours fail \(e.g bugs, lack of sufficient cover\) and most positions in the system are liquidated at once
+* You must emit a `SaveSAFE` event before you return
+* The last thing you have to do is to return a tuple in the form of `(true`, `tokenAmountUsed`, `keeperPayout)` where:
+  * `tokenAmountUsed` is the amount of collateral that was used to save the `SAFE`
+  * `keeperPayout` is a non null amount of collateral that was used to reward the keeper 
+
+You can check an example implementation for `saveSAFE` [here](https://github.com/reflexer-labs/geb-safe-saviours/blob/6b8a89e1f6e7c7d210cb68f684ac1c6a5fb6e0c5/src/saviours/GeneralTokenReserveSafeSaviour.sol#L153).
+
+## 4. Monetizing a Saviour
+
+In some cases, saviour builders may want to monetize the service they provide and charge some sort of fee for protecting `SAFE`s.
+
+If you would like to submit a proposal for implementing a monetized saviour, you must keep in mind several things:
+
+* Monetization should happen outside of the saviour contract. This keeps concerns separated, simplifies the saviour implementation and gives you more flexibility when it comes to updating your business model
+* You must mention that your saviour will be monetized and you should give a detailed description of how you plan to charge `SAFE` users. You must include the description in your GIP as outlined in the section below
+* Assuming you plan to use a smart contract to charge users, your should attach a detailed overview or implementation of your model inside your GIP
+
+## 5. Launching in Production
+
+In order to launch and integrate a new saviour in a GEB, it must first pass several checks:
+
+1. You must first create a new [GEB Improvement Proposal](https://github.com/reflexer-labs/GIPs). Once you create the GIP you must ask for feedback on [Reflexer's Discord server](https://discord.gg/kB4vcYs) \(in the development channel\). To maximize your chances of having your idea accepted:
+   * Your saviour must only do one thing. For example, you should only handle aTokens or cTokens, not both
+   * Your saviour should only cover `SAFE`s with a single collateral type
+   * You should have a draft implementation of your saviour with estimated gas prices for calling each function
+   * You must give an initial estimate of the `keeperPayout`, `minKeeperPayoutValue`, `payoutToSAFESize` and `defaultDesiredCollateralizationRatio` values you plan to set
+   * You must specify if you plan to monetize the saviour service you're building and how you plan to do it
+2. Once you receive feedback \(and assuming it's positive\), you can start to fully implement the saviour
+3. Before you submit your full implementation and update the GIP, you must make sure that you have 100% test coverage for your code and also do several integration tests between the `LiquidationEngine`, `SAFESaviourRegistry` and the saviour code. In order to submit your implementation, update your GIP with a link to your code and a new summary of the gas amount required to call each function. After you update the GIP, ping the community on Discord.
+4. Once your implementation is accepted and reviewed by the community, your code must also be audited twice. Each audit must be done by an independent party.
+5. After your code gets audited, you should send a new message on Discord and let the community know that it's ready to be integrated in production. You must link to the audit reports.
+6. Governance may decide to first try out your saviour on a testnet. In this case, you must deploy an instance of your saviour on a testnet GEB instance and liquidate a `SAFE` which can then get saved
+7. Assuming that you pass all previous steps, you can deploy your saviour on mainnet so that governance can whitelist it in `LiquidationEngine` and in `SAFESaviourRegistry`
+
