@@ -173,3 +173,27 @@ There is no specific way in which users should cover a `SAFE`. They can store co
 * Users can withdraw cover \(with something like [withdraw](https://github.com/reflexer-labs/geb-safe-saviours/blob/6b8a89e1f6e7c7d210cb68f684ac1c6a5fb6e0c5/src/saviours/GeneralTokenReserveSafeSaviour.sol#L109)\) even if the saviour contract is not whitelisted inside the [LiquidationEngine](https://github.com/reflexer-labs/geb/blob/a49e4486682b787571475821ec66bfa025e5183f/src/LiquidationEngine.sol#L83)
 * Only the `SAFE`'s owner or an authorized address inside the [GebSafeManager](https://github.com/reflexer-labs/geb-safe-manager/blob/7da11a4638a994fb0a58e7c1330f69ce897844f9/src/GebSafeManager.sol#L49) can withdraw cover
 
+#### Setting a Custom Desired Collateralization Ratio for a SAFE:
+
+Depending on the saviour implementation, users may be able to set custom collateralization ratios that their `SAFE`s must have after they are saved. These custom CRatios must be greater than the `liquidationCRatio` of the collateral type backing the `SAFE`s and the function must only be called by a `SAFE`'s owner or by another authorized account.
+
+```javascript
+function setDesiredCollateralizationRatio(uint256 safeID, uint256 cRatio) external controlsSAFE(msg.sender, safeID) {
+    // Fetch the collateral's liquidationCRatio as well as the SAFE's handler
+    // Scale the liquidationCRatio down
+    uint256 scaledLiquidationRatio = oracleRelayer.liquidationCRatio(collateralJoin.collateralType()) / CRATIO_SCALE_DOWN;
+    address safeHandler = safeManager.safes(safeID);
+
+    // Check that the scaled liquidationCRatio is non null and that the proposed 
+    // cRatio is greater than the liquidation one and smaller or equal to MAX_CRATIO
+    require(scaledLiquidationRatio > 0, "GeneralTokenReserveSafeSaviour/invalid-scaled-liq-ratio");
+    require(scaledLiquidationRatio < cRatio, "GeneralTokenReserveSafeSaviour/invalid-desired-cratio");
+    require(cRatio <= MAX_CRATIO, "GeneralTokenReserveSafeSaviour/exceeds-max-cratio");
+
+    // Store the new desired cRatio for the specific SAFE
+    desiredCollateralizationRatios[collateralJoin.collateralType()][safeHandler] = cRatio;
+
+    emit SetDesiredCollateralizationRatio(msg.sender, safeID, safeHandler, cRatio);
+}
+```
+
