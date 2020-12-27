@@ -99,3 +99,7 @@
   * [Running on a Host](keepers/surplus-auction-keeper/running-on-a-host.md)
 * [Bidding Models](keepers/bidding-models.md)
 
+## Integrations
+
+* [SAFE Insurance](integrations/safe-insurance.md)
+
