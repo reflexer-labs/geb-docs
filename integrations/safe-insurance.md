@@ -10,7 +10,7 @@ The GEB [LiquidationEngine](https://github.com/reflexer-labs/geb/blob/master/src
 
 Anyone can build and propose new insurance contracts, assuming that the contracts abide by the requirements and principles outlined below. A central repository with `SAFE` insurance contracts \(also called saviours\) and interfaces can be found [here](https://github.com/reflexer-labs/geb-safe-saviours).
 
-### 2. Contract Interface
+## 2. Contract Interface
 
 Every insurance contract must implement one of the official interfaces \(the oldest interface can be found [here](https://github.com/reflexer-labs/geb-safe-saviours/blob/master/src/interfaces/SafeSaviourLike.sol)\):
 
@@ -98,11 +98,11 @@ abstract contract SafeSaviourLike {
 }
 ```
 
-### 3. Implementation Guidelines
+## 3. Implementation Guidelines
 
 In order to get an idea of how a saviour contract should be implemented and what checks must be in place, let's analyze the components of a [demo contract](https://github.com/reflexer-labs/geb-safe-saviours/blob/master/src/saviours/GeneralTokenReserveSafeSaviour.sol) that allows `SAFE` users to deposit & withdraw collateral used to save their positions.
 
-#### Constructor Highlights:
+### Constructor Highlights:
 
 * Sanitize every parameter \(`address`es must be non null, `uint` values are non null and within expected bounds etc\)
 * You must set the [CollateralJoin](https://github.com/reflexer-labs/geb-deploy/blob/master/src/AdvancedTokenAdapters.sol) contract of the specific collateral type you're targeting, as well as the [LiquidationEngine](https://github.com/reflexer-labs/geb/blob/master/src/LiquidationEngine.sol), [OracleRelayer](https://github.com/reflexer-labs/geb/blob/master/src/OracleRelayer.sol), [SAFEEngine](https://github.com/reflexer-labs/geb/blob/master/src/SAFEEngine.sol), [GebSafeManager](https://github.com/reflexer-labs/geb-safe-manager/blob/master/src/GebSafeManager.sol) and [SAFESaviourRegistry](https://github.com/reflexer-labs/geb-safe-saviours/blob/master/src/SAFESaviourRegistry.sol)
@@ -164,7 +164,7 @@ constructor(
 }
 ```
 
-#### Covering & Uncovering SAFEs:
+### Covering & Uncovering SAFEs:
 
 There is no specific way in which users should cover a `SAFE`. They can store collateral in the saviour, they can also store [aTokens](https://docs.aave.com/developers/the-core-protocol/atokens) or [cTokens](https://compound.finance/docs/ctokens) that are then used to redeem the underlying and add it in the SAFE or they can use a protocol similar to [Nexus Mutual](https://nexusmutual.gitbook.io/docs/users/docs) which automatically fulfills claims and saves positions. There are, though, certain things that a saviour developer must take into account:
 
@@ -173,7 +173,7 @@ There is no specific way in which users should cover a `SAFE`. They can store co
 * Users can withdraw cover \(with something like [withdraw](https://github.com/reflexer-labs/geb-safe-saviours/blob/6b8a89e1f6e7c7d210cb68f684ac1c6a5fb6e0c5/src/saviours/GeneralTokenReserveSafeSaviour.sol#L109)\) even if the saviour contract is not whitelisted inside the [LiquidationEngine](https://github.com/reflexer-labs/geb/blob/a49e4486682b787571475821ec66bfa025e5183f/src/LiquidationEngine.sol#L83)
 * Only the `SAFE`'s owner or an authorized address inside the [GebSafeManager](https://github.com/reflexer-labs/geb-safe-manager/blob/7da11a4638a994fb0a58e7c1330f69ce897844f9/src/GebSafeManager.sol#L49) can withdraw cover
 
-#### Setting a Custom Desired Collateralization Ratio for a SAFE:
+### Setting a Custom Desired Collateralization Ratio for a SAFE:
 
 Depending on the saviour implementation, users may be able to set custom collateralization ratios that their `SAFE`s must have after they are saved. These custom CRatios must be greater than the `liquidationCRatio` of the collateral type backing the `SAFE`s and the function must only be called by a `SAFE`'s owner or by another authorized account.
 
@@ -197,3 +197,14 @@ function setDesiredCollateralizationRatio(uint256 safeID, uint256 cRatio) extern
 }
 ```
 
+### View Function Highlights:
+
+[keeperPayoutExceedsMinValue](https://github.com/reflexer-labs/geb-safe-saviours/blob/6b8a89e1f6e7c7d210cb68f684ac1c6a5fb6e0c5/src/saviours/GeneralTokenReserveSafeSaviour.sol#L214):
+
+* It must verify if the fiat value of `keeperPayout` exceeds or is equal to `minKeeperPayoutValue`
+* It must read the collateral's price from the [same oracle](https://github.com/reflexer-labs/geb-safe-saviours/blob/6b8a89e1f6e7c7d210cb68f684ac1c6a5fb6e0c5/src/saviours/GeneralTokenReserveSafeSaviour.sol#L215) used inside `OracleRelayer` in order to maintain consistency between the core system and the saviour
+* It must return `false` if the oracle price is invalid
+
+[getKeeperPayoutValue](https://github.com/reflexer-labs/geb-safe-saviours/blob/6b8a89e1f6e7c7d210cb68f684ac1c6a5fb6e0c5/src/saviours/GeneralTokenReserveSafeSaviour.sol#L227):
+
+* 
