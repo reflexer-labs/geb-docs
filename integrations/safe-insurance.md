@@ -6,9 +6,9 @@ description: Building and integrating insurance contracts for SAFEs
 
 ## 1. Overview
 
-The GEB [LiquidationEngine](https://github.com/reflexer-labs/geb/blob/master/src/LiquidationEngine.sol) allows governance to [whitelist](https://github.com/reflexer-labs/geb/blob/a49e4486682b787571475821ec66bfa025e5183f/src/LiquidationEngine.sol#L88) external insurance contracts for SAFEs. SAFE users can [attach](https://github.com/reflexer-labs/geb/blob/a49e4486682b787571475821ec66bfa025e5183f/src/LiquidationEngine.sol#L290) insurance contracts to their positions and this way have an extra layer of protection against liquidation.
+The GEB [LiquidationEngine](https://github.com/reflexer-labs/geb/blob/master/src/LiquidationEngine.sol) allows governance to [whitelist](https://github.com/reflexer-labs/geb/blob/a49e4486682b787571475821ec66bfa025e5183f/src/LiquidationEngine.sol#L88) external insurance contracts for `SAFE`s. `SAFE` users can [attach](https://github.com/reflexer-labs/geb/blob/a49e4486682b787571475821ec66bfa025e5183f/src/LiquidationEngine.sol#L290) insurance contracts to their positions and this way have an extra layer of protection against liquidation.
 
-Anyone can build and propose new insurance contracts, assuming that the contracts abide by the requirements and principles outlined below. A central repository with SAFE insurance contracts \(also called saviours\) and interfaces can be found [here](https://github.com/reflexer-labs/geb-safe-saviours).
+Anyone can build and propose new insurance contracts, assuming that the contracts abide by the requirements and principles outlined below. A central repository with `SAFE` insurance contracts \(also called saviours\) and interfaces can be found [here](https://github.com/reflexer-labs/geb-safe-saviours).
 
 ### 2. Contract Interface
 
@@ -96,19 +96,20 @@ abstract contract SafeSaviourLike {
 
 ### 3. Implementation Guidelines
 
-In order to get an idea of how a saviour contract should be implemented and what checks must be in place, let's analyze the components of a demo contract that allows SAFE users to deposit & withdraw collateral used to save their positions.
+In order to get an idea of how a saviour contract should be implemented and what checks must be in place, let's analyze the components of a demo contract that allows `SAFE` users to deposit & withdraw collateral used to save their positions.
 
 #### Constructor Highlights:
 
 * Sanitize every parameter \(`address`es must be non null, `uint` values are non null and within expected bounds etc\)
 * You must set the [CollateralJoin](https://github.com/reflexer-labs/geb-deploy/blob/master/src/AdvancedTokenAdapters.sol) contract of the specific collateral type you're targeting, as well as the [LiquidationEngine](https://github.com/reflexer-labs/geb/blob/master/src/LiquidationEngine.sol), [OracleRelayer](https://github.com/reflexer-labs/geb/blob/master/src/OracleRelayer.sol), [SAFEEngine](https://github.com/reflexer-labs/geb/blob/master/src/SAFEEngine.sol), [GebSafeManager](https://github.com/reflexer-labs/geb-safe-manager/blob/master/src/GebSafeManager.sol) and [SAFESaviourRegistry](https://github.com/reflexer-labs/geb-safe-saviours/blob/master/src/SAFESaviourRegistry.sol)
 * You must set: 
-  * `keeperPayout` - amount of collateral awarded to the address that initially called [LiquidationEngine.liquidateSafe](https://github.com/reflexer-labs/geb/blob/a49e4486682b787571475821ec66bfa025e5183f/src/LiquidationEngine.sol#L309)
+  * `keeperPayout` - amount of collateral awarded to the address that initially called LiquidationEngine.liquidateSAFE
   * `minKeeperPayoutValue` - the minimum fiat value of the `keeperPayout` which makes it compelling for keepers to save the `SAFE` instead of waiting even more to liquidate it
   * `payoutToSAFESize` - how many times more collateral there must be in a `SAFE` compared to `keeperPayout`; this prevents keepers from purposefully liquidating `SAFE`s so they get a reward that is bigger than the one offered in a collateral auction
   * `defaultDesiredCollateralizationRatio` - the default CRatio that a `SAFE` will have after it's saved; this CRatio must be greater than the liquidation ratio stored in the [OracleRelayer](https://github.com/reflexer-labs/geb/blob/a49e4486682b787571475821ec66bfa025e5183f/src/OracleRelayer.sol#L60) and that is associated with `collateralToken`
 * `defaultDesiredCollateralizationRatio` must be greater than zero and smaller or equal to `MAX_CRATIO`. `MAX_CRATIO` is a constant that will be smaller than `2000` \(depending on the interface and implementation\)
 * When comparing a `liquidationCRatio` from the `OracleRelayer` with a desired collateralization ratio, you must first divide `liquidationCRatio` by `CRATIO_SCALE_DOWN` so you have the same scale for both numbers
+* You must integrate your saviour with [GebSafeManager](https://github.com/reflexer-labs/geb-safe-manager/blob/master/src/GebSafeManager.sol) in order to take advantage of its modularity and friendlier interface compared to the core contracts \(such as `SAFEEngine`\)
 * You must check that the `collateralJoin` contract is still enabled and that it handles a token with the expected amount of decimals you want
 * All variables shown in the example below must be set only once in the constructor and then they must remain immutable. If governance wants to change a parameter, they must deploy a new contract and whitelist it inside `LiquidationEngine` and `SAFESaviourRegistry`
 
