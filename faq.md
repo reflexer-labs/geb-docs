@@ -76,7 +76,7 @@ We believe that growing alongside other projects and helping builders leverage R
 
 ### What happens if the redemption rate is positive and I just add more collateral in my SAFE instead of repaying my debt?
 
-Two things will happen in this case:
+Two things can happen in this case:
 
 * RAI holders/users \(who know that a higher redemption price means that they can redeem more collateral in case the system is settled\) can still long RAI and make the market price go above redemption. Once the market price goes up, it will be more expensive for you to buy RAI and repay your SAFE's debt
 * Your capital efficiency will decrease because you need to add more and more collateral just to maintain your current collateralization ratio 
