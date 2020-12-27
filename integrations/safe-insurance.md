@@ -88,7 +88,7 @@ abstract contract SafeSaviourLike {
     function canSave(address) virtual external returns (bool);
     /*
        Returns the amount of collateral tokens that will be used to save a
-       SAFE so it has a desiredCollateralizationRatios CRatio afterwards
+       SAFE so that it has a desiredCollateralizationRatios CRatio afterwards
     */
     function tokenAmountUsedToSave(address) virtual public returns (uint256);
 }
