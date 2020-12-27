@@ -30,15 +30,18 @@ abstract contract SafeSaviourLike {
     }
 
     // --- Variables ---
+    // The contract used to liquidate SAFEs inside GEB
     LiquidationEngineLike   public liquidationEngine;
+    // The contract that glues together collateral oracles and the SAFEEngine
     OracleRelayerLike       public oracleRelayer;
     /* 
        The GebSafeManager that the saviour is integrated with.
        The manager makes it easier for developers to integrate with the system
     */
     GebSafeManagerLike      public safeManager;
-    // 
+    // The contract maintaining the state of all SAFEs
     SAFEEngineLike          public safeEngine;
+    // A registry that keeps that of when a SAFE has last been saved
     SAFESaviourRegistryLike public saviourRegistry;
 
     // The amount of tokens the keeper gets in exchange for the gas spent to save a SAFE
