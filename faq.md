@@ -72,7 +72,7 @@ We believe that growing alongside other projects and helping builders leverage R
 ### Can you summarize what users should do so they can take advantage of the PID?
 
 1. When the redemption rate is positive, SAFE users should repay their debt, RAI users should buy more RAI
-2. When the redemption rate is negative, SAFE users should mint more debt, RAI users should sell RAI
+2. When the redemption rate is negative, SAFE users should mint more debt, RAI users should sell/short RAI
 
 ### What happens if the redemption rate is positive and I just add more collateral in my SAFE instead of repaying my debt?
 
