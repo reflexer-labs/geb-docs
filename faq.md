@@ -76,9 +76,9 @@ We believe that growing alongside other projects and helping builders leverage R
 
 ### Can you summarize the behavior of the RAI redemption rate?
 
-1. When RAI's market price &gt; redemption price, the redemption rate will be negative
-2. When RAI's market price &lt; redemption price, the redemption rate will be positive
-3. When RAI's market price = redemption price, the redemption rate will be zero
+1. When RAI's market price &gt; redemption price for a sustained period of time, the redemption rate will become negative
+2. When RAI's market price &lt; redemption price for a sustained period of time, the redemption rate will become positive
+3. When RAI's market price = redemption price for a sustained period of time, the redemption rate will become zero
 
 ### Is RAI a rebase token?
 

@@ -83,8 +83,8 @@ The following tables show the before and after variable names from all core MCD 
 | flapper | surplusAuctionHouse |
 | flopper | debtAuctionHouse |
 | NaN | postSettlementSurplusDrain \(NEW\) |
+| NaN | extraSurplusReceiver \(NEW\) |
 | sin | debtQueue |
-| NaN | activeDebtAuctions \(NEW\) |
 | Sin | totalQueuedDebt |
 | Ash | totalOnAuctionDebt |
 | NaN | lastSurplusAuctionTime \(NEW\) |
@@ -97,6 +97,7 @@ The following tables show the before and after variable names from all core MCD 
 | NaN | disableCooldown \(NEW\) |
 | NaN | disableTimestamp \(NEW\) |
 | NaN | protocolTokenAuthority \(NEW\) |
+| NaN | systemStakingPool \(NEW\) |
 | live | contractEnabled |
 | NaN | unqueuedUnauctionedDebt |
 | file | modifyParameters |
