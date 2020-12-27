@@ -12,7 +12,7 @@ Anyone can build and propose new insurance contracts, assuming that the contract
 
 ### 2. Contract Interface
 
-Every insurance contract must implement one of the official interfaces \(the oldest one can be found [here](https://github.com/reflexer-labs/geb-safe-saviours/blob/master/src/interfaces/SafeSaviourLike.sol)\):
+Every insurance contract must implement one of the official interfaces \(the oldest interface can be found [here](https://github.com/reflexer-labs/geb-safe-saviours/blob/master/src/interfaces/SafeSaviourLike.sol)\):
 
 ```javascript
 abstract contract SafeSaviourLike {
@@ -76,6 +76,10 @@ abstract contract SafeSaviourLike {
     function either(bool x, bool y) internal pure returns (bool z) {
         assembly{ z := or(x, y)}
     }
+    
+    // --- Events ---
+    event SetDesiredCollateralizationRatio(address indexed caller, uint256 indexed safeID, address indexed safeHandler, uint256 cRatio);
+    event SaveSAFE(address indexed keeper, bytes32 indexed collateralType, address indexed safeHandler, uint256 collateralAdded);
 
     // --- Functions to Implement ---
     // Mandatory function called by the LiquidationEngine in order to save a SAFE
@@ -96,7 +100,7 @@ abstract contract SafeSaviourLike {
 
 ### 3. Implementation Guidelines
 
-In order to get an idea of how a saviour contract should be implemented and what checks must be in place, let's analyze the components of a demo contract that allows `SAFE` users to deposit & withdraw collateral used to save their positions.
+In order to get an idea of how a saviour contract should be implemented and what checks must be in place, let's analyze the components of a [demo contract](https://github.com/reflexer-labs/geb-safe-saviours/blob/master/src/saviours/GeneralTokenReserveSafeSaviour.sol) that allows `SAFE` users to deposit & withdraw collateral used to save their positions.
 
 #### Constructor Highlights:
 
@@ -159,4 +163,12 @@ constructor(
     defaultDesiredCollateralizationRatio = defaultDesiredCollateralizationRatio_;
 }
 ```
+
+#### Covering & Uncovering SAFEs:
+
+There is no specific way in which users should cover a `SAFE`. They can store collateral in the saviour, they can also store [aTokens](https://docs.aave.com/developers/the-core-protocol/atokens) or [cTokens](https://compound.finance/docs/ctokens) that are then used to redeem the underlying and add it in the SAFE or they can use a protocol like [Nexus Mutual](https://nexusmutual.gitbook.io/docs/users/docs) which automatically fulfills claims and saves positions. There are, though, certain things that a saviour developer must take into account:
+
+* The function used to add more cover for a `SAFE` \(like [deposit](https://github.com/reflexer-labs/geb-safe-saviours/blob/6b8a89e1f6e7c7d210cb68f684ac1c6a5fb6e0c5/src/saviours/GeneralTokenReserveSafeSaviour.sol#L85)\) must revert if the saviour contract is not whitelisted inside the [LiquidationEngine](https://github.com/reflexer-labs/geb/blob/a49e4486682b787571475821ec66bfa025e5183f/src/LiquidationEngine.sol#L83)
+* User can withdraw cover even if the saviour contract is not whitelisted inside the [LiquidationEngine](https://github.com/reflexer-labs/geb/blob/a49e4486682b787571475821ec66bfa025e5183f/src/LiquidationEngine.sol#L83)
+* Only the `SAFE`'s owner or an authorized address inside the [GebSafeManager](https://github.com/reflexer-labs/geb-safe-manager/blob/7da11a4638a994fb0a58e7c1330f69ce897844f9/src/GebSafeManager.sol#L49) can withdraw cover
 
