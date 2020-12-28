@@ -8,7 +8,7 @@ description: >-
 
 ## 1. Summary <a id="1-introduction-summary"></a>
 
-The surplus auction is used to sell off a fixed amount of the surplus in exchange for protocol tokens. The surplus comes from the stability fees charged to SAFEs \(and stored in the `AccountingEngine`\). Bidders submit increasing amounts of protocol tokens and the winner receives all auctioned surplus in exchange for their coins which are burned.
+The surplus auction is used to sell off a fixed amount of the surplus in exchange for protocol tokens. The surplus comes from the stability fees charged to SAFEs \(and stored in the `AccountingEngine`\). Bidders submit increasing amounts of protocol tokens and the winner receives all auctioned surplus in exchange for their coins which are burned or transferred to another address.
 
 ## 2. Contract Variables & Functions <a id="2-contract-details"></a>
 
