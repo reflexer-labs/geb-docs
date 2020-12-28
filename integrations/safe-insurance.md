@@ -261,7 +261,7 @@ In order to launch and integrate a new saviour in a GEB, it must first pass seve
 
 1. You must first create a new [GEB Improvement Proposal](https://github.com/reflexer-labs/GIPs). Once you create the GIP you must ask for feedback on [Reflexer's Discord server](https://discord.gg/kB4vcYs) \(in the development channel\). To maximize your chances of having your idea accepted:
    * Your saviour must only do one thing. For example, you should only handle aTokens or cTokens, not both
-   * Your saviour should only cover `SAFE`s with a single collateral type
+   * Your saviour should only take into account a single collateral type \(e.g ETH-A **or** ETH-B, **not** ETH-A and ETH-B\)
    * You should have a draft implementation of your saviour with estimated gas prices for calling each function
    * You must give an initial estimate of the `keeperPayout`, `minKeeperPayoutValue`, `payoutToSAFESize` and `defaultDesiredCollateralizationRatio` values you plan to set
    * You must specify if you plan to monetize the saviour service you're building and how you plan to do it
