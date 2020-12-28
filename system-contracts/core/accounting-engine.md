@@ -21,7 +21,6 @@ The `AccountingEngine` receives both system surplus and system debt. It covers d
 
   `popDebtDelay`seconds.
 
-* `activeDebtAuctions[auctionId: uint256]`- amount of debt auctions that aren't yet settled.
 * `postSettlementSurplusDrain`- contract meant to auction/dispose off any remaining surplus after the `AccountingEngine` is disabled \(and in case surplus couldn't be settled with bad debt because of a bug\).
 * `protocolTokenAuthority` ****- address of ****authority contract that says which addresses are able to mint an burn protocol tokens.
 * `totalQueuedDebt`- the total amount of debt in the queue.
