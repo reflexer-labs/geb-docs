@@ -6,7 +6,7 @@ description: 'The protocol''s accountant, keeping track of surplus and deficit'
 
 ## 1. Summary <a id="1-introduction-summary"></a>
 
-The `AccountingEngine` receives both system surplus and system debt. It covers deficits via debt auctions and sell off surplus via surplus \(`Pre/PostSettlementSurplusAuctionHouse`\) auctions.
+The `AccountingEngine` receives both system surplus and system debt. It covers deficits via debt auctions and dispose off surplus via auctions \(`Burning/RecyclingSurplusAuctionHouse`\) or transfers \(to `extraSurplusReceiver`\).
 
 ## 2. Contract Variables & Functions <a id="2-contract-details"></a>
 
@@ -105,8 +105,4 @@ When the `AccountingEngine` has a surplus balance above the `surplusBuffer` \(`s
 ### Disabling the Accounting Engine
 
 When an authorized address calls `AccountingEngine.disableContract` the system will try to settle as much remaining `safeEngine.debtBalance[accountingEngine]` as possible. 
-
-### Backup Function to Drain Remaining Surplus
-
-In case of a bug in the system's accounting or in `GlobalSettlement.processSAFE` \(during the settlement process\), anyone can call `transferPostSettlementSurplus` to transfer remaining surplus out of the `AccountingEngine` and allow `GlobalSettlement.setOutstandingCoinSupply` to execute successfully. `transferPostSettlementSurplus` can only be called after `disableCooldown` seconds have passed since `AccountingEngine` has been disabled.
 
