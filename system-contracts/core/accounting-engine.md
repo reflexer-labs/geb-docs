@@ -17,10 +17,18 @@ The `AccountingEngine` receives both system surplus and system debt. It covers d
 * `safeEngine` - address of the `SAFEEngine`.
 * `surplusAuctionHouse` - address of the `PreSettlementSurplusAuctionHouse`.
 * `debtAuctionHouse` - address of the `DebtAuctionHouse`.
+* `systemStakingPool` - the system's staking pool acting as lender of first resort.
+* `extraSurplusReceiver` - address that receives surplus in case the strategy to get rid of excessive surplus is transfer instead of auction.
 * `debtQueue[timestamp: uint256]`- the system debt queue. The `LiquidationEngine` adds a new debt block every time it starts a new collateral auction. Each block can be popped out of the list after 
 
   `popDebtDelay`seconds.
 
+* `debtPoppers[timestamp: uint256]` - mapping that records the addresses which pop debt out of `debtQueue`.
+* `lastSurplusTransferTime` - the last timestamp when the engine transferred extra surplus out.
+* `lastSurplusAuctionTime` - the last timestamp when the engine auctioned extra surplus.
+* `surplusTransferDelay` - the minimum delay between two consecutive extra surplus transfers.
+* `surplusAuctionDelay` - the minimum delay between two consecutive extra surplus auctions.
+* `extraSurplusIsTransferred` - `0` if extra surplus is auctioned, `1` if it's transferred.
 * `postSettlementSurplusDrain`- contract meant to auction/dispose off any remaining surplus after the `AccountingEngine` is disabled \(and in case surplus couldn't be settled with bad debt because of a bug\).
 * `protocolTokenAuthority` ****- address of ****authority contract that says which addresses are able to mint an burn protocol tokens.
 * `totalQueuedDebt`- the total amount of debt in the queue.
@@ -29,6 +37,7 @@ The `AccountingEngine` receives both system surplus and system debt. It covers d
 * `debtAuctionBidSize`- the fixed amount of debt to be covered by a single debt auction.
 * `initialDebtAuctionMintedTokens`- the starting amount of protocol tokens offered to cover the auctioned debt.
 * `surplusAuctionAmountToSell`- amount of surplus to be sold in a single surplus auction.
+* `surplusTransferAmount` - the amount of extra surplus that is transferred with `transferExtraSurplus()`.
 * `surplusBuffer`- threshold that must be exceeded before surplus auctions are possible.
 * `disableCooldown`- time that must elapse after the `AccountingEngine` is disabled and until it can send all its remaining surplus to the `postSettlementSurplusDrain`. Must be bigger than `GlobalSettlement.shutdownCooldown`.
 * `disableTimestamp`- timestamp when the `AccountingEngine` was disabled.
@@ -43,11 +52,13 @@ The `AccountingEngine` receives both system surplus and system debt. It covers d
 * `modifyParameters(bytes32 parameter`, `address data)` - update an `address` parameter.
 * `addAuthorization(usr: address)` - add an address to `authorizedAddresses`.
 * `removeAuthorization(usr: address)` - remove an address from `authorizedAddresses`.
+* `canPrintProtocolTokens() public view returns (bool)` - returns `true` if `systemStakingPool` is null or if `systemStakingPool.canPrintProtocolTokens()` reverts. Returns true or false depending on what `systemStakingPool.canPrintProtocolTokens()` returns.
 * `pushDebtToQueue(debtBlock: uint256)` - adds a bad debt block to the auctions queue.
 * `popDebtFromQueue(timestamp: uint256)` - release a debt block from the debt queue.
 * `settleDebt(rad: uint256)` - calls `settleDebt` on the `safeEngine` in order to cancel out surplus and debt.
 * `cancelAuctionedDebtWithSurplus(rad: uint256)` - cancels out surplus coming from `DebtAuctionHouse` auctions and auctioned \(bad\) debt.
 * `auctionSurplus()` - trigger a surplus auction \(`SurplusAuctionHouse.startAuction`\).
+* `transferExtraSurplus()` - transfers extra surplus \(above the `surplusBuffer`\) from the engine to `extraSurplusReceiver`.
 * `auctionDebt()` - trigger a deficit auction \(`DebtAuctionHouse.startAuction`\).
 * `settleDebtAuction(id: uint256)` - authed function meant to be called by `debtAuctionHouse` in order to signal that a specific auction settled.
 * `transferPostSettlementSurplus()` - transfer any post settlement, leftover surplus to the`postSettlementSurplusDrain`. Meant to be a backup in case `GlobalSettlement.processSAFE` has a bug \(cannot process a specific Safe\), governance doesn't have power over the system and there's still surplus left in the `AccountingEngine` which then blocks `GlobalSettlement.setOutstandingCoinSupply`.
