@@ -18,12 +18,13 @@ The surplus auction is used to sell off a fixed amount of the surplus in exchang
 * `AUCTION_HOUSE_TYPE` - flag set to `bytes32("SURPLUS")`
 * `authorizedAccounts[usr: address]` - addresses allowed to call `modifyParameters()` and `disableContract()`.
 * `bids[id: uint]` - storage of all `Bid`s by `id`
-* `safeEngine` - storage of the SAFEEngine's address
+* `safeEngine` - storage of the `SAFEEngine`'s address
 * `protocolToken` - address of the protocol token
 * `auctionsStarted` - total auction count
 * `bidDuration` - bid lifetime / max bid duration \(default: 3 hours\)
 * `bidIncrease` - minimum bid increase \(default: 5%\)
 * `totalAuctionLength` - maximum auction duration \(default: 2 days\)
+* `protocolTokenBidReceiver` - receiver of protocol tokens after an auction is settled. Only present in the `RecyclingSurplusAuctionHouse`.
 
 **Data Structures**
 
@@ -41,6 +42,7 @@ The surplus auction is used to sell off a fixed amount of the surplus in exchang
 **Functions**
 
 * `modifyParameters(bytes32 parameter`, `uint256 data)` - update a `uint256` parameter.
+* `modifyParameters(bytes32 parameter`, `address addr)` - update an `address` parameter. Only present in the `RecyclingSurplusAuctionHouse`.
 * `startAuction(amountToSell: uint256`, `initialBid: uint256)` - start a new surplus auction.
 * `restartAuction(id: uint256)` - restart an auction if there have been 0 bids and the `auctionDeadline` has passed.
 * `increaseBidSize(id: uint256`, `amountToBuy: uint256`, `bid: uint256)` - submit a bid with an increasing amount of protocol tokens for a fixed amount of system coins.
@@ -83,7 +85,7 @@ The surplus auction is used to sell off a fixed amount of the surplus in exchang
 
 In a surplus auction, bidders compete for a fixed `amountToSell` of system coins with increasing `bidAmount`s of protocol tokens.
 
-The surplus auction ends when the last bid's duration is passed \(`bidDuration`\) without another bid getting placed or when the auction duration \(`totalAuctionLength`\) has been surpassed. When the auction settles, the protocol tokens received are burnt.
+The surplus auction ends when the last bid's duration is passed \(`bidDuration`\) without another bid getting placed or when the auction duration \(`totalAuctionLength`\) has been surpassed. When the auction settles, the protocol tokens received are burnt in the case of a `BurningSurplusAuctionHouse` or transferred to a separate address in the case of `RecyclingSurplusAuctionHouse`.
 
-In case governance disables the surplus auction house by calling `disableContract`, anyone can call `terminateAuctionPrematurely` in order to quickly settle an auction and return the protocol token bid to `highBidder`. 
+In case governance disables the surplus auction house by calling `disableContract`, anyone can call `terminateAuctionPrematurely` in order to quickly settle an auction and return the protocol token bid to the `highBidder`. 
 
