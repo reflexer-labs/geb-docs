@@ -11,7 +11,7 @@ The GEB [LiquidationEngine](https://github.com/reflexer-labs/geb/blob/master/src
 Anyone can build and propose new insurance contracts, assuming that the contracts abide by the requirements and principles outlined below. A central repository with `SAFE` insurance contracts \(also called saviours\) and interfaces can be found [here](https://github.com/reflexer-labs/geb-safe-saviours).
 
 {% hint style="info" %}
-**NOTE**
+**Important Note**
 
 The sections below only cover saviours that add collateral in a SAFE and don't pay back a SAFE's debt. 
 
