@@ -6,7 +6,7 @@ description: 'The protocol''s accountant, keeping track of surplus and deficit'
 
 ## 1. Summary <a id="1-introduction-summary"></a>
 
-The `AccountingEngine` receives both system surplus and system debt. It covers deficits via debt auctions and dispose off surplus via auctions \(`Burning/RecyclingSurplusAuctionHouse`\) or transfers \(to `extraSurplusReceiver`\).
+The `AccountingEngine` receives both system surplus and system debt. It covers deficits via debt auctions and disposes off surplus via auctions \(`Burning/RecyclingSurplusAuctionHouse`\) or transfers \(to `extraSurplusReceiver`\).
 
 ## 2. Contract Variables & Functions <a id="2-contract-details"></a>
 
