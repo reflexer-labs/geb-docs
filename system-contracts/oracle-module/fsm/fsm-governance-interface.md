@@ -1,12 +1,12 @@
 ---
-description: Governance contract for stopping OSM-like contracts
+description: Governance contract for stopping FSM-like contracts
 ---
 
 # FSM Governance Interface
 
 ## 1. Summary
 
-This governance interface allows token holders to `stop()` OSM-like contracts in case of an oracle attack.
+This governance interface allows token holders to `stop()` FSM-like contracts in case of an oracle attack.
 
 ## 2. Contract Variables & Functions <a id="2-contract-details"></a>
 
