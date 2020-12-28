@@ -19,8 +19,8 @@ The `OracleRelayer` functions as an interface contract between `FSM`s and the `S
 * `redemptionRate` - the current redemption rate that reprices the system coin internally and changes user incentives
 * `_redemptionPrice` - virtual variable that does not reflect the latest `redemptionPrice`
 * `redemptionPriceUpdateTime` - last time when the redemption price was updated
-* `redemptionRateUpperBound` - maximum value that the `redemptionRate` can take
-* `redemptionRateLowerBound` - minimum value that the `redemptionRate` can take
+* `redemptionRateUpperBound` - maximum value that the `redemptionRate` can have
+* `redemptionRateLowerBound` - minimum value that the `redemptionRate` can have
 * `RAY` - number with 27 decimals
 
 **Data Structures**
@@ -77,7 +77,7 @@ The `OracleRelayer` functions as an interface contract between `FSM`s and the `S
 
 ### Redemption Price
 
-Every time someone wants to read the `_redemptionPrice` its value will first be updated using the stored `redemptionRate` and then the output will be returned. We chose this design in order to ensure a smooth  `redemptionPrice` pro-ration \(using the virtual variable + a state modifying getter\).
+Every time someone wants to read the `_redemptionPrice` its value will first be updated using the `redemptionRate` and then the output will be returned. We chose this design in order to ensure a smooth  `redemptionPrice` pro-ration \(using the virtual variable + a state modifying getter\).
 
 ### Updating the Redemption Rate
 
