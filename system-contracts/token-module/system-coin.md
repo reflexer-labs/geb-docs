@@ -16,6 +16,7 @@ The `Coin` contract is the user-facing ERC20 token maintaining the accounting fo
 * `symbol`
 * `version`
 * `decimals`
+* `changeData` - if `0` governance can't change the `name` and/or `symbol` and no one can use `permit()`; if greater than zero governance can change them
 * `totalSupply` - total coin supply
 * `balanceOf(usr: address)` - user balance
 * `allowance(src: address, dst: address)` - approvals
