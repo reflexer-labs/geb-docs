@@ -263,7 +263,7 @@ If you would like to submit a proposal for implementing a monetized saviour, you
 * You must mention that your saviour will be monetized and you should give a detailed description of how you plan to charge `SAFE` users. You must include the description in your GIP as outlined in the section below
 * Assuming you plan to use a smart contract to charge users, your should attach a detailed overview or implementation of your model inside your GIP
 
-## 5. Launching in Production
+## 5. Launching on Mainnet
 
 In order to launch and integrate a new saviour in a GEB, it must first pass several checks:
 
