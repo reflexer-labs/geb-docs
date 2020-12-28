@@ -328,6 +328,7 @@ The following tables show the before and after variable names from all core MCD 
 | NaN | protectSAFE \(NEW\) |
 | bite | liquidateSAFE |
 | claw | removeCoinsFromAuction |
+| NaN | getLimitAdjustedDebtToCover \(NEW\) |
 | urn | safe |
 | rate | accumulatedRates |
 | ink | safeCollateral |
@@ -515,6 +516,7 @@ The following tables show the before and after variable names from all core MCD 
 | balanceOf | balanceOf |
 | allowance | allowance |
 | nonces | nonces |
+| NaN | changeData \(NEW\) |
 | Approval | Approval |
 | Transfer | Transfer |
 | DOMAIN\_SEPARATOR | DOMAIN\_SEPARATOR |
