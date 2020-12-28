@@ -59,6 +59,7 @@ English collateral auctions are used to sell collateral from SAFEs that have bec
 * `bidAmount(id: uint256) public view returns (uint256)` - return the latest `bidAmount` from a specific auction
 * `remainingAmountToSell(id: uint256) public view returns (uint256)` - return the remaining collateral amount to sell from a specific auction
 * `forgoneCollateralReceiver(uint id) public view returns (address)` - return the`forgoneCollateralReceiver` for a specific auction
+* `raisedAmount(id: uint256)` - always returns zero
 * `amountToRaise(uint id) public view returns (uint256)` - return the amount of system coins to raise for a specific auction
 
 **Events**
