@@ -16,7 +16,7 @@ The `Coin` contract is the user-facing ERC20 token maintaining the accounting fo
 * `symbol`
 * `version`
 * `decimals`
-* `changeData` - if `0` governance can't change the `name` and/or `symbol` and no one can use `permit()`; if greater than zero governance can change them
+* `changeData` - if `1` governance can change the `name` and/or `symbol` and no one can use `permit()`; if different than `1` governance cannot change `name` or `symbol` anymore and `permit()` can be used
 * `totalSupply` - total coin supply
 * `balanceOf(usr: address)` - user balance
 * `allowance(src: address, dst: address)` - approvals
@@ -31,7 +31,10 @@ The `Coin` contract is the user-facing ERC20 token maintaining the accounting fo
 * `pull(usr: address`, `amount: uint256)`- transfer from
 * `move(src: address`, `dst: address`, `amount: uint256)` - transfer from
 * `approve(usr: address`, `amount: uint256)` - allow pulls and moves
-* `permit(holder: address`, `spender: address`, `nonce: uint256`, `expiry: uint256`, `allowed: bool, v: uint8`, `r: bytes32`, `s: bytes32)` - approve by signature
+* `modifyParameters(parameter: bytes32`, `data: uint256)` - modify the value of `changeData`
+* `setName(name_: string)` - change the token's `name` if `changeData` is `1`
+* `setSymbol(symbol_: string)` - change the token's `symbol` if `changeData` is `1`
+* `permit(holder: address`, `spender: address`, `nonce: uint256`, `expiry: uint256`, `allowed: bool, v: uint8`, `r: bytes32`, `s: bytes32)` - approve by signature; only callable if `changeData != 1`
 * `transfer(dst: address`, `amount: uint256)` - transfers coins from `msg.sender` to `dst`
 
 ## 3. Walkthrough <a id="3-key-mechanisms-and-concepts"></a>
