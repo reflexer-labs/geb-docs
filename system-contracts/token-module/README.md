@@ -8,7 +8,7 @@ description: >-
 
 **Relevant smart contracts:**
 
-* [DSToken](https://github.com/reflexer-labs/ds-token.git)
+* [DSDelegateToken](https://github.com/reflexer-labs/ds-token/blob/master/src/delegate.sol)
 * [Coin](https://github.com/reflexer-labs/geb/blob/master/src/Coin.sol)
 * [BasicTokenAdapters](https://github.com/reflexer-labs/geb/blob/master/src/BasicTokenAdapters.sol)
 * [AdvancedTokenAdapters](https://github.com/reflexer-labs/geb-deploy/blob/master/src/AdvancedTokenAdapters.sol)
