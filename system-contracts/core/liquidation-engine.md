@@ -48,6 +48,7 @@ The `LiquidationEngine` enables external actors to liquidate SAFEs and send thei
 * `liquidateSAFE(collateralType: bytes32`, `safe: address)` - will revert if `lockedCollateral` or `generatedDebt` are larger than or equal to 2^255.
 * `protectSAFE(collateralType: bytes32, address, address)` will revert if the proposed `SAFESaviour` address was not whitelisted by governance
 * `removeCoinsFromAuction(rad: uint256)` - signal that an amount of system coins has been covered by a collateral auction and it can now be subtracted from `currentOnAuctionSystemCoins`
+* `getLimitAdjustedDebtToCover(collateralType: bytes32`, `safe: address)` - returns the amount of debt that can currently be covered by a collateral auction for a specific safe
 
 #### **Events** <a id="events"></a>
 
@@ -88,16 +89,19 @@ The `LiquidationEngine` enables external actors to liquidate SAFEs and send thei
 
 **Notes**
 
-* `liquidateSAFE`will not leave a SAFE with debt and no collateral.
+* `liquidateSAFE`will not leave a SAFE with debt and no collateral
+* `liquidateSAFE` will not leave a SAFE dusty
 * `liquidateSAFE` will not start a new auction if `amountToRaise + currentOnAuctionSystemCoins` exceeds `onAuctionSystemCoinLimit`
 * `protectSAFE` will revert if the chosen `SAFESaviour` address was not whitelisted by governance.
 
 ## 3. Walkthrough
 
-`liquidateSAFE` can be called at anytime but will only succeed if the target SAFE is underwater. A SAFE is underwater when the result of its collateral \(`lockedCollateral`\) multiplied by the collateral's liquidation price \(`liquidationPrice`\) is smaller than its present value debt \(`generatedDebt` times the collateral's `accumulatedRates`\). 
+`liquidateSAFE` can be called at any time but will only succeed if the target SAFE is underwater. A SAFE is underwater when the result of its collateral \(`lockedCollateral`\) multiplied by the collateral's liquidation price \(`liquidationPrice`\) is smaller than its present value debt \(`generatedDebt` times the collateral's `accumulatedRates`\). 
 
 `liquidationPrice` is the oracle-reported price scaled by the collateral's liquidation ratio. There is a clear distinction between liquidation and safety ratios \(even though the two can be equal in value\):
 
 * Safety ratios are the minimum collateralization ratios used when generating debt against a SAFE's collateral. They can be more conservative \(higher\) than liquidation ratios
 * Liquidation ratios are the minimum collateralization ratios under which SAFEs are liquidated
+
+`liquidateSAFE` may terminate early if the owner of the SAFE that's being targeted protected their position with a saviour that manages to save it from liquidation.
 
