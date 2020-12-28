@@ -39,10 +39,10 @@ The protocol token is a [DsDelegateToken](https://github.com/reflexer-labs/ds-to
 * `move(src: address`, `dst: address`, `amount: uint256)` - transfer from
 * `approve(usr: address`, `amount: uint256)` - allow pulls and moves
 * `transfer(dst: address`, `amount: uint256)` - transfers coins from `msg.sender` to `dst`
-* `delegate(delegatee: address)` -
-* `delegateBySig(delegatee: address`, `nonce: uint256`, `expiry: uint256`, `v: uint8`, `r: bytes32`, `s: bytes32)` -
-* `getCurrentVotes(account: address) external view returns (uint256)` -
-* `getPriorVotes(account: address`, `blockNumber: uint256) public view returns (uint256)` -
+* `delegate(delegatee: address)` - delegate votes from `msg.sender` to `delegatee`
+* `delegateBySig(delegatee: address`, `nonce: uint256`, `expiry: uint256`, `v: uint8`, `r: bytes32`, `s: bytes32)` - delegates votes from signatory to `delegatee`
+* `getCurrentVotes(account: address) external view returns (uint256)` - gets the current votes balance for `account`
+* `getPriorVotes(account: address`, `blockNumber: uint256) public view returns (uint256)` - determine the prior number of votes for an account as of a block number
 
 **Data Structures**
 
