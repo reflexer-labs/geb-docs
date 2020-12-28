@@ -74,8 +74,9 @@ Fixed discount collateral auctions are similar to their `English` counterpart in
 * `terminateAuctionPrematurely(id: uint256)` - normally used during `GlobalSettlement` to terminate an auction early and send unsold collateral to the `msg.sender` as well as call `LiquidationEngine` in order to subtract `bids[auctionId].amountToRaise` from `LiquidationEngine.currentOnAuctionSystemCoins`
 * `bidAmount(id: uint256) public view returns (uint256)` - always returns zero
 * `remainingAmountToSell(id: uint256) public view returns (uint256)` - return the remaining collateral amount to sell from a specific auction
-* `forgoneCollateralReceiver(uint id) public view returns (address)` - return the`forgoneCollateralReceiver` for a specific auction
-* `amountToRaise(uint id) public view returns (uint256)` - return the amount of system coins to raise for a specific auction
+* `forgoneCollateralReceiver(uint id) public view returns (address)` - returns the`forgoneCollateralReceiver` for a specific auction
+* `raisedAmount(id: uint256)` - returns the currently raised amount of system coins for a specific auction.
+* `amountToRaise(uint id) public view returns (uint256)` - returns the amount of system coins to raise for a specific auction
 
 **Events**
 
@@ -161,14 +162,14 @@ submittedBid                   = 5 * WAD
     used by the contract will be 
     0.9 (lower collateral deviation) * 100 (collateral FSM price) = 90 USD
 */
-finalCollateralPrice           = 90 * WAD
+finalCollateralPrice            = 90 * WAD
 
 /*
     Even if the system coin market price is deviated from the redemption price,
     both the lower and the upper systemCoinMedianDeviation are 0% so the contract
     will use the redemption price
 */
-finalSystemCoinPrice           = 5 * RAY
+finalSystemCoinPrice            = 5 * RAY
 
 /*
     Determining the amount of collateral bought given the 5 system coin bid
