@@ -8,7 +8,7 @@ description: >-
 
 ## 1. Summary <a id="1-introduction-summary"></a>
 
-Debt Auctions are used to recapitalize the system by auctioning off protocol tokens for a fixed amount of system coins. In this process, bidders compete by offering to accept decreasing amounts of protocol tokens for the coins they will end up paying.
+Debt auctions are used to recapitalize the system by auctioning off protocol tokens for a fixed amount of system coins. In this process, bidders compete by offering to accept decreasing amounts of protocol tokens for the coins they will end up paying.
 
 ## 2. Contract Variables & Functions <a id="2-contract-details"></a>
 
