@@ -85,14 +85,19 @@ The following tables show the before and after variable names from all core MCD 
 | NaN | postSettlementSurplusDrain \(NEW\) |
 | NaN | extraSurplusReceiver \(NEW\) |
 | sin | debtQueue |
+| NaN | debtPoppers \(NEW\) |
 | Sin | totalQueuedDebt |
 | Ash | totalOnAuctionDebt |
 | NaN | lastSurplusAuctionTime \(NEW\) |
+| NaN | lastSurplusTransferTime \(NEW\) |
 | NaN | surplusAuctionDelay \(NEW\) |
+| NaN | surplusTransferDelay \(NEW\) |
+| NaN | extraSurplusIsTransferred \(NEW\) |
 | wait | popDebtDelay |
 | dump | initialDebtAuctionMintedTokens |
 | sump | debtAuctionBidSize |
 | bump | surplusAuctionAmountToSell |
+| NaN | surplusTransferAmount \(NEW\) |
 | hump | surplusBuffer |
 | NaN | disableCooldown \(NEW\) |
 | NaN | disableTimestamp \(NEW\) |
@@ -108,6 +113,7 @@ The following tables show the before and after variable names from all core MCD 
 | flop | auctionDebt |
 | NaN | settleDebtAuction \(NEW\) |
 | flap | auctionSurplus |
+| NaN | transferExtraSurplus \(NEW\) |
 | cage | disableContract |
 | NaN | transferPostSettlementSurplus \(NEW\) |
 | NaN | AddAuthorization \(NEW\) |
@@ -122,8 +128,9 @@ The following tables show the before and after variable names from all core MCD 
 | NaN | AuctionSurplus \(NEW\) |
 | NaN | DisableContract \(NEW\) |
 | NaN | TransferPostSettlementSurplus \(NEW\) |
+| NaN | TransferExtraSurplus \(NEW\) |
 
-| Flap/per | Pre/PostSettlementSurplusAuctionHouse |
+| Flap/per | Burning/Recycling/PostSettlementSurplusAuctionHouse |
 | :--- | :--- |
 | wards | authorizedAccounts |
 | rely | addAuthorization |
@@ -140,6 +147,7 @@ The following tables show the before and after variable names from all core MCD 
 | bids | bids |
 | vat | safeEngine |
 | gem | protocolToken |
+| NaN | protocolTokenBidReceiver \(only in the Recycling version\) |
 | beg | bidIncrease |
 | ttl | bidDuration |
 | tau | totalAuctionLength |
@@ -151,7 +159,7 @@ The following tables show the before and after variable names from all core MCD 
 | tend | increaseBidSize |
 | deal | settleAuction |
 | cage | disableContract |
-| yank | terminateAuctionPrematurely \(only in the PreSettlement version\) |
+| yank | terminateAuctionPrematurely \(only in the Burning & Recycling versions\) |
 | NaN | AddAuthorization \(NEW\) |
 | NaN | RemoveAuthorization \(NEW\) |
 | NaN | ModifyParameters \(NEW\) |
