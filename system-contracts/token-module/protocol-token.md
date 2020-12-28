@@ -6,7 +6,7 @@ description: The protocol's recapitalization source
 
 ## 1. Summary <a id="1-introduction-summary"></a>
 
-The protocol token is a [DsToken](https://github.com/reflexer-labs/ds-token.git) that provides logic for burning and authorized minting of new tokens.
+The protocol token is a [DsDelegateToken](https://github.com/reflexer-labs/ds-token/blob/master/src/delegate.sol) that provides logic for burning and authorized minting of new tokens.
 
 ## 2. Contract Variables & Functions <a id="2-contract-details"></a>
 
