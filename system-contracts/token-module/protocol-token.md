@@ -20,9 +20,15 @@ The protocol token is a [DsDelegateToken](https://github.com/reflexer-labs/ds-to
 * `decimals` - returns the number of decimals the token uses.
 * `totalSupply` - returns the total token supply.
 * `balanceOf(usr: address)` - user balance
+* `delegates(usr: address)` - a record of each account's delegate
+* `checkpoints(usr: address`, `checkpoint: uint32)` - a record of vote checkpoints for each account, by index
+* `numCheckpoints(usr: address)` - the number of checkpoints for each account
+* `nonces(usr: address)` - a record of states for signing / validating signatures
 * `allowance(src: address, dst: address)` - approvals
 * `balanceOf(usr: address)` - returns the account balance of another account with _address \_owner_.
 * `allowance(src: address, dst: address)`- returns the amount which _\_spender_ is still allowed to withdraw from _\_owner_.
+* `DOMAIN_TYPEHASH` - the EIP-712 typehash for the contract's domain
+* `DELEGATION_TYPEHASH` - the EIP-712 typehash for the delegation struct used by the contract
 
 **Functions**
 
@@ -33,6 +39,33 @@ The protocol token is a [DsDelegateToken](https://github.com/reflexer-labs/ds-to
 * `move(src: address`, `dst: address`, `amount: uint256)` - transfer from
 * `approve(usr: address`, `amount: uint256)` - allow pulls and moves
 * `transfer(dst: address`, `amount: uint256)` - transfers coins from `msg.sender` to `dst`
+* `delegate(delegatee: address)` -
+* `delegateBySig(delegatee: address`, `nonce: uint256`, `expiry: uint256`, `v: uint8`, `r: bytes32`, `s: bytes32)` -
+* `getCurrentVotes(account: address) external view returns (uint256)` -
+* `getPriorVotes(account: address`, `blockNumber: uint256) public view returns (uint256)` -
+
+**Data Structures**
+
+* `Checkpoint` - stores a checkpoint's data. Contains:
+  * `fromBlock` - the block from which that amount of votes has been marked
+  * `votes` - the amount of votes
+
+**Events**
+
+* `Mint` - emitted when new tokens are minted. Contains:
+  * `guy` - the address for which the contract prints tokens
+  * `wad` - the amount of tokens printed
+* `Burn` - emitted when tokens are burned. Contains:
+  * `guy` - the address whose tokens are burned
+  * `wad` - the amount of tokens that were burned
+* `DelegateChanged` - emitted when an address changes its delegate. Contains:
+  * `delegator` - the address that changes its delegate
+  * `fromDelegate` - the old delegate
+  * `toDelegate` - the new delegate
+* `DelegateVotesChanged` - emitted when a delegate account's vote balance changes. Contains:
+  * `delegate` - the delegate account
+  * `previousBalance` - the delegate's previous vote balance
+  * `newBalance` - the delegate's new vote balance
 
 ## 3. Walkthrough <a id="3-key-mechanisms-and-concepts"></a>
 
