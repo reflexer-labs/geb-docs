@@ -14,7 +14,7 @@ The **Money Market Module** contains the components that governance \(or an auto
 
 ## 2. Component Descriptions
 
-* The `TaxCollector` imposes fees on all collateral types and distributes them to various parties. Compared to MCD, the system can automatically use fees to fund its operations such as paying for oracle calls \(in addition to accruing surplus in the `AccountingEngine`\). Each collateral's stability fee is composed out of a `globalStabilityFee` \(a base fee applied to all collateral types\) and its own, unique `CollateralType.stabilityFee`.
+* The `TaxCollector` imposes fees on all collateral types and distributes them to various parties. Each collateral's stability fee is composed out of a `globalStabilityFee` \(a base fee applied to all collateral types\) and its own, unique `CollateralType.stabilityFee`.
 
 ## 3. Risks
 
@@ -30,7 +30,9 @@ Another major risk is related to malicious governance setting extremely high or 
 
 ## 4. Governance Minimization
 
-Depending on whether governance wants to expand the array of accepted collateral types over time, they may keep control over the `TaxCollector` or choose to add only a few assets and then completely remove their permissions.
+The `TaxCollector` is part of the Level 1 Gov Minimization.
 
-Governance may also keep their power to change stability fees within certain limits. For example, the `globalStabilityFee` may only be changed by a certain percentage every week or every `CollateralType.stabilityFee` can have strict bounds over what values it can be set to.
+{% hint style="info" %}
+**Bounded Stability Fee Control**
+{% endhint %}
 
