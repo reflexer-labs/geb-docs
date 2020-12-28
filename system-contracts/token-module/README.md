@@ -20,7 +20,7 @@ description: >-
 The token module has four distinct parts:
 
 1. System Coin: token that the core system considers equal in value to its internal debt unit.
-2. Protocol Token: a standard ERC20 token. It contains logic for burning and authorized minting. The token can be used to govern the system and as a recapitalization source.
+2. Protocol Token: a ds-token with delegation capabilities inherited from [UNI](https://uniswap.org/blog/uni/) which were in turn inherited from [COMP](https://compound.finance/governance/comp). It contains logic for burning and authorized minting. The token can be used to govern the system and as a recapitalization source.
 3. Protocol Token Authority: authority contract that determines who is eligible to mint and burn protocol tokens.
 4. Geb Printing Permissions: permissioning system to allow multiple debt auction contracts to mint protocol tokens.
 5. Token Adapters:
@@ -30,7 +30,7 @@ The token module has four distinct parts:
 ## 2. Component Descriptions <a id="5-failure-modes-bounds-on-operating-conditions-and-external-risk-factors"></a>
 
 * System Coin: this contract is the user facing ERC20 token maintaining the accounting for external system coin balances.
-* Protocol Token: a token adhering to the ERC20 standard which also has [DSAuth](https://github.com/reflexer-labs/ds-auth)-protected mint and burn functions. The protocol token has two main use-cases:
+* Protocol Token: a token adhering to the ERC20 standard which also has [DSAuth](https://github.com/reflexer-labs/ds-auth)-protected mint and burn functions as well as delegation capabilities. The protocol token has two main use-cases:
   * **As a governance token:** tokens can be used as a representation of voting power
   * **As a recapitalization resource:** protocol tokens can autonomously be minted by the `DebtAuctionHouse` and sold for system coins which are used to recapitalize the system in times of insolvency
 * Protocol Token Authority: determines who can mint and burn protocol tokens. Can be controlled directly by token holders, by the Protocol Token Authority or in some cases all control can be withdrawn from it.
@@ -46,4 +46,6 @@ The token module has four distinct parts:
 ## 4. Governance Minimization
 
 Governance can withdraw their voting power over all contracts, although, if they wish to allow the Protocol Token to protect multiple GEBs, they may retain influence over the Geb Printing Permissions.
+
+All of the contracts in this module are part of Level 1 Gov Minimization.
 
