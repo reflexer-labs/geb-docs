@@ -8,7 +8,7 @@ description: >-
 
 ## 1. Summary
 
-The `DSM` \(Dampened Security Module\) is an `OSM`-like contract that, apart from empozing a delay between prices coming from a medianizer and them being added into the system, it bounds the maximum price change between the `currentFeed` and the `nextFeed`. This ensures that in case of an oracle attack or extreme market volatility, governance has more time to react and defend the system.
+The `DSM` \(Dampened Security Module\) is an `OSM`-like contract that, apart from emposing a delay between prices coming from a medianizer and them being added into the system, it bounds the maximum price change between the `currentFeed` and the `nextFeed`. This ensures that in case of an oracle attack or extreme market volatility, governance has more time to react and defend the system.
 
 ## 2. Contract Variables & Functions <a id="2-contract-details"></a>
 
@@ -48,5 +48,5 @@ The `DSM` \(Dampened Security Module\) is an `OSM`-like contract that, apart fro
 
 * `Feed` - struct used to store price feed data. Contains:
   * `value` - the feed value
-  * `isValid` - whethet the feed value is valid
+  * `isValid` - whether the price feed value is valid
 
