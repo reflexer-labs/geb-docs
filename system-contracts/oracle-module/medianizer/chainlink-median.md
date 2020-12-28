@@ -33,8 +33,8 @@ The `ChainlinkPriceFeedMedianizer` has a similar interface to the [Governance Le
 **Functions**
 
 * `modifyParameters` - allows governance to change the aggregator address in case Chainlink upgrades their infrastructure
-* `read` - gets a non-zero price or fails
-* `getResultWithValidity` - gets the price and its validity
+* `read() public view returns (uint256)` - gets a non-zero price or fails
+* `getResultWithValidity() public view returns (uint256,bool)` - gets the price and its validity
 * `treasuryAllowance() public view returns (uint256)` - returns the StabilityFeeTreasury allowance for this contract
 * `getCallerReward() public view returns (uint256)` - get the current caller reward
 * `updateResult(feeReceiver: address)` - updates the price stored in our contract by calling the aggregator
@@ -59,5 +59,5 @@ The `ChainlinkPriceFeedMedianizer` has a similar interface to the [Governance Le
 
 ## 3. Walkthrough
 
-Governance can update the `chainlinkAggregator` from which the contract fetches the price feed and stores it as the `medianPrice`. When reading the latest price feed, the contract also stores the timestamp when the price coming from Chainlink was posted on-chain. The system incentivizes anyone to call `updateResult` and update the median price regularly.
+Governance can update the `chainlinkAggregator` from which the contract fetches the price feed and stores it as the `medianPrice`. When reading the latest price feed, the contract also stores the timestamp when the price coming from Chainlink was posted on-chain. The system can incentivize anyone to call `updateResult` and update the median price regularly.
 
