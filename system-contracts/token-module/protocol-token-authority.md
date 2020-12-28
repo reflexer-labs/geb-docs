@@ -6,7 +6,7 @@ description: The guardian that decides who can mint or burn protocol tokens
 
 ## 1. Summary <a id="1-introduction-summary"></a>
 
-The `ProtocolTokenAuthority` allows governance to specify which addresses are allowed to `mint` or `burn` protocol tokens. This is done by either setting an address as the `root` of the contract or by whitelisting an address in the `authorizedAccounts` mapping.
+The `ProtocolTokenAuthority` allows governance to specify which addresses are allowed to `mint` or `burn` protocol tokens. This is done by either setting an address as the `root` of the contract, the `owner` of the contract or by whitelisting an address in the `authorizedAccounts` mapping.
 
 ## 2. Contract Variables & Functions <a id="2-contract-details"></a>
 
@@ -31,5 +31,5 @@ The `ProtocolTokenAuthority` allows governance to specify which addresses are al
 
 ## 3. Walkthrough <a id="2-contract-details"></a>
 
-`auth`ed accounts, owner and root are the ones who pass the `canCall` check and thus, are able `mint`, `burn` and `burnFrom`. `root` and `owner` can add or remove authorized addresses. `owner` cannot set a new `root` but can only change the `owner`. `root` has complete power and can change both the `root` and the `owner`. 
+`auth`ed accounts, `owner` and `root` are the ones who pass the `canCall` check and thus, are able `mint`, `burn` and `burnFrom`. `root` and `owner` can add or remove authorized addresses. `owner` cannot set a new `root` but can only change the `owner`. `root` has complete power and can change both the `root` and the `owner`. 
 
