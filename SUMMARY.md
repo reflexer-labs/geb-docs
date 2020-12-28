@@ -28,7 +28,6 @@
     * [DSValue](system-contracts/oracle-module/medianizer/ds-value.md)
     * [Governance Led Median](system-contracts/oracle-module/medianizer/governance-led-median.md)
     * [Chainlink Median](system-contracts/oracle-module/medianizer/chainlink-median.md)
-    * [Oracle Network Median](system-contracts/oracle-module/medianizer/oracle-network-median.md)
     * [Uniswap V2 Median](system-contracts/oracle-module/medianizer/uniswap-v2-median.md)
   * [FSM](system-contracts/oracle-module/fsm/README.md)
     * [Oracle Security Module](system-contracts/oracle-module/fsm/oracle-security-module.md)
