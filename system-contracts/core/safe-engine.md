@@ -147,7 +147,7 @@ The `SAFEEngine` stores SAFEs and tracks all debt and collateral balances. This 
 
 The `SAFEEngine` is in charge with two main system functions:
 
-### 1. CDP Management <a id="vault-management"></a>
+### 1. SAFE Management <a id="vault-management"></a>
 
 * Anyone can manage a SAFE via `modifySAFECollateralization`, which modifies the SAFE at address `safe`, using `tokenCollateral` from user `collateralSource` and modifying `coinBalance` for user `debtDestination`.
 * `confiscateSAFECollateralAndDebt`is usually called by `LiquidationEngine` and transfers debt from the SAFE to another address' `debtBalance`.
