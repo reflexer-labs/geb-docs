@@ -35,17 +35,17 @@ The SAFE Manager is an abstraction around the `SAFEEngine` that allows anyone to
 
 **Functions**
 
-* `allowSAFE[safe: uint256`, `usr: address`, `ok: uint256]` - allow an address to interact with a SAFE with a specific id
-* `allowHandler[usr: address`, `ok: uint256]` - allow an address to interact with a SAFE handler
-* `openSAFE[collateralType: bytes32`, `usr: address]` - create a new SAFE id and handler
-* `transferSAFEOwnership[safe: uint256`, `dst: address]` - transfer a SAFE to another address
-* `modifySAFECollateralization[safe: uint256`, `deltaCollateral: int256`, `deltaDebt:` `int256]` - add/remove collateral to and from a SAFE or generate/repay debt
-* `transferCollateral[safe: uint256`, `dst: address`, `wad: uint256]` - transfer collateral from a SAFE to another address
-* `transferInternalCoins[safe: uint256`, `dst: address`, `rad: uint256]` - transfer `SAFEEngine.coinBalance` system coins between addresses
-* `quitSystem[safe: uint256`, `dst: address]` - migrate the SAFE to a destination address
-* `enterSystem[safe: address`, `src: uint256]` - import a SAFE to the handler owned by an address
-* `moveSAFE[safeSrc: uint256`, `safeDst: uint256]` - move a position between SAFE handlers
-* `protectSAFE[safe: uint256`, `liquidationEngine: address`, `saviour: address]` - choose a `SAFESaviour` for a SAFE
+* `allowSAFE(safe: uint256`, `usr: address`, `ok: uint256)` - allow an address to interact with a SAFE with a specific id
+* `allowHandler(usr: address`, `ok: uint256)` - allow an address to interact with a SAFE handler
+* `openSAFE(collateralType: bytes32`, `usr: address)` - create a new SAFE id and handler
+* `transferSAFEOwnership(safe: uint256`, `dst: address)` - transfer a SAFE to another address
+* `modifySAFECollateralization(safe: uint256`, `deltaCollateral: int256`, `deltaDebt:` `int256)` - add/remove collateral to and from a SAFE or generate/repay debt
+* `transferCollateral(safe: uint256`, `dst: address`, `wad: uint256)` - transfer collateral from a SAFE to another address
+* `transferInternalCoins(safe: uint256`, `dst: address`, `rad: uint256)` - transfer `SAFEEngine.coinBalance` system coins between addresses
+* `quitSystem(safe: uint256`, `dst: address)` - migrate the SAFE to a destination address
+* `enterSystem(safe: address`, `src: uint256)` - import a SAFE to the handler owned by an address
+* `moveSAFE(safeSrc: uint256`, `safeDst: uint256)` - move a position between SAFE handlers
+* `protectSAFE(safe: uint256`, `liquidationEngine: address`, `saviour: address)` - choose a `SAFESaviour` for a SAFE
 
 **Events**
 
