@@ -52,7 +52,7 @@ The `StabilityFeeTreasury` is meant to allow other contracts or EOAs to pull fun
 * `giveFunds(account: address`, `rad: uint256)` - governance controlled function that transfers stability fees from the treasury to a destination address
 * `takeFunds(account: address`, `rad: uint256)` - governance controlled function that transfers stability fees from a target address to the treasury
 * `pullFunds(dstAccount: address`, `token: address`, `wad: uint256)` - take funds from the treasury. Reverts if the caller is not allowed to withdraw or if their per-block allowance doesn't allow it
-* `transferSurplusFunds()` - recalculate the amount of stability fees that should remain in the treasury and transfer additional funds to the `accountingEngine`
+* `transferSurplusFunds()` - recalculate the amount of stability fees that should remain in the treasury and transfer additional funds to the `extraSurplusReceiver`
 
 **Events**
 
@@ -82,7 +82,7 @@ The `StabilityFeeTreasury` is meant to allow other contracts or EOAs to pull fun
   * `rad` - the total amount of internal system coins transferred
   * `expensesAccumulator` - the sum of all the expenses incurred since the contract was deployed
 * `TransferSurplusFunds` - emitted when surplus funds above the optimum amount are sent to the accounting engine. Contains:
-  * `accountingEngine` - the address of the `AccountingEngine` where funds were sent
+  * `extraSurplusReceiver` - the address that received the extra funds
   * `fundsToTransfer` - the amount of funds sent
 
 ## 3. Walkthrough <a id="2-contract-details"></a>
@@ -91,12 +91,12 @@ The treasury is funded by stability fees coming from the `TaxCollector` or by an
   
 Governance is in charge with setting up authorized addresses that can `pullFunds` out of the treasury \(if their total or per-block `allowance` permits\) as well as setting treasury parameters in order to determine the optimum amount of funds that should remain in the contract at any time. We define "optimum" as a multiplier \(`expensesMultiplier`\) of the latest expenses incurred by the treasury since the last `transferSurplusFunds` call. 
 
-`transferSurplusFunds` is the way the treasury recalculates the amount of funds it should keep in reserves and transfers any surplus to the `AccountingEngine`. Note that there is a `surplusTransferDelay` time delay between recalculating the optimum and transferring surplus out of the contract.
+`transferSurplusFunds` is the way the treasury recalculates the amount of funds it should keep in reserves and transfers any surplus to the `extraSurplusReceiver`. Note that there is a `surplusTransferDelay` time delay between recalculating the optimum and transferring surplus out of the contract.
 
 {% hint style="info" %}
-**Sending funds to AccountingEngine or to the Treasury Itself**
+**Sending funds to** `extraSurplusReceiver`**or to the Treasury Itself**
 
-In case governance wants to send funds to `AccountingEngine` using `giveFunds`, `expensesAccumulator` will not increase. In case an address wants to `pullFunds` and send them to the `AccountingEngine`, `pullFunds` will revert.  
+In case governance wants to send funds to `extraSurplusReceiver` using `giveFunds`, `expensesAccumulator` will not increase. In case an address wants to `pullFunds` and send them to the `extraSurplusReceiver`, `pullFunds` will revert.  
   
 `pullFunds` will silently fail if the `dstAccount` is the treasury contract itself, whereas `giveFunds` will revert.
 {% endhint %}
