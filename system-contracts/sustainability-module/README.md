@@ -21,6 +21,7 @@ The **Sustainability Module** provides funds to critical system components such 
 ### Smart Contract Bugs <a id="coding-errors"></a>
 
 * A bug in the `StabilityFeeTreasury` would potentially block other contracts from pulling funds or would incorrectly calculate the optimum amount of funds to keep in the contract \(`CDPEngine.coinBalance[stabilityFeeTreasury]`\).
+* A bug could also prevent the treasury from sending extra unused resources to another address using `transferSurplusFunds()`
 
 ### Misconfiguration
 
@@ -32,4 +33,6 @@ Governance can withdraw all of their power over this module if two conditions ar
 
 1. All treasury dependent contracts were set up correctly \(can withdraw enough funds to function properly\).
 2. All external actors \(if any\) have the necessary permissions to pull funds from the treasury.
+
+The StabilityFeeTreasury is part of the Level 2 Gov Minimization.
 
