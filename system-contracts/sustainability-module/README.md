@@ -29,10 +29,16 @@ The **Sustainability Module** provides funds to critical system components such 
 
 ## 4. Governance Minimization
 
-Governance can withdraw all of their power over this module if two conditions are satisfied:
+Governance can withdraw their power over this module if two conditions are satisfied:
 
 1. All treasury dependent contracts were set up correctly \(can withdraw enough funds to function properly\).
 2. All external actors \(if any\) have the necessary permissions to pull funds from the treasury.
 
-The `StabilityFeeTreasury` is part of the Level 2 Gov Minimization.
+The `StabilityFeeTreasury` is part of the Level 2 Gov Minimization. That being said, governance should maintain control only over setting `total` allowances to their initial values for every address that's currently authorized to `pullFunds` from the treasury.
+
+{% hint style="info" %}
+**Keeping Governance over** `takeFunds`
+
+Given that `takeFunds` has very simple and clearly defined behavior where governance cannot harm the treasury, it can be governed in the long run. 
+{% endhint %}
 
