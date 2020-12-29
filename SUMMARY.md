@@ -3,6 +3,7 @@
 * [Introduction to GEB](README.md)
 * [Currently Deployed Systems](currently-deployed-systems.md)
 * [Current System Parameters](current-system-parameters.md)
+* [GEB Risks](geb-risks.md)
 * [FAQ](faq.md)
 
 ## Contract Variables Translation <a id="contract-translation"></a>
