@@ -41,5 +41,9 @@ Since `GlobalSettlement` reads collateral prices from `FSM`s it is susceptible t
 
 ## 4. Governance Minimization
 
-In the long run, governance can completely remove control over the shutdown module.
+`GlobalSettlement` is part of Level 2 Gov Minimization. `ESM` is part of Level 1 Gov Minimization.
+
+{% hint style="info" %}
+
+{% endhint %}
 
