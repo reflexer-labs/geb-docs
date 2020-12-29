@@ -6,7 +6,7 @@ description: The protocol's invoice processor
 
 ## 1. Summary <a id="1-introduction-summary"></a>
 
-The `StabilityFeeTreasury` is meant to allow other contracts or EOAs to pull funds \(stability fees\) in order to finance their operations. The treasury is set up as a `secondaryReceiver` in the `TaxCollector`. Anyone can periodically call the contract in order to recompute an optimal amount of fees that should be kept in the treasury and send any additional surplus to the `AccountingEngine`.
+The `StabilityFeeTreasury` is meant to allow other contracts or EOAs to pull funds \(stability fees\) in order to finance their operations. The treasury is set up as a `secondaryReceiver` in the `TaxCollector`. Anyone can periodically call the contract in order to recompute an optimal amount of fees that should be kept in the treasury and send any additional surplus to the `extraSurplusReceiver`.
 
 ## 2. Contract Variables & Functions <a id="2-contract-details"></a>
 
@@ -17,7 +17,7 @@ The `StabilityFeeTreasury` is meant to allow other contracts or EOAs to pull fun
 * `safeEngine` - address of the `SAFEEngine`
 * `systemCoin` - system coin address \([Coin.sol](https://github.com/reflexer-labs/geb/blob/master/src/Coin.sol)\)
 * `coinJoin` - system coin adapter address
-* `accountingEngine` - address of the `AccountingEngine`
+* `extraSurplusReceiver` - address that receives extra unused funds from the treasury
 * `treasuryCapacity` - maximum amount of stability fees should be kept in the treasury
 * `minimumFundsRequired` - minimum amount of stability fees that must be kept in the treasury at all times
 * `expensesMultiplier` - multiplier for the expenses incurred since the last `transferSurplusFunds` call. Ensures there's a buffer of funds on top of the expected expenses until the next 
@@ -44,7 +44,7 @@ The `StabilityFeeTreasury` is meant to allow other contracts or EOAs to pull fun
 **Functions**
 
 * `modifyParameters()` - authorized function for changing treasury parameters
-* `disableContract()` - disable the treasury and transfer all of its funds to the `accountingEngine`
+* `disableContract()` - disable the treasury and transfer all of its funds to the`extraSurplusReceiver`
 * `joinAllCoins()` - join any ERC20 system coins that the treasury has into internal coin form \(`SAFEEngine.coinBalance`\)
 * `getAllowance(account: address)` - get the total and the per-block allowance for a user
 * `setTotalAllowance(account: address`, `rad: uint256)` - authorized function that changes the total allowed amount an address can withdraw from the treasury
