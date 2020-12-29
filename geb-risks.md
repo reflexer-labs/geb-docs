@@ -24,11 +24,17 @@ You can take a look at the [Governane Minimization Guide](https://docs.reflexer.
 
 ### PID Controller
 
-PID control is still a novel concept in DeFi. No other stable asset prior to RAI has been managed by an on-chain controller and there is no historical data that can help with its modelling and simulations.
+PID control is still a novel concept in DeFi. No other stable asset prior to RAI has been managed by an on-chain controller and there is no historical data that can help with the controller's modelling and simulations.
 
-
+If the controller is too slow it may be completely ineffective in stabilizing RAI or other reflex indexes. If it's too strong, it may destabilize the system.
 
 ### Suboptimal Parameters
 
+Governance may set suboptimal parameters for:
 
+* Debt auctions which can lead to an excessive amount of protocol tokens being printed
+* Collateral auctions which may not give a good enough incentive for bidding
+* Global Settlement which may delay SAFE processing and collateral redemption indefinitely
+
+There are many more parameters which may be suboptimal. Check the [System Contracts modules](https://docs.reflexer.finance/system-contracts/core) for more details.
 
