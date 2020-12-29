@@ -1,5 +1,5 @@
 ---
-description: Steps toward minimizing governance over a GEB deployment
+description: Steps and details for minimizing governance over a GEB deployment
 ---
 
 # Governance Minimization Guide
