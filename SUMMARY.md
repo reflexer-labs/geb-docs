@@ -4,6 +4,7 @@
 * [Currently Deployed Systems](currently-deployed-systems.md)
 * [Current System Parameters](current-system-parameters.md)
 * [GEB Risks](geb-risks.md)
+* [Governance Minimization Guide](governance-minimization-guide.md)
 * [FAQ](faq.md)
 
 ## Contract Variables Translation <a id="contract-translation"></a>
