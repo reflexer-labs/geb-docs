@@ -74,5 +74,3 @@ The taxation process starts with governance setting up the `globalStabilityFee` 
 
 To collect stability fees, external actors \(such as protocol token holders or keepers\) can call `taxMany` \(to collect stability fees from multiple collateral types\) or `taxSingle`. The `primaryTaxReceiver` is guaranteed to receive a non zero amount of stability fees. If there are any `secondaryReceivers` set up for a specific collateral, each one will get `TaxReceiver.taxPercentage` percentage of the distributed fees.
 
-
-
