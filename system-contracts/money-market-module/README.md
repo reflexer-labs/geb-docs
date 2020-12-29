@@ -34,5 +34,9 @@ The `TaxCollector` is part of the Level 1 Gov Minimization.
 
 {% hint style="info" %}
 **Bounded Stability Fee Control**
+
+Governance can choose to keep bounded control over setting rates by clearly specifying upper and lower values. For example, the ETH-A rate may only be set to a value between 1-3% per year.
+
+This is to ensure that the protocol offers more advantageous rates during some periods while it can also collect more surplus when needed.
 {% endhint %}
 
