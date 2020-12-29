@@ -44,6 +44,8 @@ Since `GlobalSettlement` reads collateral prices from `FSM`s it is susceptible t
 `GlobalSettlement` is part of Level 2 Gov Minimization. `ESM` is part of Level 1 Gov Minimization.
 
 {% hint style="info" %}
+**The** `ESMThresholdSetter` 
 
+Before removing control from the `ESM`, governance should deploy a contract called `ESMThresholdSetter` that automatically sets the `ESM.triggerThreshold` according to the current outstanding supply of protocol tokens.
 {% endhint %}
 

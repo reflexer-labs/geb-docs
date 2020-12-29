@@ -51,10 +51,6 @@ The `GlobalSettlement` is meant to shut down the system and reimburse SAFE users
 
 ### Global Settlement Properties Compared to MCD <a id="current-implementation-properties-of-shutdown"></a>
 
-GEB has almost the same properties as MCD when it comes to settlement with the exception of one area: any post-settlement, leftover surplus is sent to the [`SettlementSurplusAuctioneer`](https://docs.reflexer.finance/system-contracts/auction-module/settlement-surplus-auctioner) and is automatically sold using the `PostSettlementSurplusAuctionHouse`.
-
-We chose this strategy in order to avoid the edge case scenario where system coin holders are incentivized to trigger settlement only to redeem a disproportionate amount of collateral \(compared to SAFE users\) and also avoid a scenario where the global settlement process is stuck due to the fact that there's leftover surplus inside the `AccountingEngine`.
-
 **SAFE Redemption Prioritization**
 
 We chose to give priority to SAFE users \(when it comes to redeeming collateral\) meaning that all users with positions above the `liquidationCRatio` \(collateralization ratio under which a SAFE gets liquidated\) should be allowed to retrieve surplus collateral.
