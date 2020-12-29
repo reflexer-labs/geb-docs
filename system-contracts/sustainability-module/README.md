@@ -34,5 +34,5 @@ Governance can withdraw all of their power over this module if two conditions ar
 1. All treasury dependent contracts were set up correctly \(can withdraw enough funds to function properly\).
 2. All external actors \(if any\) have the necessary permissions to pull funds from the treasury.
 
-The StabilityFeeTreasury is part of the Level 2 Gov Minimization.
+The `StabilityFeeTreasury` is part of the Level 2 Gov Minimization.
 
