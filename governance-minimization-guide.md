@@ -28,11 +28,11 @@ Each component in GEB has varying degrees of governance minimization potential. 
 * **Debt Auction House** - governance can completely remove control from this contract
 * **Surplus Auction House** - governance can completely remove control from this contract
 * **Global Settlement** - once all the other core contracts are governance minimized, governance can remove control from this contract
-* **ESM** -
-* **Liquidation Engine** -
+* **ESM** - governance will need to set an external contract `thresholdSetter` that recomputes `triggerThreshold` according to the latest outstanding supply of protocol tokens; the rest of the contract can be governance minimized
+* **Liquidation Engine** - governance will keep control over connecting and disconnecting saviours; governance may optionally authorize an external contract to automatically set`onAuctionSystemCoinLimit`
 * **Oracle Relayer** - governance can completely remove control from this contract
 * **SAFE Engine** - governance will need to allow an external contract to automatically set `debtCeiling`s for every collateral type once every couple of hours/days; depending on how many collateral types are in a system, it may not be feasible to automatically set debt ceilings but rather manually vote on lowering/raising them
-* **Stability Fee Treasury** - 
+* **Stability Fee Treasury** - governance can keep control over calling `takeFunds` because it does not affect permissions or other contract behavior; governance should also keep control over resetting `total` allowances to their initial values for all accounts that can `pullFunds` post governance minimization
 * **Tax Collector** - governance can completely remove control from this contract
 * **OSMs/DSMs** - governance will need to keep maintaining these components in the long run because they are connected to medianizers which are in turn connected to external components \(oracles\)
 * **Medianizers** - governance will need to keep maintaining these components in the long run because they are connected to external components
