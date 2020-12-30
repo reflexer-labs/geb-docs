@@ -51,8 +51,8 @@ A couple of GEB contracts will need to authorize other components to automatical
 
 * **Liquidation Engine** - an optional contract that automatically sets `onAuctionSystemCoinLimit` as a percentage of the current amount of system coins minus the surplus accrued in the `AccountingEngine` and in the `StabilityFeeTreasury`/ies
 * **Accounting Engine** - 
-* **ESM** -
-* **SAFE Engine** -
+* **ESM** - `thresholdSetter` which automatically sets `triggerThreshold` as a percentage of the current outstanding supply of protocol tokens
+* **SAFE Engine** - a contract that periodically adjusts `debtCeiling`s for every collateral type; the implementation depends on every GEB's setup \(how many collateral types it has, what percentage of system coins should be covered by each collateral etc\)
 
 ### 3. Governance Minimization Levels
 
