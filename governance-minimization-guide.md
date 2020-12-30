@@ -24,7 +24,7 @@ Each component in GEB has varying degrees of governance minimization potential. 
 * **Accounting Engine** - governance may need to keep control over setting `systemStakingPool` until the pool is governance minimized; `initialDebtAuctionMintedTokens` and `debtAuctionBidSize` will need to be set by an external contract which will be connected to oracles \(thus this external contract will not be fully gov minimized\)
 * **Collateral Token Adapters** - governance can completely remove control from these components
 * **Coin** - governance can completely remove control from this component
-* **Collateral Auction House** - 
+* **Collateral Auction House** - in the current fixed discount implementation, governance will need to keep control over setting `systemCoinOracle`; the rest of the contract can be governance minimized
 * **Debt Auction House** - governance can completely remove control from this contract
 * **Surplus Auction House** - governance can completely remove control from this contract
 * **Global Settlement** - once all the other core contracts are governance minimized, governance can remove control from this contract
