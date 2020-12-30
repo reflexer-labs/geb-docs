@@ -14,7 +14,6 @@ In order for a GEB to be governance minimized, there are several requirements th
 
 * The protocol's governance must not add or plan to add any more collateral types
 * All the infrastructure for governance minimization must have been audited and tested in production
-* Governance does not plan to make any more upgrades to the system
 * The system must accrue enough surplus in its main treasury so that it affords to pay for oracle, PID, state management etc costs for at least 6 months
 
 ### 2. How Much Can GEB Be Governance Minimized
