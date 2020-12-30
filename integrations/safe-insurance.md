@@ -280,3 +280,14 @@ In order to launch and integrate a new saviour in a GEB, it must first pass seve
 6. Governance may decide to first try out your saviour on a testnet. In this case, you must deploy an instance of your saviour on a testnet GEB instance and liquidate a `SAFE` which can then get saved
 7. Assuming that you pass all previous steps, you can deploy your saviour on mainnet so that governance can whitelist it in `LiquidationEngine` and in `SAFESaviourRegistry`
 
+## 6. Integration Ideas
+
+To help you get started, here are a couple of ideas for building RAI saviours:
+
+* Allow users to deposit [Aave aETH](https://aave.com/aTokens/) in a saviour which can then be used to redeem ETH which is then added in a `SAFE`
+* Allow users to deposit [Compound cETH](https://compound.finance/docs/ctokens) in a saviour which can then be used to redeem ETH 
+
+  which is then added in a `SAFE`
+
+* [Opyn](https://opyn.co/#/) or [Hegic](https://www.hegic.co/) options which can be exercised when `saveSAFE` is called
+
