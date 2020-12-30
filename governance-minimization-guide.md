@@ -37,12 +37,13 @@ Each component in GEB has varying degrees of governance minimization potential. 
 * **OSMs/DSMs** - governance will need to keep maintaining these components in the long run because they are connected to medianizers which are in turn connected to external components \(oracles\)
 * **Medianizers** - governance will need to keep maintaining these components in the long run because they are connected to external components
 * **FSM Governance Interface** - governance will need to keep maintaining this component in the long run because it is managing OSMs/DSMs which are not gov minimized
-* **DSPause** -
+* **DSPause** - this components is part of the governance module and it will be, by definition, governedin the long run
 * **Protocol Token Authority** - governance can completely remove control from this contract once the Debt Auction House is governance minimized
 * **Protocol Token Printing Permissions** - governance can completely remove control from this contract once the Debt Auction House is governance minimized
-* **PID Controller** -
+* **Protocol Token** - governance will not have control over this component \(manually minting tokens or changing allowances so other addresses can mint\) once they remove control from the Protocol Token Authority and the Protocol Token Printing Permissions
+* **PID Controller** - governance may need to keep some control over this component in the long run; the core team and the community will have more insight into how much control it will need after a GEB has been running for a long time on mainnet; one reason for maintaining \(bounded\) control is the fact that the controller should be paused when the system's reflex index doesn't have enough liquidity on exchanges
 * **Saviour Contracts** - governance will need to keep maintaining this component in the long run because it is connected to external components
-* **SAFE Saviour Registry** - governance will need to keep maintaining this component in the long run because 
+* **SAFE Saviour Registry** - governance will need to keep maintaining this component in the long run because it's meant to whitelist/blacklist saviour contracts
 
 ### 3. Infrastructure for Governance Minimization
 
