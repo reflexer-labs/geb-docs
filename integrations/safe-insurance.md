@@ -23,7 +23,7 @@ Saviours may pay back debt instead of adding collateral and we will write more a
 Every insurance contract must implement one of the official interfaces \(the oldest interface can be found [here](https://github.com/reflexer-labs/geb-safe-saviours/blob/master/src/interfaces/SafeSaviourLike.sol)\):
 
 ```javascript
-abstract contract SafeSaviourLike {
+abstract contract SafeSaviourLike is ReentrancyGuard {
     // Checks whether a saviour contract has been approved by governance in the LiquidationEngine
     modifier liquidationEngineApproved(address saviour) {
         require(liquidationEngine.safeSaviours(saviour) == 1, "SafeSaviour/not-approved-in-liquidation-engine");
@@ -182,6 +182,12 @@ There is no specific way in which users should cover a `SAFE`. They can store co
 * Users can only add cover if their SAFEs [have generated debt](https://github.com/reflexer-labs/geb-safe-saviours/blob/6b8a89e1f6e7c7d210cb68f684ac1c6a5fb6e0c5/src/saviours/GeneralTokenReserveSafeSaviour.sol#L95)
 * Users can withdraw cover \(with something like [withdraw](https://github.com/reflexer-labs/geb-safe-saviours/blob/6b8a89e1f6e7c7d210cb68f684ac1c6a5fb6e0c5/src/saviours/GeneralTokenReserveSafeSaviour.sol#L109)\) even if the saviour contract is not whitelisted inside the [LiquidationEngine](https://github.com/reflexer-labs/geb/blob/a49e4486682b787571475821ec66bfa025e5183f/src/LiquidationEngine.sol#L83)
 * Only the `SAFE`'s owner or an authorized address inside the [GebSafeManager](https://github.com/reflexer-labs/geb-safe-manager/blob/7da11a4638a994fb0a58e7c1330f69ce897844f9/src/GebSafeManager.sol#L49) can withdraw cover
+
+{% hint style="danger" %}
+**Reentrancy**
+
+Make sure to protect your cover/uncover functions against reentrancy.
+{% endhint %}
 
 ### Setting a Custom Desired Collateralization Ratio for a SAFE:
 
