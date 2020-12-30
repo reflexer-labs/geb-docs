@@ -49,8 +49,8 @@ Each component in GEB has varying degrees of governance minimization potential. 
 
 A couple of GEB contracts will need to authorize other components to automatically set some of their parameters post governance minimization. Here is the current list of external components for every GEB contract:
 
-* **Liquidation Engine** -
-* **Accounting Engine** -
+* **Liquidation Engine** - an optional contract that automatically sets `onAuctionSystemCoinLimit` as a percentage of the current amount of system coins minus the surplus accrued in the `AccountingEngine` and in the `StabilityFeeTreasury`/ies
+* **Accounting Engine** - 
 * **ESM** -
 * **SAFE Engine** -
 
