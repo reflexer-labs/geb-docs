@@ -32,8 +32,8 @@ Each component in GEB has varying degrees of governance minimization potential. 
 * **Liquidation Engine** -
 * **Oracle Relayer** - governance can completely remove control from this contract
 * **SAFE Engine** -
-* **Stability Fee Treasury** -
-* **Tax Collector** -
+* **Stability Fee Treasury** - 
+* **Tax Collector** - governance can completely remove control from this contract
 * **OSMs/DSMs** - governance will need to keep maintaining these components in the long run because they are connected to medianizers which are in turn connected to external components \(oracles\)
 * **Medianizers** - governance will need to keep maintaining these components in the long run because they are connected to external components
 * **FSM Governance Interface** - governance will need to keep maintaining this component in the long run because it is managing OSMs/DSMs which are not gov minimized
