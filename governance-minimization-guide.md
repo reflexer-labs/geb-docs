@@ -19,28 +19,30 @@ In order for a GEB to be governance minimized, there are several requirements th
 
 ### 2. How Much Can GEB Be Governance Minimized
 
-Each component in GEB has varying degrees of governance minimization potential. The following is a \(incomplete\) list of contracts and how much each one can be gov minimized:
+Each component in GEB has varying degrees of governance minimization potential. The following is a \(incomplete\) list of contracts and which parameters will still need to be managed after governance minimization:
 
-* **Accounting Engine** - governance may need to keep control over setting `systemStakingPool` until the pool is governance minimized; `initialDebtAuctionMintedTokens` and `debtAuctionBidSize` will need to be set by an external contract
+* **Accounting Engine** - governance may need to keep control over setting `systemStakingPool` until the pool is governance minimized; `initialDebtAuctionMintedTokens` and `debtAuctionBidSize` will need to be set by an external contract which will be connected to oracles \(thus it will not be fully gov minimized\)
 * **Collateral Token Adapters** - governance can completely remove control from collateral adapters
 * **Coin** - governance can completely remove control from the system coin ERC20 contract
 * **Collateral Auction House** - 
-* **Debt Auction House** -
-* **Surplus Auction House** -
-* **Global Settlement** -
+* **Debt Auction House** - governance can completely remove control from this contract
+* **Surplus Auction House** - governance can completely remove control from this contract
+* **Global Settlement** - once all the other core contracts are governance minimized, governance can remove control from this contract
 * **ESM** -
 * **Liquidation Engine** -
-* **Oracle Relayer** -
+* **Oracle Relayer** - governance can completely remove control from this contract
 * **SAFE Engine** -
 * **Stability Fee Treasury** -
 * **Tax Collector** -
-* **OSMs/DSMs** - 
-* **Medianizers** -
-* **FSM Governance Interface** -
+* **OSMs/DSMs** - governance will need to keep maintaining these components in the long run because they are connected to medianizers which are in turn connected to external components \(oracles\)
+* **Medianizers** - governance will need to keep maintaining these components in the long run because they are connected to external components
+* **FSM Governance Interface** - governance will need to keep maintaining this component in the long run because it is managing OSMs/DSMs which are not gov minimized
 * **DSPause** -
+* **Protocol Token Authority** - governance can completely remove control from this contract once the Debt Auction House is governance minimized
+* **Protocol Token Printing Permissions** - governance can completely remove control from this contract once the Debt Auction House is governance minimized
 * **PID Controller** -
-* **Saviour Contracts** -
-* **SAFE Saviour Registry** -
+* **Saviour Contracts** - governance will need to keep maintaining this component in the long run because it is connected to external components
+* **SAFE Saviour Registry** - governance will need to keep maintaining this component in the long run because 
 
 ### 3. Infrastructure for Governance Minimization
 
