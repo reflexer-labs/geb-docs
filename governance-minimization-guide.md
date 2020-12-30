@@ -33,7 +33,7 @@ Each component in GEB has varying degrees of governance minimization potential. 
 * **Oracle Relayer** - governance can completely remove control from this contract
 * **SAFE Engine** - governance will need to allow an external contract to automatically set `debtCeiling`s for every collateral type once every couple of hours/days; depending on how many collateral types are in a system, it may not be feasible to automatically set debt ceilings but rather manually vote on lowering/raising them
 * **Stability Fee Treasury** - governance can keep control over calling `takeFunds` because it does not affect permissions or other contract behavior; governance should also keep control over resetting `total` allowances to their initial values for all accounts that can `pullFunds` post governance minimization
-* **Tax Collector** - governance can completely remove control from this contract
+* **Tax Collector** - governance may optionally want to have bounded control over setting stability fees; by bounded we mean that there will be upper and lower bounds for setting each collateral's fee e.g between 1-2% annually; apart from this, the contract can be governance minimized
 * **OSMs/DSMs** - governance will need to keep maintaining these components in the long run because they are connected to medianizers which are in turn connected to external components \(oracles\)
 * **Medianizers** - governance will need to keep maintaining these components in the long run because they are connected to external components
 * **FSM Governance Interface** - governance will need to keep maintaining this component in the long run because it is managing OSMs/DSMs which are not gov minimized
@@ -47,5 +47,11 @@ Each component in GEB has varying degrees of governance minimization potential. 
 
 ### 3. Infrastructure for Governance Minimization
 
+Some GEB contracts will need to authorize other components to automatically set some of their parameters post governance minimization. Here is the current list of external components:
+
+* Liquidation Engine -
+* Accounting Engine -
+* ESM -
+* 
 ### 3. Governance Minimization Levels
 
