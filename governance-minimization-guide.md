@@ -21,8 +21,8 @@ In order for a GEB to be governance minimized, there are several requirements th
 Each component in GEB has varying degrees of governance minimization potential. The following is a \(incomplete\) list of contracts and which parameters will still need to be managed after governance minimization:
 
 * **Accounting Engine** - governance may need to keep control over setting `systemStakingPool` until the pool is governance minimized; `initialDebtAuctionMintedTokens` and `debtAuctionBidSize` will need to be set by an external contract which will be connected to oracles \(thus this external contract will not be fully gov minimized\); an optional contract may set `surplusBuffer` so that it covers a specific percentage of the outstanding supply of system coins minus the surplus from the Accounting Engine and the one from the Stability Fee Treasury/ies
-* **Collateral Token Adapters** - governance can completely remove control from these components
-* **Coin** - governance can completely remove control from this component
+* **Collateral Token Adapters** - governance can completely remove control from these contracts
+* **Coin** - governance can completely remove control from this contract
 * **Collateral Auction House** - in the current fixed discount implementation, governance will need to keep control over setting `systemCoinOracle`; the rest of the contract can be governance minimized
 * **Debt Auction House** - governance can completely remove control from this contract
 * **Surplus Auction House** - governance can completely remove control from this contract
@@ -36,19 +36,19 @@ Each component in GEB has varying degrees of governance minimization potential. 
 * **OSMs/DSMs** - governance will need to keep maintaining these components in the long run because they are connected to medianizers which are in turn connected to external components \(oracles\)
 * **Medianizers** - governance will need to keep maintaining these components in the long run because they are connected to external components
 * **FSM Governance Interface** - governance will need to keep maintaining this component in the long run because it is managing OSMs/DSMs which are not gov minimized
-* **DSPause** - this components is part of the governance module and it will be, by definition, governedin the long run
+* **DSPause** - this components is part of the governance module and it will be, by definition, governed in the long run
 * **Protocol Token Authority** - governance can completely remove control from this contract once the Debt Auction House is governance minimized
 * **Protocol Token Printing Permissions** - governance can completely remove control from this contract once the Debt Auction House is governance minimized
 * **Protocol Token** - governance will not have control over this component \(manually minting tokens or changing allowances so other addresses can mint\) once they remove control from the Protocol Token Authority and the Protocol Token Printing Permissions
 * **PID Controller** - governance may need to keep some control over this component in the long run; the core team and the community will have more insight into how much control it will need after a GEB has been running for at least 1 year on mainnet; one reason for maintaining \(bounded\) control is the fact that the controller should be paused when the system's reflex index doesn't have enough liquidity on exchanges; **NOTE**: even if governance keeps some control over the PID, the Oracle Relayer will have upper and lower bounds for the redemption rate so that a potential governance attack cannot immediately destroy the protocol
-* **Saviour Contracts** - governance will need to keep maintaining this component in the long run because it is connected to external components
-* **SAFE Saviour Registry** - governance will need to keep maintaining this component in the long run because it's meant to whitelist/blacklist saviour contracts
+* **Saviour Contracts** - governance will need to keep maintaining these contracts in the long run because they are connected to external components
+* **SAFE Saviour Registry** - governance will need to keep maintaining this contract in the long run because it's meant to whitelist/blacklist saviour contracts
 
 ### 3. Infrastructure for Governance Minimization
 
 A couple of GEB contracts will need to authorize other components to automatically set some of their parameters post governance minimization. Here is the current list of external components for every GEB contract:
 
-* **Liquidation Engine** - an optional contract that automatically sets `onAuctionSystemCoinLimit` as a percentage of the current amount of system coins minus the surplus accrued in the `AccountingEngine` and in the `StabilityFeeTreasury`/ies
+* **Liquidation Engine** - an optional contract that automatically sets `onAuctionSystemCoinLimit` as a percentage of the current amount of system coins minus the surplus accrued in the Accounting Engine and in the Stability Fee Treasury/ies
 * **Accounting Engine** - an optional contract may set `surplusBuffer` so that it covers a specific percentage of the outstanding supply of system coins minus the surplus from the Accounting Engine and the one from the Stability Fee Treasury/ies; a mandatory contract that sets`initialDebtAuctionMintedTokens` and `debtAuctionBidSize` every once in a while according to the protocol token and system coin market prices
 * **ESM** - `thresholdSetter` which automatically sets `triggerThreshold` as a percentage of the current outstanding supply of protocol tokens
 * **SAFE Engine** - a contract that periodically adjusts `debtCeiling`s for every collateral type; the implementation depends on every GEB's setup \(how many collateral types it has, what percentage of system coins should be covered by each collateral etc\)
