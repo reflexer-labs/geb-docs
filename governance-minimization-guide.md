@@ -66,4 +66,24 @@ In this stage, governance will remove control from:
 * DebtAuctionHouse
 * SurplusAuctionHouse
 * Collateral Auction Houses
-* 
+* OracleRelayer
+* Coin \(ERC20\)
+* CollateralJoin contracts
+* ProtocolTokenAuthority \(and as a result give up on the possibility to authorize/deauthorize new or old DebtAuctionHouses to print tokens\)
+* ProtocolTokenPrintingPermissions
+* TaxCollector
+* ESM
+
+#### Level 2
+
+In this stage, governance will remove control from:
+
+* SAFEEngine
+* AccountingEngine
+* StabilityFeeTreasury
+* GlobalSettlement
+
+#### Level 3
+
+At this point, all remaining governance must be in the hands of the community. The community will judge the feasibility of fully removing control from more contracts \(e.g the PID\).
+
