@@ -20,7 +20,7 @@ Subsequent GEB deployment may or may not be governed, depending on whether the c
 
 While a GEB is fully governed, almost all of its components can be upgraded and manually set up. Once it's governance minimized, only a few components can be upgraded and fewer parameters can be changed.
 
-You can take a look at the [Governane Minimization Guide](https://docs.reflexer.finance/governance-minimization-guide) to see what will need to be done so that a GEB can be governance minimized. Stay alert for more updates from the Reflexer team regarding a timeline for governance minimization.
+You can take a look at the [Governance Minimization Guide](https://docs.reflexer.finance/governance-minimization-guide) to see what will need to be done so that a GEB can be governance minimized. Stay alert for more updates from the Reflexer team regarding a timeline for RAI governance minimization.
 
 ### PID Controller
 
