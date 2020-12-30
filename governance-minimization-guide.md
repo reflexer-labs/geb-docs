@@ -22,8 +22,8 @@ In order for a GEB to be governance minimized, there are several requirements th
 Each component in GEB has varying degrees of governance minimization potential. The following is a \(incomplete\) list of contracts and which parameters will still need to be managed after governance minimization:
 
 * **Accounting Engine** - governance may need to keep control over setting `systemStakingPool` until the pool is governance minimized; `initialDebtAuctionMintedTokens` and `debtAuctionBidSize` will need to be set by an external contract which will be connected to oracles \(thus this external contract will not be fully gov minimized\)
-* **Collateral Token Adapters** - governance can completely remove control from collateral adapters
-* **Coin** - governance can completely remove control from the system coin ERC20 contract
+* **Collateral Token Adapters** - governance can completely remove control from these components
+* **Coin** - governance can completely remove control from this component
 * **Collateral Auction House** - 
 * **Debt Auction House** - governance can completely remove control from this contract
 * **Surplus Auction House** - governance can completely remove control from this contract
