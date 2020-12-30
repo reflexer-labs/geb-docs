@@ -62,4 +62,8 @@ There are three levels \(or stages\) of governance minimization that a GEB \(lik
 
 In this stage, governance will remove control from:
 
+* LiquidationEngine
+* DebtAuctionHouse
+* SurplusAuctionHouse
+* Collateral Auction Houses
 * 
