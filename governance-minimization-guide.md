@@ -21,7 +21,7 @@ In order for a GEB to be governance minimized, there are several requirements th
 
 Each component in GEB has varying degrees of governance minimization potential. The following is a \(incomplete\) list of contracts and which parameters will still need to be managed after governance minimization:
 
-* **Accounting Engine** - governance may need to keep control over setting `systemStakingPool` until the pool is governance minimized; `initialDebtAuctionMintedTokens` and `debtAuctionBidSize` will need to be set by an external contract which will be connected to oracles \(thus this external contract will not be fully gov minimized\)
+* **Accounting Engine** - governance may need to keep control over setting `systemStakingPool` until the pool is governance minimized; `initialDebtAuctionMintedTokens` and `debtAuctionBidSize` will need to be set by an external contract which will be connected to oracles \(thus this external contract will not be fully gov minimized\); an optional contract may set `surplusBuffer` so that it covers a specific percentage of the outstanding supply of system coins minus the surplus from the Accounting Engine and the from from the Stability Fee Treasury/ies
 * **Collateral Token Adapters** - governance can completely remove control from these components
 * **Coin** - governance can completely remove control from this component
 * **Collateral Auction House** - in the current fixed discount implementation, governance will need to keep control over setting `systemCoinOracle`; the rest of the contract can be governance minimized
@@ -50,7 +50,7 @@ Each component in GEB has varying degrees of governance minimization potential. 
 A couple of GEB contracts will need to authorize other components to automatically set some of their parameters post governance minimization. Here is the current list of external components for every GEB contract:
 
 * **Liquidation Engine** - an optional contract that automatically sets `onAuctionSystemCoinLimit` as a percentage of the current amount of system coins minus the surplus accrued in the `AccountingEngine` and in the `StabilityFeeTreasury`/ies
-* **Accounting Engine** - 
+* **Accounting Engine** - an optional contract 
 * **ESM** - `thresholdSetter` which automatically sets `triggerThreshold` as a percentage of the current outstanding supply of protocol tokens
 * **SAFE Engine** - a contract that periodically adjusts `debtCeiling`s for every collateral type; the implementation depends on every GEB's setup \(how many collateral types it has, what percentage of system coins should be covered by each collateral etc\)
 
