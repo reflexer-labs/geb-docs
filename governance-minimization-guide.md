@@ -56,5 +56,10 @@ A couple of GEB contracts will need to authorize other components to automatical
 
 ### 3. Governance Minimization Levels
 
+There are three levels \(or stages\) of governance minimization that a GEB \(like the one for RAI\) will go through:
 
+#### Level 1
 
+In this stage, governance will remove control from:
+
+* 
