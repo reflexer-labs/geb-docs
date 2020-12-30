@@ -31,7 +31,7 @@ Each component in GEB has varying degrees of governance minimization potential. 
 * **ESM** -
 * **Liquidation Engine** -
 * **Oracle Relayer** - governance can completely remove control from this contract
-* **SAFE Engine** -
+* **SAFE Engine** - governance will need to allow an external contract to automatically set `debtCeiling`s for every collateral type once every couple of hours/days; depending on how many collateral types are in a system, it may not be feasible to automatically set debt ceilings but rather manually vote on lowering/raising them
 * **Stability Fee Treasury** - 
 * **Tax Collector** - governance can completely remove control from this contract
 * **OSMs/DSMs** - governance will need to keep maintaining these components in the long run because they are connected to medianizers which are in turn connected to external components \(oracles\)
