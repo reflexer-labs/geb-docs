@@ -47,11 +47,12 @@ Each component in GEB has varying degrees of governance minimization potential. 
 
 ### 3. Infrastructure for Governance Minimization
 
-Some GEB contracts will need to authorize other components to automatically set some of their parameters post governance minimization. Here is the current list of external components:
+A couple of GEB contracts will need to authorize other components to automatically set some of their parameters post governance minimization. Here is the current list of external components for every GEB contract:
 
-* Liquidation Engine -
-* Accounting Engine -
-* ESM -
-* 
+* **Liquidation Engine** -
+* **Accounting Engine** -
+* **ESM** -
+* **SAFE Engine** -
+
 ### 3. Governance Minimization Levels
 
