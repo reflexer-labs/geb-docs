@@ -49,9 +49,13 @@ No. Stablecoins are pegged or oscillating around a specific value \(usually pegg
 
 RAI, on the other hand, is not pegged to anything. The system behind RAI only cares about the market price getting as close as possible to the redemption price. The redemption price will almost always float \(thus, it won't be pegged\) in order to compel system participants to bring the market price toward it.
 
+### Is RAI a rebase token?
+
+No. The protocol doesn't change the amount of tokens you have. Rather, it changes the target price that the protocol wants RAI to have on exchanges.
+
 ### Why would I hold RAI when the system devalues the token?
 
-This is exactly what the system wants you to ask yourself when it charges a negative interest rate. The system is trying to incentivize RAI holders to sell and bring the market price down and close to the redemption price.
+This is exactly what the system wants you to ask yourself when it charges a negative redemption rate. The system is trying to incentivize RAI holders to sell and bring the market price down and close to the redemption price.
 
 ### Isn't RAI growth bounded by ETH growth?
 
@@ -79,10 +83,6 @@ We believe that growing alongside other projects and helping builders leverage R
 1. When RAI's market price &gt; redemption price for a sustained period of time, the redemption rate will become negative
 2. When RAI's market price &lt; redemption price for a sustained period of time, the redemption rate will become positive
 3. When RAI's market price = redemption price for a sustained period of time, the redemption rate will become zero
-
-### Is RAI a rebase token?
-
-No. The protocol doesn't change the amount of tokens you have. Rather, it changes the target price that the protocol wants RAI to have on exchanges.
 
 ### What happens if the redemption rate is positive and I just add more collateral in my SAFE instead of repaying my debt?
 
