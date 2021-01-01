@@ -283,7 +283,7 @@ In order to launch and integrate a new saviour in a GEB, it must first pass seve
 3. Before you submit your full implementation and update the GIP, you must make sure that you have 100% test coverage for your code and also do several integration tests between the `LiquidationEngine`, `SAFESaviourRegistry` and the saviour code. In order to submit your implementation, update your GIP with a link to your code and a new summary of the gas amount required to call each function. After you update the GIP, ping the community on Discord.
 4. Once your implementation is accepted and reviewed by the community, your code must also be audited twice. Each audit must be done by an independent party.
 5. After your code gets audited, you should send a new message on Discord and let the community know that it's ready to be integrated in production. You must link to the audit reports.
-6. Governance may decide to first try out your saviour on a testnet. In this case, you must deploy an instance of your saviour on a testnet GEB instance and liquidate a `SAFE` which can then get saved
+6. Governance may decide to first try out your saviour on a testnet. In this case, you must deploy an instance of your saviour on a testnet GEB and liquidate a `SAFE` which can then be saved
 7. Assuming that you pass all previous steps, you can deploy your saviour on mainnet so that governance can whitelist it in `LiquidationEngine` and in `SAFESaviourRegistry`
 
 ## 6. Integration Ideas
