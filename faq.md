@@ -19,7 +19,7 @@ At the same time, a managed float can cause uncertainty due to the fact that the
 
 ### How does RAI work/behave?
 
-The long term price trajectory of RAI is determined by the demand for ETH leverage. RAI tends to appreciate if SAFE users deleverage and RAI users long and it depreciates in case SAFE users leverage and RAI users short.
+The long term price trajectory of RAI is determined by the demand for ETH leverage. RAI tends to appreciate if SAFE users deleverage and/or RAI users long and it depreciates in case SAFE users leverage and/or RAI users short.
 
 To better understand how RAI behaves, we need to analyze its monetary policy which is made out of four elements:
 
