@@ -290,10 +290,10 @@ In order to launch and integrate a new saviour in a GEB, it must first pass seve
 
 To help you get started, here are a couple of ideas for building RAI saviours:
 
-* Allow users to deposit [Aave aETH](https://aave.com/aTokens/) in a saviour which can then be used to redeem ETH which is then added in a `SAFE`
+* Allow users to deposit [Aave aETH](https://aave.com/aTokens/) in a saviour which can then be used to redeem ETH that is then added in a `SAFE`
 * Allow users to deposit [Compound cETH](https://compound.finance/docs/ctokens) in a saviour which can then be used to redeem ETH 
 
-  which is then added in a `SAFE`
+  that is then added in a `SAFE`
 
 * [Opyn](https://opyn.co/#/) or [Hegic](https://www.hegic.co/) options which can be exercised when `saveSAFE` is called
 
