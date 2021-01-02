@@ -18,7 +18,6 @@ The following tables show the before and after variable names from all core MCD 
 | rely | addAuthorization |
 | deny | removeAuthorization |
 | auth | isAuthorized |
-| can | cdpRights |
 | hope | approveSAFEModification |
 | nope | denySAFEModification |
 | wish | canModifySAFE |
