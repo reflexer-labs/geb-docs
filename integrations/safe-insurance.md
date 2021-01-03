@@ -250,7 +250,7 @@ The process of saving a `SAFE` has its own requirements:
 * You must check that `keeperPayoutExceedsMinValue` returns `true`. If it returns `false`, you must return early
 * You must check that the `SAFE` has collateral in it
 * You must check that the saviour can both reward the keeper for saving the SAFE and also add enough collateral in the SAFE so its CRatio goes to the desired level
-* You must **not** add any collateral in the `SAFE` in case it **cannot** be saved \(its CRatio cannot be increased to the desired level\). You must revert in case the `SAFE` cannot be saved. If you were to add collateral in the `SAFE` and still not save it, GEB would just liquidate that collateral and you would waste resources
+* You must **not** add any collateral in the `SAFE` in case it **cannot** be saved \(its CRatio cannot be increased to the desired level\). You must revert in case the `SAFE` cannot be saved. If you were to add collateral in the `SAFE` and still not save it, GEB would still liquidate that `SAFE` and you would waste resources
 * You must call `saviourRegistry.markSave(collateralType`, `safeHandler)` so that the `SAFESaviourRegistry` knows a specific `SAFE` has just been saved. The registry enforces a delay between two consecutive save actions for a specific `SAFE`. The delay is there to make sure that `SAFE` users don't solely rely on saviours to protect their positions. This way we avoid a scenario where one or a couple of popular saviours fail \(e.g bugs, lack of sufficient cover\) and most positions in the system are liquidated at once
 * You must emit a `SaveSAFE` event before you return
 * The last thing you have to do is to return a tuple in the form of `(true`, `tokenAmountUsed`, `keeperPayout)` where:
