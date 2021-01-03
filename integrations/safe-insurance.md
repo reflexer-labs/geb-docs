@@ -276,11 +276,14 @@ In order to launch and integrate a new saviour in a GEB, it must first pass seve
 1. You must first create a new [GEB Improvement Proposal](https://github.com/reflexer-labs/GIPs). Once you create the GIP you must ask for feedback on [Reflexer's Discord server](https://discord.gg/kB4vcYs) \(in the development channel\). To maximize your chances of having your idea accepted:
    * Your saviour must only do one thing. For example, you should only handle aTokens or cTokens, not both
    * Your saviour should only take into account a single collateral type \(e.g ETH-A **or** ETH-B, **not** ETH-A and ETH-B\)
-   * You should have a draft implementation of your saviour with estimated gas prices for calling each function
-   * You must give an initial estimate of the `keeperPayout`, `minKeeperPayoutValue`, `payoutToSAFESize` and `defaultDesiredCollateralizationRatio` values you plan to set
+   * You should have a draft implementation of your saviour with estimated gas amounts for calling each function
+   * You should give an initial estimate of the `keeperPayout`, `minKeeperPayoutValue`, `payoutToSAFESize` and `defaultDesiredCollateralizationRatio` values you plan to set
    * You must specify if you plan to monetize the saviour service you're building and how you plan to do it
 2. Once you receive feedback \(and assuming it's positive\), you can start to fully implement the saviour
-3. Before you submit your full implementation and update the GIP, you must make sure that you have 100% test coverage for your code and also do several integration tests between the `LiquidationEngine`, `SAFESaviourRegistry` and the saviour code. In order to submit your implementation, update your GIP with a link to your code and a new summary of the gas amount required to call each function. After you update the GIP, ping the community on Discord.
+3. Before you submit your full implementation and update the GIP, you must make sure that you have 100% test coverage for your code and also do several integration tests between the `LiquidationEngine`, `SAFESaviourRegistry` and the saviour code. In order to submit your implementation, update your GIP with a link to your code and a new summary of the gas amounts required to call each function, as well as updated values for `keeperPayout`, `minKeeperPayoutValue`, `payoutToSAFESize` and `defaultDesiredCollateralizationRatio`
+
+   . After you update the GIP, ping the community on Discord.
+
 4. Once your implementation is accepted and reviewed by the community, your code must also be audited twice. Each audit must be done by an independent party.
 5. After your code gets audited, you should send a new message on Discord and let the community know that it's ready to be integrated in production. You must link to the audit reports.
 6. Governance may decide to first try out your saviour on a testnet. In this case, you must deploy an instance of your saviour on a testnet GEB and liquidate a `SAFE` which can then be saved
