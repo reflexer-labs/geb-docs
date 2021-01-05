@@ -7,7 +7,7 @@
 * Minimum amount of debt per Safe: 85
 * Maximum amount of debt per Safe: 2000
 * ETH-A annual borrow rate/stability fee: 1.5%
-* Global debt ceiling: 20,000
+* Global debt ceiling: 52,000
 * Liquidation penalty: 11%
 * ETH-A auction fixed discount: 5% 
 * ETH-A fixed discount auction minimum bid: 5 \(WAD\)
