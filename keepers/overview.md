@@ -40,7 +40,7 @@ Pre-requisites: Python 3.6+
 Install `auction-keeper` dependencies with:
 
 ```text
-git clone https://github.com/makerdao/auction-keeper.git
+git clone https://github.com/reflexer-finance/auction-keeper.git
 cd auction-keeper
 git checkout tags/prai-demo
 git submodule update --init --recursive
