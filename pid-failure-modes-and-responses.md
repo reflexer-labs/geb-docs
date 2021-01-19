@@ -19,9 +19,11 @@ Governance must ensure at all times that there is enough indexes on exchanges vs
 
 In case the index liquidity drops below any of the two limits specied above, governance is advised to pause the PID and restart it only after the liquidity improves.
 
-**NOTE**: lack of liquidity will increase the risk of market manipulation.
+**NOTE**: lack of liquidity will increase the risk of market manipulation \(as seen in Proto RAI\).
 
 ### Skewed Incentives
+
+In case governance sets up a system to incentivize the growth of a reflex index, these incentives may interfere with the PID's and cause the system to become unstable. In this scenario governance should look at the following 
 
 ### Negative Feedback Turning Positive
 
