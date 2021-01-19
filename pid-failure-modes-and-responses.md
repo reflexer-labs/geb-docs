@@ -1,5 +1,5 @@
 ---
-description: How to react in different scenarios where the PID is ineffective
+description: How to react in different scenarios where the redemption rate is ineffective
 ---
 
 # PID Failure Modes & Responses
