@@ -39,5 +39,5 @@ In this scenario there are three possible solutions:
 
 1. Temporarily pause the PID and wait for the market to come closer toward redemption
 2. Temporarily pause the PID and build a second controller that modifies the stability fee. In this scenario the redemption rate controller would only be used when the market price is consistently above redemption and the stability fee controller would be used when the market price is below redemption. Choosing this option means that governance may need to have long term control over the [TaxCollector](https://docs.reflexer.finance/system-contracts/money-market-module/tax-collector) and there will need to be more governance over rate setting in general.
-3. Trigger global settlement and allow the system to shutdown using the redemption price.
+3. Trigger global settlement and allow the system to shut down using the redemption price.
 
