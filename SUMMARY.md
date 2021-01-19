@@ -5,6 +5,7 @@
 * [Current System Parameters](current-system-parameters.md)
 * [GEB Risks](geb-risks.md)
 * [Governance Minimization Guide](governance-minimization-guide.md)
+* [PID Failure Modes & Responses](pid-failure-modes-and-responses.md)
 * [FAQ](faq.md)
 
 ## Contract Variables Translation <a id="contract-translation"></a>
