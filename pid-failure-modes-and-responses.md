@@ -23,9 +23,21 @@ In case the index liquidity drops below any of the two limits specied above, gov
 
 ### Skewed Incentives
 
-In case governance sets up a system to incentivize the growth of a reflex index, these incentives may interfere with the PID's and cause the system to become unstable. In this scenario governance should look at the following 
+In case governance sets up a system to incentivize the growth of a reflex index, these incentives may interfere with the PID's and cause the system to become unstable. In this scenario governance should look at the following solutions:
+
+1. Offer less growth incentives over a longer period of time
+2. Pause the controller until the growth campaign/s end
+3. Make the PID weaker so it still affects the system but gives participants more time to react
+4. Completely stop growth campaigns
+5. Find a way to incentivize market making alongside growth
 
 ### Negative Feedback Turning Positive
 
+There are cases when, even if there is no market manipulation, no skewed incentives and there's plenty of liquidity on exchanges, the market might not react to the redemption rate incentives and the redemption price would continue to go in a single direction for a long period of time.
 
+In this scenario there are three possible solutions:
+
+1. Temporarily pause the PID and wait for the market to come closer toward redemption
+2. Temporarily pause the PID and build a second controller that modifies the stability fee. In this scenario the redemption rate controller would only be used when the market price is consistently above redemption and the stability fee controller would be used when the market price is below redemption. Choosing this option means that governance may need to have long term control over the [TaxCollector](https://docs.reflexer.finance/system-contracts/money-market-module/tax-collector) and there will need to be more governance over rate setting.
+3. Trigger global settlement and allow the system to shutdown using the redemption price.
 
