@@ -4,7 +4,7 @@ description: How to react in different scenarios where the redemption rate is in
 
 # PID Failure Modes & Responses
 
-The following is a list of known PID failure modes and possible responses or fixes for each one of them. Note that in order to minimize the risk of the PID failing, governance should activate it only after the reflex index has a minimum, mandatory liquidity level on exchanges as well as 
+The following is a list of known PID failure modes and possible responses or fixes for each one of them. Note that in order to minimize the risk of the PID failing, governance should activate it only after the reflex index has a minimum, mandatory liquidity level on exchanges as well as plenty of users interacting with the system. 
 
 ### Market Manipulation
 
