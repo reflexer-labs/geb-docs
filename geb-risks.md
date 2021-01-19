@@ -28,6 +28,8 @@ PID control is still a novel concept in DeFi. No other stable asset prior to RAI
 
 If the controller is too slow it may be completely ineffective in stabilizing RAI or other reflex indexes. If it's too strong, it may destabilize the system.
 
+**NOTE**: check out more PID failure modes in [this section](https://docs.reflexer.finance/pid-failure-modes-and-responses).
+
 ### Suboptimal Parameters
 
 Governance may set suboptimal parameters for:
