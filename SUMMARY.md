@@ -3,10 +3,16 @@
 * [Introduction to GEB](README.md)
 * [Currently Deployed Systems](currently-deployed-systems.md)
 * [Current System Parameters](current-system-parameters.md)
-* [GEB Risks](geb-risks.md)
-* [Governance Minimization Guide](governance-minimization-guide.md)
-* [PID Failure Modes & Responses](pid-failure-modes-and-responses.md)
 * [FAQ](faq.md)
+
+## Ungovernance
+
+* [Governance Minimization Guide](ungovernance/governance-minimization-guide.md)
+
+## Risk
+
+* [GEB Risks](risk/geb-risks.md)
+* [PID Failure Modes & Responses](risk/pid-failure-modes-and-responses.md)
 
 ## Contract Variables Translation <a id="contract-translation"></a>
 
