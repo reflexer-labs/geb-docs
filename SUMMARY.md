@@ -3,6 +3,7 @@
 * [Introduction to GEB](README.md)
 * [Currently Deployed Systems](currently-deployed-systems.md)
 * [Current System Parameters](current-system-parameters.md)
+* [RAI Use-Cases](rai-use-cases.md)
 * [FAQ](faq.md)
 
 ## Ungovernance
