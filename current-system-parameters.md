@@ -16,7 +16,7 @@
 
 * `debtAuctionBidSize` - 50,000 \(RAD\)
 * `debtAuctionHouse` - [0x49c3dd1d66d2919611dbde40de088e85b9f96851](https://etherscan.io/address/0x49c3dd1d66d2919611dbde40de088e85b9f96851)
-* `disableCooldown` - 1814400 \(21 days\)
+* `disableCooldown` - 604800 \(7 days\)
 * `initialDebtAuctionMintedTokens` - 252 \(WAD\)
 * `popDebtDelay` - 1036800 \(12 days\)
 * `postSettlementSurplusDrain` - [0x0000000000000000000000000000000000000000](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
@@ -122,7 +122,7 @@
 * `oracleRelayer` - [0x2b56976b6e95304f9b3d9736aaa610e963422ccd](https://etherscan.io/address/0x2b56976b6e95304f9b3d9736aaa610e963422ccd)
 * `safeEngine` - [0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c](https://etherscan.io/address/0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c)
 * `stabilityFeeTreasury` - [0xff6d7479c0882daa3212785adaf7786d1df09cb8](https://etherscan.io/address/0xff6d7479c0882daa3212785adaf7786d1df09cb8)
-* `shutdownCooldown` - 345,600 \(4 days\)
+* `shutdownCooldown` - 10800 \(3 hours\)
 
 ### StabilityFeeTreasury
 
