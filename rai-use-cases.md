@@ -30,5 +30,5 @@ Some arbers can offer specialized RAI trading services to pools of capital. They
 
 ### **Portfolio Management Strategies**
 
-\*\*\*\*
+Anyone can create [Set Protocol](https://www.tokensets.com/) sets or [Balancer](https://balancer.finance/) pools that offer diversified exposure to RAI's redemption rate as well as other yield bearing assets \(e.g cTokens, aTokens\).
 
