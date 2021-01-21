@@ -10,7 +10,7 @@ Python 3.6+
 
 ### Get RAI:
 
-Buy RAI from Uniswap v2 or [open a SAFE](https://app.gitbook.com/@reflexer-labs/s/geb/pyflex/safe-management/opening-a-safe) and generate it.
+Buy RAI from Uniswap v2 or [open a SAFE](https://app.reflexer.finance) and generate it.
 
 ### Clone:
 
@@ -89,3 +89,4 @@ Password for /keystore/key.json:
 [Collateral Auctioning Process](liquidations.md)
 
 [Flash Swaps](flash-swaps.md)
+

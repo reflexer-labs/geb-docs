@@ -4,9 +4,11 @@ description: Overview of the debt auctioning process
 
 # Debt Auctions
 
+## Debt Auctions
+
 Below you will see the debt auction-keeper start and bid on a debt auction.
 
-###  Pop debt from queue
+### Pop debt from queue
 
 If debt from collateral auctions still exists after `AccountingEngine.pop_debt_delay()`, the surplus _auction-keeper_ will call `popDebtFromQueue()`
 
@@ -33,7 +35,7 @@ Finally, if debt still exists and is enough to start an auction, the _auction-ke
 0000000000 (tx_hash=0x9ff7a02e85a30c361768639729678df615eba7f10a69505c1aaa4cc88818c73d)
 ```
 
-# Full Log Output
+## Full Log Output
 
 ```text
 [ec2-user@ip-172-31-40-135 ~]$ ./run_debt_auction_keeper.sh
@@ -86,7 +88,5 @@ Password for /keystore/keystore.json:
 2021-01-20 04:16:53,236 INFO     Process '/models/debt_model.sh --id 8 --debt_auction_house 0xBD0E4aC6061Df1eA95CaDfb04707892cCb750531' (pid #44) started
 2021-01-20 04:16:53,252 INFO     Checked auctions 0 to 8 in 0 seconds
 2021-01-20 04:16:54,094 INFO     Initiating a debt auction with unqueued_unauctioned_debt=323.847533519600184184235424734624945830526550734
-
-
-
 ```
+

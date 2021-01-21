@@ -4,6 +4,8 @@ description: Overview of the surplus auctioning process
 
 # Surplus Auctions
 
+## Surplus Auctions
+
 Below you will see the surplus auction-keeper start a surplus auction and bid on a surplus auction
 
 ### Start Surplus Auction
@@ -14,16 +16,17 @@ If enough surplus exists in the system, the surplus _auction-keeper_ will call `
 2021-01-19 21:15:20,644 INFO     Initiating a surplus auction with coin balance=857.460939042493680361118426229210746756033227844
 2021-01-19 21:15:21,317 INFO     Sent transaction AccountingEngine('0x73EC2a627655134886477D10A41275f54556E0e2').auctionSurplus() with nonce=771, gas=290341, gas_price=3000000000 (tx_hash=0x67fdeda8c2dedf5ba05cecf4184e38f3f0353c750a5f466ebf340730e0aa330e)
 ```
+
 ### Bid on Surplus Auction
 
 If the surplus _auction-keeper_ has FLX, it will bid on surplus auctions by calling `increaseBidSize`
 
 ```text
 2021-01-19 21:15:33,578 INFO     Sending new bid @100.000000000000000000 for auction 16
-2021-01-19 21:15:33,688 INFO     Sent transaction PreSettlementSurplusAuctionHouse('0xE04ccD802E5e37bE1A64036ce8E7e514E4DBE475').increaseBidSize(16, 2000000000000000000000000000000000000000000000, 20000000000000000) with nonce=773, gas=214285, gas_price=3000000000 
+2021-01-19 21:15:33,688 INFO     Sent transaction PreSettlementSurplusAuctionHouse('0xE04ccD802E5e37bE1A64036ce8E7e514E4DBE475').increaseBidSize(16, 2000000000000000000000000000000000000000000000, 20000000000000000) with nonce=773, gas=214285, gas_price=3000000000
 ```
 
-# Full log output
+## Full log output
 
 ```text
 2021-01-19 21:15:07,178 INFO     Keeper connected to RPC connection https://myparitynode.com
@@ -57,3 +60,4 @@ i for transactions and bids unless model instructs otherwise
 2021-01-19 21:15:33,688 INFO     Sent transaction PreSettlementSurplusAuctionHouse('0xE04ccD802E5e37bE1A64036ce8E7e514E4DBE475').increaseBidSize(16, 2000000000000000000000000000000000000000000000, 20000000000000000) with nonce=773, gas=214285, gas_price=3000000000 (tx_hash=0x1a6e219ba11bc300e671703ae73ff5cc7f36e4be0d56fd7751c4bb24a3628106)
 2021-01-19 21:15:41,040 INFO     Transaction AccountingEngine('0x73EC2a627655134886477D10A41275f54556E0e2').auctionSurplus() was successful (tx_hash=0xe00e3bbeeb12c23d13c52a34bbf2f5457d2ea9ae513baffd8d65133adba7b19d)
 ```
+

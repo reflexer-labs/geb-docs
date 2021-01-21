@@ -97,7 +97,7 @@ If none of these options is given or if the gas API produces no result, the keep
 
 `--gas-initial-multiplier MULTIPLIER` When using an API source for fetching the initial gas price, this tunes the price. It's ignored when you're using `--fixed-gas-price`. In case no strategy is specified it defaults to `1.0`
 
-`--gas-reactive-multiplier MULTIPLIER` Every 30 seconds, a transaction's gas price will be multiplied by this value until it is mined or `--gas-maxiumum` is reached. Not used if `gasPrice` is passed from your bidding model. **NOTE**: [Parity](https://wiki.parity.io/Transactions-Queue#dropping-conditions), as of this writing, requires a minimum gas increase of `1.125` to propagate a transaction replacement; this should be treated as a minimum value unless you want replacements to happen less frequently. This multiplier defaults to  `1.125` if no other value is given.
+`--gas-reactive-multiplier MULTIPLIER` Every 30 seconds, a transaction's gas price will be multiplied by this value until it is mined or `--gas-maxiumum` is reached. Not used if `gasPrice` is passed from your bidding model. **NOTE**: [Parity](https://wiki.parity.io/Transactions-Queue#dropping-conditions), as of this writing, requires a minimum gas increase of `1.125` to propagate a transaction replacement; this should be treated as a minimum value unless you want replacements to happen less frequently. This multiplier defaults to `1.125` if no other value is given.
 
 `--gas-maximum GWEI` Maximum value for gas price
 
@@ -135,7 +135,7 @@ To start collateral auctions, the keeper needs a list of SAFEs and the collatera
 
 `--graph-endpoints NODE1,NODE2` Comma delimited list of [Graph](https://thegraph.com) endpoints used to retrieve `ModifySAFECollateralization` events. If multiple endpoints are passed, they will be pinged sequentially in the order they were specified in case one or many of them fail. **NOTE**: This flag is only supported for collateral auctions.
 
-`--graph-block-threshold NUMBER_OF_BLOCKS` When the keeper fetches SAFE data to find critical safes, use the `--graph-endpoints` when the keeper's last processed block is older than `NUMBER_OF_BLOCKS`. The graph will be faster than a node when fetching historical data, but recent graph blocks might be slightly delayed compared to an ethereum node.  This allows the keeper to to fetch historical data from the graph, but use the node for all newer blocks. Defaults to `20`
+`--graph-block-threshold NUMBER_OF_BLOCKS` When the keeper fetches SAFE data to find critical safes, use the `--graph-endpoints` when the keeper's last processed block is older than `NUMBER_OF_BLOCKS`. The graph will be faster than a node when fetching historical data, but recent graph blocks might be slightly delayed compared to an ethereum node. This allows the keeper to to fetch historical data from the graph, but use the node for all newer blocks. Defaults to `20`
 
 The following are the most recent Graph node endpoints for RAI:`--graph-endpoints https://subgraph.reflexer.finance/subgraphs/name/reflexer-labs/prai,https://api.thegraph.com/subgraphs/name/reflexer-labs/prai-mainnet`
 
@@ -153,7 +153,7 @@ The following are the most recent Graph node endpoints for RAI:`--graph-endpoint
 
 #### Flash swaps
 
-Flash swaps allow a keeper to participate in collateral auctions without any system coins.  The flash swap borrows the system coin necessary for the collateral auctions, wins the collateral at a discount and transferred the won collateral back to the keeper, all in one transaction. Note: If the overall transaction is not profitable, the swap will fail.  The keeper only needs enough ether to pay for the gas of the swap.
+Flash swaps allow a keeper to participate in collateral auctions without any system coins. The flash swap borrows the system coin necessary for the collateral auctions, wins the collateral at a discount and transferred the won collateral back to the keeper, all in one transaction. Note: If the overall transaction is not profitable, the swap will fail. The keeper only needs enough ether to pay for the gas of the swap.
 
 `--flash-swap` Turn on Uniswap flash swaps for collateral auctions. Not supported for `--type debt` or `--type surplus`
 
@@ -167,15 +167,13 @@ Bid management can be sharded across multiple keepers. If you want to proceed wi
 
 `--shard-id SHARD_ID` You must specify this for every keeper, counting from 0
 
-  
 For example, to configure three keepers, set `--shards 3` and assign `--shard-id 0`, `--shard-id 1`, `--shard-id 2` for the first, second and third keeper.
 
 **NOTE**: **Auction starts are not sharded**. Only one keeper should be configured to `liquidateSAFE`s and this way `startAuction`s.
 
 If you are sharding across multiple accounts, you may want to have a separate keeper that handles all your `settleAuction`s \(in the case of English collateral, debt and surplus auctions\)
 
-`--settle-for <ACCOUNT1 ACCOUNT2>|NONE|ALL` Space-delimited list of accounts for which the keeper will settle auctions. Specify `NONE` to disable this option. If you'd like to donate your gas to settle auctions for all participants, `ALL` is also supported.  Defaults to only the keeper address.
-
+`--settle-for <ACCOUNT1 ACCOUNT2>|NONE|ALL` Space-delimited list of accounts for which the keeper will settle auctions. Specify `NONE` to disable this option. If you'd like to donate your gas to settle auctions for all participants, `ALL` is also supported. Defaults to only the keeper address.
 
 **NOTE**: **Auction settlements are already sharded**, so you should remove the sharding configuration if you're running a dedicated auction settlement keeper.
 
@@ -183,7 +181,7 @@ If you are sharding across multiple accounts, you may want to have a separate ke
 
 `--bid-delay FLOAT`
 
-Many pending transactions can fill up the keeper's transaction queue, causing every subsequent transaction to be dropped. By waiting a small `--bid-delay` after each bid, multiple transactions can be submitted asynchronously while still allowing some time for older transactions to complete, freeing up the queue. 
+Many pending transactions can fill up the keeper's transaction queue, causing every subsequent transaction to be dropped. By waiting a small `--bid-delay` after each bid, multiple transactions can be submitted asynchronously while still allowing some time for older transactions to complete, freeing up the queue.
 
 Many parameters determine the appropriate bid delay. For illustration purposes, assume the queue can hold 12 transactions, and gas prices are reasonable. In this setup, a bid delay of 1.2 seconds might provide ample time for transactions at the front of the queue to complete.
 
