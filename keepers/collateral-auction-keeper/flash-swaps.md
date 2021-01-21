@@ -6,7 +6,7 @@ Normally, the collateral auction-keeper uses RAI to bid on fixed discount collat
 
 The auction-keeper can be configured to use Uniswap flash swaps when bidding on collateral auctions. This allows the keeper to participate in collateral auctions with no upfront capital\(ether or RAI\) other than gas costs.
 
-## How it's done
+## Details
 
 The collateral auction-keeper performs flash swaps with a single tx through the [geb-keeper-flash-proxy](https://github.com/reflexer-labs/geb-keeper-flash-proxy) contract.
 
