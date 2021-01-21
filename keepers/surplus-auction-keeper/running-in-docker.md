@@ -80,3 +80,6 @@ docker.io/reflexer/auction-keeper:prai-demo
 Password for /keystore/key.json:
 ```
 
+## Surplus Auctioning Process
+
+[Surplus Auctioning Process](surplus-auctions.md)

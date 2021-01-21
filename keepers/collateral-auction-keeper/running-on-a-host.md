@@ -84,3 +84,8 @@ $ ./run_auction_keeper.sh
 Password for /keystore/key.json:
 ```
 
+## Collateral Auctioning Process
+
+[Collateral Auctioning Process](liquidations.md)
+
+[Flash Swaps](flash-swaps.md)

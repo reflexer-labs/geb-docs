@@ -63,6 +63,10 @@ bin/auction-keeper \
      --eth-key key_file=<KEYSTORE_FILE>
 ```
 
+## Surplus Auctioning Process
+
+[Surplus Auctioning Process](surplus-auctions.md)
+
 ### Then, substitute the following variables:
 
 `ETH_RPC_URL` - the URL of your ethereum RPC connection

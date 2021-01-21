@@ -55,3 +55,8 @@ docker.io/reflexer/auction-keeper:prai-demo
 Password for /keystore/key.json:
 ```
 
+## Collateral Auctioning Process
+
+[Collateral Auctioning Process](liquidations.md)
+
+[Flash Swaps](flash-swaps.md)

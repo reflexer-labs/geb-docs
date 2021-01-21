@@ -89,3 +89,6 @@ $ ./run_auction_keeper.sh
 Password for /keystore/key.json:
 ```
 
+## Debt Auctioning Process
+
+[Debt Auctioning Process](debt-auctions.md)
