@@ -103,11 +103,9 @@
 * [Debt Auction Keeper](keepers/debt-auction-keeper/README.md)
   * [Running in Docker](keepers/debt-auction-keeper/running-in-docker.md)
   * [Running on a Host](keepers/debt-auction-keeper/running-on-a-host.md)
-  * [Debt Auctions](keepers/debt-auction-keeper/debt-auctions.md)
 * [Surplus Auction Keeper](keepers/surplus-auction-keeper/README.md)
   * [Running in Docker](keepers/surplus-auction-keeper/running-in-docker.md)
   * [Running on a Host](keepers/surplus-auction-keeper/running-on-a-host.md)
-  * [Surplus Auctions](keepers/surplus-auction-keeper/surplus-auctions.md)
 * [Bidding Models](keepers/bidding-models.md)
 
 ## Integrations

@@ -1,38 +1,38 @@
+---
+description: Lightning fast bidding in collateral auctions
+---
+
 # Collateral Auction Flash Swaps
 
 ## Overview
 
-Normally, the collateral auction-keeper uses RAI to bid on fixed discount collateral auctions. A keeper operator must acquire RAI and also maintain a RAI balance in the collateral keeper to be prepared for future collateral auctions. With collateral auction flash swaps, this is no longer necessary.
+Normally, the collateral [auction-keeper](https://github.com/reflexer-labs/auction-keeper) uses system coins to bid in fixed discount collateral auctions. A keeper operator must acquire system coins to be prepared for future collateral auctions. With collateral auction flash swaps, this is no longer necessary.
 
-The auction-keeper can be configured to use Uniswap flash swaps when bidding on collateral auctions. This allows the keeper to participate in collateral auctions with no upfront capital\(ether or RAI\) other than gas costs.
+The auction-keeper can be configured to use [Uniswap v2 flash swaps](https://uniswap.org/docs/v2/core-concepts/flash-swaps/) when bidding in collateral auctions. This allows the keeper to participate in collateral auctions with no upfront capital other than gas costs to execute the transaction.
 
 ## Details
 
-The collateral auction-keeper performs flash swaps with a single tx through the [geb-keeper-flash-proxy](https://github.com/reflexer-labs/geb-keeper-flash-proxy) contract.
+The collateral auction-keeper performs flash swaps using the [geb-keeper-flash-proxy](https://github.com/reflexer-labs/geb-keeper-flash-proxy) contracts.
 
-The _geb-keeper-flash-proxy_ is used by _auction-keeper_ to:
+The flash proxy is used by the auction-keeper to:
 
-1\) liquidate a critical SAFE\(starting an auction\) and bid on the _new_ auction by calling `liquidateAndSettleSAFE` on _geb-keeper-flash-proxy_
+1\) Liquidate an underwater SAFE, start a new collateral auction and bid by calling `liquidateAndSettleSAFE`
 
 or
 
-2\) bid on _existing_ auctions by calling `settleAuction` on _geb-keeper-flash-proxy_
+2\) Bid in existing auctions by calling `settleAuction`
 
-See details of these functions in the [_geb-keeper-flash-proxy_ source code](https://github.com/reflexer-labs/geb-keeper-flash-proxy/blob/master/src/GebUniswapV2KeeperFlashProxyETH.sol)
-
-Read more about [Uniswap Flash Swaps](https://uniswap.org/docs/v2/core-concepts/flash-swaps/)
+See more details for these functions in the [geb-keeper-flash-proxy source code](https://github.com/reflexer-labs/geb-keeper-flash-proxy/blob/master/src/GebUniswapV2KeeperFlashProxyETH.sol).
 
 ## Configuration
 
-How to enable Use `--flash-swaps` flag when starting a collateral auction-keeper
+Use the `--flash-swaps` flag when starting a collateral auction-keeper.
 
 ## Flash Swaps in Action
 
-Below is log output from _auction\_keeper_ started with the `--flash-swap` option
+Below you can find the log output from an auction keeper started with the `--flash-swap` flag.
 
-First, the _auction-keeper_ finds a critical SAFE and calls `liquidateAndSettleSAFE` on _geb-keeper-flash-proxy_.
-
-The _auction-keeper_ then detects two existing auctions and calls `settleAuction` on _geb-keeper-flash-proxy_ for each one.
+First, the auction keeper finds a critical SAFE and calls `liquidateAndSettleSAFE` in the flash proxy. The keeper then detects two existing auctions and calls `settleAuction` for each one.
 
 ```text
 [ec2-user@ip-172-31-40-135 ~]$ ./run_collateral_auction_keeper.sh 
@@ -69,12 +69,14 @@ Password for /keystore/keystore.json:
 
 ## Caveats
 
-* Flash swaps are only supported for collateral auctions.
-* _auction-keeper_ will not do flash swaps on critical SAFEs with saviours. [Read more about saviours](https://docs.reflexer.finance/integrations/safe-insurance)
+* Flash swaps are only supported for collateral auctions
+* auction-keeper will not do flash swaps on critical SAFEs with attached saviours. Read more about saviours [here](https://docs.reflexer.finance/integrations/safe-insurance)
 
 ## Possible errors
 
 `GebUniswapV2KeeperFlashProxyETH/profit-not-enough-to-repay-the-flashswap`
 
-If this happens, the current system market price is too high in relation to the redemption price and repaying the swap will not yield a profit. Also, the swap itself will move the system market price up. Thus, this error can occur if there is not enough liquidity in the Uniswap pool to support this flash swap. In either case, the auction-keeper can be restarted without `--flash-swap` to bid normally with the keeper’s system coin.
+If this happens, it means that the current system market price is too high in relation to the redemption price and repaying the swap will not yield a profit. Also, the swap itself will move the system market price up. 
+
+This error can occur if there is not enough liquidity in the Uniswap pool to support the swap. In either case, the auction-keeper can be restarted without `--flash-swap` to bid normally using the keeper’s system coin balance.
 

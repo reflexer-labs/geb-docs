@@ -6,7 +6,7 @@ description: Running a collateral auction-keeper in a docker container.
 
 ## 1\) Get RAI
 
-Buy RAI from Uniswap v2 or [open a SAFE](https://app.reflexer.finance) and generate it.
+Buy RAI from Uniswap v2 or [open a SAFE](https://app.gitbook.com/@reflexer-labs/s/geb/pyflex/safe-management/opening-a-safe) and generate it.
 
 ## 2\) Create the keeper run file
 
@@ -54,10 +54,4 @@ Status: Downloaded newer image for reflexer/auction-keeper:prai-demo
 docker.io/reflexer/auction-keeper:prai-demo
 Password for /keystore/key.json:
 ```
-
-## Collateral Auctioning Process
-
-[Collateral Auctioning Process](liquidations.md)
-
-[Flash Swaps](flash-swaps.md)
 

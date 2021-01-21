@@ -157,7 +157,7 @@ Flash swaps allow a keeper to participate in collateral auctions without any sys
 
 `--flash-swap` Turn on Uniswap flash swaps for collateral auctions. Not supported for `--type debt` or `--type surplus`
 
-[Read more about flash swaps](collateral-auction-keeper/flash-swaps.md)
+[Read more about flash swaps](https://github.com/reflexer-labs/geb-docs/tree/c027d74c487c0a715a19a415c1c97933e43a9f7d/keepers/collateral-auction-keeper/flash-swaps.md)
 
 #### Sharding/Settling
 
