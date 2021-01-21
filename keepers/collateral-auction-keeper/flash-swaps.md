@@ -74,8 +74,7 @@ Password for /keystore/keystore.json:
 
 ## Possible errors
 
-* `GebUniswapV2KeeperFlashProxyETH/profit-not-enough-to-repay-the-flashswap`
+`GebUniswapV2KeeperFlashProxyETH/profit-not-enough-to-repay-the-flashswap`
 
-
-    If this happens, the current system market price is too high in relation to the redemption price and repaying the swap will not yield a profit.  Also, the swap itself will move the system market price up. Thus, this error can occur if there is not enough liquidity in the Uniswap pool to support this flash swap. In either case, the auction-keeper can be restarted without `--flash-swap` to bid normally with the keeper’s system coin. 
+   If this happens, the current system market price is too high in relation to the redemption price and repaying the swap will not yield a profit.  Also, the swap itself will move the system market price up. Thus, this error can occur if there is not enough liquidity in the Uniswap pool to support this flash swap. In either case, the auction-keeper can be restarted without `--flash-swap` to bid normally with the keeper’s system coin. 
 
