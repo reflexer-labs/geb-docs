@@ -40,11 +40,11 @@ Each component in GEB has varying degrees of governance minimization potential. 
 * **Protocol Token Authority** - governance can completely remove control from this contract once the Debt Auction House is governance minimized
 * **Protocol Token Printing Permissions** - governance can completely remove control from this contract once the Debt Auction House is governance minimized
 * **Protocol Token** - governance will not have control over this component \(manually minting tokens or changing allowances so other addresses can mint\) once they remove control from the Protocol Token Authority and the Protocol Token Printing Permissions
-* **PID Controller** - governance may need to keep some control over this component in the long run; the core team and the community will have more insight into how much control it will need after a GEB has been running for at least 1 year on mainnet; one reason for maintaining \(bounded\) control is the fact that the controller should be paused when the system's reflex index doesn't have enough liquidity on exchanges; **NOTE**: even if governance keeps some control over the PID, the Oracle Relayer will have upper and lower bounds for the redemption rate so that a potential governance attack cannot immediately destroy the protocol
+* **PID Controller** - governance may need to keep some control over this component in the long run; the community will have more insight into how much control it will need after a GEB has been running for at least 1 year on mainnet; one reason for maintaining \(bounded\) control is the fact that the controller should be paused when the system's reflex index doesn't have enough liquidity on exchanges; **NOTE**: even if governance keeps some control over the PID, the `OracleRelayer` will have upper and lower bounds for the redemption rate so that a potential governance attack cannot immediately destroy the protocol
 * **Saviour Contracts** - governance will need to keep maintaining these contracts in the long run because they are connected to external components
 * **SAFE Saviour Registry** - governance will need to keep maintaining this contract in the long run because it's meant to whitelist/blacklist saviour contracts
 
-### 3. Infrastructure for Governance Minimization
+### 3. Infrastructure for Automation
 
 A couple of GEB contracts will need to authorize other components to automatically set some of their parameters post governance minimization. Here is the current list of external components for every GEB contract:
 
