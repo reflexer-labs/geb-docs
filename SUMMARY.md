@@ -99,6 +99,7 @@
   * [Running in Docker](keepers/collateral-auction-keeper/running-in-docker.md)
   * [Running on a Host](keepers/collateral-auction-keeper/running-on-a-host.md)
   * [Liquidations & Collateral Auctions](keepers/collateral-auction-keeper/liquidations.md)
+  * [Flash Swaps](keepers/collateral-auction-keeper/flash-swaps.md)
 * [Debt Auction Keeper](keepers/debt-auction-keeper/README.md)
   * [Running in Docker](keepers/debt-auction-keeper/running-in-docker.md)
   * [Running on a Host](keepers/debt-auction-keeper/running-on-a-host.md)
