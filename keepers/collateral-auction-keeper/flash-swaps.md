@@ -72,7 +72,7 @@ Password for /keystore/keystore.json:
 * Flash swaps are only supported for collateral auctions.
 * _auction-keeper_ will not do flash swaps on critical SAFEs with saviours. [Read more about saviours](https://docs.reflexer.finance/integrations/safe-insurance)
 
-  **Possible errors**
+## Possible errors
 
 * `GebUniswapV2KeeperFlashProxyETH/profit-not-enough-to-repay-the-flashswap`
 
