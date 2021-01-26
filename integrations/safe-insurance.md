@@ -38,33 +38,25 @@ abstract contract SafeSaviourLike is ReentrancyGuard {
     }
 
     // --- Variables ---
-    // The contract used to liquidate SAFEs inside GEB
     LiquidationEngineLike   public liquidationEngine;
-    // The contract that glues together collateral oracles and the SAFEEngine
     OracleRelayerLike       public oracleRelayer;
-    /* 
-       The GebSafeManager that the saviour is integrated with.
-       The manager makes it easier for developers to integrate with the system
-    */
     GebSafeManagerLike      public safeManager;
-    // The contract maintaining the state of all SAFEs
     SAFEEngineLike          public safeEngine;
-    // A registry that keeps that of when a SAFE has last been saved
     SAFESaviourRegistryLike public saviourRegistry;
 
     // The amount of tokens the keeper gets in exchange for the gas spent to save a SAFE
-    uint256 public keeperPayout;
+    uint256 public keeperPayout;          // [wad]
     // The minimum fiat value that the keeper must get in exchange for saving a SAFE
-    uint256 public minKeeperPayoutValue;
+    uint256 public minKeeperPayoutValue;  // [wad]
     /*
-      The proportion between the keeperPayout and the amount of collateral that's in a SAFE to be saved. Alternatively, it can be
-      the proportion between the fiat value of keeperPayout and the fiat value of the profit that a keeper could make if a SAFE is liquidated
-      right now. It ensures there's no incentive to intentionally put a SAFE underwater and then save it just to make a profit that's greater than the one from
-      participating in collateral auctions
+      The proportion between the keeperPayout (if it's in collateral) and the amount of collateral that's in a SAFE to be saved.
+      Alternatively, it can be the proportion between the fiat value of keeperPayout and the fiat value of the profit that a keeper
+      could make if a SAFE is liquidated right now. It ensures there's no incentive to intentionally put a SAFE underwater and then
+      save it just to make a profit that's greater than the one from participating in collateral auctions
     */
     uint256 public payoutToSAFESize;
     // The default collateralization ratio a SAFE should have after it's saved
-    uint256 public defaultDesiredCollateralizationRatio;
+    uint256 public defaultDesiredCollateralizationRatio;  // [percentage]
 
     // Desired CRatios for each SAFE after they're saved
     mapping(bytes32 => mapping(address => uint256)) public desiredCollateralizationRatios;
@@ -74,6 +66,7 @@ abstract contract SafeSaviourLike is ReentrancyGuard {
     uint256 public constant HUNDRED           = 100;
     uint256 public constant THOUSAND          = 1000;
     uint256 public constant CRATIO_SCALE_DOWN = 10**25;
+    uint256 public constant WAD_COMPLEMENT    = 10**9;
     uint256 public constant WAD               = 10**18;
     uint256 public constant RAY               = 10**27;
     uint256 public constant MAX_CRATIO        = 1000;
@@ -86,26 +79,19 @@ abstract contract SafeSaviourLike is ReentrancyGuard {
     function either(bool x, bool y) internal pure returns (bool z) {
         assembly{ z := or(x, y)}
     }
-    
+
     // --- Events ---
     event SetDesiredCollateralizationRatio(address indexed caller, uint256 indexed safeID, address indexed safeHandler, uint256 cRatio);
     event SaveSAFE(address indexed keeper, bytes32 indexed collateralType, address indexed safeHandler, uint256 collateralAddedOrDebtRepaid);
 
     // --- Functions to Implement ---
-    // Mandatory function called by the LiquidationEngine in order to save a SAFE
     function saveSAFE(address,bytes32,address) virtual external returns (bool,uint256,uint256);
-    // Returns the fiat value of the keeper's payout
     function getKeeperPayoutValue() virtual public returns (uint256);
-    // Validates if the fiat value of the keeper's payout exceeds a min threshold
     function keeperPayoutExceedsMinValue() virtual public returns (bool);
-    // Validates if a SAFE can be currently saved
     function canSave(address) virtual external returns (bool);
-    /*
-       Returns the amount of collateral/system tokens that will be used to save a
-       SAFE so that it has a desiredCollateralizationRatios CRatio afterwards
-    */
     function tokenAmountUsedToSave(address) virtual public returns (uint256);
 }
+
 ```
 
 ## 3. Implementation Guidelines
