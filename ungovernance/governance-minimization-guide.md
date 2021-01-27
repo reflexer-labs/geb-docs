@@ -73,6 +73,8 @@ In this stage, governance will remove control from:
 * TaxCollector
 * ESM
 
+In case there are any auxiliary components that automate parameter setting in the above contracts, these can be governance minimized during this step or during the next one.
+
 #### Level 2
 
 In this stage, governance will remove control from:
@@ -81,6 +83,8 @@ In this stage, governance will remove control from:
 * AccountingEngine
 * StabilityFeeTreasury
 * GlobalSettlement
+
+Any auxiliary contracts that automate parameter settings should also by themselves be governance minimized.
 
 #### Level 3
 
