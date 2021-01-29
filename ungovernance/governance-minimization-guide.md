@@ -60,7 +60,7 @@ Lastly, contracts that pull funds from the **Stability Fee Treasury** may need t
 
 There are three levels \(or stages\) of governance minimization that a GEB \(like the one for RAI\) will go through:
 
-#### Level 1
+#### Level 1 - Deadline 14 Months Post Launch
 
 In this stage, governance will remove control from:
 
@@ -76,9 +76,7 @@ In this stage, governance will remove control from:
 * TaxCollector
 * ESM
 
-In case there are any auxiliary components that automate parameter setting in the above contracts, these can be governance minimized during this step or during the next one.
-
-#### Level 2
+#### Level 2 - Deadline 18 Months Post Launch
 
 In this stage, governance will remove control from:
 
