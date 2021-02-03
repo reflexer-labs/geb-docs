@@ -65,21 +65,20 @@
 * `MAX_DELAY_MULTIPLIER` - 3
 * `delay` - 0
 * `delayMultiplier` - 3
-* `deploymentTime` - 1603567488
 * `maxScheduledTransactions` - 10
 * `protestEnd` - 500
-* `protesterLifetime` - 4,7304,000 \(547.5 days\)
+* `protesterLifetime` - 15
 
 ### Coin
 
-* `version` - 2
-* `symbol` - PRAI
-* `name` - Proto Rai Reflex Index
+* `version` - 1
+* `symbol` - RAI
+* `name` - Rai Reflex Index
 * `decimals` - 18
 * `changeData` - 1
 * `chainId` - 1
-* `PERMIT_TYPEHASH` - 0xea2aa0a1be11a07ed86d755c93467f4f82362b452371d1ba94d1715123511acb
-* `DOMAIN_SEPARATOR` - 0x76072887f0adddb5efcaa9dfb2a7a04e92f0ffb0ece22dfd0d43ee1deaea1f6e
+* `PERMIT_TYPEHASH` - 
+* `DOMAIN_SEPARATOR` - 
 
 ### OracleRelayer
 
