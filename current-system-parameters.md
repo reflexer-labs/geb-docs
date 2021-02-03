@@ -63,16 +63,12 @@
 * `EXEC_TIME` - 259,200 \(3 days\)
 * `MAX_DELAY` - 2,419,200 \(28 days\)
 * `MAX_DELAY_MULTIPLIER` - 3
-* `authority` - [0x92321cf8530fe33e9b36750154922a55306d5143](https://etherscan.io/address/0x92321cf8530fe33e9b36750154922a55306d5143)
 * `delay` - 0
 * `delayMultiplier` - 3
 * `deploymentTime` - 1603567488
 * `maxScheduledTransactions` - 10
-* `owner` - [0x0000000000000000000000000000000000000000](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
 * `protestEnd` - 500
-* `protester` - [0x0000000000000000000000000000000000000000](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
 * `protesterLifetime` - 4,7304,000 \(547.5 days\)
-* `proxy` - [0xd487eab6902295b650c8940277bd07f684ce91ad](https://etherscan.io/address/0xd487eab6902295b650c8940277bd07f684ce91ad)
 
 ### Coin
 
