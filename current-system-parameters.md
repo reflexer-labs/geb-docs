@@ -83,25 +83,15 @@
 
 * `ETH-A safetyCRatio` - 145%
 * `ETH-A liquidationCRatio` - 145%
-* `redemptionRateLowerBound` - 999997417323343052486607343
-* `redemptionRateUpperBound` - 1000002110205430114080521087
+* `redemptionRateLowerBound` - 999987563275136890352859595
+* `redemptionRateUpperBound` - 1000000267417929490714933462
 
 ### GlobalSettlement
 
-* `accountingEngine` - [0x89e8bd799ab06dd7ee2be1325fafef1ab48676bc](https://etherscan.io/address/0x89e8bd799ab06dd7ee2be1325fafef1ab48676bc)
-* `coinSavingsAccount` - [0x0000000000000000000000000000000000000000](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
-* `liquidationEngine` - [0x8ea70611850d13856877d9ed8035d07e80eb0b73](https://etherscan.io/address/0x8ea70611850d13856877d9ed8035d07e80eb0b73)
-* `oracleRelayer` - [0x2b56976b6e95304f9b3d9736aaa610e963422ccd](https://etherscan.io/address/0x2b56976b6e95304f9b3d9736aaa610e963422ccd)
-* `safeEngine` - [0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c](https://etherscan.io/address/0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c)
-* `stabilityFeeTreasury` - [0xff6d7479c0882daa3212785adaf7786d1df09cb8](https://etherscan.io/address/0xff6d7479c0882daa3212785adaf7786d1df09cb8)
-* `shutdownCooldown` - 10800 \(3 hours\)
+* `shutdownCooldown` - 345,600 \(4 days\)
 
 ### StabilityFeeTreasury
 
-* `accountingEngine` - [0x89e8bd799ab06dd7ee2be1325fafef1ab48676bc](https://etherscan.io/address/0x89e8bd799ab06dd7ee2be1325fafef1ab48676bc)
-* `coinJoin` - [0x138c3d13b633b5a5cb5db5faf27429eeed78b338](https://etherscan.io/address/0x138c3d13b633b5a5cb5db5faf27429eeed78b338)
-* `safeEngine` - [0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c](https://etherscan.io/address/0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c)
-* `systemCoin` - [0x715c3830fb0c4bab9a8e31c922626e1757716f3a](https://etherscan.io/address/0x715c3830fb0c4bab9a8e31c922626e1757716f3a)
 * `expensesMultiplier` - 2
 * `minimumFundsRequired` - 50 \(RAD\)
 * `surplusTransferDelay` - 1,814,400 \(21 days\)
