@@ -75,19 +75,16 @@
 * `symbol` - RAI
 * `name` - Rai Reflex Index
 * `decimals` - 18
-* `changeData` - 1
 * `chainId` - 1
-* `PERMIT_TYPEHASH` - 
-* `DOMAIN_SEPARATOR` - 
+* `PERMIT_TYPEHASH` - 0xea2aa0a1be11a07ed86d755c93467f4f82362b452371d1ba94d1715123511acb
+* `DOMAIN_SEPARATOR` - 0x0cb557711fbe89adc93440596bbd9aa3e811730a4c4ca1a07cb5c0c50fd3eb1c
 
 ### OracleRelayer
 
-* `ETH-A orcl` - [0x5b89fF2DeCd360Aa01cbd453AA2cEd4F23b674b6](https://etherscan.io/address/0x5b89fF2DeCd360Aa01cbd453AA2cEd4F23b674b6)
-* `ETH-A safetyCRatio` - 150%
-* `ETH-A liquidationCRatio` - 150%
+* `ETH-A safetyCRatio` - 145%
+* `ETH-A liquidationCRatio` - 145%
 * `redemptionRateLowerBound` - 999997417323343052486607343
 * `redemptionRateUpperBound` - 1000002110205430114080521087
-* `safeEngine` - [0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c](https://etherscan.io/address/0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c)
 
 ### GlobalSettlement
 
@@ -123,12 +120,6 @@
 
 ### FixedDiscountCollateralAuctionHouse - ETH-A
 
-* `collateralFSM` - [0x5b89ff2decd360aa01cbd453aa2ced4f23b674b6](https://etherscan.io/address/0x5b89ff2decd360aa01cbd453aa2ced4f23b674b6)
-* `collateralMedian` - [0x9f816fce2885f4dc65a7342b57ced29655fca712](https://etherscan.io/address/0x9f816fce2885f4dc65a7342b57ced29655fca712)
-* `liquidationEngine` - [0x8ea70611850d13856877d9ed8035d07e80eb0b73](https://etherscan.io/address/0x8ea70611850d13856877d9ed8035d07e80eb0b73)
-* `oracleRelayer` - [0x2b56976b6e95304f9b3d9736aaa610e963422ccd](https://etherscan.io/address/0x2b56976b6e95304f9b3d9736aaa610e963422ccd)
-* `safeEngine` - [0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c](https://etherscan.io/address/0xf0b7808b940b78be81ad6f9e075ce8be4a837e2c)
-* `systemCoinOracle` - [0x0000000000000000000000000000000000000000](https://etherscan.io/address/0x0000000000000000000000000000000000000000)
 * `collateralType` - ETH-A
 * `discount` - 5%
 * `lowerCollateralMedianDeviation` - 15%
@@ -139,14 +130,8 @@
 * `minimumBid` - 5 \(WAD\)
 * `totalAuctionLength` - 281,474,976,710,655 \(approx 8,925,512 years\)
 
-### PRAI Medianizer
+### RAI Medianizer
 
-* `treasury` - [0xff6d7479c0882daa3212785adaf7786d1df09cb8](https://etherscan.io/address/0xff6d7479c0882daa3212785adaf7786d1df09cb8)
-* `converterFeed` - [0x9f816fce2885f4dc65a7342b57ced29655fca712](https://etherscan.io/address/0x9f816fce2885f4dc65a7342b57ced29655fca712)
-* `denominationToken` - [0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2](https://etherscan.io/address/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2)
-* `targetToken` - [0x715c3830fb0c4bab9a8e31c922626e1757716f3a](https://etherscan.io/address/0x715c3830fb0c4bab9a8e31c922626e1757716f3a)
-* `uniswapFactory` - [0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f](https://etherscan.io/address/0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f)
-* `uniswapPair` - [0xebde9f61e34b7ac5aae5a4170e964ea85988008c](https://etherscan.io/address/0xebde9f61e34b7ac5aae5a4170e964ea85988008c)
 * `baseUpdateCallerReward` - 0.5 \(WAD\)
 * `maxUpdateCallerReward` - 1 \(WAD\)
 * `converterFeedScalingFactor` - 1 \(WAD\)
@@ -159,15 +144,8 @@
 * `symbol` - PRAIUSD
 * `windowSize` - 43,200 \(12 hours\)
 
-### PRAI FSM
-
-* `priceSource` - [0xca8a1a8e6d83c2b2e933e05a5099cf814169e7d4](https://etherscan.io/address/0xca8a1a8e6d83c2b2e933e05a5099cf814169e7d4)
-* `newPriceDeviation` - 20%
-
 ### ETH Medianizer
 
-* `chainlinkAggregator` - [0x5f4ec3df9cbd43714fe2740f5e3616155c5b8419](https://etherscan.io/address/0x5f4ec3df9cbd43714fe2740f5e3616155c5b8419)
-* `treasury` - [0xff6d7479c0882daa3212785adaf7786d1df09cb8](https://etherscan.io/address/0xff6d7479c0882daa3212785adaf7786d1df09cb8)
 * `baseUpdateCallerReward` - 0.5 \(WAD\)
 * `maxUpdateCallerReward` - 1 \(WAD\)
 * `maxRewardIncreaseDelay` - 10,800 \(6 hours\)
