@@ -109,26 +109,26 @@
 
 * `collateralType` - ETH-A
 * `discount` - 6%
-* `lowerCollateralMedianDeviation` - 15%
+* `lowerCollateralMedianDeviation` - 20%
 * `lowerSystemCoinMedianDeviation` - 0%
-* `upperCollateralMedianDeviation` - 15%
+* `upperCollateralMedianDeviation` - 20%
 * `upperSystemCoinMedianDeviation` - 0%
 * `minSystemCoinMedianDeviation` - 4%
-* `minimumBid` - 5 \(WAD\)
-* `totalAuctionLength` - 
+* `minimumBid` - 25 \(WAD\)
+* `totalAuctionLength` - 281,474,976,710,655
 
 ### RAI Medianizer
 
-* `baseUpdateCallerReward` - 0.5 \(WAD\)
-* `maxUpdateCallerReward` - 1 \(WAD\)
+* `baseUpdateCallerReward` - 0 \(WAD\)
+* `maxUpdateCallerReward` - 10 \(WAD\)
 * `converterFeedScalingFactor` - 1 \(WAD\)
 * `defaultAmountIn` - 1 \(WAD\)
-* `granularity` - 12
+* `granularity` - 3
 * `maxRewardIncreaseDelay` - 10,800 \(6 hours\)
 * `maxWindowSize` - 57,600 \(16 hours\)
 * `perSecondCallerRewardIncrease` - 1000192559420674483977255848 \(100% per hour\)
-* `periodSize` - 3600
-* `symbol` - PRAIUSD
+* `periodSize` - 10,800 \(3 hours\)
+* `symbol` - RAIUSD
 * `windowSize` - 43,200 \(12 hours\)
 
 ### ETH Medianizer
