@@ -125,16 +125,16 @@
 * `defaultAmountIn` - 1 \(WAD\)
 * `granularity` - 3
 * `maxRewardIncreaseDelay` - 10,800 \(6 hours\)
-* `maxWindowSize` - 57,600 \(16 hours\)
+* `maxWindowSize` - 75,600 \(21 hours\)
 * `perSecondCallerRewardIncrease` - 1000192559420674483977255848 \(100% per hour\)
 * `periodSize` - 10,800 \(3 hours\)
 * `symbol` - RAIUSD
-* `windowSize` - 43,200 \(12 hours\)
+* `windowSize` - 54,000 \(15 hours\)
 
 ### ETH Medianizer
 
-* `baseUpdateCallerReward` - 0.5 \(WAD\)
-* `maxUpdateCallerReward` - 1 \(WAD\)
+* `baseUpdateCallerReward` - 0 \(WAD\)
+* `maxUpdateCallerReward` - 10 \(WAD\)
 * `maxRewardIncreaseDelay` - 10,800 \(6 hours\)
 * `multiplier` - 10
 * `perSecondCallerRewardIncrease` - 1000192559420674483977255848 \(100% per hour\)
