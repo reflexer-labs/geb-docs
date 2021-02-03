@@ -92,33 +92,30 @@
 
 ### StabilityFeeTreasury
 
-* `expensesMultiplier` - 2
-* `minimumFundsRequired` - 50 \(RAD\)
-* `surplusTransferDelay` - 1,814,400 \(21 days\)
-* `treasuryCapacity` - 200,000 \(RAD\)
+* `expensesMultiplier` - 3
+* `minimumFundsRequired` - 300,000 \(RAD\)
+* `pullMinFundsThreshold` - 120,000 \(RAD\)
+* `surplusTransferDelay` - 1,209,600 \(14 days\)
+* `treasuryCapacity` - 400,000 \(RAD\)
 
 ### RateSetter
 
-* `oracleRelayer` - [0x2b56976b6e95304f9b3d9736aaa610e963422ccd](https://etherscan.io/address/0x2b56976b6e95304f9b3d9736aaa610e963422ccd)
-* `orcl` - [0x206d268c0bbf3fbd8dab35ba91ca89203a3c59aa](https://etherscan.io/address/0x206d268c0bbf3fbd8dab35ba91ca89203a3c59aa)
-* `treasury` - [0xff6d7479c0882daa3212785adaf7786d1df09cb8](https://etherscan.io/address/0xff6d7479c0882daa3212785adaf7786d1df09cb8)
-* `baseUpdateCallerReward` - 0.5 \(WAD\)
-* `maxUpdateCallerReward` - 1 \(WAD\)
+* `baseUpdateCallerReward` - 0 \(WAD\)
+* `maxUpdateCallerReward` - 10 \(WAD\)
 * `perSecondCallerRewardIncrease` - 1000192559420674483977255848 \(100% per hour\)
-* `pidValidator` - [0x64ad684378770fe3ee4b437737edf379f12a902a](https://etherscan.io/address/0x64ad684378770fe3ee4b437737edf379f12a902a)
-* `updateRateDelay` - 3600
+* `updateRateDelay` - 10,800 \(3 hours\)
 
 ### FixedDiscountCollateralAuctionHouse - ETH-A
 
 * `collateralType` - ETH-A
-* `discount` - 5%
+* `discount` - 6%
 * `lowerCollateralMedianDeviation` - 15%
 * `lowerSystemCoinMedianDeviation` - 0%
 * `upperCollateralMedianDeviation` - 15%
 * `upperSystemCoinMedianDeviation` - 0%
-* `minSystemCoinMedianDeviation` - 0.1%
+* `minSystemCoinMedianDeviation` - 4%
 * `minimumBid` - 5 \(WAD\)
-* `totalAuctionLength` - 281,474,976,710,655 \(approx 8,925,512 years\)
+* `totalAuctionLength` - 
 
 ### RAI Medianizer
 
