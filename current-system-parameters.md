@@ -39,7 +39,7 @@
 
 * `ETH-A liquidationPenalty` - 12%
 * `ETH-A liquidationQuantity` - 80,000 \(RAD\)
-* `onAuctionSystemCoinLimit` - 850
+* `onAuctionSystemCoinLimit` - 10,000,000,000,000 \(10T\)
 
 ### CoinJoin
 
