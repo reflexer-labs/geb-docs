@@ -82,7 +82,7 @@ We believe that growing alongside other projects and helping builders leverage R
 
 1. When RAI's market price &gt; redemption price for a sustained period of time, the redemption rate will become negative
 2. When RAI's market price &lt; redemption price for a sustained period of time, the redemption rate will become positive
-3. When RAI's market price = redemption price for a sustained period of time, the redemption rate will become zero
+3. When RAI's market price = redemption price for a sustained period of time, the redemption rate will settle at a steady state \(that may be non zero\)
 
 ### What happens if the redemption rate is positive and I just add more collateral in my SAFE instead of repaying my debt?
 
