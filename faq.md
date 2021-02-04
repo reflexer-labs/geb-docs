@@ -61,7 +61,7 @@ This is exactly what the system wants you to ask yourself when it charges a nega
 
 Short answer: yes. Nevertheless, we decided to build a pure ETH system for several reasons:
 
-* Social scalability: we believe the most successful DeFi protocols will be the ones that act as a trust minimized operating system. You can build on top of them without the fear that the rules will drastically change and break your application. For this reason we want to progressively remove control over RAI.
+* Social scalability: we believe the most successful DeFi protocols will be the ones that act as a trust minimized operating system. You can build on top of them without the fear that the rules will drastically change and break your application. For this reason we also want to progressively remove control over RAI.
 * Simplicity: it is easier to explain RAI's behaviour in contrast to ETH as opposed to a basket of assets.
 * Proof of concept: a system backed by a single collateral type is easier to manage than a multi-collateral one. It allows us to test our hypotheses without layering extra risk and overhead
 
