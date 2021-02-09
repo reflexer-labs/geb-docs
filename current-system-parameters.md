@@ -4,7 +4,7 @@
 
 ### Quick Glance
 
-* Minimum amount of debt per Safe: 500
+* Minimum amount of debt per Safe: 800
 * Maximum amount of debt per Safe: 10B
 * ETH-A annual borrow rate/stability fee: 2%
 * Global debt ceiling: MAX\_UINT
