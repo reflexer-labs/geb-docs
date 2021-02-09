@@ -24,10 +24,10 @@
 
 ### SafeEngine
 
-* `globalDebtCeiling` - 10,200 \(RAD\)
-* `safeDebtCeiling` - 765 \(WAD\)
-* `ETH-A debtCeiling` - 10,200 \(RAD\)
-* `ETH-A debtFloor` - 85 \(RAD\)
+* `globalDebtCeiling` - MAX\_UINT
+* `safeDebtCeiling` - 10B \(WAD\)
+* `ETH-A debtCeiling` - 20,000,000 \(RAD\)
+* `ETH-A debtFloor` - 800 \(RAD\)
 
 ### TaxCollector
 
