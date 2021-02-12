@@ -23,7 +23,7 @@ In case the index liquidity drops below any of the two limits specied above, gov
 
 ### Skewed Incentives
 
-In case governance sets up a system to incentivize the growth of a reflex index, these incentives may interfere with the PID's and cause the system to become unstable. In this scenario governance should look at the following solutions:
+In case governance sets up a system to incentivize the growth of a reflex index, these incentives may interfere with the PID's and cause the system to become unstable. In this scenario, governance should look at the following solutions:
 
 1. Offer less growth incentives over a longer period of time
 2. Pause the controller until the growth campaign/s end
