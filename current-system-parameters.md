@@ -103,7 +103,7 @@
 * `baseUpdateCallerReward` - 0 \(WAD\)
 * `maxUpdateCallerReward` - 10 \(WAD\)
 * `perSecondCallerRewardIncrease` - 1000192559420674483977255848 \(100% per hour\)
-* `updateRateDelay` - 10,800 \(3 hours\)
+* `updateRateDelay` - 14,400 \(4 hours\)
 
 ### FixedDiscountCollateralAuctionHouse - ETH-A
 
@@ -123,13 +123,13 @@
 * `maxUpdateCallerReward` - 10 \(WAD\)
 * `converterFeedScalingFactor` - 1 \(WAD\)
 * `defaultAmountIn` - 1 \(WAD\)
-* `granularity` - 3
+* `granularity` - 4
 * `maxRewardIncreaseDelay` - 10,800 \(6 hours\)
-* `maxWindowSize` - 75,600 \(21 hours\)
+* `maxWindowSize` - 86,400 \(24 hours\)
 * `perSecondCallerRewardIncrease` - 1000192559420674483977255848 \(100% per hour\)
 * `periodSize` - 10,800 \(3 hours\)
 * `symbol` - RAIUSD
-* `windowSize` - 54,000 \(15 hours\)
+* `windowSize` - 57,600 \(16 hours\)
 
 ### ETH Medianizer
 
