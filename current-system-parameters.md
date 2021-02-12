@@ -124,10 +124,10 @@
 * `converterFeedScalingFactor` - 1 \(WAD\)
 * `defaultAmountIn` - 1 \(WAD\)
 * `granularity` - 4
-* `maxRewardIncreaseDelay` - 10,800 \(6 hours\)
+* `maxRewardIncreaseDelay` - 10,800 \(3 hours\)
 * `maxWindowSize` - 86,400 \(24 hours\)
 * `perSecondCallerRewardIncrease` - 1000192559420674483977255848 \(100% per hour\)
-* `periodSize` - 10,800 \(3 hours\)
+* `periodSize` - 14,400 \(4 hours\)
 * `symbol` - RAIUSD
 * `windowSize` - 57,600 \(16 hours\)
 
@@ -135,7 +135,7 @@
 
 * `baseUpdateCallerReward` - 0 \(WAD\)
 * `maxUpdateCallerReward` - 10 \(WAD\)
-* `maxRewardIncreaseDelay` - 10,800 \(6 hours\)
+* `maxRewardIncreaseDelay` - 10,800 \(3 hours\)
 * `multiplier` - 10
 * `perSecondCallerRewardIncrease` - 1000192559420674483977255848 \(100% per hour\)
 * `periodSize` - 3600
