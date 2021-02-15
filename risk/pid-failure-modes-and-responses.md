@@ -4,6 +4,8 @@ description: How to react in different scenarios where the redemption rate is in
 
 # PID Failure Modes & Responses
 
+## Failure Scenarios
+
 The following is a list of known PID failure modes and possible responses or fixes for each one of them. Note that in order to minimize the risk of the PID failing, governance should activate it only after the reflex index has a minimum, mandatory liquidity level on exchanges as well as plenty of users interacting with the system. 
 
 ### Market Manipulation
@@ -40,4 +42,11 @@ In this scenario there are three possible solutions:
 1. Temporarily pause the PID and wait for the market to come closer toward redemption
 2. Temporarily pause the PID and build a second controller that modifies the stability fee. In this scenario the redemption rate controller would only be used when the market price is consistently above redemption and the stability fee controller would be used when the market price is below redemption. Choosing this option means that governance may need to have long term control over the [TaxCollector](https://docs.reflexer.finance/system-contracts/money-market-module/tax-collector) and there will need to be more governance over rate setting in general.
 3. Trigger global settlement and allow the system to shut down using the redemption price.
+
+## Prevention
+
+In order to make market manipulation as expensive as possible, we propose the following liquidity threshold for the RAI reflex index:
+
+* There must be at least $1M worth of liquidity on the exchange that the RAI oracle is pulling a price feed from
+* At least 3% of the RAI supply must be on the exchange from which the system is pulling a price feed from
 
