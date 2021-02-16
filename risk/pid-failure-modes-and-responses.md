@@ -50,5 +50,5 @@ In order to make market manipulation as expensive as possible, we propose the fo
 * There must be at least $1M worth of liquidity on the exchange/s that the RAI oracle is pulling a price feed from
 * At least 3% of the RAI supply must be on the exchange/s from which the system is pulling a price feed from
 
-In addition to this, the PID controller should not be set to its full force right when RAI is launched as it may destabilize the system before it even reaches stability.
+In addition to this, the PID controller should not be set to its full force right when RAI is launched as it may destabilize the system.
 
