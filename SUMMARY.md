@@ -94,7 +94,7 @@
 
 ## Keepers
 
-* [Overview](keepers/overview.md)
+* [Keeper Overview](keepers/overview.md)
 * [Collateral Auction Keeper](keepers/collateral-auction-keeper/README.md)
   * [Running in Docker](keepers/collateral-auction-keeper/running-in-docker.md)
   * [Running on a Host](keepers/collateral-auction-keeper/running-on-a-host.md)
