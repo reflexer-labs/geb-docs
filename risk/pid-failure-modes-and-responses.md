@@ -45,7 +45,7 @@ In this scenario there are three possible solutions:
 
 ## Failure Prevention
 
-In order to make market manipulation as expensive as possible, we propose the following liquidity threshold for the RAI reflex index:
+In order to make market manipulation as expensive as possible, we propose the following liquidity thresholds for the RAI reflex index:
 
 * There must be at least $2M worth of liquidity on the exchange/s that the RAI oracle is pulling a price feed from
 * At least 3% of the RAI supply must be on the exchange/s from which the system is pulling a price feed from
