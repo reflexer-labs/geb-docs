@@ -26,7 +26,6 @@
 
 * `globalDebtCeiling` - MAX\_UINT
 * `safeDebtCeiling` - 10B \(WAD\)
-* `ETH-A debtCeiling` - 20,000,000 \(RAD\)
 * `ETH-A debtFloor` - 800 \(RAD\)
 
 ### TaxCollector
