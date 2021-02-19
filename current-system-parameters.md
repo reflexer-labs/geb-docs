@@ -36,8 +36,8 @@
 
 ### LiquidationEngine
 
-* `ETH-A liquidationPenalty` - 12%
-* `ETH-A liquidationQuantity` - 80,000 \(RAD\)
+* `ETH-A liquidationPenalty` - 16%
+* `ETH-A liquidationQuantity` - 90,000 \(RAD\)
 * `onAuctionSystemCoinLimit` - 10,000,000,000,000 \(10T\)
 
 ### CoinJoin
@@ -107,11 +107,11 @@
 ### FixedDiscountCollateralAuctionHouse - ETH-A
 
 * `collateralType` - ETH-A
-* `discount` - 6%
+* `discount` - 7%
 * `lowerCollateralMedianDeviation` - 20%
-* `lowerSystemCoinMedianDeviation` - 0%
+* `lowerSystemCoinMedianDeviation` - 1.5%
 * `upperCollateralMedianDeviation` - 20%
-* `upperSystemCoinMedianDeviation` - 0%
+* `upperSystemCoinMedianDeviation` - 1.5%
 * `minSystemCoinMedianDeviation` - 4%
 * `minimumBid` - 25 \(WAD\)
 * `totalAuctionLength` - 281,474,976,710,655
