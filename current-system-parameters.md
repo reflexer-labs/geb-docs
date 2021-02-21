@@ -8,7 +8,7 @@
 * Maximum amount of debt per Safe: 10B
 * ETH-A annual borrow rate/stability fee: 2%
 * Global debt ceiling: MAX\_UINT
-* Liquidation penalty: 12%
+* Liquidation penalty: 14%
 * ETH-A auction fixed discount: 13% 
 * ETH-A fixed discount auction minimum bid: 25 \(WAD\)
 
@@ -36,7 +36,7 @@
 
 ### LiquidationEngine
 
-* `ETH-A liquidationPenalty` - 16%
+* `ETH-A liquidationPenalty` - 14%
 * `ETH-A liquidationQuantity` - 90,000 \(RAD\)
 * `onAuctionSystemCoinLimit` - 10,000,000,000,000 \(10T\)
 
@@ -107,7 +107,7 @@
 ### FixedDiscountCollateralAuctionHouse - ETH-A
 
 * `collateralType` - ETH-A
-* `discount` - 7%
+* `discount` - 13%
 * `lowerCollateralMedianDeviation` - 20%
 * `lowerSystemCoinMedianDeviation` - 1.5%
 * `upperCollateralMedianDeviation` - 20%
