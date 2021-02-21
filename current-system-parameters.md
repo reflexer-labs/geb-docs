@@ -9,7 +9,7 @@
 * ETH-A annual borrow rate/stability fee: 2%
 * Global debt ceiling: MAX\_UINT
 * Liquidation penalty: 12%
-* ETH-A auction fixed discount: 6% 
+* ETH-A auction fixed discount: 13% 
 * ETH-A fixed discount auction minimum bid: 25 \(WAD\)
 
 ### AccountingEngine
