@@ -17,7 +17,7 @@ Create a file called `run_auction_keeper.sh` and paste the following code in it:
 
 docker run -it \
     -v <KEYSTORE DIR>:/keystore \
-    reflexer/auction-keeper:prai-demo \
+    reflexer/auction-keeper:latest \
         --rpc-uri <ETH_RPC_URL> \
         --eth-from <KEEPER ADDRESS> \
         --eth-key key_file=/keystore/<KEYSTORE FILE>
@@ -48,10 +48,10 @@ For more information about this keystore format and how to generate them:
 
 ```text
 $ ./run_auction_keeper.sh
-prai-demo: Pulling from reflexer/auction-keeper
+latest: Pulling from reflexer/auction-keeper
 Digest: sha256:7e55ec9b0a136fc903d9f7f2690538bcbde9029d957e0e6f84d0282790f9666a
-Status: Downloaded newer image for reflexer/auction-keeper:prai-demo
-docker.io/reflexer/auction-keeper:prai-demo
+Status: Downloaded newer image for reflexer/auction-keeper:latest
+docker.io/reflexer/auction-keeper:latest
 Password for /keystore/key.json:
 ```
 
