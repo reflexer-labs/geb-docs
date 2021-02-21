@@ -42,7 +42,6 @@ Install `auction-keeper` dependencies with:
 ```text
 git clone https://github.com/reflexer-finance/auction-keeper.git
 cd auction-keeper
-git checkout tags/prai-demo
 git submodule update --init --recursive
 pip3 install -r requirements.txt
 ```
@@ -137,7 +136,7 @@ To start collateral auctions, the keeper needs a list of SAFEs and the collatera
 
 `--graph-block-threshold NUMBER_OF_BLOCKS` When the keeper fetches SAFE data to find critical safes, use the `--graph-endpoints` when the keeper's last processed block is older than `NUMBER_OF_BLOCKS`. The graph will be faster than a node when fetching historical data, but recent graph blocks might be slightly delayed compared to an ethereum node. This allows the keeper to to fetch historical data from the graph, but use the node for all newer blocks. Defaults to `20`
 
-The following are the most recent Graph node endpoints for RAI:`--graph-endpoints https://subgraph.reflexer.finance/subgraphs/name/reflexer-labs/prai,https://api.thegraph.com/subgraphs/name/reflexer-labs/prai-mainnet`
+The following are the most recent Graph node endpoints for RAI:`--graph-endpoints https://subgraph.reflexer.finance/subgraphs/name/reflexer-labs/rai,https://api.thegraph.com/subgraphs/name/reflexer-labs/rai-mainnet`
 
 #### Auctions
 
@@ -209,7 +208,6 @@ In order to be able to run tests you should execute:
 ```text
 git clone https://github.com/reflexer-labs/auction-keeper.git
 cd auction-keeper
-git checkout tags/prai-demo
 git submodule update --init --recursive
 ./install.sh
 source _virtualenv/bin/activate

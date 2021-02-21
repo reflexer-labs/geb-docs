@@ -4,7 +4,6 @@ description: Running a debt auction keeper directly on a host
 
 # Running on a Host
 
-_**Not available on PRAI**_
 
 ## Prerequisties
 
@@ -19,7 +18,6 @@ Buy RAI from Uniswap v2 or [open a SAFE](https://app.gitbook.com/@reflexer-labs/
 ```text
 git clone https://github.com/reflexer-labs/auction-keeper.git
 cd auction-keeper
-git checkout tags/prai-demo
 git submodule update --init --recursive
 ```
 

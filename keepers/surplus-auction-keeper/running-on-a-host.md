@@ -4,7 +4,6 @@ description: Running a surplus auction-keeper on a host
 
 # Running on a Host
 
-_**Not currently available on PRAI Demo**_
 
 {% hint style="info" %}
 In order to participate in surplus auctions you need to bid with protocol tokens
@@ -19,7 +18,6 @@ Python 3.6+
 ```text
 git clone https://github.com/reflexer-labs/auction-keeper.git
 cd auction-keeper
-git checkout tags/prai-demo
 git submodule update --init --recursive
 ```
 
