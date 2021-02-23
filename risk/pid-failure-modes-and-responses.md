@@ -29,9 +29,8 @@ In case governance sets up a system to incentivize the growth of a reflex index,
 
 1. Offer less growth incentives over a longer period of time
 2. Pause the controller until the growth campaign/s end
-3. Make the PID weaker so it still affects the system but gives participants more time to react
-4. Completely stop growth campaigns
-5. Find a way to incentivize market making alongside growth
+3. Completely stop growth campaigns
+4. Find a way to incentivize market making alongside growth
 
 ### Negative Feedback Turning Positive
 
