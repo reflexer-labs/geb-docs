@@ -4,7 +4,6 @@ description: Running a surplus auction-keeper on a host
 
 # Running on a Host
 
-
 {% hint style="info" %}
 In order to participate in surplus auctions you need to bid with protocol tokens
 {% endhint %}

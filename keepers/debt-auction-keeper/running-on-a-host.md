@@ -4,7 +4,6 @@ description: Running a debt auction keeper directly on a host
 
 # Running on a Host
 
-
 ## Prerequisties
 
 Python 3.6+

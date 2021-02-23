@@ -4,7 +4,6 @@ description: Running a surplus auction keeper in a Docker container
 
 # Running in Docker
 
-
 {% hint style="info" %}
 In order to participate in surplus auctions you need to bid with protocol tokens
 {% endhint %}

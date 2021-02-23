@@ -4,7 +4,6 @@ description: Running a debt auction keeper in a Docker container
 
 # Running in Docker
 
-
 ## 1\) Get RAI
 
 Buy RAI from Uniswap v2 or [open a SAFE](https://app.gitbook.com/@reflexer-labs/s/geb/pyflex/safe-management/opening-a-safe) and generate it.
