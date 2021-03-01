@@ -23,7 +23,7 @@ The following tables show the before and after variable names from all core MCD 
 | wish | canModifySAFE |
 | Ilk | CollateralType |
 | Ilk.Art | CollateralType.debtAmount |
-| Ilk.rate | CollateralType.accumulatedRates |
+| Ilk.rate | CollateralType.accumulatedRate |
 | Ilk.spot | CollateralType.safetyPrice |
 | Ilk.line | CollateralType.debtCeiling |
 | Ilk.dust | CollateralType.debtFloor |
