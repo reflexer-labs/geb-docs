@@ -15,6 +15,10 @@
 * [GEB Risks](risk/geb-risks.md)
 * [PID Failure Modes & Responses](risk/pid-failure-modes-and-responses.md)
 
+## Incentives
+
+* [RAI Mint + LP Incentives Program](incentives/rai-mint-+-lp-incentives-program.md)
+
 ## Contract Variables Translation <a id="contract-translation"></a>
 
 * [Core Contracts Naming Transition](contract-translation/naming-transition.md)
