@@ -2,7 +2,7 @@
 
 ## Overview
 
-The RAI Mint + LP strategy requires that people both mint RAI **and** provide RAI/ETH liquidity on Uniswap v2 in order to accrue retroactive rewards.
+The RAI Mint + LP strategy requires that participants both mint RAI **and** provide RAI/ETH liquidity on Uniswap v2 in order to accrue retroactive rewards.
 
 ## How It Works
 
@@ -27,11 +27,11 @@ If you mint more RAI than the amount of RAI you provide as liquidity, you only a
 
 ## Scenarios
 
-#### I already minted RAI but did not provide any liquidity
+#### 1. I already minted RAI but did not provide any liquidity
 
 Go to the [Uniswap v2 RAI/ETH pool](https://app.uniswap.org/#/add/ETH/0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919) in order to provide liquidity. You should add less or the same amount of RAI you previously minted in the pool. If you provide more RAI as liquidity than the amount of RAI you minted, you only accrue rewards on the amount you both minted and LPed.
 
-#### I already added RAI/ETH liquidity but did not mint any RAI
+#### 2. I already added RAI/ETH liquidity but did not mint any RAI
 
 You need to mint RAI in order to accrue rewards. To determine the maximum amount of RAI that you should mint, do the following:
 
@@ -42,9 +42,13 @@ You need to mint RAI in order to accrue rewards. To determine the maximum amount
 * Go to [app.reflexer.finance](https://app.reflexer.finance/) and mint RAI up to the amount that you already provided in the pool.
 * You’re now accruing rewards on the amount of RAI that you both minted and LPed.
 
-#### I minted more RAI than the amount of RAI I added as liquidity
+#### 3. I minted more RAI than the amount of RAI I added as liquidity
 
 Currently you’re only accruing rewards for the amount you both minted and LPed. If you would like to accrue more rewards, you need to add more RAI as liquidity in the [Uniswap pool](https://app.uniswap.org/#/add/ETH/0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919).
+
+**4. I minted less RAI than I can currently claim from the Uniswap v2 pool**
+
+Similar to the second scenario, if you would like to be eligible for more rewards, you need to check the amount of RAI that you can currently withdraw from the RAI/ETH pool and determine how much more RAI you need to mint.
 
 ## Questions
 
