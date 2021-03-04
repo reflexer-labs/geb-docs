@@ -6,7 +6,7 @@ The RAI Mint + LP strategy requires that participants both mint RAI **and** prov
 
 ## How It Works
 
-1. Go to [app.reflexer.finance](https://app.reflexer.finance/) and mint some RAI.
+1. Go to [app.reflexer.finance](https://app.reflexer.finance/) or [DeFi Saver](https://app.defisaver.com/reflexer/manage) and mint some RAI.
 2. Go to the [RAI/ETH Uniswap v2 pool](https://app.uniswap.org/#/add/ETH/0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919) and add the RAI you minted as liquidity
 
 You do **not** accrue rewards if:
@@ -39,7 +39,7 @@ You need to mint RAI in order to accrue rewards. To determine the maximum amount
 
 ![](https://paper-attachments.dropbox.com/s_455C6A45FAD71140E69AD556259E4AB19F4AD67D4AD9BF3033E63616B43822CF_1614862725311_amount.png)
 
-* Go to [app.reflexer.finance](https://app.reflexer.finance/) and mint RAI up to the amount that you already provided in the pool.
+* Go to [app.reflexer.finance](https://app.reflexer.finance/) or [DeFi Saver](https://app.defisaver.com/reflexer/manage) and mint RAI up to the amount that you already provided in the pool.
 * You’re now accruing rewards on the amount of RAI that you both minted and LPed.
 
 #### 3. I minted more RAI than the amount of RAI I added as liquidity
