@@ -24,7 +24,7 @@ If you mint more RAI than the amount of RAI you provide as liquidity, you only a
 * The Uniswap v2 RAI/ETH LP tokens **must** stay on the same address that you used to mint RAI and provide liquidity
 * If you open multiple Safes with the same address, your total RAI debt will be the sum of all RAI minted by each of your Safes
 * If your Safe gets liquidated, the amount of minted RAI you have decreases by the amount of RAI that got confiscated
-* If you would like to use a [Gnosis Safe](https://gnosis-safe.io/) to manage your RAI positions and provide liquidity on Uniswap, we advise you to connect to the Safe using WalletConnect and then use [app.reflexer.finance](https://app.reflexer.finance/)
+* If you would like to use a [Gnosis Safe](https://gnosis-safe.io/) to manage your RAI positions and provide liquidity on Uniswap, you can connect to the Safe using WalletConnect and then use [app.reflexer.finance](https://app.reflexer.finance/)
 
 ## Scenarios
 
