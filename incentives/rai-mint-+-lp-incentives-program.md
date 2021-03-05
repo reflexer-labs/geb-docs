@@ -16,7 +16,7 @@ You do **not** accrue rewards if:
 
 If you mint more RAI than the amount of RAI you provide as liquidity, you only accrue rewards on the amount you minted & LPed. Likewise, if you add more RAI as liquidity than you mint, you accrue rewards only on the RAI amount that you both minted and LPed.  
   
-**In short**: to maximize rewards, you need to mint and LP the same amount of RAI.
+In short, you can think of mint + LP as a formula: `RAI Eligible for Rewards = min(RAI from LP token balance of an address`, `Total RAI debt from Safes owned by the address)`.
 
 ## Important Notes
 
