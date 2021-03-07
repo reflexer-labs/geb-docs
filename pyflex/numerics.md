@@ -14,7 +14,7 @@ You can import them from pyflex:
 >>> from pyflex.numeric import Wad, Ray, Rad
 ```
 
-Converting `Wad`, `Ray`, `Rad` to a `str` shows the number in friendly format:
+Converting `Wad`, `Ray`, `Rad` to a `str` shows the numbers in a friendly format:
 
 ```python
 >>> Wad.from_number(1.2)
@@ -24,7 +24,7 @@ Wad(1200000000000000000)
 ```
 
 {% hint style="warning" %}
-Using the constructors directly will use the units of the number's precision.  eg. `Wad(1)` is not equal to `1`
+Constructors will add a specific precision to a number  eg. `Wad(1)` is not equal to `1` but to 10^18.
 {% endhint %}
 
 ```python
@@ -68,9 +68,9 @@ The result is the type of the first number:
 <class 'pyflex.numeric.Rad'>
 ```
 
-### Converting
+### Conversion
 
-`Wad`, `Ray`, and `Rad` all accept `Wad`, `Ray`, and `Rad` in the constructors. This is the canonical way to convert between the numbers.
+`Wad`, `Ray`, and `Rad` all accept `Wad`, `Ray`, and `Rad` in the constructors. This is the canonical way to convert  numbers:
 
 ```python
 >>> Rad(Wad(10))
@@ -78,7 +78,7 @@ Rad(10000000000000000000000000000)
 ```
 
 {% hint style="warning" %}
-When converting to a number of lower precision \(`Rad` to `Ray`/`Wad` or `Ray` to `Wad`\) loss of precision will occur!
+During conversion \(`Rad` to `Ray`/`Wad` or `Ray` to `Wad`\) you may lose precision!
 {% endhint %}
 
 ```python
