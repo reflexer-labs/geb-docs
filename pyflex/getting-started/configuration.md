@@ -17,7 +17,7 @@ And then connect to an Ethereum node:
 Finally, configure a `geb` object. This object allows you to access most contracts in the `GEB` system:
 
 ```python
->>> geb = GfDeployment.from_node(web3)
+>>> geb = GfDeployment.from_node(web3, 'rai')
 ```
 
 
