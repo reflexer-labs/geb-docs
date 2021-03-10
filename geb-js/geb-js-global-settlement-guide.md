@@ -107,7 +107,7 @@ const tx = geb.contracts.globalSettlement.calculateCashPrice(utils.ETH_A)
 await wallet.sendTransaction(tx)
 ```
 
-### Redeem Collateral against System Coins
+### Redeem Collateral Against System Coins
 
 At this stage, any system coin holder can exchange their coins against a fixed basket of collateral. This is a 2 step process that consists in locking and preparing system coins and then claiming a share of a specific collateral type.
 
