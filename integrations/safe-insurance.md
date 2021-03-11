@@ -15,7 +15,7 @@ Anyone can build and propose new insurance contracts, assuming that the contract
 
 The sections below only cover saviours that add collateral in a SAFE and don't pay back a SAFE's debt. 
 
-Saviours may pay back debt instead of adding collateral and we will write more about this scenario in the near future.
+It's worth noting that saviours may pay back debt instead of adding collateral.
 {% endhint %}
 
 ## 2. Contract Interface
