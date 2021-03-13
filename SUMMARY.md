@@ -8,6 +8,7 @@
 
 ## Ungovernance
 
+* [Ungovernance Process](ungovernance/ungovernance-process.md)
 * [Governance Minimization Guide](ungovernance/governance-minimization-guide.md)
 
 ## Risk
