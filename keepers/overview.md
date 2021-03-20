@@ -1,6 +1,6 @@
 # Keeper Overview
 
-Keepers are meant participate in collateral, surplus and debt auctions by directly interacting with GEB auction contracts deployed to the Ethereum blockchain.
+Keepers are meant participate in collateral, surplus and debt auctions by directly interacting with GEB auction contracts deployed on a blockchain.
 
 ### Keeper Responsibilities
 
@@ -15,7 +15,7 @@ The keepers are responsible with:
 
 ### Architecture
 
-`auction-keeper` can read an auction's status directly from the Ethereum blockchain or from a [Graph](https://thegraph.com/) node. Its unique feature is the ability to plug in external _bidding models_ which tell the keeper when and how much to bid. Bid prices are received from separate _bidding models_.
+`auction-keeper` can read an auction's status directly from the blockchain or from a [Graph](https://thegraph.com/) node. Its unique feature is the ability to plug in external _bidding models_ which tell the keeper when and how much to bid. Bid prices are received from separate _bidding models_.
 
 _Bidding models_ are simple processes that can be implemented in any programming language. They only need to pass JSON objects to and from `auction-keeper`. The simplest example of a bidding model is a shell script which echoes a fixed price.
 
@@ -70,9 +70,9 @@ Run `bin/auction-keeper -h` to see an up-to-date list of arguments and usage inf
 
 `--rpc-timeout SECS` Defaults to `10`
 
-The keeper connects to the Ethereum network using [Web3.py](https://github.com/ethereum/web3.py) and interacts with GEB using [pyflex](https://github.com/reflexer-labs/pyflex). A connection to an Ethereum node \(`--rpc-host`\) is required. [Parity](https://www.parity.io/ethereum/) and [Geth](https://geth.ethereum.org/) nodes are supported over HTTP. Websocket endpoints are not supported in `pyflex`. A _full_ or _archive_ node is required; _light_ nodes are **not** supported.
+The keeper connects to the blockchain network using [Web3.py](https://github.com/ethereum/web3.py) and interacts with GEB using [pyflex](https://github.com/reflexer-labs/pyflex). A connection to an Ethereum node \(`--rpc-host`\) is required. [Parity](https://www.parity.io/ethereum/) and [Geth](https://geth.ethereum.org/) nodes are supported over HTTP. Websocket endpoints are not supported in `pyflex`. A _full_ or _archive_ node is required; _light_ nodes are **not** supported.
 
-If you don't want to run your own Ethereum node, third-party providers are available. This software has been tested with [Infura](https://infura.io), [ChainSafe](https://chainsafe.io/) and [QuikNode](https://v2.quiknode.io/).
+If you don't want to run your own node, third-party providers are available. This software has been tested with [Infura](https://infura.io), [ChainSafe](https://chainsafe.io/) and [QuikNode](https://v2.quiknode.io/).
 
 ### Gas price strategies
 
