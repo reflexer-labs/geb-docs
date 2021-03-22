@@ -265,7 +265,7 @@ In order to launch and integrate a new saviour in a GEB, it must first pass seve
    * You should have a draft implementation of your saviour with estimated gas amounts for calling each function
    * You should give an initial estimate of the `keeperPayout`, `minKeeperPayoutValue`, `payoutToSAFESize` and `defaultDesiredCollateralizationRatio` values you plan to set
    * You must specify if you plan to monetize the saviour service you're building and how you plan to do it
-2. Once you receive feedback \(and assuming it's positive\), you can start to fully implement the saviour
+2. Once you receive feedback \(and assuming it's positive\), you can start to fully implement the saviour. Keep in mind that, aside from the saviour, you will need to create a proxy actions contract \(like [this one](https://github.com/reflexer-labs/geb-proxy-actions/blob/f7b4cdb0cde25683dc7bb04cf96f25ebe25a1853/src/GebProxyActions.sol#L746)\) that will be used by others to connect your saviour to Safes and also add cover.
 3. Before you submit your full implementation and update the GIP, you must make sure that you have 100% test coverage for your code and also do several integration tests between the `LiquidationEngine`, `SAFESaviourRegistry` and the saviour code. In order to submit your implementation, update your GIP with a link to your code and a new summary of the gas amounts required to call each function, as well as updated values for `keeperPayout`, `minKeeperPayoutValue`, `payoutToSAFESize` and `defaultDesiredCollateralizationRatio`
 
    . After you update the GIP, ping the community on Discord.
