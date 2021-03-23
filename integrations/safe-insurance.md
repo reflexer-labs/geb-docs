@@ -257,7 +257,7 @@ If you would like to submit a proposal for implementing a monetized saviour, you
 
 ## 5. Launching on Mainnet
 
-In order to launch and integrate a new saviour in a GEB, it must first pass several checks:
+In order to launch and integrate a saviour with a mainnet deployed GEB, the saviour must first pass several checks:
 
 1. You must first create a new [GEB Improvement Proposal](https://github.com/reflexer-labs/GIPs). Once you create the GIP you must ask for feedback on [Reflexer's Discord server](https://discord.gg/kB4vcYs) \(in the development channel\). To maximize your chances of having your idea accepted:
    * Your saviour must only do one thing. For example, you should only handle aTokens or cTokens, not both
