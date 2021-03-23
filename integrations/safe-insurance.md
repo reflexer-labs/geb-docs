@@ -109,7 +109,7 @@ In order to get an idea of how a saviour contract should be implemented and what
   * `defaultDesiredCollateralizationRatio` - the default CRatio that a `SAFE` will have after it's saved; this CRatio must be greater than the liquidation ratio stored in the [OracleRelayer](https://github.com/reflexer-labs/geb/blob/a49e4486682b787571475821ec66bfa025e5183f/src/OracleRelayer.sol#L60) and that is associated with `collateralToken`
 * `defaultDesiredCollateralizationRatio` must be greater than zero and smaller or equal to `MAX_CRATIO`. `MAX_CRATIO` is a constant that will be smaller than `2000` \(depending on the interface and implementation\)
 * When comparing a `liquidationCRatio` from the `OracleRelayer` with a desired collateralization ratio, you must first divide `liquidationCRatio` by `CRATIO_SCALE_DOWN` so you have the same scale for both numbers
-* You must integrate your saviour with [GebSafeManager](https://github.com/reflexer-labs/geb-safe-manager/blob/master/src/GebSafeManager.sol) in order to take advantage of its modularity and friendlier interface compared to the core contracts \(such as `SAFEEngine`\)
+* You must integrate your saviour with [GebSafeManager](https://github.com/reflexer-labs/geb-safe-manager/blob/master/src/GebSafeManager.sol) in order to take advantage of its modularity and friendlier interface compared to core contracts \(such as `SAFEEngine`\)
 * You must check that the `collateralJoin` contract is still enabled and that it handles a token with the expected amount of decimals you want
 * All variables shown in the example below must be set only once in the constructor and then they must remain immutable. If governance wants to change a parameter, they must deploy a new contract and whitelist it inside `LiquidationEngine` and `SAFESaviourRegistry`
 
@@ -162,7 +162,7 @@ constructor(
 
 ### Covering & Uncovering SAFEs:
 
-There is no specific way in which users should cover a `SAFE`. They can store collateral in the saviour, they can also store [aTokens](https://docs.aave.com/developers/the-core-protocol/atokens) or [cTokens](https://compound.finance/docs/ctokens) that are then used to redeem the underlying and add it in the SAFE or they can use a protocol similar to [Nexus Mutual](https://nexusmutual.gitbook.io/docs/users/docs) which automatically fulfills claims and saves positions. There are, though, certain things that a saviour developer must take into account:
+There is no specific way in which users should cover a `SAFE`. They can store collateral in the saviour, they can also store [aTokens](https://docs.aave.com/developers/the-core-protocol/atokens) or [cTokens](https://compound.finance/docs/ctokens) that are then used to redeem the underlying assets and add them in the SAFE or they can use a protocol similar to [Nexus Mutual](https://nexusmutual.gitbook.io/docs/users/docs) which automatically fulfils claims and saves positions. There are, though, certain things that a saviour developer must take into account:
 
 * The function used to add more cover for a `SAFE` \(like [deposit](https://github.com/reflexer-labs/geb-safe-saviours/blob/6b8a89e1f6e7c7d210cb68f684ac1c6a5fb6e0c5/src/saviours/GeneralTokenReserveSafeSaviour.sol#L85)\) must revert if the saviour contract is not whitelisted inside the [LiquidationEngine](https://github.com/reflexer-labs/geb/blob/a49e4486682b787571475821ec66bfa025e5183f/src/LiquidationEngine.sol#L83)
 * Users can only add cover if their SAFEs [have generated debt](https://github.com/reflexer-labs/geb-safe-saviours/blob/6b8a89e1f6e7c7d210cb68f684ac1c6a5fb6e0c5/src/saviours/GeneralTokenReserveSafeSaviour.sol#L95)
@@ -172,7 +172,7 @@ There is no specific way in which users should cover a `SAFE`. They can store co
 {% hint style="danger" %}
 **Reentrancy**
 
-Make sure to protect your cover/uncover functions against reentrancy.
+Make sure to protect your cover/uncover functions against re-entrancy.
 {% endhint %}
 
 ### Setting a Custom Desired Collateralization Ratio for a SAFE:
