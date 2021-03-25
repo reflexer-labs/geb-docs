@@ -1,5 +1,5 @@
 ---
-description: List of Talk/Podcast/Articles about RAI and Reflexer
+description: List of talks and articles about RAI and Reflexer
 ---
 
 # Community Resources
