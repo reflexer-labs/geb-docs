@@ -24,7 +24,7 @@ description: List of talks and articles about RAI and Reflexer
 
 ### Press
 
-* Messari - [The Art of Central Banking on Blockchains: Non Pegged Stablecoins](https://messari.io/article/the-art-of-central-banking-on-blockchains-non-pegged-stablecoins) March 2021
+* [Messari - The Art of Central Banking on Blockchains: Non Pegged Stablecoins March](https://messari.io/article/the-art-of-central-banking-on-blockchains-non-pegged-stablecoins) 2021
 * [Decrypt - Reflexer Launches Alternative to Ethereum Stablecoin DAI, Called RAI](https://decrypt.co/58101/reflexer-launches-alternative-to-ethereum-stablecoin-dai-called-rai) February 2021
 * [TheBlock - Reflex indexes for more stable collateral assets in DeFi](https://www.theblockcrypto.com/genesis/90930/reflex-indexes-for-more-stable-collateral-assets-in-defi) January 2021
 * [Coindesk - Reflexer Labs Raises $1.7M to Build a Somewhat-Stable Coin for DeFi](https://www.coindesk.com/eth-lite-reflexer-labs-raises-1-7m-to-build-a-somewhat-stable-coin-for-defi) August 2021
