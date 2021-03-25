@@ -10,6 +10,14 @@ If Alice pays 5% per year to borrow RAI from a money market and the RAI redempti
   
 There's the other scenario where Bob is lending RAI at 4% per year and the redemption rate is 10% per year. In total, Bob is earning 14% annually on his position \(assuming that RAI will appreciate in value by 10% in the next year\). Meanwhile, Alice, who's borrowing RAI at 5% per year, is paying a total of 15% \(5% as the money market borrow rate plus the expected 10% appreciation in RAI's price over one year\).
 
+### Stacked Funding Rates
+
+If an exchange or protocol decides to offer RAI perpetuals, they will essentially allow traders to stack funding rates on top of each other.   
+  
+The redemption rate is similar but not identical to a funding rate. The net funding rate on a RAI perpetual is a combination of the funding rate on the platform/exchange that lists the perpetual and the redemption rate.  
+  
+RAI is the first asset ever created that allows this.
+
 ### Options
 
 A developer can build an options protocol which takes into account changes in the redemption rate in order to determine the price of puts/calls. This is because the redemption rate can be thought of as an intrinsic interest rate for RAI.
