@@ -28,8 +28,8 @@ Fixed discount collateral auctions are similar to their `English` counterpart in
 * `discount` - discount compared to the collateral market price; used when calculating the amount of collateral to send to a bidder.
 * `lowerCollateralMedianDeviation` - max `collateralMedian` collateral price deviation \(compared to the `FSM` price\) used when the median price is lower than the `collateralFSM` price and the contract needs to pick which one to use
 * `upperCollateralMedianDeviation` - max `collateralMedian` collateral price deviation \(compared to the `FSM` price\) used when the median price is higher than the `collateralFSM` price and the contract needs to pick which one to use
-* `lowerSystemCoinMedianDeviation` - max `systemCoinOracle` price deviation \(compared to the `redemptionPrice`\) used when the system coin's `redemptionPrice` price is higher than it's market price and the contract needs to pick which one to use
-* `upperSystemCoinMedianDeviation` - max `systemCoinOracle` price deviation \(compared to the `redemptionPrice`\) used when the system coin's `redemptionPrice` price is lower than it's market price and the contract needs to pick which one to use
+* `lowerSystemCoinMedianDeviation` - max `systemCoinOracle` price deviation \(compared to the `redemptionPrice`\) used when the system coin's `redemptionPrice` price is higher than its market price and the contract needs to pick which one to use
+* `upperSystemCoinMedianDeviation` - max `systemCoinOracle` price deviation \(compared to the `redemptionPrice`\) used when the system coin's `redemptionPrice` price is lower than its market price and the contract needs to pick which one to use
 * `minSystemCoinMedianDeviation` - minimum deviation between the system coin's market and redemption prices that must be passed in order for the contract to use the deviated price instead of the redemption one
 * `oracleRelayer` - address of the `OracleRelayer`
 * `collateralFSM` - the collateral type's `FSM` address
@@ -57,7 +57,7 @@ Fixed discount collateral auctions are similar to their `English` counterpart in
 
 **Functions**
 
-* `modifyParameters(bytes32 parameter`, `uint256 data)` - update a `uint256` parameter.
+* `modifyParameters(bytes32 parameter`, `uint256 data)` - update an `uint256` parameter.
 * `modifyParameters(bytes32 parameter`, `address data)` - update an `address` parameter.
 * `addAuthorization(usr: address)` - add an address to `authorizedAddresses`.
 * `removeAuthorization(usr: address)` - remove an address from `authorizedAddresses`.
