@@ -48,10 +48,12 @@ Increasing discount collateral auctions are similar to fixed discount ones in th
 * `Bid` - state of a specific auction
   * `amountToSell` - quantity up for auction / remaining collateral for sale
   * `amountToRaise` - total system coins still requested by the auction
-  * currentDiscount -
-  * maxDiscount -
-  * * `auctionDeadline` - max auction duration
-  * `forgoneCollateralReceiver` - address of the SAFE being auctioned
+  * `currentDiscount` - the current discount being used in the auction
+  * `maxDiscount` - the max value that the `currentDiscount` can have
+  * `perSecondDiscountUpdateRate` - the rate at which the `currentDiscount` grows
+  * `latestDiscountUpdateTime` - last time when the `currentDiscount` was updated
+  * `discountIncreaseDeadline` - deadline after which the discount cannot increase anymore
+  * `forgoneCollateralReceiver` - address of the SAFE whose collateral and debt were confiscated
   * `auctionIncomeRecipient` - recipient of auction income / receives system coin income \(this is  the `AccountingEngine` contract\)
 
 **Modifiers**
@@ -60,26 +62,31 @@ Increasing discount collateral auctions are similar to fixed discount ones in th
 
 **Functions**
 
-* `modifyParameters(bytes32 parameter`, `uint256 data)` - update a `uint256` parameter.
+* `modifyParameters(bytes32 parameter`, `uint256 data)` - update an `uint256` parameter.
 * `modifyParameters(bytes32 parameter`, `address data)` - update an `address` parameter.
 * `addAuthorization(usr: address)` - add an address to `authorizedAddresses`.
 * `removeAuthorization(usr: address)` - remove an address from `authorizedAddresses`.
 * `getCollateralMedianPrice() public view returns (priceFeed: uint256)` - get the collateral's median price from `collateralMedian`
+* `getSystemCoinFloorDeviatedPrice(redemptionPrice: uint256) public view returns` `(floorPrice: uint256)` - get the smallest possible price that's at max `lowerSystemCoinMedianDeviation` deviated from the redemption price and at least `minSystemCoinMedianDeviation` deviated
+* `getSystemCoinCeilingDeviatedPrice(redemptionPrice: uint256) public view returns` `(ceilingPrice: uint256)` - get the highest possible price that's at max `upperSystemCoinMedianDeviation` deviated from the redemption price and at least `minSystemCoinMedianDeviation` deviated
+* `getCollateralFSMAndFinalSystemCoinPrices(systemCoinRedemptionPrice: uint256) public` `view returns (uint256, uint256)` - get the collateral price from the FSM and the final system coin price that will be used when bidding in an auction
 * `getSystemCoinMarketPrice() public view returns (priceFeed: uint256)` - get the system coin's  market price from `systemCoinOracle`
 * `getFinalTokenPrices(systemCoinRedemptionPrice: uint256) public view returns (uint256`, `uint256)` - get the collateral and system coin prices that can be currently used to determine the amount of collateral bought by bidders
-* `getFinalBaseCollateralPrice(collateralFsmPriceFeedValue: uint256`, `collateralMedianPriceFeedValue: uint256) public view returns (uint256)` - get the final collateral price \(without the discount applied\) that will be used to determine the amount of collateral bought by a bid
+* `getFinalBaseCollateralPrice(collateralFsmPriceFeedValue: uint256`, `collateralMedianPriceFeedValue: uint256) public view returns (uint256)` - get the collateral price \(without the discount applied\) used in bidding by picking between the raw FSM and the oracle median price and taking into account deviation limits
 * `getDiscountedCollateralPrice(collateralFsmPriceFeedValue: bytes32`, `collateralMedianPriceFeedValue: bytes32`, `systemCoinPriceFeedValue: uint256`, `customDiscount: uint256) public view returns (uint256)` - get the \(discounted\) collateral price using either the `FSM` or median price for the collateral and the redemption/market price for the system coin
+* `getNextCurrentDiscount(id: uint256) public view returns (uint256)` -  get the upcoming discount that will be used in a specific auction
+* `getAdjustedBid(id: uint256`, `wad: uint256) public view returns (bool, uint256)` - get the actual bid that will be used in an auction \(taking into account the bidder input\)
 * `startAuction(forgoneCollateralReceiver: address`, `auctionIncomeRecipient: address`, `amountToRaise: uint256`, `amountToSell: uint256`, `initialBid: uint256 )` - function used by `LiquidationEngine` to start an auction / put collateral up for auction
-* `getApproximateCollateralBought(id: uint256`, `wad: uint256)` - get the amount of collateral that can be bought from a specific auction by bidding `wad` and assuming that the latest system coin `redemptionPrice` is equal to `lastReadRedemptionPrice`
+* `getApproximateCollateralBought(id: uint256`, `wad: uint256)` - get the amount of collateral that can be bought from a specific auction by bidding `wad` sysem coins and assuming that the latest system coin `redemptionPrice` is equal to `lastReadRedemptionPrice`
 * `getCollateralBought(id: uint256`, `wad: uint256) returns (uint256`, `uint256)` - get the amount of collateral that can be bought from a specific auction by bidding `wad` amount of system coins \(where `wad` will be scaled by `RAY` to transfer the correct amount of `RAD` system coins from `safeEngine.coinBalance`\)
 * `buyCollateral(id: uint256`, `wad: uint256)` - buy collateral from an auction and offer `wad` amount of system coins in return \(where `wad` is scaled by `RAY` in order to transfer `RAD` amount of coins from the bidder's `safeEngine.coinBalance`\)
 * `settleAuction(id: uint256)` - settle an auction that has passed its `auctionDeadline` and return any unsold collateral to the `forgoneCollateralReceiver`
 * `terminateAuctionPrematurely(id: uint256)` - normally used during `GlobalSettlement` to terminate an auction early and send unsold collateral to the `msg.sender` as well as call `LiquidationEngine` in order to subtract `bids[auctionId].amountToRaise` from `LiquidationEngine.currentOnAuctionSystemCoins`
-* `bidAmount(id: uint256) public view returns (uint256)` - always returns zero
-* `remainingAmountToSell(id: uint256) public view returns (uint256)` - return the remaining collateral amount to sell from a specific auction
-* `forgoneCollateralReceiver(uint id) public view returns (address)` - returns the`forgoneCollateralReceiver` for a specific auction
-* `raisedAmount(id: uint256)` - returns the currently raised amount of system coins for a specific auction.
-* `amountToRaise(uint id) public view returns (uint256)` - returns the amount of system coins to raise for a specific auction
+* `bidAmount(id: uint256) public view returns (uint256)` - always returns zero.
+* `remainingAmountToSell(id: uint256) public view returns (uint256)` - return the remaining collateral amount to sell from a specific auction.
+* `forgoneCollateralReceiver(uint id) public view returns (address)` - returns the`forgoneCollateralReceiver` for a specific auction.
+* `raisedAmount(id: uint256)` - returns zero.
+* `amountToRaise(uint id) public view returns (uint256)` - returns the amount of system coins left to raise by a specific auction.
 
 **Events**
 
