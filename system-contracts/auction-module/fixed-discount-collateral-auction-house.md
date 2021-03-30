@@ -22,7 +22,7 @@ Fixed discount collateral auctions are similar to their `English` counterpart in
 * `bids[id: uint]` - storage of all bids.
 * `collateralType` - id of the collateral type for which the `CollateralAuctionHouse` is responsible.
 * `minimumBid` - minimum amount of system coins that must be submitted by each bidder.
-* `totalAuctionLength` - auction length \(default: 7 days\).
+* `totalAuctionLength` - auction length \(default: `uint48(-1)`\).
 * `auctionsStarted` - total auction count, used to track auction `id`s.
 * `lastReadRedemptionPrice` - the last read redemption price. Can \(and most probably is\) be different than the latest `OracleRelayer._redemptionPrice`
 * `discount` - discount compared to the collateral market price; used when calculating the amount of collateral to send to a bidder.
