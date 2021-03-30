@@ -100,9 +100,12 @@ Increasing discount collateral auctions are similar to fixed discount ones in th
   * `amountToSell` - amount of collateral sold in the auction
   * `initialBid` - starting bid for the auction \(usually zero\).
   * `amountToRaise` - amount of system coins that should be raised by the auction.
+  * `startingDiscount` - the initial discount offered in the auction.
+  * `maxDiscount` - the max discount that can be offered in the auction.
+  * `perSecondDiscountUpdateRate` - the pace at which the current discount in the auction is updated.
+  * `discountIncreaseDeadline` - the deadline after which the current discount offered in the auction cannot increase anymore.
   * `forgoneCollateralReceiver` - receiver of leftover collateral \(usually the SAFE whose collateral was confiscated by the `LiquidationEngine`\).
   * `auctionIncomeRecipient` - receiver of system coins \(usually the `AccountingEngine`\).
-  * `auctionDeadline` - the auction's deadline
 * `ModifyParameters` - emitted when a parameter is modified
 * `BuyCollateral` - emitted when someone buys collateral from an auction. Contains:
   * `id` - the ID of the auction from which collateral was bought
