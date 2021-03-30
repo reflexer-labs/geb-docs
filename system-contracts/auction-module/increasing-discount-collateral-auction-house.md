@@ -27,12 +27,14 @@ Increasing discount collateral auctions are similar to fixed discount ones in th
 * `lastReadRedemptionPrice` - the last read redemption price. Can \(and most probably is\) be different than the latest `OracleRelayer._redemptionPrice`
 * `minDiscount` - initial discount \(compared to the collateral market price\) used when calculating the amount of collateral to send to a bidder.
 * `maxDiscount` - maximum discount \(compared to the collateral market price\) used when calculating the amount of collateral to send to a bidder.
+* `perSecondDiscountUpdateRate` - the rate at which the discount will be updated in an auction.
+* `maxDiscountUpdateRateTimeline` - max time over which the discount can be updated in an auction.
 * `lowerCollateralMedianDeviation` - max `collateralMedian` collateral price deviation \(compared to the `FSM` price\) used when the median price is lower than the `collateralFSM` price and the contract needs to pick which one to use
 * `upperCollateralMedianDeviation` - max `collateralMedian` collateral price deviation \(compared to the `FSM` price\) used when the median price is higher than the `collateralFSM` price and the contract needs to pick which one to use
 * `lowerSystemCoinMedianDeviation` - max `systemCoinOracle` price deviation \(compared to the `redemptionPrice`\) used when the system coin's `redemptionPrice` price is higher than its market price and the contract needs to pick which one to use
 * `upperSystemCoinMedianDeviation` - max `systemCoinOracle` price deviation \(compared to the `redemptionPrice`\) used when the system coin's `redemptionPrice` price is lower than its market price and the contract needs to pick which one to use
 * `minSystemCoinMedianDeviation` - minimum deviation between the system coin's market and redemption prices that must be passed in order for the contract to use the deviated price instead of the redemption one
-* `oracleRelayer` - address of the `OracleRelayer`
+* `oracleRelayer` - the address of the `OracleRelayer`
 * `collateralFSM` - the collateral type's `FSM` address
 * `collateralMedian` - collateral type medianizer address
 * `systemCoinOracle` - market price oracle for the system coin
@@ -44,11 +46,11 @@ Increasing discount collateral auctions are similar to fixed discount ones in th
 **Data Structures**
 
 * `Bid` - state of a specific auction
-  * `raisedAmount` - amount of system coins raised up until this point
-  * `soldAmount` - amount of collateral sold up until this point
-  * `amountToSell` - quantity up for auction / collateral for sale
-  * `amountToRaise` - total system coins wanted from the auction
-  * `auctionDeadline` - max auction duration
+  * `amountToSell` - quantity up for auction / remaining collateral for sale
+  * `amountToRaise` - total system coins still requested by the auction
+  * currentDiscount -
+  * maxDiscount -
+  * * `auctionDeadline` - max auction duration
   * `forgoneCollateralReceiver` - address of the SAFE being auctioned
   * `auctionIncomeRecipient` - recipient of auction income / receives system coin income \(this is  the `AccountingEngine` contract\)
 
