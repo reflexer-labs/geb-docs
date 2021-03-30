@@ -119,3 +119,13 @@ Increasing discount collateral auctions are similar to fixed discount ones in th
   * `sender` - the address that terminated the auction
   * `collateralAmount` - the amount of collateral still unauctioned
 
+## 3. Walkthrough <a id="3-key-mechanisms-and-concepts"></a>
+
+The bidding process in an increasing discount auction is almost identical to the one in fixed discount auctions.
+
+The only difference is that increasing discount auctions start with a smaller discount which increases at a pace of `perSecondDiscountUpdateRate` per second. The discount will increase until it hits`maxDiscount` or until  `discountIncreaseDeadline` passes.
+
+## 4. Gotchas
+
+Increasing discount auctions have the same gotchas as fixed discount ones.
+
