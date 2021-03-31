@@ -60,7 +60,7 @@ if(globalDebt.add(raiToDraw).gt(debtCeiling)) {
 const proxy = await geb.getProxyAction(wallet.address)
 const tx = proxy.openLockETHAndGenerateDebt(
     ethersUtils.parseEther('1'), // Lock 1 Ether
-    utils.ETH_A,                 // Of collateral ETH
+    utils.ETH_A,                 // Of collateral type ETH_A
     raiToDraw                    // And draw 15 RAI
 )
 
