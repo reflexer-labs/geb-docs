@@ -17,7 +17,7 @@ The `FSMWrapper` is meant to act as a funding source for FSM-like contract**s** 
 * `reimburseDelay` - enforced delay between consecutive `renumerateCaller` calls
 * `fsm` - the FSM contract that's being wrapped; this contract is the only allowed caller for `renumerateCaller`
 * `modifyParameters` - modify contract parameters
-* `renumerateCaller(feeReceiver: address)` - 
+* `renumerateCaller(feeReceiver: address)` - called by the `fsm` in order to send stability fees from the [StabilityFeeTreasury](https://github.com/reflexer-labs/geb/blob/master/src/StabilityFeeTreasury.sol) to the `feeReceiver`
 * stopped\(\) public view returns \(uint256\) -
 * priceSource\(\) public view returns \(address\) -
 * updateDelay\(\) public view returns \(uint16\) -
