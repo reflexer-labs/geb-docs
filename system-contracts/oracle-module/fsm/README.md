@@ -1,7 +1,7 @@
 ---
 description: >-
   Feed security module that delays upcoming price data from being pushed in the
-  system
+  core system
 ---
 
 # FSM
