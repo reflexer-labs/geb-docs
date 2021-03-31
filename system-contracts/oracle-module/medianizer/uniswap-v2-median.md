@@ -68,5 +68,5 @@ The `UniswapConsecutiveSlotsPriceFeedMedianizer` is integrated with Uniswap V2 i
 
 `updateResult` first tries to update the `converterFeed` and the Uniswap pool before it stores new observations and computes the latest median.
 
-`read` will only return a result if the median is non-null and if `updateResult` has been successfully called at least `granularity` times. `getResultWithValidity` will return the median price and its validity \(determined using the same checks as `read`\).
+`read` will only return a result if the median is non-null, if `updateResult` has been successfully called at least `granularity` times, if the `validityFlag` is `1` and if  `timeElapsedSinceFirstObservation() <= maxWindowSize`. `getResultWithValidity` will return the median price and its validity \(determined using the same checks as `read`\).
 
