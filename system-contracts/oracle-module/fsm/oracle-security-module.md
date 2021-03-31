@@ -47,3 +47,15 @@ The `OSM` \(Oracle Security Module\) ensures that new price values propagated fr
 
 In order for the `OSM` to work properly, an external actor must regularly call `updateResult()` to update the current price and read the next one. The contract stores the timestamp of the last `updateResult()` and will not allow another update until `block.timestamp` is at least `lastUpdateTime + updateDelay`. Values are read from the `priceSource`. In case of an oracle attack, governance can call `stop()` or`restartValue()`
 
+## 4. OSM Variations
+
+#### SelfFundedOSM
+
+This contract pulls funds from the [StabilityFeeTreasury](https://github.com/reflexer-labs/geb/blob/master/src/StabilityFeeTreasury.sol) so it can reward addresses for calling`updateResult`. 
+
+**ExternallyFundedOSM**
+
+This contract calls an [FSMWrapper](https://github.com/reflexer-labs/geb-fsm/blob/master/src/FSMWrapper.sol) in order to reward addresses that call `updateResult`.
+
+ 
+
