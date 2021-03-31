@@ -6,6 +6,7 @@ description: List of talks and articles about RAI and Reflexer
 
 ### Podcasts
 
+* [Yield TV Episode 93 - Stefan Ionescu Interview](https://www.youtube.com/watch?v=usKEpLUukW8) March 2021
 * [Defiant - Ameen Soleimani Interview](https://thedefiant.substack.com/p/we-were-idiots-and-we-were-poor-then-037) March 2021
 * [Bankless - Stefan Ionescu Interview](https://www.youtube.com/watch?v=5Fm5xNwfqNo) July 2020
 
