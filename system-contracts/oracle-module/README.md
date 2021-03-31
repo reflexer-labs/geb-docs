@@ -43,5 +43,5 @@ In the long run, governance can completely remove control over the `OracleRelaye
 1. Governance does not plan to add any more collateral types in the future.
 2. The team that deployed the system thoroughly tested its feedback mechanism, both in simulated **and** in live environments.
 
-The `OracleRelayer` is in the Level 1 Gov Minimization category. Governance will need to retain long term control over `FSM`s and medianizers because they are integrated with external components that can always change.
+The `OracleRelayer` is in the Level 1 Gov Minimization category.
 
