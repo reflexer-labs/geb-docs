@@ -64,13 +64,6 @@ The `UniswapConsecutiveSlotsPriceFeedMedianizer` is integrated with Uniswap V2 i
   * `reason` - the failure reason
 * `FailedUniswapPairSync` - emitted when the contract fails to sync the Uniswap V2 pool that it's connected to. Contains:
   * `reason` - the reason why the sync failed
-* `FailRewardCaller` - emitted when the contract fails to reward the caller/`feeReceiver` that updated the median price. Contains:
-  * `revertReason` - the reason why the transaction reverted
-  * `feeReceiver` - the address that should have received the reward
-  * `amount` - the amount of system coins that should have been sent
-* `RewardCaller` - emitted when an address is awarded system coins in exchange for calling `updateResult`. Contains:
-  * `feeReceiver` - the address that received the system coin payment
-  * `amount` - how many system coins were awarded
 
 ## 3. Walkthrough
 
