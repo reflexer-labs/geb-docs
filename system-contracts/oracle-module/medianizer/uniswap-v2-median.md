@@ -40,6 +40,7 @@ The `UniswapConsecutiveSlotsPriceFeedMedianizer` is integrated with Uniswap V2 i
 **Functions**
 
 * `modifyParameters` - allows governance to modify parameters.
+* `timeElapsedSinceFirstObservation() public view returns (uint256)` - returns the time passed since the first observation in the window.
 * `observationIndexOf(timestamp: uint256) public view returns (index: uint8)` - gets the index of a Uniswap observation at a specific timestamp.
 * `getObservationListLength() public view returns (uint256, uint256)` - get the length of the observation list.
 * `treasuryAllowance() public view returns (uint256)` - returns the `StabilityFeeTreasury` allowance for this contract.
