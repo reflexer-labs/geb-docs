@@ -211,7 +211,7 @@ The following tables show the before and after variable names from all core MCD 
 | NaN | TerminateAuctionPrematurely \(NEW\) |
 | NaN | DisableContract \(NEW\) |
 
-| Flip/per | English/FixedDiscountCollateralAuctionHouse |
+| Flip/per | English/Fixed/IncreasingDiscountCollateralAuctionHouse |
 | :--- | :--- |
 | wards | authorizedAccounts |
 | rely | addAuthorization |
@@ -230,6 +230,10 @@ The following tables show the before and after variable names from all core MCD 
 | Bid.usr | Bid.forgoneCollateralReceiver |
 | Bid.gal | Bid.auctionIncomeRecipient |
 | Bid.tab | Bid.amountToRaise |
+| NaN | Bid.currentDiscount \(NEW\) \(only in the IncreasingDiscount version\) |
+| NaN | Bid.maxDiscount \(NEW\) \(only in the IncreasingDiscount version\) |
+| NaN | Bid.perSecondDiscountUpdateRate \(NEW\) \(only in the IncreasingDiscount version\) |
+| NaN | Bid.discountIncreaseDeadline \(NEW\) \(only in the IncreasingDiscount version\) |
 | Kick | StartAuction |
 | bids | bids |
 | vat | safeEngine |
@@ -241,6 +245,10 @@ The following tables show the before and after variable names from all core MCD 
 | tau | totalAuctionLength |
 | kicks | auctionsStarted |
 | NaN | discount \(NEW\) \(only in the FixedDiscount version\) |
+| NaN | minDiscount \(NEW\) \(only in the IncreasingDiscount version\) |
+| NaN | maxDiscount \(NEW\) \(only in the IncreasingDiscount version\) |
+| NaN | perSecondDiscountUpdateRate \(NEW\) \(only in the IncreasingDiscount version\) |
+| NaN | maxDiscountUpdateRateTimeline \(NEW\) \(only in the IncreasingDiscount version\) |
 | NaN | lowerCollateralMedianDeviation \(NEW\) \(only in the FixedDiscount version\) |
 | NaN | upperCollateralMedianDeviation \(NEW\) \(only in the FixedDiscount version\) |
 | NaN | lowerSystemCoinMedianDeviation \(NEW\) \(only in the FixedDiscount version\) |
@@ -253,8 +261,13 @@ The following tables show the before and after variable names from all core MCD 
 | Kick | StartAuction |
 | live | contractEnabled |
 | file | modifyParameters |
-| NaN | getDiscountedRedemptionCollateralPrice \(NEW\) \(only in the FixedDiscount version\) |
-| NaN | getDiscountedRedemptionBoughtCollateral \(NEW\) \(only in the FixedDiscount version\) |
+| NaN | getDiscountedCollateralPrice \(NEW\) \(only in the Fixed and Increasing Discount versions\) |
+| NaN | getBoughtCollateral \(NEW\) \(only in the Fixed and Increasing Discount versions\) |
+| NaN | getSystemCoinFloorDeviatedPrice \(NEW\) \(only in the Fixed and Increasing Discount versions\) |
+| NaN | getSystemCoinCeilingDeviatedPrice \(NEW\) \(only in the Fixed and Increasing Discount versions\) |
+| NaN | getCollateralFSMAndFinalSystemCoinPrices \(NEW\) \(only in the Fixed and Increasing Discount versions\) |
+| NaN | getFinalBaseCollateralPrice \(NEW\) \(only in the Fixed and Increasing Discount versions\) |
+| NaN | getNextCurrentDiscount \(NEW\) \(only in the IncreasingDiscount version\) |
 | NaN | getCollateralBought \(NEW\) \(only in the FixedDiscount version\) |
 | NaN | buyCollateral \(NEW\) \(only in the FixedDiscount version\) |
 | kick | startAuction |
