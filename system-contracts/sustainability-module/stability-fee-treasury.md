@@ -12,6 +12,7 @@ The `StabilityFeeTreasury` is meant to allow other contracts or EOAs to pull fun
 
 **Variables**
 
+* `authorizedAccounts[usr: address]` - `addAuthorization`/`removeAuthorization` - auth mechanisms
 * `allowance[receiver: address]` - total withdrawal allowance
 * `pulledPerBlock[usr: address`, `blockNr: uint256]` - total amount pulled by a user on a specific block
 * `safeEngine` - address of the `SAFEEngine`
