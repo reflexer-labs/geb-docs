@@ -41,13 +41,11 @@ The `UniswapConsecutiveSlotsPriceFeedMedianizer` is integrated with Uniswap V2 i
 
 * `modifyParameters` - allows governance to modify parameters.
 * `timeElapsedSinceFirstObservation() public view returns (uint256)` - returns the time passed since the first observation in the window.
-* `observationIndexOf(timestamp: uint256) public view returns (index: uint8)` - gets the index of a Uniswap observation at a specific timestamp.
-* `getObservationListLength() public view returns (uint256, uint256)` - get the length of the observation list.
-* `treasuryAllowance() public view returns (uint256)` - returns the `StabilityFeeTreasury` allowance for this contract.
-* `getCallerReward() public view returns (uint256)` - get the current caller reward.
+* `earliestObservationIndex() public view returns (uint256)` - returns the index of the earliest observation in the window.
+* `getObservationListLength() public view returns (uint256, uint256)` - get the observation list length
 * `uniswapComputeAmountOut(priceCumulativeStart: uint256`, `priceCumulativeEnd: uint256`, `timeElapsed: uint256`, `amountIn: uint256) public pure returns (amountOut: uint256)` - given the Uniswap V2 cumulative prices of the start and end of a period, and the length of the period, compute the average price in terms of how much amount out is received for the amount in.
-* `converterComputeAmountOut(amountIn: uint256) public view returns (amountOut: uint256)` - calculate the price of an amount of tokens using the convertor price feed. Used after the contract determines the amount of denomination tokens for `defaultAmountIn` target tokens.
-* `updateResult(feeReceiver: address)` - update the `medianPrice` and pay the feeReceiver afterwards.
+* `converterComputeAmountOut(amountIn: uint256) public view returns (amountOut: uint256)` - calculate the price of an amount of tokens using the converter price feed. Used internally after the contract determines the amount of denomination tokens for `defaultAmountIn` target tokens.
+* `updateResult(feeReceiver: address)` - update the `medianPrice` and pay the `feeReceiver` afterwards.
 * `read` - gets a non-zero price or fails
 * `getResultWithValidity` - gets the price and its validity
 
@@ -68,7 +66,7 @@ The `UniswapConsecutiveSlotsPriceFeedMedianizer` is integrated with Uniswap V2 i
 
 ## 3. Walkthrough
 
-`updateResult` first tries to update the `converterFeed` and the Uniswap pool the median is connected to before it stores new observations and computes the latest median.
+`updateResult` first tries to update the `converterFeed` and the Uniswap pool before it stores new observations and computes the latest median.
 
-`read` will only return a result if the median is non-null and if `updateResult` has been successfully called at least `granularity` times. `getResultWithValidity` will only return a valid result if it passes the same checks as `read`.
+`read` will only return a result if the median is non-null and if `updateResult` has been successfully called at least `granularity` times. `getResultWithValidity` will return the median price and its validity \(determined using the same checks as `read`\).
 
