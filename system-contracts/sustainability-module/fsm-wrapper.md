@@ -31,5 +31,7 @@ The `FSMWrapper` is meant to act as a funding source for FSM-like contract**s** 
 * `getNextResultWithValidity() external view returns (uint256, bool)` - read and return the next result and its validity from the `fsm`
 * `read() external view returns (uint256)` - read and return \(or revert\) the current result from the `fsm` 
 
+## 3. Walkthrough <a id="2-contract-details"></a>
+
 
 
