@@ -73,7 +73,7 @@ console.log('Transaction mined, safe opened!')
 
 ## Additional examples
 
-In the examples below we assume the variables are defined like in the complete example above.
+In the examples below we assume that variables are defined like in the complete example above.
 
 1. [Deploy a new proxy](getting-started.md#deploy-a-new-proxy)
 2. [Partial repay of safe debt](getting-started.md#partial-repay-of-safe-debt)
