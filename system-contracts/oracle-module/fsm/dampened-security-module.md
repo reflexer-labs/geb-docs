@@ -50,6 +50,10 @@ The `DSM` \(Dampened Security Module\) is an `OSM`-like contract that, apart fro
   * `value` - the feed value
   * `isValid` - whether the price feed value is valid
 
+## 3. Walkthrough <a id="3-key-mechanisms-and-concepts"></a>
+
+In order for the `DSM` to work properly, an external actor must regularly call `updateResult()` to update the current price and read the next one. The contract stores the timestamp of the last `updateResult()` and will not allow another update until `block.timestamp` is at least `lastUpdateTime + updateDelay`. Values are read from the `priceSource`. The next price accepted in the `DSM` can be at max `newPriceDeviation` deviated from the current price stored in the contract. In case of an oracle attack, governance can call `stop()` or`restartValue()`
+
 ## 4. DSM Variations
 
 #### SelfFundedDSM
