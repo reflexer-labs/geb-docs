@@ -1,7 +1,5 @@
 ---
-description: >-
-  Oracle component that tries to find the "true" price of an asset by
-  medianizing multiple results
+description: Oracle component that fetches the price of an asset
 ---
 
 # Medianizer
