@@ -18,9 +18,9 @@ The `FSMWrapper` is meant to act as a funding source for FSM-like contract**s** 
 * `fsm` - the FSM contract that's being wrapped; this contract is the only allowed caller for `renumerateCaller`
 * `modifyParameters` - modify contract parameters
 * `renumerateCaller(feeReceiver: address)` - called by the `fsm` in order to send stability fees from the [StabilityFeeTreasury](https://github.com/reflexer-labs/geb/blob/master/src/StabilityFeeTreasury.sol) to the `feeReceiver`
-* stopped\(\) public view returns \(uint256\) -
-* priceSource\(\) public view returns \(address\) -
-* updateDelay\(\) public view returns \(uint16\) -
+* `stopped() public view returns (uint256)` - read and return `stopped` from the `fsm`
+* `priceSource() public view returns (address)` - read and return `priceSource` from the `fsm`
+* `updateDelay() public view returns (uint16)` -
 * lastUpdateTime\(\) public view returns \(uint64\) -
 * newPriceDeviation\(\) public view returns \(uint256\) -
 * passedDelay\(\) public view returns \(bool\) -
