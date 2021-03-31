@@ -11,12 +11,13 @@ description: The "source of truth" for collateral and system coin prices
 * [DSM](https://github.com/reflexer-labs/geb-fsm/blob/master/src/DSM.sol)
 * [GovernanceLedPriceFeedMedianizer](https://github.com/reflexer-labs/geb-governance-led-median/blob/master/src/GovernanceLedPriceFeedMedianizer.sol)
 * [ChainlinkPriceFeedMedianizer](https://github.com/reflexer-labs/geb-chainlink-median/blob/master/src/ChainlinkPriceFeedMedianizer.sol)
+* [UniswapConsecutiveSlotsPriceFeedMedianizer](https://github.com/reflexer-labs/geb-uniswap-median/blob/master/src/UniswapConsecutiveSlotsPriceFeedMedianizer.sol)
 * [OracleRelayer](https://github.com/reflexer-labs/geb/blob/master/src/OracleRelayer.sol)
 * [FsmGovernanceInterface](https://github.com/reflexer-labs/geb-fsm-governance-interface/blob/master/src/FsmGovernanceInterface.sol)
 
 ## 1. Overview <a id="1-introduction-summary"></a>
 
-The **Oracle Module** is in charge with ingesting and pushing price feed updates into the system. It has three core components: a medianizer that accepts data points from whitelisted addresses or calls multiple oracle networks, an `FSM` \(Feed Security Module\) that introduces a delay to prices coming from the medianizer and an `OracleRelayer` that divides the price data by the `redemptionPrice` and then divides the result again by the collateralization ratio \(of the asset whose price is submitted\) before pushing the final output in the `SAFEEngine`. The module may also be used to provide price feed data for the system's feedback mechanism or other contracts meant to autonomously set system parameters.
+The **Oracle Module** is in charge with ingesting and pushing price feed updates into the system. It has three core components: a medianizer that pulls a price feed for an asset, an `FSM` \(Feed Security Module\) that introduces a delay to prices coming from the medianizer and an `OracleRelayer` that divides the price data by the `redemptionPrice` and then divides the result again by the collateralization ratio \(of the asset whose price is submitted\) before pushing the final output in the `SAFEEngine`. The module may also be used to provide price feed data for the system's feedback mechanism or other contracts meant to autonomously set system parameters.
 
 ## 2. Component Descriptions
 
@@ -26,6 +27,7 @@ The **Oracle Module** is in charge with ingesting and pushing price feed updates
 * `FsmGovernanceInterface` is an abstraction meant to help governance `stop` `OSM`s.
 * The `OracleRelayer` is the glue between the `OSM` and the core system \(`SAFEEngine`\). It divides every price feed by the latest `redemptionPrice` and then divides the output again by the collateralization ratio before saving the final result. The relayer will, in fact, store two different prices for each collateral type: a `safetyPrice` used only when SAFE users want to generate debt and a`liquidationPrice` used when someone calls `LiquidationEngine.liquidateSAFE`. The relayer is also in charge with storing the `redemptionPrice` and updating it using the `redemptionRate`.
 * Both `GovernanceLedPriceFeedMedianizer` and `ChainlinkPriceFeedMedianizer` provide fresh price feeds for every token used in the system. The major difference between the two is that the governance led version maintains a whitelist of price feed contracts which are authorized \(and incentivized\) by token holders to push prices into the system whereas the Chainlink version does not depend on GEB's governance to function properly \(apart from instances where token holders need to point to an upgraded version of the Chainlink aggregator\).
+* The `UniswapConsecutiveSlotsPriceFeedMedianizer` is a TWAP leveraging the Uniswap v2 infrastructure in order to provide a price feed. It needs to be connected to a separate oracle that can help translate the TWAP result into another currency \(e.g USD, EUR etc\).
 
 ## 3. Risks <a id="5-failure-modes-bounds-on-operating-conditions-and-external-risk-factors"></a>
 
@@ -35,6 +37,7 @@ The **Oracle Module** is in charge with ingesting and pushing price feed updates
 * `OSM` - governance can change the `priceSource` address to a malicious contract or to a source that does not adhere to the correct interface \(that should otherwise contain `getResultWithValidity`\). Governance may also call `stop` or `restartValue` inappropriately.
 * `DSM` - can suffer from the same attacks as the `OSM`
 * `FsmGovernanceInterface` - governance can maliciously stop one or more `OSM`s or `DSM`s
+* `UniswapConsecutiveSlotsPriceFeedMedianizer` - governance can set a converterFeed \(oracle that translates the TWAP result in another currency\) to a malicious contract. Governance can also set `maxWindowSize` to an extremely large value and thus allow the TWAP to be excessively laggy.
 
 ## 4. Governance Minimization
 
