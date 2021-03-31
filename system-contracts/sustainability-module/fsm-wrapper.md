@@ -26,10 +26,10 @@ The `FSMWrapper` is meant to act as a funding source for FSM-like contract**s** 
 * `passedDelay() public view returns (bool)` - read and return `passedDelay` from the `fsm`
 * `getNextBoundedPrice() public view returns (uint128)` - read and return the value calculated by `getNextBoundedPrice` from the `fsm`
 * `getNextPriceLowerBound() public view returns (uint128)` - read and return the value calculated by `getNextPriceLowerBound` from the `fsm`
-* getNextPriceUpperBound\(\) public view returns \(uint128\) -
-* getResultWithValidity\(\) external view returns \(uint256, bool\) -
-* getNextResultWithValidity\(\) external view returns \(uint256, bool\) -
-* read\(\) external view returns \(uint256\) -
+* `getNextPriceUpperBound() public view returns (uint128)` - read and return the value calculated by `getNextPriceUpperBound` from the `fsm`
+* `getResultWithValidity() external view returns (uint256, bool)` - read and return the current result and its validity from the `fsm`
+* `getNextResultWithValidity() external view returns (uint256, bool)` - read and return the next result and its validity from the `fsm`
+* `read() external view returns (uint256)` - read and return \(or revert\) the current result from the `fsm` 
 
 
 
