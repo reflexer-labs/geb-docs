@@ -50,3 +50,13 @@ The `DSM` \(Dampened Security Module\) is an `OSM`-like contract that, apart fro
   * `value` - the feed value
   * `isValid` - whether the price feed value is valid
 
+## 4. DSM Variations
+
+#### SelfFundedDSM
+
+This contract pulls funds from the [StabilityFeeTreasury](https://github.com/reflexer-labs/geb/blob/master/src/StabilityFeeTreasury.sol) so it can reward addresses for calling`updateResult`. 
+
+**ExternallyFundedDSM**
+
+This contract calls an [FSMWrapper](https://github.com/reflexer-labs/geb-fsm/blob/master/src/FSMWrapper.sol) in order to reward addresses that call `updateResult`.
+
