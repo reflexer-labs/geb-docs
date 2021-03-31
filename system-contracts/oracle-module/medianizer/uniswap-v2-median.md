@@ -1,5 +1,5 @@
 ---
-description: A medianizer using the Uniswap V2 TWAP oracle
+description: A medianizer using the Uniswap V2 TWAP oracle implementation
 ---
 
 # Uniswap V2 Median
