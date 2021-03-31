@@ -13,18 +13,15 @@ The `ChainlinkPriceFeedMedianizer` has a similar interface to the [Governance Le
 **Variables**
 
 * `authorizedAccounts [usr: address]` - `addAuthorization`/`removeAuthorization`/`isAuthorized` - auth mechanisms
+* `staleThreshold` - time since `linkAggregatorTimestamp` after which the median value is considered stale 
 * `chainlinkAggregator` - address of the Chainlink price reference contract
+* `rewardRelayer` - address of the contract that rewards addresses that call `updateResult`
 * `medianPrice` - latest fetched price 
 * `lastUpdateTime` - latest timestamp when the contract pulled a price update from Chainlink
-* `multiplier` - scaling factor for the Chainlink fetched price \(e.g if the price has 8 decimals and we want it to be scaled to 18 decimals, `multiplier = 10` and `medianPrice = fetchedPrice * 10 ^ multiplier`\)
+* `multiplier` - scaling factor for the Chainlink result \(e.g if the price has 8 decimals and we want it to be scaled to 18 decimals, `multiplier = 10` and `medianPrice = fetchedPrice * 10 ^ multiplier`\)
 * `symbol` - the price oracle type \(ex: ETHUSD\)
 * `periodSize` - the minimum delay between two consecutive updates after which the reward for updating again starts to increase
-* `baseUpdateCallerReward` - starting reward for the address that calls `updateResult`
-* `maxUpdateCallerReward` - max possible reward for calling `updateResult`
-* `maxRewardIncreaseDelay` - max delay between two updates taken into consideration when calculating the adjusted reward
-* `perSecondCallerRewardIncrease` - rate applied to `baseUpdateCallerReward` every extra second passed beyond `periodSize` seconds since the last update call
 * `linkAggregatorTimestamp` - the timestamp of the Chainlink aggregator's latest price update
-* `treasury` - the address of the `StabilityFeeTreasury` contract
 
 **Modifiers**
 
@@ -32,12 +29,10 @@ The `ChainlinkPriceFeedMedianizer` has a similar interface to the [Governance Le
 
 **Functions**
 
-* `modifyParameters` - allows governance to change the aggregator address in case Chainlink upgrades their infrastructure
+* `modifyParameters` - allows governance to change contract parameters
 * `read() public view returns (uint256)` - gets a non-zero price or fails
 * `getResultWithValidity() public view returns (uint256,bool)` - gets the price and its validity
-* `treasuryAllowance() public view returns (uint256)` - returns the StabilityFeeTreasury allowance for this contract
-* `getCallerReward() public view returns (uint256)` - get the current caller reward
-* `updateResult(feeReceiver: address)` - updates the price stored in our contract by calling the aggregator
+* `updateResult(feeReceiver: address)` - updates the price stored in the contract by calling the Chainlink aggregator
 
 **Events**
 
@@ -49,15 +44,8 @@ The `ChainlinkPriceFeedMedianizer` has a similar interface to the [Governance Le
 * `UpdateResult` - emitted when `updateResult` is called. Contains:
   * `medianPrice` - the latest median price
   * `lastUpdateTime` - timestamp of the call
-* `RewardCaller` - emitted after an address is awarded system coins. Contains:
-  * `feeReceiver` - the address that received the reward
-  * `amount` - the amount of system coins awarded
-* `FailRewardCaller` - emitted if the contract failed to reward an address with system coins. Contains:
-  * `revertReason` - the reason the reward assignment failed
-  * `finalFeeReceiver` - the address that should have been rewarded
-  * `reward` - the amount of system coins that had to be sent
 
 ## 3. Walkthrough
 
-Governance can update the `chainlinkAggregator` from which the contract fetches the price feed and stores it as the `medianPrice`. When reading the latest price feed, the contract also stores the timestamp when the price coming from Chainlink was posted on-chain. The system can incentivize anyone to call `updateResult` and update the median price regularly.
+When reading the latest price feed, the contract also stores the timestamp when the price coming from Chainlink was posted on-chain. The system can incentivize anyone to call `updateResult` and update the median price regularly using a `rewardRelayer`.
 
