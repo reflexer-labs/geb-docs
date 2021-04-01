@@ -55,5 +55,10 @@ The `IncreasingTreasuryReimbursement` is a contract meant to be inherited from a
 If `perSecondCallerRewardIncrease` is set to a large value and `maxRewardIncreaseDelay` is also large, `getCallerReward` may revert. In most scenarios,  `maxRewardIncreaseDelay` should be set to a very conservative value \(a couple of hours at most\) in order to avoid this scenario.
 {% endhint %}
 
+## 4. Increasing Treasury Reimbursement Flavours
 
+There are two alternative Increasing Treasury Reimbursement contract flavours aside from the core one:
+
+* `NoSetupIncreasingTreasuryReimbursement` - this contract has the exact same logic as the core one but it does not set any parameters in its constructor
+* `NoSetupNoAuthIncreasingTreasuryReimbursement` - this contract has the same logic as the core one but it does not set any parameters in its constructor and it also does not have any authorization logic \(`addAuthorization`/`removeAuthorization`\)
 
