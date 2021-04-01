@@ -6,7 +6,7 @@ description: Wrapper for FSM-like contracts
 
 ## 1. Summary <a id="1-introduction-summary"></a>
 
-The `FSMWrapper` is meant to act as a funding source for FSM-like contract**s** as well as an interface that allows other contracts to read data from the FSM integrated with the wrapper.
+The `FSMWrapper` is meant to act as a funding source for FSM-like contracts as well as an interface that allows other contracts to read data from the FSM integrated with the wrapper.
 
 ## 2. Contract Variables & Functions <a id="2-contract-details"></a>
 
