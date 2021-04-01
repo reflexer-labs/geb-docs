@@ -25,6 +25,27 @@ The `IncreasingTreasuryReimbursement` is a contract meant to be inherited from a
 
 * `treasuryAllowance() public view returns (uint256)` - this returns the stability fee treasury allowance for the reimbursement contract by taking the minimum between the per block and the total allowances
 * `getCallerReward(uint256 timeOfLastUpdate`, `uint256 defaultDelayBetweenCalls) public` `view returns (uint256)` - get the SF reward that can be sent to an address right now
+* `rewardCaller(address proposedFeeReceiver, uint256 reward) internal` - internal function that's meant to send a SF reward to a `proposedFeeReceiver`
+
+**Modifiers**
+
+* `isAuthorized` ****- checks whether an address is part of `authorizedAddresses` \(and thus can call authed functions\)
+
+**Events**
+
+* `AddAuthorization` - emitted when a new address becomes authorized. Contains:
+  * `account` - the new authorized account
+* `RemoveAuthorization` - emitted when an address is de-authorized. Contains:
+  * `account` - the address that was de-authorized
+* `ModifyParameters` - emitted when a parameter is updated.
+* `FailRewardCaller` - emitted when the contract cannot reward an address. Contains:
+  * `revertReason` - the reason why the contract could not send the reward
+  * `feeReceiver` - the addess that was supposed to get the reward
+  * `amount` - the reward that had to be sent
+
+## 3. Walkthrough <a id="2-contract-details"></a>
+
+`rewardCaller` is the most important function in this contract. It takes care of pulling the SF reward from the treasury and then sending it to a 
 
 
 
