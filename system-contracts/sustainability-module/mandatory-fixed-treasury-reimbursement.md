@@ -22,3 +22,20 @@ The `MandatoryFixedTreasuryReimbursement` is a contract meant to be inherited fr
 * `getCallerReward() public view returns (uint256 reward)` - get the actual reward that can be pulled from the SF treasury by taking the minimum value between the `fixedReward`and the total amount that can be sent by the `treasury` in one block
 * `rewardCaller(proposedFeeReceiver: address) internal` - internal function to send a SF reward to a fee receiver by calling the `treasury`
 
+**Modifiers**
+
+* `isAuthorized` ****- checks whether an address is part of `authorizedAddresses` \(and thus can call authed functions\)
+
+**Events**
+
+* `AddAuthorization` - emitted when a new address becomes authorized. Contains:
+  * `account` - the new authorized account
+* `RemoveAuthorization` - emitted when an address is de-authorized. Contains:
+  * `account` - the address that was de-authorized
+* `ModifyParameters` - emitted when a parameter is updated.
+* `RewardCaller` - emitted when the contract rewards an address with SF coming from the `treasury`. Contains:
+  * `finalFeeReceiver` - the address that got the reward
+  * `fixedReward` - the reward that was sent
+
+
+
