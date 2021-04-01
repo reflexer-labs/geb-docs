@@ -1,6 +1,6 @@
 # Proxy Actions
 
-Convenience class to call functions from [GebProxyActions](https://github.com/reflexer-labs/geb-proxy-actions/blob/master/src/GebProxyActions.sol) through a proxy contract registered in the [GebProxyRegistry](https://github.com/reflexer-labs/geb-proxy-registry/blob/master/src/GebProxyRegistry.sol). These actions bundle multiple actions in one \(e.g: open a safe + lock some ETH + draw some RAI\).
+Convenience class to call functions from [GebProxyActions](https://github.com/reflexer-labs/geb-proxy-actions/blob/master/src/GebProxyActions.sol) through a proxy contract registered in the [GebProxyRegistry](https://github.com/reflexer-labs/geb-proxy-registry/blob/master/src/GebProxyRegistry.sol). These actions bundle multiple actions in one \(e.g: open a safe + lock some ETH + draw some system coins\).
 
 ## Constructors
 
@@ -26,7 +26,7 @@ _Defined in_ [_packages/geb/src/proxy-action.ts:57_](https://github.com/reflexer
 
 _Defined in_ [_packages/geb/src/proxy-action.ts:28_](https://github.com/reflexer-labs/geb.js/blob/30c41df/packages/geb/src/proxy-action.ts#L28)
 
-Underlying proxy object. Can be use to make custom calls to the proxy using `proxy.execute()` function. For the details of each function
+Underlying proxy object. Can be used to make custom calls to the proxy using the `proxy.execute()` function.
 
 ### proxyActionCoreAddress
 
@@ -50,7 +50,7 @@ Address of the proxy action contract for global settlement.
 
 _Defined in_ [_packages/geb/src/proxy-action.ts:43_](https://github.com/reflexer-labs/geb.js/blob/30c41df/packages/geb/src/proxy-action.ts#L43)
 
-Address of the proxy action contract for uniswap LP share staking.
+Address of the proxy action contract for Uniswap LP share staking.
 
 ### proxyActionLeverageAddress
 
@@ -58,7 +58,7 @@ Address of the proxy action contract for uniswap LP share staking.
 
 _Defined in_ [_packages/geb/src/proxy-action.ts:48_](https://github.com/reflexer-labs/geb.js/blob/30c41df/packages/geb/src/proxy-action.ts#L48)
 
-Address of the proxy action contract for leveraged with flash loans operations.
+Address of the proxy action contract used for leverage with flash loans.
 
 ### proxyAddress
 
@@ -66,7 +66,7 @@ Address of the proxy action contract for leveraged with flash loans operations.
 
 _Defined in_ [_packages/geb/src/proxy-action.ts:62_](https://github.com/reflexer-labs/geb.js/blob/30c41df/packages/geb/src/proxy-action.ts#L62)
 
-Address of the underlying proxy
+Address of the underlying proxy.
 
 ## Methods
 
