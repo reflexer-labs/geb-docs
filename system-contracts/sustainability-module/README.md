@@ -18,7 +18,8 @@ The **Sustainability Module** allocates resources to actors that update critical
 ## 2. Component Descriptions
 
 * `StabilityFeeTreasury` - this contract tries to keep an "optimum" amount of stability fees for itself in order to make sure it can provide funds to other contracts \(or in some cases, people\) that maintain the protocol's well-being. Anyone can periodically call a function to recalculate the optimum amount of funds to keep in the treasury. Any surplus above optimum values is transferred to the `extraSurplusReceiver`.
-* 
+* `FSMWrapper` - this contract is meant to act as a funding source for FSM-like contracts as well as an interface that allows other contracts to read data from the FSM integrated with the wrapper.
+
 ## 3. Risks
 
 ### Smart Contract Bugs <a id="coding-errors"></a>
