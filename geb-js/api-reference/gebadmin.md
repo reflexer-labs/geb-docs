@@ -8,7 +8,7 @@ This class extends the core `GEB` class with additional tools and contracts that
 npm install @reflexer-finance/geb-admin
 ```
 
-And you are ready to use the admin tools similar to the GEB class:
+And after that you are ready to use the admin tools similar to the GEB class:
 
 ```typescript
 import { ethers } from 'ethers'
@@ -86,9 +86,9 @@ Currently the following contracts ae available in this property:
 * GetSafes
 * BasicCollateralJoin
 * CoinJoin
-* Coin \(RAI ERC20 contract\)
+* Coin \(System coin ERC20 contract\)
 * GebProxyRegistry
-* FixedDiscountCollateralAuctionHouse \(For ETH-A\)
+* FixedDiscountCollateralAuctionHouse
 * Weth \(ERC20\)
 
 For detailed information about the functions of each contract we recommend referring directly to the smart-contract [code](https://github.com/reflexer-labs/geb) and [documentation](https://docs.reflexer.finance/)
