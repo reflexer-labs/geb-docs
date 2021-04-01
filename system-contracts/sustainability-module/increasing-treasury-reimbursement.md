@@ -50,7 +50,7 @@ The `IncreasingTreasuryReimbursement` is a contract meant to be inherited from a
 `getCallerReward` can be used to retrieve the current SF fee that can be pulled from the treasury. If `baseUpdateCallerReward` and `maxUpdateCallerReward` are both zero or if `timeOfLastUpdate >= now`, it will return zero.
 
 {% hint style="warning" %}
-**Invalid `maxRewardIncreaseDelay` set**
+**Large `maxRewardIncreaseDelay` can make `getCallerReward` revert**
 
 If `perSecondCallerRewardIncrease` is set to a large value and `maxRewardIncreaseDelay` is also large, `getCallerReward` may revert. In most scenarios,  `maxRewardIncreaseDelay` should be set to a very conservative value \(a couple of hours at most\) in order to avoid this scenario.
 {% endhint %}
