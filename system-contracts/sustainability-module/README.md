@@ -31,7 +31,7 @@ The **Sustainability Module** allocates resources to actors that update critical
 
   `rewardCaller()` or it would make it impossible for someone to call `getCallerReward`
 
-* Similar to `IncreasingTreasuryReimbursement`, 
+* Similar to the `IncreasingTreasuryReimbursement` contract, a bug in`MandatoryFixedTreasuryReimbursement` could block the execution of `rewardCaller()`
 
 ### Misconfiguration
 
