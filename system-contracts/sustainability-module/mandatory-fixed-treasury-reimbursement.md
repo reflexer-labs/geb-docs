@@ -37,5 +37,9 @@ The `MandatoryFixedTreasuryReimbursement` is a contract meant to be inherited fr
   * `finalFeeReceiver` - the address that got the reward
   * `fixedReward` - the reward that was sent
 
+## 3. Walkthrough <a id="2-contract-details"></a>
 
+`rewardCaller` is the most important function in this contract. It takes care of pulling a fixed SF reward from the treasury and then sending it to a `proposedFeeReceiver`.
+
+`getCallerReward` can be used to retrieve the current SF fee that can be pulled from the treasury.
 
