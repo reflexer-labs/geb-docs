@@ -1,6 +1,6 @@
 # Geb
 
-The main package used to interact with the GEB system. Includes [helper functions](geb.md#deployproxy) for safe management and the [contract interface object](geb.md#contracts) to directly call the smart-contracts.
+The main package used to interact with the GEB system. Includes [helper functions](geb.md#deployproxy) for safe management and the [contract interface object](geb.md#contracts) to directly call smart contracts.
 
 ## Constructors
 
