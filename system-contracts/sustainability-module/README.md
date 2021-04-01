@@ -26,12 +26,14 @@ The **Sustainability Module** allocates resources to actors that update critical
 
 ### Smart Contract Bugs <a id="coding-errors"></a>
 
-* A bug in the `StabilityFeeTreasury` would potentially block other contracts from pulling funds or would incorrectly calculate the optimum amount of funds to keep in the contract \(`SAFEEngine.coinBalance[stabilityFeeTreasury]`\).
-* A bug could also prevent the treasury from sending extra unused resources to another address using `transferSurplusFunds()`
+* A bug in the `StabilityFeeTreasury` would potentially block other contracts from pulling funds or would incorrectly calculate the optimum amount of funds to keep in the contract \(`SAFEEngine.coinBalance[stabilityFeeTreasury]`\). A bug could also prevent the treasury from sending extra unused resources to another address using `transferSurplusFunds()`
+* A bug in the `IncreasingTreasuryReimbursement` contract could block the execution of 
+
+  `rewardCaller()` or it would make it impossible for someone to call `getCallerReward`
 
 ### Misconfiguration
 
-* Governance might set an incorrect address as the `extraSurplusReceiver` or could maliciously withdraw the permission of core contracts to pull funds. Governance could also allow malicious contracts to drain the treasury.
+* Governance might set an incorrect address as the `extraSurplusReceiver` in the `StabilityFeeTreasury` or could maliciously withdraw the permission of core contracts to pull funds. Governance could also allow malicious contracts to drain the treasury.
 
 ## 4. Governance Minimization
 
