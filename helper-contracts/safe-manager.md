@@ -15,7 +15,6 @@ The SAFE Manager is an abstraction around the `SAFEEngine` that allows anyone to
 **Variables**
 
 * `safeEngine` - the address of the `SAFEEngine`
-* `liquidationEngine` - the address of the `LiquidationEngine`
 * `safei` - auto incrementing nonce
 * `cdps[safeId: uint256]` - mapping between SAFE ids and SAFE
 * `cdpList[safeId: uint256]` - double linked list indicating the previous and next SAFE ids of a provided SAFE 
