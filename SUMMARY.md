@@ -66,6 +66,7 @@
   * [Stability Fee Treasury](system-contracts/sustainability-module/stability-fee-treasury.md)
   * [FSM Wrapper](system-contracts/sustainability-module/fsm-wrapper.md)
   * [Increasing Treasury Reimbursement](system-contracts/sustainability-module/increasing-treasury-reimbursement.md)
+  * [Mandatory Fixed Treasury Reimbursement](system-contracts/sustainability-module/mandatory-fixed-treasury-reimbursement.md)
 * [Governance Module](system-contracts/governance-module/README.md)
   * [DSPause](system-contracts/governance-module/ds-pause.md)
 * [Shutdown Module](system-contracts/shutdown-module/README.md)

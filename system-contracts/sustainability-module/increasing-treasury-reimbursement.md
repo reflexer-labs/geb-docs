@@ -25,7 +25,7 @@ The `IncreasingTreasuryReimbursement` is a contract meant to be inherited from a
 
 * `treasuryAllowance() public view returns (uint256)` - this returns the stability fee treasury allowance for the reimbursement contract by taking the minimum between the per block and the total allowances
 * `getCallerReward(uint256 timeOfLastUpdate`, `uint256 defaultDelayBetweenCalls) public` `view returns (uint256)` - get the SF reward that can be sent to an address right now
-* `rewardCaller(address proposedFeeReceiver, uint256 reward) internal` - internal function that's meant to send a SF reward to a `proposedFeeReceiver`
+* `rewardCaller(proposedFeeReceiver: address, reward: uint256) internal` - internal function that's meant to send a SF reward to a `proposedFeeReceiver`
 
 **Modifiers**
 
