@@ -31,6 +31,8 @@ The **Sustainability Module** allocates resources to actors that update critical
 
   `rewardCaller()` or it would make it impossible for someone to call `getCallerReward`
 
+* Similar to `IncreasingTreasuryReimbursement`, 
+
 ### Misconfiguration
 
 * Governance might set an incorrect address as the `extraSurplusReceiver` in the `StabilityFeeTreasury` or could maliciously withdraw the permission of core contracts to pull funds. Governance could also allow malicious contracts to drain the treasury.
