@@ -1,6 +1,6 @@
 # Current System Parameters
 
-## Mainnet
+## Mainnet RAI
 
 ### Quick Glance
 
