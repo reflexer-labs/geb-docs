@@ -7,9 +7,13 @@
 * [Community Resources](community-resources.md)
 * [FAQ](faq.md)
 
+## The Money God League
+
+* [Intro to The League](the-money-god-league/intro-to-the-league.md)
+
 ## Ungovernance
 
-* [Ungovernance Process](ungovernance/ungovernance-process.md)
+* [RAI's Ungovernance Process](ungovernance/rai-ungovernance-process.md)
 * [Governance Minimization Guide](ungovernance/governance-minimization-guide.md)
 
 ## Risk
