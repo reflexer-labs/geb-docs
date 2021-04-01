@@ -49,12 +49,12 @@ Example:
  // Contract read function: Fetch the debt ceiling
  const debtCeiling = await geb.contracts.safeEngine.globalDebtCeiling()
 
- // State changing function: Manualy liquidate a SAFE
+ // State changing function: manualy liquidate a SAFE
  const tx = geb.contracts.liquidationEngine.liquidateSAFE(ETH_A, '0x1234abc...')
  await wallet.sendTransaction(tx) // Send the Ethereum transaction
 ```
 
-Currently the following contracts ae available in this property:
+Currently the following contracts are available:
 
 * SAFEEngine
 * AccountingEngine
@@ -70,12 +70,12 @@ Currently the following contracts ae available in this property:
 * GetSafes
 * BasicCollateralJoin
 * CoinJoin
-* Coin \(RAI ERC20 contract\)
+* Coin \(System coin ERC20 contract\)
 * GebProxyRegistry
-* FixedDiscountCollateralAuctionHouse \(For ETH-A\)
+* FixedDiscountCollateralAuctionHouse
 * Weth \(ERC20\)
 
-For detailed information about the functions of each contract we recommend referring directly to the smart-contract [code](https://github.com/reflexer-labs/geb) and [documentation](https://docs.reflexer.finance/)
+For detailed information about the functions of each contract we recommend referring directly to the smart contract [code](https://github.com/reflexer-labs/geb) and [documentation](https://docs.reflexer.finance/).
 
 ## Methods
 
@@ -104,7 +104,7 @@ const USDC = geb.getErc20Contract(USDCAddress)
 // Get 0xdefiisawesome's balance
 const balance = USDC.balanceOf("0xdefiisawesome..")
 
-// Send 1 USDC to 0xdefiisawesome (USDC is 6 decimals)
+// Send 1 USDC to 0xdefiisawesome (USDC has 6 decimals)
 const tx = USDC.transfer("0xdefiisawesome..", "1000000")
 await wallet.sendTransaction(tx)
 ```
