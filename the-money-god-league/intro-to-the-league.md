@@ -6,7 +6,7 @@ The Money God League is an initiative meant to bring non-pegged stable assets in
 
 ## 2. Who Can Be in The League?
 
-Initially, the team will seek to work with a few established projects that have a clear idea of what they want to achieve with their stable assets and also have a roadmap with collateral assets that they want to add in the new protocol.
+Initially, the Reflexer team will seek to work with a few established projects that have a clear idea of what they want to achieve with their stable assets and also have a roadmap with collateral assets that they want to add in the new protocols.
 
 ## 3. Entering the League
 
