@@ -34,5 +34,9 @@ The **Automation Module** is a set of contracts that automate parameter setting 
 * Governance can also misconfigure the `SingleSpotDebtCeilingSetter` to the point where it stops calculating new ceilings \(by setting a large delay between recalculations\) or it can calculate large or low ceilings \(compared to the current amount of debt in the system\)
 * `ESMThresholdSetter` can be misconfigured and it can set extremely high or extremely low thresholds in the `ESM`
 
+## 4. Governance Minimization
+
+All the automation contracts are part of Level 2 governance minimization.
+
 
 
