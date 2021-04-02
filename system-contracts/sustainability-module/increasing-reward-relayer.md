@@ -14,12 +14,18 @@ This contract inherits functionality from the [IncreasingTreasuryReimbursement](
 
 **Variables**
 
-* `authorizedAccounts[usr: address]` - `addAuthorization`/`removeAuthorization` - auth mechanisms
 * `refundRequestor` - address that can request funds
 * `lastReimburseTime` - timestamp of the last reimbursement
 * `reimburseDelay` - enforced gap between reimbursements
 
 **Functions**
 
-\*\*\*\*
+* `modifyParameters` - modify contract parameters
+* `reimburseCaller(feeReceiver: address)` - send SF rewards from the treasury to the `feeReceiver`
+
+## 3. Walkthrough <a id="2-contract-details"></a>
+
+`refundRequestor` is the only address that can call `reimburseCaller` and request a stability fee payment from the treasury.
+
+`reimburseCaller` can only be called again after at least `reimburseDelay` seconds since the last call.
 
