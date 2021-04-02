@@ -69,7 +69,7 @@
   * [Mandatory Fixed Treasury Reimbursement](system-contracts/sustainability-module/mandatory-fixed-treasury-reimbursement.md)
   * [Increasing Reward Relayer](system-contracts/sustainability-module/increasing-reward-relayer.md)
 * [Automation Module](system-contracts/automation-module/README.md)
-  * [Untitled](system-contracts/automation-module/untitled.md)
+  * [Collateral Auction Throttler](system-contracts/automation-module/untitled.md)
 * [Governance Module](system-contracts/governance-module/README.md)
   * [DSPause](system-contracts/governance-module/ds-pause.md)
 * [Shutdown Module](system-contracts/shutdown-module/README.md)

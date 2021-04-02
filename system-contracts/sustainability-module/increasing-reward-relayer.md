@@ -27,5 +27,5 @@ This contract inherits functionality from the [IncreasingTreasuryReimbursement](
 
 `refundRequestor` is the only address that can call `reimburseCaller` and request a stability fee payment from the treasury.
 
-`reimburseCaller` can only be called again after at least `reimburseDelay` seconds since the last call.
+`reimburseCaller` can only be called again after at least `reimburseDelay` seconds have passed since the last call.
 
