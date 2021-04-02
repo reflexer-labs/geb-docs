@@ -16,5 +16,5 @@ The **Automation Module** is a set of contracts that automate parameter setting 
 
 ## 2. Component Descriptions
 
-
-
+* `CollateralAuctionThrottler` - this contract bounds the amount of bad debt that's waiting to be covered by collateral auctions at any given time
+* 
