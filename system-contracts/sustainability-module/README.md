@@ -22,7 +22,9 @@ The **Sustainability Module** allocates resources to actors that update critical
 * `FSMWrapper` - this contract is meant to act as a funding source for FSM-like contracts as well as an interface that allows other contracts to read data from the FSM integrated with the wrapper.
 * `IncreasingTreasuryReimbursement` - this contract is meant to be inherited from and used as a way to offer an increasing stability fee reward \(pulled from the SF treasury\) to any address.
 * `MandatoryFixedTreasuryReimbursement` - this is a contract meant to be inherited from and used as a way to offer a fixed stability fee reward \(pulled from the SF treasury\) to any address.
-* `IncreasingRewardRelayer` - 
+* `IncreasingRewardRelayer` - this is a contract meant to pull funds from the `StabilityFeeTreasury` and send them to a custom address. It inherits functionality from the 
+
+  `IncreasingTreasuryReimbursement` contract
 
 ## 3. Risks
 
