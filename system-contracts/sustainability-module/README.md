@@ -55,6 +55,8 @@ The `StabilityFeeTreasury` is part of the Level 2 Gov Minimization. That being s
 
 The `FSMWrapper` may need to have leftover governance \(depending on how much governance wants to automate reward setting\).
 
+`IncreasingRewardRelayer` can have governance in the long run, depending on how much governance wants to remove themselves from the contract and also on what the contract is requesting rewards for.
+
 `IncreasingTreasuryReimbursement` and `MandatoryFixedTreasuryReimbursement` are meant to be inherited by other contracts and so the contracts that inherit them will determine how much they can be governance minimized.
 
 {% hint style="info" %}
