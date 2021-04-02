@@ -17,4 +17,15 @@ The **Automation Module** is a set of contracts that automate parameter setting 
 ## 2. Component Descriptions
 
 * `CollateralAuctionThrottler` - this contract bounds the amount of bad debt that's waiting to be covered by collateral auctions at any given time
+* `SingleSpotDebtCeilingSetter` - this contract recomputes the debt ceiling for a specific collateral type by looking at the current `globalDebt` in the `SAFEEngine`
+* `ESMThresholdSSetter` - this contract recomputes the threshold needed to burn and trigger settlement using the `ESM`
+
+## 3. Risks
+
+### Smart Contract Bugs <a id="coding-errors"></a>
+
+* A bug in the `CollateralAuctionThrottler` could prevent the `LiquidationEngine` from liquidating any SAFE by setting `onAuctionSystemCoinLimit` to an extremely low value
+* A bug in the `SingleSpotDebtCeilingSetter` could set an extremely low ceiling or it could block any further ceiling updates and thus not allow the system to issue more system coins
 * 
+### Misconfiguration
+
