@@ -26,6 +26,11 @@ The **Automation Module** is a set of contracts that automate parameter setting 
 
 * A bug in the `CollateralAuctionThrottler` could prevent the `LiquidationEngine` from liquidating any SAFE by setting `onAuctionSystemCoinLimit` to an extremely low value
 * A bug in the `SingleSpotDebtCeilingSetter` could set an extremely low ceiling or it could block any further ceiling updates and thus not allow the system to issue more system coins
-* 
+* A bug in the `ESMThresholdSetter` could set the `ESM` threshold to an extremely low value which would make shutdown extremely easy to execute or to a very high value which would make shutdown almost impossible to execute
+
 ### Misconfiguration
+
+
+
+
 
