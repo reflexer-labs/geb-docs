@@ -42,16 +42,20 @@ The **Sustainability Module** allocates resources to actors that update critical
 
 ## 4. Governance Minimization
 
-Governance can withdraw their power over this module if two conditions are satisfied:
+Governance can withdraw their power over the `StabilityFeeTreasury` if two conditions are satisfied:
 
 1. All treasury dependent contracts were set up correctly \(can withdraw enough funds to function properly\).
 2. All external actors \(if any\) have the necessary permissions to pull funds from the treasury.
 
 The `StabilityFeeTreasury` is part of the Level 2 Gov Minimization. That being said, governance should maintain control only over setting `total` allowances to their initial values for every address that's currently authorized to `pullFunds` from the treasury.
 
+The `FSMWrapper` may need to have leftover governance \(depending on how much governance wants to automate reward setting\).
+
+`IncreasingTreasuryReimbursement` and `MandatoryFixedTreasuryReimbursement` are meant to be inherited by other contracts and so the contracts that inherit them will determine how much they can be governance minimized.
+
 {% hint style="info" %}
 **Keeping Governance Over** `takeFunds`
 
-Given that `takeFunds` has very simple and clearly defined behavior where governance cannot harm the treasury, it can be governed in the long run. 
+Given that `StabilityFeeTreasury.takeFunds` has very simple and clearly defined behaviour, it can be governed in the long run. 
 {% endhint %}
 
