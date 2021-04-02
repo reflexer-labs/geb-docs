@@ -15,8 +15,11 @@ This contract inherits functionality from the [IncreasingTreasuryReimbursement](
 **Variables**
 
 * `authorizedAccounts[usr: address]` - `addAuthorization`/`removeAuthorization` - auth mechanisms
-* `fixedReward` - the fixed reward sent by the `treasury` to a fee receiver
-* `treasury` - stability fee treasury contract
+* `refundRequestor` - address that can request funds
+* `lastReimburseTime` - timestamp of the last reimbursement
+* `reimburseDelay` - enforced gap between reimbursements
 
 **Functions**
+
+\*\*\*\*
 
