@@ -50,5 +50,11 @@ The setter inherits functionality from the [IncreasingTreasuryReimbursement](htt
 * `UpdateCeiling` - emitted when a new ceiling is computed and set. Contains:
   * `nextCeiling` - the new ceiling
 
+## 3. Walkthrough <a id="2-contract-details"></a>
 
+`autoUpdateCeiling` and `manualUpdateCeiling` can both be used to recompute the debt ceiling for the collateral type with `collateralName`. They both call `getNextCollateralCeiling` to calculate the new ceiling.
+
+`getNextCollateralCeiling` takes into account `allowsIncrease` and `allowsDecrease` to determine whether it is allowed to computed a higher or a lower ceiling \(compared to the current one\).
+
+Both `allowsIncrease` and `allowsDecrease` look at the current `redemptionRate` as well as at `blockIncreaseWhenRevalue` and `blockDecreaseWhenDevalue` to see whether they should allow or disallow an increase or decrease in the debt ceiling. `blockIncreaseWhenRevalue` and `blockDecreaseWhenDevalue` are by default set to zero so increases or decreases are always allowed, no matter what sign the redemption rate has.
 
