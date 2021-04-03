@@ -69,5 +69,5 @@ The protocol token is a [DsDelegateToken](https://github.com/reflexer-labs/ds-to
 
 ## 3. Walkthrough <a id="3-key-mechanisms-and-concepts"></a>
 
-Along with the protocol token having a standard ERC20 token interface, it also has [DSAuth](https://github.com/reflexer-labs/ds-auth)-protected mint and burn functions.
+Along with the standard ERC20 token interface, the protocol token also has [DSAuth](https://github.com/reflexer-labs/ds-auth)-protected mint and burn functions.
 
