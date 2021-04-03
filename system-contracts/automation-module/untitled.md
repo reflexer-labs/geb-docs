@@ -18,11 +18,13 @@ The `CollateralAuctionThrottler` is meant to recompute the `onAuctionSystemCoinL
 * `globalDebtPercentage` - percentage of global debt taken into account in order to set `LiquidationEngine.onAuctionSystemCoinLimit`
 * `minAuctionLimit` - the minimum value that can be set for `onAuctionSystemCoinLimit`
 * `lastUpdateTime` - last timestamp when the `onAuctionSystemCoinLimit` was updated
-* liquidationEngine - 
-* safeEngine -
-* surplusHolders - 
+* `liquidationEngine` - the `LiquidationEngine` contract
+* `safeEngine` - the `SAFEEngine` contract
+* `surplusHolders` - list of surplus holders taken into account when recomputing the`onAuctionSystemCoinLimit`
 
 **Functions**
+
+\*\*\*\*
 
 \*\*\*\*
 
