@@ -71,6 +71,7 @@
 * [Automation Module](system-contracts/automation-module/README.md)
   * [Collateral Auction Throttler](system-contracts/automation-module/untitled.md)
   * [Single Spot Debt Ceiling Setter](system-contracts/automation-module/single-spot-debt-ceiling-setter.md)
+  * [ESM Threshold Setter](system-contracts/automation-module/esm-threshold-setter.md)
 * [Governance Module](system-contracts/governance-module/README.md)
   * [DSPause](system-contracts/governance-module/ds-pause.md)
 * [Shutdown Module](system-contracts/shutdown-module/README.md)
