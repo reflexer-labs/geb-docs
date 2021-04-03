@@ -43,7 +43,12 @@ The setter inherits functionality from the [IncreasingTreasuryReimbursement](htt
 
 **Events**
 
-* AddManualSetter -
-* RemoveManualSetter -
-* UpdateCeiling -
+* `AddManualSetter` - emitted when a new manual setter is added. Contains:
+  * `account` - new manual setter address
+* `RemoveManualSetter` - emitted when a manual setter address is removed/blacklisted. Contains:
+  * `account` - the setter address that's removed
+* `UpdateCeiling` - emitted when a new ceiling is computed and set. Contains:
+  * `nextCeiling` - the new ceiling
+
+
 
