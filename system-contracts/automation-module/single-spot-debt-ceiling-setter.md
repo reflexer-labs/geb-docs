@@ -52,7 +52,7 @@ The setter inherits functionality from the [IncreasingTreasuryReimbursement](htt
 
 ## 3. Walkthrough <a id="2-contract-details"></a>
 
-`autoUpdateCeiling` and `manualUpdateCeiling` can both be used to recompute the debt ceiling for the collateral type with `collateralName`. They both call `getNextCollateralCeiling` to calculate the new ceiling.
+`autoUpdateCeiling` and `manualUpdateCeiling` can both be used to recompute the debt ceiling for the collateral type with `collateralName, although manualUpdateCeiling` can only be called by whitelisted `manualSetters`. Both `autoUpdateCeiling` and `manualUpdateCeiling` call `getNextCollateralCeiling` to calculate the new ceiling.
 
 `getNextCollateralCeiling` takes into account `allowsIncrease` and `allowsDecrease` to determine whether it is allowed to computed a higher or a lower ceiling \(compared to the current one\).
 
