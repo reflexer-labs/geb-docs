@@ -27,5 +27,23 @@ The setter inherits functionality from the [IncreasingTreasuryReimbursement](htt
 * `safeEngine` - the `SAFEEngine` contract
 * `oracleRelayer` - the `OracleRelayer` contract
 
+**Functions**
 
+* `modifyParameters` - modifies contract parameters
+* `autoUpdateCeiling(feeReceiver: address) external` - periodically updates the debt ceiling for the collateral type with `collateralName`. Can be called by anyone
+* `manualUpdateCeiling()` - authed function that allows `manualSetters` to update the debt ceiling whenever they want
+* `getNextCollateralCeiling() public view returns (uint256)` - view function meant to return the new and upcoming debt ceiling. It also checks for `allowsIncrease` and `allowsDecrease`
+* `getRawUpdatedCeiling() external view returns (uint256)` - view function meant to return the new and upcoming debt ceiling. It does not perform checks for `allowsIncrease` and `allowsDecrease`
+* `allowsIncrease(redemptionRate: uint256`, `currentDebtCeiling: uint256`, `updatedCeiling: uint256) public view returns (allowsIncrease: bool)` - view function meant to return whether an increase in the debt ceiling is currently allowed
+* `allowsDecrease(redemptionRate: uint256`, `currentDebtCeiling: uint256`, `updatedCeiling: uint256) public view returns (allowsDecrease: bool)` - view function meant to return whether a decrease in the debt ceiling is currently allowed
+
+**Modifiers**
+
+* `isManualSetter` - checks whether an address is part of `manualSetters`.
+
+**Events**
+
+* AddManualSetter -
+* RemoveManualSetter -
+* UpdateCeiling -
 
