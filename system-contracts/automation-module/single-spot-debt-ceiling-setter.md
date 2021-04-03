@@ -15,14 +15,17 @@ The setter inherits functionality from the [IncreasingTreasuryReimbursement](htt
 **Variables**
 
 * `manualSetters[usr: address]` - `addManualSetter`/`removeManualSetter` - auth mechanism for addresses that can call `manualUpdateCeiling`
-* maxCollateralCeiling -
-* minCollateralCeiling -
-* ceilingPercentageChange -
-* lastUpdateTime -
-* updateDelay -
-* lastManualUpdateTime -
-* blockIncreaseWhenRevalue -
-* blockDecreaseWhenDevalue -
-* collateralName -
-* safeEngine -
-* 
+* `maxCollateralCeiling` - the max amount of system coins that can be generated using the collateral type with `collateralName`
+* `minCollateralCeiling` - the min amount of system coins that must be generated using the collateral type with `collateralName`
+* `ceilingPercentageChange` - premium on top of the current amount of debt \(backed by the collateral type with `collateralName`\) minted. This is used to calculate a new ceiling
+* `lastUpdateTime` - when the debt ceiling was last updated
+* `updateDelay` - enforced time gap between calls
+* `lastManualUpdateTime` - last timestamp of a manual update
+* `blockIncreaseWhenRevalue` - flag that blocks an increase in the debt ceiling when the redemption rate is positive
+* `blockDecreaseWhenDevalue` - flag that blocks a decrease in the debt ceiling when the redemption rate is negative
+* `collateralName` - the targeted collateral's name
+* `safeEngine` - the `SAFEEngine` contract
+* `oracleRelayer` - the `OracleRelayer` contract
+
+
+
