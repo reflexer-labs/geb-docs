@@ -31,7 +31,9 @@ The throttler inherits functionality from the [IncreasingTreasuryReimbursement](
 
 ## 3. Walkthrough <a id="2-contract-details"></a>
 
+`recomputeOnAuctionSystemCoinLimit` is the core function used to periodically recompute the `onAuctionSystemCoinLimit` and set it in the `liquidationEngine`. Anyone can call this function as long as at least `updateDelay` seconds have passed since the last update. The function rewards the caller with surplus coming from the `treasury`.
 
+`backupRecomputeOnAuctionSystemCoinLimit` is a backup function that can be called if at least `backupUpdateDelay` seconds have passed since the `lastUpdateTime`. As the name mentions, it is meant to work as a backup in case `recomputeOnAuctionSystemCoinLimit` hasn't been called in a long time \(e.g because of bugs\).
 
 \*\*\*\*
 
