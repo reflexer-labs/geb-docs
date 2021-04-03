@@ -29,6 +29,8 @@ The throttler inherits functionality from the [IncreasingTreasuryReimbursement](
 * `recomputeOnAuctionSystemCoinLimit(feeReceiver: address)` - recompute and set the new `onAuctionSystemCoinLimit`
 * `backupRecomputeOnAuctionSystemCoinLimit()` - backup function for recomputing the `onAuctionSystemCoinLimit` in case of a severe delay since the last update
 
+## 3. Walkthrough <a id="2-contract-details"></a>
+
 
 
 \*\*\*\*

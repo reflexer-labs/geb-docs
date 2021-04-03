@@ -1,5 +1,7 @@
 # API Endpoints
 
+## RAI
+
 ### Graph Protocol Subgraphs
 
 * Mainnet: [https://thegraph.com/explorer/subgraph/reflexer-labs/rai-mainnet](https://thegraph.com/explorer/subgraph/reflexer-labs/rai-mainnet) 
