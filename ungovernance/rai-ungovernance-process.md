@@ -11,6 +11,8 @@ There are three steps that a new smart contract which automates GEB should go th
 ## 2. Current Infrastructure Being Tested
 
 * [Collateral Auction Throttler](https://github.com/reflexer-labs/geb-collateral-auction-throttler/blob/master/src/CollateralAuctionThrottler.sol)
+* [FSMWrapper](https://github.com/reflexer-labs/geb-fsm/blob/master/src/FSMWrapper.sol)
+* [ExternallyFundedOSM](https://github.com/reflexer-labs/geb-fsm/blob/b6affe7616210873bf9cfea80abfef354139c027/src/OSM.sol#L278)
 
 ## 3. Already Deployed Infrastructure
 
