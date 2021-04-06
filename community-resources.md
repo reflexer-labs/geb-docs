@@ -12,6 +12,7 @@ description: List of talks and articles about RAI and Reflexer
 
 ### Articles 
 
+* [Reflexer and RAI Explained, defiprime.com](https://defiprime.com/reflexer) April 2021
 * [Solange Gueiros - Reflexer.finance tutorial for beginners: how to get started](https://solangegueiros.medium.com/reflexer-finance-tutorial-how-to-create-an-account-and-a-safe-on-kovan-testnet-f5aa2fdc2092) March 2021
 * [Ameen Soleimani - A Money God RAIses](https://ameensol.medium.com/a-money-god-raises-rai-is-live-on-ethereum-mainnet-f9aff2b1d331) February 2021
 * [Defi Pulse - Crypto-Native Stability Built for DeFi](https://defipulse.com/blog/reflexer/) Febrary 2021
