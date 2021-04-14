@@ -46,7 +46,7 @@ You need to mint RAI in order to accrue rewards. To determine the maximum amount
 
 #### 3. I minted more RAI than the amount of RAI I added as liquidity
 
-Currently you’re only accruing rewards for the amount you both minted and LPed. If you would like to accrue more rewards, you need to add more RAI as liquidity in the [Uniswap pool](https://app.uniswap.org/#/add/ETH/0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919).
+Currently you’re only accruing rewards for the amount you both minted and LPed. If you would like to accrue more rewards, you need to add more RAI as liquidity in the [Uniswap v2 RAI/ETH pool](https://app.uniswap.org/#/add/ETH/0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919) or [Uniswap v2 RAI/DAI pool](https://info.uniswap.org/pair/0x4a0ea6ad985f6526de7d1ade562e1007e9c5d757).
 
 **4. I minted less RAI than I can currently claim from the Uniswap v2 pool**
 
