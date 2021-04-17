@@ -62,7 +62,7 @@
 * `EXEC_TIME` - 259,200 \(3 days\)
 * `MAX_DELAY` - 2,419,200 \(28 days\)
 * `MAX_DELAY_MULTIPLIER` - 3
-* `delay` - 0
+* `delay` - 14,400
 * `delayMultiplier` - 3
 * `maxScheduledTransactions` - 10
 * `protestEnd` - 500
