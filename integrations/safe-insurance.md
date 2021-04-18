@@ -49,27 +49,20 @@ abstract contract SafeSaviourLike is ReentrancyGuard {
     // The minimum fiat value that the keeper must get in exchange for saving a SAFE
     uint256 public minKeeperPayoutValue;  // [wad]
     /*
-      The proportion between the keeperPayout (if it's in collateral) and the amount of collateral that's in a SAFE to be saved.
+      The proportion between the keeperPayout (if it's in collateral) and the amount of collateral or debt that's in a SAFE to be saved.
       Alternatively, it can be the proportion between the fiat value of keeperPayout and the fiat value of the profit that a keeper
       could make if a SAFE is liquidated right now. It ensures there's no incentive to intentionally put a SAFE underwater and then
       save it just to make a profit that's greater than the one from participating in collateral auctions
     */
     uint256 public payoutToSAFESize;
-    // The default collateralization ratio a SAFE should have after it's saved
-    uint256 public defaultDesiredCollateralizationRatio;  // [percentage]
-
-    // Desired CRatios for each SAFE after they're saved
-    mapping(bytes32 => mapping(address => uint256)) public desiredCollateralizationRatios;
 
     // --- Constants ---
     uint256 public constant ONE               = 1;
     uint256 public constant HUNDRED           = 100;
     uint256 public constant THOUSAND          = 1000;
-    uint256 public constant CRATIO_SCALE_DOWN = 10**25;
     uint256 public constant WAD_COMPLEMENT    = 10**9;
     uint256 public constant WAD               = 10**18;
     uint256 public constant RAY               = 10**27;
-    uint256 public constant MAX_CRATIO        = 1000;
     uint256 public constant MAX_UINT          = uint(-1);
 
     // --- Boolean Logic ---
@@ -81,15 +74,14 @@ abstract contract SafeSaviourLike is ReentrancyGuard {
     }
 
     // --- Events ---
-    event SetDesiredCollateralizationRatio(address indexed caller, uint256 indexed safeID, address indexed safeHandler, uint256 cRatio);
     event SaveSAFE(address indexed keeper, bytes32 indexed collateralType, address indexed safeHandler, uint256 collateralAddedOrDebtRepaid);
 
     // --- Functions to Implement ---
     function saveSAFE(address,bytes32,address) virtual external returns (bool,uint256,uint256);
     function getKeeperPayoutValue() virtual public returns (uint256);
     function keeperPayoutExceedsMinValue() virtual public returns (bool);
-    function canSave(address) virtual external returns (bool);
-    function tokenAmountUsedToSave(address) virtual public returns (uint256);
+    function canSave(bytes32,address) virtual external returns (bool);
+    function tokenAmountUsedToSave(bytes32,address) virtual public returns (uint256);
 }
 
 ```
@@ -101,64 +93,17 @@ In order to get an idea of how a saviour contract should be implemented and what
 ### Constructor Requirements:
 
 * Sanitize every parameter \(`address`es must be non null, `uint` values are non null and within expected bounds etc\)
-* You must set the [CollateralJoin](https://github.com/reflexer-labs/geb-deploy/blob/master/src/AdvancedTokenAdapters.sol) contract of the specific collateral type you're targeting, as well as the [LiquidationEngine](https://github.com/reflexer-labs/geb/blob/master/src/LiquidationEngine.sol), [OracleRelayer](https://github.com/reflexer-labs/geb/blob/master/src/OracleRelayer.sol), [SAFEEngine](https://github.com/reflexer-labs/geb/blob/master/src/SAFEEngine.sol), [GebSafeManager](https://github.com/reflexer-labs/geb-safe-manager/blob/master/src/GebSafeManager.sol) and [SAFESaviourRegistry](https://github.com/reflexer-labs/geb-safe-saviours/blob/master/src/SAFESaviourRegistry.sol)
+* In case of a saviour that adds more collateral in Safes, you must set the [CollateralJoin](https://github.com/reflexer-labs/geb-deploy/blob/master/src/AdvancedTokenAdapters.sol) contract of the specific collateral type you're targeting
+* In case of a saviour that repays debt instead of adding collateral, you must set the [CoinJoin](https://github.com/reflexer-labs/geb/blob/dc6ad8302080cb2912f8d5fb258cdcae13601982/src/BasicTokenAdapters.sol#L225) contract
+* Every saviour type should also have the [LiquidationEngine](https://github.com/reflexer-labs/geb/blob/master/src/LiquidationEngine.sol), [OracleRelayer](https://github.com/reflexer-labs/geb/blob/master/src/OracleRelayer.sol), [SAFEEngine](https://github.com/reflexer-labs/geb/blob/master/src/SAFEEngine.sol), [GebSafeManager](https://github.com/reflexer-labs/geb-safe-manager/blob/master/src/GebSafeManager.sol), [SAFESaviourRegistry](https://github.com/reflexer-labs/geb-safe-saviours/blob/master/src/SAFESaviourRegistry.sol) and [SaviourCRatioSetter](https://github.com/reflexer-labs/geb-safe-saviours/blob/master/src/SaviourCRatioSetter.sol) set
 * You must set: 
   * `keeperPayout` - amount of collateral awarded to the address that initially called [LiquidationEngine.liquidateSAFE](https://github.com/reflexer-labs/geb/blob/a49e4486682b787571475821ec66bfa025e5183f/src/LiquidationEngine.sol#L309)
   * `minKeeperPayoutValue` - the minimum fiat value of the `keeperPayout` which makes it compelling for keepers to save the `SAFE` instead of waiting even more to liquidate it
-  * `payoutToSAFESize` - how many times more collateral there must be in a `SAFE` compared to `keeperPayout`; this prevents keepers from purposefully liquidating `SAFE`s so they get a reward that is bigger than the one offered in a collateral auction
   * `defaultDesiredCollateralizationRatio` - the default CRatio that a `SAFE` will have after it's saved; this CRatio must be greater than the liquidation ratio stored in the [OracleRelayer](https://github.com/reflexer-labs/geb/blob/a49e4486682b787571475821ec66bfa025e5183f/src/OracleRelayer.sol#L60) and that is associated with `collateralToken`
-* `defaultDesiredCollateralizationRatio` must be greater than zero and smaller or equal to `MAX_CRATIO`. `MAX_CRATIO` is a constant that will be smaller than `2000` \(depending on the interface and implementation\)
+* Optionally, you can set:
+  * `payoutToSAFESize` - how many times more collateral there must be in a `SAFE` compared to `keeperPayout`; this prevents keepers from purposefully liquidating `SAFE`s so they get a reward that is bigger than the one offered in a collateral auction
 * When comparing a `liquidationCRatio` from the `OracleRelayer` with a desired collateralization ratio, you must first divide `liquidationCRatio` by `CRATIO_SCALE_DOWN` so you have the same scale for both numbers
 * You must integrate your saviour with [GebSafeManager](https://github.com/reflexer-labs/geb-safe-manager/blob/master/src/GebSafeManager.sol) in order to take advantage of its modularity and friendlier interface compared to core contracts \(such as `SAFEEngine`\)
-* You must check that the `collateralJoin` contract is still enabled and that it handles a token with the expected amount of decimals you want
-* All variables shown in the example below must be set only once in the constructor and then they must remain immutable. If governance wants to change a parameter, they must deploy a new contract and whitelist it inside `LiquidationEngine` and `SAFESaviourRegistry`
-
-```javascript
-constructor(
-  address collateralJoin_,
-  address liquidationEngine_,
-  address oracleRelayer_,
-  address safeEngine_,
-  address safeManager_,
-  address saviourRegistry_,
-  uint256 keeperPayout_,
-  uint256 minKeeperPayoutValue_,
-  uint256 payoutToSAFESize_,
-  uint256 defaultDesiredCollateralizationRatio_
-) public {
-    require(collateralJoin_ != address(0), "GeneralTokenReserveSafeSaviour/null-collateral-join");
-    require(liquidationEngine_ != address(0), "GeneralTokenReserveSafeSaviour/null-liquidation-engine");
-    require(oracleRelayer_ != address(0), "GeneralTokenReserveSafeSaviour/null-oracle-relayer");
-    require(safeEngine_ != address(0), "GeneralTokenReserveSafeSaviour/null-safe-engine");
-    require(safeManager_ != address(0), "GeneralTokenReserveSafeSaviour/null-safe-manager");
-    require(saviourRegistry_ != address(0), "GeneralTokenReserveSafeSaviour/null-saviour-registry");
-    require(keeperPayout_ > 0, "GeneralTokenReserveSafeSaviour/invalid-keeper-payout");
-    require(defaultDesiredCollateralizationRatio_ > 0, "GeneralTokenReserveSafeSaviour/null-default-cratio");
-    require(payoutToSAFESize_ > 1, "GeneralTokenReserveSafeSaviour/invalid-payout-to-safe-size");
-    require(minKeeperPayoutValue_ > 0, "GeneralTokenReserveSafeSaviour/invalid-min-payout-value");
-
-    keeperPayout         = keeperPayout_;
-    payoutToSAFESize     = payoutToSAFESize_;
-    minKeeperPayoutValue = minKeeperPayoutValue_;
-
-    liquidationEngine    = LiquidationEngineLike(liquidationEngine_);
-    collateralJoin       = CollateralJoinLike(collateralJoin_);
-    oracleRelayer        = OracleRelayerLike(oracleRelayer_);
-    safeEngine           = SAFEEngineLike(safeEngine_);
-    safeManager          = GebSafeManagerLike(safeManager_);
-    saviourRegistry      = SAFESaviourRegistryLike(saviourRegistry_);
-    collateralToken      = ERC20Like(collateralJoin.collateral());
-
-    uint256 scaledLiquidationRatio = oracleRelayer.liquidationCRatio(collateralJoin.collateralType()) / CRATIO_SCALE_DOWN;
-
-    require(scaledLiquidationRatio > 0, "GeneralTokenReserveSafeSaviour/invalid-scaled-liq-ratio");
-    require(both(defaultDesiredCollateralizationRatio_ > scaledLiquidationRatio, defaultDesiredCollateralizationRatio_ <= MAX_CRATIO), "GeneralTokenReserveSafeSaviour/invalid-default-desired-cratio");
-    require(collateralJoin.decimals() == 18, "GeneralTokenReserveSafeSaviour/invalid-join-decimals");
-    require(collateralJoin.contractEnabled() == 1, "GeneralTokenReserveSafeSaviour/join-disabled");
-
-    defaultDesiredCollateralizationRatio = defaultDesiredCollateralizationRatio_;
-}
-```
 
 ### Covering & Uncovering SAFEs:
 
@@ -174,30 +119,6 @@ There is no specific way in which users should cover a `SAFE`. They can store co
 
 Make sure to protect your cover/uncover functions against re-entrancy.
 {% endhint %}
-
-### Setting a Custom Desired Collateralization Ratio for a SAFE:
-
-Depending on the saviour implementation, users may be able to set custom collateralization ratios that their `SAFE`s must have after they are saved. These custom CRatios must be greater than the `liquidationCRatio` of the collateral type backing the `SAFE`s and the function must only be called by a `SAFE`'s owner or by another authorized account.
-
-```javascript
-function setDesiredCollateralizationRatio(uint256 safeID, uint256 cRatio) external controlsSAFE(msg.sender, safeID) {
-    // Fetch the collateral's liquidationCRatio as well as the SAFE's handler
-    // Scale the liquidationCRatio down
-    uint256 scaledLiquidationRatio = oracleRelayer.liquidationCRatio(collateralJoin.collateralType()) / CRATIO_SCALE_DOWN;
-    address safeHandler = safeManager.safes(safeID);
-
-    // Check that the scaled liquidationCRatio is non null and that the proposed 
-    // cRatio is greater than the liquidation one and smaller or equal to MAX_CRATIO
-    require(scaledLiquidationRatio > 0, "GeneralTokenReserveSafeSaviour/invalid-scaled-liq-ratio");
-    require(scaledLiquidationRatio < cRatio, "GeneralTokenReserveSafeSaviour/invalid-desired-cratio");
-    require(cRatio <= MAX_CRATIO, "GeneralTokenReserveSafeSaviour/exceeds-max-cratio");
-
-    // Store the new desired cRatio for the specific SAFE
-    desiredCollateralizationRatios[collateralJoin.collateralType()][safeHandler] = cRatio;
-
-    emit SetDesiredCollateralizationRatio(msg.sender, safeID, safeHandler, cRatio);
-}
-```
 
 ### View Function Requirements:
 
@@ -232,11 +153,10 @@ The process of saving a `SAFE` has its own requirements:
 * `saveSAFE` must check that `msg.sender` is the `LiquidationEngine`
 * The `keeper` parameter must not be null
 * There is a special condition you must add where, if the `collateralType` is null, the `keeper` is the `LiquidationEngine` itself and the `safeHandler` is null, you return a tuple like `(true`, `uint(-1)`, `uint(-1))`. This condition will help the `LiquidationEngine` to check that you implemented `saveSAFE`. You can see an example of this condition [here](https://github.com/reflexer-labs/geb-safe-saviours/blob/6b8a89e1f6e7c7d210cb68f684ac1c6a5fb6e0c5/src/saviours/GeneralTokenReserveSafeSaviour.sol#L157)
-* You must make sure that the `collateralType` provided is equal to the `collateralType` found in the `coinJoin` contract you specified in the saviour's constructor
 * You must check that `keeperPayoutExceedsMinValue` returns `true`. If it returns `false`, you must return early
-* You must check that the `SAFE` has collateral in it
+* You must check that the `SAFE` has debt in it
 * You must check that the saviour can both reward the keeper for saving the SAFE and also add enough collateral in the SAFE so its CRatio goes to the desired level
-* You must **not** add any collateral in the `SAFE` in case it **cannot** be saved \(its CRatio cannot be increased to the desired level\). You must revert in case the `SAFE` cannot be saved. If you were to add collateral in the `SAFE` and still not save it, GEB would still liquidate that `SAFE` and you would waste resources
+* You must **not** add any collateral in the `SAFE` or repay the `SAFE`'s debt in case it **cannot** be saved \(its CRatio cannot be increased to the desired level\). You must revert in case the `SAFE` cannot be saved
 * You must call `saviourRegistry.markSave(collateralType`, `safeHandler)` so that the `SAFESaviourRegistry` knows a specific `SAFE` has just been saved. The registry enforces a delay between two consecutive save actions for a specific `SAFE`. The delay is there to make sure that `SAFE` users don't solely rely on saviours to protect their positions. This way we avoid a scenario where one or a couple of popular saviours fail \(e.g bugs, lack of sufficient cover\) and most positions in the system are liquidated at once
 * You must emit a `SaveSAFE` event before you return
 * The last thing you have to do is to return a tuple in the form of `(true`, `tokenAmountUsed`, `keeperPayout)` where:
@@ -261,9 +181,9 @@ In order to launch and integrate a saviour with a mainnet deployed GEB, the savi
 
 1. You must first create a new [GEB Improvement Proposal](https://github.com/reflexer-labs/GIPs). Once you create the GIP you must ask for feedback on [Reflexer's Discord server](https://discord.gg/kB4vcYs) \(in the development channel\). To maximize your chances of having your idea accepted:
    * Your saviour must only do one thing. For example, you should only handle aTokens or cTokens, not both
-   * Your saviour should only take into account a single collateral type \(e.g ETH-A **or** ETH-B, **not** ETH-A and ETH-B\)
+   * Your saviour should only take into account a single collateral type \(e.g ETH-A **or** ETH-B, **not** ETH-A and ETH-B\) in case it's meant to add collateral. If the saviour repays debt, it can be generalized to handle any Safe with any collateral type
    * You should have a draft implementation of your saviour with estimated gas amounts for calling each function
-   * You should give an initial estimate of the `keeperPayout`, `minKeeperPayoutValue`, `payoutToSAFESize` and `defaultDesiredCollateralizationRatio` values you plan to set
+   * You should give an initial estimate of the `keeperPayout`, `minKeeperPayoutValue` and `payoutToSAFESize` values you plan to set
    * You must specify if you plan to monetize the saviour service you're building and how you plan to do it
 2. Once you receive feedback \(and assuming it's positive\), you can start to fully implement the saviour. Keep in mind that, aside from the saviour, you will need to create a proxy actions contract \(like [this one](https://github.com/reflexer-labs/geb-proxy-actions/blob/f7b4cdb0cde25683dc7bb04cf96f25ebe25a1853/src/GebProxyActions.sol#L746)\) that will be used by others to connect your saviour to Safes and also add cover.
 3. Before you submit your full implementation and update the GIP, you must make sure that you have 100% test coverage for your code and also do several integration tests between the `LiquidationEngine`, `SAFESaviourRegistry` and the saviour code. In order to submit your implementation, update your GIP with a link to your code and a new summary of the gas amounts required to call each function, as well as updated values for `keeperPayout`, `minKeeperPayoutValue`, `payoutToSAFESize` and `defaultDesiredCollateralizationRatio`
