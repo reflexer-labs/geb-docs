@@ -75,7 +75,6 @@ abstract contract SafeSaviourLike is ReentrancyGuard {
     function canSave(bytes32,address) virtual external returns (bool);
     function tokenAmountUsedToSave(bytes32,address) virtual public returns (uint256);
 }
-
 ```
 
 ## 3. Implementation Guidelines
