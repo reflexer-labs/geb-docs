@@ -129,5 +129,5 @@
 
 ## Integrations
 
-* [SAFE Insurance](integrations/safe-insurance.md)
+* [SAFE Protection](integrations/safe-protection.md)
 
