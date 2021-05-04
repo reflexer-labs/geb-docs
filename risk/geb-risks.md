@@ -26,7 +26,7 @@ You can take a look at the [Governance Minimization Guide](https://docs.reflexer
 
 PID control is still a novel concept in DeFi. No other stable asset prior to RAI has been managed by an on-chain controller and there is no historical data that can help with the controller's modelling and simulations.
 
-If the controller is too slow it may be completely ineffective in stabilizing RAI or other reflex indexes. If it's too strong, it may destabilize the system.
+If the controller is too slow it may be completely ineffective in stabilizing RAI or other stablecoins. If it's too strong, it may destabilize the system.
 
 **NOTE**: check out more PID failure modes in [this section](https://docs.reflexer.finance/pid-failure-modes-and-responses).
 
