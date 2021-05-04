@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-The Money God League is an initiative meant to bring non-pegged stable assets into the mainstream. The League is also devoted toward making control theory a common framework used in a wide variety of DeFi related projects.
+The Money God League is an initiative meant to bring non-pegged stable assets \(stablecoins\) into the mainstream. The League is also devoted toward making control theory a common framework used in a wide variety of DeFi related projects.
 
 ## 2. Who Can Be in The League?
 
