@@ -6,26 +6,26 @@ description: How to react in different scenarios where the redemption rate is in
 
 ## Failure Scenarios
 
-The following is a list of known PID failure modes and possible responses or fixes for each one of them. Note that in order to minimize the risk of the PID failing, governance should activate it only after the reflex index has a minimum, mandatory liquidity level on exchanges as well as plenty of users interacting with the system. 
+The following is a list of known PID failure modes and possible responses or fixes for each one of them. Note that in order to minimize the risk of the PID failing, governance should activate it only after the stablecoin has a minimum, mandatory liquidity level on exchanges as well as plenty of users interacting with the system. 
 
 ### Market Manipulation
 
-Although improbable \(in case the PID is fed a TWAP feed for the reflex index market price\) after an index gets to scale, market manipulation is always a concern that can make the PID controller destabilize the system. In this scenario, governance has two options: pause the controller until there is more liquidity on exchanges or globally settle the system.
+Although improbable \(in case the PID is fed a TWAP feed for the stablecoin market price\) after a stablecoin gets to scale, market manipulation is always a concern that can make the PID controller destabilize the system. In this scenario, governance has two options: pause the controller until there is more liquidity on exchanges or globally settle the system.
 
 ### Lack of Liquidity on Exchanges
 
-Governance must ensure at all times that there is enough indexes on exchanges vs indexes locked in other applications. This is why governance must specify two KPIs:
+Governance must ensure at all times that there is enough stablecoins on exchanges vs stablecoins locked in other applications. This is why governance must specify two KPIs:
 
 1. An absolute minimum amount of liquidity that must be on the exchanges from which the PID is pulling market price data
-2. A minimum percentage of indexes out of the total oustanding supply that must be at all times on exchanges vs the percentage of indexes locked/used in other applications
+2. A minimum percentage of stablecoins out of the total oustanding supply that must be at all times on exchanges vs the percentage of stablecoins locked/used in other applications
 
-In case the index liquidity drops below any of the two limits specied above, governance is advised to pause the PID and restart it only after the liquidity improves.
+In case the stablecoin liquidity drops below any of the two limits specied above, governance is advised to pause the PID and restart it only after the liquidity improves.
 
 **NOTE**: lack of liquidity will increase the risk of market manipulation \(as seen in Proto RAI\).
 
 ### Skewed Incentives
 
-In case governance sets up a system to incentivize the growth of a reflex index, these incentives may interfere with the PID's and cause the system to become unstable. In this scenario, governance should look at the following solutions:
+In case governance sets up a system to incentivize the growth of a stablecoin, these incentives may interfere with the PID's and cause the system to become unstable. In this scenario, governance should look at the following solutions:
 
 1. Offer less growth incentives over a longer period of time
 2. Pause the controller until the growth campaign/s end
@@ -44,7 +44,7 @@ In this scenario there are three possible solutions:
 
 ## Failure Prevention
 
-In order to make market manipulation as expensive as possible, we propose the following liquidity thresholds for the RAI reflex index:
+In order to make market manipulation as expensive as possible, we propose the following liquidity thresholds for the RAI stablecoin:
 
 * There must be at least $2M worth of liquidity on the exchange/s that the RAI oracle is pulling a price feed from
 * At least 3% of the RAI supply must be on the exchange/s from which the system is pulling a price feed from
