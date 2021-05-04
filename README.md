@@ -4,9 +4,7 @@ description: The what and how of the GEB framework
 
 # Introduction to GEB
 
-GEB is a framework for deploying systems that can issue [reflex index](https://medium.com/reflexer-labs/stability-without-pegs-8c6a1cbc7fbd)[es](https://medium.com/reflexer-labs/stability-without-pegs-8c6a1cbc7fbd). Reflex indexes are assets that dampen the volatility of their underlying collateral. They are useful as more "stable" collateral for other DeFi protocols \(compared to ETH or BTC\) or as stable assets with embedded interest rates that supercharge other DeFi protocols.  
-  
-As an example, if a reflex index was backed by ETH and one day ETH would significantly drop in price, the index would delay this shock and spread it over a longer period of time. The length of the "spread" depends on how the feedback mechanism is set up and on how reflex index users react to the mechanism's incentives \(or even to the mere expectation that the mechanism will change user incentives in a certain way\).  
+GEB is a framework for deploying systems that can issue [stablecoins](https://medium.com/reflexer-labs/stability-without-pegs-8c6a1cbc7fbd). Stablecoins don't look like [this](https://www.coingecko.com/en/coins/usd-coin) \(that's a pegged coin\), but rather like [this](https://duneanalytics.com/HggqX/Reflexer-RAI). Stablecoins are a great collateral source for other DeFi protocols \(compared to ETH or BTC\) or as stable assets with embedded funding rates that supercharge other DeFi protocols.  
   
 This documentation is meant to explain all the components behind GEB. Before diving in the docs, we recommend reading our original [whitepaper](https://github.com/reflexer-labs/whitepapers/blob/master/English/rai-english.pdf).  
   
