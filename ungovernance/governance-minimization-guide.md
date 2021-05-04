@@ -6,7 +6,7 @@ description: Steps and details for minimizing governance over a GEB deployment
 
 GEB governance minimization is a multi stage process at the end of which governance will not control or be able to upgrade most core contracts and many parameters will be set autonomously by other external contracts.
 
-This guide will go over the requirements needed to governance minimize a GEB, infrastructure needed to automate parameter setting as well as the governance minimization stages that RAI \(and possibly other reflex indexes\) will go through.
+This guide will go over the requirements needed to governance minimize a GEB, infrastructure needed to automate parameter setting as well as the governance minimization stages that RAI \(and possibly other stablecoins\) will go through.
 
 ###  1. Requirements for Governance Minimization
 
@@ -40,7 +40,7 @@ Each component in GEB has varying degrees of governance minimization potential. 
 * **Protocol Token Authority** - governance can completely remove control from this contract once the Debt Auction House is governance minimized
 * **Protocol Token Printing Permissions** - governance can completely remove control from this contract once the Debt Auction House is governance minimized
 * **Protocol Token** - governance will not have control over this component \(manually minting tokens or changing allowances so other addresses can mint\) once they remove control from the Protocol Token Authority and the Protocol Token Printing Permissions
-* **PID Controller** - governance may need to keep some control over this component in the long run; the community will have more insight into how much control it will need after a GEB has been running for at least 1 year on mainnet; one reason for maintaining \(bounded\) control is the fact that the controller should be paused when the system's reflex index doesn't have enough liquidity on exchanges; **NOTE**: even if governance keeps some control over the PID, the `OracleRelayer` will have upper and lower bounds for the redemption rate so that a potential governance attack cannot immediately destroy the protocol
+* **PID Controller** - governance may need to keep some control over this component in the long run; the community will have more insight into how much control it will need after a GEB has been running for at least 1 year on mainnet; one reason for maintaining \(bounded\) control is the fact that the controller should be paused when the system's stablecoin doesn't have enough liquidity on exchanges; **NOTE**: even if governance keeps some control over the PID, the `OracleRelayer` will have upper and lower bounds for the redemption rate so that a potential governance attack cannot immediately destroy the protocol
 * **Saviour Contracts** - governance will need to keep maintaining these contracts in the long run because they are connected to external components
 * **SAFE Saviour Registry** - governance will need to keep maintaining this contract in the long run because it's meant to whitelist/blacklist saviour contracts
 
