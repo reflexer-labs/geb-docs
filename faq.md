@@ -6,11 +6,11 @@ description: Frequently asked questions about RAI and GEB
 
 ### What is RAI?
 
-RAI is an ETH backed stable asset with a [managed float regime](https://en.wikipedia.org/wiki/Managed_float_regime). The RAIUSD exchange rate is determined by supply and demand while the protocol that issues RAI tries to stabilize its price by constantly de or revaluing it.
+RAI is an ETH backed stablecoin with a [managed float regime](https://en.wikipedia.org/wiki/Managed_float_regime). The RAIUSD exchange rate is determined by supply and demand while the protocol that issues RAI tries to stabilize its price by constantly de or revaluing it.
 
 The supply and demand mechanic plays out between two parties: SAFE users \(those who generate RAI with their ETH\) and RAI holders \(those who hold, speculate on or use RAI in other protocols and apps\).
 
-Compared to protocols that try to defend a [fixed exchange rate](https://www.investopedia.com/terms/f/fixedexchangerate.asp) between their native stable asset and fiat \(DAI/USD, sUSD/USD etc\), RAI's monetary policy offers a couple of advantages:
+Compared to protocols that try to defend a [fixed exchange rate](https://www.investopedia.com/terms/f/fixedexchangerate.asp) between their native stable asset \(pegged coin\) and fiat \(DAI/USD, sUSD/USD etc\), RAI's monetary policy offers a couple of advantages:
 
 * Flexibility: the protocol can devalue or revalue RAI in response to changes in RAI's market price. This process transfers value between SAFE users and RAI holders and incentivizes both parties to bring the market price back to a target chosen by the protocol. The mechanism is similar to countries [devaluing](https://www.investopedia.com/terms/d/devaluation.asp) or [revaluing](https://www.investopedia.com/terms/r/revaluation.asp) their currencies in order to combat a trade imbalance. The "trade imbalance" in RAI's case happens between RAI and SAFE users
 * Discretion: the protocol itself is free to change the target exchange rate to its own advantage. It can attract or repel capital whenever it wants.

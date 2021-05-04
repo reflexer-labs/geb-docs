@@ -10,11 +10,12 @@ There are three steps that a new smart contract which automates GEB should go th
 
 ## 2. Current Infrastructure Being Tested
 
-* [FSMWrapper](https://github.com/reflexer-labs/geb-fsm/blob/master/src/FSMWrapper.sol)
-* [ExternallyFundedOSM](https://github.com/reflexer-labs/geb-fsm/blob/b6affe7616210873bf9cfea80abfef354139c027/src/OSM.sol#L278)
+* [Increasing Discount Collateral Auction House](https://github.com/reflexer-labs/geb/blob/32b43c55a8ef8148d63f40456a409d29e46fa538/src/CollateralAuctionHouse.sol#L975)
 
 ## 3. Already Deployed Infrastructure
 
 * [Single Debt Ceiling Setter](https://github.com/reflexer-labs/geb-debt-ceiling-setter/blob/master/src/SingleSpotDebtCeilingSetter.sol)
 * [Collateral Auction Throttler](https://github.com/reflexer-labs/geb-collateral-auction-throttler/blob/master/src/CollateralAuctionThrottler.sol)
+* [FSMWrapper](https://github.com/reflexer-labs/geb-fsm/blob/master/src/FSMWrapper.sol)
+* [ExternallyFundedOSM](https://github.com/reflexer-labs/geb-fsm/blob/b6affe7616210873bf9cfea80abfef354139c027/src/OSM.sol#L278)
 
