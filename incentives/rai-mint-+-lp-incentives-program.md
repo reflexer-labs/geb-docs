@@ -7,7 +7,7 @@ The RAI Mint + LP strategy requires that participants mint RAI **and** provide R
 ## How It Works
 
 1. Go to [app.reflexer.finance](https://app.reflexer.finance/) or [DeFi Saver](https://app.defisaver.com/reflexer/manage) and mint some RAI.
-2. Go to the [RAI/ETH Uniswap v2 pool](https://app.uniswap.org/#/add/ETH/0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919) or [RAI/DAI Uniswap v2 pool](https://info.uniswap.org/pair/0x4a0ea6ad985f6526de7d1ade562e1007e9c5d757) and add the RAI you minted as liquidity
+2. Go to the [RAI/ETH Uniswap v2 pool](https://app.uniswap.org/#/add/v2/ETH/0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919) or [RAI/DAI Uniswap v2 pool](https://app.uniswap.org/#/add/v2/0x6B175474E89094C44Da98b954EedeAC495271d0F/0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919) and add the RAI you minted as liquidity
 
 You do **not** accrue rewards if:
 
