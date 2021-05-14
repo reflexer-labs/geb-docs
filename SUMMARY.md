@@ -5,6 +5,7 @@
 * [Current System Parameters](current-system-parameters.md)
 * [RAI Use-Cases](rai-use-cases.md)
 * [Community Resources](community-resources.md)
+* [Integrations and Partners](integrations-and-partners.md)
 * [FAQ](faq.md)
 
 ## The Money God League
