@@ -52,7 +52,9 @@ Congrats, your SAFE is now being protected! 🎉
 
 Let's see what happens after one of your SAFE's gets saved. If you go to the SAFE details page, you'll see a button called **Collect Saviour Balance**:
 
+![](../.gitbook/assets/untitled-design-1-.png)
 
+Sometimes, the saviour doesn't need to use all the tokens that it withdrew from Uniswap in order to save your SAFE. You can collect these unused tokens \(e.g ETH & RAI\) by clicking on **Collect Saviour Balance**.
 
 ## 3. Best Practices
 
@@ -63,6 +65,7 @@ Let's see what happens after one of your SAFE's gets saved. If you go to the SAF
 ## 4. Gotchas
 
 * If the saviour you're using cannot bring the collateralization ratio of a protected SAFE to the **Target Rescue CRatio** you picked, the saviour will not save the SAFE
+* When a saviour saves a SAFE, it will withdraw all your liquidity from a DEX using the LP tokens you deposited. If you want your SAFE to be protected after it's saved, you need to deposit tokens again in the saviour
 * You must have enough tokens deposited in the saviour so that it can both save your SAFE and also reimburse the liquidator that ended up paying for the save action
 * Once a SAFE is saved, there are probably leftover tokens that were withdrawn from Uniswap and not used for anything. You can redeem these extra tokens at any time by going back to the SAFE's details page and clicking on **Collect Saviour Balance**
 
