@@ -131,4 +131,5 @@
 ## Integrations
 
 * [SAFE Protection](integrations/safe-protection.md)
+* [Liquidation Protection Guide](integrations/liquidation-protection-guide.md)
 
