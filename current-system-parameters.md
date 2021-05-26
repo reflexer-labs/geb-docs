@@ -10,7 +10,7 @@
 * Global debt ceiling: MAX\_UINT
 * Liquidation penalty: 12%
 * ETH-A auction fixed discount: 10% 
-* ETH-A fixed discount auction minimum bid: 50 \(WAD\)
+* ETH-A fixed discount auction minimum bid: 25 \(WAD\)
 
 ### AccountingEngine
 
@@ -110,7 +110,7 @@
 * `upperCollateralMedianDeviation` - 20%
 * `upperSystemCoinMedianDeviation` - 1.5%
 * `minSystemCoinMedianDeviation` - 4%
-* `minimumBid` - 50 \(WAD\)
+* `minimumBid` - 25 \(WAD\)
 * `totalAuctionLength` - 281,474,976,710,655
 
 ### RAI Medianizer
