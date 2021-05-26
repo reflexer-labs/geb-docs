@@ -10,7 +10,7 @@
 * Global debt ceiling: MAX\_UINT
 * Liquidation penalty: 12%
 * ETH-A auction fixed discount: 10% 
-* ETH-A fixed discount auction minimum bid: 25 \(WAD\)
+* ETH-A fixed discount auction minimum bid: 50 \(WAD\)
 
 ### AccountingEngine
 
