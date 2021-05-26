@@ -99,10 +99,7 @@
 
 ### RateSetter
 
-* `baseUpdateCallerReward` - 0 \(WAD\)
-* `maxUpdateCallerReward` - 10 \(WAD\)
-* `perSecondCallerRewardIncrease` - 1000192559420674483977255848 \(100% per hour\)
-* `updateRateDelay` - 14,400 \(4 hours\)
+* `updateRateDelay` - 21,600 \(6 hours\)
 
 ### FixedDiscountCollateralAuctionHouse - ETH-A
 
