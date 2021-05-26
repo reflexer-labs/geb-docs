@@ -93,7 +93,7 @@
 
 * `expensesMultiplier` - 3
 * `minimumFundsRequired` - 300,000 \(RAD\)
-* `pullMinFundsThreshold` - 120,000 \(RAD\)
+* `pullMinFundsThreshold` - 25,000 \(RAD\)
 * `surplusTransferDelay` - 1,209,600 \(14 days\)
 * `treasuryCapacity` - 400,000 \(RAD\)
 
