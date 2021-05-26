@@ -8,8 +8,8 @@
 * Maximum amount of debt per Safe: 10B
 * ETH-A annual borrow rate/stability fee: 2%
 * Global debt ceiling: MAX\_UINT
-* Liquidation penalty: 14%
-* ETH-A auction fixed discount: 13% 
+* Liquidation penalty: 12%
+* ETH-A auction fixed discount: 10% 
 * ETH-A fixed discount auction minimum bid: 25 \(WAD\)
 
 ### AccountingEngine
@@ -36,7 +36,7 @@
 
 ### LiquidationEngine
 
-* `ETH-A liquidationPenalty` - 14%
+* `ETH-A liquidationPenalty` - 12%
 * `ETH-A liquidationQuantity` - 90,000 \(RAD\)
 * `onAuctionSystemCoinLimit` - 10,000,000,000,000 \(10T\)
 
@@ -107,7 +107,7 @@
 ### FixedDiscountCollateralAuctionHouse - ETH-A
 
 * `collateralType` - ETH-A
-* `discount` - 13%
+* `discount` - 10%
 * `lowerCollateralMedianDeviation` - 20%
 * `lowerSystemCoinMedianDeviation` - 1.5%
 * `upperCollateralMedianDeviation` - 20%
@@ -123,21 +123,14 @@
 * `converterFeedScalingFactor` - 1 \(WAD\)
 * `defaultAmountIn` - 1 \(WAD\)
 * `granularity` - 4
-* `maxRewardIncreaseDelay` - 10,800 \(3 hours\)
-* `maxWindowSize` - 86,400 \(24 hours\)
-* `perSecondCallerRewardIncrease` - 1000192559420674483977255848 \(100% per hour\)
+* `maxWindowSize` - 93,600 \(26 hours\)
 * `periodSize` - 14,400 \(4 hours\)
 * `symbol` - RAIUSD
 * `windowSize` - 57,600 \(16 hours\)
 
 ### ETH Medianizer
 
-* `baseUpdateCallerReward` - 0 \(WAD\)
-* `maxUpdateCallerReward` - 10 \(WAD\)
-* `maxRewardIncreaseDelay` - 10,800 \(3 hours\)
 * `multiplier` - 10
-* `perSecondCallerRewardIncrease` - 1000192559420674483977255848 \(100% per hour\)
-* `periodSize` - 3600
 * `staleThreshold` - 6 \(hours\)
 * `symbol` - ETHUSD
 
