@@ -110,7 +110,7 @@
 * `upperCollateralMedianDeviation` - 20%
 * `upperSystemCoinMedianDeviation` - 1.5%
 * `minSystemCoinMedianDeviation` - 4%
-* `minimumBid` - 25 \(WAD\)
+* `minimumBid` - 50 \(WAD\)
 * `totalAuctionLength` - 281,474,976,710,655
 
 ### RAI Medianizer
