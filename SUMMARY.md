@@ -25,6 +25,7 @@
 ## Incentives
 
 * [RAI Mint + LP Incentives Program](incentives/rai-mint-+-lp-incentives-program.md)
+* [FLX Liquidity Incentives](incentives/flx-liquidity-incentives.md)
 
 ## Contract Variables Translation <a id="contract-translation"></a>
 
