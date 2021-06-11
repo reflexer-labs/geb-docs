@@ -4,3 +4,5 @@ On Monday 14th of June 2021, Uniswap v2 FLX/ETH LPs will start to accrue FLX rew
 
 FLX/ETH LPs will receive 40 FLX per day \(14600 FLX per year\). LPs do **not** need to stake their tokens anywhere for now \(this will change in the future\), they simply need to keep the tokens in their wallets.
 
+The FLX/ETH Uniswap v2 pool can be found [here](https://v2.info.uniswap.org/pair/0xd6f3768e62ef92a9798e5a8cedd2b78907cecef9).
+
