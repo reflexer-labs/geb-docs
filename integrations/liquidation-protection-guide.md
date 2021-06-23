@@ -80,7 +80,7 @@ When someone starts to liquidate a Safe and the saviour steps in, it will try to
 * Withdraw all the Uniswap liquidity using the LP tokens allocated to save the liquidated Safe
 * Calculate how much RAI would need to be repaid in order to bring the Safe's collateralization ratio above the **Target Rescue CRatio**
 * If the amount of RAI calculated is higher than the amount of RAI withdrawn from Uniswap and calculate the amount of ETH that would need to be added in the Safe \(besides the amount of RAI withdrawn from Uniswap which will be used to repay debt\)
-* If the calculated ETH amount is higher than the ETH amount withdrawn from Uniswap, the saviour will revert and the Safe will continue to be liquidated. On the other hand, if the calculated ETH amount is lower than the ETH amount withdrawn from Uniswap, the saviour will successfuly save the Safe \(by repaying some of the debt and adding the ETH in the Safe\). Any amount of ETH and/or RAI that we not used to save will be kept in the saviour until the owner of the Safe will withdraw them
+* If the calculated ETH amount is higher than the ETH amount withdrawn from Uniswap, the saviour will revert and the Safe will continue to be liquidated. On the other hand, if the calculated ETH amount is lower than the ETH amount withdrawn from Uniswap, the saviour will successfuly save the Safe. Any amount of ETH and/or RAI that we not used to save will be kept in the saviour until the owner of the Safe will withdraw
 
 Note that because the saviours withdraws all the liquidity from Uniswap when it saves, the Safe owner will need to deposit LP tokens again if they want to be protected moving forward.
 
