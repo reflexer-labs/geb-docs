@@ -39,7 +39,7 @@ You need to mint RAI in order to accrue rewards. To determine the maximum amount
 
 * Go to the [Uniswap v2 RAI/ETH pool](https://app.uniswap.org/#/add/v2/ETH/0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919) and check how much RAI you would get back if you were to withdraw all your liquidity. Take note of the amount.
 
-![](https://paper-attachments.dropbox.com/s_455C6A45FAD71140E69AD556259E4AB19F4AD67D4AD9BF3033E63616B43822CF_1614862725311_amount.png)
+![](../.gitbook/assets/remove-rai-eth-lp.png)
 
 * Go to [app.reflexer.finance](https://app.reflexer.finance/) or [DeFi Saver](https://app.defisaver.com/reflexer/manage) and mint RAI up to the amount that you already provided in the pool.
 * You’re now accruing rewards on the amount of RAI that you both minted and LPed.
