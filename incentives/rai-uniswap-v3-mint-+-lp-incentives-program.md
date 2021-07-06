@@ -27,7 +27,7 @@ The rewards will be distributed pro-rata according to how much each LP concentra
 You can see that:
 
 * Alice accrues the most rewards because she concentrated liquidity really close to the current redemption price
-* Bob is not accruing any rewards because none of his liquidity is concentrated around the current redemption price
+* Bob is not accruing any rewards because none of his liquidity includes the tick where the current redemption price is
 * Charlie is accruing some rewards but less than Alice because he has a wider liquidity distribution around the redemption price
 
 To maximize rewards, LPs have to concentrate liquidity closer to the redemption price \(**at the risk of higher impermanent loss**\). To get the current RAI redemption price, you can visit our [stats page](https://stats.reflexer.finance/).
