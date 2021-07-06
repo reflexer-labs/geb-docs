@@ -32,3 +32,11 @@ You can see that:
 
 To maximize rewards, LPs have to concentrate liquidity closer to the redemption price \(**at the risk of higher impermanent loss**\). To get the current RAI redemption price, you can visit our [stats page](https://stats.reflexer.finance/).
 
+## Important Notes
+
+* You **must** use the same address to mint RAI and provide Uniswap v2 RAI/ETH liquidity
+* The Uniswap v2 RAI/ETH LP tokens **must** stay on the same address that you used to mint RAI and provide liquidity
+* To see the minimum amount of RAI you must mint on mainnet, check the [parameters page](https://docs.reflexer.finance/current-system-parameters#quick-glance)
+* If you open multiple Safes with the same address, your total RAI debt will be the sum of all RAI minted by each of your Safes
+* If your Safe gets liquidated, the amount of minted RAI you have decreases by the amount of RAI that got confiscated
+
