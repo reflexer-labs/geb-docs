@@ -2,7 +2,7 @@
 
 ## Overview
 
-The RAI Mint + LP strategy requires that participants mint RAI **and** provide RAI/ETH on Uniswap v2 at the same time in order to accrue retroactive rewards.
+The RAI Mint + LP strategy requires that participants mint RAI **and** provide RAI/ETH liquidity on Uniswap v2 at the same time in order to accrue retroactive rewards.
 
 ## How It Works
 
