@@ -1,4 +1,4 @@
-# RAI Mint + LP Incentives Program
+# RAI Uniswap V2 Mint + LP Incentives Program
 
 ## Overview
 
