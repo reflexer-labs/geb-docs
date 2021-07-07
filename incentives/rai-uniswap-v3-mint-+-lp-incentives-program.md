@@ -2,9 +2,9 @@
 
 ## Overview
 
-The RAI Mint + LP strategy requires that participants mint RAI **and** provide RAI/ETH liquidity on Uniswap v3 at the same time in order to accrue retroactive rewards.  
+The RAI Mint + LP strategy requires that participants mint RAI **and** provide RAI/ETH or RAI/DAI liquidity on Uniswap v3 at the same time in order to accrue retroactive rewards.  
   
-The RAI/ETH Uniswap v3 pool for this program is [here](https://info.uniswap.org/#/pools/0x14de8287adc90f0f95bf567c0707670de52e3813) and the RAI/DAI one is here. **The program will demo for 2 weeks starting on 9th of July 2021 and will distribute 400 FLX for RAI/ETH LPs and another 400 FLX for RAI/DAI LPs. After the demo, we will gather results and reassess.**
+The RAI/ETH Uniswap v3 pool for this program is [here](https://info.uniswap.org/#/pools/0x14de8287adc90f0f95bf567c0707670de52e3813) and the RAI/DAI one is [here](https://info.uniswap.org/#/pools/0xcb0c5d9d92f4f2f80cce7aa271a1e148c226e19d). **The program will demo for 2 weeks starting on 9th of July 2021 and will distribute 400 FLX for RAI/ETH LPs and another 400 FLX for RAI/DAI LPs. After the demo, we will gather results and reassess.**
 
 ## How It Works
 
@@ -45,10 +45,10 @@ To maximize rewards, LPs have to concentrate liquidity closer to the redemption 
 ## Important Notes
 
 * You **must** use the same address to mint RAI and provide Uniswap v2 RAI/ETH liquidity
-* The Uniswap v2 RAI/ETH LP tokens **must** stay on the same address that you used to mint RAI and provide liquidity
+* The Uniswap v3 RAI/ETH LP tokens **must** stay on the same address that you used to mint RAI and provide liquidity
 * To see the minimum amount of RAI you must mint on mainnet, check the [parameters page](https://docs.reflexer.finance/current-system-parameters#quick-glance)
 * If you open multiple Safes with the same address, your total RAI debt will be the sum of all RAI minted by each of your Safes
 * If you have several LP positions with the same address, the total sum of the liquidity will be considered for rewards.
-* Only positions from the official Uniswap V3 NFT manager are supported \(Used by the official UI at [https://app.uniswap.org/\#/pool](https://app.uniswap.org/#/pool)\). Position directly minted on the pool contract aren't supported.
+* Only positions from the official Uniswap V3 NFT manager are supported \(used by the official UI at [https://app.uniswap.org/\#/pool](https://app.uniswap.org/#/pool)\). Positions directly minted on the pool contract are **not** supported.
 * If your Safe gets liquidated, the amount of minted RAI you have decreases by the amount of RAI that got confiscated
 
