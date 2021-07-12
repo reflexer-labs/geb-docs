@@ -6,11 +6,10 @@
 
 * Minimum amount of debt per Safe: 800
 * Maximum amount of debt per Safe: 10B
-* ETH-A annual borrow rate/stability fee: 2%
+* ETH-A annual borrow rate/stability fee: -0.3%
 * Global debt ceiling: MAX\_UINT
-* Liquidation penalty: 12%
-* ETH-A auction fixed discount: 10% 
-* ETH-A fixed discount auction minimum bid: 25 \(WAD\)
+* Liquidation penalty: 12% 
+* ETH-A increasing discount auction minimum bid: 25 \(WAD\)
 
 ### AccountingEngine
 
@@ -30,7 +29,7 @@
 
 ### TaxCollector
 
-* `ETH-A annual stability fee` - 2%
+* `ETH-A annual stability fee` - -0.3%
 * `globalStabilityFee` - 0
 * `maxSecondaryReceivers` - 5
 
@@ -101,15 +100,11 @@
 
 * `updateRateDelay` - 21,600 \(6 hours\)
 
-### FixedDiscountCollateralAuctionHouse - ETH-A
+### IncreasingDiscountCollateralAuctionHouse - ETH-A
 
 * `collateralType` - ETH-A
-* `discount` - 10%
-* `lowerCollateralMedianDeviation` - 20%
-* `lowerSystemCoinMedianDeviation` - 1.5%
-* `upperCollateralMedianDeviation` - 20%
-* `upperSystemCoinMedianDeviation` - 1.5%
-* `minSystemCoinMedianDeviation` - 4%
+* `minDiscount` - 8%
+* `maxDiscount` - 12%
 * `minimumBid` - 25 \(WAD\)
 * `totalAuctionLength` - 281,474,976,710,655
 
