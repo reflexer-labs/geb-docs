@@ -14,7 +14,6 @@
 
 ## Ungovernance
 
-* [RAI's Ungovernance Process](ungovernance/rai-ungovernance-process.md)
 * [Governance Minimization Guide](ungovernance/governance-minimization-guide.md)
 
 ## Risk
