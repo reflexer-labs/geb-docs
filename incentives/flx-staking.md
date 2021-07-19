@@ -12,7 +12,7 @@ In exchange for protecting the protocol, stakers receive more FLX.
 
 ### Mainnet
 
-* Exit delay \(thawing period\): 28 days
+* Exit delay \(thawing period\): 21 days
 * Percentage of rewards vested: 0% \(temporary, may change later\)
 * Percentage of pool that can be slashed/auctioned: 30%
 
