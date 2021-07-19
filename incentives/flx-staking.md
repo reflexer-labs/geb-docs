@@ -14,13 +14,13 @@ In exchange for protecting the protocol, stakers receive more FLX.
 
 * Exit delay \(thawing period\): 28 days
 * Percentage of rewards vested: 0% \(temporary, may change later\)
-* Percentage of pool that can be slashed/auctioned: 35%
+* Percentage of pool that can be slashed/auctioned: 30%
 
 ### Kovan
 
 * Exit delay \(thawing period\): 1 minute
 * Percentage of rewards vested: 0% \(temporary, may change later\)
-* Percentage of pool that can be slashed/auctioned: 35%
+* Percentage of pool that can be slashed/auctioned: 30%
 
 ## 3. Staking Walkthrough
 
