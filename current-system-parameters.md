@@ -4,9 +4,8 @@
 
 ### Quick Glance
 
-* Minimum amount of debt per Safe: 800
 * Maximum amount of debt per Safe: 10B
-* ETH-A annual borrow rate/stability fee: -0.3%
+* ETH-A annual borrow rate/stability fee: -0.5%
 * Global debt ceiling: MAX\_UINT
 * Liquidation penalty: 12% 
 * ETH-A increasing discount auction minimum bid: 25 \(WAD\)
@@ -29,7 +28,7 @@
 
 ### TaxCollector
 
-* `ETH-A annual stability fee` - -0.3%
+* `ETH-A annual stability fee` - -0.5%
 * `globalStabilityFee` - 0
 * `maxSecondaryReceivers` - 5
 
