@@ -59,3 +59,13 @@ Anothing thing to keep in mind: after you stake, the staking pool will mint a cl
 
 You will notice that the amount of stFLX you receive might differ from the amount of LP tokens you stake. That is normal behaviour.
 
+## 4. Transition from LP Only to Staking
+
+Prior to staking, FLX holders will receive rewards for LPing in the Uniswap v2 FLX/ETH pool. Once staking starts, incentives for LPing only will progressively move to stakers only.  
+  
+The transition will happen as follows:
+
+* First 2 weeks of staking: 110 FLX for stakers only, 80 FLX for FLX/ETH LPs only
+* Weeks 3 and 4 of staking: 150 FLX for stakers only, 40 FLX for FLX/ETH LPs only
+* From the 5th week of staking onward: 190 FLX for stakers only, no FLX for simple FLX/ETH LPs
+
