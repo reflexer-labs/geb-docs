@@ -21,6 +21,7 @@ description: List of talks and articles about RAI and Reflexer
 
 ### Talks
 
+* [EthCC 2021 - Control Theory & Cryptoeconomics](https://www.youtube.com/watch?v=Gr_8p2IpT8A) - Guillaume Felley July 2021
 * [ETH Denver - The Centralized Risk of DeFi - Guillaume Felley](https://www.youtube.com/watch?v=AvtJ6P60r4w) February 2021
 * [ETH Online - Rai: Building a Money God - Ameen Soleimani](https://www.youtube.com/watch?v=kDCqiZd4xkI) October 2020
 
