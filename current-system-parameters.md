@@ -2,6 +2,8 @@
 
 ## Mainnet RAI
 
+The following list contains parameters that are not automatically adjusted by smart contracts.
+
 ### Quick Glance
 
 * Maximum amount of debt per Safe: 10B
@@ -12,11 +14,8 @@
 
 ### AccountingEngine
 
-* `debtAuctionBidSize` - 35,000 \(RAD\)
 * `disableCooldown` - 1,814,400 \(21 days\)
-* `initialDebtAuctionMintedTokens` - 439 \(WAD\)
 * `popDebtDelay` - 1,036,800 \(12 days\)
-* `surplusAuctionAmountToSell` - 6,000 \(RAD\)
 * `surplusAuctionDelay` - 0
 * `surplusBuffer` - 500,000 \(RAD\)
 
@@ -24,7 +23,6 @@
 
 * `globalDebtCeiling` - MAX\_UINT
 * `safeDebtCeiling` - 10B \(WAD\)
-* `ETH-A debtFloor` - 800 \(RAD\)
 
 ### TaxCollector
 
@@ -97,7 +95,7 @@
 
 ### RateSetter
 
-* `updateRateDelay` - 21,600 \(6 hours\)
+* `updateRateDelay` - 28,800 \(8 hours\)
 
 ### IncreasingDiscountCollateralAuctionHouse - ETH-A
 
