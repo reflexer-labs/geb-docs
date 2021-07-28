@@ -17,7 +17,7 @@ You do **not** accrue rewards if:
 
 * You provide RAI/ETH or RAI/DAI liquidity without minting RAI \(e.g buy from the pool and LP\)
 * You mint RAI without adding RAI/ETH or RAI/DAI liquidity
-* The RAI/ETH or RAI/DAI price is outside or shifted off your liquidity band
+* The RAI **redemption price** is outside or shifted off your liquidity band
 
 You accrue **less** rewards if:
 
