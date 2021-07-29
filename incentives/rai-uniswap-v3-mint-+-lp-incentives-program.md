@@ -48,7 +48,7 @@ To maximize rewards, LPs have to concentrate liquidity closer to the redemption 
 
 * You **must** use the same address to mint RAI and provide Uniswap v3 RAI/ETH or RAI/DAI liquidity
 * The Uniswap v3 RAI/ETH or RAI/DAI LP tokens **must** stay on the same address that you used to mint RAI and provide liquidity
-* To see the minimum amount of RAI you must mint on mainnet, check the [parameters page](https://docs.reflexer.finance/current-system-parameters#quick-glance)
+* **You can provide liquidity around the redemption price even if the current RAI market price is not in your range**
 * If you open multiple Safes with the same address, your total RAI debt will be the sum of all RAI minted by each of your Safes
 * If you have several LP positions with the same address, the total sum of the liquidity will be considered for rewards.
 * Only positions from the official Uniswap V3 NFT manager are supported \(used by the official UI at [https://app.uniswap.org/\#/pool](https://app.uniswap.org/#/pool)\). Positions directly minted on the pool contract are **not** supported.
