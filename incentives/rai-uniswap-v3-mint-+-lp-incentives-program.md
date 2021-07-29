@@ -4,9 +4,7 @@
 
 The RAI Mint + LP strategy requires that participants mint RAI **and** provide RAI/ETH or RAI/DAI liquidity on Uniswap v3 at the same time in order to accrue retroactive rewards.  
   
-The RAI/ETH Uniswap v3 pool for this program is [here](https://info.uniswap.org/#/pools/0x14de8287adc90f0f95bf567c0707670de52e3813) and the RAI/DAI one is [here](https://info.uniswap.org/#/pools/0xcb0c5d9d92f4f2f80cce7aa271a1e148c226e19d). 
-
-**The program will demo for 2 weeks starting on 9th of July 2021 and will distribute 400 FLX for RAI/ETH LPs and another 400 FLX for RAI/DAI LPs. After the demo, we will gather results and reassess.**
+The RAI/ETH Uniswap v3 pool for this program is [here](https://info.uniswap.org/#/pools/0x14de8287adc90f0f95bf567c0707670de52e3813) and the RAI/DAI one is [here](https://info.uniswap.org/#/pools/0xcb0c5d9d92f4f2f80cce7aa271a1e148c226e19d).
 
 ## How It Works
 
