@@ -20,7 +20,9 @@ You do **not** accrue rewards if:
 You accrue **less** rewards if:
 
 * If the RAI/ETH or RAI/DAI price shifts, resulting in the position owning less underlying RAI compared to your debt
-* Your debt goes down due to repaying your debt or liquidation 
+* Your debt goes down due to repaying your debt or liquidation
+
+**IMPORTANT**: you can provide RAI liquidity around the redemption price even if the current market price is not included in your range.
 
 The exact relevant metric used for rewards is: 
 
