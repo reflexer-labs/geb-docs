@@ -13,7 +13,7 @@ In exchange for protecting the protocol, stakers receive more FLX.
 ### Mainnet
 
 * Exit delay \(thawing period\): 21 days
-* Reward unlock period: 6 months
+* Reward unlock period: 6 months. Locked rewards are unlocked linearly during a 6 month time period from the moment a staker requests that they claim their rewards
 * Percentage of rewards unlocked over 6 months: 75%
 * Percentage of rewards that can be claimed right away \(no unlock\): 25%
 * Percentage of pool that can be slashed/auctioned: 30% \(the rest of the pool isn't auctioned/slashed\)
@@ -21,7 +21,7 @@ In exchange for protecting the protocol, stakers receive more FLX.
 ### Kovan
 
 * Exit delay \(thawing period\): 1 minute
-* Reward unlock period: 10 minutes
+* Reward unlock period: 10 minutes. Locked rewards are unlocked linearly during a 10 minute time period from the moment a staker requests that they claim their rewards
 * Percentage of rewards unlocked over 6 months: 75%
 * Percentage of rewards that can be claimed right away \(no unlock\): 25%
 * Percentage of pool that can be slashed/auctioned: 30% \(the rest of the pool isn't auctioned/slashed\)
