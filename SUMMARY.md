@@ -6,6 +6,7 @@
 * [RAI Use-Cases](rai-use-cases.md)
 * [Community Resources](community-resources.md)
 * [Integrations and Partners](integrations-and-partners.md)
+* [FLX Mechanics](flx-mechanics.md)
 * [FAQ](faq.md)
 
 ## The Money God League
