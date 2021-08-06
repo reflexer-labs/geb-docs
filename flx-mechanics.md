@@ -11,9 +11,15 @@ The FLX token has two main functions inside the RAI protocol:
 
 Before the protocol is governance minimized, RAI will be set up so that stability fees flow in three places:
 
-* The stability fee treasury, which is in charge with paying for oracle updates or any other contract meant to automate RAI parameter setting
+* The stability fee treasury, which is in charge with paying for oracle updates or any other contract meant to automate RAI parameters
 * FLX stakers, which are the first line of defense for the protocol
 * Buyback and burn, which is meant to auction RAI in exchange for FLX which is subsequently burned
+
+In the case of FLX stakers, the RAI that accrues for them is auctioned in exchange for FLX. The FLX proceeds from the auction are then sent to the staking pool.  
+  
+As for buyback and burn, RAI is first accrued in the protocol's balance sheet. Once there's enough RAI in the balance sheet, the protocol can start to auction some of it in exchange for FLX that is then burned.
+
+To visualize all this, you can check the diagram below:
 
 
 
