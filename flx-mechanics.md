@@ -9,9 +9,9 @@ The FLX token has two main functions inside the RAI protocol:
 
 ## 2. RAI Resource Flow
 
-Before the protocol is governance minimized, RAI will be set up so that stability fees flow in three places:
+Before the protocol is governance minimized, RAI will be set up so that stability fees \(borrow rate charged to Safes that mint RAI\) flow in three places:
 
-* The stability fee treasury, which is in charge with paying for oracle updates or any other contract meant to automate RAI parameters
+* The stability fee treasury, which is a smart contract in charge with paying for oracle updates or any other contract meant to automate RAI parameters
 * FLX stakers, which are the first line of defense for the protocol
 * Buyback and burn, which is meant to auction RAI in exchange for FLX which is subsequently burned
 
@@ -21,5 +21,7 @@ As for buyback and burn, RAI is first accrued in the protocol's balance sheet. O
 
 To visualize all this, you can check the diagram below:
 
+![](.gitbook/assets/untitled-diagram.png)
 
+**NOTE**: RAI only flows to the stability fee treasury, to stakers and in the protocol's balance sheet when the borrow rate charged to Safes is positive. When the borrow rate is negative, the protocol only uses funds from the balance sheet to repay RAI debt from all Safes.
 
