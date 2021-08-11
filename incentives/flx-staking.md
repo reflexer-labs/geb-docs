@@ -69,7 +69,7 @@ Prior to staking, FLX holders will receive rewards for LPing in the Uniswap v2 F
   
 The transition will happen as follows:
 
-* First 2 weeks of staking: 50 FLX for stakers only, 80 FLX for FLX/ETH LPs only
-* Weeks 3 and 4 of staking: 90 FLX for stakers only, 40 FLX for FLX/ETH LPs only
-* From the 5th week of staking onward: 130 FLX for stakers only, no FLX for simple FLX/ETH LPs
+* First 2 weeks of staking: 50 FLX for stakers only, 90 FLX for FLX/ETH LPs only
+* Weeks 3 and 4 of staking: 90 FLX for stakers only, 50 FLX for FLX/ETH LPs only
+* From the 5th week of staking onward: 120 FLX for stakers only, no FLX for simple FLX/ETH LPs
 
