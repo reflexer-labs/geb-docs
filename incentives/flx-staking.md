@@ -65,6 +65,8 @@ You will notice that the amount of stFLX you receive might differ from the amoun
 
 ## 4. Transition from LP Only to Staking
 
+**NOTE**: the transition will start on 18th of August 2021 at 12:50 PM UTC.
+
 Prior to staking, FLX holders will receive rewards for LPing in the Uniswap v2 FLX/ETH pool. Once staking starts, incentives for LPing only will progressively move to stakers only.  
   
 The transition will happen as follows:
