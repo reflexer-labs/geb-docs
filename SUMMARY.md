@@ -135,8 +135,8 @@
   * [Running on a Host](keepers/surplus-auction-keeper/running-on-a-host.md)
 * [Bidding Models](keepers/bidding-models.md)
 
-## Integrations
+## Liquidation Protection
 
-* [SAFE Protection](integrations/safe-protection.md)
-* [Liquidation Protection Guide](integrations/liquidation-protection-guide.md)
+* [SAFE Protection](liquidation-protection/safe-protection.md)
+* [Liquidation Protection Guide](liquidation-protection/liquidation-protection-guide.md)
 
