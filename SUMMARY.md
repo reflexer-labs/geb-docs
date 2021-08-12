@@ -12,7 +12,6 @@
 * [RAI Use-Cases](rai/rai-use-cases.md)
 * [Multi-chain RAI](rai/multi-chain-rai.md)
 * [RAI Integrations and Partners](rai/integrations-and-partners.md)
-* [Untitled](rai/untitled.md)
 
 ## The Money God League
 
