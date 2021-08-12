@@ -3,12 +3,16 @@
 * [Introduction to GEB](README.md)
 * [Currently Deployed Systems](currently-deployed-systems.md)
 * [Current System Parameters](current-system-parameters.md)
-* [RAI Use-Cases](rai-use-cases.md)
 * [Community Resources](community-resources.md)
-* [Integrations and Partners](integrations-and-partners.md)
-* [Multi-chain RAI](multi-chain-rai.md)
+* [RAI Integrations and Partners](integrations-and-partners.md)
 * [FLX Mechanics](flx-mechanics.md)
 * [FAQ](faq.md)
+
+## RAI
+
+* [RAI Use-Cases](rai/rai-use-cases.md)
+* [Multi-chain RAI](rai/multi-chain-rai.md)
+* [Untitled](rai/untitled.md)
 
 ## The Money God League
 
