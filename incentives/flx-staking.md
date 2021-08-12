@@ -59,7 +59,10 @@ Unstaking must be done in two stages:
 * Take the following scenario: Alice has 10 tokens staked. She requests to unstake 5 tokens and has to wait 3 weeks to withdraw them from the contract. After 2 weeks, Alice requests that she unstakes another 3 extra tokens \(so she's only earning rewards with 2 tokens now\). Alice must wait 3 weeks from the moment of the **second unstake request** in order to withdraw the whole 8 tokens from the contract
 * Take another scenario: Alice has 10 tokens staked. She requests to unstake 5 tokens and has to wait 4 weeks to withdraw them from the contract. After 5 weeks, Alice does not unstake the 5 tokens but rather requests that she unstakes another 3 extra tokens \(so she's only earning rewards with 2 tokens now\). Alice must wait 4 weeks from the moment of the **second unstake request** even if the 5 tokens could have been withdrawn from the contract
 
-Anothing thing to keep in mind: after you stake, the staking pool will mint a claim token for you called **Staked FLX \(stFLX\)**. **stFLX is not transferrable.**
+Two things to keep in mind:
+
+* After you stake, the staking pool will mint a claim token for you called **Staked FLX \(stFLX\)**. **stFLX is not transferrable**
+* **You can still get slashed while you're waiting to unstake from the pool**
 
 You will notice that the amount of stFLX you receive might differ from the amount of LP tokens you stake. That is normal behaviour.
 
