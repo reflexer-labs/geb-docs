@@ -6,6 +6,8 @@ Currently, RAI holders can port their tokens to [Fantom RAI](https://ftmscan.com
 
 Once you have FTM and RAI on the Fantom chain, you should also make sure you have [Fantom set up](https://docs.fantom.foundation/tutorials/set-up-metamask) in Metamask \(or any other wallet you're using\).
 
+The RAI address on Fantom can be found [here](https://ftmscan.com/token/0xa71353bb71dda105d383b02fc2dd172c4d39ef8b).
+
 ### RAI Partners
 
 The first protocol that started to support RAI on Fantom is [SpiritSwap](https://app.spiritswap.finance/#/). Initially, SpiritSwap will incentivize RAI/FTM LPs using their SPIRIT token.
