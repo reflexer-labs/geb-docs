@@ -4,7 +4,6 @@
 * [Currently Deployed Systems](currently-deployed-systems.md)
 * [Current System Parameters](current-system-parameters.md)
 * [Community Resources](community-resources.md)
-* [RAI Integrations and Partners](integrations-and-partners.md)
 * [FLX Mechanics](flx-mechanics.md)
 * [FAQ](faq.md)
 
@@ -12,6 +11,7 @@
 
 * [RAI Use-Cases](rai/rai-use-cases.md)
 * [Multi-chain RAI](rai/multi-chain-rai.md)
+* [RAI Integrations and Partners](rai/integrations-and-partners.md)
 * [Untitled](rai/untitled.md)
 
 ## The Money God League
