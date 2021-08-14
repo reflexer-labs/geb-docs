@@ -20,7 +20,7 @@ The `FSMWrapper` is meant to act as a funding source for FSM-like contracts as w
 **Functions**
 
 * `modifyParameters` - modify contract parameters
-* `renumerateCaller(feeReceiver: address)` - called by the `fsm` in order to send stability fees from the [StabilityFeeTreasury](https://github.com/reflexer-labs/geb/blob/master/src/StabilityFeeTreasury.sol) to the `feeReceiver`
+* `renumerateCaller(feeReceiver: address)` - called by the `fsm` in order to send stability fees from the [StabilityFeeTreasury](https://github.com/reflexer-labs/geb/blob/master/src/single/StabilityFeeTreasury.sol) to the `feeReceiver`
 * `stopped() public view returns (uint256)` - read and return `stopped` from the `fsm`
 * `priceSource() public view returns (address)` - read and return `priceSource` from the `fsm`
 * `updateDelay() public view returns (uint16)` - read and return `updateDelay` from the `fsm`
