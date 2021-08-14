@@ -103,8 +103,6 @@ The following list contains parameters that are not automatically adjusted by sm
 
 ### RAI Medianizer
 
-* `baseUpdateCallerReward` - 0 \(WAD\)
-* `maxUpdateCallerReward` - 10 \(WAD\)
 * `converterFeedScalingFactor` - 1 \(WAD\)
 * `defaultAmountIn` - 1 \(WAD\)
 * `granularity` - 4
