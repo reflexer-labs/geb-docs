@@ -6,9 +6,9 @@ description: 'Handling SAFE state, liquidations and accounting (surplus & bad de
 
 **Relevant smart contracts:**
 
-* \*\*\*\*[**SAFEEngine**](https://github.com/reflexer-labs/geb/blob/master/src/SAFEEngine.sol)\*\*\*\*
-* \*\*\*\*[**LiquidationEngine**](https://github.com/reflexer-labs/geb/blob/master/src/LiquidationEngine.sol)\*\*\*\*
-* \*\*\*\*[**AccountingEngine**](https://github.com/reflexer-labs/geb/blob/master/src/AccountingEngine.sol)\*\*\*\*
+* \*\*\*\*[**SAFEEngine**](https://github.com/reflexer-labs/geb/blob/master/src/single/SAFEEngine.sol)
+* \*\*\*\*[**LiquidationEngine**](https://github.com/reflexer-labs/geb/blob/master/src/single/LiquidationEngine.sol)\*\*\*\*
+* \*\*\*\*[**AccountingEngine**](https://github.com/reflexer-labs/geb/blob/master/src/single/AccountingEngine.sol)\*\*\*\*
 
 ## 1. Overview
 

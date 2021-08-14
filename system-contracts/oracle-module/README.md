@@ -12,7 +12,7 @@ description: The "source of truth" for collateral and system coin prices
 * [GovernanceLedPriceFeedMedianizer](https://github.com/reflexer-labs/geb-governance-led-median/blob/master/src/GovernanceLedPriceFeedMedianizer.sol)
 * [ChainlinkPriceFeedMedianizer](https://github.com/reflexer-labs/geb-chainlink-median/blob/master/src/ChainlinkPriceFeedMedianizer.sol)
 * [UniswapConsecutiveSlotsPriceFeedMedianizer](https://github.com/reflexer-labs/geb-uniswap-median/blob/master/src/UniswapConsecutiveSlotsPriceFeedMedianizer.sol)
-* [OracleRelayer](https://github.com/reflexer-labs/geb/blob/master/src/OracleRelayer.sol)
+* [OracleRelayer](https://github.com/reflexer-labs/geb/blob/master/src/single/OracleRelayer.sol)
 * [FsmGovernanceInterface](https://github.com/reflexer-labs/geb-fsm-governance-interface/blob/master/src/FsmGovernanceInterface.sol)
 
 ## 1. Overview <a id="1-introduction-summary"></a>

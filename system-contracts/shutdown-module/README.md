@@ -6,7 +6,7 @@ description: Winding down system operations
 
 **Relevant smart contracts:**
 
-* [GlobalSettlement](https://github.com/reflexer-labs/geb/blob/master/src/GlobalSettlement.sol)
+* [GlobalSettlement](https://github.com/reflexer-labs/geb/blob/master/src/single/GlobalSettlement.sol)
 * [ESM](https://github.com/reflexer-labs/esm/blob/master/src/ESM.sol)
 
 ## 1. Overview

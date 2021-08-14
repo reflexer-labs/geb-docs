@@ -6,7 +6,7 @@ description: Interest rate setters and collectors
 
 **Relevant smart contracts:**
 
-* [TaxCollector](https://github.com/reflexer-labs/geb/blob/master/src/TaxCollector.sol)
+* [TaxCollector](https://github.com/reflexer-labs/geb/blob/master/src/single/TaxCollector.sol)
 
 ## 1. Overview
 

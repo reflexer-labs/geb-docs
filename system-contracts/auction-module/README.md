@@ -6,9 +6,9 @@ description: Maintaining system balance by covering shortfall and disbursing sur
 
 **Relevant smart contracts:**
 
-* \*\*\*\*[**CollateralAuctionHouse**](https://github.com/reflexer-labs/geb/blob/master/src/CollateralAuctionHouse.sol)\*\*\*\*
-* \*\*\*\*[**DebtAuctionHouse**](https://github.com/reflexer-labs/geb/blob/master/src/DebtAuctionHouse.sol)\*\*\*\*
-* \*\*\*\*[**SurplusAuctionHouse**](https://github.com/reflexer-labs/geb/blob/master/src/SurplusAuctionHouse.sol)\*\*\*\*
+* \*\*\*\*[**CollateralAuctionHouse**](https://github.com/reflexer-labs/geb/blob/master/src/single/CollateralAuctionHouse.sol)\*\*\*\*
+* \*\*\*\*[**DebtAuctionHouse**](https://github.com/reflexer-labs/geb/blob/master/src/single/DebtAuctionHouse.sol)\*\*\*\*
+* \*\*\*\*[**SurplusAuctionHouse**](https://github.com/reflexer-labs/geb/blob/master/src/single/SurplusAuctionHouse.sol)\*\*\*\*
 
 ## 1. Overview
 

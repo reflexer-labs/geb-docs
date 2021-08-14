@@ -6,10 +6,10 @@ description: The protocol's resource management engine
 
 **Relevant smart contracts:**
 
-* [StabilityFeeTreasury](https://github.com/reflexer-labs/geb/blob/master/src/StabilityFeeTreasury.sol)
+* [StabilityFeeTreasury](https://github.com/reflexer-labs/geb/blob/master/src/single/StabilityFeeTreasury.sol)
 * [FSM Wrapper](https://github.com/reflexer-labs/geb-fsm/blob/master/src/FSMWrapper.sol)
-* [Increasing Treasury Reimbursement](https://github.com/reflexer-labs/geb-treasury-reimbursement/blob/master/src/reimbursement/IncreasingTreasuryReimbursement.sol)
-* [Mandatory Fixed Treasury Reimbursement](https://github.com/reflexer-labs/geb-treasury-reimbursement/blob/master/src/reimbursement/MandatoryFixedTreasuryReimbursement.sol)
+* [Increasing Treasury Reimbursement](https://github.com/reflexer-labs/geb-treasury-reimbursement/blob/master/src/reimbursement/single/IncreasingTreasuryReimbursement.sol)
+* [Mandatory Fixed Treasury Reimbursement](https://github.com/reflexer-labs/geb-treasury-reimbursement/blob/master/src/reimbursement/single/MandatoryFixedTreasuryReimbursement.sol)
 * [Increasing Reward Relayer](https://github.com/reflexer-labs/geb-treasury-reimbursement/blob/master/src/relayer/IncreasingRewardRelayer.sol)
 
 ## 1. Overview
