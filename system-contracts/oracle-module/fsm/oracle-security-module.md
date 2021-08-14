@@ -51,7 +51,7 @@ In order for the `OSM` to work properly, an external actor must regularly call `
 
 #### SelfFundedOSM
 
-This contract pulls funds from the [StabilityFeeTreasury](https://github.com/reflexer-labs/geb/blob/master/src/StabilityFeeTreasury.sol) so it can reward addresses for calling`updateResult`. 
+This contract pulls funds from the [StabilityFeeTreasury](https://github.com/reflexer-labs/geb/blob/master/src/single/StabilityFeeTreasury.sol) so it can reward addresses for calling`updateResult`. 
 
 **ExternallyFundedOSM**
 
