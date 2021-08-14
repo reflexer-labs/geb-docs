@@ -110,7 +110,7 @@ The `AccountingEngine` receives both system surplus and system debt. It covers d
 
 ### Auctioning Debt
 
-When a SAFE is liquidated, the seized debt is put in a queue in the `AccountingEngine`. This occurs at the block timestamp of the `liquidateSAFE` action \(`debtQueue[timestamp]`\). It can be released with the help of `popDebtFromQueue` once `AccountingEngine.popDebtDelay` has expired. Once released, it can be settled using the surplus gathered from the SAFE's liquidation or, if there wasn't enough surplus gathered, the debt can be auctioned using the `DebtAuctionHouse`. **NOTE**: the `AccountingEngine` can start a new debt auction only if `canPrintProtocolTokens` returns `true` and if it also doesn't unexpectedly revert.
+When a SAFE is liquidated, the seized debt is put in a queue in the `AccountingEngine`. This occurs at the block timestamp of the `liquidateSAFE` action \(`debtQueue[timestamp]`\). It can be released with the help of `popDebtFromQueue` once `AccountingEngine.popDebtDelay` has expired. Once released, it can be settled using the surplus gathered from the SAFE's liquidation or, if there wasn't enough surplus gathered, the debt can be auctioned using the `DebtAuctionHouse`. **NOTE**: the `AccountingEngine` can start a new debt auction only if `canPrintProtocolTokens` returns `true` and if `canPrintProtocolTokens` also doesn't unexpectedly revert.
 
 The main risk is related to `popDebtDelay` &lt; `CollateralAuctionHouse.totalAuctionLength` which would result in debt auctions starting before the associated collateral auctions could complete.
 
