@@ -17,7 +17,6 @@ The following list contains parameters that are not automatically adjusted by sm
 * `disableCooldown` - 1,814,400 \(21 days\)
 * `popDebtDelay` - 1,036,800 \(12 days\)
 * `surplusAuctionDelay` - 0
-* `surplusBuffer` - 500,000 \(RAD\)
 
 ### SafeEngine
 
@@ -88,10 +87,7 @@ The following list contains parameters that are not automatically adjusted by sm
 ### StabilityFeeTreasury
 
 * `expensesMultiplier` - 3
-* `minimumFundsRequired` - 300,000 \(RAD\)
-* `pullMinFundsThreshold` - 25,000 \(RAD\)
 * `surplusTransferDelay` - 1,209,600 \(14 days\)
-* `treasuryCapacity` - 400,000 \(RAD\)
 
 ### RateSetter
 
