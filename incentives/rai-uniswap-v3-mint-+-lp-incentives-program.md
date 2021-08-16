@@ -34,7 +34,7 @@ $$
 
 ETH price: $3000, RAI Price: $3.02
 
-First, deposit 3 ETH to mint 1000 RAI \(Collateralization ratio around 300% and liquidation price around $1500\). Then deposit the 1000 RAI along with 1.5 ETH into a Uniswap V3 RAI/DAI. Let look into 2 options for LP price range:
+First, deposit 3 ETH to mint 1000 RAI \(Collateralization ratio around 300% and liquidation price around $1500\). Then deposit the 1000 RAI along with 1.5 ETH into a Uniswap V3 RAI/ETH. Let look into 2 options for LP price range:
 
 1. From $2.92 to $3.12 DAI = $0.10 wide range 
 2. From $3.015 to $3.025 DAI = $0.01 wide range
