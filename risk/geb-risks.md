@@ -22,6 +22,8 @@ While a GEB is fully managed/governed, almost all of its components can be upgra
 
 You can take a look at the [Governance Minimization Guide](https://docs.reflexer.finance/governance-minimization-guide) to see what will need to be done so that a GEB can be governance minimized. Stay alert for more updates from the Reflexer team regarding a timeline for RAI governance minimization.
 
+Until most of the RAI protocol is governance minimized, the protocol is managed by [this multisig](https://etherscan.io/address/0x427A277eA53e25143B3b509C684aA4D0EB8bA01b).
+
 ### PID Controller
 
 PID control is still a novel concept in DeFi. No other stable asset prior to RAI has been managed by an on-chain controller and there is no historical data that can help with the controller's modelling and simulations.
