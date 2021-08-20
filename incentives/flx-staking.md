@@ -26,7 +26,13 @@ In exchange for protecting the protocol, stakers receive more FLX.
 * Percentage of rewards that can be claimed right away \(no unlock\): 25%
 * Percentage of pool that can be slashed/auctioned: 30% \(the rest of the pool isn't auctioned/slashed\)
 
-## 3. Staking Walkthrough
+## 3. RAI Insolvency
+
+The RAI protocol is "insolvent" when liquidations \(collateral auctions\) are not successful \(cannot repay a Safe's debt by selling ETH\) and they leave leftover RAI which is not covered by collateral anymore.
+
+If too much unbacked RAI accrues in the protocol, it then becomes insolvent. In case of insolvency, stakers are the first line of defence. The staking pool will start to auction a portion of the staked tokens in exchange for RAI which is subsequently used to eliminate unbacked debt.
+
+## 4. Staking Walkthrough
 
 First, you need to provide liquidity in this [FLX/ETH Uniswap v2 pool](https://app.uniswap.org/#/add/v2/0x6243d8cea23066d098a15582d81a598b4e8391f4/ETH) for mainnet and in [this pool](https://app.uniswap.org/#/add/v2/0x6e6eA84bb2fcE17AfCE8e1117DdC708142ef51c9/ETH) for Kovan.
 
@@ -66,7 +72,7 @@ Two things to keep in mind:
 
 You will notice that the amount of stFLX you receive might differ from the amount of LP tokens you stake. That is normal behaviour.
 
-## 4. Transition from LP Only to Staking
+## 5. Transition from LP Only to Staking
 
 **NOTE**: the transition will start on 18th of August 2021 at 12:50 PM UTC.
 
