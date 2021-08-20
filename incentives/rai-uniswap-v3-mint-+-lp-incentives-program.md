@@ -36,7 +36,7 @@ ETH price: $3000, RAI Price: $3.02
 
 First, deposit 3 ETH to mint 1000 RAI \(Collateralization ratio around 300% and liquidation price around $1500\). Then deposit the 1000 RAI along with 1.5 ETH into a Uniswap V3 RAI/ETH. Let look into 2 options for LP price range:
 
-1. From $2.92 to $3.12 DAI = $0.10 wide range 
+1. From $2.97 to $3.07 DAI = $0.10 wide range 
 2. From $3.015 to $3.025 DAI = $0.01 wide range
 
 Since the second option is about 10 times more concentrated, it will return 10 times more FLX rewards. However, if the price move above $3.025 or below $3.015 the second option will not give any rewards.
