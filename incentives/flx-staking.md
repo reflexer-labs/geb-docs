@@ -28,9 +28,9 @@ In exchange for protecting the protocol, stakers receive more FLX.
 
 ## 3. RAI Insolvency
 
-The RAI protocol is "insolvent" when liquidations \(collateral auctions\) are not successful \(cannot repay a Safe's debt by selling ETH\) and they leave leftover RAI which is not covered by collateral anymore.
+The RAI protocol is "insolvent" when liquidations \(collateral auctions\) are not successful \(cannot repay a Safe's debt by selling ETH\) and they leave leftover RAI which is not backed by collateral anymore.
 
-If too much unbacked RAI accrues in the protocol, it then becomes insolvent. In case of insolvency, stakers are the first line of defence. The staking pool will start to auction a portion of the staked tokens in exchange for RAI which is subsequently used to eliminate unbacked debt.
+If there's too much unbacked RAI in the protocol, the system then becomes insolvent. In case of insolvency, stakers are the first line of defence. The staking pool will start to auction a portion of the staked tokens in exchange for RAI which is subsequently used to eliminate unbacked debt.
 
 ## 4. Staking Walkthrough
 
