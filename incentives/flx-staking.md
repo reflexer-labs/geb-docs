@@ -13,24 +13,32 @@ In exchange for protecting the protocol, stakers receive more FLX.
 ### Mainnet
 
 * Exit delay \(thawing period\): 21 days
-* Reward unlock period: 6 months. Locked rewards are unlocked linearly during a 6 month time period from the moment a staker requests that they claim their rewards
-* Percentage of rewards unlocked over 6 months: 75%
+* Reward unlock period: 3 months. Locked rewards are unlocked linearly during a 3 month time period from the moment a staker requests that they claim their rewards
+* Percentage of rewards unlocked over 3 months: 75%
 * Percentage of rewards that can be claimed right away \(no unlock\): 25%
-* Percentage of pool that can be slashed/auctioned: 30% \(the rest of the pool isn't auctioned/slashed\)
+* Percentage of LP tokens in the pool that can be slashed/auctioned: 30% \(the rest of the pool isn't auctioned/slashed\)
 
 ### Kovan
 
 * Exit delay \(thawing period\): 1 minute
 * Reward unlock period: 10 minutes. Locked rewards are unlocked linearly during a 10 minute time period from the moment a staker requests that they claim their rewards
-* Percentage of rewards unlocked over 6 months: 75%
+* Percentage of rewards unlocked over 10 minutes: 75%
 * Percentage of rewards that can be claimed right away \(no unlock\): 25%
-* Percentage of pool that can be slashed/auctioned: 30% \(the rest of the pool isn't auctioned/slashed\)
+* Percentage of LP tokens in the pool that can be slashed/auctioned: 30% \(the rest of the pool isn't auctioned/slashed\)
 
 ## 3. RAI Insolvency
 
 The RAI protocol is "insolvent" when liquidations \(collateral auctions\) are not successful \(cannot repay a Safe's debt by selling ETH\) and they leave leftover RAI which is not backed by collateral anymore.
 
-If there's too much unbacked RAI in the protocol, the system then becomes insolvent. In case of insolvency, stakers are the first line of defence. The staking pool will start to auction a portion of the staked tokens in exchange for RAI which is subsequently used to eliminate unbacked debt.
+Liquidations can be unsuccessful when:
+
+* Only a portion of RAI is received by the liquidation out of the total amount of RAI that was requested
+* The value of ETH drops during a liquidation and there isn't any incentive to bid with RAI \(value of ETH is less than the value of RAI requested\)
+* The market price of RAI soars more than 10% above the redemption price which makes liquidations unprofitable
+
+If there's too much unbacked RAI in the protocol, the system becomes insolvent. In case of insolvency, stakers are the first line of defense.
+
+Anyone can call the staking pool to auction LP tokens immediately after the protocol becomes insolvent. In Section 2 above you can see the percentage of the staking pool that can be auctioned in exchange for RAI which is subsequently used to eliminate unbacked debt. 
 
 ## 4. Staking Walkthrough
 
