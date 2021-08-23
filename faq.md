@@ -33,15 +33,13 @@ Let's walk through an example of how RAI is revalued in case of ETH capital infl
 * At time T1: ETH price is $500, RAI's market and redemption prices are both $5
 * At time T2: ETH price surges to $1000. RAI SAFE users suddenly have more borrowing power and generate more RAI against their collateral. SAFE users sell RAI on the secondary market \(Uniswap\), causing RAI's market price to crash to $4.
 * At time T3: ETH remains at $1000 and RAI's market price is still $4. The system wants the market price to get close to the redemption price. In order to eliminate the imbalance between the market/redemption prices, the system starts to revalue RAI. Revaluing consists in setting a positive redemption rate which makes the redemption price grow every second.
-* At time T4: ETH remains at $1000. RAI's redemption price is now $5.1. SAFE users are starting to realize that they can now borrow less RAI per one ETH, they can redeem less ETH during Settlement \(because RAI is now more expensive\) and that it will be more expensive to close their SAFE once the market price follows the redemption price. At the same time, RAI holders are starting to realize that they can redeem more and more ETH during settlement and they can also "earn yield" by holding RAI and assuming that the market price will \(at some point\) surge toward the redemption.
-* At time T5: ETH remains at $1000. RAI's redemption price is now $5.2. RAI's market price surged to $5.2 as a result of:
-  * SAFE users buying RAI in order to close their positions as soon as possible instead of later on when RAI is more expensive
-  * RAI holders incrementally buying more RAI in order to "earn" more yield as a result of the eventual market price surge
+* At time T4: ETH remains at $1000. RAI's redemption price is now $5.1. SAFE users are starting to realize that they can now borrow less RAI per one ETH, they can redeem less ETH during Settlement \(because RAI is now more expensive\) and that it will be more expensive to close their SAFE once the market price follows the redemption price. At the same time, RAI holders are starting to realize that they can redeem more and more ETH during settlement
+* At time T5: ETH remains at $1000. RAI's redemption price is now $5.2. RAI's market price surged to $5.2 as a result of SAFE users buying RAI in order to close their positions as soon as possible instead of later on when RAI is more expensive
 
 When RAI is devalued \(in case of ETH capital outflow\), the opposite thing happens:
 
 * SAFE users realize that they can mint more RAI against their ETH and that they will be able to buy cheap RAI once the market price tanks
-* Token holders realize that they can redeem less ETH during Settlement and, in order to earn money, they need to short RAI
+* Token holders realize that they can redeem less ETH during Settlement and they need to short RAI
 
 ### Is RAI a stablecoin?
 
