@@ -38,7 +38,13 @@ Liquidations can be unsuccessful when:
 
 If there's too much unbacked RAI in the protocol, the system becomes insolvent. In case of insolvency, stakers are the first line of defense.
 
-Anyone can call the staking pool to auction LP tokens immediately after the protocol becomes insolvent. In Section 2 above you can see the percentage of the staking pool that can be auctioned in exchange for RAI which is subsequently used to eliminate unbacked debt. 
+Anyone can call the staking pool to auction LP tokens immediately after the protocol becomes insolvent. In Section 2 above you can see the percentage of the staking pool that can be auctioned in exchange for RAI which is subsequently used to eliminate unbacked debt.
+
+### Determining Insolvency
+
+RAI being "insolvent" means that there must be at least `debtAuctionBidSize` unbacked RAI on the protocol's balance sheet. The `debtAuctionBidSize` can be automatically recomputed by the protocol approximately every 4 days \(assuming that someone calls the protocol to recalculate the parameter\). The current `debtAuctionBidSize` parameter value can be read from the [accounting engine](https://etherscan.io/address/0xcee6aa1ab47d0fb0f24f51a3072ec16e20f90fce#readContract) contract.
+
+The staking pool can read the amount of unbacked debt that the [accounting engine](https://etherscan.io/address/0xcee6aa1ab47d0fb0f24f51a3072ec16e20f90fce#readContract) has and compare it to the `debtAuctionBidSize` value. If there's more unbacked debt than `debtAuctionBidSize`, it means that the protocol is insolvent and the staking pool can start to auction tokens.
 
 ## 4. Staking Walkthrough
 
