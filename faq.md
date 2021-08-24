@@ -71,11 +71,6 @@ RAI is meant to help other projects take advantage of its redemption rate as wel
   
 We believe that growing alongside other projects and helping builders leverage RAI will make the protocol successful. In short: RAI's success depends on other projects' well being.
 
-### Can you summarize what users should do so they can take advantage of the PID?
-
-1. When the redemption rate is positive, SAFE users should repay their debt, RAI users should buy more RAI
-2. When the redemption rate is negative, SAFE users should mint more debt, RAI users should sell/short RAI
-
 ### Can you summarize the behavior of the RAI redemption rate?
 
 1. When RAI's market price &gt; redemption price for a sustained period of time, the redemption rate will become negative
