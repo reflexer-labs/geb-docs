@@ -39,7 +39,7 @@ How to enable:  use `--flash-swaps` flag when starting a collateral auction-keep
 
 Specify a pool order: use `--flash-swap-pools` flag.  eg. `--flash-swap-pools eth-v2, dai-v3, usdc-v3, eth-v3`
 
-The default order is `rai-dai-v3, rai-eth-v2, rai-usdc-v3, rai-eth-v3`
+The default order is `dai-v3, eth-v2, usdc-v3, eth-v3`
 
 ## Flash Swaps in Action
 
