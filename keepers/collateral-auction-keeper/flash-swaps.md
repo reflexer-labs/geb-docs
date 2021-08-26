@@ -45,7 +45,7 @@ The default order is `dai-v3, eth-v2, usdc-v3, eth-v3`.
 
 ## Flash Swaps in Action
 
-Below is log output from _auction-keeper_ started with `--flash-swap` and `--flash-swap-pools usdc-v3,dai-v3,eth-v2,eth-v3`
+Below is a log output from an _auction-keeper_ started with the `--flash-swap` and `--flash-swap-pools usdc-v3,dai-v3,eth-v2,eth-v3` flags.
 
 First, the _auction-keeper_ finds a critical SAFE and successfully calls `liquidateAndSettleSAFE` using the usdc-v3 flash proxy. The _auction-keeper_ finds another critical SAFE and tries to call `liquidateAndSettleSAFE` using the usdc-v3 flash proxy again. As this is a much larger SAFE, this call fails due to lack of liquidity in rai-usdc-v3 pool. The _auction-keeper_ then successfully uses the dai-v3 flash-proxy to liquidate this SAFE.
 
