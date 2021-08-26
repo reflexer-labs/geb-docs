@@ -8,7 +8,7 @@ description: Lightning fast bidding in collateral auctions
 
 Normally, the collateral [auction-keeper](https://github.com/reflexer-labs/auction-keeper) uses system coins to bid in fixed discount collateral auctions. A keeper operator must acquire system coins to be prepared for future collateral auctions. With collateral auction flash swaps, this is no longer necessary.
 
-The auction-keeper can be configured to use [Uniswap v2 flash swaps](https://uniswap.org/docs/v2/core-concepts/flash-swaps/) when bidding in collateral auctions. This allows the keeper to participate in collateral auctions with no upfront capital other than gas costs to execute the transaction.
+The auction-keeper can be configured to use [Uniswap v2 or v3 flash swaps](https://uniswap.org/docs/v2/core-concepts/flash-swaps/) when bidding in collateral auctions. This allows the keeper to participate in collateral auctions with no upfront capital other than gas costs to execute the transaction.
 
 ## Details
 
