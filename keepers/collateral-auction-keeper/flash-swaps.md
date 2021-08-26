@@ -22,7 +22,6 @@ or
 
 2\) Bid in existing auctions by calling `settleAuction`
 
-See more details for these functions in the [geb-keeper-flash-proxy source code](https://github.com/reflexer-labs/geb-keeper-flash-proxy/blob/master/src/GebUniswapV2KeeperFlashProxyETH.sol).
 
 ## Uniswap RAI pools currently supported by keeper for flash swaps
 
