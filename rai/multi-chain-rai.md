@@ -10,9 +10,14 @@ Once you have FTM and RAI on the Fantom chain, you should also make sure you hav
 
 The RAI address on Fantom can be found [here](https://ftmscan.com/token/0xa71353bb71dda105d383b02fc2dd172c4d39ef8b).
 
-### RAI Partners
+### Fantom RAI Partners
 
 The first protocol that started to support RAI on Fantom is [SpiritSwap](https://app.spiritswap.finance/#/). Initially, SpiritSwap will incentivize RAI/FTM LPs using their SPIRIT token.
 
 In order to earn SPIRIT, you need to LP in the [RAI/FTM pool](https://swap.spiritswap.finance/#/add/FTM/0xa71353Bb71DdA105D383B02fc2dD172C4D39eF8B) and then go the the [staking page](https://app.spiritswap.finance/#/farms) and find the the RAI/FTM farm \(by typing "RAI" in the Search field\).
+
+## Polygon
+
+RAI Address: [0x0506FfbfeE18e6aCfDA130575252462A979CcE4b](https://polygonscan.com/address/0x0506ffbfee18e6acfda130575252462a979cce4b)  
+RAI ERC20 Proxy: [0xa27c496b4b74877eAfB9a8f0F90936E43Ae4828d](https://polygonscan.com/address/0xa27c496b4b74877eafb9a8f0f90936e43ae4828d)
 
