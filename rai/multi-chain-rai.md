@@ -2,6 +2,8 @@
 
 ## Fantom
 
+RAI Address: [0xa71353bb71dda105d383b02fc2dd172c4d39ef8b](https://ftmscan.com/address/0xa71353bb71dda105d383b02fc2dd172c4d39ef8b)
+
 Currently, RAI holders can port their tokens to [Fantom RAI](https://ftmscan.com/token/0xa71353bb71dda105d383b02fc2dd172c4d39ef8b) using the [Multichain.xyz](https://multichain.xyz/) bridge. RAI holders should keep in mind that they need to get FTM first in order to send transactions on Fantom. One way to [get FTM](https://fantom.foundation/where-to-buy-ftm/) is on [Sushiswap](https://app.sushi.com/swap) and then use Multichain.xyz to transfer your Ethereum FTM to Fantom FTM.
 
 Once you have FTM and RAI on the Fantom chain, you should also make sure you have [Fantom set up](https://docs.fantom.foundation/tutorials/set-up-metamask) in Metamask \(or any other wallet you're using\).
