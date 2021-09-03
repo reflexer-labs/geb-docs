@@ -18,6 +18,5 @@ In order to earn SPIRIT, you need to LP in the [RAI/FTM pool](https://swap.spiri
 
 ## Polygon
 
-RAI Address: [0x0506FfbfeE18e6aCfDA130575252462A979CcE4b](https://polygonscan.com/address/0x0506ffbfee18e6acfda130575252462a979cce4b)  
-RAI ERC20 Proxy: [0xa27c496b4b74877eAfB9a8f0F90936E43Ae4828d](https://polygonscan.com/address/0xa27c496b4b74877eafb9a8f0f90936e43ae4828d)
+RAI Address: [0x00e5646f60AC6Fb446f621d146B6E1886f002905](https://polygonscan.com/address/0x00e5646f60ac6fb446f621d146b6e1886f002905)
 
