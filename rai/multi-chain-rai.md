@@ -18,5 +18,7 @@ In order to earn SPIRIT, you need to LP in the [RAI/FTM pool](https://swap.spiri
 
 ## Polygon
 
-RAI Address: [0x00e5646f60AC6Fb446f621d146B6E1886f002905](https://polygonscan.com/address/0x00e5646f60ac6fb446f621d146b6e1886f002905)
+RAI Address: [0x00e5646f60AC6Fb446f621d146B6E1886f002905](https://polygonscan.com/address/0x00e5646f60ac6fb446f621d146b6e1886f002905)  
+  
+RAI holders can trade on [RAI/USDC Kyber DMM](https://polygon-info.dmm.exchange/pair/0x00e5646f60ac6fb446f621d146b6e1886f002905_0x2791bca1f2de4661ed88a30c99a7a9449aa84174).
 
