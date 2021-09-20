@@ -20,5 +20,15 @@ In order to earn SPIRIT, you need to LP in the [RAI/FTM pool](https://swap.spiri
 
 RAI Address: [0x00e5646f60AC6Fb446f621d146B6E1886f002905](https://polygonscan.com/address/0x00e5646f60ac6fb446f621d146b6e1886f002905)  
   
-RAI holders can trade on [RAI/USDC Kyber DMM](https://polygon-info.dmm.exchange/pair/0x00e5646f60ac6fb446f621d146b6e1886f002905_0x2791bca1f2de4661ed88a30c99a7a9449aa84174). BaoDAO also build a synthetics platform called [Polly](https://pollyfinance.com/?ref=null) and decided to use RAI for their [incentives pools](https://gov.bao.finance/t/accelerated-polly-tokenomics-proposal/813).
+RAI holders can trade on [RAI/USDC Kyber DMM](https://polygon-info.dmm.exchange/pair/0x00e5646f60ac6fb446f621d146b6e1886f002905_0x2791bca1f2de4661ed88a30c99a7a9449aa84174). 
+
+### Polygon RAI Partners
+
+BaoDAO also build a synthetics platform called [Polly](https://pollyfinance.com/?ref=null) and decided to use RAI for their [incentives pools](https://gov.bao.finance/t/accelerated-polly-tokenomics-proposal/813).
+
+## Solana
+
+RAI Address: [XXTrSXmzS7MvjYP5QGVbFppbvF3gXBmbezsphQbVG54](https://explorer.solana.com/address/XXTrSXmzS7MvjYP5QGVbFppbvF3gXBmbezsphQbVG54).
+
+In order to interact with Solana you can use the [Phantom wallet](https://phantom.app/). 
 
