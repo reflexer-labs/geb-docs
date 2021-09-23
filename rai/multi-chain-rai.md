@@ -32,3 +32,9 @@ RAI Address: [XXTrSXmzS7MvjYP5QGVbFppbvF3gXBmbezsphQbVG54](https://explorer.sola
 
 In order to interact with Solana you can use the [Phantom wallet](https://phantom.app/). 
 
+## Avalanche
+
+RAI Address: [0x97Cd1CFE2ed5712660bb6c14053C0EcB031Bff7d](https://cchain.explorer.avax.network/address/0x97Cd1CFE2ed5712660bb6c14053C0EcB031Bff7d/transactions)
+
+You can get your RAI from Ethereum to Avalanche using [Anyswap](https://anyswap.exchange/#/bridge?bridgetoken=0x97cd1cfe2ed5712660bb6c14053c0ecb031bff7d&network=43114).
+
