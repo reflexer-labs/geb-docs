@@ -12,9 +12,7 @@ The RAI address on Fantom can be found [here](https://ftmscan.com/token/0xa71353
 
 ### Fantom RAI Partners
 
-The first protocol that started to support RAI on Fantom is [SpiritSwap](https://app.spiritswap.finance/#/). Initially, SpiritSwap will incentivize RAI/FTM LPs using their SPIRIT token.
-
-In order to earn SPIRIT, you need to LP in the [RAI/FTM pool](https://swap.spiritswap.finance/#/add/FTM/0xa71353Bb71DdA105D383B02fc2dD172C4D39eF8B) and then go the the [staking page](https://app.spiritswap.finance/#/farms) and find the the RAI/FTM farm \(by typing "RAI" in the Search field\).
+The first protocol that started to support RAI on Fantom is [SpiritSwap](https://app.spiritswap.finance/#/).
 
 ## Polygon
 
@@ -37,4 +35,8 @@ In order to interact with Solana you can use the [Phantom wallet](https://phanto
 RAI Address: [0x97Cd1CFE2ed5712660bb6c14053C0EcB031Bff7d](https://cchain.explorer.avax.network/address/0x97Cd1CFE2ed5712660bb6c14053C0EcB031Bff7d/transactions)
 
 You can get your RAI from Ethereum to Avalanche using [Anyswap](https://anyswap.exchange/#/bridge?bridgetoken=0x97cd1cfe2ed5712660bb6c14053c0ecb031bff7d&network=43114).
+
+### Avalanche RAI Partners
+
+You can swap RAI on Avalanche using Pangolin. The main pair is [RAI/AVAX](https://info.pangolin.exchange/#/pair/0xd89dd8dcef91bee0a46d57681473b5ce824d3adf).
 
