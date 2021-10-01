@@ -4,7 +4,7 @@
 
 The RAI Mint + LP strategy requires that participants mint RAI **and** provide RAI/DAI liquidity on Uniswap v3 at the same time in order to accrue retroactive rewards.  
   
-The RAI/DAI one is [here](https://info.uniswap.org/#/pools/0xcb0c5d9d92f4f2f80cce7aa271a1e148c226e19d).
+The RAI/DAI pool is [here](https://info.uniswap.org/#/pools/0xcb0c5d9d92f4f2f80cce7aa271a1e148c226e19d).
 
 **NOTE**: from 6th of October 2021 onward, Uniswap v3 RAI LPs should deploy liquidity in such a way as to include **both the RAI redemption price and the current market price** in their ranges.
 
