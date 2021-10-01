@@ -52,7 +52,7 @@ First, you need to provide liquidity in this [FLX/ETH Uniswap v2 pool](https://a
 
 ![FLX/ETH Uniswap v2 Pool](../.gitbook/assets/lp.png)
 
-Once you receive your FLX/ETH LP tokens, head over [here](https://app.reflexer.finance/earn/staking) \(for mainnet\) and [here](https://app-kovan.reflexer.finance/earn/staking) \(for Kovan\) in order to see the staking dashboard.
+Once you receive your FLX/ETH LP tokens, head over [here](https://app.reflexer.finance/#/earn/staking) \(for mainnet\) and [here](https://app-kovan.reflexer.finance/earn/staking) \(for Kovan\) in order to see the staking dashboard.
 
 ![](../.gitbook/assets/staking.png)
 
