@@ -46,7 +46,7 @@ Current market price: $3.03897 \(DAI per RAI but we assume 1 DAI = 1 USD\)
 
 Bob: Mint 1000 RAI + LP between 3.0312 and 3.0403 for a total position value of $3038.97  
 Alice: Mint 1000 RAI + LP between 3.0281 and 3.0433 for a total position value of $3038.97  
-George: Mint 500 RAI + LP between 3.02381 and 3.0433 for a total position value of $3038.97  
+George: Mint 500 RAI + LP between 3.0281 and 3.0433 for a total position value of $3038.97  
 Robert: Mint 1000 RAI + LP between 3.0281 and 3.0372 for a total position value of $3038.97  
 Richard: Mint 1000 RAI + LP between 3.0342 and 3.0433 for a total position value of $3038.97
 
