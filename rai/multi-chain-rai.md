@@ -40,3 +40,13 @@ You can get your RAI from Ethereum to Avalanche using [Anyswap](https://anyswap.
 
 You can swap RAI on Avalanche using Pangolin. The main pair is [RAI/AVAX](https://info.pangolin.exchange/#/pair/0xd89dd8dcef91bee0a46d57681473b5ce824d3adf).
 
+## Arbitrum
+
+RAI Address: [0xaeF5bbcbFa438519a5ea80B4c7181B4E78d419f2](https://arbiscan.io/token/0xaef5bbcbfa438519a5ea80b4c7181b4e78d419f2)  
+  
+You can brdge RAI from Ethereum to Arbitrum using the official [Arbitrum bridge](https://bridge.arbitrum.io/).
+
+### Arbitrum RAI Partners
+
+RAI can be traded on Arbitrum using [Uniswap v3](https://app.uniswap.org/#/swap).
+
