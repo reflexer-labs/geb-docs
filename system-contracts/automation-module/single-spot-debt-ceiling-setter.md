@@ -4,20 +4,20 @@ description: Setter for a single collateral's debt ceiling
 
 # Single Spot Debt Ceiling Setter
 
-## 1. Summary <a id="1-introduction-summary"></a>
+## 1. Summary <a href="1-introduction-summary" id="1-introduction-summary"></a>
 
-The `SingleSpotDebtCeilingSetter` is meant to recompute the `debtCeiling` for a single collateral type inside the `SAFEEngine`.  
-  
+The `SingleSpotDebtCeilingSetter` is meant to recompute the `debtCeiling` for a single collateral type inside the `SAFEEngine`.\
+\
 The setter inherits functionality from the [IncreasingTreasuryReimbursement](https://docs.reflexer.finance/system-contracts/sustainability-module/increasing-treasury-reimbursement).
 
-## 2. Contract Variables & Functions <a id="2-contract-details"></a>
+## 2. Contract Variables & Functions <a href="2-contract-details" id="2-contract-details"></a>
 
 **Variables**
 
 * `manualSetters[usr: address]` - `addManualSetter`/`removeManualSetter` - auth mechanism for addresses that can call `manualUpdateCeiling`
 * `maxCollateralCeiling` - the max amount of system coins that can be generated using the collateral type with `collateralName`
 * `minCollateralCeiling` - the min amount of system coins that must be generated using the collateral type with `collateralName`
-* `ceilingPercentageChange` - premium on top of the current amount of debt \(backed by the collateral type with `collateralName`\) minted. This is used to calculate a new ceiling
+* `ceilingPercentageChange` - premium on top of the current amount of debt (backed by the collateral type with `collateralName`) minted. This is used to calculate a new ceiling
 * `lastUpdateTime` - when the debt ceiling was last updated
 * `updateDelay` - enforced time gap between calls
 * `lastManualUpdateTime` - last timestamp of a manual update
@@ -50,11 +50,10 @@ The setter inherits functionality from the [IncreasingTreasuryReimbursement](htt
 * `UpdateCeiling` - emitted when a new ceiling is computed and set. Contains:
   * `nextCeiling` - the new ceiling
 
-## 3. Walkthrough <a id="2-contract-details"></a>
+## 3. Walkthrough <a href="2-contract-details" id="2-contract-details"></a>
 
 `autoUpdateCeiling` and `manualUpdateCeiling` can both be used to recompute the debt ceiling for the collateral type with `collateralName, although manualUpdateCeiling` can only be called by whitelisted `manualSetters`. Both `autoUpdateCeiling` and `manualUpdateCeiling` call `getNextCollateralCeiling` to calculate the new ceiling.
 
-`getNextCollateralCeiling` takes into account `allowsIncrease` and `allowsDecrease` to determine whether it is allowed to computed a higher or a lower ceiling \(compared to the current one\).
+`getNextCollateralCeiling` takes into account `allowsIncrease` and `allowsDecrease` to determine whether it is allowed to computed a higher or a lower ceiling (compared to the current one).
 
 Both `allowsIncrease` and `allowsDecrease` look at the current `redemptionRate` as well as at `blockIncreaseWhenRevalue` and `blockDecreaseWhenDevalue` to see whether they should allow or disallow an increase or decrease in the debt ceiling. `blockIncreaseWhenRevalue` and `blockDecreaseWhenDevalue` are by default set to zero so increases or decreases are always allowed, no matter what sign the redemption rate has.
-

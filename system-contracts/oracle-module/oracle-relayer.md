@@ -4,15 +4,15 @@ description: The glue between price feeds and the SAFE Engine
 
 # Oracle Relayer
 
-## 1. Summary <a id="1-introduction"></a>
+## 1. Summary <a href="1-introduction" id="1-introduction"></a>
 
 The `OracleRelayer` functions as an interface contract between `FSM`s and the `SAFEEngine` and only stores the current `collateralType` list as well as the current `redemptionPrice` and `redemptionRate`. The relayer will depend on governance to set each collateral's safety and liquidation ratios and might also depend on an external feedback mechanism to update the `redemptionRate` which affects the `redemptionPrice`.
 
-## 2. Contract Variables & Functions <a id="2-contract-details"></a>
+## 2. Contract Variables & Functions <a href="2-contract-details" id="2-contract-details"></a>
 
 **Variables**
 
-* `contractEnabled` - settlement flag \(`1` or `0`\).
+* `contractEnabled` - settlement flag (`1` or `0`).
 * `authorizedAccounts[usr: address]` - addresses allowed to call `modifyParameters()` and `disableContract()`.
 * `collateralTypes[collateralType: bytes32]` - mapping of each collateral type
 * `cdpEngine` - address of the `CDPEngine` contract
@@ -32,7 +32,7 @@ The `OracleRelayer` functions as an interface contract between `FSM`s and the `S
 
 **Modifiers**
 
-* `isAuthorized` ****- checks whether an address is part of `authorizedAddresses` \(and thus can call authed functions\).
+* `isAuthorized`** **- checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
 
 **Functions**
 
@@ -65,21 +65,20 @@ The `OracleRelayer` functions as an interface contract between `FSM`s and the `S
   * `safetyPrice` - the price computed by dividing the feed value by the `redemptionPrice` and then dividing the result again by the collateral's `safetyCRatio`
   * `liquidationPrice` - the price computed by dividing the feed value by the `redemptionPrice` and then dividing the result again by the collateral's `liquidationCRatio`
 
-## 3. Walkthrough <a id="3-key-mechanisms-and-concepts"></a>
+## 3. Walkthrough <a href="3-key-mechanisms-and-concepts" id="3-key-mechanisms-and-concepts"></a>
 
-### UpdateCollateralPrice <a id="poke"></a>
+### UpdateCollateralPrice <a href="poke" id="poke"></a>
 
-`updateCollateralPrice` is a non-authenticated function. The function takes in a `bytes32` representing a `collateralType` whose \(safety and liquidation\) prices need to be updated. `updateCollateralPrice` has three stages:
+`updateCollateralPrice` is a non-authenticated function. The function takes in a `bytes32` representing a `collateralType` whose (safety and liquidation) prices need to be updated. `updateCollateralPrice` has three stages:
 
-1. `getResultWithValidity` - interacts with the `collateralType`'s `orcl` and returns a `value` and whether it  `isValid` \(a boolean which is false if the price is invalid\). The second external call only happens if `isValid == true`.
-2. When calculating the `safetyPrice` and the `liquidationPrice`, the `_redemptionPrice` is crucial as it defines the relationship between the system coin and one unit of collateral. The `value` from the `OSM` is  divided by the \(updated\) `redemptionPrice` \(to get a ratio of collateral `value` to system coins\) and then the result is divided again by the `collateralType.safetyCRatio` \(when calculating the `safetyPrice`\) and by the `collateralType.liquidationCRatio` \(when calculating the `liquidationPrice`\).
+1. `getResultWithValidity` - interacts with the `collateralType`'s `orcl` and returns a `value` and whether it  `isValid` (a boolean which is false if the price is invalid). The second external call only happens if `isValid == true`.
+2. When calculating the `safetyPrice` and the `liquidationPrice`, the `_redemptionPrice` is crucial as it defines the relationship between the system coin and one unit of collateral. The `value` from the `OSM` is  divided by the (updated) `redemptionPrice` (to get a ratio of collateral `value` to system coins) and then the result is divided again by the `collateralType.safetyCRatio` (when calculating the `safetyPrice`) and by the `collateralType.liquidationCRatio` (when calculating the `liquidationPrice`).
 3. `cdpEngine.modifyParameters` is then called to update the collateral's prices inside the system.
 
 ### Redemption Price
 
-Every time someone wants to read the `_redemptionPrice` its value will first be updated using the `redemptionRate` and then the output will be returned. We chose this design in order to ensure a smooth  `redemptionPrice` pro-ration \(using the virtual variable + a state modifying getter\).
+Every time someone wants to read the `_redemptionPrice` its value will first be updated using the `redemptionRate` and then the output will be returned. We chose this design in order to ensure a smooth  `redemptionPrice` pro-ration (using the virtual variable + a state modifying getter).
 
 ### Updating the Redemption Rate
 
 Every time the `redemptionRate` is updated, the contract makes sure to bound the value that is can be set to.
-

@@ -6,11 +6,11 @@ description: >-
 
 # Increasing Treasury Reimbursement
 
-## 1. Summary <a id="1-introduction-summary"></a>
+## 1. Summary <a href="1-introduction-summary" id="1-introduction-summary"></a>
 
-The `IncreasingTreasuryReimbursement` is a contract meant to be inherited from and used as a way to offer an increasing stability fee reward \(pulled from the SF treasury\) to any address.
+The `IncreasingTreasuryReimbursement` is a contract meant to be inherited from and used as a way to offer an increasing stability fee reward (pulled from the SF treasury) to any address.
 
-## 2. Contract Variables & Functions <a id="2-contract-details"></a>
+## 2. Contract Variables & Functions <a href="2-contract-details" id="2-contract-details"></a>
 
 **Variables**
 
@@ -18,7 +18,7 @@ The `IncreasingTreasuryReimbursement` is a contract meant to be inherited from a
 * `baseUpdateCallerReward` - starting reward offer to a fee receiver
 * `maxUpdateCallerReward` - max possible reward for a fee receiver
 * `maxRewardIncreaseDelay` - max delay taken into consideration when calculating the adjusted reward
-* `perSecondCallerRewardIncrease` - rate applied to `baseUpdateCallerReward` every extra second passed beyond a certain date \(e.g next time when a specific function needs to be called\)
+* `perSecondCallerRewardIncrease` - rate applied to `baseUpdateCallerReward` every extra second passed beyond a certain date (e.g next time when a specific function needs to be called)
 * `treasury` - stability fee treasury contract
 
 **Functions**
@@ -29,7 +29,7 @@ The `IncreasingTreasuryReimbursement` is a contract meant to be inherited from a
 
 **Modifiers**
 
-* `isAuthorized` ****- checks whether an address is part of `authorizedAddresses` \(and thus can call authed functions\)
+* `isAuthorized`** **- checks whether an address is part of `authorizedAddresses` (and thus can call authed functions)
 
 **Events**
 
@@ -43,7 +43,7 @@ The `IncreasingTreasuryReimbursement` is a contract meant to be inherited from a
   * `feeReceiver` - the address that was supposed to get the reward
   * `amount` - the reward that had to be sent
 
-## 3. Walkthrough <a id="2-contract-details"></a>
+## 3. Walkthrough <a href="2-contract-details" id="2-contract-details"></a>
 
 `rewardCaller` is the most important function in this contract. It takes care of pulling the SF reward from the treasury and then sending it to a `proposedFeeReceiver`.
 
@@ -52,7 +52,7 @@ The `IncreasingTreasuryReimbursement` is a contract meant to be inherited from a
 {% hint style="warning" %}
 **Large `maxRewardIncreaseDelay` and `perSecondCallerRewardIncrease`can make `getCallerReward` revert**
 
-If `perSecondCallerRewardIncrease` is set to a large value and `maxRewardIncreaseDelay` is also large, `getCallerReward` may revert. In most scenarios,  `maxRewardIncreaseDelay` should be set to a very conservative value \(a couple of hours at most\) in order to avoid this scenario.
+If `perSecondCallerRewardIncrease` is set to a large value and `maxRewardIncreaseDelay` is also large, `getCallerReward` may revert. In most scenarios,  `maxRewardIncreaseDelay` should be set to a very conservative value (a couple of hours at most) in order to avoid this scenario.
 {% endhint %}
 
 ## 4. Increasing Treasury Reimbursement Flavours
@@ -60,5 +60,4 @@ If `perSecondCallerRewardIncrease` is set to a large value and `maxRewardIncreas
 There are two alternative Increasing Treasury Reimbursement contract flavours aside from the core one:
 
 * `NoSetupIncreasingTreasuryReimbursement` - this contract has the exact same logic as the core one but it does not set any parameters in its constructor
-* `NoSetupNoAuthIncreasingTreasuryReimbursement` - this contract has the same logic as the core one but it does not set any parameters in its constructor and it also does not have any authorization logic \(`addAuthorization`/`removeAuthorization`\)
-
+* `NoSetupNoAuthIncreasingTreasuryReimbursement` - this contract has the same logic as the core one but it does not set any parameters in its constructor and it also does not have any authorization logic (`addAuthorization`/`removeAuthorization`)

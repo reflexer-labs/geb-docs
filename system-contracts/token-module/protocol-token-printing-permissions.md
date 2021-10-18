@@ -6,27 +6,27 @@ description: >-
 
 # Protocol Token Printing Permissions
 
-## 1. Summary <a id="1-introduction-summary"></a>
+## 1. Summary <a href="1-introduction-summary" id="1-introduction-summary"></a>
 
-`GebPrintingPermissions` allows governance to whitelist multiple independent GEBs to print the same protocol token. It imposes delays for adding and removing permissions and it can also allow specific systems to print tokens indefinitely. 
+`GebPrintingPermissions` allows governance to whitelist multiple independent GEBs to print the same protocol token. It imposes delays for adding and removing permissions and it can also allow specific systems to print tokens indefinitely.&#x20;
 
-## 2. Contract Variables & Functions <a id="2-contract-details"></a>
+## 2. Contract Variables & Functions <a href="2-contract-details" id="2-contract-details"></a>
 
 **Variables**
 
 * `authorizedAccounts[usr: address]` - addresses allowed to cover or uncover systems
 * `allowedSystems[system: address]` - data about a system that is allowed to print protocol tokens
 * `usedAuctionHouses[house: address]` - mapping that shows whether a `DebtAuctionHouse` is allowed to print tokens or not
-* `unrevokableRightsCooldown` - minimum time \(in seconds\) after which as system will have indefinite permission to print protocol tokens
+* `unrevokableRightsCooldown` - minimum time (in seconds) after which as system will have indefinite permission to print protocol tokens
 * `denyRightsCooldown` - cooldown that must pass between calling `startUncoverSystem` and `endUncoverSystem`
-* `addRightsCooldown` - cooldown for quickly removing cover from a freshly added system 
+* `addRightsCooldown` - cooldown for quickly removing cover from a freshly added system&#x20;
 * `coveredSystems` - the current number of systems covered by the protocol token
 * `protocolTokenAuthority` - the authority contract dictating who can print tokens
 * `AUCTION_HOUSE_TYPE` - debt auction house identifier
 
 **Data Structures**
 
-* `SystemRights` - struct that stores data about each `AccountingEngine` \(system\). Contains:
+* `SystemRights` - struct that stores data about each `AccountingEngine` (system). Contains:
   * `covered` - whether this system is covered or not
   * `revokeRightsDeadline` - deadline after which governance can no longer remove printing permissions from the system
   * `uncoverCooldownEnd` - cooldown after which governance can call `endUncoverSystem` and uncover this system
@@ -36,7 +36,7 @@ description: >-
 
 **Modifiers**
 
-* `isAuthorized` ****- checks whether an address is part of `authorizedAddresses`.
+* `isAuthorized`** **- checks whether an address is part of `authorizedAddresses`.
 
 **Functions**
 
@@ -49,10 +49,9 @@ description: >-
 * `startUncoverSystem(accountingEngine: address)` - start to uncover a system / withdraw the permission of the previous and current `DebtAuctionHouse`s that were associated with `accountingEngine`
 * `abandonUncoverSystem(accountingEngine: address)` - abandon the uncovering of a specific system
 * `endUncoverSystem(accountingEngine: address)` - end the uncovering process for a system
-* `updateCurrentDebtAuctionHouse(accountingEngine: address)` - update the `currentDebtAuctionHouse` of a specific system and set the old current auction house as the 
+*   `updateCurrentDebtAuctionHouse(accountingEngine: address)` - update the `currentDebtAuctionHouse` of a specific system and set the old current auction house as the&#x20;
 
-  `previousDebtAuctionHouse`
-
+    `previousDebtAuctionHouse`
 * `removePreviousDebtAuctionHouse(accountingEngine: address)` - remove the permission to print protocol tokens from an `accountingEngine`'s `previousDebtAuctionHouse`
 * `proposeIndefinitePrintingPermissions(accountingEngine: address`, `freezeDelay: uint256)` - propose a deadline after which the `accountingEngine` / system cannot be denied printing permissions
 
@@ -62,7 +61,7 @@ description: >-
   * `account` - the new authorized account
 * `RemoveAuthorization` - emitted when an address is de-authorized. Contains:
   * `account` - the address that was de-authorized
-* `ModifyParameters` - emitted when a `uint256` ****parameter is updated.
+* `ModifyParameters` - emitted when a `uint256`** **parameter is updated.
 * `GiveUpAuthorityRoot` - emitted when `giveUpAuthorityRoot` is called.
 * `GiveUpAuthorityOwnership` -  emitted when `giveUpAuthorityOwnership` is called.
 * `RevokeDebtAuctionHouses` - emitted when both the current and the previous `DebtAuctionHouse`s are denied printing permissions. Contains:
@@ -100,7 +99,7 @@ description: >-
   * `accountingEngine` - the address of the accounting engine that's part of the system which will no longer be denied printing permissions
   * `freezeDelay` - the delay from the current timestamp after which the system will have indefinite printing permissions
 
-## 3. Walkthrough <a id="2-contract-details"></a>
+## 3. Walkthrough <a href="2-contract-details" id="2-contract-details"></a>
 
 ### Current and Previous Debt Auction Houses
 
@@ -114,11 +113,10 @@ Inside the printing permissions contract, a system is represented by an [Account
 
 `abandonUncoverSystem` : it can only abandon the uncover for a system that is in the process of being uncovered.
 
-`endUncoverSystem` : it must check again that neither the current nor the previous debt auction house has any outstanding auctions left. Similar to `startUncoverSystem` , it can withdraw cover from a system either if there are at least 2 systems covered or, even if there are multiple systems covered, the `withdrawAddedRightsDeadline` for the system that governance wants to uncover was not passed \(same exception to the rule applies as for `startUncoverSystem`\).
+`endUncoverSystem` : it must check again that neither the current nor the previous debt auction house has any outstanding auctions left. Similar to `startUncoverSystem` , it can withdraw cover from a system either if there are at least 2 systems covered or, even if there are multiple systems covered, the `withdrawAddedRightsDeadline` for the system that governance wants to uncover was not passed (same exception to the rule applies as for `startUncoverSystem`).
 
 `updateCurrentDebtAuctionHouse`: it cannot update the `currentDebtAuctionHouse` if the new auction house is the same as the current one. It also cannot update the current auction house if `previousDebtAuctionHouse` is non null. It must allow the new auction house to print tokens and set `previousDebtAuctionHouse` as the last `currentDebtAuctionHouse`
 
 `removePreviousDebtAuctionHouse` : it cannot remove the permission of the `previousDebtAuctionHouse` to print protocol tokens unless there are no outstanding auctions in that auction house.
 
-`proposeIndefinitePrintingPermissions` : it sets a time after which governance can never remove cover from a specific accounting engine \(and thus it's associated debt auction house\). `updateCurrentDebtAuctionHouse` and `removePreviousDebtAuctionHouse` should still work even if `now > allowedSystems[accountingEngine].revokeRightsDeadline` 
-
+`proposeIndefinitePrintingPermissions` : it sets a time after which governance can never remove cover from a specific accounting engine (and thus it's associated debt auction house). `updateCurrentDebtAuctionHouse` and `removePreviousDebtAuctionHouse` should still work even if `now > allowedSystems[accountingEngine].revokeRightsDeadline` 

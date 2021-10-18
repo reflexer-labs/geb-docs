@@ -1,36 +1,35 @@
 ---
-description: 'The protocol''s accountant, keeping track of surplus and deficit'
+description: The protocol's accountant, keeping track of surplus and deficit
 ---
 
 # Accounting Engine
 
-## 1. Summary <a id="1-introduction-summary"></a>
+## 1. Summary <a href="1-introduction-summary" id="1-introduction-summary"></a>
 
-The `AccountingEngine` receives both system surplus and system debt. It covers deficits via debt auctions and disposes off surplus via auctions \(`Burning/RecyclingSurplusAuctionHouse`\) or transfers \(to `extraSurplusReceiver`\).
+The `AccountingEngine` receives both system surplus and system debt. It covers deficits via debt auctions and disposes off surplus via auctions (`Burning/RecyclingSurplusAuctionHouse`) or transfers (to `extraSurplusReceiver`).
 
-## 2. Contract Variables & Functions <a id="2-contract-details"></a>
+## 2. Contract Variables & Functions <a href="2-contract-details" id="2-contract-details"></a>
 
 **Variables**
 
-* `contractEnabled` - settlement flag \(`1` or `0`\).
+* `contractEnabled` - settlement flag (`1` or `0`).
 * `authorizedAccounts[usr: address]` - addresses allowed to call `modifyParameters()` and `disableContract()`.
 * `safeEngine` - address of the `SAFEEngine`.
 * `surplusAuctionHouse` - address of the `PreSettlementSurplusAuctionHouse`.
 * `debtAuctionHouse` - address of the `DebtAuctionHouse`.
 * `systemStakingPool` - the system's staking pool acting as lender of first resort.
 * `extraSurplusReceiver` - address that receives surplus in case the strategy to get rid of excessive surplus is transfer instead of auction.
-* `debtQueue[timestamp: uint256]`- the system debt queue. The `LiquidationEngine` adds a new debt block every time it starts a new collateral auction. Each block can be popped out of the list after 
+*   `debtQueue[timestamp: uint256]`- the system debt queue. The `LiquidationEngine` adds a new debt block every time it starts a new collateral auction. Each block can be popped out of the list after&#x20;
 
-  `popDebtDelay`seconds.
-
+    `popDebtDelay`seconds.
 * `debtPoppers[timestamp: uint256]` - mapping that records the addresses which pop debt out of `debtQueue`.
 * `lastSurplusTransferTime` - the last timestamp when the engine transferred extra surplus out.
 * `lastSurplusAuctionTime` - the last timestamp when the engine auctioned extra surplus.
 * `surplusTransferDelay` - the minimum delay between two consecutive extra surplus transfers.
 * `surplusAuctionDelay` - the minimum delay between two consecutive extra surplus auctions.
 * `extraSurplusIsTransferred` - `0` if extra surplus is auctioned, `1` if it's transferred.
-* `postSettlementSurplusDrain`- contract meant to auction/dispose off any remaining surplus after the `AccountingEngine` is disabled \(and in case surplus couldn't be settled with bad debt because of a bug\).
-* `protocolTokenAuthority` ****- address of ****authority contract that says which addresses are able to mint an burn protocol tokens.
+* `postSettlementSurplusDrain`- contract meant to auction/dispose off any remaining surplus after the `AccountingEngine` is disabled (and in case surplus couldn't be settled with bad debt because of a bug).
+* `protocolTokenAuthority`** **- address of** **authority contract that says which addresses are able to mint an burn protocol tokens.
 * `totalQueuedDebt`- the total amount of debt in the queue.
 * `totalOnAuctionDebt`- the total amount of debt being auctioned in the `DebtAuctionHouse`.
 * `popDebtDelay`- length of time for which a debt block must stay in the `debtQueue`.
@@ -44,7 +43,7 @@ The `AccountingEngine` receives both system surplus and system debt. It covers d
 
 **Modifiers**
 
-* `isAuthorized` ****- checks whether an address is part of `authorizedAddresses` \(and thus can call authed functions\).
+* `isAuthorized`** **- checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
 
 **Functions**
 
@@ -56,13 +55,13 @@ The `AccountingEngine` receives both system surplus and system debt. It covers d
 * `pushDebtToQueue(debtBlock: uint256)` - adds a bad debt block to the auctions queue.
 * `popDebtFromQueue(timestamp: uint256)` - release a debt block from the debt queue.
 * `settleDebt(rad: uint256)` - calls `settleDebt` on the `safeEngine` in order to cancel out surplus and debt.
-* `cancelAuctionedDebtWithSurplus(rad: uint256)` - cancels out surplus coming from `DebtAuctionHouse` auctions and auctioned \(bad\) debt.
-* `auctionSurplus()` - trigger a surplus auction \(`SurplusAuctionHouse.startAuction`\).
-* `transferExtraSurplus()` - transfers extra surplus \(above the `surplusBuffer`\) from the engine to `extraSurplusReceiver`.
-* `auctionDebt()` - trigger a deficit auction \(`DebtAuctionHouse.startAuction`\).
+* `cancelAuctionedDebtWithSurplus(rad: uint256)` - cancels out surplus coming from `DebtAuctionHouse` auctions and auctioned (bad) debt.
+* `auctionSurplus()` - trigger a surplus auction (`SurplusAuctionHouse.startAuction`).
+* `transferExtraSurplus()` - transfers extra surplus (above the `surplusBuffer`) from the engine to `extraSurplusReceiver`.
+* `auctionDebt()` - trigger a deficit auction (`DebtAuctionHouse.startAuction`).
 * `settleDebtAuction(id: uint256)` - authed function meant to be called by `debtAuctionHouse` in order to signal that a specific auction settled.
-* `transferPostSettlementSurplus()` - transfer any post settlement, leftover surplus to the`postSettlementSurplusDrain`. Meant to be a backup in case `GlobalSettlement.processSAFE` has a bug \(cannot process a specific Safe\), governance doesn't have power over the system and there's still surplus left in the `AccountingEngine` which then blocks `GlobalSettlement.setOutstandingCoinSupply`.
-* `disableContract()` - set `contractEnabled` to zero and settle as much remaining debt as possible \(if any\)
+* `transferPostSettlementSurplus()` - transfer any post settlement, leftover surplus to the`postSettlementSurplusDrain`. Meant to be a backup in case `GlobalSettlement.processSAFE` has a bug (cannot process a specific Safe), governance doesn't have power over the system and there's still surplus left in the `AccountingEngine` which then blocks `GlobalSettlement.setOutstandingCoinSupply`.
+* `disableContract()` - set `contractEnabled` to zero and settle as much remaining debt as possible (if any)
 
 **Events**
 
@@ -87,7 +86,7 @@ The `AccountingEngine` receives both system surplus and system debt. It covers d
   * `rad` - amount of auctioned debt to settle
   * `totalOnAuctionDebt` - remaining amount of debt being auctioned
   * `coinBalance` - the `AccountingEngine`'s coin balance after the debt is settled
-  * `debtBalance` - remaining amount of debt 
+  * `debtBalance` - remaining amount of debt&#x20;
 * `AuctionDebt` - emitted when a new debt auction starts. Contains:
   * `id` - the ID of the new debt auction
   * `totalOnAuctionDebt` - total debt being auctioned across all debt auctions
@@ -110,19 +109,18 @@ The `AccountingEngine` receives both system surplus and system debt. It covers d
 
 ### Auctioning Debt
 
-When a SAFE is liquidated, the seized debt is put in a queue in the `AccountingEngine`. This occurs at the block timestamp of the `liquidateSAFE` action \(`debtQueue[timestamp]`\). It can be released with the help of `popDebtFromQueue` once `AccountingEngine.popDebtDelay` has expired. Once released, it can be settled using the surplus gathered from the SAFE's liquidation or, if there wasn't enough surplus gathered, the debt can be auctioned using the `DebtAuctionHouse`. **NOTE**: the `AccountingEngine` can start a new debt auction only if `canPrintProtocolTokens` returns `true` and if `canPrintProtocolTokens` also doesn't unexpectedly revert.
+When a SAFE is liquidated, the seized debt is put in a queue in the `AccountingEngine`. This occurs at the block timestamp of the `liquidateSAFE` action (`debtQueue[timestamp]`). It can be released with the help of `popDebtFromQueue` once `AccountingEngine.popDebtDelay` has expired. Once released, it can be settled using the surplus gathered from the SAFE's liquidation or, if there wasn't enough surplus gathered, the debt can be auctioned using the `DebtAuctionHouse`. **NOTE**: the `AccountingEngine` can start a new debt auction only if `canPrintProtocolTokens` returns `true` and if `canPrintProtocolTokens` also doesn't unexpectedly revert.
 
-The main risk is related to `popDebtDelay` &lt; `CollateralAuctionHouse.totalAuctionLength` which would result in debt auctions starting before the associated collateral auctions could complete.
+The main risk is related to `popDebtDelay` < `CollateralAuctionHouse.totalAuctionLength` which would result in debt auctions starting before the associated collateral auctions could complete.
 
 ### Auctioning Surplus
 
-When the `AccountingEngine` has a surplus balance above the `surplusBuffer` \(`safeEngine.coinBalance[accountingEngine]` &gt; `surplusBuffer`\), if the extra surplus on top of the buffer is not reserved to nullify the engine's bad debt \(`safeEngine.debtBalance[accountingEngine]`\) and if `extraSurplusIsTransferred` is `0`, the extra surplus can be auctioned off using the `Burning/RecyclingSurplusAuctionHouse`. This process results in burning protocol tokens that are being offered in exchange for the auctioned surplus.
+When the `AccountingEngine` has a surplus balance above the `surplusBuffer` (`safeEngine.coinBalance[accountingEngine]` > `surplusBuffer`), if the extra surplus on top of the buffer is not reserved to nullify the engine's bad debt (`safeEngine.debtBalance[accountingEngine]`) and if `extraSurplusIsTransferred` is `0`, the extra surplus can be auctioned off using the `Burning/RecyclingSurplusAuctionHouse`. This process results in burning protocol tokens that are being offered in exchange for the auctioned surplus.
 
 ### Transferring Extra Surplus
 
-When the `AccountingEngine` has a surplus balance above the `surplusBuffer` \(`safeEngine.coinBalance[accountingEngine]` &gt; `surplusBuffer`\), if the extra surplus on top of the buffer is not reserved to nullify the engine's bad debt \(`safeEngine.debtBalance[accountingEngine]`\) and if `extraSurplusIsTransferred` is `1`, the extra surplus can be transferred to `extraSurplusReceiver`.
+When the `AccountingEngine` has a surplus balance above the `surplusBuffer` (`safeEngine.coinBalance[accountingEngine]` > `surplusBuffer`), if the extra surplus on top of the buffer is not reserved to nullify the engine's bad debt (`safeEngine.debtBalance[accountingEngine]`) and if `extraSurplusIsTransferred` is `1`, the extra surplus can be transferred to `extraSurplusReceiver`.
 
 ### Disabling the Accounting Engine
 
-When an authorized address calls `AccountingEngine.disableContract` the system will try to settle as much remaining `safeEngine.debtBalance[accountingEngine]` as possible. 
-
+When an authorized address calls `AccountingEngine.disableContract` the system will try to settle as much remaining `safeEngine.debtBalance[accountingEngine]` as possible.&#x20;
