@@ -137,4 +137,4 @@
 
 * [SAFE Protection](liquidation-protection/safe-protection.md)
 * [Liquidation Protection Guide](liquidation-protection/liquidation-protection-guide.md)
-* [Uni-V2 RAI/ETH Savior](liquidation-protection/uni-v2-rai-eth-savior.md)
+* [Uni-V2 RAI/ETH Savior Math](liquidation-protection/uni-v2-rai-eth-savior-math.md)
