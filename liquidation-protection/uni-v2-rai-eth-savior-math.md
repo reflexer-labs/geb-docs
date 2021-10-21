@@ -97,7 +97,7 @@ $$
 Since we're interested in the minimum balance of LP tokens, we keep only the second solution that will give the lowest balance possible. Last, we need to take the square root of $$K_{LP}$$ ​to get the actual LP token balance:
 
 $$
-Bal_{LPmin}= \sqrt{\frac{p(C-Dj)^2}{(j+p)^2}}
+Bal_{LPmin}= \sqrt{\frac{p(C-Dj)^2}{(j+p)^2}}=\sqrt{p} \frac{C-Dj}{j+p}
 $$
 
 Below is a calculation example:
