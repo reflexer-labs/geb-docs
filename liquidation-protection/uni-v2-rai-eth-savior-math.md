@@ -100,7 +100,7 @@ $$
 Bal_{LPmin}= \sqrt{\frac{p(C-Dj)^2}{(j+p)^2}}=\sqrt{p} \frac{C-Dj}{j+p}
 $$
 
-Below is a calculation example:
+Done! To that we have to add the flat $2000 keeper fee. Below is a calculation example:
 
 {% embed url="https://docs.google.com/spreadsheets/d/1flg9LidXvxcAInw4-AtDCEFniMGoZg9fIgm-x36S3CA/edit#gid=0" %}
 
