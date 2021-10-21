@@ -1,4 +1,4 @@
-# Uni-V2 RAI/ETH Savior
+# Uni-V2 RAI/ETH Savior Math
 
 The Uniswap V2 RAI/ETH savior allows users to deposit LP shares to protect their safe. Upon a liquidation attempt from a keeper, the savior will withdraw all RAI and ETH liquidity from Uniswap.&#x20;
 
@@ -32,13 +32,13 @@ $$
 P_{liq} = \frac{DA_{cc}R_{liq}P_{rp}}{C}
 $$
 
-​From here, we can reorganize the formula to isolate the debt amount from the collateral amount in the Safe. We also use the Target Rebalance CRatio $$R_{tar}$$ instead of the liquidation CRatio to know how much debt and collateral we need to save the Safe:
+​From here, we can reorganize the formula to isolate the debt and collateral amount in the Safe. We also use the Target Rebalance CRatio $$R_{tar}$$ instead of the liquidation CRatio to know how much debt and collateral we need to save the Safe:
 
 $$
 \frac{C_{sav}}{D_{save}}  = \frac{A_{cc}R_{tar}P_{rp}}{P_{liq}}
 $$
 
-When using the RAI $$D_{lp}$$and ETH $$C_{LP}$$ from the savior we get:
+The savior will be withdrawing an amount of LP tokens to get $$D_{lp}$$ RAI and $$C_{LP}$$ ETH. Therefore, the resulting debt and collateral in safe after and adding the proceeds from the LP shares will be:&#x20;
 
 $$C_{save} = C + C_{lp}$$&#x20;
 
@@ -50,7 +50,7 @@ $$
 \frac{C + C_{lp}}{D - D_{lp}}  = \frac{A_{cc}R_{tar}P_{rp}}{P_{liq}}
 $$
 
-We will reuse this formula later. Now we need to model the Uniswap pool dynamics to calculate the amounts of RAI/ETH at different ETH price levels. We start from the standard xy=k assumption:
+We will reuse this formula later. We now need to model the Uniswap pool dynamics to calculate the amount $$D_{lp}$$ and $$C_{LP}$$  we would get from the savior LP shares at a given liquidation price. We start from the standard xy=k assumptions:
 
 $$
 \begin{cases}K_{lp} = S_{ETH}S_{RAI}\\ S_{ETH}P_{ETH}= S_{RAI}P_{RAI}\end{cases}
@@ -88,4 +88,21 @@ Using Wolfram Alpha:
 
 {% embed url="https://www.wolframalpha.com/input?i=solve%5C%2840%29Divide%5Bc%2BSqrt%5Bk*p%5D%2Cd-Sqrt%5Bk*%5C%2840%29Divide%5B1%2Cp%5D%5C%2841%29%5D%5D%3Dj%5C%2844%29k%5C%2841%29&i2d=true" %}
 
-​
+​We get 2 solutions:
+
+$$
+\begin{cases} K_{LP1}= \frac{p(C-Dj)^2}{(j-p)^2} \\  K_{LP2}= \frac{p(C-Dj)^2}{(j+p)^2} \end{cases}
+$$
+
+Since we're interested in the minimum balance of LP tokens, we keep only the second solution that will give the lowest balance possible. Last, we need to take the square root of $$K_{LP}$$ ​to get the actual LP token balance:
+
+$$
+Bal_{LPmin}= \sqrt{\frac{p(C-Dj)^2}{(j+p)^2}}
+$$
+
+Below is a calculation example:
+
+{% embed url="https://docs.google.com/spreadsheets/d/1flg9LidXvxcAInw4-AtDCEFniMGoZg9fIgm-x36S3CA/edit#gid=0" %}
+
+The spreadsheet is available here, make a copy to test your own parameters: [https://docs.google.com/spreadsheets/d/1flg9LidXvxcAInw4-AtDCEFniMGoZg9fIgm-x36S3CA/edit#gid=0](https://docs.google.com/spreadsheets/d/1flg9LidXvxcAInw4-AtDCEFniMGoZg9fIgm-x36S3CA/edit#gid=0)
+
