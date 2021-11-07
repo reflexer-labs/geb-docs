@@ -71,8 +71,7 @@ In this stage, governance will remove control from:
 * OracleRelayer
 * Coin (ERC20)
 * CollateralJoin contracts
-* ProtocolTokenAuthority (and as a result give up on the possibility to authorize/deauthorize new or old DebtAuctionHouses to print tokens)
-* ProtocolTokenPrintingPermissions
+* Contracts that automate param setting in the protocol
 * TaxCollector
 * ESM
 
@@ -84,7 +83,8 @@ In this stage, governance will remove control from:
 * AccountingEngine
 * StabilityFeeTreasury
 * GlobalSettlement
-* Contracts that automate param setting in the protocol
+* ProtocolTokenAuthority (and as a result give up on the possibility to authorize/deauthorize new or old DebtAuctionHouses to print tokens)
+* ProtocolTokenPrintingPermissions
 
 Any auxiliary contracts that automate parameter settings should also by themselves be governance minimized.
 
