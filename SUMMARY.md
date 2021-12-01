@@ -10,7 +10,7 @@
 
 * [RAI Use-Cases](rai/rai-use-cases.md)
 * [Multi-chain RAI](rai/multi-chain-rai.md)
-* [RAI Integrations and Partners](rai/rai-integrations-and-partners.md)
+* [RAI Integrations](rai/rai-integrations-and-partners.md)
 
 ## The Money God League
 
@@ -31,7 +31,7 @@
 * [RAI Uniswap V3 Mint + LP Incentives Program](incentives/rai-uniswap-v3-mint-+-lp-incentives-program.md)
 * [FLX Staking](incentives/flx-staking.md)
 
-## Contract Variables Translation <a href="contract-translation" id="contract-translation"></a>
+## Contract Variables Translation <a href="#contract-translation" id="contract-translation"></a>
 
 * [Core Contracts Naming Transition](contract-translation/naming-transition.md)
 * [Governance Contracts Naming Transition](contract-translation/governance-contracts-naming-transition.md)
@@ -93,7 +93,7 @@
 
 * [SAFE Manager](helper-contracts/safe-manager.md)
 
-## GEB.js <a href="geb-js" id="geb-js"></a>
+## GEB.js <a href="#geb-js" id="geb-js"></a>
 
 * [Getting Started](geb-js/getting-started.md)
 * [Global Settlement Guide](geb-js/geb-js-global-settlement-guide.md)
@@ -103,7 +103,7 @@
   * [Proxy Actions](geb-js/api-reference/gebproxyactions.md)
   * [Geb Admin](geb-js/api-reference/gebadmin.md)
 
-## APIs <a href="api" id="api"></a>
+## APIs <a href="#api" id="api"></a>
 
 * [API Endpoints](api/api-endpoints.md)
 
