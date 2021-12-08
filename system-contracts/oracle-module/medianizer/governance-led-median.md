@@ -6,11 +6,11 @@ description: >-
 
 # Governance Led Median
 
-## 1. Summary <a href="1-introduction" id="1-introduction"></a>
+## 1. Summary <a href="#1-introduction" id="1-introduction"></a>
 
 The `GovernanceLedMedian` is an option to provide trusted reference prices for collateral types and for the system coin. It works by maintaining a whitelist of price feed contracts which are authorized to post price updates. Every time a new list of prices is received, the median of these is computed and used to update the stored value.
 
-## 2. Contract Variables & Functions <a href="2-contract-details" id="2-contract-details"></a>
+## 2. Contract Variables & Functions <a href="#2-contract-details" id="2-contract-details"></a>
 
 **Variables**
 
@@ -25,7 +25,7 @@ The `GovernanceLedMedian` is an option to provide trusted reference prices for c
 
 **Modifiers**
 
-* `isAuthorized`** **- checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
+* `isAuthorized` **** - checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
 
 **Functions**
 

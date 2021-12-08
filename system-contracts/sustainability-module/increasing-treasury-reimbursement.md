@@ -6,11 +6,11 @@ description: >-
 
 # Increasing Treasury Reimbursement
 
-## 1. Summary <a href="1-introduction-summary" id="1-introduction-summary"></a>
+## 1. Summary <a href="#1-introduction-summary" id="1-introduction-summary"></a>
 
 The `IncreasingTreasuryReimbursement` is a contract meant to be inherited from and used as a way to offer an increasing stability fee reward (pulled from the SF treasury) to any address.
 
-## 2. Contract Variables & Functions <a href="2-contract-details" id="2-contract-details"></a>
+## 2. Contract Variables & Functions <a href="#2-contract-details" id="2-contract-details"></a>
 
 **Variables**
 
@@ -29,7 +29,7 @@ The `IncreasingTreasuryReimbursement` is a contract meant to be inherited from a
 
 **Modifiers**
 
-* `isAuthorized`** **- checks whether an address is part of `authorizedAddresses` (and thus can call authed functions)
+* `isAuthorized` **** - checks whether an address is part of `authorizedAddresses` (and thus can call authed functions)
 
 **Events**
 
@@ -43,7 +43,7 @@ The `IncreasingTreasuryReimbursement` is a contract meant to be inherited from a
   * `feeReceiver` - the address that was supposed to get the reward
   * `amount` - the reward that had to be sent
 
-## 3. Walkthrough <a href="2-contract-details" id="2-contract-details"></a>
+## 3. Walkthrough <a href="#2-contract-details" id="2-contract-details"></a>
 
 `rewardCaller` is the most important function in this contract. It takes care of pulling the SF reward from the treasury and then sending it to a `proposedFeeReceiver`.
 

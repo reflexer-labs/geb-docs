@@ -10,7 +10,7 @@ description: >-
 
 Increasing discount collateral auctions are similar to fixed discount ones in that they are used to preserve the overall system health by liquidating under-collateralized SAFEs and selling off collateral at a discount. This auction type automatically calculates an amount of collateral to send back to a bidder, taking into account the amount of system coins the bidder submits as well as the current system coin `redemptionPrice` (and optionally its market price) and collateral market price.
 
-## 2. Contract Variables & Functions <a href="2-contract-details" id="2-contract-details"></a>
+## 2. Contract Variables & Functions <a href="#2-contract-details" id="2-contract-details"></a>
 
 **Variables**
 
@@ -58,7 +58,7 @@ Increasing discount collateral auctions are similar to fixed discount ones in th
 
 **Modifiers**
 
-* `isAuthorized`** **- checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
+* `isAuthorized` **** - checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
 
 **Functions**
 
@@ -119,7 +119,7 @@ Increasing discount collateral auctions are similar to fixed discount ones in th
   * `sender` - the address that terminated the auction
   * `collateralAmount` - the amount of collateral still unauctioned
 
-## 3. Walkthrough <a href="3-key-mechanisms-and-concepts" id="3-key-mechanisms-and-concepts"></a>
+## 3. Walkthrough <a href="#3-key-mechanisms-and-concepts" id="3-key-mechanisms-and-concepts"></a>
 
 The bidding process in an increasing discount auction is almost identical to the one in fixed discount auctions.
 

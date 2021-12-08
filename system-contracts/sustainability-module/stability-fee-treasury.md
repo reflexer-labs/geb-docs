@@ -4,11 +4,11 @@ description: The protocol's invoice processor
 
 # Stability Fee Treasury
 
-## 1. Summary <a href="1-introduction-summary" id="1-introduction-summary"></a>
+## 1. Summary <a href="#1-introduction-summary" id="1-introduction-summary"></a>
 
 The `StabilityFeeTreasury` is meant to allow other contracts or EOAs to pull funds (stability fees) in order to finance their operations. The treasury is set up as a `secondaryReceiver` in the `TaxCollector`. Anyone can periodically call the contract in order to recompute an optimal amount of fees that should be kept in the treasury and send any additional surplus to the `extraSurplusReceiver`.
 
-## 2. Contract Variables & Functions <a href="2-contract-details" id="2-contract-details"></a>
+## 2. Contract Variables & Functions <a href="#2-contract-details" id="2-contract-details"></a>
 
 **Variables**
 
@@ -38,7 +38,7 @@ The `StabilityFeeTreasury` is meant to allow other contracts or EOAs to pull fun
 
 **Modifiers**
 
-* `isAuthorized`** **- checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
+* `isAuthorized` **** - checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
 * `accountNotTreasury` - checks that the receiver account for treasury funds is not the treasury itself
 
 **Functions**
@@ -85,7 +85,7 @@ The `StabilityFeeTreasury` is meant to allow other contracts or EOAs to pull fun
   * `extraSurplusReceiver` - the address that received the extra funds
   * `fundsToTransfer` - the amount of funds sent
 
-## 3. Walkthrough <a href="2-contract-details" id="2-contract-details"></a>
+## 3. Walkthrough <a href="#2-contract-details" id="2-contract-details"></a>
 
 The treasury is funded by stability fees coming from the `TaxCollector` or by anyone who is willing to send system coins (either internally or as ERC20 tokens) to it. Governance can also use `takeFunds` to transfer internal system coins from a source address to the treasury.\
 \
@@ -94,7 +94,7 @@ Governance is in charge with setting up authorized addresses that can `pullFunds
 `transferSurplusFunds` is the way the treasury recalculates the amount of funds it should keep in reserves and transfers any surplus to the `extraSurplusReceiver`. Note that there is a `surplusTransferDelay` time delay between recalculating the optimum and transferring surplus out of the contract.
 
 {% hint style="info" %}
-**Sending Funds to **`extraSurplusReceiver`**or to the Treasury Itself**
+**Sending Funds to** `extraSurplusReceiver`**or to the Treasury Itself**
 
 In case governance wants to send funds to `extraSurplusReceiver` using `giveFunds`, `expensesAccumulator` will not increase. In case an address wants to `pullFunds` and send them to the `extraSurplusReceiver`, `pullFunds` will revert.\
 \

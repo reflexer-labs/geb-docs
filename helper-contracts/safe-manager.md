@@ -4,13 +4,13 @@ description: A central hub for all SAFEs
 
 # SAFE Manager
 
-**Smart contract code: **[**GebSafeManager**](https://github.com/reflexer-labs/geb-safe-manager/blob/master/src/GebSafeManager.sol)****
+**Smart contract code:** [**GebSafeManager**](https://github.com/reflexer-labs/geb-safe-manager/blob/master/src/GebSafeManager.sol)****
 
-## 1. Summary <a href="1-introduction-summary" id="1-introduction-summary"></a>
+## 1. Summary <a href="#1-introduction-summary" id="1-introduction-summary"></a>
 
 The SAFE Manager is an abstraction around the `SAFEEngine` that allows anyone to easily manage their GEB positions.
 
-## 2. Contract Variables & Functions <a href="2-contract-details" id="2-contract-details"></a>
+## 2. Contract Variables & Functions <a href="#2-contract-details" id="2-contract-details"></a>
 
 **Variables**
 

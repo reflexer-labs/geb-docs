@@ -6,11 +6,11 @@ description: >-
 
 # Protocol Token Printing Permissions
 
-## 1. Summary <a href="1-introduction-summary" id="1-introduction-summary"></a>
+## 1. Summary <a href="#1-introduction-summary" id="1-introduction-summary"></a>
 
 `GebPrintingPermissions` allows governance to whitelist multiple independent GEBs to print the same protocol token. It imposes delays for adding and removing permissions and it can also allow specific systems to print tokens indefinitely.&#x20;
 
-## 2. Contract Variables & Functions <a href="2-contract-details" id="2-contract-details"></a>
+## 2. Contract Variables & Functions <a href="#2-contract-details" id="2-contract-details"></a>
 
 **Variables**
 
@@ -36,7 +36,7 @@ description: >-
 
 **Modifiers**
 
-* `isAuthorized`** **- checks whether an address is part of `authorizedAddresses`.
+* `isAuthorized` **** - checks whether an address is part of `authorizedAddresses`.
 
 **Functions**
 
@@ -61,7 +61,7 @@ description: >-
   * `account` - the new authorized account
 * `RemoveAuthorization` - emitted when an address is de-authorized. Contains:
   * `account` - the address that was de-authorized
-* `ModifyParameters` - emitted when a `uint256`** **parameter is updated.
+* `ModifyParameters` - emitted when a `uint256` **** parameter is updated.
 * `GiveUpAuthorityRoot` - emitted when `giveUpAuthorityRoot` is called.
 * `GiveUpAuthorityOwnership` -  emitted when `giveUpAuthorityOwnership` is called.
 * `RevokeDebtAuctionHouses` - emitted when both the current and the previous `DebtAuctionHouse`s are denied printing permissions. Contains:
@@ -99,7 +99,7 @@ description: >-
   * `accountingEngine` - the address of the accounting engine that's part of the system which will no longer be denied printing permissions
   * `freezeDelay` - the delay from the current timestamp after which the system will have indefinite printing permissions
 
-## 3. Walkthrough <a href="2-contract-details" id="2-contract-details"></a>
+## 3. Walkthrough <a href="#2-contract-details" id="2-contract-details"></a>
 
 ### Current and Previous Debt Auction Houses
 

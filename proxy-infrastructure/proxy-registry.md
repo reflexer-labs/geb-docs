@@ -4,13 +4,13 @@ description: Tracker and builder of DSProxy contracts
 
 # Proxy Registry
 
-**Smart contract code: **[**GebProxyRegistry**](https://github.com/reflexer-labs/geb-proxy-registry/blob/master/src/GebProxyRegistry.sol)****
+**Smart contract code:** [**GebProxyRegistry**](https://github.com/reflexer-labs/geb-proxy-registry/blob/master/src/GebProxyRegistry.sol)****
 
-## 1. Summary <a href="1-introduction-summary" id="1-introduction-summary"></a>
+## 1. Summary <a href="#1-introduction-summary" id="1-introduction-summary"></a>
 
 This is a registry of already created DSProxies.
 
-## 2. Contract Variables & Functions <a href="2-contract-details" id="2-contract-details"></a>
+## 2. Contract Variables & Functions <a href="#2-contract-details" id="2-contract-details"></a>
 
 **Variables**
 

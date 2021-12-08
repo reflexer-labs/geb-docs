@@ -4,15 +4,15 @@ description: The protocol's liquidation mechanism
 
 # Liquidation Engine
 
-## 1. Summary <a href="1-introduction-summary" id="1-introduction-summary"></a>
+## 1. Summary <a href="#1-introduction-summary" id="1-introduction-summary"></a>
 
 The `LiquidationEngine` enables external actors to liquidate SAFEs and send their collateral to the [`CollateralAuctionHouse`](https://reflexer-labs.gitbook.io/geb/system-contracts/untitled/untitled-2) as well as send a portion of their debt to the `AccountingEngine`.
 
-## 2. Contract Variables & Functions <a href="2-contract-details" id="2-contract-details"></a>
+## 2. Contract Variables & Functions <a href="#2-contract-details" id="2-contract-details"></a>
 
 **Variables**
 
-* `contractEnabled` - must be `1` for the `LiquidationEngine` to `liquidateSAFE` s.** **Used** **to indicate whether the contract is enabled.
+* `contractEnabled` - must be `1` for the `LiquidationEngine` to `liquidateSAFE` s. **** Used **** to indicate whether the contract is enabled.
 * `authorizedAccounts[usr: address]` - addresses allowed to call `modifyParameters()` and `disableContract()`
 * `safeEngine` - address that conforms to a `SAFEEngineLike` interface. It cannot be changed after the contract is instantiated.
 * `accountingEngine` - address that conforms to an `AccountingEngineLike` interface.
@@ -20,7 +20,7 @@ The `LiquidationEngine` enables external actors to liquidate SAFEs and send thei
 * `safeSaviours[saviour: address]` - stores contract addresses that can be used as `SAFESaviour`s.
   * A `SAFESaviour` can be "attached" to a `safe` by its owner. When an external actor calls `liquidateSAFE`, the `SAFESaviour` will try to add more collateral in the targeted `safe` and thus (potentially) save it from liquidation.
 * `mutex[collatralType: bytes32, safe: address]` - helps with preventing re-entrancy when `liquidateSAFE` calls a `SAFESaviour` in order to add more collateral to a position.
-* `collateralTypes`** -** stores `CollateralType` structs
+* `collateralTypes` **-** stores `CollateralType` structs
 * `onAuctionSystemCoinLimit` - total amount of system coins that can be requested across all collateral auctions at any time
 * `currentOnAuctionSystemCoins` - amount of system coins requested across all current collateral auctions
 
@@ -33,7 +33,7 @@ The `LiquidationEngine` enables external actors to liquidate SAFEs and send thei
 
 **Modifiers**
 
-* `isAuthorized`** **- checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
+* `isAuthorized` **** - checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
 
 **Functions**
 
@@ -50,7 +50,7 @@ The `LiquidationEngine` enables external actors to liquidate SAFEs and send thei
 * `removeCoinsFromAuction(rad: uint256)` - signal that an amount of system coins has been covered by a collateral auction and it can now be subtracted from `currentOnAuctionSystemCoins`
 * `getLimitAdjustedDebtToCover(collateralType: bytes32`, `safe: address)` - returns the amount of debt that can currently be covered by a collateral auction for a specific safe
 
-#### **Events** <a href="events" id="events"></a>
+#### **Events** <a href="#events" id="events"></a>
 
 * `AddAuthorization` - emitted when a new address becomes authorized. Contains:
   * `account` - the new authorized account

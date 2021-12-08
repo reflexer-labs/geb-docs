@@ -22,7 +22,7 @@ import { GebAdmin } from "@reflexer-finance/geb-admin"
 
 \+ **new GebAdmin**(`network`: GebDeployment, `provider`: GebProviderInterface | Provider): [_GebAdmin_](gebadmin.md)
 
-_Defined in _[_packages/geb-admin/src/geb-admin.ts:52_](https://github.com/reflexer-labs/geb.js/blob/30c41df/packages/geb-admin/src/geb-admin.ts#L52)
+_Defined in_ [_packages/geb-admin/src/geb-admin.ts:52_](https://github.com/reflexer-labs/geb.js/blob/30c41df/packages/geb-admin/src/geb-admin.ts#L52)
 
 **Parameters:**
 
@@ -39,7 +39,7 @@ _Defined in _[_packages/geb-admin/src/geb-admin.ts:52_](https://github.com/refle
 
 • **contracts**: _ContractApis_
 
-_Inherited from _[_GebAdmin_](gebadmin.md)_._[_contracts_](gebadmin.md#contracts)
+_Inherited from_ [_GebAdmin_](gebadmin.md)_._[_contracts_](gebadmin.md#contracts)
 
 Defined in packages/geb/lib/geb.d.ts:70
 
@@ -97,7 +97,7 @@ For detailed information about the functions of each contract we recommend refer
 
 • **contractsAdmin**: _AdminApis_
 
-_Defined in _[_packages/geb-admin/src/geb-admin.ts:52_](https://github.com/reflexer-labs/geb.js/blob/30c41df/packages/geb-admin/src/geb-admin.ts#L52)
+_Defined in_ [_packages/geb-admin/src/geb-admin.ts:52_](https://github.com/reflexer-labs/geb.js/blob/30c41df/packages/geb-admin/src/geb-admin.ts#L52)
 
 Object containing all GEB admin contracts instances for low level interactions. It currently has the following contracts:
 
@@ -125,7 +125,7 @@ Object containing all GEB admin contracts instances for low level interactions. 
 
 ▸ **deployProxy**(): _object_
 
-_Inherited from _[_GebAdmin_](gebadmin.md)_._[_deployProxy_](gebadmin.md#deployproxy)
+_Inherited from_ [_GebAdmin_](gebadmin.md)_._[_deployProxy_](gebadmin.md#deployproxy)
 
 Defined in packages/geb/lib/geb.d.ts:88
 
@@ -146,7 +146,7 @@ Deploy a new proxy owned by the sender.
 
 ▸ **getErc20Contract**(`tokenAddress`: string): _Erc20_
 
-_Inherited from _[_GebAdmin_](gebadmin.md)_._[_getErc20Contract_](gebadmin.md#geterc20contract)
+_Inherited from_ [_GebAdmin_](gebadmin.md)_._[_getErc20Contract_](gebadmin.md#geterc20contract)
 
 Defined in packages/geb/lib/geb.d.ts:123
 
@@ -178,7 +178,7 @@ Erc20
 
 ▸ **getGebContract**‹**T**›(`gebContractClass`: GebContractAPIConstructorInterface‹T›, `address`: string): _T_
 
-_Inherited from _[_GebAdmin_](gebadmin.md)_._[_getGebContract_](gebadmin.md#static-getgebcontract)
+_Inherited from_ [_GebAdmin_](gebadmin.md)_._[_getGebContract_](gebadmin.md#static-getgebcontract)
 
 Defined in packages/geb/lib/geb.d.ts:165
 
@@ -207,7 +207,7 @@ const globalDebt = safeEngine.globalDebt()
 
 ▸ **getIncentiveCampaignContract**(`campaignNumber`: number): _Promise‹StakingRewards›_
 
-_Inherited from _[_GebAdmin_](gebadmin.md)_._[_getIncentiveCampaignContract_](gebadmin.md#getincentivecampaigncontract)
+_Inherited from_ [_GebAdmin_](gebadmin.md)_._[_getIncentiveCampaignContract_](gebadmin.md#getincentivecampaigncontract)
 
 Defined in packages/geb/lib/geb.d.ts:131
 
@@ -227,7 +227,7 @@ StakingRewards
 
 ▸ **getProxyAction**(`ownerAddress`: string): _Promise‹GebProxyActions›_
 
-_Inherited from _[_GebAdmin_](gebadmin.md)_._[_getProxyAction_](gebadmin.md#getproxyaction)
+_Inherited from_ [_GebAdmin_](gebadmin.md)_._[_getProxyAction_](gebadmin.md#getproxyaction)
 
 Defined in packages/geb/lib/geb.d.ts:84
 
@@ -245,7 +245,7 @@ Given an address returns a GebProxyActions object to execute bundled operations.
 
 ▸ **getSafe**(`idOrHandler`: string | number, `collateralType?`: string): _Promise‹Safe›_
 
-_Inherited from _[_GebAdmin_](gebadmin.md)_._[_getSafe_](gebadmin.md#getsafe)
+_Inherited from_ [_GebAdmin_](gebadmin.md)_._[_getSafe_](gebadmin.md#getsafe)
 
 Defined in packages/geb/lib/geb.d.ts:93
 
@@ -264,7 +264,7 @@ Get the SAFE object given a `safeManager` id or a `safeEngine` handler address.
 
 ▸ **getSafeFromOwner**(`address`: string): _Promise‹Safe\[]›_
 
-_Inherited from _[_GebAdmin_](gebadmin.md)_._[_getSafeFromOwner_](gebadmin.md#getsafefromowner)
+_Inherited from_ [_GebAdmin_](gebadmin.md)_._[_getSafeFromOwner_](gebadmin.md#getsafefromowner)
 
 Defined in packages/geb/lib/geb.d.ts:104
 
@@ -284,7 +284,7 @@ Note that this function will make a lot of network calls and is therefore very s
 
 ▸ **gnosisSafeThreshold1SubmitTransaction**(`sender`: string, `to`: string, `data`: string): _TransactionRequest_
 
-_Defined in _[_packages/geb-admin/src/geb-admin.ts:203_](https://github.com/reflexer-labs/geb.js/blob/30c41df/packages/geb-admin/src/geb-admin.ts#L203)
+_Defined in_ [_packages/geb-admin/src/geb-admin.ts:203_](https://github.com/reflexer-labs/geb.js/blob/30c41df/packages/geb-admin/src/geb-admin.ts#L203)
 
 Submit a transaction to a gnosis safe directly executed. Works only if the threshold on the safe is 1.
 
@@ -302,7 +302,7 @@ Submit a transaction to a gnosis safe directly executed. Works only if the thres
 
 ▸ **multiCall**‹**O1**, **O2**, **O3**›(`calls`: \[MulticallRequest‹O1›, MulticallRequest‹O2›, MulticallRequest‹O3›]): _Promise‹\[O1, O2, O3]›_
 
-_Inherited from _[_GebAdmin_](gebadmin.md)_._[_multiCall_](gebadmin.md#multicall)
+_Inherited from_ [_GebAdmin_](gebadmin.md)_._[_multiCall_](gebadmin.md#multicall)
 
 Defined in packages/geb/lib/geb.d.ts:136
 
@@ -326,7 +326,7 @@ Defined in packages/geb/lib/geb.d.ts:136
 
 ▸ **verifyWebScheduleCallcode**(`govFunctionAbi`: string, `params`: any\[], `earliestExecutionTime`: number, `calldata`: string, `description?`: string): _Promise‹boolean›_
 
-_Defined in _[_packages/geb-admin/src/geb-admin.ts:75_](https://github.com/reflexer-labs/geb.js/blob/30c41df/packages/geb-admin/src/geb-admin.ts#L75)
+_Defined in_ [_packages/geb-admin/src/geb-admin.ts:75_](https://github.com/reflexer-labs/geb.js/blob/30c41df/packages/geb-admin/src/geb-admin.ts#L75)
 
 Verifies a transaction for scheduling proposals
 
@@ -348,7 +348,7 @@ Promise
 
 ▸ **webExecuteProposal**(`govFunctionAbi`: string, `params`: any\[], `earliestExecutionTime`: number): _Promise‹TransactionRequest›_
 
-_Defined in _[_packages/geb-admin/src/geb-admin.ts:99_](https://github.com/reflexer-labs/geb.js/blob/30c41df/packages/geb-admin/src/geb-admin.ts#L99)
+_Defined in_ [_packages/geb-admin/src/geb-admin.ts:99_](https://github.com/reflexer-labs/geb.js/blob/30c41df/packages/geb-admin/src/geb-admin.ts#L99)
 
 Encodes executing a proposal in dspause for web GUI
 
@@ -368,7 +368,7 @@ Promise
 
 ▸ **webScheduleProposal**(`govFunctionAbi`: string, `params`: any\[], `earliestExecutionTime`: number, `description?`: string): _Promise‹object›_
 
-_Defined in _[_packages/geb-admin/src/geb-admin.ts:124_](https://github.com/reflexer-labs/geb.js/blob/30c41df/packages/geb-admin/src/geb-admin.ts#L124)
+_Defined in_ [_packages/geb-admin/src/geb-admin.ts:124_](https://github.com/reflexer-labs/geb.js/blob/30c41df/packages/geb-admin/src/geb-admin.ts#L124)
 
 Encodes scheduling a proposal in dspause for web GUI
 
@@ -389,7 +389,7 @@ Promise
 
 ▸ **webTestScheduleProposal**(`govFunctionAbi`: string, `params`: any\[], `earliestExecutionTime`: number, `description?`: string): _Promise‹void›_
 
-_Defined in _[_packages/geb-admin/src/geb-admin.ts:173_](https://github.com/reflexer-labs/geb.js/blob/30c41df/packages/geb-admin/src/geb-admin.ts#L173)
+_Defined in_ [_packages/geb-admin/src/geb-admin.ts:173_](https://github.com/reflexer-labs/geb.js/blob/30c41df/packages/geb-admin/src/geb-admin.ts#L173)
 
 Test the execution of a proposal about to be schedule in dspause with web GUI
 
@@ -410,7 +410,7 @@ Promise
 
 ▸ **getGebContract**‹**T**›(`gebContractClass`: GebContractAPIConstructorInterface‹T›, `address`: string, `provider`: GebProviderInterface | Provider): _T_
 
-_Inherited from _[_GebAdmin_](gebadmin.md)_._[_getGebContract_](gebadmin.md#static-getgebcontract)
+_Inherited from_ [_GebAdmin_](gebadmin.md)_._[_getGebContract_](gebadmin.md#static-getgebcontract)
 
 Defined in packages/geb/lib/geb.d.ts:152
 

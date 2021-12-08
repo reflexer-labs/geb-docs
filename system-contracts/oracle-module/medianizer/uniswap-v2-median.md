@@ -4,11 +4,11 @@ description: A medianizer using the Uniswap V2 TWAP oracle implementation
 
 # Uniswap V2 Median
 
-## 1. Summary <a href="1-introduction" id="1-introduction"></a>
+## 1. Summary <a href="#1-introduction" id="1-introduction"></a>
 
 The `UniswapConsecutiveSlotsPriceFeedMedianizer` is integrated with Uniswap V2 in order to provide a price feed for one of the tokens in a pool. It is also connected to a `converterFeed` in order to get the fiat value of the price quoted by the pool.
 
-## 2. Contract Variables & Functions <a href="2-contract-details" id="2-contract-details"></a>
+## 2. Contract Variables & Functions <a href="#2-contract-details" id="2-contract-details"></a>
 
 **Variables**
 
@@ -35,7 +35,7 @@ The `UniswapConsecutiveSlotsPriceFeedMedianizer` is integrated with Uniswap V2 i
 
 **Modifiers**
 
-* `isAuthorized`** **- checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
+* `isAuthorized` **** - checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
 
 **Functions**
 
@@ -55,7 +55,7 @@ The `UniswapConsecutiveSlotsPriceFeedMedianizer` is integrated with Uniswap V2 i
   * `account` - the new authorized account
 * `RemoveAuthorization` - emitted when an address is de-authorized. Contains:
   * `account` - the address that was de-authorized
-* `ModifyParameters`** **- emitted when a parameter is updated
+* `ModifyParameters` **** - emitted when a parameter is updated
 * `UpdateResult` - emitted when `updateResult` is called. Contains:
   * `medianPrice` - the latest median price for `targetToken`
   * `lastUpdateTime` - the current timestamp

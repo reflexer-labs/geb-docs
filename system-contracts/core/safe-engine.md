@@ -4,11 +4,11 @@ description: The SAFE, system coin and collateral database
 
 # SAFE Engine
 
-## 1. Summary <a href="1-introduction-summary" id="1-introduction-summary"></a>
+## 1. Summary <a href="#1-introduction-summary" id="1-introduction-summary"></a>
 
 The `SAFEEngine` stores SAFEs and tracks all debt and collateral balances. This contract is the most important system component and thus, in order to minimize the possibility of bugs, it does not have any external dependencies.
 
-## 2. Contract Variables & Functions <a href="2-contract-details" id="2-contract-details"></a>
+## 2. Contract Variables & Functions <a href="#2-contract-details" id="2-contract-details"></a>
 
 **Variables**
 
@@ -39,7 +39,7 @@ The `SAFEEngine` stores SAFEs and tracks all debt and collateral balances. This 
 **Modifiers**
 
 * `canModifySAFE` - modifier that checks whether an address is allowed to modify another address's collateral or system coin balance.
-* `isAuthorized`** **- checks whether an address is part of `authorizedAddresses`.
+* `isAuthorized` **** - checks whether an address is part of `authorizedAddresses`.
 
 **Functions**
 
@@ -54,7 +54,7 @@ The `SAFEEngine` stores SAFEs and tracks all debt and collateral balances. This 
 * `settleDebt(rad: uint256)` - destroy equal quantities of system coins and system debt (`globalUnbackedDebt`).
 * `updateAccumulatedRate(collateralType: bytes32`, `surplusDst: address`, `rateMultiplier: int256)` - modify a collateral's accumulated interest rates, creating / destroying corresponding debt.
 * `createUnbackedDebt(debtDestination: address`, `coinDestination: address`, `rad: uint256)` - mint unbacked system coins (accounted for with `globalUnbackedDebt`).
-* `modifySAFECollateralization(collateralType: bytes32`, `cdp: address`, `collateralSource: address`, `debtDestination: address`, `deltaCollateral: int256`, `deltaDebt: int256)` - modify a SAFE's CRatio** **by locking/unlocking collateral and/or generating/paying back debt.
+* `modifySAFECollateralization(collateralType: bytes32`, `cdp: address`, `collateralSource: address`, `debtDestination: address`, `deltaCollateral: int256`, `deltaDebt: int256)` - modify a SAFE's CRatio **** by locking/unlocking collateral and/or generating/paying back debt.
 * `transferSAFECollateralAndDebt(collateralType: bytes32`, `src: address`, `dst: address`, `deltaCollateral: int256`, `deltaDebt: int256)` - splitting/merging SAFEs by transferring collateral and/or debt between them.
 * `approveSAFEModification(account: address)` - enable `canModifySAFE`for a pair of addresses.
 * `denySAFEModification(account: address)` - disable `canModifySAFE`for a pair of addresses.
@@ -143,16 +143,16 @@ The `SAFEEngine` stores SAFEs and tracks all debt and collateral balances. This 
 * `globalUnbackedDebt` is the sum of all `debtBalance`s (the total quantity of system debt).
 * `CollateralType.debtAmount` the sum of all `generatedDebt` in the `safe`s for that `CollateralType`.
 
-## 3. Walkthrough <a href="3-mechanisms-and-concepts" id="3-mechanisms-and-concepts"></a>
+## 3. Walkthrough <a href="#3-mechanisms-and-concepts" id="3-mechanisms-and-concepts"></a>
 
 The `SAFEEngine` is in charge with two main system functions:
 
-### 1. SAFE Management <a href="vault-management" id="vault-management"></a>
+### 1. SAFE Management <a href="#vault-management" id="vault-management"></a>
 
 * Anyone can manage a SAFE via `modifySAFECollateralization`, which modifies the SAFE at address `safe`, using `tokenCollateral` from user `collateralSource` and modifying `coinBalance` for user `debtDestination`.
 * `confiscateSAFECollateralAndDebt`is usually called by `LiquidationEngine` and transfers debt from the SAFE to another address' `debtBalance`.
 * `debtBalance` represents bad debt and can be canceled out with an equal quantity of system coins using `settleDebt(uint rad)` where `msg.sender` is used as the address for the `coinBalance` and `debtBalance`.
 
-### **2. Stability Fee Accrual** <a href="rate-updates-via-fold-bytes32-ilk-address-u-int-rate" id="rate-updates-via-fold-bytes32-ilk-address-u-int-rate"></a>
+### **2. Stability Fee Accrual** <a href="#rate-updates-via-fold-bytes32-ilk-address-u-int-rate" id="rate-updates-via-fold-bytes32-ilk-address-u-int-rate"></a>
 
 The `accumulatedRates` helps convert normalized debt (`generatedDebt`) drawn against a `collateralType` to the present value of that debt (actual debt issued + interest). The rate is updated using `updateAccumulatedRate` (called by the `TaxCollector`). After every update, the newly accrued stability fees are added to the `coinBalance` of `surplusDst`.

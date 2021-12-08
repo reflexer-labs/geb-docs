@@ -6,11 +6,11 @@ description: >-
 
 # Fixed Discount Collateral Auction House
 
-## 1. Summary <a href="1-introduction-summary" id="1-introduction-summary"></a>
+## 1. Summary <a href="#1-introduction-summary" id="1-introduction-summary"></a>
 
 Fixed discount collateral auctions are similar to their `English` counterpart in that they are used to preserve the overall system health by liquidating under-collateralized SAFEs and selling off collateral in exchange for system coins. This auction type automatically calculates an amount of collateral to send back to a bidder, taking into account the amount of system coins the bidder submits as well as the current system coin `redemptionPrice` (and optionally its market price) and collateral market price.
 
-## 2. Contract Variables & Functions <a href="2-contract-details" id="2-contract-details"></a>
+## 2. Contract Variables & Functions <a href="#2-contract-details" id="2-contract-details"></a>
 
 **Variables**
 
@@ -53,7 +53,7 @@ Fixed discount collateral auctions are similar to their `English` counterpart in
 
 **Modifiers**
 
-* `isAuthorized`** **- checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
+* `isAuthorized` **** - checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
 
 **Functions**
 
@@ -106,14 +106,14 @@ Fixed discount collateral auctions are similar to their `English` counterpart in
   * `sender` - the address that terminated the auction
   * `collateralAmount` - the amount of collateral still unauctioned
 
-## 3. Walkthrough <a href="3-key-mechanisms-and-concepts" id="3-key-mechanisms-and-concepts"></a>
+## 3. Walkthrough <a href="#3-key-mechanisms-and-concepts" id="3-key-mechanisms-and-concepts"></a>
 
 The fixed discount auction is a straightforward way (compared to `English` auctions) to put SAFE collateral up for sale in exchange for system coins used to settle bad debt. Bidders are only required to allow the auction house to transfer their `safeEngine.coinBalance` and can then call`buyCollateral(id: uint256`, `wad: uint256)` in order to exchange their system coins for collateral which is sold at a `discount` compared to its latest recorded market price. Bidders can also review the amount of collateral they can get from a specific auction by calling `getCollateralBought(id: uint256`, `wad: uint256)` or `getApproximateCollateralBought(id: uint256`, `wad: uint256)`. Note that `getCollateralBought` is not marked as `view` because it reads (and also updates) the `redemptionPrice` from the `OracleRelayer` whereas `getApproximateCollateralBought` uses the`lastReadRedemptionPrice`.
 
 {% hint style="info" %}
 **Bids as WAD Amounts**
 
-As opposed to `English` auctions where bidders submit bids with `RAD` amounts of system coins (using `increaseBidSize` and `decreaseSoldAmount`), `buyCollateral` requires a `WAD` amount of coins that are then multiplied by `RAY` in order to correctly scale the amount to `RAD `and transfer coins from the bidder's `safeEngine.coinBalance.`
+As opposed to `English` auctions where bidders submit bids with `RAD` amounts of system coins (using `increaseBidSize` and `decreaseSoldAmount`), `buyCollateral` requires a `WAD` amount of coins that are then multiplied by `RAY` in order to correctly scale the amount to `RAD` and transfer coins from the bidder's `safeEngine.coinBalance.`
 {% endhint %}
 
 There are several parameters that come together when the contract calculates the amount of collateral to send to a bidder:
@@ -125,13 +125,13 @@ There are several parameters that come together when the contract calculates the
 
 Similar to `English` auctions, when the auction is settled (or terminated prematurely), the contract will call the `LiquidationEngine` in order to `removeCoinsFromAuction` (subtract `bids[auctionId].amountToRaise` from `LiquidationEngine.currentOnAuctionSystemCoins`).
 
-## 4. Gotchas <a href="3-key-mechanisms-and-concepts" id="3-key-mechanisms-and-concepts"></a>
+## 4. Gotchas <a href="#3-key-mechanisms-and-concepts" id="3-key-mechanisms-and-concepts"></a>
 
 * In case someone bids an amount that is higher than the remaining amount of system coins which still need to be raised by an auction, the contract will only charge for the remaining amount plus `10**-18` extra system coins (meant to prevent dusty auctions)
 * You must always submit a bid that is higher than or equal to `minimum(minimumBid`, `subtract(bids[id].amountToRaise`, `bids[id].raisedAmount))`. The contract will take care of charging only for the amount needed to cover the total remaining`amountToRaise`
 * The auctions use the system coin `redemptionPrice` by default (not its market price)
 
-## 5. Examples <a href="3-key-mechanisms-and-concepts" id="3-key-mechanisms-and-concepts"></a>
+## 5. Examples <a href="#3-key-mechanisms-and-concepts" id="3-key-mechanisms-and-concepts"></a>
 
 ```
 // Scenario 1

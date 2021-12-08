@@ -22,17 +22,17 @@ Settlement can be triggered by the `ESM` (Emergency Shutdown Module) where gover
 
 ## 3. Risks
 
-### Misconfigurations <a href="authorization-misconfigurations" id="authorization-misconfigurations"></a>
+### Misconfigurations <a href="#authorization-misconfigurations" id="authorization-misconfigurations"></a>
 
 The `ESM` may be unable to trigger shutdown (even if sufficient protocol tokens have been committed to the contract) if `GlobalSettlement` did not authorize it.
 
 ### Settlement Edge Cases
 
-#### Oracle Attack <a href="critical-failure-modes" id="critical-failure-modes"></a>
+#### Oracle Attack <a href="#critical-failure-modes" id="critical-failure-modes"></a>
 
 Since `GlobalSettlement` reads collateral prices from `FSM`s it is susceptible to reading bad data in case the oracles get attacked. Governance is not advised to use settlement as a solution to oracle attacks because the prices get added in the system too quickly in order for shutdown to help.
 
-#### Other Failure Modes <a href="critical-failure-modes" id="critical-failure-modes"></a>
+#### Other Failure Modes <a href="#critical-failure-modes" id="critical-failure-modes"></a>
 
 * If `GlobalSettlement.shutdownCooldown` is set too high, it can result in the shutdown not being able to proceed.
 * If `GlobalSettlement.shutdownCooldown` is too low, it can result in `setOutstandingCoinSupply` being called before all auctions have finished, resulting in debt being calculated incorrectly and setting wrong collateral prices.
@@ -44,7 +44,7 @@ Since `GlobalSettlement` reads collateral prices from `FSM`s it is susceptible t
 `GlobalSettlement` is part of Level 2 Gov Minimization. `ESM` is part of Level 1 Gov Minimization.
 
 {% hint style="info" %}
-**The **`ESMThresholdSetter`&#x20;
+**The** `ESMThresholdSetter`&#x20;
 
 Before removing control from the `ESM`, governance should deploy a contract called `ESMThresholdSetter` that automatically sets the `ESM.triggerThreshold` according to the current outstanding supply of protocol tokens.
 {% endhint %}

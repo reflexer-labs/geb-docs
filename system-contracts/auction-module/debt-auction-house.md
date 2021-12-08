@@ -6,11 +6,11 @@ description: >-
 
 # Debt Auction House
 
-## 1. Summary <a href="1-introduction-summary" id="1-introduction-summary"></a>
+## 1. Summary <a href="#1-introduction-summary" id="1-introduction-summary"></a>
 
 Debt auctions are used to recapitalize the system by auctioning off protocol tokens for a fixed amount of system coins. In this process, bidders compete by offering to accept decreasing amounts of protocol tokens for the coins they will end up paying.
 
-## 2. Contract Variables & Functions <a href="2-contract-details" id="2-contract-details"></a>
+## 2. Contract Variables & Functions <a href="#2-contract-details" id="2-contract-details"></a>
 
 **Variables**
 
@@ -38,7 +38,7 @@ Debt auctions are used to recapitalize the system by auctioning off protocol tok
 
 **Modifiers**
 
-* `isAuthorized`** **- checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
+* `isAuthorized` **** - checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
 
 **Functions**
 
@@ -64,7 +64,7 @@ Debt auctions are used to recapitalize the system by auctioning off protocol tok
   * `auctionsStarted` - total amount of auctions that have started up until now
   * `amountToSell` - amount of protocol tokens sold  in (to be minted after) the auction.
   * `initialBid` - starting bid for the auction.
-  * `incomeReceiver`** **- address that receives the system coins from an auction (usually the `AccountingEngine`)
+  * `incomeReceiver` **** - address that receives the system coins from an auction (usually the `AccountingEngine`)
   * `auctionDeadline` - deadline for the auction with ID `id`
   * `activeDebtAuctions` - the current number of active debt auctions
 * `ModifyParameters` - emitted after a parameter is modified
@@ -89,7 +89,7 @@ Debt auctions are used to recapitalize the system by auctioning off protocol tok
 * `DisableContract` - emitted after the contract is disabled. Contains:
   * `sender` - the address that disabled the contract
 
-## 3. Walkthrough <a href="3-key-mechanisms-and-concepts" id="3-key-mechanisms-and-concepts"></a>
+## 3. Walkthrough <a href="#3-key-mechanisms-and-concepts" id="3-key-mechanisms-and-concepts"></a>
 
 The `DebtAuctionHouse` is a reverse auction, meaning that participants bid with increasingly lower amounts of protocol tokens they are willing to accept for a fixed amount of system coins. The auction will end when the latest bid duration (`bidDuration`) has passed since the last submitted bid or when the general auction deadline (`auctionStartTime + totalAuctionLength`) has been reached.&#x20;
 

@@ -28,7 +28,7 @@ The **Sustainability Module** allocates resources to actors that update critical
 
 ## 3. Risks
 
-### Smart Contract Bugs <a href="coding-errors" id="coding-errors"></a>
+### Smart Contract Bugs <a href="#coding-errors" id="coding-errors"></a>
 
 * A bug in the `StabilityFeeTreasury` would potentially block other contracts from pulling funds or would incorrectly calculate the optimum amount of funds to keep in the contract (`SAFEEngine.coinBalance[stabilityFeeTreasury]`). A bug could also prevent the treasury from sending extra unused resources to another address using `transferSurplusFunds()`
 *   A bug in the `IncreasingTreasuryReimbursement` contract could block the execution of&#x20;
@@ -59,7 +59,7 @@ The `FSMWrapper` may need to have leftover governance (depending on how much gov
 `IncreasingTreasuryReimbursement` and `MandatoryFixedTreasuryReimbursement` are meant to be inherited by other contracts and so the contracts that inherit them will determine how much they can be governance minimized.
 
 {% hint style="info" %}
-**Keeping Governance Over **`takeFunds`
+**Keeping Governance Over** `takeFunds`
 
 Given that `StabilityFeeTreasury.takeFunds` has very simple and clearly defined behaviour, it can be governed in the long run.&#x20;
 {% endhint %}

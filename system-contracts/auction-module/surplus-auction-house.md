@@ -6,11 +6,11 @@ description: >-
 
 # Surplus Auction House
 
-## 1. Summary <a href="1-introduction-summary" id="1-introduction-summary"></a>
+## 1. Summary <a href="#1-introduction-summary" id="1-introduction-summary"></a>
 
 The surplus auction is used to sell off a fixed amount of the surplus in exchange for protocol tokens. The surplus comes from the stability fees charged to SAFEs (and stored in the `AccountingEngine`). Bidders submit increasing amounts of protocol tokens and the winner receives all auctioned surplus in exchange for their coins which are burned or transferred to another address.
 
-## 2. Contract Variables & Functions <a href="2-contract-details" id="2-contract-details"></a>
+## 2. Contract Variables & Functions <a href="#2-contract-details" id="2-contract-details"></a>
 
 **Variables**
 
@@ -37,7 +37,7 @@ The surplus auction is used to sell off a fixed amount of the surplus in exchang
 
 **Modifiers**
 
-* `isAuthorized`** **- checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
+* `isAuthorized` **** - checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
 
 **Functions**
 
@@ -81,7 +81,7 @@ The surplus auction is used to sell off a fixed amount of the surplus in exchang
   * `highBidder` - the auction's high bidder
   * `bidAmount` - the latest bid amount
 
-## 3. Walkthrough <a href="3-key-mechanisms-and-concepts" id="3-key-mechanisms-and-concepts"></a>
+## 3. Walkthrough <a href="#3-key-mechanisms-and-concepts" id="3-key-mechanisms-and-concepts"></a>
 
 In a surplus auction, bidders compete for a fixed `amountToSell` of system coins with increasing `bidAmount`s of protocol tokens.
 

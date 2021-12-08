@@ -4,11 +4,11 @@ description: The protocol's accountant, keeping track of surplus and deficit
 
 # Accounting Engine
 
-## 1. Summary <a href="1-introduction-summary" id="1-introduction-summary"></a>
+## 1. Summary <a href="#1-introduction-summary" id="1-introduction-summary"></a>
 
 The `AccountingEngine` receives both system surplus and system debt. It covers deficits via debt auctions and disposes off surplus via auctions (`Burning/RecyclingSurplusAuctionHouse`) or transfers (to `extraSurplusReceiver`).
 
-## 2. Contract Variables & Functions <a href="2-contract-details" id="2-contract-details"></a>
+## 2. Contract Variables & Functions <a href="#2-contract-details" id="2-contract-details"></a>
 
 **Variables**
 
@@ -29,7 +29,7 @@ The `AccountingEngine` receives both system surplus and system debt. It covers d
 * `surplusAuctionDelay` - the minimum delay between two consecutive extra surplus auctions.
 * `extraSurplusIsTransferred` - `0` if extra surplus is auctioned, `1` if it's transferred.
 * `postSettlementSurplusDrain`- contract meant to auction/dispose off any remaining surplus after the `AccountingEngine` is disabled (and in case surplus couldn't be settled with bad debt because of a bug).
-* `protocolTokenAuthority`** **- address of** **authority contract that says which addresses are able to mint an burn protocol tokens.
+* `protocolTokenAuthority` **** - address of **** authority contract that says which addresses are able to mint an burn protocol tokens.
 * `totalQueuedDebt`- the total amount of debt in the queue.
 * `totalOnAuctionDebt`- the total amount of debt being auctioned in the `DebtAuctionHouse`.
 * `popDebtDelay`- length of time for which a debt block must stay in the `debtQueue`.
@@ -43,7 +43,7 @@ The `AccountingEngine` receives both system surplus and system debt. It covers d
 
 **Modifiers**
 
-* `isAuthorized`** **- checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
+* `isAuthorized` **** - checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
 
 **Functions**
 

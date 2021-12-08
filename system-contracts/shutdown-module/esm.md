@@ -4,7 +4,7 @@ description: Trigger global settlement by burning protocol tokens
 
 # ESM
 
-## 1. Summary <a href="1-introduction-summary" id="1-introduction-summary"></a>
+## 1. Summary <a href="#1-introduction-summary" id="1-introduction-summary"></a>
 
 The Emergency Shutdown Module (ESM) is a contract with the ability to settle a GEB. Settlement is triggered after at least `triggerThreshold` protocol tokens are deposited in the contract and subsequently burned.
 
@@ -22,14 +22,14 @@ The Emergency Shutdown Module (ESM) is a contract with the ability to settle a G
 
 **Modifiers**
 
-* `isAuthorized`** **- checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
+* `isAuthorized` **** - checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
 
 **Functions**
 
 * `modifyParameters` - change the `triggerThreshold` as well as the `thresholdSetter`.
 * `shutdown` - burns `triggerThreshold` protocol tokens and triggers settlement
 
-## 3. Walkthrough <a href="2-contract-details" id="2-contract-details"></a>
+## 3. Walkthrough <a href="#2-contract-details" id="2-contract-details"></a>
 
 The `ESM`is meant to be used in order to prevent an attacker from exploiting a vulnerability in the system (e.g stealing all the collateral) or to mitigate malicious governance.
 

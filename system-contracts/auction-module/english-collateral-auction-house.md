@@ -4,11 +4,11 @@ description: English collateral auctioneer that tries to recapitalize the system
 
 # English Collateral Auction House
 
-## 1. Summary <a href="1-introduction-summary" id="1-introduction-summary"></a>
+## 1. Summary <a href="#1-introduction-summary" id="1-introduction-summary"></a>
 
 English collateral auctions are used to sell collateral from SAFEs that have become undercollateralized in order to preserve the overall system health. The `LiquidationEngine` sends collateral to the `EnglishCollateralAuctionHouse` where it is auctioned in two phases: `increaseBidSize` and `decreaseSoldAmount`.
 
-## 2. Contract Variables & Functions <a href="2-contract-details" id="2-contract-details"></a>
+## 2. Contract Variables & Functions <a href="#2-contract-details" id="2-contract-details"></a>
 
 **Variables**
 
@@ -23,7 +23,7 @@ English collateral auctions are used to sell collateral from SAFEs that have bec
 * `bidDuration` - bid duration (default: 3 hours).
 * `totalAuctionLength` - auction length (default: 2 days).
 * `auctionsStarted` - total auction count, used to track auction `id`s.
-* `bidToMarketPriceRatio` - the minimum size of the first bid compared to the latest recorded collateral price** **(for `collateralType`) in the system.
+* `bidToMarketPriceRatio` - the minimum size of the first bid compared to the latest recorded collateral price **** (for `collateralType`) in the system.
 * `oracleRelayer` - address of the `OracleRelayer`.
 * `osm` - collateral type `OSM` address
 * `liquidationEngine` - the address of the `LiquidationEngine`
@@ -42,7 +42,7 @@ English collateral auctions are used to sell collateral from SAFEs that have bec
 
 **Modifiers**
 
-* `isAuthorized`** **- checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
+* `isAuthorized` **** - checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
 
 **Functions**
 
@@ -101,7 +101,7 @@ English collateral auctions are used to sell collateral from SAFEs that have bec
   * `bidAmount` - the amount of system coins that should have been raised by the auction
   * `collateralAmount` - the total amount of collateral that should have been sold by the auction
 
-## 3. Walkthrough <a href="3-key-mechanisms-and-concepts" id="3-key-mechanisms-and-concepts"></a>
+## 3. Walkthrough <a href="#3-key-mechanisms-and-concepts" id="3-key-mechanisms-and-concepts"></a>
 
 Starting in the `increaseBidSize`-phase, bidders compete for an `amountToSell` of collateral with increasing bid amounts of system coins. The very first `bidAmount` will need to be higher than or equal to `latest collateral price in collateral OSM * bidToMarketPriceRatio / RAY.` This ensures that no bidder can submit an extremely small `bidAmount` and thus pay a negligible price for the entire `amountToSell` collateral.&#x20;
 

@@ -4,11 +4,11 @@ description: The glue between price feeds and the SAFE Engine
 
 # Oracle Relayer
 
-## 1. Summary <a href="1-introduction" id="1-introduction"></a>
+## 1. Summary <a href="#1-introduction" id="1-introduction"></a>
 
 The `OracleRelayer` functions as an interface contract between `FSM`s and the `SAFEEngine` and only stores the current `collateralType` list as well as the current `redemptionPrice` and `redemptionRate`. The relayer will depend on governance to set each collateral's safety and liquidation ratios and might also depend on an external feedback mechanism to update the `redemptionRate` which affects the `redemptionPrice`.
 
-## 2. Contract Variables & Functions <a href="2-contract-details" id="2-contract-details"></a>
+## 2. Contract Variables & Functions <a href="#2-contract-details" id="2-contract-details"></a>
 
 **Variables**
 
@@ -32,7 +32,7 @@ The `OracleRelayer` functions as an interface contract between `FSM`s and the `S
 
 **Modifiers**
 
-* `isAuthorized`** **- checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
+* `isAuthorized` **** - checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
 
 **Functions**
 
@@ -65,9 +65,9 @@ The `OracleRelayer` functions as an interface contract between `FSM`s and the `S
   * `safetyPrice` - the price computed by dividing the feed value by the `redemptionPrice` and then dividing the result again by the collateral's `safetyCRatio`
   * `liquidationPrice` - the price computed by dividing the feed value by the `redemptionPrice` and then dividing the result again by the collateral's `liquidationCRatio`
 
-## 3. Walkthrough <a href="3-key-mechanisms-and-concepts" id="3-key-mechanisms-and-concepts"></a>
+## 3. Walkthrough <a href="#3-key-mechanisms-and-concepts" id="3-key-mechanisms-and-concepts"></a>
 
-### UpdateCollateralPrice <a href="poke" id="poke"></a>
+### UpdateCollateralPrice <a href="#poke" id="poke"></a>
 
 `updateCollateralPrice` is a non-authenticated function. The function takes in a `bytes32` representing a `collateralType` whose (safety and liquidation) prices need to be updated. `updateCollateralPrice` has three stages:
 
