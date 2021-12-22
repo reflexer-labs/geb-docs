@@ -25,6 +25,6 @@ To visualize all this, you can check the diagram below:
 
 **NOTE**: RAI only flows to the stability fee treasury, to stakers and in the protocol's balance sheet when the borrow rate charged to Safes is positive. When the borrow rate is negative, the protocol only uses funds from the balance sheet to repay RAI debt from all Safes.
 
-## 3. FLX and Money God League
+## 3. FLX and the Money God League
 
-FLX is also at the core of the Money God League as seen [here](https://community.reflexer.finance/t/another-new-money-god-introducing-h2o/131) and [here](https://community.reflexer.finance/t/a-new-money-god-introducing-volt/120). The Money God League is presented on this page.
+FLX is also at the core of the Money God League as seen [here](https://community.reflexer.finance/t/another-new-money-god-introducing-h2o/131) and [here](https://community.reflexer.finance/t/a-new-money-god-introducing-volt/120). The Money God League is presented on [this page](https://docs.reflexer.finance/the-money-god-league/intro-to-the-league).
