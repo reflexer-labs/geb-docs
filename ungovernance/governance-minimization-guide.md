@@ -83,10 +83,11 @@ In this stage, governance will remove control from:
 * AccountingEngine
 * StabilityFeeTreasury
 * GlobalSettlement
+* Lender of First Resort Pool (and adjacent contracts)
+* Treasury Reward Adjuster
+* RAI Fee Reward Adjusters
 * ProtocolTokenAuthority (and as a result give up on the possibility to authorize/deauthorize new or old DebtAuctionHouses to print tokens)
 * ProtocolTokenPrintingPermissions
-
-Any auxiliary contracts that automate parameter settings should also by themselves be governance minimized.
 
 #### Level 3
 
