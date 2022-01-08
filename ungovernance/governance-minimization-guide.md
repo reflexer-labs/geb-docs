@@ -86,6 +86,7 @@ In this stage, governance will remove control from:
 * Lender of First Resort Pool (and adjacent contracts)
 * Treasury Reward Adjuster
 * RAI Fee Reward Adjusters
+* RAI Controller
 * ProtocolTokenAuthority (and as a result give up on the possibility to authorize/deauthorize new or old DebtAuctionHouses to print tokens)
 * ProtocolTokenPrintingPermissions
 
