@@ -6,7 +6,7 @@ The RAI Mint + LP strategy requires that participants mint RAI **and** provide R
 \
 The RAI/DAI 0.05% fee pool concerned is [here](https://info.uniswap.org/#/pools/0xcb0c5d9d92f4f2f80cce7aa271a1e148c226e19d).
 
-They are 2 important conditions:
+There are 2 important conditions:
 
 * The position needs to be at least 5 ticks wide (5 increments on the official Uniswap v3 UI, which is 0.5% wide) **and** include the market price and the redemption price. If the position is narrower than 5 ticks, or doesn't include the market price or the redemption price, you will not accrue any rewards. If your position is larger than 5 ticks you will earn less rewards depending on your liquidity concentration.&#x20;
 * The RAI debt value in USD in the Safe, needs the cover the full LP position value (RAI + DAI) to earn maximum rewards. If the RAI debt is less than the total LP position value, a proportional discount is applied to your reward amount.&#x20;
