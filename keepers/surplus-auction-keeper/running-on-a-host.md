@@ -33,11 +33,18 @@ This creates a virtual environment and installs requirements:
 ## 2\) Modify model file as needed
 
 A basic surplus auction bidding model can be found in `models/surplus_model.py`.
- It **must** be modifed to change `CURRENT_FLX_USD_PRICE`, which is currently set as a constant. However, the script can be modified to fetch the latest protocol token price from an external source. 
+This model retrieves the latest FLX/USD price from coingecko and will automatically place bids in an auction.
 
-The minimum acceptable profit when bidding is determined by `MINIMUM_FLX_MULTIPLIER` in the model file and is set to `1.10`. This means the lowest price(in RAI) you will accept for protocol tokens is 110% of `CURRENT_FLX_USD_PRICE`.
+You probably want to modify the following variables in `models/surplus_model.py`:
 
-### Then:
+`MAXIMUM_FLX_MULTIPLIER`: The maximum acceptable FLX price to use when bidding. This value will be used when bidding on a new auction with no previous bids. Default: `1.50` meaning the maxiimum price to accept for FLX(in RAI) is 150% of the current FLX/USD market price
+
+
+`MINIMUM_FLX_MULTIPLIER`: The minimum acceptable FLX price to use when bidding. Default: `1.10` meaning the minimum price to accept for FLX(in RAI) is 110% of the current FLX/USD market price
+
+`MY_BID_INCREASE`: The amount of bid increase(in FLX) to make when outbidding another bidder. If value is less than the auction house' `bidIncrease`, then it will use the auction house setting. Note: Current `bidIncrease` on mainnet is `1.03`. Default: `1.10`, If you want to always use the auction house `bidIncrease`, set this to `0`.
+
+### Ensure script is executable
 
 `chmod +x surplus_model.py`
 
@@ -57,6 +64,8 @@ For more information about this keystore format and how to generate them, check:
 
 * [Ethereum UTC / JSON Wallet Encryption](https://wizardforcel.gitbooks.io/practical-cryptography-for-developers-book/content/symmetric-key-ciphers/ethereum-wallet-encryption.html)
 * [keythereum](https://github.com/ethereumjs/keythereum)
+
+`GAS_MAXIMUM` -maximum gas price, in GWEI
 
 ### Ensure script is executable
 
