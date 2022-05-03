@@ -57,7 +57,7 @@ A sample message sent from the debt model to the keeper may look like:
 Any messages written by a _bidding model_ to **stderr** will be passed through by the keeper to its logs. This is the most convenient way of implementing logging from _bidding models_.
 
 {% hint style="danger" %}
-**Currently no utility is provided to prevent you from bidding at an unprofitable price**
+**Currently there's no mechanism that prevents a keeper from bidding at an unprofitable price**
 {% endhint %}
 
 ## Simplest possible bidding model
