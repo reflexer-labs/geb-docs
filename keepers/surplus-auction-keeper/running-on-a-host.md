@@ -30,41 +30,33 @@ This creates a virtual environment and installs requirements:
 
 `source _virtualenv/bin/activate`
 
-## 2\) Create a model file
+## 2\) Modify model file as needed
 
-Pick a protocol token/system coin price and paste the following code into `surplus_model.sh`:
+A basic surplus auction bidding model can be found in `models/surplus_model.py`.
+This model retrieves the latest FLX/USD price from coingecko and will automatically place bids in an auction.
 
-```text
-#!/usr/bin/env bash
-while true; do
-  echo "{\"price\": \"325.0\"}"
-  sleep 120                   
-done
-```
+You probably want to modify the following variables in `models/surplus_model.py`:
 
-### Then:
+`MAXIMUM_FLX_MULTIPLIER`: The maximum acceptable FLX price to use when bidding. This value will be used when bidding on a new auction with no previous bids. Default: `1.50` meaning the maxiimum price to accept for FLX(in RAI) is 150% of the current FLX/USD market price
 
-`chmod +x surplus_model.sh`
 
-## 3\) Create the keeper run file
+`MINIMUM_FLX_MULTIPLIER`: The minimum acceptable FLX price to use when bidding. Default: `1.10` meaning the minimum price to accept for FLX(in RAI) is 110% of the current FLX/USD market price
 
-Create a file called `run_auction_keeper.sh` and paste the following code in it:
+`MY_BID_INCREASE`: The amount of bid increase(in FLX) to make when outbidding another bidder. If value is less than the auction house' `bidIncrease`, then it will use the auction house setting. Note: Current `bidIncrease` on mainnet is `1.03`. Default: `1.10`, If you want to always use the auction house `bidIncrease`, set this to `0`.
 
-```text
-#!/bin/bash
-bin/auction-keeper \
-     --type surplus \
-     --model surplus_model.sh \
-     --rpc-uri <ETH_RPC_URL> \
-     --eth-from <KEEPER_ADDRESS> \
-     --eth-key key_file=<KEYSTORE_FILE>
-```
+### Ensure script is executable
 
-### Then, substitute the following variables:
+`chmod +x surplus_model.py`
 
-`ETH_RPC_URL` - the URL of your ethereum RPC connection
+For more information about bidding models, see [Bidding Models](../BiddingModels.md)
+
+## 3\) Modify keeper run file
+
+Modify the following variables in `run_surplus_keeper_host.sh`
 
 `KEEPER_ADDRESS` - the keeper's address. It should be in checksummed format \(not lowercase\).
+
+`ETH_RPC_URL` - the URL of your ethereum RPC connection
 
 `KEYSTORE_FILE` - your Ethereum UTC JSON keystore filename
 
@@ -73,16 +65,21 @@ For more information about this keystore format and how to generate them, check:
 * [Ethereum UTC / JSON Wallet Encryption](https://wizardforcel.gitbooks.io/practical-cryptography-for-developers-book/content/symmetric-key-ciphers/ethereum-wallet-encryption.html)
 * [keythereum](https://github.com/ethereumjs/keythereum)
 
-### Finally:
+`GAS_MAXIMUM` -maximum gas price, in GWEI
 
-`chmod +x run_auction_keeper.sh`
+### Ensure script is executable
+
+`chmod +x run_surplus_keeper_host.sh`
 
 ## 4\) Start the keeper and enter your keystore file password
 
-`./run_auction_keeper.sh`
+`./run_surplus_keeper_host.sh`
 
 ```text
-$ ./run_auction_keeper.sh
+$ ./run_surplus_keeper_host.sh
 Password for /keystore/key.json:
 ```
 
+## Surplus Auctioning Process
+
+[Surplus Auctioning Process](surplus-auctions.md)
