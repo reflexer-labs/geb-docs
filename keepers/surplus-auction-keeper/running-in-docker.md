@@ -8,7 +8,7 @@ description: Running a surplus auction keeper in a Docker container
 In order to participate in surplus auctions you need to bid with protocol tokens
 {% endhint %}
 
-## 1. Modify model file as needed
+## 1. Modify the model file as needed
 
 A basic surplus auction bidding model can be found in `models/surplus_model.py`. This model retrieves the latest FLX/USD price from Coingecko and will automatically place bids in an auction.
 

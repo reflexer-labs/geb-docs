@@ -1,7 +1,6 @@
 # Table of contents
 
 * [Introduction to GEB](README.md)
-* [Currently Deployed Systems](currently-deployed-systems.md)
 * [Community Resources](community-resources.md)
 * [FLX Mechanics](flx-mechanics.md)
 * [FAQ](faq.md)
