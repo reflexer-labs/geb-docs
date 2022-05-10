@@ -16,7 +16,8 @@ You probably want to modify the following variables in `models/surplus_model.py`
 
 * `STARTING_FLX_MULTIPLIER`: the maximum acceptable FLX price to use when bidding. This value will be used when bidding on a new auction with no previous bids. Default: `1.50` meaning the maximum price to accept for FLX (in RAI terms) is 150% of the current FLX/USD market price
 * `MINIMUM_FLX_MULTIPLIER`: the minimum acceptable FLX price to use when bidding. Default: `1.10` meaning the minimum price to accept for FLX (in RAI terms) is 110% of the current FLX/USD market price
-* `MY_BID_INCREASE`: the bid increase (in FLX) chosen when outbidding another bidder. If the bid value is smaller than the auction house' `bidIncrease`, then it will use the auction house setting. **Note**: current `bidIncrease` on mainnet is `1.03`, the default is `1.10`, if you want to always use the auction house `bidIncrease`, set this to `0`.
+
+`MY_BID_INCREASE`: The amount of bid increase(in FLX) to make when outbidding another bidder. If value is less than the auction house' `bidIncrease`, then it will use the auction house setting. Example: A value of `1.10` will create bid increases of 10%. Note: Current `bidIncrease` on mainnet is `1.03`. Default: `1.03`
 
 Then, use `chmod +x surplus_model.py`.
 
