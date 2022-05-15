@@ -41,12 +41,6 @@ When RAI is devalued (in case of ETH capital outflow), the opposite thing happen
 * SAFE users realize that they can mint more RAI against their ETH and that they will be able to buy cheap RAI once the market price tanks
 * Token holders realize that they can redeem less ETH during Settlement and they need to short RAI
 
-### Is RAI a stablecoin?
-
-Yes. RAI is actually one of the first stablecoins. What most people call "stablecoins" today are actually pegged coins. Pegged coins are oscillating around a specific value (usually pegged 1:1 to fiat such as USD, EUR etc). \
-\
-RAI, on the other hand, is not pegged to anything. The system behind RAI only cares about the market price getting as close as possible to the redemption price. The redemption price will almost always float (thus, it won't be pegged) in order to compel system participants to bring the market price toward it.
-
 ### Is RAI a rebase token?
 
 No. The protocol doesn't change the amount of tokens you have. Rather, it changes the target price that the protocol wants RAI to have on exchanges.
