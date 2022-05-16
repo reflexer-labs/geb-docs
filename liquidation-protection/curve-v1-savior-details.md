@@ -1,5 +1,9 @@
 # Curve V1 Savior Details
 
+**This is the math and logic that would apply in the case of a Curve V1 saviour integrated with the RAI protocol.**
+
+### Overview
+
 The Curve V1 savior requires SAFE owners to deposit Curve RAI/3Pool LP tokens. The RAI/3Pool contract can be found [here](https://etherscan.io/address/0x618788357D0EBd8A37e763ADab3bc575D54c2C7d).
 
 Upon liquidation, the Curve savior will withdraw all underlying liquidity (RAI + 3Pool tokens) from the LP shares protecting the liquidated SAFE. It will then use the withdrawn RAI to pay back as much debt as possible from the SAFE. The 3Pool tokens aren't used in this process and will need to be withdrawn manually from the savior at a later date.

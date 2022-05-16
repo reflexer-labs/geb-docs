@@ -85,15 +85,3 @@ Two things to keep in mind:
 * **You can still get slashed while you're waiting to unstake from the pool**
 
 You will notice that the amount of stFLX you receive might differ from the amount of LP tokens you stake. That is normal behaviour.
-
-## 5. Transition from LP Only to Staking
-
-**NOTE**: the transition will start on 18th of August 2021 at 12:50 PM UTC.
-
-Prior to staking, FLX holders will receive rewards for LPing in the Uniswap v2 FLX/ETH pool. Once staking starts, incentives for LPing only will progressively move to stakers only.\
-\
-The transition will happen as follows:
-
-* First 2 weeks of staking: 50 FLX for stakers only, 90 FLX for FLX/ETH LPs only
-* Weeks 3 and 4 of staking: 90 FLX for stakers only, 50 FLX for FLX/ETH LPs only
-* From the 5th week of staking onward: 120 FLX for stakers only, no FLX for simple FLX/ETH LPs
