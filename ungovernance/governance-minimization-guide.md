@@ -43,6 +43,7 @@ Each component in GEB has varying degrees of governance minimization potential. 
 * **PID Controller** - governance may need to keep some control over this component in the long run; the community will have more insight into how much control it will need after a GEB has been running for at least 1 year on mainnet; one reason for maintaining (bounded) control is the fact that the controller should be paused when the system's stablecoin doesn't have enough liquidity on exchanges; **NOTE**: even if governance keeps some control over the PID, the `OracleRelayer` will have upper and lower bounds for the redemption rate so that a potential governance attack cannot immediately destroy the protocol
 * **Saviour Contracts** - governance will need to keep maintaining these contracts in the long run because they are connected to external components
 * **SAFE Saviour Registry** - governance will need to keep maintaining this contract in the long run because it's meant to whitelist/blacklist saviour contracts
+* Treasury Reward Adjuster & RAI Fee Reward Adjusters - governance will need to keep maintaining these contracts as they manage treasury funds used to rewards addresses that update RAI & ETH oracles,&#x20;
 
 ### 3. Infrastructure for Automation
 
@@ -83,8 +84,6 @@ In this stage, governance will remove control from:
 * AccountingEngine
 * GlobalSettlement
 * Lender of First Resort Pool (and adjacent contracts)
-* Treasury Reward Adjuster
-* RAI Fee Reward Adjusters
 * RAI Controller
 * ProtocolTokenAuthority (and as a result give up on the possibility to authorize/deauthorize new or old DebtAuctionHouses to print tokens)
 * ProtocolTokenPrintingPermissions
