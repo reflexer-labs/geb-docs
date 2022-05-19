@@ -28,7 +28,7 @@ Projects building pegged coins can use RAI as a more stable alternative to ETH. 
 
 ### Yield Aggregator
 
-Protocols that deploy capital in order to get the best yield for their users (e.g [Yearn](https://yearn.finance)) can leverage RAI (and its intrinsic redemption rate) to boost returns. For example, combining RAI's positive redemption rate with lending on [Compound](https://compound.finance) or [Aave](https://aave.com) is one possible way to optimize earnings.
+Protocols that deploy capital in order to get the best yield for their users (e.g [Yearn](https://yearn.finance/)) can leverage RAI (and its intrinsic redemption rate) to boost returns. For example, combining RAI's positive redemption rate with lending on [Compound](https://compound.finance/) or [Aave](https://aave.com/) is one possible way to optimize earnings.
 
 ### **Sophisticated Arbitrageurs**
 
@@ -38,4 +38,4 @@ Some arbers can offer specialized RAI trading services to pools of capital. They
 
 ### **Portfolio Management Strategies**
 
-Anyone can create [Set Protocol](https://www.tokensets.com) sets or [Balancer](https://balancer.finance) pools that offer diversified exposure to RAI's redemption rate as well as other yield bearing assets (e.g cTokens, aTokens).
+Anyone can create [Set Protocol](https://www.tokensets.com/) sets or [Balancer](https://balancer.finance/) pools that offer diversified exposure to RAI's redemption rate as well as other yield bearing assets (e.g cTokens, aTokens).

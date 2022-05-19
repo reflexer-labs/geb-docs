@@ -13,14 +13,14 @@ There are 2 important conditions:
 
 ## How It Works
 
-1. Go to [app.reflexer.finance](https://app.reflexer.finance) or [DeFi Saver](https://app.defisaver.com/reflexer/manage) and mint some RAI.
+1. Go to [app.reflexer.finance](https://app.reflexer.finance/) or [DeFi Saver](https://app.defisaver.com/reflexer/manage) and mint some RAI.
 2. Go to the [RAI/DAI Uniswap v3 pool](https://info.uniswap.org/#/pools/0xcb0c5d9d92f4f2f80cce7aa271a1e148c226e19d) and add the RAI you minted as liquidity
 
 When choosing the range, make sure to include both the redemption and the market price:
 
 ![](../.gitbook/assets/Selection\_1126.png)
 
-You can find the redemption price at [https://stats.reflexer.finance/](https://stats.reflexer.finance). The RAI market price will be displayed directly on the Uniswap v3 UI.
+You can find the redemption price at [https://stats.reflexer.finance/](https://stats.reflexer.finance/). The RAI market price will be displayed directly on the Uniswap v3 UI.
 
 To help you to find the best range, we provide recommendations at [https://app.reflexer.finance/#/earn/incentives](https://app.reflexer.finance/#/earn/incentives).&#x20;
 

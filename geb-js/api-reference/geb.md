@@ -75,7 +75,7 @@ Currently the following contracts are available:
 * FixedDiscountCollateralAuctionHouse
 * Weth (ERC20)
 
-For detailed information about the functions of each contract we recommend referring directly to the smart contract [code](https://github.com/reflexer-labs/geb) and [documentation](https://docs.reflexer.finance).
+For detailed information about the functions of each contract we recommend referring directly to the smart contract [code](https://github.com/reflexer-labs/geb) and [documentation](https://docs.reflexer.finance/).
 
 ## Methods
 

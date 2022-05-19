@@ -6,7 +6,7 @@ The RAI Mint + LP strategy requires that participants mint RAI **and** provide R
 
 ## How It Works
 
-1. Go to [app.reflexer.finance](https://app.reflexer.finance) or [DeFi Saver](https://app.defisaver.com/reflexer/manage) and mint some RAI.
+1. Go to [app.reflexer.finance](https://app.reflexer.finance/) or [DeFi Saver](https://app.defisaver.com/reflexer/manage) and mint some RAI.
 2. Go to the [RAI/ETH Uniswap v2 pool](https://app.uniswap.org/#/add/v2/ETH/0x03ab458634910AaD20eF5f1C8ee96F1D6ac54919) and add the RAI you minted as liquidity
 
 You do **not** accrue rewards if:
@@ -22,10 +22,10 @@ In short, you can think of mint + LP as a formula: `RAI Eligible for Rewards = m
 
 * You **must** use the same address to mint RAI and provide Uniswap v2 RAI/ETH liquidity
 * The Uniswap v2 RAI/ETH LP tokens **must** stay on the same address that you used to mint RAI and provide liquidity
-* To see the minimum amount of RAI you must mint on mainnet, check the first [onboarding page in the app](https://app.reflexer.finance)
+* To see the minimum amount of RAI you must mint on mainnet, check the first [onboarding page in the app](https://app.reflexer.finance/)
 * If you open multiple Safes with the same address, your total RAI debt will be the sum of all RAI minted by each of your Safes
 * If your Safe gets liquidated, the amount of minted RAI you have decreases by the amount of RAI that got confiscated
-* If you would like to use a [Gnosis Safe](https://gnosis-safe.io) to manage your RAI positions and provide liquidity on Uniswap, you can connect to the Safe using WalletConnect and then use [app.reflexer.finance](https://app.reflexer.finance)
+* If you would like to use a [Gnosis Safe](https://gnosis-safe.io/) to manage your RAI positions and provide liquidity on Uniswap, you can connect to the Safe using WalletConnect and then use [app.reflexer.finance](https://app.reflexer.finance/)
 
 ## Scenarios
 
@@ -41,7 +41,7 @@ You need to mint RAI in order to accrue rewards. To determine the maximum amount
 
 ![](../.gitbook/assets/remove-rai-eth-lp.png)
 
-* Go to [app.reflexer.finance](https://app.reflexer.finance) or [DeFi Saver](https://app.defisaver.com/reflexer/manage) and mint RAI up to the amount that you already provided in the pool.
+* Go to [app.reflexer.finance](https://app.reflexer.finance/) or [DeFi Saver](https://app.defisaver.com/reflexer/manage) and mint RAI up to the amount that you already provided in the pool.
 * You’re now accruing rewards on the amount of RAI that you both minted and LPed.
 
 #### 3. I minted more RAI than the amount of RAI I added as liquidity
