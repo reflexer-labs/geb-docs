@@ -81,7 +81,6 @@ In this stage, governance will remove control from:
 
 * SAFEEngine
 * AccountingEngine
-* StabilityFeeTreasury
 * GlobalSettlement
 * Lender of First Resort Pool (and adjacent contracts)
 * Treasury Reward Adjuster
