@@ -4,73 +4,57 @@ description: Running a debt auction keeper in a Docker container
 
 # Running in Docker
 
-## 1\) Get RAI
+## 1) Get RAI
 
-Buy RAI from Uniswap v2 or [open a SAFE](https://app.gitbook.com/@reflexer-labs/s/geb/pyflex/safe-management/opening-a-safe) and generate it.
+Buy RAI or [open a SAFE](https://app.gitbook.com/@reflexer-labs/s/geb/pyflex/safe-management/opening-a-safe) and generate it.
 
-## 2\) Create a model file
+## 2) Modify model file as needed
 
-Pick a system coin/protocol token price you're willing to bid and paste the following code into `debt_model.sh`:
+A basic debt auction bidding model can be found in `models/debt_model.py`. This model retrieves the latest FLX/USD price from coingecko and will automatically place bids in an auction.
 
-```text
-#!/usr/bin/env bash
-while true; do
-  echo "{\"price\": \"325.0\"}"
-  sleep 120                   
-done
-```
+You probably want to modify the following variables in `models/surplus_model.py`:
+
+`MAXIMUM_FLX_MULTIPLIER`: The maximum acceptable FLX price to use when bidding. Default: `0.90` meaning the maximum price to pay when buying FLX(in RAI) is 90% of the current FLX/USD market price
+
+`MY_BID_DECREASE`: The amount of bid decrease(in FLX) to make when outbidding another bidder. If value is less than the auction house' `bidDecrease`, then it will use the auction house setting. Example: A value of `1.10` will create bid decreases of 10%. Note: Current `bidDecrease` on mainnet is `1.03`. Default: `1.03`
 
 ### Then:
 
-`chmod +x debt_model.sh`
+`chmod +x debt_model.py`
 
 For more information about bidding models, see [this](https://docs.reflexer.finance/keepers/bidding-models).
 
-## 3\) Create the keeper run file
+## 3) Modify the keeper run file
 
-Create a file called `run_auction_keeper.sh` and paste the following code in it:
+Modify the following variables in `run_debt_keeper.sh`
 
-```text
-#!/bin/bash
+`KEEPER_ADDRESS` - the keeper's address. It should be in checksummed format (not lowercase)
 
-docker run -it \
-  -v <KEYSTORE_DIR>:/keystore \
-  -v <MODEL_DIR>:/models \
-    reflexer/auction-keeper:latest \
-        --type debt \
-        --model /models/debt_model.sh \
-        --rpc-uri <ETH_RPC_URL> \
-        --eth-from <KEEPER_ADDRESS> \
-        --eth-key key_file=/keystore/<KEYSTORE_FILE>
-```
+`ETH_RPC_URL` - the URL of your Ethereum RPC connection
 
-### Then, substitute the following variables:
+`KEYSTORE_DIR` - the full path of the directory where your keystore file is
 
-`KEYSTORE_DIR` - the local directory where your keystore file is
-
-`MODEL_DIR` - the local directory where your `debt_model.sh` file is
+`MODEL_DIR` - the full path of directory where your `surplus_model.py` file is
 
 `KEYSTORE_FILE` - your Ethereum UTC JSON keystore filename
 
-For more information about this keystore format and how to generate them use:
+For more information about this keystore format and how to generate them:
 
 * [Ethereum UTC / JSON Wallet Encryption](https://wizardforcel.gitbooks.io/practical-cryptography-for-developers-book/content/symmetric-key-ciphers/ethereum-wallet-encryption.html)
 * [keythereum](https://github.com/ethereumjs/keythereum)
 
-`ETH_RPC_URL` - the URL of your ethereum RPC connection
-
-`KEEPER_ADDRESS` - the keeper's address. It should be in checksummed format \(not lowercase\).
+`GAS_MAXIMUM` -maximum gas price, in GWEI
 
 ### Then:
 
-`chmod +x run_auction_keeper.sh`
+`chmod +x run_debt_keeper.sh`
 
-## 4\) Start the keeper and enter your keystore file password
+## 4) Start the keeper and enter your keystore file password
 
-`./run_auction_keeper.sh`
+`./run_debt_keeper.sh`
 
-```text
-$ ./run_auction_keeper.sh
+```
+$ ./run_debt_keeper.sh
 latest: Pulling from reflexer/auction-keeper
 Digest: sha256:7e55ec9b0a136fc903d9f7f2690538bcbde9029d957e0e6f84d0282790f9666a
 Status: Downloaded newer image for reflexer/auction-keeper:latest
@@ -78,3 +62,6 @@ docker.io/reflexer/auction-keeper:latest
 Password for /keystore/key.json:
 ```
 
+## Debt Auction Output
+
+Sample[ debt auction output](running-in-docker.md#debt-auctioning-process)

@@ -12,7 +12,7 @@ In order to participate in surplus auctions you need to bid with protocol tokens
 
 Python 3.6+
 
-### Clone**:**
+### Clone\*\*:\*\*
 
 ```
 git clone https://github.com/reflexer-labs/auction-keeper.git
@@ -78,6 +78,6 @@ $ ./run_surplus_keeper_host.sh
 Password for /keystore/key.json:
 ```
 
-## Surplus Auctioning Process
+## Surplus Auction Output
 
-[Surplus Auctioning Process](surplus-auctions.md)
+Sample [surplus auction output](running-on-a-host.md#surplus-auctioning-process)

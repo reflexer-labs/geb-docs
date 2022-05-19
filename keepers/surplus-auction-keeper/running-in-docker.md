@@ -54,6 +54,6 @@ docker.io/reflexer/auction-keeper
 Password for /keystore/key.json:
 ```
 
-## Surplus Auctioning Process
+## Surplus Auction Output
 
-[Surplus Auctioning Process](surplus-auctions.md)
+Sample [surplus auction output](running-in-docker.md#surplus-auctioning-process)
