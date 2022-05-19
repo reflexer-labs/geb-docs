@@ -72,7 +72,7 @@ In this stage, governance will remove control from:
 * OracleRelayer
 * Coin (ERC20)
 * CollateralJoin contracts
-* Contracts that automate param setting in the protocol
+* Contracts that automate param setting in the protocol (besides Auto Surplus Buffer Setter)
 * TaxCollector
 * ESM
 
@@ -87,6 +87,7 @@ In this stage, governance will remove control from:
 * RAI Controller
 * ProtocolTokenAuthority (and as a result give up on the possibility to authorize/deauthorize new or old DebtAuctionHouses to print tokens)
 * ProtocolTokenPrintingPermissions
+* Auto Surplus Buffer Setter
 
 #### Level 3
 
