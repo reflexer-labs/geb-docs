@@ -19,7 +19,7 @@ GEB is a modified fork of [MCD](https://github.com/makerdao/dss) that has severa
 * The possibility to send stability fees at once to multiple addresses
 * The possibility to switch between surplus auctions and other types of strategies meant to remove surplus from the system
 * Two prices for each `CollateralType`: one used for generating debt, the other one used exclusively when liquidating SAFEs
-* A stability fee treasury that can pay for oracle calls, market making or teams who onboard collateral and take care of the system
+* A stability fee treasury that can pay for oracle calls or other contracts that automate the system
 
 ### GEB Overview Diagram
 
@@ -28,8 +28,3 @@ Explore the diagram in detail [here](https://viewer.diagrams.net/?target=blank\&
 ![](.gitbook/assets/geb\_overview-1-.png)
 
 {% file src=".gitbook/assets/geb_overview (2).svg" %}
-
-
-
-
-
