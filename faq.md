@@ -8,7 +8,7 @@ description: Frequently asked questions about RAI and GEB
 
 RAI is an ETH backed stable asset with a [managed float regime](https://en.wikipedia.org/wiki/Managed\_float\_regime). The RAIUSD exchange rate is determined by supply and demand while the protocol that issues RAI tries to stabilize its price by constantly de or revaluing it.
 
-The supply and demand mechanic plays out between two parties: SAFE users (those who generate RAI with their ETH) and RAI holders (those who hold, speculate on or use RAI in other protocols and apps).
+The supply and demand mechanic plays out between two parties: SAFE users (those who generate RAI with their ETH) and RAI holders.
 
 Compared to protocols that try to defend a [fixed exchange rate](https://www.investopedia.com/terms/f/fixedexchangerate.asp) between their native stable asset (pegged coin) and fiat (DAI/USD, sUSD/USD etc), RAI's monetary policy offers a couple of advantages:
 
