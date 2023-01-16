@@ -48,3 +48,13 @@ The `ChainlinkPriceFeedMedianizer` has a similar interface to the [Governance Le
 ## 3. Walkthrough
 
 When reading the latest price feed, the contract also stores the timestamp when the price coming from Chainlink was posted on-chain. The system can incentivize anyone to call `updateResult` and update the median price regularly using a `rewardRelayer`.
+
+## 4. Gotchas
+
+This oracle is entirely dependent on Chainlink. If the Chainlink relayer contract is deprecated the Oracle needs to be updated accordingly.
+
+## 5. Failure Modes (Bounds on Operating Conditions & External Risk Factors)
+
+If the Chainlink contract is not updated the price will become stale, other contracts reading from it will revert on state changing transactions, effectively freezing the system.
+
+If the price reported by Chainlink is wrong the system will take it as it is, possibily causing unfair liquidations, or preventing liquidations in case of higher prices reported.

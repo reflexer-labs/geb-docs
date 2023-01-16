@@ -58,3 +58,38 @@ This contract pulls funds from the [StabilityFeeTreasury](https://github.com/ref
 This contract calls an [FSMWrapper](https://github.com/reflexer-labs/geb-fsm/blob/master/src/FSMWrapper.sol) in order to reward addresses that call `updateResult`.
 
 &#x20;
+
+## 5. Gotchas \(Potential Sources of User Error\)
+
+N/A
+
+## 6. Failure Modes \(Bounds on Operating Conditions & External Risk Factors\)
+
+#### `updateCollateralPrice()` is not called promptly, allowing malicious prices to be swiftly uptaken
+
+For several reasons, `updateCollateralPrice()` is always callable as soon as `block.timestamp / updateDelay` increments, regardless of when the last `updateCollateralPrice()` call occurred \(because `lastUpdateTime` is rounded down to the nearest multiple of `updateDelay`\). This means the contract does not actually guarantee that a time interval of at least `updateDelay` seconds has passed since the last `updateCollateralPrice()` call before the next one; rather this is only \(approximately\) guaranteed if the last `updateCollateralPrice()` call occurred shortly after the previous increase of `block.timestamp / updateDelay`. Thus, a malicious price value can be acknowledged by the system in a time potentially much less than `updateDelay`.
+
+**This was a deliberate design decision. The arguments that favoured it, roughly speaking, are:**
+
+* Providing a predictable time at which Prot holders should check for evidence of oracle attacks \(in practice, `updateDelay` is 1 hour, so checks must be performed at the top of the hour\)
+* Allowing all OSMs to be reliably updated at the same time in a single transaction
+
+The fact that `updateCollateralPrice` is public, and thus callable by anyone, helps mitigate concerns, though it does not eliminate them. For example, network congestion could prevent anyone from successfully calling `updateCollateralPrice()` for a period of time. If a Prot holder observes that `updateCollateralPrice` has not been promptly called, **the actions they can take include:**
+
+1. Call `updateCollateralPrice()` themselves and decide if the next value is malicious or not
+2. Call `stop()` or `restartValue()` \(the former if only `nextFeed` is malicious; the latter if the malicious value is already in `currentFeed`\)
+3. Trigger emergency shutdown \(if the integrity of the overall system has already been compromised or if it is believed the rogue oracle\(s\) cannot be fixed in a reasonable length of time\)
+
+In the future, the contract's logic may be tweaked to further mitigate this \(e.g. by **only** allowing `updateCollateralPrice()` calls in a short time window each `updateDelay` period\).
+
+### Authorization Attacks and Misconfigurations
+
+Various damaging actions can be taken by authorized individuals or contracts, either maliciously or accidentally:
+
+* Revoking access of core contracts to the methods that read values, causing mayhem as prices fail to update
+* Completely revoking all access to the contract
+* Changing `src` to either a malicious contract or to something that lacks a `getResultWithValidity()` interface, causing transactions that `updateCollateralPrice()` the affected OSM to revert
+* Calling disruptive functions like `stop` and `restartValue` inappropriately
+
+The only solution to these issues is diligence and care regarding the `authorizedAccounts` of the OSM.
+

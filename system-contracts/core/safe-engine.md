@@ -145,7 +145,28 @@ The `SAFEEngine` stores SAFEs and tracks all debt and collateral balances. This 
 
 ## 3. Walkthrough <a href="#3-mechanisms-and-concepts" id="3-mechanisms-and-concepts"></a>
 
-The `SAFEEngine` is in charge with two main system functions:
+The core Safe, Coin, and collateral state is kept in the `SafeEngine`. The `SafeEngine` contract has no external dependencies and maintains the central "Accounting Invariants" of Coin. The core principles that apply to the `SafeEngine` are as follows:
+
+1. **Coin cannot exist without collateral:**
+
+* A `collteralType` is a particular type of collateral.
+* Collateral `collateral` is assigned to users with `modifyCollateralBalance`.
+* Collateral `collateral` is transferred between users with `transferCollateral`.
+
+**2. The Safe data structure is the `SAFE`:**
+
+* has `safeCollateral` - encumbered collateral
+* has `safeDebt` - encumbered, normalized debt
+
+**3. Similarly, a collateral is an `collateralType`:**
+
+* has `debtAmount` - encumbered, normalized debt
+* has `accumulatedRate` - debt scaling factor (discussed further below)
+* has `safetyPrice` - price with safety margin
+* has `debtCeiling` - debt ceiling
+* has `debtFloor` - debt floor
+
+**Note:** Above, when using the term "encumbered", this refers to being "locked in a SAFE".
 
 ### 1. SAFE Management <a href="#vault-management" id="vault-management"></a>
 
@@ -156,3 +177,27 @@ The `SAFEEngine` is in charge with two main system functions:
 ### **2. Stability Fee Accrual** <a href="#rate-updates-via-fold-bytes32-ilk-address-u-int-rate" id="rate-updates-via-fold-bytes32-ilk-address-u-int-rate"></a>
 
 The `accumulatedRates` helps convert normalized debt (`generatedDebt`) drawn against a `collateralType` to the present value of that debt (actual debt issued + interest). The rate is updated using `updateAccumulatedRate` (called by the `TaxCollector`). After every update, the newly accrued stability fees are added to the `coinBalance` of `surplusDst`.
+
+## 4. Gotchas <a id="4-gotchas"></a>
+
+The methods in the `SafeEngine` are written to be as generic as possible and as such have interfaces that can be quite verbose. Care should be taken that you have not mixed the order of parameters.
+
+Any module that is `auth`ed against the `SafeEngine` has full root access, and can therefore steal all collateral in the system. This means that the addition of a new collateral type (and associated adapter) carries considerable risk.
+
+## 5. Failure Modes <a id="5-failure-modes"></a>
+
+#### Coding Error
+
+A bug in the `SafeEngine` could be catastrophic and could lead to the loss (or locking) of all Coin and Collateral in the system. It could become impossible to modify Vault's or to transfer Coin. Auctions could cease to function. Shutdown could fail.
+
+#### Feeds
+
+The `SafeEngine` relies upon a set of trusted oracles to provide price data. Should these price feeds fail, it would become possible for unbacked Coin to be minted, or safe Vaults could be unfairly liquidated.
+
+#### Governance
+
+Governance can authorize new modules against the `SafeEngine`. This allows them to steal collateral (`modifyCollateralBalance`) or mint unbacked Coin (`createUnbackedDebt` / addition of worthless collateral types). Should the cryptoeconomic protections that make doing so prohibitively expensive fail, the system may be vulnerable and left open for bad actors to drain collateral.
+
+#### Adapters
+
+The `SafeEngine` relies on external Adapter contracts to ensure that the collateral balances in the `SafeEngine` represent real external collateral balances. Adapter contracts are authorized to make arbitrary modifications to all collateral balances. A faulty collateral adapter could result in the loss of all collateral in the system.

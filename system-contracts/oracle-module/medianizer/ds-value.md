@@ -30,3 +30,11 @@ This is a simple contract where authorized addresses can set a price and anyone 
 
 Authorized functions can set a new `medianPrice` by calling `updateResult`. Anyone can `read` the `medianPrice` or read both the `medianPrice` and whether it `isValid` by calling `read` or`getResultWithValidity`.
 
+## 4. Gotchas
+
+This oracle is entirely dependent on authed addresses to update them. They will not flag if they are stale.
+
+## 5. Failure Modes (Bounds on Operating Conditions & External Risk Factors)
+
+Authed address can set any arbitrary price. This will impact other components reading from the oracle.
+
