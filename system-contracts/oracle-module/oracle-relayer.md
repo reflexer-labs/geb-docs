@@ -82,3 +82,23 @@ Every time someone wants to read the `_redemptionPrice` its value will first be 
 ### Updating the Redemption Rate
 
 Every time the `redemptionRate` is updated, the contract makes sure to bound the value that is can be set to.
+
+## 4. Gotchas <a id="4-gotchas"></a>
+
+The methods in the `oracleRelayer` are relatively basic compared to most other portions of `geb`. There is not much room for user error in the single unauthed method `updateCollateralPrice`. If an incorrect `bytes32` is supplied the call will fail.
+
+Any module that is authed against the `oracleRelayer` has full root access, and can, therefore, add and remove which `collateralTypes` can be "updateCollateralPrice"'d. While not completely breaking the system, this could cause considerable risk. An authed caller can also update the `redemptionRate` and `redemptionPrice`, causing considerable impact depending on the values used.
+
+## 5. Failure Modes <a id="5-failure-modes"></a>
+
+#### Coding Error
+
+A bug in `oracleRelayer` would most likely result in the prices for collaterals and the redemptionRate not being updated anymore. In this case, the system would need to authorize a new `oracleRelayer` which would then be able to update the prices/rate. Overall this is not a catastrophic failure as this would only pause all price fluctuation for some period.
+
+#### Feeds
+
+The `oracleRelayer` relies upon a set of trusted oracles to provide price data. Should these price feeds fail, it would become possible for unbacked Coin to be minted, or Safes could be unfairly liquidated.
+
+#### Spot Price Becoming Stale
+
+When `updateCollateralPrice` is not called frequently enough, the `SAFE`'s `safetyPrice` price will become stale. This could arise for a few reasons including tragedy of the commons or miner collusion and could lead to negative outcomes such as inappropriate liquidations, or the prevention of liquidations that should be possible.

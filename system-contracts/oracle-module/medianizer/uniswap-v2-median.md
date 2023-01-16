@@ -69,3 +69,11 @@ The `UniswapConsecutiveSlotsPriceFeedMedianizer` is integrated with Uniswap V2 i
 `updateResult` first tries to update the `converterFeed` and the Uniswap pool before it stores new observations and computes the latest median.
 
 `read` will only return a result if the median is non-null, if `updateResult` has been successfully called at least `granularity` times, if the `validityFlag` is `1` and if  `timeElapsedSinceFirstObservation() <= maxWindowSize`. `getResultWithValidity` will return the median price and its validity (determined using the same checks as `read`).
+
+## 4. Gotchas
+
+This oracle depends on a pinger call within a defined frequency. THe calls should be properly incentivised.
+
+## 5. Failure Modes (Bounds on Operating Conditions & External Risk Factors)
+
+Uniswap V2 is vulnerable to oracle manipulation attacks. A motivated attacker could push the price in the wrong direction and update the oracle. For TWAPs that is less of an issue (it would require multiple successful calls from an attacker).

@@ -124,3 +124,31 @@ When the `AccountingEngine` has a surplus balance above the `surplusBuffer` (`sa
 ### Disabling the Accounting Engine
 
 When an authorized address calls `AccountingEngine.disableContract` the system will try to settle as much remaining `safeEngine.debtBalance[accountingEngine]` as possible.&#x20;
+
+## 4. Gotchas (Potential source of user error)
+
+* When the `AccountingEngine` is upgraded, there are multiple references to it that must be updated at the same time (`GlobalSettlement`, `TaxCollector`, `CoinSavingsAccount`).
+* The `AccountingEngine` is the only user with a non-zero `totalQueuedDebt` balance (not a `safeEngine` invariant as there can be multiple `AccountingEngine`s).
+* CollateralType storage is split across the `SafeEngine`, `TaxCollector`, `CoinSavingsAccount` and `AccountingEngine` modules. The `LiquidationEngine` also stores the liquidation penalty and maximum auction size.
+* A portion of the Stability Fee is allocated for the Coin Savings Acount by increasing the amount of `totalQueuedDebt` in the `AccountingEngine` at every `CoinSavingsAccount.updateAccumulatedRate( )` call.
+* Setting an incorrect value for `accountingEngine` can cause the surplus to be lost or stolen.
+
+## 5. Failure Modes (Bounds on Operating Conditions & External Risk Factors)
+
+#### Safe Liquidation
+
+* A failure mode could arise when no actors call `cancelAuctionedDebtWithSurplus`, `popDebtFromQueue` or `settleDebt` to reconcile/queue the debt.
+
+#### Auctions
+
+* A failure mode could arise if a user does not call `auctionSurplus`or `auctionDebt` to kick off auctions.
+* `AccountingEngine.popDebtDelay`, when set too high (`popDebtDelay` is too long), the `auctionDebt` auctions can no longer occur. This provides a risk of undercollateralization.
+* `AccountingEngine.popDebtDelay`, when set too low, can cause too many `auctionDebt` auctions, while preventing `auctionSurplus` auctions from occurring.
+* `AccountingEngine.surplusAuctionAmountToSell`, when set too high, can result in no `auctionSurplus` auctions being possible. Thus, if no `auctionSurplus` auction takes place, there will be no FLX bidding as part of that process and, accordingly, no automated FLX burn as a result of a successful auction.
+* `AccountingEngine.surplusAuctionAmountToSell`, when set too low, results in `auctionSurplus` auctions not being profitable for participants (`amountToSell` size is worth less than gas cost). Thus, no FLX will be bid during a `auctionSurplus` auction and, as a result, there will be no automated FLX burn.
+* `AccountingEngine.debtAuctionBidSize`, when set too high, no `auctionDebt` auctions are possible. This results in the system not being able to recover from an undercollateralized state.
+* `AccountingEngine.debtAuctionBidSize`, when set too low, `auctionDebt` auctions are not profitable for participants (where the `amountToSell` size is worth less than gas cost). This results in FLX inflation due to automated FLX minting.
+* `AccountingEngine.initialDebtAuctionMintedTokens`, when set too high, `auctionDebt` auctions risk not being able to close or mint a large amount of FLX, creating a risk of FLX dilution and the possibility of a governance attack.
+* `AccountingEngine.initialDebtAuctionMintedTokens`, when set too low, `auctionDebt` auctions have to be `startAuction`ed many times before they will be interesting to keepers.
+* `AccountingEngine.surplusBuffer`, when set too high, the `auctionSurplus` auctions would never occur. If a `auctionSurplus` auction does not occur, there is no sale of surplus, and thus, no burning of bid FLX.
+* `AccountingEngine.surplusBuffer`, if set too low, can cause surplus to be auctioned off via `auctionSurplus` auctions before it is used to cancel `debtBalance` from liquidations, necessitating `auctionDebt` auctions and making the system run inefficiently.

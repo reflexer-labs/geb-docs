@@ -99,3 +99,16 @@ If the auction expires without receiving any bids, anyone can restart the auctio
 
 1. It resets `bids[id].auctionDeadline` to `now + totalAuctionLength`
 2. It resets `bids[id].amountToSell` to `bids[id].amountToSell * amountSoldIncrease / ONE`&#x20;
+
+## 4. Gotchas (Potential Source of User Error)
+
+#### **Keepers**
+
+In the context of running a keeper (more info [here](https://github.com/reflexer-laps/geb-docs/tree/master/keepers)) to perform bids within an auction, a primary failure mode would occur when a keeper specifies an unprofitable price for FLX.
+
+* This failure mode is due to the fact that there is nothing the system can do stop a user from paying significantly more than the fair market value for the token in an auction (this goes for all auction types, `collateral`, `debt`, and `surplus`).
+* This means, in the case of Flop, that since the Coin amount is fixed for the entire auction, the risk to the keeper is that they would make a "winning" bid that pays the bid amount in Coin but does not receive any FLX (`amountToSell` == 0). Subsequent executions of this bad strategy would be limited by the amount of Coin (not FLX) in their vat balance.
+
+## 5. Failure Modes (Bounds on Operating Conditions & External Risk Factors)
+
+`DebtAuctionHouse` has the potential to issue an excessively huge amount of FLX and despite the mitigation efforts (the addition of the `initialDebtAuctionMintedTokens` and `amountSoldIncrease` parameters), if `initialDebtAuctionMintedTokens` is not set correctly by governance, the huge issuance of FLX could still occur.

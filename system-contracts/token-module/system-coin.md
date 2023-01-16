@@ -44,3 +44,18 @@ For the most part, `coin.sol` functions as a typical ERC20 token although it has
 1. `push`, `pull` & `move` are aliases for `transferFrom` in the form of `transferFrom(msg.sender, usr, amount)` , `transferFrom(usr, msg.sender, amount)` & `transferFrom(src, dst, amount)` .
 2. `permit` is a signature-based approval function. This allows an end-user to sign a message which can then be relayed by another party to submit their approval. This can be useful for applications in which the end-user does not need to hold ETH to pay for gas.
 
+## 4. Gotchas (Potential Source of User Error) <a id="4-gotchas"></a>
+
+Unlimited allowance is a relatively common practice. This could be something used to trick a user by a malicious contract into giving access to all their Coin. This is concerning in upgradeable contracts where the contract may appear innocent until upgraded to a malicious contract.
+
+Coin is also susceptible to the known [ERC20 race condition](https://github.com/0xProject/0x-monorepo/issues/850), but should not normally be an issue with unlimited approval. We recommend any users using the `approval` for a specific amount be aware of this particular issue and use caution when authorizing other contracts to perform transfers on their behalf.
+
+There is a slight deviation in `transferFrom` functionality: If the `src == msg.sender` the function does not require `approval` first and treats it as a normal `transfer` from the `msg.sender` to the `dst`.
+
+#### Built-in meta-transaction functionality of Coin
+
+The Coin token provides offchain approval, which means that as an owner of an ETH address, you can sign a permission (using the permit() function) which basically grants allowance to another ETH address. The ETH address that you provide permission to can then take care of the execution of the transfer but has an allowance.
+
+## 5. Failure Modes (Bounds on Operating Conditions & External Risk Factors) <a id="5-failure-modes"></a>
+
+* N/a
