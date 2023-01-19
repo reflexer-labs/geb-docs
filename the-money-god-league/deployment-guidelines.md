@@ -26,3 +26,7 @@ The frontend is maintained at the repository [geb-app](https://github.com/reflex
 ## 5. Stats
 
 [This](https://stats.reflexer.finance/) stats page is maintained in the [geb-stats](https://github.com/reflexer-labs/geb-stats) repo.
+
+## 6. Libs / Console
+
+The repositories above make use of [geb.js](https://github.com/reflexer-labs/geb.js). One can interact with a system deployment through the terminal using [geb-console](https://github.com/reflexer-labs/geb-console).
