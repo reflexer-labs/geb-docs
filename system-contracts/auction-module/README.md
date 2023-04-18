@@ -26,7 +26,7 @@ The **Auction Module** is meant to incentivize external actors to drive the syst
 
 ## 3. Risks <a href="5-failure-modes-bounds-on-operating-conditions-and-external-risk-factors" id="5-failure-modes-bounds-on-operating-conditions-and-external-risk-factors"></a>
 
-Governance needs to fine-tune auction parameters in order to make the bidding process as efficient as possible. In the case of `English`, `Debt` and `Surplus` auctions there are three main parameters:
+Governance needs to fine-tune auction parameters in order to make the bidding process as efficient as possible. In the case of `English`, `Debt` and `Surplus` auctions there are four main parameters:
 
 * `bidIncrease`- if it's too high it will discourage bidding and if it's too low its effect will be insignificant
 * `bidDuration`- if it's too high it would force the winning bidder to wait too long until they can collect their winnings. If it's too low it would not give other bidders enough time to participate
