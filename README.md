@@ -25,6 +25,6 @@ GEB is a modified fork of [MCD](https://github.com/makerdao/dss) that has severa
 
 Explore the diagram in detail [here](https://viewer.diagrams.net/?target=blank\&highlight=0000ff\&layers=1\&nav=1\&title=GEB\_overview.drawio#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1nIcaY8N8StVCfyAL\_ztbmETJX2bvY3a9%26export%3Ddownload).
 
-![](.gitbook/assets/geb\_overview-1-.png)
+![](<.gitbook/assets/GEB\_overview (1).png>)
 
-{% file src=".gitbook/assets/geb_overview (2).svg" %}
+{% file src=".gitbook/assets/GEB_overview.svg" %}

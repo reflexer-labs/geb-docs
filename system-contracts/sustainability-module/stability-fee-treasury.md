@@ -38,7 +38,7 @@ The `StabilityFeeTreasury` is meant to allow other contracts or EOAs to pull fun
 
 **Modifiers**
 
-* `isAuthorized` **** - checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
+* `isAuthorized` - checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
 * `accountNotTreasury` - checks that the receiver account for treasury funds is not the treasury itself
 
 **Functions**

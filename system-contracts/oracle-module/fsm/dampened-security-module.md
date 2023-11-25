@@ -26,7 +26,7 @@ The `DSM` (Dampened Security Module) is an `OSM`-like contract that, apart from 
 
 **Modifiers**
 
-* `isAuthorized` **** - checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
+* `isAuthorized` - checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
 
 **Functions**
 

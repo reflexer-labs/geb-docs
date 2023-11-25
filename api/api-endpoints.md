@@ -12,4 +12,4 @@
 
 The subgraph documentation is available on the right panel of[ thegraph.com endpoint ](https://thegraph.com/explorer/subgraph/reflexer-labs/rai-mainnet)
 
-![](../.gitbook/assets/selection\_436.png)
+![](../.gitbook/assets/Selection\_436.png)

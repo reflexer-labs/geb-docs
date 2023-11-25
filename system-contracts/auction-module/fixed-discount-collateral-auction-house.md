@@ -53,7 +53,7 @@ Fixed discount collateral auctions are similar to their `English` counterpart in
 
 **Modifiers**
 
-* `isAuthorized` **** - checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
+* `isAuthorized` - checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
 
 **Functions**
 

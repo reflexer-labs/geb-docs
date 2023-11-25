@@ -4,7 +4,7 @@ description: A central hub for all SAFEs
 
 # SAFE Manager
 
-**Smart contract code:** [**GebSafeManager**](https://github.com/reflexer-labs/geb-safe-manager/blob/master/src/GebSafeManager.sol)****
+**Smart contract code:** [**GebSafeManager**](https://github.com/reflexer-labs/geb-safe-manager/blob/master/src/GebSafeManager.sol)
 
 ## 1. Summary <a href="#1-introduction-summary" id="1-introduction-summary"></a>
 

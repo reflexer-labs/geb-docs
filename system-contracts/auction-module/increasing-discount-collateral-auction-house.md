@@ -58,7 +58,7 @@ Increasing discount collateral auctions are similar to fixed discount ones in th
 
 **Modifiers**
 
-* `isAuthorized` **** - checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
+* `isAuthorized` - checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
 
 **Functions**
 

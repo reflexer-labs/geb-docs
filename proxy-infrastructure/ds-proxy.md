@@ -4,7 +4,7 @@ description: Execute transactions with the use of a proxy
 
 # DSProxy
 
-**Smart contract code:** [**DSProxy**](https://github.com/reflexer-labs/ds-proxy/blob/master/src/proxy.sol)****
+**Smart contract code:** [**DSProxy**](https://github.com/reflexer-labs/ds-proxy/blob/master/src/proxy.sol)
 
 ## 1. Summary <a href="#1-introduction-summary" id="1-introduction-summary"></a>
 

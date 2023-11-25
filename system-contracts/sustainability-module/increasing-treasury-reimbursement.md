@@ -29,7 +29,7 @@ The `IncreasingTreasuryReimbursement` is a contract meant to be inherited from a
 
 **Modifiers**
 
-* `isAuthorized` **** - checks whether an address is part of `authorizedAddresses` (and thus can call authed functions)
+* `isAuthorized` - checks whether an address is part of `authorizedAddresses` (and thus can call authed functions)
 
 **Events**
 

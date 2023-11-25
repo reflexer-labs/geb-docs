@@ -25,7 +25,7 @@ The `ESMThresholdSetter` is meant to recompute the `threshold` of protocol token
 
 **Modifiers**
 
-* `isAuthorized` **** - checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
+* `isAuthorized` - checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
 
 **Events**
 

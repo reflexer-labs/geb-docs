@@ -6,7 +6,7 @@ description: A guide to help you protect your SAFEs from liquidation
 
 ## 1. What is Liquidation Protection? Why Should I Use It?
 
-Liquidation Protection is a unique feature that \(as of the date of this guide\) no other DeFi protocol has besides RAI. It forces liquidators to try and save your RAI SAFEs before they are liquidated. This is especially useful during a sharp price drop \(e.g Black Thursday from March 2020\) when gas prices explode and no one, not even you, can save your capital.
+Liquidation Protection is a unique feature that (as of the date of this guide) no other DeFi protocol has besides RAI. It forces liquidators to try and save your RAI SAFEs before they are liquidated. This is especially useful during a sharp price drop (e.g Black Thursday from March 2020) when gas prices explode and no one, not even you, can save your capital.
 
 There are two key advantages in protecting your SAFE:
 
@@ -27,7 +27,7 @@ Your SAFE can be protected from liquidation by what we call a "saviour". A savio
 
 To start connecting a saviour to your SAFE, you can click on **Add a Saviour** which is on every SAFE's details page:
 
-![](../.gitbook/assets/untitled-design.png)
+![](<../.gitbook/assets/Untitled design.png>)
 
 You should see the onboarding page for saviours:
 
@@ -39,8 +39,8 @@ Once you click on **Configure**, you should see the configuration screen:
 
 You will notice a couple of things:
 
-* You can deposit LP tokens in a saviour that protects your SAFE. During a liquidation, the saviour will first try to pull your liquidity from a DEX \(in this case, Uniswap v2\) and repay some of your debt or add more ETH in the SAFE
-* There is a Target Rescue CRatio. This is the collateralization ratio that your SAFE will have in case it is successfully saved. If the saviour cannot bring the SAFE's collateralization ratio to the target that you specify, it will not save the SAFE at all \(the SAFE will end up getting liquidated\)
+* You can deposit LP tokens in a saviour that protects your SAFE. During a liquidation, the saviour will first try to pull your liquidity from a DEX (in this case, Uniswap v2) and repay some of your debt or add more ETH in the SAFE
+* There is a Target Rescue CRatio. This is the collateralization ratio that your SAFE will have in case it is successfully saved. If the saviour cannot bring the SAFE's collateralization ratio to the target that you specify, it will not save the SAFE at all (the SAFE will end up getting liquidated)
 * The Protected Liquidation Point is the minimum collateralization ratio at which your SAFE can get liquidated and the saviour still manages to save it. If the SAFE gets liquidated below this threshold, these is a high chance it will not be saved
 * There is a Rescue Fee. This is a flat fee that has to be paid to the address that initially wanted to liquidate your SAFE but ended up saving it. The saviour must both pay this fee and manage to bring the CRatio of your SAFE to the Target Rescue CRatio that you picked, otherwise your SAFE will end up getting liquidated. The Rescue Fee can be changed by governance
 
@@ -52,15 +52,15 @@ Congrats, your SAFE is now being protected! 🎉
 
 Let's see what happens after one of your SAFEs gets saved. If you go to the SAFE details page, you'll see a button called **Collect Saviour Balance**:
 
-![](../.gitbook/assets/untitled-design-1-.png)
+![](<../.gitbook/assets/Untitled design(1).png>)
 
-Sometimes, the saviour doesn't need to use all the tokens you deposited in order to save your SAFE. You can collect these unused tokens \(e.g ETH & RAI withdrawn from Uniswap\) by clicking on **Collect Saviour Balance**.
+Sometimes, the saviour doesn't need to use all the tokens you deposited in order to save your SAFE. You can collect these unused tokens (e.g ETH & RAI withdrawn from Uniswap) by clicking on **Collect Saviour Balance**.
 
 ## 3. Best Practices
 
-* Avoid minting more RAI after you protect your SAFE. If you do mint more after you protect it \(regardless of whether you add more ETH or not\), try to add more LP tokens in the saviour to make sure your SAFE can still be saved now that it has more debt
-* Liquidation Protection is **not** a completely set and forget system. You should still watch your SAFE. The idea for protection is that it makes RAI more capital efficient \(you can mint more RAI with the same amount of ETH\) and liquidators are forced to try and save your SAFEs before they liquidate you
-* You should deposit more LP tokens than the minimum recommended amount \(which can be found in the app when you deposit cover for a SAFE\). By depositing more tokens than the minimum, you take into account the fact that your SAFE accrues debt over time \(because of the interest rate\), meaning that you will slowly need more and more tokens to save it 
+* Avoid minting more RAI after you protect your SAFE. If you do mint more after you protect it (regardless of whether you add more ETH or not), try to add more LP tokens in the saviour to make sure your SAFE can still be saved now that it has more debt
+* Liquidation Protection is **not** a completely set and forget system. You should still watch your SAFE. The idea for protection is that it makes RAI more capital efficient (you can mint more RAI with the same amount of ETH) and liquidators are forced to try and save your SAFEs before they liquidate you
+* You should deposit more LP tokens than the minimum recommended amount (which can be found in the app when you deposit cover for a SAFE). By depositing more tokens than the minimum, you take into account the fact that your SAFE accrues debt over time (because of the interest rate), meaning that you will slowly need more and more tokens to save it&#x20;
 
 ## 4. Gotchas
 
@@ -71,7 +71,7 @@ Sometimes, the saviour doesn't need to use all the tokens you deposited in order
 
 ## 5. Why Use Liquidation Protection Instead of DeFi Saver?
 
-Liquidation Protection is not meant to replace platforms such as DeFi Saver. Rather, it is meant as an extra cover layer for your SAFEs in cases where not even DeFi Saver might be able to protect you \(e.g network congestion during sharp ETH price drops when few people can get a transaction through\).
+Liquidation Protection is not meant to replace platforms such as DeFi Saver. Rather, it is meant as an extra cover layer for your SAFEs in cases where not even DeFi Saver might be able to protect you (e.g network congestion during sharp ETH price drops when few people can get a transaction through).
 
 ## 6. How does the saviour work under the hood?
 
@@ -79,9 +79,8 @@ When someone starts to liquidate a Safe and the saviour steps in, it will try to
 
 * Withdraw all the Uniswap liquidity using the LP tokens allocated to save the liquidated Safe
 * Calculate how much RAI would need to be repaid in order to bring the Safe's collateralization ratio above the **Target Rescue CRatio**
-* If the amount of RAI calculated is higher than the amount of RAI withdrawn from Uniswap and calculate the amount of ETH that would need to be added in the Safe \(besides the amount of RAI withdrawn from Uniswap which will be used to repay debt\)
-* If the calculated ETH amount is higher than the ETH amount withdrawn from Uniswap, the saviour will revert and the Safe will continue to be liquidated. The saviour will also revert if there isn't enough ETH and/or RAI to reimburse the liquidator \(who is spending gas to save the Safe\) for saving the Safe
-* On the other hand, if the calculated ETH amount is lower than the ETH amount withdrawn from Uniswap, the saviour will successfuly save the Safe \(by repaying some of the debt and adding the ETH in the Safe\). Any amount of ETH and/or RAI that we not used to save will be kept in the saviour until the owner of the Safe will withdraw them
+* If the amount of RAI calculated is higher than the amount of RAI withdrawn from Uniswap and calculate the amount of ETH that would need to be added in the Safe (besides the amount of RAI withdrawn from Uniswap which will be used to repay debt)
+* If the calculated ETH amount is higher than the ETH amount withdrawn from Uniswap, the saviour will revert and the Safe will continue to be liquidated. The saviour will also revert if there isn't enough ETH and/or RAI to reimburse the liquidator (who is spending gas to save the Safe) for saving the Safe
+* On the other hand, if the calculated ETH amount is lower than the ETH amount withdrawn from Uniswap, the saviour will successfuly save the Safe (by repaying some of the debt and adding the ETH in the Safe). Any amount of ETH and/or RAI that we not used to save will be kept in the saviour until the owner of the Safe will withdraw them
 
 Note that because the saviours withdraws all the liquidity from Uniswap when it saves, the Safe owner will need to deposit LP tokens again if they want to be protected moving forward.
-

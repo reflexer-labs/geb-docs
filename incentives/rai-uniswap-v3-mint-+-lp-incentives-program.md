@@ -1,4 +1,8 @@
-# RAI Uniswap V3 Mint + LP Incentives Program
+---
+description: Inactive
+---
+
+# RAI Uniswap V3 Mint + LP Incentives Program (Inactive)
 
 ## Overview
 

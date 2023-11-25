@@ -23,7 +23,7 @@ English collateral auctions are used to sell collateral from SAFEs that have bec
 * `bidDuration` - bid duration (default: 3 hours).
 * `totalAuctionLength` - auction length (default: 2 days).
 * `auctionsStarted` - total auction count, used to track auction `id`s.
-* `bidToMarketPriceRatio` - the minimum size of the first bid compared to the latest recorded collateral price **** (for `collateralType`) in the system.
+* `bidToMarketPriceRatio` - the minimum size of the first bid compared to the latest recorded collateral price (for `collateralType`) in the system.
 * `oracleRelayer` - address of the `OracleRelayer`.
 * `osm` - collateral type `OSM` address
 * `liquidationEngine` - the address of the `LiquidationEngine`
@@ -42,7 +42,7 @@ English collateral auctions are used to sell collateral from SAFEs that have bec
 
 **Modifiers**
 
-* `isAuthorized` **** - checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
+* `isAuthorized` - checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
 
 **Functions**
 

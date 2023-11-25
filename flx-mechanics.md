@@ -21,7 +21,7 @@ As for buyback and burn, RAI is first accrued in the protocol's balance sheet. O
 
 To visualize all this, you can check the diagram below:
 
-![](.gitbook/assets/untitled-diagram.png)
+![](<.gitbook/assets/Untitled Diagram.png>)
 
 **NOTE**: RAI only flows to the stability fee treasury, to stakers and in the protocol's balance sheet when the borrow rate charged to Safes is positive. When the borrow rate is negative, the protocol only uses funds from the balance sheet to repay RAI debt from all Safes.
 

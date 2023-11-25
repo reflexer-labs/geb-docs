@@ -12,7 +12,7 @@ The `LiquidationEngine` enables external actors to liquidate SAFEs and send thei
 
 **Variables**
 
-* `contractEnabled` - must be `1` for the `LiquidationEngine` to `liquidateSAFE` s. **** Used **** to indicate whether the contract is enabled.
+* `contractEnabled` - must be `1` for the `LiquidationEngine` to `liquidateSAFE` s. Used to indicate whether the contract is enabled.
 * `authorizedAccounts[usr: address]` - addresses allowed to call `modifyParameters()` and `disableContract()`
 * `safeEngine` - address that conforms to a `SAFEEngineLike` interface. It cannot be changed after the contract is instantiated.
 * `accountingEngine` - address that conforms to an `AccountingEngineLike` interface.
@@ -33,7 +33,7 @@ The `LiquidationEngine` enables external actors to liquidate SAFEs and send thei
 
 **Modifiers**
 
-* `isAuthorized` **** - checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
+* `isAuthorized` - checks whether an address is part of `authorizedAddresses` (and thus can call authed functions).
 
 **Functions**
 

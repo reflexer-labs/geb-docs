@@ -36,7 +36,7 @@ description: >-
 
 **Modifiers**
 
-* `isAuthorized` **** - checks whether an address is part of `authorizedAddresses`.
+* `isAuthorized` - checks whether an address is part of `authorizedAddresses`.
 
 **Functions**
 
@@ -61,7 +61,7 @@ description: >-
   * `account` - the new authorized account
 * `RemoveAuthorization` - emitted when an address is de-authorized. Contains:
   * `account` - the address that was de-authorized
-* `ModifyParameters` - emitted when a `uint256` **** parameter is updated.
+* `ModifyParameters` - emitted when a `uint256` parameter is updated.
 * `GiveUpAuthorityRoot` - emitted when `giveUpAuthorityRoot` is called.
 * `GiveUpAuthorityOwnership` -  emitted when `giveUpAuthorityOwnership` is called.
 * `RevokeDebtAuctionHouses` - emitted when both the current and the previous `DebtAuctionHouse`s are denied printing permissions. Contains:
