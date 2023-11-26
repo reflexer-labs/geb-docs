@@ -28,7 +28,7 @@
 
 * [RAI Uniswap V2 Mint + LP Incentives Program](incentives/rai-mint-+-lp-incentives-program.md)
 * [RAI Uniswap V3 Mint + LP Incentives Program (Inactive)](incentives/rai-uniswap-v3-mint-+-lp-incentives-program.md)
-* [FLX Staking (Inactive)](incentives/flx-staking.md)
+* [FLX Staking](incentives/flx-staking.md)
 * [RAI / ETH Uniswap V3 Oracle LP Incentives Program](incentives/rai-eth-uniswap-v3-oracle-lp-incentives-program.md)
 
 ## Contract Variables Translation <a href="#contract-translation" id="contract-translation"></a>
